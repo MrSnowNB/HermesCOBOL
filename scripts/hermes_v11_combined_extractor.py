@@ -2,57 +2,56 @@
 # LLM-FREE — Deterministic COBOL semantic extraction. No LLM inference.
 """
 hermes_v11_combined_extractor.py
-====================================
-HermesCOBOL schema v1.1 — single-module semantic enrichment.
+================================
+HermesCOBOL schema v1.1 semantic enrichment module.
 
-Purpose
--------
-Drop this file into HermesCOBOL/scripts/ and wire it into extract_facts.py
-via the public `enrich()` function. It replaces scripts/semantic_extract.py
-and supersedes the earlier prototype.
+This script is the *single authoritative source* for all v1.1 fields added
+to the HermesCOBOL facts JSON. It is intentionally self-contained (stdlib
+only) and invocable both as a library (via ``enrich()``) and as a CLI smoke
+test.
 
-Relationship to CardDemo tools
-------------------------------
-This module synthesises and simplifies four prior CardDemo analysis scripts:
+Relationship to prior CardDemo scripts
+---------------------------------------
+Logic is mined and simplified from four CardDemo analysis scripts:
 
-  extract_cfg_local.py      → paragraphs, PERFORM/GOTO graph, entry/exit, reachability
-  extract_fallthrough.py    → fallthrough edge detection using terminator classification
-  extract_paragraph_io.py   → verb-level action classification per paragraph
-  extract_file_control.py   → SELECT/ASSIGN/FD linkage → file_lineage
-  pass1_annotate.py         → multiline EXEC CICS collapsing strategy for CICS subtree
+  extract_cfg_local.py      -> paragraph graph, reachability, PERFORM/GOTO,
+                               CICS command scan, entry/exit detection
+  extract_fallthrough.py    -> fallthrough edge detection (last-verb approach
+                               adapted to text-scan without pass1 annotations)
+  extract_paragraph_io.py   -> file verb classification per paragraph,
+                               paragraph_actions taxonomy
+  extract_file_control.py   -> SELECT/ASSIGN/FD linkage -> file_lineage
 
-All logic is pure text-scan against the raw or preprocessed COBOL source.
-No cobc, no Java, no smojol, no external dependencies, no LLM.
+All of those scripts required pre-built annotation JSON (pass1_annotate.py
+pipeline).  This module operates directly on raw COBOL text so it can run
+in Stage 1 before any preprocessing pipeline exists.
 
-Public API
-----------
-  enrich(
-    program_name   : str,
-    raw_cobol      : str,               # exact bytes read from .cbl
-    preprocessed   : str | None,        # cobc -E output, or None to use raw
-    rekt_json      : dict | None,       # REKT CFG report dict, or None
-    base_facts     : dict,              # v1.0 facts dict (read-only)
-  ) -> dict
+CFG fidelity notes
+-------------------
+- ``cfg_source = "rekt"``       Highest fidelity: populated from smojol/REKT
+                                JSON when available (non-CICS only).
+- ``cfg_source = "text_scan"``  Lower fidelity: PERFORM graph + fallthrough
+                                derived from raw text.  Used for CICS programs
+                                and any program where REKT JSON is absent.
+  For text_scan the following limitations apply:
+    * conditional_true / conditional_false edges are not resolved
+      (we emit ``branch_logic`` action but a single ``perform`` edge)
+    * PERFORM VARYING / UNTIL loops emit a single ``perform`` edge with
+      no loop-count information
+    * EXEC CICS XCTL / LINK targets are not followed as call edges
 
-The returned dict contains ONLY the v1.1 additions; the caller merges
-them into the base_facts. Existing v1.0 keys are never overwritten.
-
-v1.1 output keys
-----------------
+Schema v1.1 additions returned by enrich()
+-------------------------------------------
   paragraphs_defined    list[{name, source_line, area_a}]
   paragraphs_referenced list[str]
+  paragraph_actions     dict[str, list[str]]
+  file_lineage          list[{name, ddname, fd_record}]
+  file_operations       dict[str, list[{paragraph, operation, source_line}]]
   control_flow          {cfg_source, entry_points, exit_points, edges, unresolved}
-  paragraph_actions     {para_name: [action_tag, ...]}
-  file_operations       {file_name: [{paragraph, operation, source_line}]}
-  file_lineage          [{name, ddname, fd_record}]
   cics                  {commarea_used, commands, maps_used, mapsets_used,
-                         aid_keys, screen_flow}  | None
+                         aid_keys, screen_flow}  -- None for non-CICS programs
 
-Constraints
------------
-  • Python 3.10+ • stdlib only • no LLM calls • no network • no cobc
-  • Never modifies base_facts
-  • Never touches main branch or v0.1-raw-substrate tag
+All v1.0 fields are unchanged by this module.
 """
 from __future__ import annotations
 
@@ -62,16 +61,17 @@ import sys
 from pathlib import Path
 from typing import Any
 
+__LLM_FREE__ = True
+
 
 # ===========================================================================
-# §1  CONSTANTS AND NOISE FILTERS
+# 1.  CONSTANTS
 # ===========================================================================
 
-# Tokens that look like paragraph labels syntactically but are COBOL
-# scope-terminators, reserved words, or division/section headers.
-# Applied in extract_paragraphs_defined() before any other processing.
-# Source: implementation spec + direct inspection of CardDemo corpora.
-PARAGRAPH_NOISE: frozenset[str] = frozenset([
+# Parser-noise pseudo-paragraphs that appear because the paragraph regex
+# matches any Area-A label-like token.  These are compiler delimiters, scope
+# terminators, or reserved words -- never real paragraph names.
+PARAGRAPH_NOISE = frozenset([
     "END-IF", "END-PERFORM", "END-EVALUATE", "END-READ",
     "END-WRITE", "END-REWRITE", "END-DELETE", "END-START",
     "END-CALL", "END-STRING", "END-UNSTRING", "END-EXEC",
@@ -79,651 +79,436 @@ PARAGRAPH_NOISE: frozenset[str] = frozenset([
     "FILE-CONTROL", "I-O-CONTROL", "PROGRAM-ID",
 ])
 
-# Division, section, and FD-level reserved words that appear as label-like
-# tokens in fixed-format COBOL source but are never paragraph names.
-RESERVED_DIVISIONS: frozenset[str] = frozenset([
+# Division / section header keywords that are never paragraph labels.
+RESERVED_DIVISIONS = frozenset([
     "IDENTIFICATION", "ENVIRONMENT", "DATA", "PROCEDURE",
     "CONFIGURATION", "INPUT-OUTPUT", "FILE", "WORKING-STORAGE",
     "LINKAGE", "LOCAL-STORAGE", "REPORT", "SCREEN",
-    "AUTHOR", "INSTALLATION", "DATE-WRITTEN",
-    "DATE-COMPILED", "SECURITY", "REMARKS",
-    "FD", "SD", "RD",
+    "AUTHOR", "INSTALLATION", "DATE-WRITTEN", "DATE-COMPILED",
+    "SECURITY", "REMARKS", "FD", "SD", "RD",
 ])
 
-# PERFORM clause keywords that follow a paragraph name but are not themselves
-# paragraph names (e.g. PERFORM READ-FILE UNTIL WS-EOF = 'Y').
-PERFORM_KEYWORDS: frozenset[str] = frozenset([
+# PERFORM modifier keywords that follow PERFORM but are NOT paragraph targets.
+# e.g.  PERFORM UNTIL WS-EOF  -- "UNTIL" must not be treated as a para name.
+PERFORM_NON_TARGETS = frozenset([
     "UNTIL", "VARYING", "TIMES", "WITH", "TEST",
     "THRU", "THROUGH", "BEFORE", "AFTER",
 ])
 
-# CICS commands that terminate a paragraph (no fallthrough after them).
-# From CardDemo extract_fallthrough.py §CICS_TERMINATOR_OPS.
-CICS_TERMINATORS: frozenset[str] = frozenset(["RETURN", "XCTL"])
-
-# Paragraph name patterns that flag the paragraph as an abend/error routine.
-# Used in action classification and exit-point detection.
-RE_ABEND_NAME = re.compile(r"(ABEND|9999|9910|ABORT|STORUN|STOP-RUN)", re.IGNORECASE)
-RE_ERROR_NAME = re.compile(r"(ERROR|STAT(?:US)?|INVALID|EXCEPT|DISPLAY)", re.IGNORECASE)
+# CICS command verbs that constitute a program terminator (per
+# extract_fallthrough.py CICS_TERMINATOR_OPS).  Used to detect exit_points.
+CICS_TERMINATOR_OPS = frozenset(["RETURN", "XCTL"])
 
 
 # ===========================================================================
-# §2  REGEX LIBRARY
-#     All patterns compiled once at module load. Brief comments explain
-#     each non-obvious pattern choice.
+# 2.  REGEX LIBRARY
+#     All regexes are compiled at module load (fast) and documented inline.
 # ===========================================================================
 
-# --- Source structure ---
+# --- structural markers ---
 
-# Paragraph label: a name (Area A, cols 8-11 in fixed format) ending with a
-# period and nothing else on the line (after optional trailing spaces).
-# We allow 0-11 leading spaces to accommodate both fixed- and free-format
-# output from cobc -E, which re-emits lines without sequence numbers.
+# PROCEDURE DIVISION header (marks start of executable code)
+RE_PROC_DIV   = re.compile(r"^[ \t]*PROCEDURE[ \t]+DIVISION", re.M | re.I)
+# DATA DIVISION header (marks start of data declarations)
+RE_DATA_DIV   = re.compile(r"^[ \t]*DATA[ \t]+DIVISION",      re.M | re.I)
+
+# A paragraph/section label in Area A: 0-11 spaces, identifier, dot, EOL.
+# This is the canonical form after fixed-format column stripping.
 RE_PARA_LABEL = re.compile(
-    r"^( {0,11})([A-Z0-9][A-Z0-9-]*)[ \t]*\.[ \t]*$",
-    re.MULTILINE | re.IGNORECASE,
+    r"^([ ]{0,11})([A-Z0-9][A-Z0-9-]*)[ \t]*\.[ \t]*$",
+    re.M | re.I,
+)
+# SECTION declaration (name + SECTION + dot).  Used to exclude section names
+# from the paragraph list.
+RE_SECTION    = re.compile(
+    r"^[ ]{0,11}([A-Z0-9][A-Z0-9-]*)[ \t]+SECTION[ \t]*\.[ \t]*$",
+    re.M | re.I,
 )
 
-# SECTION header: same Area-A position, followed by the word SECTION.
-RE_SECTION_HEADER = re.compile(
-    r"^ {0,11}([A-Z0-9][A-Z0-9-]*)[ \t]+SECTION[ \t]*\.[ \t]*$",
-    re.MULTILINE | re.IGNORECASE,
-)
+# --- flow control verbs ---
 
-# Division markers used to locate boundaries within source text.
-RE_PROC_DIV = re.compile(
-    r"^[ \t]*PROCEDURE[ \t]+DIVISION\b",
-    re.MULTILINE | re.IGNORECASE,
-)
-RE_DATA_DIV = re.compile(
-    r"^[ \t]*DATA[ \t]+DIVISION\b",
-    re.MULTILINE | re.IGNORECASE,
-)
-RE_ENV_DIV = re.compile(
-    r"^[ \t]*ENVIRONMENT[ \t]+DIVISION\b",
-    re.MULTILINE | re.IGNORECASE,
-)
-
-# --- PERFORM variants (mined from extract_cfg_local.py analyze_flow) ---
-
-# Simple PERFORM <para>  (no inline body, no clause)
-# Anchored at end-of-line to avoid matching PERFORM UNTIL <para> inline blocks.
-RE_PERF_SIMPLE = re.compile(
+# PERFORM <para>  (simple, no modifier)
+RE_PERFORM_SIMPLE  = re.compile(
     r"\bPERFORM[ \t]+([A-Z0-9][A-Z0-9-]+)[ \t]*$",
-    re.MULTILINE | re.IGNORECASE,
+    re.M | re.I,
 )
-# PERFORM <para> THRU <para2>
-RE_PERF_THRU = re.compile(
-    r"\bPERFORM[ \t]+([A-Z0-9][A-Z0-9-]+)[ \t]+THRU(?:UGH)?[ \t]+([A-Z0-9][A-Z0-9-]+)",
-    re.IGNORECASE,
+# PERFORM <para> THRU <para>  -- both ends emit a perform_thru edge
+RE_PERFORM_THRU    = re.compile(
+    r"\bPERFORM[ \t]+([A-Z0-9][A-Z0-9-]+)[ \t]+THRU[ \t]+([A-Z0-9][A-Z0-9-]+)",
+    re.I,
 )
-# PERFORM <para> UNTIL ... (loop on named paragraph)
-RE_PERF_UNTIL = re.compile(
-    r"\bPERFORM[ \t]+([A-Z0-9][A-Z0-9-]+)[ \t]+UNTIL",
-    re.IGNORECASE,
+# PERFORM <para> UNTIL / VARYING  (loop forms -- lower fidelity)
+RE_PERFORM_LOOP    = re.compile(
+    r"\bPERFORM[ \t]+([A-Z0-9][A-Z0-9-]+)[ \t]+(?:UNTIL|VARYING)",
+    re.I,
 )
-# PERFORM <para> VARYING ... (loop on named paragraph)
-RE_PERF_VARYING = re.compile(
-    r"\bPERFORM[ \t]+([A-Z0-9][A-Z0-9-]+)[ \t]+VARYING",
-    re.IGNORECASE,
-)
-# PERFORM <para> <n> TIMES
-RE_PERF_TIMES = re.compile(
-    r"\bPERFORM[ \t]+([A-Z0-9][A-Z0-9-]+)[ \t]+\d+[ \t]+TIMES",
-    re.IGNORECASE,
-)
-# Generic PERFORM target capture (used for paragraphs_referenced)
-RE_PERF_ANY = re.compile(
-    r"\bPERFORM[ \t]+([A-Z0-9][A-Z0-9-]+)",
-    re.IGNORECASE,
-)
+# GO TO <para>
+RE_GOTO            = re.compile(r"\bGO[ \t]+TO[ \t]+([A-Z0-9][A-Z0-9-]+)", re.I)
+# CALL '<literal-name>'
+RE_CALL            = re.compile(r"\bCALL[ \t]+['\"]([A-Z0-9][A-Z0-9-]*)['\"] ", re.I)
+# Program terminators
+RE_STOP_RUN        = re.compile(r"\bSTOP[ \t]+RUN\b",   re.I)
+RE_GOBACK          = re.compile(r"\bGOBACK\b",          re.I)
+RE_EXIT_PROGRAM    = re.compile(r"\bEXIT[ \t]+PROGRAM\b", re.I)
 
-# --- GO TO ---
-RE_GOTO = re.compile(
-    r"\bGO[ \t]+TO[ \t]+([A-Z0-9][A-Z0-9-]+)",
-    re.IGNORECASE,
-)
+# --- file I/O verbs ---
 
-# --- CALL (literal program name only; dynamic CALL USING <var> not captured) ---
-RE_CALL_LITERAL = re.compile(
-    r"\bCALL[ \t]+['\"]([A-Z0-9][A-Z0-9-]*)['\"][ \t]",
-    re.IGNORECASE,
+# OPEN INPUT/OUTPUT/I-O/EXTEND <file>  (captures the mode and file name)
+RE_OPEN_MODE  = re.compile(
+    r"\bOPEN[ \t]+(INPUT|OUTPUT|I-O|EXTEND)[ \t]+([A-Z0-9][A-Z0-9-]*)",
+    re.I,
 )
-
-# --- Terminator verbs (from extract_fallthrough.py _classify_terminator) ---
-RE_STOP_RUN = re.compile(r"\bSTOP[ \t]+RUN\b", re.IGNORECASE)
-RE_GOBACK   = re.compile(r"\bGOBACK\b",        re.IGNORECASE)
-RE_EXIT_PGM = re.compile(r"\bEXIT[ \t]+PROGRAM\b", re.IGNORECASE)
-
-# --- File I/O verbs (mined from extract_paragraph_io.py WRITER_VERBS) ---
-RE_OPEN_MODE = re.compile(
-    r"\bOPEN[ \t]+(INPUT|OUTPUT|I-O|EXTEND)[ \t]+([A-Z0-9][A-Z0-9-]+)",
-    re.IGNORECASE,
+# READ / WRITE / REWRITE / DELETE / START / CLOSE <file>
+# Note: OPEN handled separately because mode matters.
+RE_IO_VERB    = re.compile(
+    r"\b(READ|WRITE|REWRITE|DELETE|START|CLOSE)[ \t]+([A-Z0-9][A-Z0-9-]*)",
+    re.I,
 )
-RE_IO_VERB = re.compile(
-    r"\b(CLOSE|READ|WRITE|REWRITE|DELETE|START)[ \t]+([A-Z0-9][A-Z0-9-]+)",
-    re.IGNORECASE,
+# SELECT <file> ASSIGN TO <ddname>
+RE_SELECT     = re.compile(
+    r"\bSELECT[ \t]+([A-Z0-9][A-Z0-9-]*)[ \t]+ASSIGN[ \t]+TO[ \t]+([A-Z0-9][A-Z0-9-]*)",
+    re.I,
 )
+# FD <record-name>  (file descriptor in FILE SECTION)
+RE_FD         = re.compile(r"^[ \t]*FD[ \t]+([A-Z0-9][A-Z0-9-]*)", re.M | re.I)
+# COPY <copybook>
+RE_COPY       = re.compile(r"\bCOPY[ \t]+([A-Z0-9][A-Z0-9-]*)", re.I)
 
-# --- Branch / transform verbs ---
-RE_IF       = re.compile(r"\bIF\b",       re.IGNORECASE)
-RE_EVALUATE = re.compile(r"\bEVALUATE\b", re.IGNORECASE)
-RE_MOVE     = re.compile(r"\bMOVE\b",     re.IGNORECASE)
-RE_DISPLAY  = re.compile(r"\bDISPLAY\b",  re.IGNORECASE)
+# --- CICS patterns ---
 
-# --- File environment (mined from extract_file_control.py) ---
-RE_SELECT = re.compile(
-    r"\bSELECT[ \t]+([A-Z0-9][A-Z0-9-]*)[ \t]+ASSIGN[ \t]+(?:TO[ \t]+)?([A-Z0-9\-]+)",
-    re.IGNORECASE,
+# Any EXEC CICS block start
+RE_EXEC_CICS_START = re.compile(r"\bEXEC[ \t]+CICS\b", re.I)
+# Normalised: first command keyword after EXEC CICS on collapsed block
+RE_EXEC_CICS_CMD   = re.compile(r"\bEXEC[ \t]+CICS[ \t]+([A-Z][A-Z0-9-]*)", re.I)
+# MAP(<name>) clause inside EXEC CICS SEND/RECEIVE MAP
+RE_CICS_MAP        = re.compile(
+    r"\bMAP[ \t]*\([ \t]*['\"]?([A-Z0-9][A-Z0-9-]*)['\"]?[ \t]*\)", re.I
 )
-RE_FD = re.compile(
-    r"^[ \t]*FD[ \t]+([A-Z0-9][A-Z0-9-]*)",
-    re.MULTILINE | re.IGNORECASE,
+# MAPSET(<name>) clause
+RE_CICS_MAPSET     = re.compile(
+    r"\bMAPSET[ \t]*\([ \t]*['\"]?([A-Z0-9][A-Z0-9-]*)['\"]?[ \t]*\)", re.I
 )
-RE_COPY = re.compile(r"\bCOPY[ \t]+([A-Z0-9][A-Z0-9-]*)", re.IGNORECASE)
-
-# --- CICS patterns (strategy from pass1_annotate.py multiline collapsing) ---
-
-# EXEC CICS marker (presence check)
-RE_EXEC_CICS_PRESENT = re.compile(r"\bEXEC[ \t]+CICS\b", re.IGNORECASE)
-# EXEC CICS <COMMAND> ... END-EXEC block capture (multiline)
-# Note: COBOL EXEC CICS blocks can span multiple continuation lines. We
-# collapse them before extraction (see _collapse_cics_blocks()).
-RE_EXEC_CICS_BLOCK = re.compile(
-    r"EXEC[ \t]+CICS[ \t]+([A-Z][A-Z0-9-]*).*?END-EXEC",
-    re.IGNORECASE | re.DOTALL,
+# EXEC CICS SEND MAP  (specific sub-type of SEND)
+RE_CICS_SEND_MAP   = re.compile(r"\bEXEC[ \t]+CICS[ \t]+SEND[ \t]+MAP\b", re.I)
+# EXEC CICS RECEIVE MAP
+RE_CICS_RECV_MAP   = re.compile(r"\bEXEC[ \t]+CICS[ \t]+RECEIVE[ \t]+MAP\b", re.I)
+# EIBAID = DFHxxx  or  EIBAID = DFHAID.xxx
+RE_EIBAID_EQ       = re.compile(
+    r"EIBAID[ \t]*=[ \t]*DFHAID[ \t]*\.?([A-Z0-9]+)", re.I
 )
-# MAP and MAPSET operands
-RE_CICS_MAP    = re.compile(r"\bMAP[ \t]*\([ \t]*['\"]?([A-Z0-9][A-Z0-9-]*)['\"]?[ \t]*\)",    re.IGNORECASE)
-RE_CICS_MAPSET = re.compile(r"\bMAPSET[ \t]*\([ \t]*['\"]?([A-Z0-9][A-Z0-9-]*)['\"]?[ \t]*\)", re.IGNORECASE)
-# SEND MAP / RECEIVE MAP (used for screen_flow)
-RE_CICS_SEND_MAP    = re.compile(r"EXEC[ \t]+CICS[ \t]+SEND[ \t]+MAP",    re.IGNORECASE)
-RE_CICS_RECEIVE_MAP = re.compile(r"EXEC[ \t]+CICS[ \t]+RECEIVE[ \t]+MAP", re.IGNORECASE)
-# AID key patterns: both EIBAID = DFHxxx and EVALUATE EIBAID WHEN DFHxxx
-# from pass1_annotate.py aid-key handling.
-RE_AID_EIBAID   = re.compile(r"EIBAID[ \t]*=[ \t]*DFHAID[ \t]*\.?([A-Z0-9]+)", re.IGNORECASE)
-RE_AID_DFHAID   = re.compile(r"\bDFHAID\.([A-Z0-9]+)\b",                        re.IGNORECASE)
-RE_AID_WHEN     = re.compile(r"WHEN[ \t]+DFHAID[ \t]*\.?([A-Z0-9]+)",            re.IGNORECASE)
-RE_COMMAREA     = re.compile(r"\bDFHCOMMAREA\b",                                   re.IGNORECASE)
+# Dotted DFHAID.xxx usage  (common in EVALUATE EIBAID WHEN DFHAID.PF3)
+RE_DFHAID_DOT      = re.compile(r"\bDFHAID\.([A-Z0-9]+)\b", re.I)
+# DFHCOMMAREA present in source
+RE_COMMAREA        = re.compile(r"\bDFHCOMMAREA\b", re.I)
+# EXEC SQL (flag only, no deep extraction at this stage)
+RE_EXEC_SQL        = re.compile(r"\bEXEC[ \t]+SQL\b", re.I)
+
+# --- action classifiers ---
+# These are applied to the *body* of each paragraph (the lines between two
+# paragraph labels) to produce a coarse action tag list.
+RE_ACT_DISPLAY   = re.compile(r"\bDISPLAY\b",   re.I)
+RE_ACT_MOVE      = re.compile(r"\bMOVE\b",      re.I)
+RE_ACT_IF        = re.compile(r"\bIF\b",         re.I)
+RE_ACT_EVALUATE  = re.compile(r"\bEVALUATE\b",  re.I)
+# Name patterns that identify abend / error paragraphs
+RE_ABEND_NAME    = re.compile(r"(ABEND|9999|ABORT|STORUN)", re.I)
+RE_ERROR_NAME    = re.compile(r"(ERROR|STATUS|STAT|INVALID|EXCEPT)", re.I)
 
 
 # ===========================================================================
-# §3  SOURCE PREPROCESSING UTILITIES
+# 3.  TEXT PREPARATION UTILITIES
 # ===========================================================================
 
-def strip_comment_lines(source: str) -> str:
+def strip_fixed_format_comments(text: str) -> str:
     """
-    Remove fixed-format COBOL comment lines (column 7 == '*' or '/').
-    Also strips sequence-number areas (cols 1-6) if present.
-    Blank indicator lines (col 7 == ' ') are preserved.
+    Remove COBOL fixed-format comment lines.
+
+    In standard fixed-format COBOL, a line whose indicator column (col 7,
+    0-based index 6) contains '*' or '/' is a comment.  This function blanks
+    such lines so that downstream regexes do not accidentally match content
+    inside comments.
+
+    NOTE: Lines shorter than 7 characters are left unchanged (they cannot
+    have an indicator column).
     """
     out: list[str] = []
-    for line in source.splitlines():
+    for line in text.splitlines():
         if len(line) >= 7 and line[6] in ("*", "/"):
-            # Comment line: replace with blank to preserve line numbering
-            out.append("")
+            out.append("")          # preserve line-number alignment
         else:
             out.append(line)
     return "\n".join(out)
 
 
-def _collapse_cics_blocks(source: str) -> str:
+def collapse_exec_cics_blocks(text: str) -> str:
     """
-    Collapse multiline EXEC CICS ... END-EXEC blocks into single logical lines.
+    Collapse multi-line EXEC CICS ... END-EXEC blocks into a single logical
+    line.
 
-    Strategy: scan line by line. When we encounter 'EXEC CICS', accumulate
-    continuation lines until we see 'END-EXEC', then join them with a single
-    space and emit as one line.
+    COBOL EXEC CICS blocks routinely span many continuation lines, which means
+    a naive single-line regex will only capture the command keyword when it
+    happens to sit on the same line as 'EXEC CICS'.  This function joins the
+    content of each block (stripping the column-6 sequence/indicator area)
+    into one space-separated string, making single-line regexes reliable.
 
-    This mirrors the multiline-block strategy in CardDemo pass1_annotate.py.
-    Preserves non-CICS lines exactly. Comment lines (col 7 = *) are skipped
-    inside the accumulation window.
+    Strategy (adapted from CardDemo pass1_annotate.py multiline handling):
+      1. Find the EXEC CICS marker.
+      2. Accumulate continuation lines until END-EXEC.
+      3. Replace the block with a single normalised line in-place.
 
-    Returns the source with CICS blocks collapsed but structure otherwise
-    unchanged.
+    Fixed-format rules applied:
+      * Columns 1-6  (0-5): sequence number -- ignored
+      * Column  7    (6):   indicator -- '*' or '/' -> skip line
+      * Columns 8-72 (7-71): Area A + Area B -- the actual code
+      * Columns 73+  (72+): identification area -- ignored
     """
-    lines = source.splitlines()
-    out: list[str] = []
-    i = 0
+    lines   = text.splitlines()
+    result  = []
+    i       = 0
     while i < len(lines):
-        line = lines[i]
-        up = line.upper()
-        if "EXEC" in up and "CICS" in up:
-            # Start of a CICS block. Accumulate until END-EXEC.
-            block_parts = [line.strip()]
+        raw_line = lines[i]
+        # Strip comment and identification area for the check
+        if len(raw_line) >= 7 and raw_line[6] in ("*", "/"):
+            result.append(raw_line)
+            i += 1
+            continue
+        area = raw_line[7:72] if len(raw_line) > 7 else raw_line
+        if RE_EXEC_CICS_START.search(area):
+            # Start accumulating the block
+            block_tokens: list[str] = [area.strip()]
             i += 1
             while i < len(lines):
                 cont = lines[i]
-                # Skip comment continuation lines
                 if len(cont) >= 7 and cont[6] in ("*", "/"):
                     i += 1
                     continue
-                block_parts.append(cont.strip())
-                if "END-EXEC" in cont.upper():
+                cont_area = cont[7:72] if len(cont) > 7 else cont
+                block_tokens.append(cont_area.strip())
+                if "END-EXEC" in cont_area.upper():
                     i += 1
                     break
                 i += 1
-            out.append(" ".join(block_parts))
+            # Emit the entire block as one line (preserving original indentation
+            # for column-position accounting is unnecessary here -- we only
+            # care about extracting keywords, not source positions).
+            result.append(" ".join(block_tokens))
         else:
-            out.append(line)
+            result.append(raw_line)
             i += 1
-    return "\n".join(out)
-
-
-def _lineno(text: str, match_start: int) -> int:
-    """Return 1-based line number for a character offset in text."""
-    return text[:match_start].count("\n") + 1
+    return "\n".join(result)
 
 
 # ===========================================================================
-# §4  PARAGRAPH EXTRACTION
-#     Mined from extract_cfg_local.py extract_paragraphs() + analyze_flow()
+# 4.  PARAGRAPH EXTRACTION
 # ===========================================================================
-
-def _section_names(clean: str) -> set[str]:
-    """Return set of SECTION names to exclude from paragraph labels."""
-    return {m.group(1).upper() for m in RE_SECTION_HEADER.finditer(clean)}
-
 
 def extract_paragraphs_defined(raw: str, clean: str) -> list[dict]:
     """
-    Extract real paragraph labels from the PROCEDURE DIVISION.
+    Return all real paragraph labels defined in the PROCEDURE DIVISION.
 
-    Returns list of {name: str, source_line: int, area_a: bool}.
-    area_a == True means the label starts in cols 8-11 (normal COBOL).
+    Each entry: {"name": str, "source_line": int, "area_a": bool}
+      name        : upper-cased paragraph name
+      source_line : 1-based line number in *raw* source (for provenance)
+      area_a      : True if the label starts in Area A (indent <= 3 spaces)
+                    which is the standard placement for paragraph labels
 
-    Filters applied (in order):
-      1. PARAGRAPH_NOISE   – scope-terminators and reserved tokens
-      2. RESERVED_DIVISIONS– division/section/FD-level reserved words
-      3. -DIVISION suffix  – leftover division header tokens
-      4. SECTION names     – section labels are not paragraphs
-      5. Deduplication     – keep first occurrence only
+    Filters applied (adapted from extract_cfg_local.extract_paragraphs):
+      * PARAGRAPH_NOISE        : scope terminators, reserved verbs
+      * RESERVED_DIVISIONS     : division / section keyword names
+      * Names ending -DIVISION  : e.g. DATA-DIVISION appearing as a token
+      * Section names (SECTION keyword immediately following)
+
+    Uses *clean* (comment-stripped) for matching but *raw* for line numbers
+    so that provenance references the actual source file.
     """
-    sections = _section_names(clean)
-    seen: set[str] = set()
-    result: list[dict] = []
+    # Collect all SECTION names so we can exclude them from the para list
+    section_names: set[str] = {
+        m.group(1).upper() for m in RE_SECTION.finditer(clean)
+    }
+
+    results : list[dict] = []
+    seen    : set[str]   = set()
 
     for m in RE_PARA_LABEL.finditer(clean):
-        indent = len(m.group(1))
         name   = m.group(2).upper()
+        indent = len(m.group(1))          # leading spaces
 
-        if name in PARAGRAPH_NOISE:        continue
-        if name in RESERVED_DIVISIONS:     continue
-        if name.endswith("-DIVISION"):     continue
-        if name in sections:               continue
-        if name in seen:                   continue
+        # Apply noise / reserved-word filters
+        if name in PARAGRAPH_NOISE:      continue
+        if name in RESERVED_DIVISIONS:   continue
+        if name.endswith("-DIVISION"):   continue
+        if name in section_names:        continue
+        if name in seen:                 continue   # keep first occurrence only
 
         seen.add(name)
-        lineno = _lineno(raw, m.start())  # provenance: line in RAW source
-        result.append({
+        lineno = raw[:m.start()].count("\n") + 1
+        results.append({
             "name":        name,
             "source_line": lineno,
-            "area_a":      indent <= 3,   # Area A = 0-3 leading spaces after seq area
+            "area_a":      indent <= 3,
         })
-    return result
+    return results
 
 
 def extract_paragraphs_referenced(
-    clean: str,
-    defined: list[dict],
+    clean: str, defined: list[dict]
 ) -> list[str]:
     """
-    Return sorted list of paragraph names that appear as PERFORM or GO TO
-    targets and are also in the defined set.
+    Return names of defined paragraphs that appear as PERFORM / GO TO targets.
 
-    This is the 'referenced' side of the defined/referenced split requested
-    in the spec. A paragraph may be defined but never referenced (dead code),
-    or referenced but not defined (unresolved).
+    This is the *referenced* set -- the complement of *defined* allows
+    detection of unreachable paragraphs (defined but never referenced).
     """
     defined_names = {p["name"] for p in defined}
     referenced: set[str] = set()
 
-    for m in RE_PERF_ANY.finditer(clean):
+    for m in re.finditer(r"\bPERFORM[ \t]+([A-Z0-9][A-Z0-9-]+)", clean, re.I):
         t = m.group(1).upper()
-        if t in defined_names and t not in PERFORM_KEYWORDS:
+        if t in defined_names and t not in PERFORM_NON_TARGETS:
             referenced.add(t)
+
     for m in RE_GOTO.finditer(clean):
         t = m.group(1).upper()
         if t in defined_names:
             referenced.add(t)
+
     return sorted(referenced)
 
 
 # ===========================================================================
-# §5  PROCEDURE DIVISION BODY SPLITTER
-#     Splits source into {para_name: body_str} for per-paragraph analysis.
-#     Required by action classification, file operations, and CFG.
+# 5.  PROCEDURE DIVISION BODY SPLITTER
+#     Splits source into a mapping of {paragraph_name: body_text} for
+#     per-paragraph analysis.
 # ===========================================================================
 
-def split_by_paragraph(
-    clean: str,
-    defined: list[dict],
-) -> dict[str, str]:
+def split_procedure_bodies(clean: str) -> dict[str, str]:
     """
-    Divide the PROCEDURE DIVISION into per-paragraph body text.
+    Return {para_name: body_lines_str} for every paragraph in the PROCEDURE
+    DIVISION.
 
-    Returns {para_name: body_text} where body_text is everything from the
-    line after the paragraph label until the line before the next label.
-    Paragraphs not in `defined` (i.e. noise-filtered out) are ignored.
+    'Body' is the text between a paragraph label and the next label
+    (exclusive of both labels).  Section headers are treated as paragraph
+    separators.
 
-    Strategy: linear scan, matching labels by name rather than by regex
-    re-run, to stay in sync with the noise filter applied in step §4.
+    The splitter does NOT require knowledge of *which* paragraphs are real --
+    it uses the same label regex as extract_paragraphs_defined so the bodies
+    align with the defined-paragraph list.
     """
-    defined_set = {p["name"] for p in defined}
     proc_m = RE_PROC_DIV.search(clean)
     if not proc_m:
-        return {}  # No PROCEDURE DIVISION found — COBSWAIT-style stub
+        return {}
 
     proc_lines = clean[proc_m.end():].splitlines()
-    label_re   = re.compile(
-        r"^( {0,11})([A-Z0-9][A-Z0-9-]*)[ \t]*\.[ \t]*$",
-        re.IGNORECASE,
-    )
-
-    bodies: dict[str, list[str]] = {}
+    para_map: dict[str, list[str]] = {}
     current: str | None = None
 
+    label_re = re.compile(
+        r"^([ ]{0,11})([A-Z0-9][A-Z0-9-]*)[ \t]*\.[ \t]*$",
+        re.I,
+    )
     for line in proc_lines:
         m = label_re.match(line)
         if m:
             name = m.group(2).upper()
-            if name in defined_set:
-                current = name
-                bodies.setdefault(current, [])
+            # Skip noise tokens -- do not start a new paragraph bucket for them
+            if name in PARAGRAPH_NOISE or name.endswith("-DIVISION"):
+                if current is not None:
+                    para_map[current].append(line)
                 continue
-        if current:
-            bodies[current].append(line)
+            current = name
+            para_map.setdefault(current, [])
+        else:
+            if current is not None:
+                para_map[current].append(line)
 
-    return {k: "\n".join(v) for k, v in bodies.items()}
-
-
-# ===========================================================================
-# §6  TERMINATOR CLASSIFICATION
-#     Mined from extract_fallthrough.py _classify_terminator() and
-#     the CICS_TERMINATOR_OPS logic.
-# ===========================================================================
-
-def _paragraph_terminator(body: str, name: str) -> str:
-    """
-    Classify how a paragraph terminates, scanning its body from bottom to top
-    to find the last explicit transfer of control.
-
-    Returns one of:
-      'stop-run'            – STOP RUN in body
-      'goback'              – GOBACK in body
-      'explicit-exit'       – EXIT PROGRAM in body
-      'goto'                – last statement is GO TO
-      'cics-return'         – EXEC CICS RETURN END-EXEC
-      'cics-xctl'           – EXEC CICS XCTL END-EXEC
-      'implicit'            – none of the above (falls through)
-
-    Note: 'implicit' is the default. The caller (build_cfg_text_scan) decides
-    whether to add a fallthrough edge based on paragraph order.
-    """
-    # Scan the collapsed CICS version of the body for CICS terminators
-    cics_body = _collapse_cics_blocks(body)
-    for m in RE_EXEC_CICS_BLOCK.finditer(cics_body):
-        cmd = m.group(1).upper()
-        if cmd in CICS_TERMINATORS:
-            return f"cics-{cmd.lower()}"
-
-    if RE_STOP_RUN.search(body): return "stop-run"
-    if RE_GOBACK.search(body):   return "goback"
-    if RE_EXIT_PGM.search(body): return "explicit-exit"
-    if RE_GOTO.search(body):     return "goto"
-    return "implicit"
+    return {k: "\n".join(v) for k, v in para_map.items()}
 
 
 # ===========================================================================
-# §7  CFG CONSTRUCTION
-#     Edges: perform, perform_thru, goto, call, fallthrough
-#     (conditional_true/conditional_false require REKT; left for adapter).
-#     Reachability walk from entry_points mined from extract_cfg_local.py.
+# 6.  PARAGRAPH ACTION CLASSIFIER
+#     Adapted from CardDemo extract_paragraph_io.py verb taxonomy and
+#     the HermesCOBOL action vocabulary defined in the spec.
 # ===========================================================================
 
-def build_cfg_text_scan(
-    clean: str,
-    defined: list[dict],
-    cics_present: bool = False,
-) -> dict:
-    """
-    Build control_flow dict via pure text scan.
-    cfg_source = 'text_scan'.
-
-    Fidelity note (important for consumers):
-      • PERFORM, GO TO, CALL, and fallthrough edges are reliable.
-      • conditional_true / conditional_false edges require REKT output
-        (static analysis of IF/EVALUATE branch targets is unreliable
-        without a parse tree).
-      • For CICS programs, a cfg_note is added documenting the lower fidelity
-        since CICS pseudo-conversational flow cannot be recovered from raw text.
-    """
-    para_names  = {p["name"] for p in defined}
-    para_order  = [p["name"] for p in defined]
-    para_bodies = split_by_paragraph(clean, defined)
-
-    edges:      list[dict] = []
-    unresolved: list[str]  = []
-    seen_edges: set[tuple]  = set()
-
-    def _add(from_: str, to_: str, typ: str) -> None:
-        key = (from_, to_, typ)
-        if key not in seen_edges:
-            seen_edges.add(key)
-            edges.append({"from": from_, "to": to_, "type": typ, "source_lines": None})
-
-    for para in para_order:
-        body = para_bodies.get(para, "")
-
-        # PERFORM THRU: two-paragraph range
-        for m in RE_PERF_THRU.finditer(body):
-            t_from = m.group(1).upper()
-            t_thru  = m.group(2).upper()
-            _add(para, t_from, "perform_thru")
-            if t_from not in para_names: unresolved.append(t_from)
-            if t_thru not in para_names: unresolved.append(t_thru)
-
-        # Named PERFORM loops (UNTIL / VARYING / TIMES)
-        for pat in (RE_PERF_UNTIL, RE_PERF_VARYING, RE_PERF_TIMES):
-            for m in pat.finditer(body):
-                t = m.group(1).upper()
-                if t and t not in PERFORM_KEYWORDS:
-                    _add(para, t, "perform")
-                    if t not in para_names: unresolved.append(t)
-
-        # Simple PERFORM (end-of-line anchored to avoid duplicating loop cases)
-        for m in RE_PERF_SIMPLE.finditer(body):
-            t = m.group(1).upper()
-            if t not in PERFORM_KEYWORDS:
-                _add(para, t, "perform")
-                if t not in para_names: unresolved.append(t)
-
-        # GO TO
-        for m in RE_GOTO.finditer(body):
-            t = m.group(1).upper()
-            _add(para, t, "goto")
-            if t not in para_names: unresolved.append(t)
-
-        # CALL (literal program names only)
-        for m in RE_CALL_LITERAL.finditer(body):
-            _add(para, m.group(1).upper(), "call")
-
-    # Fallthrough edges (from extract_fallthrough.py logic)
-    # Per the authoritative rule in extract_fallthrough.py §docstring:
-    # If the last effective verb in a paragraph is not a terminator
-    # (goto/stop-run/goback/exit-program/cics-return/cics-xctl),
-    # execution falls through to the next paragraph in source order.
-    for i, para in enumerate(para_order[:-1]):
-        body = para_bodies.get(para, "")
-        term = _paragraph_terminator(body, para)
-        if term == "implicit":
-            nxt = para_order[i + 1]
-            _add(para, nxt, "fallthrough")
-
-    # Entry and exit points
-    entry_points = [para_order[0]] if para_order else []
-    exit_points:  list[str] = []
-    for para in para_order:
-        body = para_bodies.get(para, "")
-        term = _paragraph_terminator(body, para)
-        if term in {"stop-run", "goback", "explicit-exit", "cics-return", "cics-xctl"}:
-            exit_points.append(para)
-        if RE_ABEND_NAME.search(para):
-            exit_points.append(para)
-    # Last paragraph with implicit terminator is also an exit if it's reachable
-    if para_order:
-        last = para_order[-1]
-        body = para_bodies.get(last, "")
-        if _paragraph_terminator(body, last) == "implicit":
-            exit_points.append(last)
-    exit_points = sorted(set(exit_points))
-
-    cfg: dict = {
-        "cfg_source":   "text_scan",
-        "entry_points": entry_points,
-        "exit_points":  exit_points,
-        "edges":        edges,
-        "unresolved":   sorted(set(unresolved)),
-    }
-
-    # CICS programs: document the fidelity limitation explicitly.
-    if cics_present:
-        cfg["cfg_note"] = (
-            "CICS program: cfg_source=text_scan. PERFORM/GOTO/fallthrough edges "
-            "are present but pseudo-conversational control flow (RETURN/XCTL/LINK "
-            "targets, screen flow) cannot be recovered without a CICS translator. "
-            "conditional_true/conditional_false edges require REKT."
-        )
-    return cfg
-
-
-def build_cfg_from_rekt(rekt_json: dict | None) -> dict | None:
-    """
-    Adapt a REKT CFG report dict into the HermesCOBOL control_flow shape.
-    Returns None if rekt_json is None or contains no edges.
-
-    REKT edge format assumption: {"from": str, "to": str, "type": str, ...}
-    Entry/exit point arrays are carried through if present.
-    cfg_source = 'rekt'.
-
-    If REKT JSON is provided but has no edges (e.g. empty report),
-    this returns None and the caller should fall back to text_scan.
-    """
-    if not rekt_json:
-        return None
-
-    raw_edges = rekt_json.get("edges") or []
-    if not raw_edges:
-        return None
-
-    edges = [
-        {
-            "from":         str(e.get("from", "")),
-            "to":           str(e.get("to",   "")),
-            "type":         str(e.get("type", "unknown")),
-            "source_lines": e.get("source_lines"),
-        }
-        for e in raw_edges
-        if isinstance(e, dict) and e.get("from") and e.get("to")
-    ]
-
-    return {
-        "cfg_source":   "rekt",
-        "entry_points": rekt_json.get("entry_points") or [],
-        "exit_points":  rekt_json.get("exit_points")  or [],
-        "edges":        edges,
-        "unresolved":   sorted(set(rekt_json.get("unresolved") or [])),
-    }
-
-
-# ===========================================================================
-# §8  PARAGRAPH ACTION CLASSIFICATION
-#     Simplified from extract_paragraph_io.py verb classification.
-#     Key difference: we work from raw text rather than Pass-1 annotations,
-#     so we classify verb-presence in a paragraph body rather than per-operand.
-# ===========================================================================
-
-# Mapping from file verb to action tag
-_FILE_VERB_ACTIONS: dict[str, str] = {
-    "OPEN":    "open_file",
-    "CLOSE":   "close_file",
+# Mapping from COBOL I/O verb (upper-cased) to action tag
+_FILE_VERB_TO_ACTION: dict[str, str] = {
     "READ":    "read_file",
     "WRITE":   "write_file",
     "REWRITE": "rewrite_file",
     "DELETE":  "delete_record",
     "START":   "start_browse",
+    "OPEN":    "open_file",
+    "CLOSE":   "close_file",
 }
 
 
-def classify_paragraph_actions(name: str, body: str, cics_body: str) -> list[str]:
+def classify_paragraph_actions(name: str, body: str) -> list[str]:
     """
-    Return a sorted list of deterministic action tags for a paragraph body.
+    Return a sorted, deduplicated list of action tags for a paragraph.
 
-    Parameters
-    ----------
-    name      : paragraph name (used for abend/error heuristics)
-    body      : raw paragraph body text (unchanged)
-    cics_body : body with EXEC CICS blocks collapsed (for CICS verb detection)
+    Tags are derived *deterministically* from verb presence in the paragraph
+    body -- no probabilistic inference.  The action vocabulary matches the
+    HermesCOBOL v1.1 spec:
 
-    Action tags produced:
       open_file, close_file, read_file, write_file, rewrite_file,
-      delete_record, start_browse     ← from file I/O verbs
-      call_program                    ← from CALL literal
-      cics_command, send_map,         ← from EXEC CICS blocks
-        receive_map
-      branch_logic                    ← from IF / EVALUATE
-      abend                           ← name matches RE_ABEND_NAME
-      program_exit                    ← STOP RUN / GOBACK in body
-      display_error                   ← DISPLAY in error/status paragraph
-      display_output                  ← DISPLAY in non-error paragraph
-      transform_data                  ← MOVE-dominant paragraph (no I/O)
-      no_action_detected              ← fallback if nothing matched
+      delete_record, start_browse, call_program,
+      cics_command, send_map, receive_map,
+      branch_logic, abend, program_exit, display_error, display_output,
+      transform_data, no_action_detected
+
+    The paragraph *name* is used for abend / error heuristics (adapted from
+    CardDemo extract_cfg_local.py dead-code detection heuristics).
     """
+    # Use the collapsed version so multi-line EXEC CICS is seen as one unit
+    collapsed = collapse_exec_cics_blocks(body)
     actions: set[str] = set()
 
-    # File I/O: OPEN INPUT/OUTPUT/I-O/EXTEND
-    for m in RE_OPEN_MODE.finditer(body):
+    # --- File I/O verbs ---
+    for m in RE_OPEN_MODE.finditer(collapsed):
         actions.add("open_file")
-    # Other file verbs
-    for m in RE_IO_VERB.finditer(body):
+    for m in RE_IO_VERB.finditer(collapsed):
         verb = m.group(1).upper()
-        actions.add(_FILE_VERB_ACTIONS.get(verb, "file_io"))
+        tag  = _FILE_VERB_TO_ACTION.get(verb)
+        if tag:
+            actions.add(tag)
 
-    # CALL literal
-    if RE_CALL_LITERAL.search(body):
+    # --- CALL ---
+    if RE_CALL.search(collapsed):
         actions.add("call_program")
 
-    # CICS commands (use collapsed body for reliable matching)
-    if RE_EXEC_CICS_PRESENT.search(cics_body):
+    # --- CICS ---
+    if RE_EXEC_CICS_START.search(collapsed):
         actions.add("cics_command")
-        if RE_CICS_SEND_MAP.search(cics_body):    actions.add("send_map")
-        if RE_CICS_RECEIVE_MAP.search(cics_body): actions.add("receive_map")
+        if RE_CICS_SEND_MAP.search(collapsed):
+            actions.add("send_map")
+        if RE_CICS_RECV_MAP.search(collapsed):
+            actions.add("receive_map")
 
-    # Branch logic
-    if RE_IF.search(body) or RE_EVALUATE.search(body):
+    # --- DISPLAY ---
+    if RE_ACT_DISPLAY.search(collapsed):
+        # Distinguish error display (paragraph name heuristic) from generic
+        actions.add("display_error" if RE_ERROR_NAME.search(name) else "display_output")
+
+    # --- Branch logic ---
+    if RE_ACT_IF.search(collapsed) or RE_ACT_EVALUATE.search(collapsed):
         actions.add("branch_logic")
 
-    # DISPLAY (error context vs general output)
-    if RE_DISPLAY.search(body):
-        if RE_ERROR_NAME.search(name):
-            actions.add("display_error")
-        else:
-            actions.add("display_output")
-
-    # transform_data: MOVE-only paragraphs (no I/O, no CICS, no CALL)
-    if (RE_MOVE.search(body)
-            and not actions - {"branch_logic", "display_output", "display_error"}):
+    # --- Transform data: MOVE with no I/O and no calls ---
+    io_tags = {
+        "open_file", "close_file", "read_file", "write_file",
+        "rewrite_file", "delete_record", "start_browse",
+        "call_program", "cics_command",
+    }
+    if RE_ACT_MOVE.search(collapsed) and not (actions & io_tags):
         actions.add("transform_data")
 
-    # Abend: name-based heuristic
+    # --- Abend / exit ---
     if RE_ABEND_NAME.search(name):
         actions.add("abend")
-
-    # Program exit
-    if RE_STOP_RUN.search(body) or RE_GOBACK.search(body) or RE_EXIT_PGM.search(body):
+    if RE_STOP_RUN.search(collapsed) or RE_GOBACK.search(collapsed) or RE_EXIT_PROGRAM.search(collapsed):
         actions.add("program_exit")
 
-    # Error display without abend flag
+    # --- Error-handler (name heuristic, not already tagged as abend) ---
     if RE_ERROR_NAME.search(name) and "abend" not in actions:
         actions.add("display_error")
 
@@ -731,49 +516,51 @@ def classify_paragraph_actions(name: str, body: str, cics_body: str) -> list[str
 
 
 # ===========================================================================
-# §9  FILE OPERATIONS PER PARAGRAPH
-#     Enriched from extract_paragraph_io.py WRITER_VERBS/READER_VERBS logic.
-#     Returns a file-keyed dict of operation records with paragraph provenance.
+# 7.  FILE OPERATIONS
+#     Per-paragraph file verb extraction with provenance.
+#     Adapted from CardDemo extract_paragraph_io.py verb classification
+#     (WRITER_VERBS / READER_VERBS taxonomy simplified for file verbs only).
 # ===========================================================================
 
 def extract_file_operations(
     para_bodies: dict[str, str],
-    known_files: set[str],
+    file_names:  set[str],
 ) -> dict[str, list[dict]]:
     """
-    For each file name, list every I/O operation performed on it and which
-    paragraph performed it.
+    Return {file_name: [{paragraph, operation, source_line}]}.
 
-    Returns {file_name: [{paragraph, operation, source_line}]}.
+    For each paragraph body, scan for OPEN and I/O verbs.  Only files in
+    *file_names* are recorded (pass the SELECT-derived set to avoid spurious
+    matches on non-file identifiers).  If *file_names* is empty, all matches
+    are recorded.
 
-    `known_files` is the set of file names from SELECT statements (from §10).
-    If empty, all OPEN/READ/WRITE/etc. targets are captured regardless.
-
-    source_line is None for now (would require original-line tracking through
-    split_by_paragraph; deferred to post-REKT phase).
+    Operations emitted: open_input, open_output, open_i_o, open_extend,
+                        read, write, rewrite, delete, start, close
     """
     result: dict[str, list[dict]] = {}
 
     for para, body in para_bodies.items():
-        # OPEN <mode> <file>  (separate from the generic IO verb scan below)
-        for m in RE_OPEN_MODE.finditer(body):
-            mode  = m.group(1).upper()
+        collapsed = collapse_exec_cics_blocks(body)
+
+        # OPEN <mode> <file>  -- mode is significant
+        for m in RE_OPEN_MODE.finditer(collapsed):
+            mode  = m.group(1).upper().replace("-", "_").lower()
             fname = m.group(2).upper()
-            if not known_files or fname in known_files:
+            if not file_names or fname in file_names:
                 result.setdefault(fname, []).append({
                     "paragraph":   para,
-                    "operation":   f"open_{mode.lower()}",
-                    "source_line": None,
+                    "operation":   f"open_{mode}",
+                    "source_line": None,   # raw line# not available in body slice
                 })
 
-        # CLOSE/READ/WRITE/REWRITE/DELETE/START <file>
-        for m in RE_IO_VERB.finditer(body):
+        # READ / WRITE / REWRITE / DELETE / START / CLOSE <file>
+        for m in RE_IO_VERB.finditer(collapsed):
+            verb  = m.group(1).upper()
             fname = m.group(2).upper()
-            op    = m.group(1).lower()
-            if not known_files or fname in known_files:
+            if not file_names or fname in file_names:
                 result.setdefault(fname, []).append({
                     "paragraph":   para,
-                    "operation":   op,
+                    "operation":   verb.lower(),
                     "source_line": None,
                 })
 
@@ -781,117 +568,123 @@ def extract_file_operations(
 
 
 # ===========================================================================
-# §10 FILE LINEAGE
-#     Mined from extract_file_control.py SELECT/ASSIGN/FD linkage.
+# 8.  FILE LINEAGE  (SELECT / ASSIGN / FD linkage)
+#     Adapted from CardDemo extract_file_control.py
 # ===========================================================================
 
-def extract_file_lineage(clean: str) -> tuple[list[dict], set[str]]:
+def extract_file_lineage(clean: str) -> list[dict]:
     """
-    Build file_lineage from SELECT / ASSIGN / FD relationships.
+    Link file logical names to ddnames and FD record names.
 
-    Returns:
-      (file_lineage_list, file_names_set)
+    Returns: [{"name": str, "ddname": str, "fd_record": str | None}]
 
-    file_lineage_list: [{name, ddname, fd_record}]
-      name      – SELECT file name (logical name in PROCEDURE DIVISION)
-      ddname    – ASSIGN TO target (JCL DD name or external file name)
-      fd_record – best-guess FD record name (prefix-matched against FD stmts)
+    The heuristic for FD matching: take the first FD whose name *starts with*
+    the first four characters of the file logical name.  This works reliably
+    for the AWS CardDemo corpus (e.g. ACCTFILE -> FD ACCTFILE-REC) and most
+    standard COBOL naming conventions.
 
-    file_names_set is passed to extract_file_operations() for filtering.
-
-    FD matching: we look for an FD whose name starts with the first 4 chars
-    of the SELECT name. This is a heuristic that works well for the CardDemo
-    naming convention (e.g. ACCTFILE → FD-ACCTFILE-REC or ACCTFILE-FILE).
-    For programs that follow different conventions, fd_record may be None.
+    If no FD match is found, fd_record is None.
     """
-    # All SELECT ... ASSIGN TO pairs
     selects: dict[str, str] = {}
     for m in RE_SELECT.finditer(clean):
         selects[m.group(1).upper()] = m.group(2).upper()
 
-    # All FD names
     fds: list[str] = [m.group(1).upper() for m in RE_FD.finditer(clean)]
 
-    lineage: list[dict] = []
+    result: list[dict] = []
     for fname, ddname in selects.items():
-        # Heuristic: find an FD whose name contains the first 4 chars of fname
-        prefix = fname[:4]
-        fd_match = next(
-            (fd for fd in fds if prefix in fd),
-            None,
-        )
-        lineage.append({
+        fd_match: str | None = None
+        prefix = fname[:4]                 # 4-char heuristic match
+        for fd in fds:
+            if fd.startswith(prefix):
+                fd_match = fd
+                break
+        result.append({
             "name":      fname,
             "ddname":    ddname,
             "fd_record": fd_match,
         })
-
-    return lineage, set(selects.keys())
+    return result
 
 
 # ===========================================================================
-# §11 CICS SUBTREE
-#     AID-key handling mined from pass1_annotate.py EVALUATE EIBAID patterns.
-#     Multiline EXEC CICS handled via _collapse_cics_blocks().
+# 9.  CICS SUBTREE EXTRACTOR
 # ===========================================================================
 
 def extract_cics(
-    collapsed: str,
+    raw:         str,
+    clean:       str,
     para_bodies: dict[str, str],
 ) -> dict:
     """
-    Extract the full CICS semantic subtree from CICS-collapsed source.
+    Extract the full CICS semantic subtree for CICS-present programs.
 
-    Parameters
-    ----------
-    collapsed   : entire program source with CICS blocks collapsed to single lines
-    para_bodies : {para_name: body_text} (raw, NOT collapsed)
+    Called ONLY when cics_present == True.  Returns:
 
-    Returns dict with keys:
-      commarea_used   bool
-      commands        list[str]   normalized CICS command verbs
-      maps_used       list[str]   map names from MAP(...) operands
-      mapsets_used    list[str]   mapset names from MAPSET(...) operands
-      aid_keys        list[str]   AID key names (PF1, ENTER, CLEAR, etc.)
-      screen_flow     list[{paragraph, action, map}]
+      {
+        "commarea_used": bool,
+        "commands":      list[str],   -- sorted unique command verbs
+        "maps_used":     list[str],
+        "mapsets_used":  list[str],
+        "aid_keys":      list[str],   -- PF keys / AID constants
+        "screen_flow":   list[{paragraph, action, map}]
+      }
+
+    Multi-line EXEC CICS handling follows the strategy in CardDemo
+    pass1_annotate.py: collapse each EXEC CICS ... END-EXEC block into a
+    single logical line *before* applying extraction regexes, so that the
+    command keyword and MAP()/MAPSET() clauses are always on the same logical
+    line regardless of how the source splits the block.
+
+    AID key extraction covers two patterns (from CardDemo pass1_annotate.py
+    EVALUATE EIBAID multiline handling):
+      1. EIBAID = DFHAID.xxx  (conditional form)
+      2. DFHAID.xxx           (direct reference form in EVALUATE WHEN clauses)
     """
-    # --- Commands ---
-    commands: set[str] = set()
-    for m in RE_EXEC_CICS_BLOCK.finditer(collapsed):
-        commands.add(m.group(1).upper())
+    # Collapse blocks for the full source before extracting commands/maps
+    collapsed_full = collapse_exec_cics_blocks(clean)
 
-    # --- Maps and mapsets ---
+    # --- Command verbs ---
+    commands: set[str] = set()
+    for m in RE_EXEC_CICS_CMD.finditer(collapsed_full):
+        commands.add(m.group(1).upper())
+    # Remove 'MAP' if present -- it is a SEND MAP clause keyword, not a verb
+    commands.discard("MAP")
+    commands.discard("MAPSET")
+
+    # --- Map and mapset names ---
     maps_used:    set[str] = set()
     mapsets_used: set[str] = set()
-    for m in RE_CICS_MAP.finditer(collapsed):    maps_used.add(m.group(1).upper())
-    for m in RE_CICS_MAPSET.finditer(collapsed): mapsets_used.add(m.group(1).upper())
+    for m in RE_CICS_MAP.finditer(collapsed_full):
+        maps_used.add(m.group(1).upper())
+    for m in RE_CICS_MAPSET.finditer(collapsed_full):
+        mapsets_used.add(m.group(1).upper())
 
     # --- AID keys ---
-    # Three patterns from pass1_annotate.py:
-    #   1. EIBAID = DFHAIDxxx  (comparison form)
-    #   2. DFHAIDxxx            (bare reference form)
-    #   3. WHEN DFHAIDxxx       (EVALUATE form — most common in CardDemo)
+    # Pattern 1: EIBAID = DFHAID.PF3  (comparison form)
     aid_keys: set[str] = set()
-    for m in RE_AID_EIBAID.finditer(collapsed): aid_keys.add(m.group(1).upper())
-    for m in RE_AID_DFHAID.finditer(collapsed): aid_keys.add(m.group(1).upper())
-    for m in RE_AID_WHEN.finditer(collapsed):   aid_keys.add(m.group(1).upper())
+    for m in RE_EIBAID_EQ.finditer(collapsed_full):
+        aid_keys.add(m.group(1).upper())
+    # Pattern 2: DFHAID.PF3  (EVALUATE WHEN ... DFHAID.xxx)
+    for m in RE_DFHAID_DOT.finditer(collapsed_full):
+        aid_keys.add(m.group(1).upper())
 
     # --- COMMAREA ---
-    commarea_used = bool(RE_COMMAREA.search(collapsed))
+    commarea_used = bool(RE_COMMAREA.search(raw))
 
-    # --- Screen flow: per-paragraph SEND MAP / RECEIVE MAP ---
+    # --- Screen flow: per-paragraph SEND/RECEIVE MAP ---
     screen_flow: list[dict] = []
     for para, body in para_bodies.items():
-        cbody = _collapse_cics_blocks(body)
-        if RE_CICS_SEND_MAP.search(cbody):
-            map_m = RE_CICS_MAP.search(cbody)
+        collapsed_body = collapse_exec_cics_blocks(body)
+        if RE_CICS_SEND_MAP.search(collapsed_body):
+            map_m = RE_CICS_MAP.search(collapsed_body)
             screen_flow.append({
                 "paragraph": para,
                 "action":    "send_map",
                 "map":       map_m.group(1).upper() if map_m else None,
             })
-        if RE_CICS_RECEIVE_MAP.search(cbody):
-            map_m = RE_CICS_MAP.search(cbody)
+        if RE_CICS_RECV_MAP.search(collapsed_body):
+            map_m = RE_CICS_MAP.search(collapsed_body)
             screen_flow.append({
                 "paragraph": para,
                 "action":    "receive_map",
@@ -909,155 +702,387 @@ def extract_cics(
 
 
 # ===========================================================================
-# §12 PUBLIC ENTRY POINT
+# 10. CONTROL FLOW GRAPH — TEXT-SCAN BUILDER
+#     Adapted from CardDemo extract_cfg_local.py (analyze_flow + reachability)
+#     combined with extract_fallthrough.py (last-verb terminator classification)
+# ===========================================================================
+
+def _last_verb_terminator(body: str) -> str | None:
+    """
+    Determine the terminator type for a paragraph body using the same
+    last-verb classification as CardDemo extract_fallthrough.py.
+
+    Returns one of: 'goto', 'stop_run', 'goback', 'explicit_exit',
+                    'cics_return', 'cics_xctl', or None (implicit fallthrough).
+    """
+    # Scan in reverse line order to find the last substantive verb
+    # (skip blank lines and comments)
+    non_blank = [l for l in reversed(body.splitlines()) if l.strip()]
+    for line in non_blank:
+        u = line.upper().strip()
+        if RE_GOTO.search(line):                    return "goto"
+        if RE_STOP_RUN.search(line):                return "stop_run"
+        if RE_GOBACK.search(line):                  return "goback"
+        if RE_EXIT_PROGRAM.search(line):            return "explicit_exit"
+        # CICS RETURN / XCTL: check collapsed single line
+        if "EXEC" in u and "CICS" in u:
+            for cics_op in CICS_TERMINATOR_OPS:
+                if cics_op in u:
+                    return f"cics_{cics_op.lower()}"
+    return None  # implicit fallthrough
+
+
+def build_cfg_text_scan(
+    clean:   str,
+    defined: list[dict],
+) -> dict:
+    """
+    Build a control_flow dict using text-scan only.
+
+    cfg_source = "text_scan".
+
+    Limitations vs. REKT:
+      * No conditional_true / conditional_false edge distinction.
+        (IF / EVALUATE produce a ``branch_logic`` action tag but edges are
+         not split into true/false branches.)
+      * PERFORM VARYING / UNTIL loops emit one ``perform`` edge; loop bounds
+        are not captured.
+      * EXEC CICS XCTL / LINK are not followed as inter-program call edges.
+
+    Algorithm (derived from CardDemo extract_cfg_local.analyze_flow):
+      For each paragraph (in source order):
+        1. Emit perform / perform_thru / goto / call edges from the body.
+        2. Detect the paragraph's last-verb terminator.
+        3. If terminator is None (implicit), emit a fallthrough edge to the
+           next paragraph in source order (from extract_fallthrough.py rule).
+      Entry point  = first paragraph in source order.
+      Exit points  = paragraphs whose last verb is a terminal statement OR
+                     whose name matches the abend heuristic.
+    """
+    para_order  = [p["name"] for p in defined]
+    para_names  = set(para_order)
+    para_bodies = split_procedure_bodies(clean)
+
+    edges     : list[dict] = []
+    unresolved: list[str]  = []
+    exit_points: set[str]  = set()
+    seen_edges : set[tuple] = set()
+
+    def add_edge(frm: str, to: str, etype: str) -> None:
+        key = (frm, to, etype)
+        if key not in seen_edges:
+            seen_edges.add(key)
+            edges.append({"from": frm, "to": to, "type": etype, "source_lines": None})
+        if to not in para_names and etype in ("perform", "perform_thru", "goto"):
+            unresolved.append(to)
+
+    for idx, para in enumerate(para_order):
+        body = para_bodies.get(para, "")
+        collapsed = collapse_exec_cics_blocks(body)
+
+        # --- PERFORM THRU <from> THRU <to> ---
+        for m in RE_PERFORM_THRU.finditer(collapsed):
+            t_start = m.group(1).upper()
+            t_end   = m.group(2).upper()
+            # Emit as perform_thru with the range encoded in the edge
+            key = (para, t_start, "perform_thru")
+            if key not in seen_edges:
+                seen_edges.add(key)
+                edges.append({
+                    "from": para, "to": t_start, "type": "perform_thru",
+                    "thru": t_end, "source_lines": None,
+                })
+            if t_start not in para_names:
+                unresolved.append(t_start)
+
+        # --- PERFORM <loop> UNTIL / VARYING ---
+        for m in RE_PERFORM_LOOP.finditer(collapsed):
+            t = m.group(1).upper()
+            if t not in PERFORM_NON_TARGETS:
+                add_edge(para, t, "perform")
+
+        # --- PERFORM <para> (simple / inline) ---
+        for m in RE_PERFORM_SIMPLE.finditer(collapsed):
+            t = m.group(1).upper()
+            if t not in PERFORM_NON_TARGETS:
+                add_edge(para, t, "perform")
+
+        # --- GO TO <para> ---
+        for m in RE_GOTO.finditer(collapsed):
+            t = m.group(1).upper()
+            add_edge(para, t, "goto")
+
+        # --- CALL '<name>' ---
+        for m in RE_CALL.finditer(collapsed):
+            t = m.group(1).upper()
+            # Call edges go to external programs (not in para_names)
+            # Record unconditionally for completeness
+            key = (para, t, "call")
+            if key not in seen_edges:
+                seen_edges.add(key)
+                edges.append({"from": para, "to": t, "type": "call", "source_lines": None})
+
+        # --- Fallthrough (extract_fallthrough.py rule) ---
+        terminator = _last_verb_terminator(body)
+        if terminator is None:
+            # Implicit: falls through to next paragraph in source order
+            if idx < len(para_order) - 1:
+                nxt = para_order[idx + 1]
+                add_edge(para, nxt, "fallthrough")
+            else:
+                # Last paragraph with no terminator
+                exit_points.add(para)
+        else:
+            exit_points.add(para)   # explicit terminator -> exit point
+
+        # Abend name heuristic (from extract_cfg_local.dead_code_paragraphs logic)
+        if RE_ABEND_NAME.search(para):
+            exit_points.add(para)
+
+    entry_points = [para_order[0]] if para_order else []
+
+    return {
+        "cfg_source":   "text_scan",
+        "entry_points": entry_points,
+        "exit_points":  sorted(exit_points),
+        "edges":        edges,
+        "unresolved":   sorted(set(unresolved)),
+    }
+
+
+# ===========================================================================
+# 11. CONTROL FLOW GRAPH — REKT JSON ADAPTER
+# ===========================================================================
+
+def build_cfg_from_rekt(
+    rekt_dir: Path,
+    program:  str,
+) -> dict | None:
+    """
+    Attempt to build control_flow from smojol/REKT JSON output.
+
+    REKT writes a report directory per program.  We look for
+    ``<rekt_dir>/<program>.cbl.report*`` and recursively scan for *.json
+    files that contain an 'edges' list.
+
+    Returns None if no REKT output exists or if the output has no edges,
+    so the caller can fall back to build_cfg_text_scan.
+
+    cfg_source = "rekt" (higher fidelity: REKT has resolved conditional
+    branches and full scope information).
+    """
+    pattern = f"{program}.cbl.report*"
+    candidates = sorted(rekt_dir.glob(pattern))
+    if not candidates:
+        return None
+
+    report_dir   = candidates[0]
+    edges        : list[dict] = []
+    unresolved   : list[str]  = []
+    entry_points : list[str]  = []
+    exit_points  : list[str]  = []
+
+    for jf in sorted(report_dir.rglob("*.json")):
+        try:
+            data = json.loads(jf.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        if not isinstance(data, dict):
+            continue
+
+        for e in data.get("edges", []):
+            if isinstance(e, dict) and "from" in e and "to" in e:
+                edges.append({
+                    "from":         str(e["from"]),
+                    "to":           str(e["to"]),
+                    "type":         str(e.get("type", "unknown")),
+                    "source_lines": e.get("source_lines"),
+                })
+        unresolved   += [str(u) for u in data.get("unresolved", [])]
+        entry_points += [str(p) for p in data.get("entry_points", [])]
+        exit_points  += [str(p) for p in data.get("exit_points",  [])]
+
+    if not edges:
+        return None   # REKT present but empty -- caller falls back to text_scan
+
+    return {
+        "cfg_source":   "rekt",
+        "entry_points": sorted(set(entry_points)),
+        "exit_points":  sorted(set(exit_points)),
+        "edges":        edges,
+        "unresolved":   sorted(set(unresolved)),
+    }
+
+
+# ===========================================================================
+# 12. TOP-LEVEL ENRICH FUNCTION
+#     Called by scripts/extract_facts.py to produce v1.1 enrichment fields.
 # ===========================================================================
 
 def enrich(
-    program_name:   str,
-    raw_cobol:      str,
-    preprocessed:   str | None,
-    rekt_json:      dict | None,
-    base_facts:     dict,
+    program_name:       str,
+    raw_cobol:          str,
+    preprocessed_cobol: str | None,
+    rekt_json:          dict | None,
+    base_facts:         dict,
+    rekt_dir:           Path | None = None,
 ) -> dict:
     """
-    Main entry point. Returns the v1.1 semantic enrichment dict.
+    Produce and return the v1.1 semantic enrichment fields.
 
     Parameters
     ----------
-    program_name  : e.g. 'CBACT01C' (used for logging only)
-    raw_cobol     : exact text read from the .cbl file
-    preprocessed  : output of 'cobc -E' if available, else None.
-                    When provided, paragraph extraction uses the expanded
-                    source (copybooks inlined); otherwise raw_cobol is used.
-    rekt_json     : parsed REKT CFG report dict, or None.
-                    When present and non-empty, cfg_source = 'rekt';
-                    otherwise falls back to text_scan.
-    base_facts    : read-only v1.0 facts dict (used to read cics_present flag)
+    program_name        : The COBOL program name (used for REKT lookup).
+    raw_cobol           : Raw COBOL source text (required).
+    preprocessed_cobol  : cobc -E output if available; otherwise None.
+                          When provided, paragraph extraction uses the
+                          expanded form for better accuracy.  Raw is still
+                          used for source-line provenance.
+    rekt_json           : Pre-loaded REKT CFG dict (optional, alternative to
+                          rekt_dir file scan).
+    base_facts          : v1.0 facts dict (used to read cics_present flag).
+    rekt_dir            : Path to directory containing REKT report subdirs.
+                          Used when rekt_json is not pre-loaded.
 
     Returns
     -------
-    dict with ONLY the v1.1 fields listed in the module docstring.
-    The caller is responsible for merging into base_facts.
-    base_facts is never modified.
+    dict with keys:
+        paragraphs_defined, paragraphs_referenced,
+        paragraph_actions, file_lineage, file_operations,
+        control_flow, cics
+
+    The caller (extract_facts.py) merges this dict into the base facts.
     """
     cics_present: bool = base_facts.get("cics_present", False)
 
-    # Use preprocessed source when available (better copybook expansion),
-    # otherwise fall back to raw source.
-    source = preprocessed if preprocessed else raw_cobol
+    # Use preprocessed source if available (better copybook expansion),
+    # otherwise fall back to raw.  Strip comments before analysis.
+    analysis_text = strip_fixed_format_comments(
+        preprocessed_cobol if preprocessed_cobol else raw_cobol
+    )
+    raw_clean = strip_fixed_format_comments(raw_cobol)
 
-    # Strip comment lines before structural analysis.
-    clean = strip_comment_lines(source)
+    # --- Paragraphs ---
+    defined    = extract_paragraphs_defined(raw_cobol, analysis_text)
+    referenced = extract_paragraphs_referenced(analysis_text, defined)
 
-    # Collapse EXEC CICS blocks for CICS-specific extraction.
-    # We do this once here and pass the result into CICS functions.
-    collapsed = _collapse_cics_blocks(clean) if cics_present else clean
+    # --- Procedure body split ---
+    para_bodies = split_procedure_bodies(analysis_text)
 
-    # §4 Paragraph extraction with noise filter
-    defined    = extract_paragraphs_defined(raw_cobol, clean)
-    referenced = extract_paragraphs_referenced(clean, defined)
+    # --- Paragraph actions ---
+    paragraph_actions: dict[str, list[str]] = {
+        p["name"]: classify_paragraph_actions(p["name"], para_bodies.get(p["name"], ""))
+        for p in defined
+    }
 
-    # §5 Split PROCEDURE DIVISION into per-paragraph bodies
-    para_bodies = split_by_paragraph(clean, defined)
+    # --- File lineage ---
+    file_lineage = extract_file_lineage(analysis_text)
+    file_names   = {f["name"] for f in file_lineage}
 
-    # §8 Paragraph action classification
-    paragraph_actions: dict[str, list[str]] = {}
-    for p in defined:
-        name  = p["name"]
-        body  = para_bodies.get(name, "")
-        cbody = _collapse_cics_blocks(body) if cics_present else body
-        paragraph_actions[name] = classify_paragraph_actions(name, body, cbody)
+    # --- File operations ---
+    file_operations = extract_file_operations(para_bodies, file_names)
 
-    # §10 File lineage
-    file_lineage, known_files = extract_file_lineage(clean)
+    # --- Control flow ---
+    # For non-CICS programs: try REKT first, fall back to text_scan.
+    # For CICS programs: always text_scan (no CICS translator available).
+    control_flow: dict | None = None
 
-    # §9 File operations per paragraph
-    file_ops = extract_file_operations(para_bodies, known_files)
+    if not cics_present:
+        # Try pre-loaded REKT dict
+        if rekt_json and isinstance(rekt_json.get("edges"), list) and rekt_json["edges"]:
+            control_flow = {
+                "cfg_source":   "rekt",
+                "entry_points": rekt_json.get("entry_points", []),
+                "exit_points":  rekt_json.get("exit_points",  []),
+                "edges":        rekt_json["edges"],
+                "unresolved":   rekt_json.get("unresolved", []),
+            }
+        # Try REKT directory scan
+        elif rekt_dir and rekt_dir.is_dir():
+            control_flow = build_cfg_from_rekt(rekt_dir, program_name)
 
-    # §7 CFG: REKT adapter first, text_scan fallback
-    control_flow: dict
-    if rekt_json and not cics_present:
-        rekt_cfg = build_cfg_from_rekt(rekt_json)
-        control_flow = rekt_cfg if rekt_cfg else build_cfg_text_scan(clean, defined, cics_present)
-    else:
-        control_flow = build_cfg_text_scan(clean, defined, cics_present)
+    if control_flow is None:
+        control_flow = build_cfg_text_scan(analysis_text, defined)
+        if cics_present:
+            control_flow["cfg_note"] = (
+                "CICS program: text_scan CFG; conditional branches not resolved "
+                "without a CICS translator.  Maps, commands, and AID keys are "
+                "captured separately in the 'cics' subtree."
+            )
 
-    # COBSWAIT-style structural minimal: no paragraphs, no CICS
+    # Flag structural-minimal programs (COBSWAIT pattern)
     if not defined and not cics_present:
         control_flow["cfg_note"] = (
             "structural_minimal: no paragraphs detected. "
-            "Gate passed trivially. Consider adding gate_note=structural_minimal."
+            "Gate passed trivially; manual review recommended."
         )
 
-    # §11 CICS subtree (only for CICS programs)
-    cics_facts: dict | None = None
-    if cics_present:
-        cics_facts = extract_cics(collapsed, para_bodies)
+    # --- CICS subtree ---
+    cics_facts: dict | None = (
+        extract_cics(raw_cobol, analysis_text, para_bodies)
+        if cics_present else None
+    )
 
     return {
         "paragraphs_defined":    defined,
         "paragraphs_referenced": referenced,
-        "control_flow":          control_flow,
         "paragraph_actions":     paragraph_actions,
-        "file_operations":       file_ops,
         "file_lineage":          file_lineage,
+        "file_operations":       file_operations,
+        "control_flow":          control_flow,
         "cics":                  cics_facts,
     }
 
 
 # ===========================================================================
-# §13 SMOKE TEST  (python scripts/hermes_v11_combined_extractor.py <file.cbl>)
+# 13. CLI SMOKE TEST
+#     Reads a COBOL file from disk and prints a short summary.
+#     Usage:  python scripts/hermes_v11_combined_extractor.py <file.cbl>
 # ===========================================================================
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python hermes_v11_combined_extractor.py <path/to/PROG.cbl>")
+        print("Usage: python hermes_v11_combined_extractor.py <file.cbl>", file=sys.stderr)
         sys.exit(1)
 
-    cbl_path = Path(sys.argv[1])
-    if not cbl_path.exists():
-        print(f"ERROR: file not found: {cbl_path}", file=sys.stderr)
+    src = Path(sys.argv[1])
+    if not src.exists():
+        print(f"ERROR: file not found: {src}", file=sys.stderr)
         sys.exit(2)
 
-    raw = cbl_path.read_text(encoding="utf-8", errors="replace")
+    raw = src.read_text(encoding="utf-8", errors="replace")
+    cics = bool(RE_EXEC_CICS_START.search(raw))
 
-    # Minimal stub base_facts to satisfy the enrich() interface
-    stub_facts = {
-        "cics_present": bool(re.search(r"\bEXEC\s+CICS\b", raw, re.IGNORECASE)),
-    }
-
+    base = {"cics_present": cics, "sql_present": bool(RE_EXEC_SQL.search(raw))}
     result = enrich(
-        program_name  = cbl_path.stem.upper(),
-        raw_cobol     = raw,
-        preprocessed  = None,
-        rekt_json     = None,
-        base_facts    = stub_facts,
+        program_name=src.stem.upper(),
+        raw_cobol=raw,
+        preprocessed_cobol=None,
+        rekt_json=None,
+        base_facts=base,
+        rekt_dir=None,
     )
 
-    paras  = result["paragraphs_defined"]
-    edges  = result["control_flow"].get("edges", [])
-    cics   = result["cics"]
-
-    print(f"Program  : {cbl_path.stem.upper()}")
-    print(f"Paras    : {len(paras)} defined, {len(result['paragraphs_referenced'])} referenced")
-    print(f"CFG      : {len(edges)} edges  ({result['control_flow']['cfg_source']})")
-    print(f"Files    : {len(result['file_lineage'])} SELECT entries")
-
-    if paras:
-        print("\nFirst 5 paragraphs:")
-        for p in paras[:5]:
-            acts = result["paragraph_actions"].get(p["name"], [])
-            print(f"  L{p['source_line']:4d}  {p['name']:30s}  {acts}")
-
-    if edges:
-        print("\nFirst 10 edges:")
-        for e in edges[:10]:
-            print(f"  {e['from']:30s} --[{e['type']:12s}]--> {e['to']}")
-
-    if cics:
-        print(f"\nCICS commands : {cics['commands']}")
-        print(f"Maps used     : {cics['maps_used']}")
-        print(f"AID keys      : {cics['aid_keys']}")
-        print(f"Screen flow   : {len(cics['screen_flow'])} entries")
-        for sf in cics["screen_flow"]:
-            print(f"  {sf['paragraph']:30s} {sf['action']:12s} {sf['map']}")
+    cf = result["control_flow"]
+    print(f"Program       : {src.stem.upper()}")
+    print(f"CICS          : {cics}")
+    print(f"Paragraphs    : {len(result['paragraphs_defined'])} defined, "
+          f"{len(result['paragraphs_referenced'])} referenced")
+    print(f"CFG source    : {cf['cfg_source']}")
+    print(f"CFG edges     : {len(cf.get('edges', []))}")
+    print(f"Entry points  : {cf.get('entry_points', [])}")
+    print(f"Exit points   : {cf.get('exit_points', [])}")
+    print(f"Unresolved    : {cf.get('unresolved', [])}")
+    print(f"Files         : {[f['name'] for f in result['file_lineage']]}")
+    print()
+    print("Paragraph actions (first 5 paragraphs):")
+    for name, acts in list(result["paragraph_actions"].items())[:5]:
+        print(f"  {name:<32s}: {acts}")
+    if cics and result["cics"]:
+        c = result["cics"]
+        print()
+        print(f"CICS commands : {c['commands']}")
+        print(f"Maps used     : {c['maps_used']}")
+        print(f"AID keys      : {c['aid_keys']}")
+        print(f"COMMAREA      : {c['commarea_used']}")
+        print(f"Screen flow   : {len(c['screen_flow'])} entries")
