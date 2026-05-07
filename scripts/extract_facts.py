@@ -1,254 +1,371 @@
 #!/usr/bin/env python3
 """
-extract_facts.py  — COBOL -> structured_facts.json  (Stage 3)
-
-Prerequisites (run manually before this script):
-  Stage 1: cobc -E  (see docs/manual-runbook.md)
-  Stage 2: COBOL-REKT smojol-cli  (see docs/manual-runbook.md)
+extract_facts.py — HermesCOBOL Stage 3 extractor.
 
 Reads:
-  data/raw/cbl/<PROG>.cbl          raw source
-  data/raw/cpy/                    copybooks (for cobc -E inline expansion)
-  data/rekt/<PROG>.cbl.report/**   REKT CFG JSON (from Stage 2)
+  data/raw/cbl/<PROG>.cbl           raw source
+  data/raw/cpy/                     copybooks (for cobc -E context)
+  data/rekt/<PROG>.cbl.report/**    REKT CFG JSON (optional, Stage 2 output)
 
 Writes:
-  data/facts/<PROG>.json           structured_facts.json per program
+  data/facts/<PROG>.json            canonical structured_facts.json per program
+
+Canonical schema (v1):
+{
+  "schema_version": "1.0",
+  "program": "CBACT01C",
+  "source_file": "data/raw/cbl/CBACT01C.cbl",
+  "extracted_at": "...ISO8601 UTC...",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 0,
+  "gate_status": "PASS",
+  "gate_reasons": [],
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": ["1000-MAIN", "1100-READ-ACCOUNT", ...],
+  "data_items": ["WS-ACCOUNT-RECORD", "WS-COUNTERS", ...],
+  "external_calls": ["CBTRN01C", "CUSSERV"],
+  "internal_performs": ["1100-READ-ACCOUNT", ...],
+  "data_files": [
+    {"name": "ACCT-FILE", "ddname": "ACCTFILE",
+     "organization": "INDEXED", "access": "RANDOM"}
+  ],
+  "copybooks_referenced": ["CVACT01Y", "COCOM01Y"],
+  "cfg": { "source": "data/rekt/<PROG>.cbl.report/...", "edges": N, "unresolved": M }
+}
 
 Usage:
-  python scripts/extract_facts.py             # all programs in data/raw/cbl/
-  python scripts/extract_facts.py CBACT01C    # single program
+  python scripts/extract_facts.py              # all programs
+  python scripts/extract_facts.py CBACT01C     # single program
+
+No LLMs. No network. Manual-first.
 """
 
-import re, json, subprocess, sys
+from __future__ import annotations
+
+import json
+import re
+import subprocess
+import sys
+from datetime import datetime, timezone
 from pathlib import Path
-from scripts.config import (
-    SRC_DIR, CPY_DIR, REKT_DIR, FACTS_DIR,
-    MAX_REKT_SENTENCES, MAX_01_ITEMS
+
+# ---------------------------------------------------------------------------
+# Paths
+# ---------------------------------------------------------------------------
+REPO_ROOT   = Path(__file__).resolve().parent.parent
+RAW_CBL_DIR = REPO_ROOT / "data" / "raw" / "cbl"
+RAW_CPY_DIR = REPO_ROOT / "data" / "raw" / "cpy"
+REKT_DIR    = REPO_ROOT / "data" / "rekt"
+FACTS_DIR   = REPO_ROOT / "data" / "facts"
+
+SCHEMA_VERSION = "1.0"
+
+# ---------------------------------------------------------------------------
+# Regex patterns
+# ---------------------------------------------------------------------------
+RE_PROGRAM_ID = re.compile(
+    r"^\s{0,11}PROGRAM-ID\.\s+([A-Z0-9][A-Z0-9-]*)",
+    re.MULTILINE | re.IGNORECASE,
 )
-from scripts.schema import validate
+RE_PARAGRAPH = re.compile(
+    r"^\s{0,11}([A-Z0-9][A-Z0-9-]*)\s*\.\s*(?:\*.*)?$",
+    re.MULTILINE,
+)
+RE_SECTION = re.compile(
+    r"^\s{0,11}([A-Z0-9][A-Z0-9-]*)\s+SECTION\s*\.\s*$",
+    re.MULTILINE | re.IGNORECASE,
+)
+RE_DATA_01 = re.compile(
+    r"^\s{0,11}01\s+([A-Z0-9][A-Z0-9-]*)",
+    re.MULTILINE | re.IGNORECASE,
+)
+RE_CALL_LITERAL = re.compile(
+    r"\bCALL\s+['\"]([A-Z0-9][A-Z0-9-]*)['\"] ",
+    re.IGNORECASE,
+)
+RE_PERFORM = re.compile(
+    r"\bPERFORM\s+([A-Z0-9][A-Z0-9-]*)", re.IGNORECASE
+)
+RE_COPY = re.compile(
+    r"\bCOPY\s+([A-Z0-9][A-Z0-9-]*)", re.IGNORECASE
+)
+RE_SELECT = re.compile(
+    r"\bSELECT\s+([A-Z0-9][A-Z0-9-]*)\s+ASSIGN\s+TO\s+([A-Z0-9][A-Z0-9-]*)",
+    re.IGNORECASE,
+)
+RE_ORGANIZATION = re.compile(
+    r"\bORGANIZATION\s+IS\s+([A-Z]+)", re.IGNORECASE
+)
+RE_ACCESS = re.compile(
+    r"\bACCESS\s+MODE\s+IS\s+([A-Z]+)", re.IGNORECASE
+)
+RE_EXEC_CICS = re.compile(r"\bEXEC\s+CICS\b", re.IGNORECASE)
+RE_EXEC_SQL  = re.compile(r"\bEXEC\s+SQL\b",  re.IGNORECASE)
 
-FACTS_DIR.mkdir(parents=True, exist_ok=True)
-
-# ---------------------------------------------------------------------------
-# Stage 1 inline: cobc -E copybook expansion
-# ---------------------------------------------------------------------------
-def cobc_expand(prog: str) -> list:
-    """Run cobc -E to inline copybooks. Falls back to raw source if cobc not found."""
-    src = SRC_DIR / f"{prog}.cbl"
-    if not src.exists():
-        src = SRC_DIR / f"{prog}.CBL"
-    if not src.exists():
-        raise FileNotFoundError(f"No source file for {prog} in {SRC_DIR}")
-    try:
-        r = subprocess.run(
-            ["cobc", "-E", "-I", str(CPY_DIR), str(src)],
-            capture_output=True, text=True, timeout=60
-        )
-        lines = r.stdout.splitlines()
-    except FileNotFoundError:
-        # cobc not on PATH — fall back to raw source (REKT still works)
-        print(f"  [{prog}] WARNING: cobc not found, using raw source (copybooks not expanded)")
-        lines = src.read_text(encoding="utf-8", errors="replace").splitlines()
-    return [l for l in lines if not l.startswith("#")]
-
-# ---------------------------------------------------------------------------
-# Stage 2 consumer: REKT CFG JSON loading
-# ---------------------------------------------------------------------------
-def rekt_load(prog: str) -> dict:
-    """Load REKT CFG JSON. Handles flat, double-nested, and uppercase path variants."""
-    # 1. Standard flat path
-    p = REKT_DIR / f"{prog}.cbl.report/cfg/cfg-{prog}.cbl.json"
-    # 2. Double-nested path (most common on Windows/REKT default)
-    if not p.exists():
-        p = REKT_DIR / f"{prog}.cbl.report/{prog}.cbl.report/cfg/cfg-{prog}.cbl.json"
-    # 3. Uppercase .CBL variants
-    if not p.exists():
-        p = REKT_DIR / f"{prog}.cbl.report/{prog}.CBL.report/cfg/cfg-{prog}.Cbl.json"
-    if not p.exists():
-        p = REKT_DIR / f"{prog}.cbl.report/{prog}.CBL.report/cfg/cfg-{prog}.cbl.json"
-    # 4. Recursive glob fallback
-    if not p.exists():
-        matches = list(REKT_DIR.glob(f"**/{prog}.*.report/**/cfg-{prog}.*.json"))
-        if matches:
-            p = matches[0]
-    if not p.exists() or not p.is_file():
-        return {"nodes": [], "edges": [], "rekt_available": False}
-    raw = json.loads(p.read_text(encoding="utf-8"))
-    raw["rekt_available"] = True
-    return raw
-
-def rekt_sentences(rekt: dict) -> list:
-    return [
-        {"id": n["id"], "type": n.get("type", ""), "text": n.get("originalText", "").strip()}
-        for n in rekt.get("nodes", [])
-        if n.get("nodeType") == "CODE_VERTEX" and n.get("originalText", "").strip()
-    ]
-
-def rekt_calls(sentences: list) -> list:
-    calls = []
-    for s in sentences:
-        m = re.search(r"\bCALL\s+['\"]([A-Z0-9]+)['\"]", s["text"], re.IGNORECASE)
-        if m:
-            calls.append(m.group(1))
-    return list(dict.fromkeys(calls))
-
-def rekt_cics(sentences: list) -> list:
-    hits = []
-    for s in sentences:
-        m = re.match(r"EXEC\s+CICS\s+(\w+)", s["text"].upper())
-        if m:
-            hits.append({"verb": m.group(1), "text": s["text"][:120]})
-    return hits
-
-# ---------------------------------------------------------------------------
-# Stage 3: Paragraph extraction (from cobc -E expanded source)
-# ---------------------------------------------------------------------------
-PARA_RE = re.compile(r'^[ ]{0,7}([A-Z0-9][A-Z0-9\-]{2,})\.\s*$')
-PERF_RE = re.compile(r'\bPERFORM\s+([A-Z0-9][A-Z0-9\-]+)(?:\s+THRU\s+([A-Z0-9][A-Z0-9\-]+))?')
-GOTO_RE = re.compile(r'\bGO\s+TO\s+((?:[A-Z0-9][A-Z0-9\-]+\s*)+?)(?:\s+DEPENDING|\.)', re.IGNORECASE)
-TERM_RE = re.compile(r'\b(STOP\s+RUN|GOBACK|EXIT\s+PROGRAM)\b', re.IGNORECASE)
-CICS_RETURN_RE = re.compile(r'EXEC\s+CICS\s+RETURN', re.IGNORECASE)
-
-PARA_EXCLUDE = frozenset([
-    "SECTION", "DIVISION", "PROGRAM", "AUTHOR", "DATE", "REMARKS",
-    "ENVIRONMENT", "CONFIGURATION", "INPUT", "OUTPUT", "FILE",
-    "WORKING", "LINKAGE", "LOCAL", "SCREEN", "REPORT",
+RESERVED_WORDS = frozenset([
+    "IDENTIFICATION", "ENVIRONMENT", "DATA", "PROCEDURE",
+    "CONFIGURATION", "INPUT-OUTPUT", "FILE", "WORKING-STORAGE",
+    "LINKAGE", "LOCAL-STORAGE", "REPORT", "SCREEN",
+    "PROGRAM-ID", "AUTHOR", "INSTALLATION", "DATE-WRITTEN",
+    "DATE-COMPILED", "SECURITY", "REMARKS",
+    "FD", "SD", "RD",
 ])
 
-def para_extract(lines: list) -> list:
-    paragraphs = []
-    in_procedure = False
-    current = None
-    for i, raw in enumerate(lines):
-        upper = raw.strip().upper()
-        if "PROCEDURE DIVISION" in upper:
-            in_procedure = True
+# PERFORM keywords that are not paragraph names
+PERFORM_NON_TARGETS = frozenset([
+    "UNTIL", "VARYING", "TIMES", "WITH", "TEST",
+    "THRU", "THROUGH", "BEFORE", "AFTER",
+])
+
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+def now_iso() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def gnucobol_version() -> str:
+    try:
+        out = subprocess.run(
+            ["cobc", "--version"],
+            capture_output=True, text=True, check=False, timeout=15,
+        )
+        first = (out.stdout or out.stderr).splitlines()[0].strip()
+        return first or "unknown"
+    except Exception as e:
+        return f"unavailable: {e}"
+
+
+def strip_cobol_comments(text: str) -> str:
+    """Drop fixed-format COBOL comment lines (col 7 = '*' or '/')."""
+    out = []
+    for line in text.splitlines():
+        if len(line) >= 7 and line[6] in ("*", "/"):
             continue
-        if not in_procedure:
+        out.append(line)
+    return "\n".join(out)
+
+
+# ---------------------------------------------------------------------------
+# Structure extraction from raw source
+# ---------------------------------------------------------------------------
+def extract_structure(cbl_path: Path) -> dict:
+    raw  = cbl_path.read_text(encoding="utf-8", errors="replace")
+    text = strip_cobol_comments(raw)
+
+    # PROGRAM-ID
+    m = RE_PROGRAM_ID.search(text)
+    program_id = m.group(1).upper() if m else cbl_path.stem.upper()
+
+    # Paragraphs
+    paragraphs: set[str] = set()
+    for m in RE_PARAGRAPH.finditer(text):
+        name = m.group(1).upper()
+        if name in RESERVED_WORDS:
             continue
-        m = PARA_RE.match(raw)
-        if m:
-            name = m.group(1).upper()
-            if name not in PARA_EXCLUDE:
-                if current:
-                    paragraphs.append(current)
-                current = {"name": name, "line_start": i + 1,
-                           "performs": [], "gotos": [], "terminator": "implicit"}
-                continue
-        if current is None:
+        if name.endswith("-DIVISION"):
             continue
-        for pm in PERF_RE.finditer(upper):
-            tgt = pm.group(1)
-            if tgt not in ("UNTIL", "VARYING", "TIMES", "WITH", "TEST", "THRU"):
-                entry = {"target": tgt}
-                if pm.group(2):
-                    entry["thru"] = pm.group(2)
-                if entry not in current["performs"]:
-                    current["performs"].append(entry)
-        for gm in GOTO_RE.finditer(upper):
-            for tgt in gm.group(1).split():
-                tgt = tgt.strip()
-                if tgt and tgt not in current["gotos"]:
-                    current["gotos"].append(tgt)
-        if TERM_RE.search(upper):
-            current["terminator"] = TERM_RE.search(upper).group(0).upper().replace("  ", " ")
-        if CICS_RETURN_RE.search(upper):
-            current["terminator"] = "EXEC CICS RETURN"
-    if current:
-        paragraphs.append(current)
-    for i, p in enumerate(paragraphs):
-        p["line_end"] = (paragraphs[i + 1]["line_start"] - 1
-                         if i + 1 < len(paragraphs) else len(lines))
-    return paragraphs
+        paragraphs.add(name)
+    # Remove section headers that also match the paragraph pattern
+    for m in RE_SECTION.finditer(text):
+        paragraphs.discard(m.group(1).upper())
 
-# ---------------------------------------------------------------------------
-# Stage 3: Data division extraction
-# ---------------------------------------------------------------------------
-DATA_RE   = re.compile(r'^\s+(\d{2})\s+([A-Z0-9][A-Z0-9\-]*)\s*(?:PIC\S*\s+(\S+))?', re.IGNORECASE)
-FD_RE     = re.compile(r'^\s+FD\s+([A-Z0-9][A-Z0-9\-]+)', re.IGNORECASE)
-SELECT_RE = re.compile(r'SELECT\s+([A-Z0-9][A-Z0-9\-]+)\s+ASSIGN\s+TO\s+(\S+)', re.IGNORECASE)
-
-def data_extract(lines: list) -> dict:
-    in_data = False
-    items_01, files, selects = [], [], []
-    for raw in lines:
-        upper = raw.strip().upper()
-        if "DATA DIVISION" in upper:
-            in_data = True
-        if "PROCEDURE DIVISION" in upper:
-            in_data = False
-        m = SELECT_RE.search(raw)
-        if m:
-            selects.append({"logical": m.group(1).upper(),
-                            "ddname": m.group(2).upper().strip('.')})
-        m2 = FD_RE.match(raw)
-        if m2:
-            files.append(m2.group(1).upper())
-        if in_data:
-            m3 = DATA_RE.match(raw)
-            if m3 and m3.group(1) == "01" and m3.group(2).upper() not in ("FILLER",):
-                items_01.append({"name": m3.group(2).upper(), "pic": m3.group(3)})
-    return {"select_files": selects, "fd_names": files,
-            "working_storage_01s": items_01[:MAX_01_ITEMS]}
-
-# ---------------------------------------------------------------------------
-# Assemble and write facts JSON
-# ---------------------------------------------------------------------------
-def assemble(prog: str) -> dict:
-    print(f"  [{prog}] expanding source...", end="", flush=True)
-    lines     = cobc_expand(prog)
-    print(f" {len(lines)} lines | loading REKT...", end="", flush=True)
-    rekt      = rekt_load(prog)
-    sentences = rekt_sentences(rekt)
-    print(f" {len(sentences)} sentences | extracting...", end="", flush=True)
-    paras     = para_extract(lines)
-    data      = data_extract(lines)
-
-    facts = {
-        "program":              prog,
-        "source_lines":         len(lines),
-        "rekt_available":       rekt["rekt_available"],
-        "rekt_node_count":      len(rekt.get("nodes", [])),
-        "rekt_edge_count":      len(rekt.get("edges", [])),
-        "paragraphs":           paras,
-        "para_count":           len(paras),
-        "data":                 data,
-        "external_calls":       rekt_calls(sentences),
-        "cics_verbs":           rekt_cics(sentences),
-        "rekt_sentences":       sentences[:MAX_REKT_SENTENCES],
-        "rekt_sentence_total":  len(sentences),
+    # 01-level data items (FILLER excluded)
+    data_items: set[str] = {
+        m.group(1).upper()
+        for m in RE_DATA_01.finditer(text)
+        if m.group(1).upper() != "FILLER"
     }
 
-    # Validate against schema before writing
-    errs = validate(facts)
-    if errs:
-        print(f" SCHEMA ERRORS: {errs}")
-    else:
-        print(f" {len(paras)} paras | valid")
+    # External CALL targets (literal strings only)
+    external_calls: set[str] = {
+        m.group(1).upper() for m in RE_CALL_LITERAL.finditer(text)
+    }
 
-    out = FACTS_DIR / f"{prog}.json"
-    out.write_text(json.dumps(facts, indent=2))
-    print(f"  -> {out}")
-    return facts
+    # Internal PERFORM targets
+    internal_performs: set[str] = {
+        m.group(1).upper()
+        for m in RE_PERFORM.finditer(text)
+        if m.group(1).upper() not in PERFORM_NON_TARGETS
+    }
+
+    # COPY references (copybooks)
+    copybooks: set[str] = {
+        m.group(1).upper() for m in RE_COPY.finditer(text)
+    }
+
+    # SELECT ... ASSIGN with org/access lookahead
+    data_files: list[dict] = []
+    for m in RE_SELECT.finditer(text):
+        window = text[m.start():m.start() + 400]
+        om = RE_ORGANIZATION.search(window)
+        am = RE_ACCESS.search(window)
+        data_files.append({
+            "name":         m.group(1).upper(),
+            "ddname":       m.group(2).upper(),
+            "organization": om.group(1).upper() if om else None,
+            "access":       am.group(1).upper() if am else None,
+        })
+
+    return {
+        "program":              program_id,
+        "paragraphs":           sorted(paragraphs),
+        "data_items":           sorted(data_items),
+        "external_calls":       sorted(external_calls),
+        "internal_performs":    sorted(internal_performs),
+        "copybooks_referenced": sorted(copybooks),
+        "data_files":           data_files,
+        "cics_present":         bool(RE_EXEC_CICS.search(text)),
+        "sql_present":          bool(RE_EXEC_SQL.search(text)),
+    }
+
 
 # ---------------------------------------------------------------------------
-# CLI entry point
+# Optional REKT CFG attachment (Stage 2 output, if present)
 # ---------------------------------------------------------------------------
-if __name__ == "__main__":
-    progs = sys.argv[1:] if len(sys.argv) > 1 else [
-        p.stem.upper() for p in SRC_DIR.glob("*.[cC][bB][lL]")
-    ]
-    if not progs:
-        print(f"No .cbl files found in {SRC_DIR}")
-        print("Place raw COBOL source in data/raw/cbl/ first.")
-        sys.exit(1)
-    print(f"Extracting facts for {len(progs)} program(s)...")
-    ok, fail = 0, 0
-    for prog in sorted(progs):
+def attach_cfg(program: str) -> dict:
+    """
+    Summarize the REKT report folder for this program.
+    Records a path pointer and edge/unresolved counts only.
+    Does not re-parse the full CFG.
+    """
+    candidates = list(REKT_DIR.glob(f"{program}.cbl.report*"))
+    if not candidates:
+        return {"source": None, "edges": None, "unresolved": None}
+
+    report_dir = sorted(candidates)[0]
+    edges = 0
+    unresolved = 0
+    for jf in report_dir.rglob("*.json"):
         try:
-            assemble(prog.upper())
-            ok += 1
+            data = json.loads(jf.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        if isinstance(data, dict):
+            if isinstance(data.get("edges"), list):
+                edges += len(data["edges"])
+            if isinstance(data.get("unresolved"), list):
+                unresolved += len(data["unresolved"])
+    return {
+        "source":     str(report_dir.relative_to(REPO_ROOT)).replace("\\", "/"),
+        "edges":      edges or None,
+        "unresolved": unresolved or None,
+    }
+
+
+# ---------------------------------------------------------------------------
+# Deterministic gate
+# ---------------------------------------------------------------------------
+def compute_gate(struct: dict) -> tuple[int, str, list[str]]:
+    reasons: list[str] = []
+    if not struct["paragraphs"]:
+        reasons.append("no_paragraphs")
+    if not struct["program"]:
+        reasons.append("no_program_id")
+    status = "PASS" if not reasons else "WARN"
+    rc = 0 if not reasons else 1
+    return rc, status, reasons
+
+
+# ---------------------------------------------------------------------------
+# Per-program entry point
+# ---------------------------------------------------------------------------
+def extract_program(cbl_path: Path, gcv: str) -> dict:
+    struct = extract_structure(cbl_path)
+    cfg    = attach_cfg(struct["program"])
+    rc, status, reasons = compute_gate(struct)
+
+    return {
+        "schema_version":       SCHEMA_VERSION,
+        "program":              struct["program"],
+        "source_file":          str(cbl_path.relative_to(REPO_ROOT)).replace("\\", "/"),
+        "extracted_at":         now_iso(),
+        "gnucobol_version":     gcv,
+        "gate_rc":              rc,
+        "gate_status":          status,
+        "gate_reasons":         reasons,
+        "cics_present":         struct["cics_present"],
+        "sql_present":          struct["sql_present"],
+        "paragraphs":           struct["paragraphs"],
+        "data_items":           struct["data_items"],
+        "external_calls":       struct["external_calls"],
+        "internal_performs":    struct["internal_performs"],
+        "data_files":           struct["data_files"],
+        "copybooks_referenced": struct["copybooks_referenced"],
+        "cfg":                  cfg,
+    }
+
+
+# ---------------------------------------------------------------------------
+# Program selection
+# ---------------------------------------------------------------------------
+def select_programs(arg: str | None) -> list[Path]:
+    if not RAW_CBL_DIR.exists():
+        print(f"ERROR: {RAW_CBL_DIR} does not exist.", file=sys.stderr)
+        sys.exit(2)
+    if arg:
+        stem = arg.upper().removesuffix(".CBL")
+        candidate = RAW_CBL_DIR / f"{stem}.cbl"
+        if not candidate.exists():
+            candidate = RAW_CBL_DIR / f"{stem.lower()}.cbl"
+        if not candidate.exists():
+            print(f"ERROR: No .cbl file found for '{arg}' in {RAW_CBL_DIR}",
+                  file=sys.stderr)
+            sys.exit(2)
+        return [candidate]
+    programs = sorted(RAW_CBL_DIR.glob("*.cbl"))
+    if not programs:
+        print(f"No .cbl files found in {RAW_CBL_DIR}", file=sys.stderr)
+        sys.exit(2)
+    return programs
+
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+def main() -> int:
+    arg = sys.argv[1] if len(sys.argv) > 1 else None
+
+    FACTS_DIR.mkdir(parents=True, exist_ok=True)
+    gcv      = gnucobol_version()
+    programs = select_programs(arg)
+
+    print("HermesCOBOL extract_facts  (schema v1.0)")
+    print(f"GnuCOBOL : {gcv}")
+    print(f"Programs : {len(programs)}")
+    print(f"Facts dir: {FACTS_DIR}")
+    print()
+
+    any_fail = False
+    for cbl in programs:
+        try:
+            facts = extract_program(cbl, gcv)
         except Exception as e:
-            print(f"  [{prog}] ERROR: {e}")
-            fail += 1
-    print(f"\nDone: {ok} OK, {fail} failed. Output: {FACTS_DIR}")
+            print(f"  [ERROR] {cbl.stem:22s} {e}")
+            any_fail = True
+            continue
+
+        out_path = FACTS_DIR / f"{facts['program']}.json"
+        out_path.write_text(json.dumps(facts, indent=2), encoding="utf-8")
+
+        cics = "C" if facts["cics_present"] else "-"
+        sql  = "S" if facts["sql_present"]  else "-"
+        print(
+            f"  [{facts['gate_status']:4s}] {facts['program']:22s}  "
+            f"cics={cics} sql={sql}  "
+            f"paras={len(facts['paragraphs']):3d}  "
+            f"calls={len(facts['external_calls']):2d}  "
+            f"files={len(facts['data_files']):2d}"
+        )
+        if facts["gate_status"] == "WARN":
+            print(f"           reasons: {facts['gate_reasons']}")
+            any_fail = True
+
+    print()
+    return 1 if any_fail else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
