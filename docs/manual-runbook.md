@@ -1,8 +1,32 @@
 # HermesCOBOL Manual Runbook
 
-This runbook documents the manual step-by-step local process.
-**Do not automate these steps.** Each stage is run independently so you can
-inspect outputs before proceeding.
+Manual, step-by-step local operation of the deterministic COBOL evidence pipeline.
+
+---
+
+## Scope
+
+This pipeline stops at data artifacts. No automation runs the whole pipeline.
+No LLMs. No server. No harness. Each stage is run manually.
+
+```
+raw COBOL  ->  cobc -E  ->  COBOL-REKT  ->  Python extraction  ->  data/facts/
+```
+
+---
+
+## Raw-data-only policy
+
+This repo contains **only raw mainframe-style source files**:
+- COBOL programs (`data/raw/cbl/`)
+- Non-BMS copybooks (`data/raw/cpy/`)
+- BMS map copybooks (`data/raw/cpy-bms/`)
+
+**Do NOT add to this repo:**
+- Stub copybooks (e.g. `DFHAID.cpy` with synthetic content)
+- Translator shims or generated wrappers
+- Processed or generated artifacts of any kind
+- Server, harness, or agent code
 
 ---
 
@@ -12,202 +36,172 @@ inspect outputs before proceeding.
 |---|---|---|
 | Python | 3.10+ | `python --version` |
 | GnuCOBOL | 3.2+ | `cobc --version` |
-| Java | 11+ | `java -version` |
-| smojol-cli (COBOL-REKT) | latest | `java -jar tools/smojol-cli.jar --help` |
-
-Install Python deps:
-```
-pip install -r requirements.txt
-```
+| COBOL-REKT (smojol-cli) | latest | `java -jar smojol-cli.jar --version` |
 
 ---
 
-## Stage 0 — Verify raw inputs
+## Stage 0 — Populate raw inputs
 
-Confirm your source files are present:
-```
-ls data/raw/cbl/      # should show *.cbl files
-ls data/raw/cpy/      # should show *.cpy copybook files
-```
-
-Expected structure:
-```
-data/raw/
-  cbl/
-    CBACT01C.cbl
-    CBACT02C.cbl
-    ... (all programs)
-  cpy/
-    COPY01.cpy
-    ... (all copybooks)
-```
-
-Nothing is generated at this stage.
-
----
-
-## Stage 1 — cobc -E (copybook expansion)
-
-`cobc -E` inlines all COPY statements, producing a single flat source file
-per program. This is the input to both REKT and the Python extractor.
-
-**Run manually for each program:**
-```bash
-mkdir -p data/preprocessed
-
-cobc -E -I data/raw/cpy data/raw/cbl/CBACT01C.cbl > data/preprocessed/CBACT01C.cbl
-```
-
-**Or for all programs at once (PowerShell):**
+### Step 0a. Place COBOL programs
 ```powershell
-New-Item -ItemType Directory -Force data\preprocessed | Out-Null
-Get-ChildItem data\raw\cbl\*.cbl | ForEach-Object {
-    $out = "data\preprocessed\$($_.BaseName).cbl"
-    cobc -E -I data\raw\cpy $_.FullName | Out-File -Encoding utf8 $out
-    Write-Host "  -> $out"
-}
+# Copy all .cbl files from your CardDemo source
+Copy-Item C:\work\aws-mainframe-modernization-carddemo\app\cbl\*.cbl `
+          data\raw\cbl\
 ```
 
-**Or for all programs at once (bash):**
-```bash
-mkdir -p data/preprocessed
-for f in data/raw/cbl/*.cbl; do
-    prog=$(basename "$f" .cbl)
-    cobc -E -I data/raw/cpy "$f" > "data/preprocessed/${prog}.cbl"
-    echo "  -> data/preprocessed/${prog}.cbl"
-done
+### Step 0b. Place non-BMS copybooks
+```powershell
+# Copy standard data copybooks
+Copy-Item C:\work\aws-mainframe-modernization-carddemo\app\cpy\*.cpy `
+          data\raw\cpy\
 ```
 
-**Validate:** Each file in `data/preprocessed/` should be larger than the
-original (copybooks are expanded). Check for `# ` linemarker lines — they
-are automatically filtered by `extract_facts.py`.
+### Step 0c. Place BMS map copybooks
+```powershell
+# Copy BMS-generated screen map copybooks (DSECT output from BMS assembly)
+# These typically live in app/cpy-bms/ or app/bms/ depending on your CardDemo clone
+Copy-Item C:\work\aws-mainframe-modernization-carddemo\app\cpy-bms\*.cpy `
+          data\raw\cpy-bms\
+# or:
+Copy-Item C:\work\aws-mainframe-modernization-carddemo\app\bms\*.cpy `
+          data\raw\cpy-bms\
+```
 
-> `data/preprocessed/` is gitignored. It exists only on your local machine.
+**Note:** BMS map copybooks include screen layout DSECTs such as `COACTUP`,
+`COACTVW`, `COBIL00`, etc. These are standard mainframe copybooks
+— do NOT replace them with stubs.
 
 ---
 
-## Stage 2 — COBOL-REKT (smojol-cli)
+## Stage 1 — Preprocess with cobc -E (non-CICS programs only)
 
-COBOL-REKT performs static analysis and produces a Control Flow Graph (CFG)
-per program as JSON. This is the input to the Python extractor for sentence
-extraction and execution order.
+GnuCOBOL cannot preprocess raw `EXEC CICS ... END-EXEC` blocks without a
+CICS translator. This is **by design** — see the CICS note below.
 
-**Download smojol-cli:**
-- https://github.com/avishek-sen-gupta/cobol-rekt/releases
-- Place `smojol-cli.jar` and dialect jars in a local `tools/` directory
-  (tools/ is gitignored)
-
-**Run manually for each program:**
-```bash
-java -jar tools/smojol-cli.jar export-unified \
-  --source-dir data/raw/cbl \
-  --copybook-dir data/raw/cpy \
-  --program CBACT01C.cbl \
-  --output-dir data/rekt \
-  --dialect IBMCOBOL
+```powershell
+# From repo root. Replace CBACT01C with each non-CICS program name.
+cobc -E `
+  -I data\raw\cpy `
+  -I data\raw\cpy-bms `
+  -ext cpy -ext CPY -ext "" `
+  data\raw\cbl\CBACT01C.cbl > data\preprocessed\CBACT01C.pre.cbl
 ```
 
-**Run for all programs (bash):**
-```bash
-mkdir -p data/rekt
-for f in data/raw/cbl/*.cbl; do
-    prog=$(basename "$f")
-    java -jar tools/smojol-cli.jar export-unified \
-      --source-dir data/raw/cbl \
-      --copybook-dir data/raw/cpy \
-      --program "$prog" \
-      --output-dir data/rekt \
-      --dialect IBMCOBOL
-done
-```
+Save outputs to `data/preprocessed/` (gitignored, local only).
 
-**Expected output structure:**
-```
-data/rekt/
-  CBACT01C.cbl.report/
-    CBACT01C.cbl.report/        <- REKT double-nests on some versions
-      cfg/
-        cfg-CBACT01C.cbl.json   <- THIS is what extract_facts.py reads
-      data_structures/
-      flow_ast/
-```
+### CICS programs — preprocess intentionally skipped
 
-**Note:** REKT may produce a double-nested directory
-(`CBACT01C.cbl.report/CBACT01C.cbl.report/cfg/...`).
-`extract_facts.py` handles both flat and double-nested layouts automatically.
+Programs containing `EXEC CICS` (e.g. `COACTUPC`, `COBIL00C`, `COCRDLIC`, etc.)
+require the IBM CICS translator as a pre-step before `cobc -E`. That translator
+is not available in this repo.
 
-> `data/rekt/` is gitignored. It exists only on your local machine.
+- The round-trip validator marks these programs as
+  `preprocess_skipped = true`, `preprocess_skipped_reason = "cics_no_translator"`.
+- This is **not a failure** — it is an expected, documented skip.
+- Mode B (structural coverage) still runs for CICS programs.
+- Full CICS preprocessing belongs in a separate pipeline layer.
 
 ---
 
-## Stage 3 — Python extraction (extract_facts.py)
+## Stage 2 — COBOL-REKT CFG analysis
 
-The Python extractor reads raw source (for `cobc -E` inline call) and REKT
-CFG JSON, then produces one `structured_facts.json` per program.
+Run smojol-cli manually against each preprocessed `.cbl` file.
 
-**Run from the repo root:**
-```bash
+```powershell
+# Example (adjust jar path and options to your smojol-cli version)
+java -jar smojol-cli.jar `
+  --program data\preprocessed\CBACT01C.pre.cbl `
+  --copybook-dir data\raw\cpy `
+  --output data\rekt\CBACT01C.cbl.report
+```
+
+Save outputs to `data/rekt/` (gitignored, local only).
+
+---
+
+## Stage 3 — Python fact extraction
+
+Text-scan only — does NOT invoke cobc. Reads raw `.cbl` files directly.
+
+```powershell
 # All programs:
-python scripts/extract_facts.py
+python scripts\extract_facts.py
 
 # Single program:
-python scripts/extract_facts.py CBACT01C
+python scripts\extract_facts.py CBACT01C
 ```
 
-**Expected console output per program:**
+Outputs go to `data/facts/<PROG>.json` (gitignored, local only).
+
+**Expected output:**
 ```
-[CBACT01C] expanding source... 892 lines | loading REKT... 331 sentences | extracting... 40 paras | valid
-  -> data/facts/CBACT01C.json
+  [PASS] CBACT01C               cics=- sql=-  paras= 21  calls= 2  files= 4
+  [WARN] COBSWAIT               cics=- sql=-  paras=  0  calls= 1  files= 0
+           reasons: ['no_paragraphs']
 ```
 
-**What `extract_facts.py` does NOT do:**
-- It does NOT run `cobc` as a compiler (only `-E` preprocessor mode)
-- It does NOT run REKT (reads existing JSON output only)
-- It does NOT call any LLM
-- It does NOT start any server
-
-> `data/facts/` is gitignored. It exists only on your local machine.
+`WARN` with `no_paragraphs` indicates a very short utility or stub program.
+Investigate manually before proceeding.
 
 ---
 
-## Stage 4 — Validate outputs
+## Stage 4 — Validate facts schema
 
-Run the schema validator against all produced facts:
-```bash
-python scripts/schema.py
+```powershell
+python scripts\schema.py
 ```
 
-Expected output:
-```
-  OK   CBACT01C.json
-  OK   CBACT02C.json
-  ...
-```
-
-A `FAIL` line means a required key is missing. Check the program's error
-output from Stage 3 and re-run.
+All programs should show `OK   v1.0`. Any `FAIL` indicates stale or
+incorrect facts — re-run `extract_facts.py`.
 
 ---
 
-## Folder state after all stages
+## Stage 5 — Round-trip validator
 
-```
-data/
-  raw/              <- committed (source of truth)
-    cbl/
-    cpy/
-  preprocessed/     <- gitignored, local only (Stage 1 output)
-  rekt/             <- gitignored, local only (Stage 2 output)
-  facts/            <- gitignored, local only (Stage 3 output)
+```powershell
+# All programs:
+python scripts\validate_roundtrip.py
+
+# Single program:
+python scripts\validate_roundtrip.py CBACT01C
 ```
 
----
+### Expected output pattern
+```
+  [PASS] CBACT01C               preprocess=OK                    -
+  [PASS] COACTUPC               SKIP(cics_no_translator)         -  [cics_structural_only]
+  [FAIL] CBACT01C               preprocess=OK                    missing_paragraphs
+```
 
-## What comes next (out of scope for this repo)
+### Output locations
+```
+validation/
+  reconstructed/cbl/<PROG>.pre.cbl    # cobc -E output (non-CICS only)
+  reports/<PROG>.validation.json      # per-program report
+  reports/summary.json                # aggregate
+```
 
-Once `data/facts/` is populated and validated:
-- The Hermes agent layer reads `data/facts/*.json` as its evidence base
-- LLM narration runs against facts JSON (not raw COBOL)
-- API / oracle server is built in a separate repo
+### Interpreting preprocess_skipped in reports
 
-Do not add those layers here.
+In `validation/reports/<PROG>.validation.json`:
+```json
+{
+  "preprocess_skipped": true,
+  "preprocess_skipped_reason": "cics_no_translator",
+  "gate_note": "cics_structural_only",
+  "gate_status": "PASS"
+}
+```
+This means: Mode A was intentionally skipped (CICS program, no translator).
+Mode B structural coverage ran and passed. Gate = PASS.
+
+### Interpreting summary.json
+```json
+{
+  "programs_total": 31,
+  "programs_pass": 31,
+  "programs_fail": 0,
+  "programs_skipped_preprocess": 16,
+  "skipped_reasons": {"cics_no_translator": 16}
+}
+```
