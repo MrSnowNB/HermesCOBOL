@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-extract_facts.py — HermesCOBOL Stage 3 extractor.
+extract_facts.py — HermesCOBOL schema v1.1 extractor.
 
 Reads:
   data/raw/cbl/<PROG>.cbl           raw source
@@ -9,30 +9,19 @@ Reads:
   data/rekt/<PROG>.cbl.report/**    REKT CFG JSON (optional, Stage 2 output)
 
 Writes:
-  data/facts/<PROG>.json            canonical structured facts (schema v1.0)
+  data/facts/<PROG>.json            canonical structured facts (schema v1.1)
 
-Canonical schema (v1.0):
-{
-  "schema_version": "1.0",
-  "program": "CBACT01C",
-  "source_file": "data/raw/cbl/CBACT01C.cbl",
-  "extracted_at": "...ISO8601 UTC...",
-  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
-  "gate_rc": 0,
-  "gate_status": "PASS",
-  "gate_reasons": [],
-  "cics_present": false,
-  "sql_present": false,
-  "paragraphs": ["1000-MAIN", ...],
-  "data_items": ["WS-ACCOUNT-RECORD", ...],
-  "external_calls": ["CBTRN01C"],
-  "internal_performs": ["1100-READ-ACCOUNT", ...],
-  "data_files": [{"name": "ACCT-FILE", "ddname": "ACCTFILE",
-                  "organization": "INDEXED", "access": "RANDOM"}],
-  "copybooks_referenced": ["CVACT01Y", "COCOM01Y"],
-  "cfg": {"source": "data/rekt/<PROG>.cbl.report/...", "edges": N, "unresolved": M}
-}
+Schema v1.1 additions over v1.0:
+  paragraphs_defined   list[{name, source_line, area_a}]
+  paragraphs_referenced list[str]
+  paragraph_actions    {para_name: [action_tag, ...]}
+  file_lineage         [{name, ddname, fd_record}]
+  file_operations      {file_name: [{paragraph, operation, source_line}]}
+  control_flow         {cfg_source, entry_points, exit_points, edges, unresolved}
+  cics                 {commarea_used, commands, maps_used, mapsets_used,
+                        aid_keys, screen_flow}  (null for non-CICS programs)
 
+All v1.0 fields are preserved unchanged.
 This script is text-scan only. It does NOT invoke cobc -E.
 To preprocess manually: cobc -E -I data/raw/cpy -I data/raw/cpy-bms <PROG>.cbl
 
@@ -53,7 +42,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 # ---------------------------------------------------------------------------
-# Paths — import from config, fall back to inline resolution
+# Paths
 # ---------------------------------------------------------------------------
 try:
     from scripts.config import (
@@ -68,10 +57,15 @@ except ImportError:
     FACTS_DIR       = REPO_ROOT / "data" / "facts"
     REKT_DIR        = REPO_ROOT / "data" / "rekt"
 
-SCHEMA_VERSION = "1.0"
+try:
+    from scripts.semantic_extract import enrich
+except ImportError:
+    from semantic_extract import enrich
+
+SCHEMA_VERSION = "1.1"
 
 # ---------------------------------------------------------------------------
-# Regex patterns
+# Regex patterns (v1.0 baseline — unchanged)
 # ---------------------------------------------------------------------------
 RE_PROGRAM_ID = re.compile(
     r"^\s{0,11}PROGRAM-ID\.\s+([A-Z0-9][A-Z0-9-]*)",
@@ -126,6 +120,9 @@ PERFORM_NON_TARGETS = frozenset([
     "THRU", "THROUGH", "BEFORE", "AFTER",
 ])
 
+# v1.1 noise filter (applied to paragraphs list for backward compat)
+from scripts.semantic_extract import PARAGRAPH_NOISE
+
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -156,19 +153,22 @@ def strip_cobol_comments(text: str) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Structure extraction from raw source (text-scan only, no cobc invocation)
+# v1.0 baseline extraction (preserved, now with noise filter on paragraphs)
 # ---------------------------------------------------------------------------
-def extract_structure(cbl_path: Path) -> dict:
+def extract_structure_v10(cbl_path: Path) -> dict:
     raw  = cbl_path.read_text(encoding="utf-8", errors="replace")
     text = strip_cobol_comments(raw)
 
     m = RE_PROGRAM_ID.search(text)
     program_id = m.group(1).upper() if m else cbl_path.stem.upper()
 
+    # Paragraphs with noise filter applied
     paragraphs: set[str] = set()
     for m in RE_PARAGRAPH.finditer(text):
         name = m.group(1).upper()
         if name in RESERVED_WORDS:
+            continue
+        if name in PARAGRAPH_NOISE:
             continue
         if name.endswith("-DIVISION"):
             continue
@@ -222,9 +222,9 @@ def extract_structure(cbl_path: Path) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Optional REKT CFG attachment (Stage 2 output, if present)
+# Optional REKT CFG attachment (v1.0 compat stub)
 # ---------------------------------------------------------------------------
-def attach_cfg(program: str) -> dict:
+def attach_cfg_stub(program: str) -> dict:
     candidates = list(REKT_DIR.glob(f"{program}.cbl.report*"))
     if not candidates:
         return {"source": None, "edges": None, "unresolved": None}
@@ -266,28 +266,48 @@ def compute_gate(struct: dict) -> tuple[int, str, list[str]]:
 # Per-program entry point
 # ---------------------------------------------------------------------------
 def extract_program(cbl_path: Path, gcv: str) -> dict:
-    struct = extract_structure(cbl_path)
-    cfg    = attach_cfg(struct["program"])
+    struct = extract_structure_v10(cbl_path)
+    cfg    = attach_cfg_stub(struct["program"])
     rc, status, reasons = compute_gate(struct)
 
+    # v1.1 semantic enrichment
+    sem = enrich(
+        cbl_path,
+        rekt_dir=REKT_DIR if REKT_DIR.exists() else None,
+        cics_present=struct["cics_present"],
+    )
+
     return {
+        # --- schema identity ---
         "schema_version":       SCHEMA_VERSION,
         "program":              struct["program"],
         "source_file":          str(cbl_path.relative_to(REPO_ROOT)).replace("\\", "/"),
         "extracted_at":         now_iso(),
         "gnucobol_version":     gcv,
+        # --- gate ---
         "gate_rc":              rc,
         "gate_status":          status,
         "gate_reasons":         reasons,
+        # --- v1.0 boolean flags ---
         "cics_present":         struct["cics_present"],
         "sql_present":          struct["sql_present"],
+        # --- v1.0 structural lists (noise-filtered) ---
         "paragraphs":           struct["paragraphs"],
         "data_items":           struct["data_items"],
         "external_calls":       struct["external_calls"],
         "internal_performs":    struct["internal_performs"],
         "data_files":           struct["data_files"],
         "copybooks_referenced": struct["copybooks_referenced"],
+        # --- v1.0 cfg stub (backward compat) ---
         "cfg":                  cfg,
+        # --- v1.1 semantic enrichment ---
+        "paragraphs_defined":    sem["paragraphs_defined"],
+        "paragraphs_referenced": sem["paragraphs_referenced"],
+        "paragraph_actions":     sem["paragraph_actions"],
+        "file_lineage":          sem["file_lineage"],
+        "file_operations":       sem["file_operations"],
+        "control_flow":          sem["control_flow"],
+        "cics":                  sem["cics"],
     }
 
 
@@ -325,7 +345,7 @@ def main() -> int:
     gcv      = gnucobol_version()
     programs = select_programs(arg)
 
-    print("HermesCOBOL extract_facts  (schema v1.0, text-scan only)")
+    print("HermesCOBOL extract_facts  (schema v1.1, text-scan + semantic enrichment)")
     print(f"GnuCOBOL : {gcv}")
     print(f"Programs : {len(programs)}")
     print(f"Facts dir: {FACTS_DIR}")
@@ -336,7 +356,9 @@ def main() -> int:
         try:
             facts = extract_program(cbl, gcv)
         except Exception as e:
+            import traceback
             print(f"  [ERROR] {cbl.stem:22s} {e}")
+            traceback.print_exc()
             any_fail = True
             continue
 
@@ -345,12 +367,15 @@ def main() -> int:
 
         cics = "C" if facts["cics_present"] else "-"
         sql  = "S" if facts["sql_present"]  else "-"
+        n_edges = len(facts["control_flow"].get("edges", []))
+        cfg_src = facts["control_flow"].get("cfg_source", "?")
         print(
             f"  [{facts['gate_status']:4s}] {facts['program']:22s}  "
             f"cics={cics} sql={sql}  "
             f"paras={len(facts['paragraphs']):3d}  "
             f"calls={len(facts['external_calls']):2d}  "
-            f"files={len(facts['data_files']):2d}"
+            f"files={len(facts['data_files']):2d}  "
+            f"edges={n_edges:3d}  cfg={cfg_src}"
         )
         if facts["gate_status"] == "WARN":
             print(f"           reasons: {facts['gate_reasons']}")
