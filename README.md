@@ -21,6 +21,7 @@ Hermes/harness/agent integration happens later in a separate layer.
 | Fixed Python extraction scripts | Ollama / LLM integration |
 | Manual runbook | GitHub Actions / Docker |
 | Schema definitions | Agent harness code |
+| Deterministic round-trip validator | Automated pipeline runners |
 
 ## Prerequisites
 
@@ -33,13 +34,42 @@ Hermes/harness/agent integration happens later in a separate layer.
 
 ```
 HermesCOBOL/
-  data/raw/cbl/       <- raw COBOL .cbl source files (committed)
-  data/raw/cpy/       <- raw copybook .cpy files (committed)
-  scripts/            <- Python extraction scripts (run manually)
+  data/raw/cbl/           <- raw COBOL .cbl source files (committed)
+  data/raw/cpy/           <- raw copybook .cpy files (committed)
+  scripts/                <- Python extraction + validation scripts (run manually)
+  validation/             <- validator outputs (gitignored, local only)
   docs/manual-runbook.md  <- step-by-step local operation guide
+  docs/validation-runbook.md  <- round-trip validator guide
 ```
 
-See [docs/manual-runbook.md](docs/manual-runbook.md) for the full step-by-step process.
+See [docs/manual-runbook.md](docs/manual-runbook.md) for the full extraction pipeline.
+See [docs/validation-runbook.md](docs/validation-runbook.md) for the validator.
+
+## Round-Trip Validation (manual, deterministic)
+
+The validator proves every step of the pipeline is covered and reversible:
+
+- **Mode A (preprocess):** Runs `cobc -E` on each raw `.cbl` and SHA-256 hashes
+  both raw and preprocessed outputs (LF-normalized). Pins GnuCOBOL version.
+- **Mode B (structural coverage):** Independently scans each `.cbl` for paragraphs,
+  01-level items, CALL targets, SELECT/ASSIGN definitions, EXEC CICS/SQL presence.
+  Compares against `data/facts/<PROG>.json` and reports any gaps.
+
+**Reports go to:** `validation/reports/` (gitignored, local only)
+
+```bash
+# Run against all programs:
+python scripts/validate_roundtrip.py
+
+# Run against a single program:
+python scripts/validate_roundtrip.py CBACT01C
+```
+
+Exit code `0` = all PASS. Exit code `1` = one or more FAIL.
+
+See [docs/validation-runbook.md](docs/validation-runbook.md) for full details.
+
+**No LLMs. No server. No automation. Read-only against `data/raw/` and `data/facts/`.**
 
 ## What is NOT in this repo
 
@@ -50,5 +80,6 @@ See [docs/manual-runbook.md](docs/manual-runbook.md) for the full step-by-step p
 - No generated artifacts of any kind
 - No server, no CLI launcher, no automation
 
-All generated artifacts live under `data/preprocessed/`, `data/rekt/`, and `data/facts/` —
-these directories are gitignored and must be produced locally by running each stage manually.
+All generated artifacts live under `data/preprocessed/`, `data/rekt/`, `data/facts/`,
+and `validation/` — these directories are gitignored and must be produced locally
+by running each stage manually.

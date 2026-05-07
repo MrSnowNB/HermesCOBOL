@@ -4,6 +4,10 @@ data/rekt/
 data/facts/
 output/
 
+# Validator outputs — generated locally, never committed
+validation/reconstructed/
+validation/reports/
+
 # Python
 __pycache__/
 *.pyc
