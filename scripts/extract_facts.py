@@ -4,13 +4,14 @@ extract_facts.py — HermesCOBOL Stage 3 extractor.
 
 Reads:
   data/raw/cbl/<PROG>.cbl           raw source
-  data/raw/cpy/                     copybooks (for cobc -E context)
+  data/raw/cpy/                     copybooks (non-BMS)
+  data/raw/cpy-bms/                 BMS map copybooks
   data/rekt/<PROG>.cbl.report/**    REKT CFG JSON (optional, Stage 2 output)
 
 Writes:
-  data/facts/<PROG>.json            canonical structured_facts.json per program
+  data/facts/<PROG>.json            canonical structured facts (schema v1.0)
 
-Canonical schema (v1):
+Canonical schema (v1.0):
 {
   "schema_version": "1.0",
   "program": "CBACT01C",
@@ -22,17 +23,18 @@ Canonical schema (v1):
   "gate_reasons": [],
   "cics_present": false,
   "sql_present": false,
-  "paragraphs": ["1000-MAIN", "1100-READ-ACCOUNT", ...],
-  "data_items": ["WS-ACCOUNT-RECORD", "WS-COUNTERS", ...],
-  "external_calls": ["CBTRN01C", "CUSSERV"],
+  "paragraphs": ["1000-MAIN", ...],
+  "data_items": ["WS-ACCOUNT-RECORD", ...],
+  "external_calls": ["CBTRN01C"],
   "internal_performs": ["1100-READ-ACCOUNT", ...],
-  "data_files": [
-    {"name": "ACCT-FILE", "ddname": "ACCTFILE",
-     "organization": "INDEXED", "access": "RANDOM"}
-  ],
+  "data_files": [{"name": "ACCT-FILE", "ddname": "ACCTFILE",
+                  "organization": "INDEXED", "access": "RANDOM"}],
   "copybooks_referenced": ["CVACT01Y", "COCOM01Y"],
-  "cfg": { "source": "data/rekt/<PROG>.cbl.report/...", "edges": N, "unresolved": M }
+  "cfg": {"source": "data/rekt/<PROG>.cbl.report/...", "edges": N, "unresolved": M}
 }
+
+This script is text-scan only. It does NOT invoke cobc -E.
+To preprocess manually: cobc -E -I data/raw/cpy -I data/raw/cpy-bms <PROG>.cbl
 
 Usage:
   python scripts/extract_facts.py              # all programs
@@ -51,13 +53,20 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 # ---------------------------------------------------------------------------
-# Paths
+# Paths — import from config, fall back to inline resolution
 # ---------------------------------------------------------------------------
-REPO_ROOT   = Path(__file__).resolve().parent.parent
-RAW_CBL_DIR = REPO_ROOT / "data" / "raw" / "cbl"
-RAW_CPY_DIR = REPO_ROOT / "data" / "raw" / "cpy"
-REKT_DIR    = REPO_ROOT / "data" / "rekt"
-FACTS_DIR   = REPO_ROOT / "data" / "facts"
+try:
+    from scripts.config import (
+        REPO_ROOT, RAW_CBL_DIR, RAW_CPY_DIR, RAW_CPY_BMS_DIR,
+        FACTS_DIR, REKT_DIR,
+    )
+except ImportError:
+    REPO_ROOT       = Path(__file__).resolve().parent.parent
+    RAW_CBL_DIR     = REPO_ROOT / "data" / "raw" / "cbl"
+    RAW_CPY_DIR     = REPO_ROOT / "data" / "raw" / "cpy"
+    RAW_CPY_BMS_DIR = REPO_ROOT / "data" / "raw" / "cpy-bms"
+    FACTS_DIR       = REPO_ROOT / "data" / "facts"
+    REKT_DIR        = REPO_ROOT / "data" / "rekt"
 
 SCHEMA_VERSION = "1.0"
 
@@ -112,7 +121,6 @@ RESERVED_WORDS = frozenset([
     "FD", "SD", "RD",
 ])
 
-# PERFORM keywords that are not paragraph names
 PERFORM_NON_TARGETS = frozenset([
     "UNTIL", "VARYING", "TIMES", "WITH", "TEST",
     "THRU", "THROUGH", "BEFORE", "AFTER",
@@ -139,7 +147,6 @@ def gnucobol_version() -> str:
 
 
 def strip_cobol_comments(text: str) -> str:
-    """Drop fixed-format COBOL comment lines (col 7 = '*' or '/')."""
     out = []
     for line in text.splitlines():
         if len(line) >= 7 and line[6] in ("*", "/"):
@@ -149,17 +156,15 @@ def strip_cobol_comments(text: str) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Structure extraction from raw source
+# Structure extraction from raw source (text-scan only, no cobc invocation)
 # ---------------------------------------------------------------------------
 def extract_structure(cbl_path: Path) -> dict:
     raw  = cbl_path.read_text(encoding="utf-8", errors="replace")
     text = strip_cobol_comments(raw)
 
-    # PROGRAM-ID
     m = RE_PROGRAM_ID.search(text)
     program_id = m.group(1).upper() if m else cbl_path.stem.upper()
 
-    # Paragraphs
     paragraphs: set[str] = set()
     for m in RE_PARAGRAPH.finditer(text):
         name = m.group(1).upper()
@@ -168,35 +173,29 @@ def extract_structure(cbl_path: Path) -> dict:
         if name.endswith("-DIVISION"):
             continue
         paragraphs.add(name)
-    # Remove section headers that also match the paragraph pattern
     for m in RE_SECTION.finditer(text):
         paragraphs.discard(m.group(1).upper())
 
-    # 01-level data items (FILLER excluded)
     data_items: set[str] = {
         m.group(1).upper()
         for m in RE_DATA_01.finditer(text)
         if m.group(1).upper() != "FILLER"
     }
 
-    # External CALL targets (literal strings only)
     external_calls: set[str] = {
         m.group(1).upper() for m in RE_CALL_LITERAL.finditer(text)
     }
 
-    # Internal PERFORM targets
     internal_performs: set[str] = {
         m.group(1).upper()
         for m in RE_PERFORM.finditer(text)
         if m.group(1).upper() not in PERFORM_NON_TARGETS
     }
 
-    # COPY references (copybooks)
     copybooks: set[str] = {
         m.group(1).upper() for m in RE_COPY.finditer(text)
     }
 
-    # SELECT ... ASSIGN with org/access lookahead
     data_files: list[dict] = []
     for m in RE_SELECT.finditer(text):
         window = text[m.start():m.start() + 400]
@@ -226,15 +225,9 @@ def extract_structure(cbl_path: Path) -> dict:
 # Optional REKT CFG attachment (Stage 2 output, if present)
 # ---------------------------------------------------------------------------
 def attach_cfg(program: str) -> dict:
-    """
-    Summarize the REKT report folder for this program.
-    Records a path pointer and edge/unresolved counts only.
-    Does not re-parse the full CFG.
-    """
     candidates = list(REKT_DIR.glob(f"{program}.cbl.report*"))
     if not candidates:
         return {"source": None, "edges": None, "unresolved": None}
-
     report_dir = sorted(candidates)[0]
     edges = 0
     unresolved = 0
@@ -256,7 +249,7 @@ def attach_cfg(program: str) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Deterministic gate
+# Gate logic
 # ---------------------------------------------------------------------------
 def compute_gate(struct: dict) -> tuple[int, str, list[str]]:
     reasons: list[str] = []
@@ -332,7 +325,7 @@ def main() -> int:
     gcv      = gnucobol_version()
     programs = select_programs(arg)
 
-    print("HermesCOBOL extract_facts  (schema v1.0)")
+    print("HermesCOBOL extract_facts  (schema v1.0, text-scan only)")
     print(f"GnuCOBOL : {gcv}")
     print(f"Programs : {len(programs)}")
     print(f"Facts dir: {FACTS_DIR}")
