@@ -1,0 +1,30 @@
+# Generated pipeline artifacts — never commit these
+data/preprocessed/
+data/rekt/
+data/facts/
+output/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Logs and temp files
+*.log
+temp/
+temp_*/
+scratch/
+*.tmp
+*.bak
+
+# OS
+.DS_Store
+Thumbs.db

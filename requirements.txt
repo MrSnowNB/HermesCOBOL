@@ -1,0 +1,7 @@
+# Minimal dependencies for the deterministic extraction layer only.
+# No server, no LLM, no harness dependencies here.
+
+# Standard library only — no third-party packages required for extraction.
+# pathlib, re, json, subprocess are all stdlib.
+
+# If you later add narration or server layers, those go in a separate requirements file.
