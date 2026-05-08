@@ -2904,6 +2904,30 @@
           "reason": "unresolved mutate operand: ERROR-RESP2"
         },
         {
+          "verb": "STRING",
+          "line_no": 725,
+          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Cross ref file.  Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
+          "reason": "unresolved read operand: WS-CARD-RID-ACCT-ID-X"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 725,
+          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Cross ref file.  Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
+          "reason": "unresolved read operand: ERROR-RESP"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 725,
+          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Cross ref file.  Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
+          "reason": "unresolved read operand: ERROR-RESP2"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 725,
+          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Cross ref file.  Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
+          "reason": "unresolved mutate operand: WS-RETURN-MSG"
+        },
+        {
           "verb": "SET",
           "line_no": 725,
           "raw_text": "SET INPUT-ERROR                 TO TRUE",

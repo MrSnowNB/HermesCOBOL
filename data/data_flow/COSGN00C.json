@@ -662,8 +662,8 @@
         {
           "verb": "MOVE",
           "line_no": 221,
-          "raw_text": "MOVE 'Wrong Password",
-          "reason": "MOVE missing TO keyword"
+          "raw_text": "MOVE 'Wrong Password. Try again ...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
           "verb": "MOVE",
@@ -692,8 +692,8 @@
         {
           "verb": "MOVE",
           "line_no": 221,
-          "raw_text": "MOVE 'User not found",
-          "reason": "MOVE missing TO keyword"
+          "raw_text": "MOVE 'User not found. Try again ...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
           "verb": "MOVE",

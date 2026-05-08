@@ -969,8 +969,8 @@
         {
           "verb": "MOVE",
           "line_no": 151,
-          "raw_text": "MOVE 'Invalid selection",
-          "reason": "MOVE missing TO keyword"
+          "raw_text": "MOVE 'Invalid selection. Valid values are U and D' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
           "verb": "MOVE",

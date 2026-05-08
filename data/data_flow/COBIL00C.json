@@ -339,8 +339,8 @@
         {
           "verb": "MOVE",
           "line_no": 156,
-          "raw_text": "MOVE 'Invalid value",
-          "reason": "MOVE missing TO keyword"
+          "raw_text": "MOVE 'Invalid value. Valid values are (Y/N)...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
           "verb": "MOVE",
@@ -1653,6 +1653,18 @@
           "line_no": 512,
           "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COBIL0AO",
           "reason": "unresolved mutate operand: COBIL0AO"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 512,
+          "raw_text": "STRING 'Payment successful. '     DELIMITED BY SIZE ' Your Transaction ID is ' DELIMITED BY SIZE TRAN-ID  DELIMITED BY SPACE '.' DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved read operand: TRAN-ID"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 512,
+          "raw_text": "STRING 'Payment successful. '     DELIMITED BY SIZE ' Your Transaction ID is ' DELIMITED BY SIZE TRAN-ID  DELIMITED BY SPACE '.' DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
           "verb": "WHEN",

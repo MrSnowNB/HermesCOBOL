@@ -81,38 +81,14 @@
         {
           "verb": "DISPLAY",
           "line_no": 164,
-          "raw_text": "DISPLAY 'CARD NUMBER ' DALYTRAN-CARD-NUM ' COULD NOT BE VERIFIED",
+          "raw_text": "DISPLAY 'CARD NUMBER ' DALYTRAN-CARD-NUM ' COULD NOT BE VERIFIED. SKIPPING TRANSACTION ID-' DALYTRAN-ID",
           "reason": "unresolved read operand: DALYTRAN-CARD-NUM"
         },
         {
           "verb": "DISPLAY",
           "line_no": 164,
-          "raw_text": "DISPLAY 'CARD NUMBER ' DALYTRAN-CARD-NUM ' COULD NOT BE VERIFIED",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 164,
-          "raw_text": "DISPLAY 'CARD NUMBER ' DALYTRAN-CARD-NUM ' COULD NOT BE VERIFIED",
-          "reason": "unresolved read operand: COULD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 164,
-          "raw_text": "DISPLAY 'CARD NUMBER ' DALYTRAN-CARD-NUM ' COULD NOT BE VERIFIED",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 164,
-          "raw_text": "DISPLAY 'CARD NUMBER ' DALYTRAN-CARD-NUM ' COULD NOT BE VERIFIED",
-          "reason": "unresolved read operand: BE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 164,
-          "raw_text": "DISPLAY 'CARD NUMBER ' DALYTRAN-CARD-NUM ' COULD NOT BE VERIFIED",
-          "reason": "unresolved read operand: VERIFIED"
+          "raw_text": "DISPLAY 'CARD NUMBER ' DALYTRAN-CARD-NUM ' COULD NOT BE VERIFIED. SKIPPING TRANSACTION ID-' DALYTRAN-ID",
+          "reason": "unresolved read operand: DALYTRAN-ID"
         }
       ]
     },

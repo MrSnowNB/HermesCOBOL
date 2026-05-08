@@ -684,6 +684,13 @@
           "length": 6
         },
         {
+          "field": "ACCOUNT-RECORD.ACCT-ID",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 0,
+          "length": 11
+        },
+        {
           "field": "WS-MISC-VARS.WS-MONTHLY-INT",
           "record": "WS-MISC-VARS",
           "copybook": null,
@@ -754,6 +761,13 @@
           "copybook": "CVTRA05Y",
           "offset": 22,
           "length": 10
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-DESC",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 32,
+          "length": 100
         },
         {
           "field": "TRAN-RECORD.TRAN-AMT",
@@ -839,6 +853,12 @@
           "line_no": 474,
           "raw_text": "STRING PARM-DATE, WS-TRANID-SUFFIX DELIMITED BY SIZE INTO TRAN-ID",
           "reason": "unresolved read operand: PARM-DATE,"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 482,
+          "raw_text": "STRING 'Int. for a/c ' , ACCT-ID DELIMITED BY SIZE INTO TRAN-DESC",
+          "reason": "unresolved read operand: ,"
         },
         {
           "verb": "MOVE",

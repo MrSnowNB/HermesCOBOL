@@ -297,8 +297,8 @@
         {
           "verb": "MOVE",
           "line_no": 169,
-          "raw_text": "MOVE 'Invalid value",
-          "reason": "MOVE missing TO keyword"
+          "raw_text": "MOVE 'Invalid value. Valid values are (Y/N)...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
           "verb": "MOVE",
@@ -3723,6 +3723,18 @@
           "line_no": 713,
           "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COTRN2AO",
           "reason": "unresolved mutate operand: COTRN2AO"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 713,
+          "raw_text": "STRING 'Transaction added successfully. ' DELIMITED BY SIZE ' Your Tran ID is ' DELIMITED BY SIZE TRAN-ID  DELIMITED BY SPACE '.' DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved read operand: TRAN-ID"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 713,
+          "raw_text": "STRING 'Transaction added successfully. ' DELIMITED BY SIZE ' Your Tran ID is ' DELIMITED BY SIZE TRAN-ID  DELIMITED BY SPACE '.' DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
           "verb": "WHEN",

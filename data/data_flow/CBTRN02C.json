@@ -956,12 +956,6 @@
           "reason": "unresolved mutate operand: TCATBAL-FILE"
         },
         {
-          "verb": "DISPLAY",
-          "line_no": 469,
-          "raw_text": "DISPLAY 'TCATBAL record not found for key : ' FD-TRAN-CAT-KEY '",
-          "reason": "unresolved read operand: '"
-        },
-        {
           "verb": "MOVE",
           "line_no": 481,
           "raw_text": "MOVE 0 TO APPL-RESULT ELSE",

@@ -678,6 +678,24 @@
           "reason": "unresolved mutate operand: WS-ADMIN-OPT-TXT"
         },
         {
+          "verb": "STRING",
+          "line_no": 231,
+          "raw_text": "STRING CDEMO-ADMIN-OPT-NUM(WS-IDX)  DELIMITED BY SIZE '. '                         DELIMITED BY SIZE CDEMO-ADMIN-OPT-NAME(WS-IDX) DELIMITED BY SIZE INTO WS-ADMIN-OPT-TXT",
+          "reason": "unresolved read operand: CDEMO-ADMIN-OPT-NUM(WS-IDX)"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 231,
+          "raw_text": "STRING CDEMO-ADMIN-OPT-NUM(WS-IDX)  DELIMITED BY SIZE '. '                         DELIMITED BY SIZE CDEMO-ADMIN-OPT-NAME(WS-IDX) DELIMITED BY SIZE INTO WS-ADMIN-OPT-TXT",
+          "reason": "unresolved read operand: CDEMO-ADMIN-OPT-NAME(WS-IDX)"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 231,
+          "raw_text": "STRING CDEMO-ADMIN-OPT-NUM(WS-IDX)  DELIMITED BY SIZE '. '                         DELIMITED BY SIZE CDEMO-ADMIN-OPT-NAME(WS-IDX) DELIMITED BY SIZE INTO WS-ADMIN-OPT-TXT",
+          "reason": "unresolved mutate operand: WS-ADMIN-OPT-TXT"
+        },
+        {
           "verb": "EVALUATE",
           "line_no": 231,
           "raw_text": "EVALUATE WS-IDX",

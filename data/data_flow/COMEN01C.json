@@ -303,8 +303,8 @@
         {
           "verb": "MOVE",
           "line_no": 117,
-          "raw_text": "MOVE 'No access - Admin Only option",
-          "reason": "MOVE missing TO keyword"
+          "raw_text": "MOVE 'No access - Admin Only option... ' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
           "verb": "IF",
@@ -831,6 +831,24 @@
           "verb": "MOVE",
           "line_no": 264,
           "raw_text": "MOVE SPACES             TO WS-MENU-OPT-TXT",
+          "reason": "unresolved mutate operand: WS-MENU-OPT-TXT"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 264,
+          "raw_text": "STRING CDEMO-MENU-OPT-NUM(WS-IDX)  DELIMITED BY SIZE '. '                         DELIMITED BY SIZE CDEMO-MENU-OPT-NAME(WS-IDX) DELIMITED BY SIZE INTO WS-MENU-OPT-TXT",
+          "reason": "unresolved read operand: CDEMO-MENU-OPT-NUM(WS-IDX)"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 264,
+          "raw_text": "STRING CDEMO-MENU-OPT-NUM(WS-IDX)  DELIMITED BY SIZE '. '                         DELIMITED BY SIZE CDEMO-MENU-OPT-NAME(WS-IDX) DELIMITED BY SIZE INTO WS-MENU-OPT-TXT",
+          "reason": "unresolved read operand: CDEMO-MENU-OPT-NAME(WS-IDX)"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 264,
+          "raw_text": "STRING CDEMO-MENU-OPT-NUM(WS-IDX)  DELIMITED BY SIZE '. '                         DELIMITED BY SIZE CDEMO-MENU-OPT-NAME(WS-IDX) DELIMITED BY SIZE INTO WS-MENU-OPT-TXT",
           "reason": "unresolved mutate operand: WS-MENU-OPT-TXT"
         },
         {
