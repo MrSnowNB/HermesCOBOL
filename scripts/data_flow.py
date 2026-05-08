@@ -10,7 +10,6 @@ Output is written to stdout (single) or data/data_flow/<PROGRAM>.json (batch).
 """
 
 import json
-import os
 import re
 import sys
 from collections import defaultdict
@@ -22,45 +21,43 @@ CBL_DIR          = Path("data/raw/cbl")
 OUT_DIR          = Path("data/data_flow")
 FACTS_DIR        = Path("data/facts")
 
-# ---------------------------------------------------------------------------
-# Paragraph boundary regex  (same pattern used in v1.1 extractor)
-# ---------------------------------------------------------------------------
-_PARA_RE = re.compile(
-    r'^[ ]{0,7}([A-Z0-9][A-Z0-9\-]*)\s*\.\s*$',
-    re.IGNORECASE | re.MULTILINE
-)
-# Sequence-number area stripped lines (columns 1-6 are sequence numbers, 7 is
-# indicator). We normalise by stripping the leading 6-digit seq number if present.
 _SEQ_RE = re.compile(r'^\d{6}(.*)$')
+_LITERAL_RE = re.compile(
+    r"^(?:'[^']*'|\"[^\"]*\"|[-+]?\d+\.?\d*"
+    r"|ZERO|ZEROS|ZEROES|SPACES|SPACE|HIGH-VALUES|LOW-VALUES"
+    r"|ALL\s+'[^']+'|TRUE|FALSE)$",
+    re.IGNORECASE
+)
 
-# Literals (quoted strings or numeric)
-_LITERAL_RE = re.compile(r"^(?:'[^']*'|\"[^\"]*\"|[-+]?\d+\.?\d*|ZERO|ZEROS|ZEROES|SPACES|SPACE|HIGH-VALUES|LOW-VALUES|ALL\s+'[^']+'|TRUE|FALSE)$", re.IGNORECASE)
+# ---------------------------------------------------------------------------
+# Reserved words that can NEVER be paragraph names even if they appear as
+# WORD. on their own source line.
+# ---------------------------------------------------------------------------
+_NOT_PARA = frozenset({
+    'END-PERFORM', 'END-IF', 'END-EVALUATE', 'END-READ', 'END-WRITE',
+    'END-COMPUTE', 'END-ADD', 'END-SUBTRACT', 'END-MULTIPLY', 'END-DIVIDE',
+    'END-STRING', 'END-UNSTRING', 'END-EXEC', 'END-CALL',
+    'GOBACK', 'STOP', 'EXIT', 'CONTINUE', 'NEXT',
+    'ELSE', 'THEN', 'WHEN', 'OTHER',
+})
 
 
 # ---------------------------------------------------------------------------
-# Source normalisation helpers
+# Source normalisation
 # ---------------------------------------------------------------------------
 
 def _strip_seq(line: str) -> str:
-    """Remove 6-digit sequence number prefix if present."""
     m = _SEQ_RE.match(line)
     return m.group(1) if m else line
 
 
 def _normalise_source(raw: str) -> list:
-    """
-    Return list of (1-based-line-no, normalised-text) tuples.
-    - Strips sequence numbers.
-    - Discards full-line comments (indicator = '*' or '/').
-    - Discards blank lines.
-    - Keeps inline text (columns 8-72).
-    """
     result = []
     for lineno, raw_line in enumerate(raw.splitlines(), start=1):
         line = _strip_seq(raw_line)
-        if len(line) < 1:
+        if not line:
             continue
-        indicator = line[0] if len(line) > 0 else ' '
+        indicator = line[0]
         if indicator in ('*', '/', '$'):
             continue
         text = line[1:72].rstrip() if len(line) > 1 else ''
@@ -74,10 +71,6 @@ def _normalise_source(raw: str) -> list:
 # ---------------------------------------------------------------------------
 
 def build_qmap(layout_path: Path):
-    """
-    Returns (qmap, record_names).
-    qmap: short_name -> list of field-dicts from byte_layout.
-    """
     if not layout_path.exists():
         return {}, set()
     with open(layout_path, encoding='utf-8') as fh:
@@ -127,20 +120,15 @@ def build_qmap(layout_path: Path):
 # ---------------------------------------------------------------------------
 
 def resolve(name: str, qmap: dict, context_records: set) -> list:
-    """
-    Return list of matching field entries for `name`.
-    Nearest-enclosing group disambiguation via context_records.
-    """
-    bare = re.sub(r'\s*\(.*?\)', '', name).strip().upper()
-    bare = re.sub(r'\s*\(\d+:\d*\)', '', bare).strip()
-
+    bare = re.sub(r'\s*\([^)]*\)', '', name).strip().upper()
     matches = qmap.get(bare, [])
     if not matches:
         return []
     if len(matches) == 1:
         return matches
     if context_records:
-        filtered = [m for m in matches if m['record'].upper() in {r.upper() for r in context_records}]
+        filtered = [m for m in matches
+                    if m['record'].upper() in {r.upper() for r in context_records}]
         if filtered:
             return filtered
     return matches
@@ -148,6 +136,23 @@ def resolve(name: str, qmap: dict, context_records: set) -> list:
 
 def is_literal(token: str) -> bool:
     return bool(_LITERAL_RE.match(token.strip()))
+
+
+# ---------------------------------------------------------------------------
+# Tokeniser  -- strips quoted string literals before returning tokens
+# ---------------------------------------------------------------------------
+
+def _tokens(text: str) -> list:
+    """
+    Split text on whitespace, but first collapse every single-quoted string
+    (including multi-word ones) to the placeholder __LIT__ so that words
+    inside literals are never treated as identifiers.
+    Also collapses double-quoted strings.
+    """
+    # Replace 'anything here' and "anything here" with a single placeholder
+    cleaned = re.sub(r"'[^']*'", "__LIT__", text)
+    cleaned = re.sub(r'"[^"]*"', "__LIT__", cleaned)
+    return cleaned.strip().split()
 
 
 # ---------------------------------------------------------------------------
@@ -159,11 +164,8 @@ _PARA_HEADER_RE = re.compile(
     re.IGNORECASE
 )
 
+
 def extract_paragraphs(lines: list) -> dict:
-    """
-    Returns ordered dict: para_name -> [(lineno, text), ...]
-    Lines before the first paragraph header are stored under key '__MAIN__'.
-    """
     paragraphs = {}
     current = '__MAIN__'
     paragraphs[current] = []
@@ -171,25 +173,29 @@ def extract_paragraphs(lines: list) -> dict:
 
     for lineno, text in lines:
         stripped = text.strip()
-        upper = stripped.upper()
-        if upper.startswith('PROCEDURE DIVISION'):
+        if stripped.upper().startswith('PROCEDURE DIVISION'):
             in_procedure = True
             continue
         if not in_procedure:
             continue
         m = _PARA_HEADER_RE.match(stripped)
         if m:
-            name = m.group(1).upper()
-            current = name
-            if current not in paragraphs:
-                paragraphs[current] = []
+            candidate = m.group(1).upper()
+            # Reject reserved scope-terminators and control words
+            if candidate in _NOT_PARA:
+                # Treat as a statement line in the current paragraph
+                paragraphs[current].append((lineno, text))
+            else:
+                current = candidate
+                if current not in paragraphs:
+                    paragraphs[current] = []
         else:
             paragraphs[current].append((lineno, text))
     return paragraphs
 
 
 # ---------------------------------------------------------------------------
-# Statement tokeniser
+# Statement tokeniser / continuation joiner
 # ---------------------------------------------------------------------------
 
 def _join_lines(lines: list) -> list:
@@ -207,10 +213,6 @@ def _join_lines(lines: list) -> list:
 # Verb classifier
 # ---------------------------------------------------------------------------
 
-def _tokens(text: str) -> list:
-    return text.strip().split()
-
-
 def classify_statement(
     lineno: int,
     text: str,
@@ -220,7 +222,6 @@ def classify_statement(
     mutates: list,
     unresolved: list,
 ):
-    """Classify a single COBOL statement and append to reads/mutates/unresolved."""
     raw_text = text.strip().rstrip('.')
     tokens = _tokens(raw_text)
     if not tokens:
@@ -228,7 +229,7 @@ def classify_statement(
     verb = tokens[0].upper()
 
     def _add_read(name):
-        if is_literal(name):
+        if name == '__LIT__' or is_literal(name):
             return
         hits = resolve(name, qmap, context_records)
         if not hits:
@@ -241,7 +242,7 @@ def classify_statement(
                     context_records.add(h['record'])
 
     def _add_mutate(name):
-        if is_literal(name):
+        if name == '__LIT__' or is_literal(name):
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                                'reason': f'literal as mutate target (ignored): {name}'})
             return
@@ -262,16 +263,13 @@ def classify_statement(
                 to_idx = [t.upper() for t in tokens].index('TO')
                 src_group = tokens[2] if to_idx > 2 else None
                 dst_group = tokens[to_idx + 1] if to_idx + 1 < len(tokens) else None
-                if src_group:
-                    _add_read(src_group)
-                if dst_group:
-                    _add_mutate(dst_group)
+                if src_group: _add_read(src_group)
+                if dst_group: _add_mutate(dst_group)
                 src_upper = (src_group or '').upper()
                 dst_upper = (dst_group or '').upper()
                 src_leaves = {e['field'].split('.')[-1].upper() for e in qmap.get(src_upper, [])}
                 for de in qmap.get(dst_upper, []):
-                    leaf = de['field'].split('.')[-1].upper()
-                    if leaf in src_leaves and de not in mutates:
+                    if de['field'].split('.')[-1].upper() in src_leaves and de not in mutates:
                         mutates.append(de)
             except (ValueError, IndexError):
                 unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
@@ -279,111 +277,91 @@ def classify_statement(
         else:
             try:
                 to_idx = [t.upper() for t in tokens].index('TO')
-                for s in tokens[1:to_idx]:
-                    _add_read(s)
-                for d in tokens[to_idx + 1:]:
-                    _add_mutate(d)
+                for s in tokens[1:to_idx]: _add_read(s)
+                for d in tokens[to_idx + 1:]: _add_mutate(d)
             except ValueError:
                 unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                                    'reason': 'MOVE missing TO keyword'})
 
     # ADD
     elif verb == 'ADD':
-        upper_tokens = [t.upper() for t in tokens]
-        if 'GIVING' in upper_tokens:
-            giving_idx = upper_tokens.index('GIVING')
-            to_idx = upper_tokens.index('TO') if 'TO' in upper_tokens else giving_idx
-            for o in tokens[1:to_idx]:
-                _add_read(o)
-            for r in tokens[giving_idx + 1:]:
-                _add_mutate(r)
-        elif 'TO' in upper_tokens:
-            to_idx = upper_tokens.index('TO')
-            for o in tokens[1:to_idx]:
-                _add_read(o)
-            for d in tokens[to_idx + 1:]:
-                _add_read(d)
-                _add_mutate(d)
+        ut = [t.upper() for t in tokens]
+        if 'GIVING' in ut:
+            gi = ut.index('GIVING')
+            ti = ut.index('TO') if 'TO' in ut else gi
+            for o in tokens[1:ti]: _add_read(o)
+            for r in tokens[gi + 1:]: _add_mutate(r)
+        elif 'TO' in ut:
+            ti = ut.index('TO')
+            for o in tokens[1:ti]: _add_read(o)
+            for d in tokens[ti + 1:]:
+                _add_read(d); _add_mutate(d)
         else:
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                                'reason': 'ADD missing TO or GIVING'})
 
     # SUBTRACT
     elif verb == 'SUBTRACT':
-        upper_tokens = [t.upper() for t in tokens]
-        if 'GIVING' in upper_tokens:
-            giving_idx = upper_tokens.index('GIVING')
-            from_idx = upper_tokens.index('FROM') if 'FROM' in upper_tokens else giving_idx
-            for o in tokens[1:from_idx] + tokens[from_idx + 1:giving_idx]:
-                _add_read(o)
-            for r in tokens[giving_idx + 1:]:
-                _add_mutate(r)
-        elif 'FROM' in upper_tokens:
-            from_idx = upper_tokens.index('FROM')
-            for o in tokens[1:from_idx]:
-                _add_read(o)
-            for d in tokens[from_idx + 1:]:
-                _add_read(d)
-                _add_mutate(d)
+        ut = [t.upper() for t in tokens]
+        if 'GIVING' in ut:
+            gi = ut.index('GIVING')
+            fi = ut.index('FROM') if 'FROM' in ut else gi
+            for o in tokens[1:fi] + tokens[fi + 1:gi]: _add_read(o)
+            for r in tokens[gi + 1:]: _add_mutate(r)
+        elif 'FROM' in ut:
+            fi = ut.index('FROM')
+            for o in tokens[1:fi]: _add_read(o)
+            for d in tokens[fi + 1:]:
+                _add_read(d); _add_mutate(d)
         else:
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                                'reason': 'SUBTRACT missing FROM'})
 
     # MULTIPLY
     elif verb == 'MULTIPLY':
-        upper_tokens = [t.upper() for t in tokens]
-        if 'GIVING' in upper_tokens:
-            by_idx     = upper_tokens.index('BY') if 'BY' in upper_tokens else 2
-            giving_idx = upper_tokens.index('GIVING')
-            for o in tokens[1:by_idx] + tokens[by_idx + 1:giving_idx]:
-                _add_read(o)
-            for r in tokens[giving_idx + 1:]:
-                _add_mutate(r)
-        elif 'BY' in upper_tokens:
-            by_idx = upper_tokens.index('BY')
-            for o in tokens[1:by_idx]:
-                _add_read(o)
-            for d in tokens[by_idx + 1:]:
-                _add_read(d)
-                _add_mutate(d)
+        ut = [t.upper() for t in tokens]
+        if 'GIVING' in ut:
+            bi = ut.index('BY') if 'BY' in ut else 2
+            gi = ut.index('GIVING')
+            for o in tokens[1:bi] + tokens[bi + 1:gi]: _add_read(o)
+            for r in tokens[gi + 1:]: _add_mutate(r)
+        elif 'BY' in ut:
+            bi = ut.index('BY')
+            for o in tokens[1:bi]: _add_read(o)
+            for d in tokens[bi + 1:]:
+                _add_read(d); _add_mutate(d)
         else:
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                                'reason': 'MULTIPLY missing BY'})
 
     # DIVIDE
     elif verb == 'DIVIDE':
-        upper_tokens = [t.upper() for t in tokens]
-        if 'GIVING' in upper_tokens:
-            into_by_idx = next((i for i, t in enumerate(upper_tokens) if t in ('INTO', 'BY')), 2)
-            giving_idx  = upper_tokens.index('GIVING')
-            rem_idx = upper_tokens.index('REMAINDER') if 'REMAINDER' in upper_tokens else None
-            results = tokens[giving_idx + 1:rem_idx] if rem_idx else tokens[giving_idx + 1:]
-            for o in tokens[1:into_by_idx] + tokens[into_by_idx + 1:giving_idx]:
-                _add_read(o)
-            for r in results:
-                _add_mutate(r)
-            if rem_idx and rem_idx + 1 < len(tokens):
-                _add_mutate(tokens[rem_idx + 1])
-        elif 'INTO' in upper_tokens or 'BY' in upper_tokens:
-            split_idx = next((i for i, t in enumerate(upper_tokens) if t in ('INTO', 'BY')), 2)
-            for o in tokens[1:split_idx]:
-                _add_read(o)
-            for d in tokens[split_idx + 1:]:
-                _add_read(d)
-                _add_mutate(d)
+        ut = [t.upper() for t in tokens]
+        if 'GIVING' in ut:
+            ibi = next((i for i, t in enumerate(ut) if t in ('INTO', 'BY')), 2)
+            gi  = ut.index('GIVING')
+            ri  = ut.index('REMAINDER') if 'REMAINDER' in ut else None
+            results = tokens[gi + 1:ri] if ri else tokens[gi + 1:]
+            for o in tokens[1:ibi] + tokens[ibi + 1:gi]: _add_read(o)
+            for r in results: _add_mutate(r)
+            if ri and ri + 1 < len(tokens): _add_mutate(tokens[ri + 1])
+        elif 'INTO' in ut or 'BY' in ut:
+            si = next((i for i, t in enumerate(ut) if t in ('INTO', 'BY')), 2)
+            for o in tokens[1:si]: _add_read(o)
+            for d in tokens[si + 1:]:
+                _add_read(d); _add_mutate(d)
         else:
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                                'reason': 'DIVIDE missing INTO/BY'})
 
     # COMPUTE
     elif verb == 'COMPUTE':
-        upper_tokens = [t.upper() for t in tokens]
-        if '=' in upper_tokens:
-            eq_idx = upper_tokens.index('=')
-            for l in tokens[1:eq_idx]:
-                _add_mutate(l)
-            for r in tokens[eq_idx + 1:]:
-                if not is_literal(r) and r not in ('+', '-', '*', '/', '**', '(', ')'):
+        ut = [t.upper() for t in tokens]
+        if '=' in ut:
+            ei = ut.index('=')
+            for l in tokens[1:ei]: _add_mutate(l)
+            for r in tokens[ei + 1:]:
+                if r != '__LIT__' and not is_literal(r) and r not in ('+','-','*','/','**','(',')'):  
                     _add_read(r)
         else:
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
@@ -392,110 +370,98 @@ def classify_statement(
     # INITIALIZE
     elif verb == 'INITIALIZE':
         for t in tokens[1:]:
-            if t.upper() in ('REPLACING', 'BY', 'ALPHABETIC', 'ALPHANUMERIC',
-                             'NUMERIC', 'ALPHANUMERIC-EDITED', 'NUMERIC-EDITED', 'ALL'):
+            if t.upper() in ('REPLACING','BY','ALPHABETIC','ALPHANUMERIC',
+                             'NUMERIC','ALPHANUMERIC-EDITED','NUMERIC-EDITED','ALL'):
                 break
             _add_mutate(t)
 
     # READ
     elif verb == 'READ':
-        upper_tokens = [t.upper() for t in tokens]
+        ut = [t.upper() for t in tokens]
         file_name = tokens[1] if len(tokens) > 1 else None
-        if file_name:
-            _add_mutate(file_name)
-        if 'INTO' in upper_tokens:
-            into_idx = upper_tokens.index('INTO')
-            dst = tokens[into_idx + 1] if into_idx + 1 < len(tokens) else None
-            if dst:
-                _add_mutate(dst)
+        if file_name: _add_mutate(file_name)
+        if 'INTO' in ut:
+            ii = ut.index('INTO')
+            dst = tokens[ii + 1] if ii + 1 < len(tokens) else None
+            if dst: _add_mutate(dst)
 
     # WRITE
     elif verb == 'WRITE':
-        upper_tokens = [t.upper() for t in tokens]
+        ut = [t.upper() for t in tokens]
         record_name = tokens[1] if len(tokens) > 1 else None
-        if record_name:
-            _add_mutate(record_name)
-        if 'FROM' in upper_tokens:
-            from_idx = upper_tokens.index('FROM')
-            src = tokens[from_idx + 1] if from_idx + 1 < len(tokens) else None
-            if src:
-                _add_read(src)
+        if record_name: _add_mutate(record_name)
+        if 'FROM' in ut:
+            fi = ut.index('FROM')
+            src = tokens[fi + 1] if fi + 1 < len(tokens) else None
+            if src: _add_read(src)
 
     # STRING
     elif verb == 'STRING':
-        upper_tokens = [t.upper() for t in tokens]
-        into_idx    = upper_tokens.index('INTO')    if 'INTO'    in upper_tokens else None
-        pointer_idx = upper_tokens.index('POINTER') if 'POINTER' in upper_tokens else None
-        if into_idx is not None:
-            for t in tokens[1:into_idx]:
-                if t.upper() not in ('DELIMITED', 'BY', 'SIZE'):
+        ut = [t.upper() for t in tokens]
+        ii = ut.index('INTO')    if 'INTO'    in ut else None
+        pi = ut.index('POINTER') if 'POINTER' in ut else None
+        if ii is not None:
+            for t in tokens[1:ii]:
+                if t.upper() not in ('DELIMITED','BY','SIZE') and t != '__LIT__':
                     _add_read(t)
-            dst = tokens[into_idx + 1] if into_idx + 1 < len(tokens) else None
-            if dst:
-                _add_mutate(dst)
-        if pointer_idx is not None:
-            ptr = tokens[pointer_idx + 1] if pointer_idx + 1 < len(tokens) else None
-            if ptr:
-                _add_read(ptr)
-                _add_mutate(ptr)
+            dst = tokens[ii + 1] if ii + 1 < len(tokens) else None
+            if dst: _add_mutate(dst)
+        if pi is not None:
+            ptr = tokens[pi + 1] if pi + 1 < len(tokens) else None
+            if ptr: _add_read(ptr); _add_mutate(ptr)
 
     # UNSTRING
     elif verb == 'UNSTRING':
-        upper_tokens = [t.upper() for t in tokens]
+        ut = [t.upper() for t in tokens]
         src = tokens[1] if len(tokens) > 1 else None
-        if src:
-            _add_read(src)
-        into_idx     = upper_tokens.index('INTO')     if 'INTO'     in upper_tokens else None
-        pointer_idx  = upper_tokens.index('POINTER')  if 'POINTER'  in upper_tokens else None
-        tallying_idx = upper_tokens.index('TALLYING') if 'TALLYING' in upper_tokens else None
-        end_idx = min(x for x in [pointer_idx, tallying_idx, len(tokens)] if x is not None)
-        if into_idx is not None:
-            for t in tokens[into_idx + 1:end_idx]:
-                if t.upper() not in ('DELIMITED', 'BY', 'ALL', 'DELIMITER', 'COUNT', 'IN'):
+        if src: _add_read(src)
+        ii = ut.index('INTO')     if 'INTO'     in ut else None
+        pi = ut.index('POINTER')  if 'POINTER'  in ut else None
+        ti = ut.index('TALLYING') if 'TALLYING' in ut else None
+        end = min(x for x in [pi, ti, len(tokens)] if x is not None)
+        if ii is not None:
+            for t in tokens[ii + 1:end]:
+                if t.upper() not in ('DELIMITED','BY','ALL','DELIMITER','COUNT','IN') and t != '__LIT__':
                     _add_mutate(t)
-        if pointer_idx is not None:
-            ptr = tokens[pointer_idx + 1] if pointer_idx + 1 < len(tokens) else None
-            if ptr:
-                _add_read(ptr)
-                _add_mutate(ptr)
-        if tallying_idx is not None:
-            t_var = tokens[tallying_idx + 2] if tallying_idx + 2 < len(tokens) else None
-            if t_var:
-                _add_mutate(t_var)
+        if pi is not None:
+            ptr = tokens[pi + 1] if pi + 1 < len(tokens) else None
+            if ptr: _add_read(ptr); _add_mutate(ptr)
+        if ti is not None:
+            tv = tokens[ti + 2] if ti + 2 < len(tokens) else None
+            if tv: _add_mutate(tv)
 
     # ACCEPT
     elif verb == 'ACCEPT':
         dst = tokens[1] if len(tokens) > 1 else None
-        if dst:
-            _add_mutate(dst)
+        if dst and dst != '__LIT__': _add_mutate(dst)
 
-    # DISPLAY
+    # DISPLAY  -- reads only; literals already collapsed to __LIT__
     elif verb == 'DISPLAY':
         for t in tokens[1:]:
-            if t.upper() in ('UPON', 'WITH', 'NO', 'ADVANCING'):
+            if t.upper() in ('UPON','WITH','NO','ADVANCING'):
                 break
-            _add_read(t)
+            if t != '__LIT__':
+                _add_read(t)
 
     # IF / EVALUATE / WHEN
     elif verb in ('IF', 'EVALUATE', 'WHEN'):
-        skip_keywords = {'IF', 'EVALUATE', 'WHEN', 'THEN', 'ELSE', 'END-IF',
-                         'AND', 'OR', 'NOT', 'TRUE', 'FALSE', 'OTHER',
-                         'EQUAL', 'TO', 'THAN', 'GREATER', 'LESS', 'THROUGH',
-                         'THRU', 'ALSO', '=', '>', '<', '>=', '<='}
+        skip = {'IF','EVALUATE','WHEN','THEN','ELSE','END-IF',
+                'AND','OR','NOT','TRUE','FALSE','OTHER',
+                'EQUAL','TO','THAN','GREATER','LESS','THROUGH',
+                'THRU','ALSO','=','>','<','>=','<='}
         for t in tokens[1:]:
-            if t.upper() in skip_keywords or is_literal(t):
+            if t.upper() in skip or t == '__LIT__' or is_literal(t):
                 continue
             _add_read(t)
 
     # SET
     elif verb == 'SET':
-        upper_tokens = [t.upper() for t in tokens]
-        if 'TO' in upper_tokens:
-            to_idx = upper_tokens.index('TO')
-            for tgt in tokens[1:to_idx]:
-                _add_mutate(tgt)
-            for src in tokens[to_idx + 1:]:
-                if src.upper() not in ('TRUE', 'FALSE', 'ON', 'OFF', 'UP', 'DOWN'):
+        ut = [t.upper() for t in tokens]
+        if 'TO' in ut:
+            ti = ut.index('TO')
+            for tgt in tokens[1:ti]: _add_mutate(tgt)
+            for src in tokens[ti + 1:]:
+                if src.upper() not in ('TRUE','FALSE','ON','OFF','UP','DOWN') and src != '__LIT__':
                     _add_read(src)
         else:
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
@@ -503,53 +469,46 @@ def classify_statement(
 
     # EXEC CICS
     elif verb == 'EXEC':
-        cics_clauses_read   = {'FROM', 'LENGTH', 'RESP', 'RESP2'}
-        cics_clauses_mutate = {'INTO', 'RESP', 'RESP2'}
+        cics_r = {'FROM','LENGTH','RESP','RESP2'}
+        cics_m = {'INTO','RESP','RESP2'}
         for i, t in enumerate(tokens):
-            t_upper = t.upper()
-            if t_upper in cics_clauses_read and i + 1 < len(tokens):
+            tu = t.upper()
+            if tu in cics_r and i + 1 < len(tokens) and tokens[i+1] != '__LIT__':
                 _add_read(tokens[i + 1])
-            if t_upper in cics_clauses_mutate and i + 1 < len(tokens):
+            if tu in cics_m and i + 1 < len(tokens) and tokens[i+1] != '__LIT__':
                 _add_mutate(tokens[i + 1])
 
-    # PERFORM - not a data-flow event
     elif verb == 'PERFORM':
         pass
 
-    # CALL - known mutator, not yet fully implemented
     elif verb == 'CALL':
         unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                            'reason': 'CALL USING not yet classified (TODO Section 3)'})
 
-    # Control-flow / scope terminators
-    elif verb in ('OPEN', 'CLOSE', 'STOP', 'GOBACK', 'CONTINUE', 'EXIT',
-                  'GO', 'NEXT', 'END-READ', 'END-WRITE', 'END-IF',
-                  'END-EVALUATE', 'END-PERFORM', 'END-STRING', 'END-UNSTRING',
-                  'END-COMPUTE', 'END-ADD', 'END-SUBTRACT', 'END-MULTIPLY',
-                  'END-DIVIDE', 'END-EXEC'):
+    elif verb in ('OPEN','CLOSE','STOP','GOBACK','CONTINUE','EXIT',
+                  'GO','NEXT','END-READ','END-WRITE','END-IF',
+                  'END-EVALUATE','END-PERFORM','END-STRING','END-UNSTRING',
+                  'END-COMPUTE','END-ADD','END-SUBTRACT','END-MULTIPLY',
+                  'END-DIVIDE','END-EXEC'):
         pass
 
-    # Known future mutators
-    if verb in ('INSPECT', 'SORT', 'MERGE', 'RELEASE', 'RETURN'):
+    if verb in ('INSPECT','SORT','MERGE','RELEASE','RETURN'):
         unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                            'reason': f'{verb} not yet classified (TODO)'})
 
 
 # ---------------------------------------------------------------------------
-# Main extraction logic
+# Main extraction
 # ---------------------------------------------------------------------------
 
 def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
     program_name = cbl_path.stem.upper()
-    raw = cbl_path.read_text(encoding='utf-8', errors='replace')
+    raw   = cbl_path.read_text(encoding='utf-8', errors='replace')
     lines = _normalise_source(raw)
 
     qmap, record_names = build_qmap(layout_path)
-
     paragraphs = extract_paragraphs(lines)
 
-    # Check paragraph count against facts file
-    # FIX: paragraphs_defined is a list of names in the facts schema; use len()
     program_unresolved = []
     facts_path = FACTS_DIR / f"{program_name}.json"
     if facts_path.exists():
@@ -557,14 +516,12 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
             with open(facts_path, encoding='utf-8') as fh:
                 facts = json.load(fh)
             raw_val = facts.get('paragraphs_defined', None)
-            if raw_val is None:
-                expected_para = None
+            if isinstance(raw_val, list):
+                expected_para = len(raw_val)
             elif isinstance(raw_val, int):
                 expected_para = raw_val
-            elif isinstance(raw_val, list):
-                expected_para = len(raw_val)
             else:
-                expected_para = None  # unknown shape - skip check
+                expected_para = None
 
             actual_para = len([k for k in paragraphs if k != '__MAIN__'])
             if expected_para is not None and abs(actual_para - expected_para) > 1:
@@ -573,31 +530,26 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
                 print(f"WARNING [{program_name}]: {msg}", file=sys.stderr)
                 program_unresolved.append({'issue': msg})
         except Exception as exc:
-            print(f"WARNING [{program_name}]: could not read facts file: {exc}", file=sys.stderr)
+            print(f"WARNING [{program_name}]: could not read facts: {exc}", file=sys.stderr)
 
     paragraph_data_flow = {}
     for para_name, para_lines in paragraphs.items():
         if para_name == '__MAIN__':
             continue
-        reads      = []
-        mutates    = []
-        unresolved = []
-        context_records = set()
+        reads = []; mutates = []; unresolved_list = []
+        context_records: set = set()
 
-        joined = _join_lines(para_lines)
-        for lineno, text in joined:
-            parts = re.split(r'\.(?=\s|$)', text)
-            for part in parts:
+        for lineno, text in _join_lines(para_lines):
+            for part in re.split(r'\.(?=\s|$)', text):
                 part = part.strip()
-                if not part:
-                    continue
-                _dispatch_inline(lineno, part, qmap, context_records,
-                                 reads, mutates, unresolved)
+                if part:
+                    _dispatch_inline(lineno, part, qmap, context_records,
+                                     reads, mutates, unresolved_list)
 
         paragraph_data_flow[para_name] = {
             'reads':      reads,
             'mutates':    mutates,
-            'unresolved': unresolved,
+            'unresolved': unresolved_list,
         }
 
     return {
@@ -608,18 +560,7 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
     }
 
 
-def _dispatch_inline(
-    lineno: int,
-    text: str,
-    qmap: dict,
-    context_records: set,
-    reads: list,
-    mutates: list,
-    unresolved: list,
-):
-    """
-    Split a text fragment on known verb boundaries and classify each sub-statement.
-    """
+def _dispatch_inline(lineno, text, qmap, context_records, reads, mutates, unresolved):
     _VERB_SPLIT_RE = re.compile(
         r'(?:^|\s)(?=(?:MOVE|ADD|SUBTRACT|MULTIPLY|DIVIDE|COMPUTE|INITIALIZE|'
         r'READ|WRITE|STRING|UNSTRING|ACCEPT|DISPLAY|IF|EVALUATE|WHEN|SET|EXEC|'
@@ -629,8 +570,7 @@ def _dispatch_inline(
         r'END-STRING|END-UNSTRING)(?:\s|$))',
         re.IGNORECASE,
     )
-    parts = _VERB_SPLIT_RE.split(text)
-    for part in parts:
+    for part in _VERB_SPLIT_RE.split(text):
         part = part.strip()
         if part:
             classify_statement(lineno, part, qmap, context_records,
@@ -645,11 +585,10 @@ def run_single(cbl_path: Path, out_fh=None):
     program_name = cbl_path.stem.upper()
     layout_path  = BYTE_LAYOUTS_DIR / f"{program_name}.json"
     result = extract_data_flow(cbl_path, layout_path)
-    n_unresolved = sum(
-        len(p['unresolved']) for p in result['paragraph_data_flow'].values()
-    ) + len(result['program_unresolved'])
-    if n_unresolved:
-        print(f"[{program_name}] unresolved_count={n_unresolved}", file=sys.stderr)
+    n = sum(len(p['unresolved']) for p in result['paragraph_data_flow'].values()) \
+        + len(result['program_unresolved'])
+    if n:
+        print(f"[{program_name}] unresolved_count={n}", file=sys.stderr)
     output = json.dumps(result, indent=2)
     if out_fh:
         out_fh.write(output)
@@ -659,22 +598,20 @@ def run_single(cbl_path: Path, out_fh=None):
 
 def run_all():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    cbl_files = sorted(CBL_DIR.glob('*.cbl')) + sorted(CBL_DIR.glob('*.CBL'))
     seen = set()
     unique = []
-    for f in cbl_files:
+    for f in sorted(CBL_DIR.glob('*.cbl')) + sorted(CBL_DIR.glob('*.CBL')):
         if f.stem.upper() not in seen:
             seen.add(f.stem.upper())
             unique.append(f)
     print(f"[corpus] processing {len(unique)} programs...", file=sys.stderr)
     for cbl_path in unique:
-        program_name = cbl_path.stem.upper()
-        out_path = OUT_DIR / f"{program_name}.json"
+        out_path = OUT_DIR / f"{cbl_path.stem.upper()}.json"
         try:
             with open(out_path, 'w', encoding='utf-8') as fh:
                 run_single(cbl_path, out_fh=fh)
         except Exception as exc:
-            print(f"[{program_name}] ERROR: {exc}", file=sys.stderr)
+            print(f"[{cbl_path.stem.upper()}] ERROR: {exc}", file=sys.stderr)
     print(f"[corpus] done. wrote {len(unique)} files to {OUT_DIR}/", file=sys.stderr)
 
 
