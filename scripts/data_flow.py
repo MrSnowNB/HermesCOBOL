@@ -106,34 +106,30 @@ def _join_source_lines(lines: list) -> list:
     """
     Fuse physical continuation lines back into their logical predecessor.
 
-    A line is treated as a continuation candidate ONLY when ALL three
-    conditions hold:
-      1. The predecessor did NOT end with a statement-terminating period.
-      2. The candidate line is NOT a paragraph/section header
-         (i.e. does not match _PARA_HEADER_RE or is in _NOT_PARA).
-      3. The candidate does NOT start with the CardDemo 4-digit prefix
-         pattern (^\d{4}-)  -- extra guard to preserve real paragraph names
-         that the regex alone might mis-classify.
+    A line is fused as a continuation when BOTH conditions hold:
+      1. The predecessor did NOT end with a statement-terminating period
+         (i.e. the logical statement is still open).
+      2. The candidate does NOT start with the CardDemo 4-digit prefix
+         pattern (^\\d{4}-).  Real paragraph headers in this codebase
+         always carry that prefix; non-prefixed tokens that look like
+         headers (e.g. WS-REISSUE-DATE., VB2-ACCT-ID.) are MOVE
+         continuation targets and must be absorbed.
 
-    This targets exactly the two offending patterns:
-        MOVE A TO B
-                   WS-REISSUE-DATE.    <- continuation target, no prefix
-        MOVE A TO B
-                   VB2-ACCT-ID.        <- same
-    while leaving all real paragraph headers (0000-, 1000-, ...) intact.
+    Note: the _is_para_header_line check is intentionally NOT used here.
+    A line that looks like a header but whose predecessor is an open
+    statement IS a continuation target -- that is exactly the bug we are
+    fixing.  Only the 4-digit prefix guard is authoritative for whether
+    a token can start a new paragraph.
     """
     if not lines:
         return []
     joined = [[lines[0][0], lines[0][1]]]
     for lineno, text in lines[1:]:
         stripped = text.strip()
-        prev_ends = _ends_statement(joined[-1][1])
-        candidate_is_header = _is_para_header_line(text)
+        prev_ends           = _ends_statement(joined[-1][1])
         candidate_has_prefix = bool(_CARDEMO_PARA_PREFIX_RE.match(stripped))
 
-        if (not prev_ends
-                and not candidate_is_header
-                and not candidate_has_prefix):
+        if not prev_ends and not candidate_has_prefix:
             joined[-1][1] = joined[-1][1] + ' ' + stripped
         else:
             joined.append([lineno, text])
