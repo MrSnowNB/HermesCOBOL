@@ -6942,6 +6942,11 @@
       "mutates": [],
       "unresolved": []
     },
+    "SEND-PLAIN-TEXT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
     "SEND-PLAIN-TEXT-EXIT": {
       "reads": [],
       "mutates": [],
@@ -6966,6 +6971,11 @@
         }
       ]
     },
+    "SEND-LONG-TEXT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
     "SEND-LONG-TEXT-EXIT": {
       "reads": [],
       "mutates": [],
@@ -6974,7 +6984,7 @@
   },
   "program_unresolved": [
     {
-      "issue": "paragraph count mismatch: local=37 facts=41"
+      "issue": "paragraph count mismatch: local=39 facts=41"
     }
   ]
 }

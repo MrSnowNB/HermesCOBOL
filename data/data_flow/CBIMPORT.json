@@ -1,10 +1,1582 @@
 {
   "program": "CBIMPORT",
   "schema_version": "1.2",
-  "paragraph_data_flow": {},
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=0 facts=16"
+  "paragraph_data_flow": {
+    "0000-MAIN-PROCESSING": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "1000-INITIALIZE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE(1:4) TO WS-IMPORT-DATE(1:4)",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE(1:4) TO WS-IMPORT-DATE(1:4)",
+          "reason": "unresolved read operand: CURRENT-DATE(1:4)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE(1:4) TO WS-IMPORT-DATE(1:4)",
+          "reason": "unresolved mutate operand: WS-IMPORT-DATE(1:4)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE '-' TO WS-IMPORT-DATE(5:1)",
+          "reason": "unresolved mutate operand: WS-IMPORT-DATE(5:1)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE(5:2) TO WS-IMPORT-DATE(6:2)",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE(5:2) TO WS-IMPORT-DATE(6:2)",
+          "reason": "unresolved read operand: CURRENT-DATE(5:2)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE(5:2) TO WS-IMPORT-DATE(6:2)",
+          "reason": "unresolved mutate operand: WS-IMPORT-DATE(6:2)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE '-' TO WS-IMPORT-DATE(8:1)",
+          "reason": "unresolved mutate operand: WS-IMPORT-DATE(8:1)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE(7:2) TO WS-IMPORT-DATE(9:2)",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE(7:2) TO WS-IMPORT-DATE(9:2)",
+          "reason": "unresolved read operand: CURRENT-DATE(7:2)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE(7:2) TO WS-IMPORT-DATE(9:2)",
+          "reason": "unresolved mutate operand: WS-IMPORT-DATE(9:2)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE(9:2) TO WS-IMPORT-TIME(1:2)",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE(9:2) TO WS-IMPORT-TIME(1:2)",
+          "reason": "unresolved read operand: CURRENT-DATE(9:2)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE(9:2) TO WS-IMPORT-TIME(1:2)",
+          "reason": "unresolved mutate operand: WS-IMPORT-TIME(1:2)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE ':' TO WS-IMPORT-TIME(3:1)",
+          "reason": "unresolved mutate operand: WS-IMPORT-TIME(3:1)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE(11:2) TO WS-IMPORT-TIME(4:2)",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE(11:2) TO WS-IMPORT-TIME(4:2)",
+          "reason": "unresolved read operand: CURRENT-DATE(11:2)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE(11:2) TO WS-IMPORT-TIME(4:2)",
+          "reason": "unresolved mutate operand: WS-IMPORT-TIME(4:2)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE ':' TO WS-IMPORT-TIME(6:1)",
+          "reason": "unresolved mutate operand: WS-IMPORT-TIME(6:1)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE(13:2) TO WS-IMPORT-TIME(7:2)",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE(13:2) TO WS-IMPORT-TIME(7:2)",
+          "reason": "unresolved read operand: CURRENT-DATE(13:2)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 175,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE(13:2) TO WS-IMPORT-TIME(7:2)",
+          "reason": "unresolved mutate operand: WS-IMPORT-TIME(7:2)"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 175,
+          "raw_text": "DISPLAY 'CBIMPORT: Import Date: ' WS-IMPORT-DATE",
+          "reason": "unresolved read operand: WS-IMPORT-DATE"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 175,
+          "raw_text": "DISPLAY 'CBIMPORT: Import Time: ' WS-IMPORT-TIME",
+          "reason": "unresolved read operand: WS-IMPORT-TIME"
+        }
+      ]
+    },
+    "1100-OPEN-FILES": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "IF",
+          "line_no": 197,
+          "raw_text": "IF NOT WS-EXPORT-OK",
+          "reason": "unresolved read operand: WS-EXPORT-OK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 197,
+          "raw_text": "DISPLAY 'ERROR: Cannot",
+          "reason": "unresolved read operand: 'ERROR:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 197,
+          "raw_text": "DISPLAY 'ERROR: Cannot",
+          "reason": "unresolved read operand: Cannot"
+        },
+        {
+          "verb": "IF",
+          "line_no": 197,
+          "raw_text": "IF NOT WS-CUSTOMER-OK",
+          "reason": "unresolved read operand: WS-CUSTOMER-OK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 197,
+          "raw_text": "DISPLAY 'ERROR: Cannot",
+          "reason": "unresolved read operand: 'ERROR:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 197,
+          "raw_text": "DISPLAY 'ERROR: Cannot",
+          "reason": "unresolved read operand: Cannot"
+        },
+        {
+          "verb": "IF",
+          "line_no": 197,
+          "raw_text": "IF NOT WS-ACCOUNT-OK",
+          "reason": "unresolved read operand: WS-ACCOUNT-OK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 197,
+          "raw_text": "DISPLAY 'ERROR: Cannot",
+          "reason": "unresolved read operand: 'ERROR:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 197,
+          "raw_text": "DISPLAY 'ERROR: Cannot",
+          "reason": "unresolved read operand: Cannot"
+        },
+        {
+          "verb": "IF",
+          "line_no": 197,
+          "raw_text": "IF NOT WS-XREF-OK",
+          "reason": "unresolved read operand: WS-XREF-OK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 197,
+          "raw_text": "DISPLAY 'ERROR: Cannot",
+          "reason": "unresolved read operand: 'ERROR:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 197,
+          "raw_text": "DISPLAY 'ERROR: Cannot",
+          "reason": "unresolved read operand: Cannot"
+        },
+        {
+          "verb": "IF",
+          "line_no": 197,
+          "raw_text": "IF NOT WS-TRANSACTION-OK",
+          "reason": "unresolved read operand: WS-TRANSACTION-OK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 197,
+          "raw_text": "DISPLAY 'ERROR: Cannot",
+          "reason": "unresolved read operand: 'ERROR:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 197,
+          "raw_text": "DISPLAY 'ERROR: Cannot",
+          "reason": "unresolved read operand: Cannot"
+        },
+        {
+          "verb": "IF",
+          "line_no": 197,
+          "raw_text": "IF NOT WS-CARD-OK",
+          "reason": "unresolved read operand: WS-CARD-OK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 197,
+          "raw_text": "DISPLAY 'ERROR: Cannot",
+          "reason": "unresolved read operand: 'ERROR:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 197,
+          "raw_text": "DISPLAY 'ERROR: Cannot",
+          "reason": "unresolved read operand: Cannot"
+        },
+        {
+          "verb": "IF",
+          "line_no": 197,
+          "raw_text": "IF NOT WS-ERROR-OK",
+          "reason": "unresolved read operand: WS-ERROR-OK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 197,
+          "raw_text": "DISPLAY 'ERROR: Cannot",
+          "reason": "unresolved read operand: 'ERROR:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 197,
+          "raw_text": "DISPLAY 'ERROR: Cannot",
+          "reason": "unresolved read operand: Cannot"
+        }
+      ]
+    },
+    "2000-PROCESS-EXPORT-FILE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "ADD",
+          "line_no": 249,
+          "raw_text": "ADD 1 TO WS-TOTAL-RECORDS-READ",
+          "reason": "unresolved read operand: WS-TOTAL-RECORDS-READ"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 249,
+          "raw_text": "ADD 1 TO WS-TOTAL-RECORDS-READ",
+          "reason": "unresolved mutate operand: WS-TOTAL-RECORDS-READ"
+        }
+      ]
+    },
+    "2100-READ-EXPORT-RECORD": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "READ",
+          "line_no": 260,
+          "raw_text": "READ EXPORT-INPUT INTO EXPORT-RECORD",
+          "reason": "unresolved mutate operand: EXPORT-INPUT"
+        },
+        {
+          "verb": "READ",
+          "line_no": 260,
+          "raw_text": "READ EXPORT-INPUT INTO EXPORT-RECORD",
+          "reason": "unresolved mutate operand: EXPORT-RECORD"
+        },
+        {
+          "verb": "IF",
+          "line_no": 260,
+          "raw_text": "IF NOT WS-EXPORT-OK AND NOT WS-EXPORT-EOF",
+          "reason": "unresolved read operand: WS-EXPORT-OK"
+        },
+        {
+          "verb": "IF",
+          "line_no": 260,
+          "raw_text": "IF NOT WS-EXPORT-OK AND NOT WS-EXPORT-EOF",
+          "reason": "unresolved read operand: WS-EXPORT-EOF"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 260,
+          "raw_text": "DISPLAY 'ERROR: Reading EXPORT-INPUT, Status: ' WS-EXPORT-STATUS",
+          "reason": "unresolved read operand: WS-EXPORT-STATUS"
+        }
+      ]
+    },
+    "2200-PROCESS-RECORD-BY-TYPE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "EVALUATE",
+          "line_no": 271,
+          "raw_text": "EVALUATE EXPORT-REC-TYPE",
+          "reason": "unresolved read operand: EXPORT-REC-TYPE"
+        }
+      ]
+    },
+    "2300-PROCESS-CUSTOMER-RECORD": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "INITIALIZE",
+          "line_no": 289,
+          "raw_text": "INITIALIZE CUSTOMER-RECORD *    Map export fields to customer record",
+          "reason": "unresolved mutate operand: CUSTOMER-RECORD"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 289,
+          "raw_text": "INITIALIZE CUSTOMER-RECORD *    Map export fields to customer record",
+          "reason": "unresolved mutate operand: *"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 289,
+          "raw_text": "INITIALIZE CUSTOMER-RECORD *    Map export fields to customer record",
+          "reason": "unresolved mutate operand: Map"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 289,
+          "raw_text": "INITIALIZE CUSTOMER-RECORD *    Map export fields to customer record",
+          "reason": "unresolved mutate operand: export"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 289,
+          "raw_text": "INITIALIZE CUSTOMER-RECORD *    Map export fields to customer record",
+          "reason": "unresolved mutate operand: fields"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 289,
+          "raw_text": "INITIALIZE CUSTOMER-RECORD *    Map export fields to customer record",
+          "reason": "unresolved mutate operand: to"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 289,
+          "raw_text": "INITIALIZE CUSTOMER-RECORD *    Map export fields to customer record",
+          "reason": "unresolved mutate operand: customer"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 289,
+          "raw_text": "INITIALIZE CUSTOMER-RECORD *    Map export fields to customer record",
+          "reason": "unresolved mutate operand: record"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-ID TO CUST-ID",
+          "reason": "unresolved read operand: EXP-CUST-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-ID TO CUST-ID",
+          "reason": "unresolved mutate operand: CUST-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-FIRST-NAME TO CUST-FIRST-NAME",
+          "reason": "unresolved read operand: EXP-CUST-FIRST-NAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-FIRST-NAME TO CUST-FIRST-NAME",
+          "reason": "unresolved mutate operand: CUST-FIRST-NAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-MIDDLE-NAME TO CUST-MIDDLE-NAME",
+          "reason": "unresolved read operand: EXP-CUST-MIDDLE-NAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-MIDDLE-NAME TO CUST-MIDDLE-NAME",
+          "reason": "unresolved mutate operand: CUST-MIDDLE-NAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-LAST-NAME TO CUST-LAST-NAME",
+          "reason": "unresolved read operand: EXP-CUST-LAST-NAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-LAST-NAME TO CUST-LAST-NAME",
+          "reason": "unresolved mutate operand: CUST-LAST-NAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-ADDR-LINE(1) TO CUST-ADDR-LINE-1",
+          "reason": "unresolved read operand: EXP-CUST-ADDR-LINE(1)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-ADDR-LINE(1) TO CUST-ADDR-LINE-1",
+          "reason": "unresolved mutate operand: CUST-ADDR-LINE-1"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-ADDR-LINE(2) TO CUST-ADDR-LINE-2",
+          "reason": "unresolved read operand: EXP-CUST-ADDR-LINE(2)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-ADDR-LINE(2) TO CUST-ADDR-LINE-2",
+          "reason": "unresolved mutate operand: CUST-ADDR-LINE-2"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-ADDR-LINE(3) TO CUST-ADDR-LINE-3",
+          "reason": "unresolved read operand: EXP-CUST-ADDR-LINE(3)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-ADDR-LINE(3) TO CUST-ADDR-LINE-3",
+          "reason": "unresolved mutate operand: CUST-ADDR-LINE-3"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-ADDR-STATE-CD TO CUST-ADDR-STATE-CD",
+          "reason": "unresolved read operand: EXP-CUST-ADDR-STATE-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-ADDR-STATE-CD TO CUST-ADDR-STATE-CD",
+          "reason": "unresolved mutate operand: CUST-ADDR-STATE-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-ADDR-COUNTRY-CD TO CUST-ADDR-COUNTRY-CD",
+          "reason": "unresolved read operand: EXP-CUST-ADDR-COUNTRY-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-ADDR-COUNTRY-CD TO CUST-ADDR-COUNTRY-CD",
+          "reason": "unresolved mutate operand: CUST-ADDR-COUNTRY-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-ADDR-ZIP TO CUST-ADDR-ZIP",
+          "reason": "unresolved read operand: EXP-CUST-ADDR-ZIP"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-ADDR-ZIP TO CUST-ADDR-ZIP",
+          "reason": "unresolved mutate operand: CUST-ADDR-ZIP"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-PHONE-NUM(1) TO CUST-PHONE-NUM-1",
+          "reason": "unresolved read operand: EXP-CUST-PHONE-NUM(1)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-PHONE-NUM(1) TO CUST-PHONE-NUM-1",
+          "reason": "unresolved mutate operand: CUST-PHONE-NUM-1"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-PHONE-NUM(2) TO CUST-PHONE-NUM-2",
+          "reason": "unresolved read operand: EXP-CUST-PHONE-NUM(2)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-PHONE-NUM(2) TO CUST-PHONE-NUM-2",
+          "reason": "unresolved mutate operand: CUST-PHONE-NUM-2"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-SSN TO CUST-SSN",
+          "reason": "unresolved read operand: EXP-CUST-SSN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-SSN TO CUST-SSN",
+          "reason": "unresolved mutate operand: CUST-SSN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-GOVT-ISSUED-ID TO CUST-GOVT-ISSUED-ID",
+          "reason": "unresolved read operand: EXP-CUST-GOVT-ISSUED-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-GOVT-ISSUED-ID TO CUST-GOVT-ISSUED-ID",
+          "reason": "unresolved mutate operand: CUST-GOVT-ISSUED-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-DOB-YYYY-MM-DD TO CUST-DOB-YYYY-MM-DD",
+          "reason": "unresolved read operand: EXP-CUST-DOB-YYYY-MM-DD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-DOB-YYYY-MM-DD TO CUST-DOB-YYYY-MM-DD",
+          "reason": "unresolved mutate operand: CUST-DOB-YYYY-MM-DD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-EFT-ACCOUNT-ID TO CUST-EFT-ACCOUNT-ID",
+          "reason": "unresolved read operand: EXP-CUST-EFT-ACCOUNT-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-EFT-ACCOUNT-ID TO CUST-EFT-ACCOUNT-ID",
+          "reason": "unresolved mutate operand: CUST-EFT-ACCOUNT-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-PRI-CARD-HOLDER-IND TO CUST-PRI-CARD-HOLDER-IND",
+          "reason": "unresolved read operand: EXP-CUST-PRI-CARD-HOLDER-IND"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-PRI-CARD-HOLDER-IND TO CUST-PRI-CARD-HOLDER-IND",
+          "reason": "unresolved mutate operand: CUST-PRI-CARD-HOLDER-IND"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-FICO-CREDIT-SCORE TO CUST-FICO-CREDIT-SCORE",
+          "reason": "unresolved read operand: EXP-CUST-FICO-CREDIT-SCORE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 289,
+          "raw_text": "MOVE EXP-CUST-FICO-CREDIT-SCORE TO CUST-FICO-CREDIT-SCORE",
+          "reason": "unresolved mutate operand: CUST-FICO-CREDIT-SCORE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 289,
+          "raw_text": "WRITE CUSTOMER-RECORD",
+          "reason": "unresolved mutate operand: CUSTOMER-RECORD"
+        },
+        {
+          "verb": "IF",
+          "line_no": 289,
+          "raw_text": "IF NOT WS-CUSTOMER-OK",
+          "reason": "unresolved read operand: WS-CUSTOMER-OK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 289,
+          "raw_text": "DISPLAY 'ERROR: Writing customer record, Status: ' WS-CUSTOMER-STATUS",
+          "reason": "unresolved read operand: WS-CUSTOMER-STATUS"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 289,
+          "raw_text": "ADD 1 TO WS-CUSTOMER-RECORDS-IMPORTED",
+          "reason": "unresolved read operand: WS-CUSTOMER-RECORDS-IMPORTED"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 289,
+          "raw_text": "ADD 1 TO WS-CUSTOMER-RECORDS-IMPORTED",
+          "reason": "unresolved mutate operand: WS-CUSTOMER-RECORDS-IMPORTED"
+        }
+      ]
+    },
+    "2400-PROCESS-ACCOUNT-RECORD": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "INITIALIZE",
+          "line_no": 324,
+          "raw_text": "INITIALIZE ACCOUNT-RECORD *    Map export fields to account record",
+          "reason": "unresolved mutate operand: ACCOUNT-RECORD"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 324,
+          "raw_text": "INITIALIZE ACCOUNT-RECORD *    Map export fields to account record",
+          "reason": "unresolved mutate operand: *"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 324,
+          "raw_text": "INITIALIZE ACCOUNT-RECORD *    Map export fields to account record",
+          "reason": "unresolved mutate operand: Map"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 324,
+          "raw_text": "INITIALIZE ACCOUNT-RECORD *    Map export fields to account record",
+          "reason": "unresolved mutate operand: export"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 324,
+          "raw_text": "INITIALIZE ACCOUNT-RECORD *    Map export fields to account record",
+          "reason": "unresolved mutate operand: fields"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 324,
+          "raw_text": "INITIALIZE ACCOUNT-RECORD *    Map export fields to account record",
+          "reason": "unresolved mutate operand: to"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 324,
+          "raw_text": "INITIALIZE ACCOUNT-RECORD *    Map export fields to account record",
+          "reason": "unresolved mutate operand: account"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 324,
+          "raw_text": "INITIALIZE ACCOUNT-RECORD *    Map export fields to account record",
+          "reason": "unresolved mutate operand: record"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-ID TO ACCT-ID",
+          "reason": "unresolved read operand: EXP-ACCT-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-ID TO ACCT-ID",
+          "reason": "unresolved mutate operand: ACCT-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-ACTIVE-STATUS TO ACCT-ACTIVE-STATUS",
+          "reason": "unresolved read operand: EXP-ACCT-ACTIVE-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-ACTIVE-STATUS TO ACCT-ACTIVE-STATUS",
+          "reason": "unresolved mutate operand: ACCT-ACTIVE-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-CURR-BAL TO ACCT-CURR-BAL",
+          "reason": "unresolved read operand: EXP-ACCT-CURR-BAL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-CURR-BAL TO ACCT-CURR-BAL",
+          "reason": "unresolved mutate operand: ACCT-CURR-BAL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-CREDIT-LIMIT TO ACCT-CREDIT-LIMIT",
+          "reason": "unresolved read operand: EXP-ACCT-CREDIT-LIMIT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-CREDIT-LIMIT TO ACCT-CREDIT-LIMIT",
+          "reason": "unresolved mutate operand: ACCT-CREDIT-LIMIT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-CASH-CREDIT-LIMIT TO ACCT-CASH-CREDIT-LIMIT",
+          "reason": "unresolved read operand: EXP-ACCT-CASH-CREDIT-LIMIT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-CASH-CREDIT-LIMIT TO ACCT-CASH-CREDIT-LIMIT",
+          "reason": "unresolved mutate operand: ACCT-CASH-CREDIT-LIMIT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-OPEN-DATE TO ACCT-OPEN-DATE",
+          "reason": "unresolved read operand: EXP-ACCT-OPEN-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-OPEN-DATE TO ACCT-OPEN-DATE",
+          "reason": "unresolved mutate operand: ACCT-OPEN-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-EXPIRAION-DATE TO ACCT-EXPIRAION-DATE",
+          "reason": "unresolved read operand: EXP-ACCT-EXPIRAION-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-EXPIRAION-DATE TO ACCT-EXPIRAION-DATE",
+          "reason": "unresolved mutate operand: ACCT-EXPIRAION-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-REISSUE-DATE TO ACCT-REISSUE-DATE",
+          "reason": "unresolved read operand: EXP-ACCT-REISSUE-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-REISSUE-DATE TO ACCT-REISSUE-DATE",
+          "reason": "unresolved mutate operand: ACCT-REISSUE-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-CURR-CYC-CREDIT TO ACCT-CURR-CYC-CREDIT",
+          "reason": "unresolved read operand: EXP-ACCT-CURR-CYC-CREDIT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-CURR-CYC-CREDIT TO ACCT-CURR-CYC-CREDIT",
+          "reason": "unresolved mutate operand: ACCT-CURR-CYC-CREDIT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-CURR-CYC-DEBIT TO ACCT-CURR-CYC-DEBIT",
+          "reason": "unresolved read operand: EXP-ACCT-CURR-CYC-DEBIT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-CURR-CYC-DEBIT TO ACCT-CURR-CYC-DEBIT",
+          "reason": "unresolved mutate operand: ACCT-CURR-CYC-DEBIT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-ADDR-ZIP TO ACCT-ADDR-ZIP",
+          "reason": "unresolved read operand: EXP-ACCT-ADDR-ZIP"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-ADDR-ZIP TO ACCT-ADDR-ZIP",
+          "reason": "unresolved mutate operand: ACCT-ADDR-ZIP"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-GROUP-ID TO ACCT-GROUP-ID",
+          "reason": "unresolved read operand: EXP-ACCT-GROUP-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 324,
+          "raw_text": "MOVE EXP-ACCT-GROUP-ID TO ACCT-GROUP-ID",
+          "reason": "unresolved mutate operand: ACCT-GROUP-ID"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 324,
+          "raw_text": "WRITE ACCOUNT-RECORD",
+          "reason": "unresolved mutate operand: ACCOUNT-RECORD"
+        },
+        {
+          "verb": "IF",
+          "line_no": 324,
+          "raw_text": "IF NOT WS-ACCOUNT-OK",
+          "reason": "unresolved read operand: WS-ACCOUNT-OK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 324,
+          "raw_text": "DISPLAY 'ERROR: Writing account record, Status: ' WS-ACCOUNT-STATUS",
+          "reason": "unresolved read operand: WS-ACCOUNT-STATUS"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 324,
+          "raw_text": "ADD 1 TO WS-ACCOUNT-RECORDS-IMPORTED",
+          "reason": "unresolved read operand: WS-ACCOUNT-RECORDS-IMPORTED"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 324,
+          "raw_text": "ADD 1 TO WS-ACCOUNT-RECORDS-IMPORTED",
+          "reason": "unresolved mutate operand: WS-ACCOUNT-RECORDS-IMPORTED"
+        }
+      ]
+    },
+    "2500-PROCESS-XREF-RECORD": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "INITIALIZE",
+          "line_no": 353,
+          "raw_text": "INITIALIZE CARD-XREF-RECORD *    Map export fields to xref record",
+          "reason": "unresolved mutate operand: CARD-XREF-RECORD"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 353,
+          "raw_text": "INITIALIZE CARD-XREF-RECORD *    Map export fields to xref record",
+          "reason": "unresolved mutate operand: *"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 353,
+          "raw_text": "INITIALIZE CARD-XREF-RECORD *    Map export fields to xref record",
+          "reason": "unresolved mutate operand: Map"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 353,
+          "raw_text": "INITIALIZE CARD-XREF-RECORD *    Map export fields to xref record",
+          "reason": "unresolved mutate operand: export"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 353,
+          "raw_text": "INITIALIZE CARD-XREF-RECORD *    Map export fields to xref record",
+          "reason": "unresolved mutate operand: fields"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 353,
+          "raw_text": "INITIALIZE CARD-XREF-RECORD *    Map export fields to xref record",
+          "reason": "unresolved mutate operand: to"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 353,
+          "raw_text": "INITIALIZE CARD-XREF-RECORD *    Map export fields to xref record",
+          "reason": "unresolved mutate operand: xref"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 353,
+          "raw_text": "INITIALIZE CARD-XREF-RECORD *    Map export fields to xref record",
+          "reason": "unresolved mutate operand: record"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 353,
+          "raw_text": "MOVE EXP-XREF-CARD-NUM TO XREF-CARD-NUM",
+          "reason": "unresolved read operand: EXP-XREF-CARD-NUM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 353,
+          "raw_text": "MOVE EXP-XREF-CARD-NUM TO XREF-CARD-NUM",
+          "reason": "unresolved mutate operand: XREF-CARD-NUM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 353,
+          "raw_text": "MOVE EXP-XREF-CUST-ID TO XREF-CUST-ID",
+          "reason": "unresolved read operand: EXP-XREF-CUST-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 353,
+          "raw_text": "MOVE EXP-XREF-CUST-ID TO XREF-CUST-ID",
+          "reason": "unresolved mutate operand: XREF-CUST-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 353,
+          "raw_text": "MOVE EXP-XREF-ACCT-ID TO XREF-ACCT-ID",
+          "reason": "unresolved read operand: EXP-XREF-ACCT-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 353,
+          "raw_text": "MOVE EXP-XREF-ACCT-ID TO XREF-ACCT-ID",
+          "reason": "unresolved mutate operand: XREF-ACCT-ID"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 353,
+          "raw_text": "WRITE CARD-XREF-RECORD",
+          "reason": "unresolved mutate operand: CARD-XREF-RECORD"
+        },
+        {
+          "verb": "IF",
+          "line_no": 353,
+          "raw_text": "IF NOT WS-XREF-OK",
+          "reason": "unresolved read operand: WS-XREF-OK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 353,
+          "raw_text": "DISPLAY 'ERROR: Writing xref record, Status: ' WS-XREF-STATUS",
+          "reason": "unresolved read operand: WS-XREF-STATUS"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 353,
+          "raw_text": "ADD 1 TO WS-XREF-RECORDS-IMPORTED",
+          "reason": "unresolved read operand: WS-XREF-RECORDS-IMPORTED"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 353,
+          "raw_text": "ADD 1 TO WS-XREF-RECORDS-IMPORTED",
+          "reason": "unresolved mutate operand: WS-XREF-RECORDS-IMPORTED"
+        }
+      ]
+    },
+    "2600-PROCESS-TRAN-RECORD": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "INITIALIZE",
+          "line_no": 373,
+          "raw_text": "INITIALIZE TRAN-RECORD *    Map export fields to transaction record",
+          "reason": "unresolved mutate operand: TRAN-RECORD"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 373,
+          "raw_text": "INITIALIZE TRAN-RECORD *    Map export fields to transaction record",
+          "reason": "unresolved mutate operand: *"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 373,
+          "raw_text": "INITIALIZE TRAN-RECORD *    Map export fields to transaction record",
+          "reason": "unresolved mutate operand: Map"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 373,
+          "raw_text": "INITIALIZE TRAN-RECORD *    Map export fields to transaction record",
+          "reason": "unresolved mutate operand: export"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 373,
+          "raw_text": "INITIALIZE TRAN-RECORD *    Map export fields to transaction record",
+          "reason": "unresolved mutate operand: fields"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 373,
+          "raw_text": "INITIALIZE TRAN-RECORD *    Map export fields to transaction record",
+          "reason": "unresolved mutate operand: to"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 373,
+          "raw_text": "INITIALIZE TRAN-RECORD *    Map export fields to transaction record",
+          "reason": "unresolved mutate operand: transaction"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 373,
+          "raw_text": "INITIALIZE TRAN-RECORD *    Map export fields to transaction record",
+          "reason": "unresolved mutate operand: record"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-ID TO TRAN-ID",
+          "reason": "unresolved read operand: EXP-TRAN-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-ID TO TRAN-ID",
+          "reason": "unresolved mutate operand: TRAN-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-TYPE-CD TO TRAN-TYPE-CD",
+          "reason": "unresolved read operand: EXP-TRAN-TYPE-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-TYPE-CD TO TRAN-TYPE-CD",
+          "reason": "unresolved mutate operand: TRAN-TYPE-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-CAT-CD TO TRAN-CAT-CD",
+          "reason": "unresolved read operand: EXP-TRAN-CAT-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-CAT-CD TO TRAN-CAT-CD",
+          "reason": "unresolved mutate operand: TRAN-CAT-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-SOURCE TO TRAN-SOURCE",
+          "reason": "unresolved read operand: EXP-TRAN-SOURCE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-SOURCE TO TRAN-SOURCE",
+          "reason": "unresolved mutate operand: TRAN-SOURCE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-DESC TO TRAN-DESC",
+          "reason": "unresolved read operand: EXP-TRAN-DESC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-DESC TO TRAN-DESC",
+          "reason": "unresolved mutate operand: TRAN-DESC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-AMT TO TRAN-AMT",
+          "reason": "unresolved read operand: EXP-TRAN-AMT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-AMT TO TRAN-AMT",
+          "reason": "unresolved mutate operand: TRAN-AMT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-MERCHANT-ID TO TRAN-MERCHANT-ID",
+          "reason": "unresolved read operand: EXP-TRAN-MERCHANT-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-MERCHANT-ID TO TRAN-MERCHANT-ID",
+          "reason": "unresolved mutate operand: TRAN-MERCHANT-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-MERCHANT-NAME TO TRAN-MERCHANT-NAME",
+          "reason": "unresolved read operand: EXP-TRAN-MERCHANT-NAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-MERCHANT-NAME TO TRAN-MERCHANT-NAME",
+          "reason": "unresolved mutate operand: TRAN-MERCHANT-NAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-MERCHANT-CITY TO TRAN-MERCHANT-CITY",
+          "reason": "unresolved read operand: EXP-TRAN-MERCHANT-CITY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-MERCHANT-CITY TO TRAN-MERCHANT-CITY",
+          "reason": "unresolved mutate operand: TRAN-MERCHANT-CITY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-MERCHANT-ZIP TO TRAN-MERCHANT-ZIP",
+          "reason": "unresolved read operand: EXP-TRAN-MERCHANT-ZIP"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-MERCHANT-ZIP TO TRAN-MERCHANT-ZIP",
+          "reason": "unresolved mutate operand: TRAN-MERCHANT-ZIP"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-CARD-NUM TO TRAN-CARD-NUM",
+          "reason": "unresolved read operand: EXP-TRAN-CARD-NUM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-CARD-NUM TO TRAN-CARD-NUM",
+          "reason": "unresolved mutate operand: TRAN-CARD-NUM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-ORIG-TS TO TRAN-ORIG-TS",
+          "reason": "unresolved read operand: EXP-TRAN-ORIG-TS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-ORIG-TS TO TRAN-ORIG-TS",
+          "reason": "unresolved mutate operand: TRAN-ORIG-TS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-PROC-TS TO TRAN-PROC-TS",
+          "reason": "unresolved read operand: EXP-TRAN-PROC-TS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE EXP-TRAN-PROC-TS TO TRAN-PROC-TS",
+          "reason": "unresolved mutate operand: TRAN-PROC-TS"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 373,
+          "raw_text": "WRITE TRAN-RECORD",
+          "reason": "unresolved mutate operand: TRAN-RECORD"
+        },
+        {
+          "verb": "IF",
+          "line_no": 373,
+          "raw_text": "IF NOT WS-TRANSACTION-OK",
+          "reason": "unresolved read operand: WS-TRANSACTION-OK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 373,
+          "raw_text": "DISPLAY 'ERROR: Writing transaction record, Status: ' WS-TRANSACTION-STATUS",
+          "reason": "unresolved read operand: WS-TRANSACTION-STATUS"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 373,
+          "raw_text": "ADD 1 TO WS-TRAN-RECORDS-IMPORTED",
+          "reason": "unresolved read operand: WS-TRAN-RECORDS-IMPORTED"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 373,
+          "raw_text": "ADD 1 TO WS-TRAN-RECORDS-IMPORTED",
+          "reason": "unresolved mutate operand: WS-TRAN-RECORDS-IMPORTED"
+        }
+      ]
+    },
+    "2650-PROCESS-CARD-RECORD": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "INITIALIZE",
+          "line_no": 403,
+          "raw_text": "INITIALIZE CARD-RECORD *    Map export fields to card record",
+          "reason": "unresolved mutate operand: CARD-RECORD"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 403,
+          "raw_text": "INITIALIZE CARD-RECORD *    Map export fields to card record",
+          "reason": "unresolved mutate operand: *"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 403,
+          "raw_text": "INITIALIZE CARD-RECORD *    Map export fields to card record",
+          "reason": "unresolved mutate operand: Map"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 403,
+          "raw_text": "INITIALIZE CARD-RECORD *    Map export fields to card record",
+          "reason": "unresolved mutate operand: export"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 403,
+          "raw_text": "INITIALIZE CARD-RECORD *    Map export fields to card record",
+          "reason": "unresolved mutate operand: fields"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 403,
+          "raw_text": "INITIALIZE CARD-RECORD *    Map export fields to card record",
+          "reason": "unresolved mutate operand: to"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 403,
+          "raw_text": "INITIALIZE CARD-RECORD *    Map export fields to card record",
+          "reason": "unresolved mutate operand: card"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 403,
+          "raw_text": "INITIALIZE CARD-RECORD *    Map export fields to card record",
+          "reason": "unresolved mutate operand: record"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 403,
+          "raw_text": "MOVE EXP-CARD-NUM TO CARD-NUM",
+          "reason": "unresolved read operand: EXP-CARD-NUM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 403,
+          "raw_text": "MOVE EXP-CARD-NUM TO CARD-NUM",
+          "reason": "unresolved mutate operand: CARD-NUM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 403,
+          "raw_text": "MOVE EXP-CARD-ACCT-ID TO CARD-ACCT-ID",
+          "reason": "unresolved read operand: EXP-CARD-ACCT-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 403,
+          "raw_text": "MOVE EXP-CARD-ACCT-ID TO CARD-ACCT-ID",
+          "reason": "unresolved mutate operand: CARD-ACCT-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 403,
+          "raw_text": "MOVE EXP-CARD-CVV-CD TO CARD-CVV-CD",
+          "reason": "unresolved read operand: EXP-CARD-CVV-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 403,
+          "raw_text": "MOVE EXP-CARD-CVV-CD TO CARD-CVV-CD",
+          "reason": "unresolved mutate operand: CARD-CVV-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 403,
+          "raw_text": "MOVE EXP-CARD-EMBOSSED-NAME TO CARD-EMBOSSED-NAME",
+          "reason": "unresolved read operand: EXP-CARD-EMBOSSED-NAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 403,
+          "raw_text": "MOVE EXP-CARD-EMBOSSED-NAME TO CARD-EMBOSSED-NAME",
+          "reason": "unresolved mutate operand: CARD-EMBOSSED-NAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 403,
+          "raw_text": "MOVE EXP-CARD-EXPIRAION-DATE TO CARD-EXPIRAION-DATE",
+          "reason": "unresolved read operand: EXP-CARD-EXPIRAION-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 403,
+          "raw_text": "MOVE EXP-CARD-EXPIRAION-DATE TO CARD-EXPIRAION-DATE",
+          "reason": "unresolved mutate operand: CARD-EXPIRAION-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 403,
+          "raw_text": "MOVE EXP-CARD-ACTIVE-STATUS TO CARD-ACTIVE-STATUS",
+          "reason": "unresolved read operand: EXP-CARD-ACTIVE-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 403,
+          "raw_text": "MOVE EXP-CARD-ACTIVE-STATUS TO CARD-ACTIVE-STATUS",
+          "reason": "unresolved mutate operand: CARD-ACTIVE-STATUS"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 403,
+          "raw_text": "WRITE CARD-RECORD",
+          "reason": "unresolved mutate operand: CARD-RECORD"
+        },
+        {
+          "verb": "IF",
+          "line_no": 403,
+          "raw_text": "IF NOT WS-CARD-OK",
+          "reason": "unresolved read operand: WS-CARD-OK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 403,
+          "raw_text": "DISPLAY 'ERROR: Writing card record, Status: ' WS-CARD-STATUS",
+          "reason": "unresolved read operand: WS-CARD-STATUS"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 403,
+          "raw_text": "ADD 1 TO WS-CARD-RECORDS-IMPORTED",
+          "reason": "unresolved read operand: WS-CARD-RECORDS-IMPORTED"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 403,
+          "raw_text": "ADD 1 TO WS-CARD-RECORDS-IMPORTED",
+          "reason": "unresolved mutate operand: WS-CARD-RECORDS-IMPORTED"
+        }
+      ]
+    },
+    "2700-PROCESS-UNKNOWN-RECORD": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "ADD",
+          "line_no": 426,
+          "raw_text": "ADD 1 TO WS-UNKNOWN-RECORD-TYPE-COUNT",
+          "reason": "unresolved read operand: WS-UNKNOWN-RECORD-TYPE-COUNT"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 426,
+          "raw_text": "ADD 1 TO WS-UNKNOWN-RECORD-TYPE-COUNT",
+          "reason": "unresolved mutate operand: WS-UNKNOWN-RECORD-TYPE-COUNT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 426,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE TO ERR-TIMESTAMP",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 426,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE TO ERR-TIMESTAMP",
+          "reason": "unresolved read operand: CURRENT-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 426,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE TO ERR-TIMESTAMP",
+          "reason": "unresolved mutate operand: ERR-TIMESTAMP"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 426,
+          "raw_text": "MOVE EXPORT-REC-TYPE TO ERR-RECORD-TYPE",
+          "reason": "unresolved read operand: EXPORT-REC-TYPE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 426,
+          "raw_text": "MOVE EXPORT-REC-TYPE TO ERR-RECORD-TYPE",
+          "reason": "unresolved mutate operand: ERR-RECORD-TYPE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 426,
+          "raw_text": "MOVE EXPORT-SEQUENCE-NUM TO ERR-SEQUENCE",
+          "reason": "unresolved read operand: EXPORT-SEQUENCE-NUM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 426,
+          "raw_text": "MOVE EXPORT-SEQUENCE-NUM TO ERR-SEQUENCE",
+          "reason": "unresolved mutate operand: ERR-SEQUENCE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 426,
+          "raw_text": "MOVE 'Unknown record type encountered' TO ERR-MESSAGE",
+          "reason": "unresolved mutate operand: ERR-MESSAGE"
+        }
+      ]
+    },
+    "2750-WRITE-ERROR": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "WRITE",
+          "line_no": 438,
+          "raw_text": "WRITE ERROR-OUTPUT-RECORD FROM WS-ERROR-RECORD",
+          "reason": "unresolved mutate operand: ERROR-OUTPUT-RECORD"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 438,
+          "raw_text": "WRITE ERROR-OUTPUT-RECORD FROM WS-ERROR-RECORD",
+          "reason": "unresolved read operand: WS-ERROR-RECORD"
+        },
+        {
+          "verb": "IF",
+          "line_no": 438,
+          "raw_text": "IF NOT WS-ERROR-OK",
+          "reason": "unresolved read operand: WS-ERROR-OK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 438,
+          "raw_text": "DISPLAY 'ERROR: Writing error record, Status: ' WS-ERROR-STATUS",
+          "reason": "unresolved read operand: WS-ERROR-STATUS"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 438,
+          "raw_text": "ADD 1 TO WS-ERROR-RECORDS-WRITTEN",
+          "reason": "unresolved read operand: WS-ERROR-RECORDS-WRITTEN"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 438,
+          "raw_text": "ADD 1 TO WS-ERROR-RECORDS-WRITTEN",
+          "reason": "unresolved mutate operand: WS-ERROR-RECORDS-WRITTEN"
+        }
+      ]
+    },
+    "3000-VALIDATE-IMPORT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "4000-FINALIZE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "DISPLAY",
+          "line_no": 456,
+          "raw_text": "DISPLAY 'CBIMPORT: Total Records Read: ' WS-TOTAL-RECORDS-READ",
+          "reason": "unresolved read operand: WS-TOTAL-RECORDS-READ"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 456,
+          "raw_text": "DISPLAY 'CBIMPORT: Customers Imported: ' WS-CUSTOMER-RECORDS-IMPORTED",
+          "reason": "unresolved read operand: WS-CUSTOMER-RECORDS-IMPORTED"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 456,
+          "raw_text": "DISPLAY 'CBIMPORT: Accounts Imported: ' WS-ACCOUNT-RECORDS-IMPORTED",
+          "reason": "unresolved read operand: WS-ACCOUNT-RECORDS-IMPORTED"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 456,
+          "raw_text": "DISPLAY 'CBIMPORT: XRefs Imported: ' WS-XREF-RECORDS-IMPORTED",
+          "reason": "unresolved read operand: WS-XREF-RECORDS-IMPORTED"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 456,
+          "raw_text": "DISPLAY 'CBIMPORT: Transactions Imported: ' WS-TRAN-RECORDS-IMPORTED",
+          "reason": "unresolved read operand: WS-TRAN-RECORDS-IMPORTED"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 456,
+          "raw_text": "DISPLAY 'CBIMPORT: Cards Imported: ' WS-CARD-RECORDS-IMPORTED",
+          "reason": "unresolved read operand: WS-CARD-RECORDS-IMPORTED"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 456,
+          "raw_text": "DISPLAY 'CBIMPORT: Errors Written: ' WS-ERROR-RECORDS-WRITTEN",
+          "reason": "unresolved read operand: WS-ERROR-RECORDS-WRITTEN"
+        }
+      ]
+    },
+    "WS-UNKNOWN-RECORD-TYPE-COUNT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "9999-ABEND-PROGRAM": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "CALL",
+          "line_no": 482,
+          "raw_text": "CALL 'CEE3ABD'",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        }
+      ]
     }
-  ]
+  },
+  "program_unresolved": []
 }

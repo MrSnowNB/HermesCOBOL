@@ -185,7 +185,13 @@
           "line_no": 100,
           "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
+        }
+      ]
+    },
+    "PROCESS-ENTER-KEY": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "WHEN",
           "line_no": 151,
@@ -1085,7 +1091,13 @@
           "line_no": 151,
           "raw_text": "MOVE SPACE   TO USRIDINO  OF COUSR0AO",
           "reason": "unresolved mutate operand: COUSR0AO"
-        },
+        }
+      ]
+    },
+    "PROCESS-PF7-KEY": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "IF",
           "line_no": 239,
@@ -1157,7 +1169,13 @@
           "line_no": 239,
           "raw_text": "SET SEND-ERASE-NO TO TRUE",
           "reason": "unresolved mutate operand: SEND-ERASE-NO"
-        },
+        }
+      ]
+    },
+    "PROCESS-PF8-KEY": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "IF",
           "line_no": 262,
@@ -1223,7 +1241,13 @@
           "line_no": 262,
           "raw_text": "SET SEND-ERASE-NO TO TRUE",
           "reason": "unresolved mutate operand: SEND-ERASE-NO"
-        },
+        }
+      ]
+    },
+    "PROCESS-PAGE-FORWARD": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "IF",
           "line_no": 284,
@@ -1415,7 +1439,13 @@
           "line_no": 284,
           "raw_text": "MOVE SPACE   TO USRIDINO  OF COUSR0AO",
           "reason": "unresolved mutate operand: COUSR0AO"
-        },
+        }
+      ]
+    },
+    "PROCESS-PAGE-BACKWARD": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "IF",
           "line_no": 338,
@@ -1571,7 +1601,13 @@
           "line_no": 338,
           "raw_text": "MOVE CDEMO-CU00-PAGE-NUM TO PAGENUMI  OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
+        }
+      ]
+    },
+    "POPULATE-USER-DATA": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "EVALUATE",
           "line_no": 386,
@@ -2549,7 +2585,13 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-TYPE  TO UTYPE10I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
+        }
+      ]
+    },
+    "INITIALIZE-USER-DATA": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "EVALUATE",
           "line_no": 448,
@@ -3275,7 +3317,13 @@
           "line_no": 448,
           "raw_text": "MOVE SPACES TO UTYPE10I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
+        }
+      ]
+    },
+    "RETURN-TO-PREV-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "IF",
           "line_no": 508,
@@ -3317,7 +3365,13 @@
           "line_no": 508,
           "raw_text": "MOVE ZEROS        TO CDEMO-PGM-CONTEXT",
           "reason": "unresolved mutate operand: CDEMO-PGM-CONTEXT"
-        },
+        }
+      ]
+    },
+    "SEND-USRLST-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 524,
@@ -3347,7 +3401,18 @@
           "line_no": 524,
           "raw_text": "IF SEND-ERASE-YES",
           "reason": "unresolved read operand: SEND-ERASE-YES"
-        },
+        }
+      ]
+    },
+    "RECEIVE-USRLST-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "POPULATE-HEADER-INFO": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 564,
@@ -3581,7 +3646,13 @@
           "line_no": 564,
           "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COUSR0AO",
           "reason": "unresolved mutate operand: COUSR0AO"
-        },
+        }
+      ]
+    },
+    "STARTBR-USER-SEC-FILE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "EXEC",
           "line_no": 588,
@@ -3695,7 +3766,13 @@
           "line_no": 597,
           "raw_text": "MOVE -1       TO USRIDINL OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
+        }
+      ]
+    },
+    "READNEXT-USER-SEC-FILE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "EXEC",
           "line_no": 621,
@@ -3821,7 +3898,13 @@
           "line_no": 631,
           "raw_text": "MOVE -1       TO USRIDINL OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
+        }
+      ]
+    },
+    "READPREV-USER-SEC-FILE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "EXEC",
           "line_no": 655,
@@ -3949,11 +4032,12 @@
           "reason": "unresolved mutate operand: COUSR0AI"
         }
       ]
+    },
+    "ENDBR-USER-SEC-FILE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=1 facts=16"
-    }
-  ]
+  "program_unresolved": []
 }

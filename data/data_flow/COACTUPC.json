@@ -877,6 +877,11 @@
         }
       ]
     },
+    "1000-PROCESS-INPUTS-EXIT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
     "1100-RECEIVE-MAP": {
       "reads": [],
       "mutates": [],
@@ -6608,6 +6613,11 @@
     "1205-COMPARE-OLD-NEW-EXIT": {
       "reads": [],
       "mutates": [],
+      "unresolved": []
+    },
+    "1210-EDIT-ACCOUNT": {
+      "reads": [],
+      "mutates": [],
       "unresolved": [
         {
           "verb": "SET",
@@ -9443,6 +9453,11 @@
       ]
     },
     "1275-EDIT-FICO-SCORE-EXIT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "1280-EDIT-US-STATE-ZIP-CD": {
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -21512,7 +21527,7 @@
   },
   "program_unresolved": [
     {
-      "issue": "paragraph count mismatch: local=82 facts=87"
+      "issue": "paragraph count mismatch: local=85 facts=87"
     }
   ]
 }
