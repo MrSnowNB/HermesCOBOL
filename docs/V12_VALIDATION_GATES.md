@@ -51,67 +51,112 @@ python scripts\byte_layout.py data\raw\cbl\CBACT01C.cbl > data\byte_layouts\CBAC
 python scripts\byte_layout.py data\raw\cbl\CBTRN02C.cbl > data\byte_layouts\CBTRN02C.json
 python scripts\byte_layout.py data\raw\cbl\CBACT04C.cbl > data\byte_layouts\CBACT04C.json
 
-# --- probe CBACT01C ---
+# --- probe CBACT01C: copybook expansion + ACCOUNT-RECORD layout ---
 python -c "
 import json
 d = json.load(open(r'data\byte_layouts\CBACT01C.json'))
-print('program=',        d['program'])
-print('records=',        len(d['records']))
-print('unresolved=',     len(d['unresolved']))
-r = next((x for x in d['records'] if x['name']=='ACCT-RECORD'), None)
-print('acct_record_found=', r is not None)
-print('acct_total_bytes=',  None if r is None else r['total_bytes'])
-print('first_5_fields=',    [] if r is None else
+print('program=',    d['program'])
+print('records=',    len(d['records']))
+print('unresolved=', len(d['unresolved']))
+r = next((x for x in d['records'] if x['name']=='ACCOUNT-RECORD'), None)
+print('account_record_found=', r is not None)
+print('account_total_bytes=',  None if r is None else r['total_bytes'])
+print('first_5_fields=',       [] if r is None else
       [(f['qualified_name'], f['offset'], f['length'], f['storage'])
        for f in r['fields'][:5]])
+redef = next((x for x in d['records'] if x['redefines_groups']), None)
+print('record_with_redef_groups=', None if redef is None else redef['name'])
+print('redef_groups_sample=',      [] if redef is None else redef['redefines_groups'][:1])
 "
 
-# --- probe CBTRN02C (REDEFINES exposure) ---
+# --- probe CBTRN02C: 01-level REDEFINES are sibling records ---
+# TWO-BYTES-ALPHA REDEFINES TWO-BYTES-BINARY and FILLER REDEFINES DB2-FORMAT-TS
+# are both correct: each becomes its own record entry in the JSON.
 python -c "
 import json
 d = json.load(open(r'data\byte_layouts\CBTRN02C.json'))
-print('program=',              d['program'])
-print('records=',              len(d['records']))
-print('unresolved=',           len(d['unresolved']))
-print('redefines_groups_total=',
-      sum(len(r.get('redefines_groups', [])) for r in d['records']))
+print('program=',  d['program'])
+print('records=',  len(d['records']))
+print('unresolved=', len(d['unresolved']))
+names = [r['name'] for r in d['records']]
+print('TWO-BYTES-ALPHA_present=', 'TWO-BYTES-ALPHA' in names)
+print('FILLER_present=',          'FILLER' in names)
+tba = next((r for r in d['records'] if r['name']=='TWO-BYTES-ALPHA'), None)
+fil = next((r for r in d['records'] if r['name']=='FILLER'), None)
+print('TWO-BYTES-ALPHA bytes=', None if tba is None else tba['total_bytes'],
+      'fields=', None if tba is None else len(tba['fields']))
+print('FILLER bytes=',           None if fil is None else fil['total_bytes'],
+      'fields=',                 None if fil is None else len(fil['fields']))
 "
 
-# --- probe CBACT04C (OCCURS stress) ---
+# --- probe CBACT04C: no OCCURS in source — zero is correct ---
 python -c "
 import json
 d = json.load(open(r'data\byte_layouts\CBACT04C.json'))
 print('program=',    d['program'])
 print('records=',    len(d['records']))
 print('unresolved=', len(d['unresolved']))
-occ = []
-for r in d['records']:
-    occ.extend([
-        (r['name'], f['qualified_name'], f['offset'], f['length'], f['occurs'])
-        for f in r['fields'] if (f.get('occurs') or 1) > 1
-    ])
-print('occurs_fields=', occ[:10])
+occ = [(r['name'], f['qualified_name'], f['occurs'])
+       for r in d['records']
+       for f in r['fields'] if (f.get('occurs') or 1) > 1]
+print('occurs_fields=', len(occ),
+      '(0 is correct — CBACT04C source has no OCCURS clauses)')
+# Confirm sub-level REDEFINES present (same pattern as CBTRN02C)
+names = [r['name'] for r in d['records']]
+print('TWO-BYTES-ALPHA_present=', 'TWO-BYTES-ALPHA' in names)
+print('FILLER_present=',          'FILLER' in names)
 "
 ```
 
 ### Expected
 
-- Unit tests: `19 passed / 0 failed`.
+- Unit tests: `21 passed / 0 failed`.
 - All three corpus commands complete without Python tracebacks.
-- `CBACT01C.json`: `ACCT-RECORD` present, `acct_total_bytes` is a non-zero integer,
-  `first_5_fields` shows real offsets starting at 0, `unresolved` is 0 (or low and
-  explainable — e.g. an INSPECT verb edge case, not a missing copybook).
-- `CBTRN02C.json`: `redefines_groups_total > 0` (source contains REDEFINES), or
-  explicitly confirmed that none exist in that program.
-- `CBACT04C.json`: `occurs_fields` is non-empty; at least one field shows `occurs > 1`
-  with a plausible multiplied `length`.
+- stderr layout summaries:
+  - `CBACT01C`: `23 records, 95 fields, 0 unresolved`
+  - `CBTRN02C`: `32 records, 120 fields, 0 unresolved`
+  - `CBACT04C`: `29 records, 113 fields, 0 unresolved`
+
+**CBACT01C probe:**
+- `account_record_found= True`
+- `account_total_bytes= 300`
+- `first_5_fields` shows real offsets starting at 0
+- `record_with_redef_groups= CODATECN-REC` (sub-level REDEFINES; `redef_groups` list non-empty)
+
+**CBTRN02C probe (01-level REDEFINES):**
+- `TWO-BYTES-ALPHA_present= True`, `bytes= 2`, `fields= 2`
+- `FILLER_present= True`, `bytes= 26`, `fields= 14`
+- *Note:* `01`-level REDEFINES produce sibling record entries in the JSON, not
+  `redefines_groups` entries on a parent. This is correct COBOL layout semantics.
+  Sub-level REDEFINES (inside a containing record) populate `redefines_groups[]`.
+
+**CBACT04C probe:**
+- `occurs_fields= 0` — this is **correct**. CBACT04C source contains no `OCCURS`
+  clauses anywhere in working storage or file section. Zero is the expected value.
+- `TWO-BYTES-ALPHA_present= True`, `FILLER_present= True` (same REDEFINES pattern)
 
 ### Paste back here
 
 1. Full console output from the entire block above.
-2. The complete `ACCT-RECORD` object from `data\byte_layouts\CBACT01C.json`.
-3. One REDEFINES example from CBTRN02C (if present), or explicit note that none exist.
-4. One OCCURS-related field or record snippet from CBACT04C.
+2. The complete `ACCOUNT-RECORD` object from `data\byte_layouts\CBACT01C.json`.
+3. One `redefines_groups` entry from `CODATECN-REC` in `CBACT01C.json`.
+4. Confirmation that `TWO-BYTES-ALPHA` and `FILLER` are present in CBTRN02C output.
+
+### Section 1 — Verified gate output (2026-05-08)
+
+```
+Unit tests:     21 passed / 0 failed
+CBACT01C:       23 records, 95 fields, 0 unresolved
+CBTRN02C:       32 records, 120 fields, 0 unresolved
+CBACT04C:       29 records, 113 fields, 0 unresolved
+
+ACCOUNT-RECORD: bytes=300, fields=13  ✓
+CODATECN-REC:   redef_groups=4        ✓  (sub-level REDEFINES working)
+WS-REISSUE-DATE: redef_groups=1       ✓  (01-level REDEFINES alias record)
+TWO-BYTES-ALPHA: bytes=2, fields=2    ✓  (CBTRN02C 01-level REDEFINES)
+FILLER:          bytes=26, fields=14  ✓  (CBTRN02C 01-level REDEFINES)
+occurs_fields=0 in CBACT04C           ✓  (source has no OCCURS — correct)
+```
 
 ---
 
@@ -407,7 +452,7 @@ print('T05_at_or_above_0.90=',   passing)
 
 | Section | Gate command | Key assertion |
 |---|---|---|
-| S1 | `python tests\test_byte_layout.py` + 3 corpus runs | `19 passed / 0 failed`; ACCT-RECORD offset 0 |
+| S1 | `python tests\test_byte_layout.py` + 3 corpus runs | `21 passed / 0 failed`; ACCOUNT-RECORD 300 bytes; 0 unresolved |
 | S2 | `python scripts\data_flow.py CBACT01C.cbl` | `1300` mutates ACCT-RECORD.*; `unresolved=[]` |
 | S3 | `python scripts\validators\run_validators.py` | 31 files; `t03_below_1` non-empty; COBSWAIT T01=0 |
 | S4 | `python scripts\extract_facts.py` | 30 PASS / 1 WARN; 14 rekt or clean fallback |
@@ -419,8 +464,9 @@ print('T05_at_or_above_0.90=',   passing)
 
 - This file is the **authoritative gate record** for v1.2.
 - No PR merges without a gate-passing paste in the PR thread.
-- If a gate expectation turns out to be wrong (e.g. CBACT01C has no ACCT-RECORD by
-  that exact name), update this file in the same PR that discovered the discrepancy
-  and note the reason.
+- If a gate expectation turns out to be wrong (e.g. a probe assumed a record name or
+  construct that does not exist in the source), **update this file in the same PR that
+  discovered the discrepancy** and note the reason. The gate must reflect what the
+  source actually contains, not what was speculatively assumed.
 - After Section 5 merges, this file is preserved as `docs/V12_VALIDATION_GATES.md`
   in `main` as a historical test record.
