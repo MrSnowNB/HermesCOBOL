@@ -29,10 +29,6 @@ _LITERAL_RE = re.compile(
     re.IGNORECASE
 )
 
-# ---------------------------------------------------------------------------
-# Reserved words that can NEVER be paragraph names even if they appear as
-# WORD. on their own source line.
-# ---------------------------------------------------------------------------
 _NOT_PARA = frozenset({
     'END-PERFORM', 'END-IF', 'END-EVALUATE', 'END-READ', 'END-WRITE',
     'END-COMPUTE', 'END-ADD', 'END-SUBTRACT', 'END-MULTIPLY', 'END-DIVIDE',
@@ -64,6 +60,51 @@ def _normalise_source(raw: str) -> list:
         if text.strip():
             result.append((lineno, text))
     return result
+
+
+# ---------------------------------------------------------------------------
+# Period-aware line joiner  (used at source level before paragraph detection)
+# ---------------------------------------------------------------------------
+
+def _ends_statement(text: str) -> bool:
+    """
+    Return True if *text* ends a COBOL statement (i.e. its last non-space
+    character outside a quoted string is a period).
+    """
+    in_sq = False
+    in_dq = False
+    last_non_space = ''
+    for ch in text:
+        if ch == "'" and not in_dq:
+            in_sq = not in_sq
+        elif ch == '"' and not in_sq:
+            in_dq = not in_dq
+        if not in_sq and not in_dq and ch != ' ':
+            last_non_space = ch
+    return last_non_space == '.'
+
+
+def _join_source_lines(lines: list) -> list:
+    """
+    Join physical source lines so that continuation lines (those whose
+    logical predecessor did NOT end with a statement-terminating period)
+    are fused back into the preceding line.
+
+    This prevents a MOVE target sitting alone on its own line:
+        MOVE A TO B
+                   WS-REISSUE-DATE.
+    from looking like a paragraph header after the period split.
+    """
+    if not lines:
+        return []
+    joined = [list(lines[0])]   # [lineno, text]  (mutable)
+    for lineno, text in lines[1:]:
+        prev_text = joined[-1][1]
+        if not _ends_statement(prev_text):
+            joined[-1][1] = prev_text + ' ' + text.strip()
+        else:
+            joined.append([lineno, text])
+    return [(ln, txt) for ln, txt in joined]
 
 
 # ---------------------------------------------------------------------------
@@ -143,10 +184,6 @@ def is_literal(token: str) -> bool:
 # ---------------------------------------------------------------------------
 
 def _tokens(text: str) -> list:
-    """
-    Collapse every single-quoted or double-quoted string to __LIT__ so that
-    words inside literals are never treated as identifiers.
-    """
     cleaned = re.sub(r"'[^']*'", '__LIT__', text)
     cleaned = re.sub(r'"[^"]*"', '__LIT__', cleaned)
     return cleaned.strip().split()
@@ -157,17 +194,10 @@ def _tokens(text: str) -> list:
 # ---------------------------------------------------------------------------
 
 def _split_on_period(text: str) -> list:
-    """
-    Split *text* on bare '.' (period followed by whitespace or end-of-string)
-    without splitting inside single- or double-quoted string literals.
-
-    This prevents   DISPLAY 'ACCOUNT FILE WRITE STATUS IS:'  OUTFILE-STATUS
-    from being torn apart when the period inside the literal is encountered.
-    """
     parts = []
     current = []
-    in_sq = False   # inside single-quoted literal
-    in_dq = False   # inside double-quoted literal
+    in_sq = False
+    in_dq = False
     i = 0
     while i < len(text):
         ch = text[i]
@@ -178,7 +208,6 @@ def _split_on_period(text: str) -> list:
             in_dq = not in_dq
             current.append(ch)
         elif ch == '.' and not in_sq and not in_dq:
-            # only treat as statement terminator if followed by whitespace or EOS
             rest = text[i+1:]
             if not rest or rest[0] in (' ', '\t', '\r', '\n'):
                 segment = ''.join(current).strip()
@@ -186,7 +215,7 @@ def _split_on_period(text: str) -> list:
                     parts.append(segment)
                 current = []
             else:
-                current.append(ch)   # decimal point inside a number / qualified name
+                current.append(ch)
         else:
             current.append(ch)
         i += 1
@@ -207,18 +236,37 @@ _PARA_HEADER_RE = re.compile(
 
 
 def extract_paragraphs(lines: list) -> dict:
+    """
+    Extract paragraphs from normalised source lines.
+
+    Lines are first joined across physical continuations (so that a MOVE
+    target sitting alone on its own line is fused back into the MOVE) before
+    paragraph headers are detected.
+    """
     paragraphs = {}
     current = '__MAIN__'
     paragraphs[current] = []
     in_procedure = False
 
-    for lineno, text in lines:
+    # Collect procedure-division lines separately so we can join them
+    pre_proc = []
+    proc_lines_raw = []
+    for entry in lines:
+        lineno, text = entry
         stripped = text.strip()
         if stripped.upper().startswith('PROCEDURE DIVISION'):
             in_procedure = True
             continue
         if not in_procedure:
-            continue
+            pre_proc.append(entry)
+        else:
+            proc_lines_raw.append(entry)
+
+    # Join continuation lines in the procedure division before scanning headers
+    proc_lines = _join_source_lines(proc_lines_raw)
+
+    for lineno, text in proc_lines:
+        stripped = text.strip()
         m = _PARA_HEADER_RE.match(stripped)
         if m:
             candidate = m.group(1).upper()
@@ -234,13 +282,18 @@ def extract_paragraphs(lines: list) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Statement continuation joiner
+# Statement continuation joiner (paragraph body level)
 # ---------------------------------------------------------------------------
 
 def _join_lines(lines: list) -> list:
+    """
+    Secondary join for already-classified paragraph body lines.
+    After _join_source_lines has run at the extract_paragraphs level this
+    is mostly a no-op, but kept for safety.
+    """
     joined = []
     for lineno, text in lines:
-        if joined and not joined[-1][1].rstrip().endswith('.'):
+        if joined and not _ends_statement(joined[-1][1]):
             prev_ln, prev_text = joined[-1]
             joined[-1] = (prev_ln, prev_text + ' ' + text.strip())
         else:
@@ -474,7 +527,7 @@ def classify_statement(
         dst = tokens[1] if len(tokens) > 1 else None
         if dst and dst != '__LIT__': _add_mutate(dst)
 
-    # DISPLAY  -- reads only; literals already collapsed to __LIT__
+    # DISPLAY
     elif verb == 'DISPLAY':
         for t in tokens[1:]:
             if t.upper() in ('UPON','WITH','NO','ADVANCING'):
