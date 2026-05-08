@@ -227,8 +227,20 @@
     {
       "name": "VBR-REC",
       "copybook": null,
-      "total_bytes": null,
-      "fields": [],
+      "total_bytes": 80,
+      "fields": [
+        {
+          "qualified_name": "VBR-REC",
+          "level": 1,
+          "offset": 0,
+          "length": 80,
+          "pic": "X(80)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
       "redefines_groups": []
     },
     {
@@ -949,8 +961,20 @@
     {
       "name": "TWO-BYTES-BINARY",
       "copybook": null,
-      "total_bytes": null,
-      "fields": [],
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "TWO-BYTES-BINARY",
+          "level": 1,
+          "offset": 0,
+          "length": 2,
+          "pic": "9(4)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
       "redefines_groups": []
     },
     {
@@ -1016,36 +1040,96 @@
     {
       "name": "APPL-RESULT",
       "copybook": null,
-      "total_bytes": null,
-      "fields": [],
+      "total_bytes": 4,
+      "fields": [
+        {
+          "qualified_name": "APPL-RESULT",
+          "level": 1,
+          "offset": 0,
+          "length": 4,
+          "pic": "S9(9)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
       "redefines_groups": []
     },
     {
       "name": "END-OF-FILE",
       "copybook": null,
-      "total_bytes": null,
-      "fields": [],
+      "total_bytes": 1,
+      "fields": [
+        {
+          "qualified_name": "END-OF-FILE",
+          "level": 1,
+          "offset": 0,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
       "redefines_groups": []
     },
     {
       "name": "ABCODE",
       "copybook": null,
-      "total_bytes": null,
-      "fields": [],
+      "total_bytes": 4,
+      "fields": [
+        {
+          "qualified_name": "ABCODE",
+          "level": 1,
+          "offset": 0,
+          "length": 4,
+          "pic": "S9(9)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
       "redefines_groups": []
     },
     {
       "name": "TIMING",
       "copybook": null,
-      "total_bytes": null,
-      "fields": [],
+      "total_bytes": 4,
+      "fields": [
+        {
+          "qualified_name": "TIMING",
+          "level": 1,
+          "offset": 0,
+          "length": 4,
+          "pic": "S9(9)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
       "redefines_groups": []
     },
     {
       "name": "WS-RECD-LEN",
       "copybook": null,
-      "total_bytes": null,
-      "fields": [],
+      "total_bytes": 4,
+      "fields": [
+        {
+          "qualified_name": "WS-RECD-LEN",
+          "level": 1,
+          "offset": 0,
+          "length": 4,
+          "pic": "9(04)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
       "redefines_groups": []
     },
     {
@@ -1196,9 +1280,28 @@
     {
       "name": "WS-REISSUE-DATE",
       "copybook": null,
-      "total_bytes": null,
-      "fields": [],
-      "redefines_groups": []
+      "total_bytes": 10,
+      "fields": [
+        {
+          "qualified_name": "WS-REISSUE-DATE",
+          "level": 1,
+          "offset": 0,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": "WS-ACCT-REISSUE-DATE",
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": [
+        {
+          "name": "WS-REISSUE-DATE",
+          "redefines_target": "WS-ACCT-REISSUE-DATE",
+          "total_bytes": 10,
+          "level": 1
+        }
+      ]
     }
   ],
   "unresolved": []
