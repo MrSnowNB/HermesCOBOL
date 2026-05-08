@@ -1636,15 +1636,13 @@
     "9999-ABEND-PROGRAM": {
       "reads": [],
       "mutates": [],
-      "unresolved": [
-        {
-          "verb": "CALL",
-          "line_no": 578,
-          "raw_text": "CALL 'CEE3ABD'",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
-        }
-      ]
+      "unresolved": []
     }
+  },
+  "call_graph": {
+    "CBEXPORT": [
+      "CEE3ABD"
+    ]
   },
   "program_unresolved": []
 }

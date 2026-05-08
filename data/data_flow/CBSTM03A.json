@@ -177,7 +177,7 @@
           "verb": "CALL",
           "line_no": 351,
           "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
+          "reason": "unresolved CALL USING operand: WS-M03B-AREA"
         },
         {
           "verb": "EVALUATE",
@@ -285,7 +285,7 @@
           "verb": "CALL",
           "line_no": 377,
           "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
+          "reason": "unresolved CALL USING operand: WS-M03B-AREA"
         },
         {
           "verb": "EVALUATE",
@@ -387,7 +387,7 @@
           "verb": "CALL",
           "line_no": 401,
           "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
+          "reason": "unresolved CALL USING operand: WS-M03B-AREA"
         },
         {
           "verb": "EVALUATE",
@@ -2490,7 +2490,7 @@
           "verb": "CALL",
           "line_no": 734,
           "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
+          "reason": "unresolved CALL USING operand: WS-M03B-AREA"
         },
         {
           "verb": "IF",
@@ -2520,7 +2520,7 @@
           "verb": "CALL",
           "line_no": 746,
           "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
+          "reason": "unresolved CALL USING operand: WS-M03B-AREA"
         },
         {
           "verb": "IF",
@@ -2604,7 +2604,7 @@
           "verb": "CALL",
           "line_no": 769,
           "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
+          "reason": "unresolved CALL USING operand: WS-M03B-AREA"
         },
         {
           "verb": "IF",
@@ -2652,7 +2652,7 @@
           "verb": "CALL",
           "line_no": 787,
           "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
+          "reason": "unresolved CALL USING operand: WS-M03B-AREA"
         },
         {
           "verb": "IF",
@@ -2700,7 +2700,7 @@
           "verb": "CALL",
           "line_no": 805,
           "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
+          "reason": "unresolved CALL USING operand: WS-M03B-AREA"
         },
         {
           "verb": "IF",
@@ -2892,7 +2892,7 @@
           "verb": "CALL",
           "line_no": 835,
           "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
+          "reason": "unresolved CALL USING operand: WS-M03B-AREA"
         },
         {
           "verb": "EVALUATE",
@@ -2976,7 +2976,7 @@
           "verb": "CALL",
           "line_no": 860,
           "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
+          "reason": "unresolved CALL USING operand: WS-M03B-AREA"
         },
         {
           "verb": "IF",
@@ -3018,7 +3018,7 @@
           "verb": "CALL",
           "line_no": 877,
           "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
+          "reason": "unresolved CALL USING operand: WS-M03B-AREA"
         },
         {
           "verb": "IF",
@@ -3060,7 +3060,7 @@
           "verb": "CALL",
           "line_no": 893,
           "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
+          "reason": "unresolved CALL USING operand: WS-M03B-AREA"
         },
         {
           "verb": "IF",
@@ -3102,7 +3102,7 @@
           "verb": "CALL",
           "line_no": 909,
           "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
+          "reason": "unresolved CALL USING operand: WS-M03B-AREA"
         },
         {
           "verb": "IF",
@@ -3121,15 +3121,14 @@
     "9999-ABEND-PROGRAM": {
       "reads": [],
       "mutates": [],
-      "unresolved": [
-        {
-          "verb": "CALL",
-          "line_no": 922,
-          "raw_text": "CALL 'CEE3ABD'",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
-        }
-      ]
+      "unresolved": []
     }
+  },
+  "call_graph": {
+    "CBSTM03A": [
+      "CBSTM03B",
+      "CEE3ABD"
+    ]
   },
   "program_unresolved": []
 }

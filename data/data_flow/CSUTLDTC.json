@@ -148,7 +148,25 @@
           "verb": "CALL",
           "line_no": 105,
           "raw_text": "CALL \"CEEDAYS\" USING WS-DATE-TO-TEST, WS-DATE-FORMAT, OUTPUT-LILLIAN, FEEDBACK-CODE",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
+          "reason": "unresolved CALL USING operand: WS-DATE-TO-TEST,"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 105,
+          "raw_text": "CALL \"CEEDAYS\" USING WS-DATE-TO-TEST, WS-DATE-FORMAT, OUTPUT-LILLIAN, FEEDBACK-CODE",
+          "reason": "unresolved CALL USING operand: WS-DATE-FORMAT,"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 105,
+          "raw_text": "CALL \"CEEDAYS\" USING WS-DATE-TO-TEST, WS-DATE-FORMAT, OUTPUT-LILLIAN, FEEDBACK-CODE",
+          "reason": "unresolved CALL USING operand: OUTPUT-LILLIAN,"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 105,
+          "raw_text": "CALL \"CEEDAYS\" USING WS-DATE-TO-TEST, WS-DATE-FORMAT, OUTPUT-LILLIAN, FEEDBACK-CODE",
+          "reason": "unresolved CALL USING operand: FEEDBACK-CODE"
         },
         {
           "verb": "MOVE",
@@ -331,6 +349,11 @@
       "mutates": [],
       "unresolved": []
     }
+  },
+  "call_graph": {
+    "CSUTLDTC": [
+      "CEEDAYS"
+    ]
   },
   "program_unresolved": []
 }

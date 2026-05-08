@@ -1792,7 +1792,19 @@
           "verb": "CALL",
           "line_no": 210,
           "raw_text": "CALL 'CSUTLDTC' USING   CSUTLDTC-DATE CSUTLDTC-DATE-FORMAT CSUTLDTC-RESULT",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
+          "reason": "unresolved CALL USING operand: CSUTLDTC-DATE"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 210,
+          "raw_text": "CALL 'CSUTLDTC' USING   CSUTLDTC-DATE CSUTLDTC-DATE-FORMAT CSUTLDTC-RESULT",
+          "reason": "unresolved CALL USING operand: CSUTLDTC-DATE-FORMAT"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 210,
+          "raw_text": "CALL 'CSUTLDTC' USING   CSUTLDTC-DATE CSUTLDTC-DATE-FORMAT CSUTLDTC-RESULT",
+          "reason": "unresolved CALL USING operand: CSUTLDTC-RESULT"
         },
         {
           "verb": "IF",
@@ -1870,7 +1882,19 @@
           "verb": "CALL",
           "line_no": 210,
           "raw_text": "CALL 'CSUTLDTC' USING   CSUTLDTC-DATE CSUTLDTC-DATE-FORMAT CSUTLDTC-RESULT",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
+          "reason": "unresolved CALL USING operand: CSUTLDTC-DATE"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 210,
+          "raw_text": "CALL 'CSUTLDTC' USING   CSUTLDTC-DATE CSUTLDTC-DATE-FORMAT CSUTLDTC-RESULT",
+          "reason": "unresolved CALL USING operand: CSUTLDTC-DATE-FORMAT"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 210,
+          "raw_text": "CALL 'CSUTLDTC' USING   CSUTLDTC-DATE CSUTLDTC-DATE-FORMAT CSUTLDTC-RESULT",
+          "reason": "unresolved CALL USING operand: CSUTLDTC-RESULT"
         },
         {
           "verb": "IF",
@@ -2862,6 +2886,11 @@
         }
       ]
     }
+  },
+  "call_graph": {
+    "CORPT00C": [
+      "CSUTLDTC"
+    ]
   },
   "program_unresolved": []
 }

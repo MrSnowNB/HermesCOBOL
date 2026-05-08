@@ -244,7 +244,13 @@
           "verb": "CALL",
           "line_no": 155,
           "raw_text": "CALL 'CEE3ABD' USING ABCODE, TIMING",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
+          "reason": "unresolved CALL USING operand: ABCODE,"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 155,
+          "raw_text": "CALL 'CEE3ABD' USING ABCODE, TIMING",
+          "reason": "unresolved CALL USING operand: TIMING"
         }
       ]
     },
@@ -350,6 +356,11 @@
         }
       ]
     }
+  },
+  "call_graph": {
+    "CBACT02C": [
+      "CEE3ABD"
+    ]
   },
   "program_unresolved": []
 }

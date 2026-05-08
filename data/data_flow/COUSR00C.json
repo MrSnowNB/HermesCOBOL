@@ -4039,5 +4039,8 @@
       "unresolved": []
     }
   },
+  "call_graph": {
+    "COUSR00C": []
+  },
   "program_unresolved": []
 }
