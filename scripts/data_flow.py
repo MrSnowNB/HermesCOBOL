@@ -37,9 +37,6 @@ _NOT_PARA = frozenset({
     'ELSE', 'THEN', 'WHEN', 'OTHER',
 })
 
-# CardDemo paragraph labels always start with a 4-digit numeric prefix.
-_CARDEMO_PARA_PREFIX_RE = re.compile(r'^\d{4}-', re.IGNORECASE)
-
 _PARA_HEADER_RE = re.compile(
     r'^([A-Z0-9][A-Z0-9\-]*)\s*\.\s*$',
     re.IGNORECASE
@@ -56,6 +53,11 @@ def _strip_seq(line: str) -> str:
 
 
 def _normalise_source(raw: str) -> list:
+    """
+    Returns (lineno, text) pairs where text is cols 7-72 (0-indexed: 1-71)
+    of the source line after stripping the sequence number field.
+    Leading spaces ARE preserved -- they encode A-margin vs B-margin.
+    """
     result = []
     for lineno, raw_line in enumerate(raw.splitlines(), start=1):
         line = _strip_seq(raw_line)
@@ -64,6 +66,7 @@ def _normalise_source(raw: str) -> list:
         indicator = line[0]
         if indicator in ('*', '/', '$'):
             continue
+        # col 7-72 (1-based) = index 1-71 after stripping seq field
         text = line[1:72].rstrip() if len(line) > 1 else ''
         if text.strip():
             result.append((lineno, text))
@@ -98,6 +101,19 @@ def _is_para_header_line(text: str) -> bool:
     return candidate not in _NOT_PARA
 
 
+def _in_a_margin(text: str) -> bool:
+    """
+    In fixed-format COBOL the A-margin is cols 8-11 (1-based).
+    After _normalise_source strips the indicator byte, the stored text
+    starts at col 7 (1-based), so A-margin content begins at index 0
+    of the stored text (no leading space).
+    Paragraph/section headers and 01/77 level items appear in the A-margin.
+    Statement continuations appear in the B-margin (index >= 4, i.e. at
+    least one leading space in the stored text).
+    """
+    return len(text) > 0 and text[0] != ' '
+
+
 # ---------------------------------------------------------------------------
 # Targeted continuation joiner for procedure-division source lines
 # ---------------------------------------------------------------------------
@@ -109,28 +125,25 @@ def _join_source_lines(lines: list) -> list:
     A line is fused as a continuation when BOTH conditions hold:
       1. The predecessor did NOT end with a statement-terminating period
          (i.e. the logical statement is still open).
-      2. The candidate does NOT start with the CardDemo 4-digit prefix
-         pattern (^\\d{4}-).  Real paragraph headers in this codebase
-         always carry that prefix; non-prefixed tokens that look like
-         headers (e.g. WS-REISSUE-DATE., VB2-ACCT-ID.) are MOVE
-         continuation targets and must be absorbed.
+      2. The candidate is NOT in the A-margin (i.e. it starts with at
+         least one leading space in the stored text).
 
-    Note: the _is_para_header_line check is intentionally NOT used here.
-    A line that looks like a header but whose predecessor is an open
-    statement IS a continuation target -- that is exactly the bug we are
-    fixing.  Only the 4-digit prefix guard is authoritative for whether
-    a token can start a new paragraph.
+    Paragraph and section headers always appear in the A-margin (no
+    leading space after the indicator is stripped).  Continuation targets
+    like WS-REISSUE-DATE. appear indented in the B-margin and will be
+    fused back into their open MOVE statement regardless of whether they
+    happen to match _PARA_HEADER_RE.
     """
     if not lines:
         return []
     joined = [[lines[0][0], lines[0][1]]]
     for lineno, text in lines[1:]:
-        stripped = text.strip()
-        prev_ends           = _ends_statement(joined[-1][1])
-        candidate_has_prefix = bool(_CARDEMO_PARA_PREFIX_RE.match(stripped))
+        prev_ends      = _ends_statement(joined[-1][1])
+        in_a           = _in_a_margin(text)
 
-        if not prev_ends and not candidate_has_prefix:
-            joined[-1][1] = joined[-1][1] + ' ' + stripped
+        if not prev_ends and not in_a:
+            # B-margin continuation: absorb into open statement
+            joined[-1][1] = joined[-1][1] + ' ' + text.strip()
         else:
             joined.append([lineno, text])
     return [(ln, txt) for ln, txt in joined]
@@ -223,6 +236,15 @@ def _tokens(text: str) -> list:
 # ---------------------------------------------------------------------------
 
 def _split_on_period(text: str) -> list:
+    """
+    Split a logical COBOL source line on statement-terminating periods.
+    A period is a statement terminator only when:
+      - it is outside a quoted string, AND
+      - it is followed by a space, end-of-line, or is the last character.
+    Quoted content is tracked character-by-character so that a period
+    inside a string literal (e.g. 'WRITE STATUS IS:') is never treated
+    as a terminator.
+    """
     parts = []
     current = []
     in_sq = in_dq = False
