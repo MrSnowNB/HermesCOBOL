@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-tests/test_byte_layout.py  v1.2.1
+tests/test_byte_layout.py  v1.2.2
 ==================================
 Unit tests for scripts/byte_layout.py.
 
@@ -13,13 +13,13 @@ Or with pytest:
 Covers:
   - pic_length() for DISPLAY, COMP-3, COMP/BINARY
   - Simple 01-level record offset correctness
-  - OCCURS n at elementary level
-  - Nested OCCURS (OCCURS 12 inside OCCURS 50)
-  - REDEFINES offset reset and redefines_groups
+  - OCCURS n at elementary level (offset advancement)
+  - Nested OCCURS: group header carries occurs, leaf field carries 1
+  - Group OCCURS: group header precedes children in flat list
+  - REDEFINES: offset reset and redefines_groups populated
+  - 01-level REDEFINES (elementary): total_bytes non-null + redefines_groups
   - Unrecognized PIC placeholder with length=null
   - COPY not-found records unresolved[] entry without crash
-  - Group OCCURS: group header in flat list has correct total_size
-    and children appear AFTER the header (insertion index fix)
 """
 from __future__ import annotations
 import sys
@@ -51,34 +51,38 @@ def _field(layout: dict, qname: str) -> dict:
         for f in rec["fields"]:
             if f["qualified_name"] == qname:
                 return f
-    raise KeyError(f"Field not found: {qname!r}\n"
-                   f"Available: {[f['qualified_name'] for r in layout['records'] for f in r['fields']]}")
+    raise KeyError(
+        f"Field not found: {qname!r}\n"
+        f"Available: {[f['qualified_name'] for r in layout['records'] for f in r['fields']]}"
+    )
 
 
 def _record(layout: dict, name: str) -> dict:
     for rec in layout["records"]:
         if rec["name"] == name:
             return rec
-    raise KeyError(f"Record not found: {name!r}\nAvailable: {[r['name'] for r in layout['records']]}")
+    raise KeyError(
+        f"Record not found: {name!r}\nAvailable: {[r['name'] for r in layout['records']]}"
+    )
 
 
 # ===========================================================================
 # 1.  pic_length()
 # ===========================================================================
 
-def test_pic_length_display_alpha():         assert pic_length("X(10)",       "DISPLAY") == 10
-def test_pic_length_display_numeric():       assert pic_length("9(5)",        "DISPLAY") == 5
-def test_pic_length_display_signed():        assert pic_length("S9(7)",       "DISPLAY") == 7
-def test_pic_length_display_with_v():        assert pic_length("S9(10)V99",   "DISPLAY") == 12
-def test_pic_length_comp3_odd():             assert pic_length("S9(7)V99",    "COMP-3")  == 5
-def test_pic_length_comp3_even():            assert pic_length("S9(10)V99",   "COMP-3")  == 7
-def test_pic_length_comp3_simple():          assert pic_length("9(5)",        "COMP-3")  == 3
-def test_pic_length_comp_small():            assert pic_length("9(4)",        "COMP")    == 2
-def test_pic_length_comp_medium():           assert pic_length("9(9)",        "COMP")    == 4
-def test_pic_length_comp_large():            assert pic_length("9(18)",       "COMP")    == 8
-def test_pic_length_binary_synonym():        assert pic_length("9(5)",        "COMP")    == 4
-def test_pic_length_packed_decimal_synonym():assert pic_length("9(5)",        "COMP-3")  == 3
-def test_pic_length_unrecognized():          assert pic_length("",            "DISPLAY") is None
+def test_pic_length_display_alpha():          assert pic_length("X(10)",       "DISPLAY") == 10
+def test_pic_length_display_numeric():        assert pic_length("9(5)",        "DISPLAY") == 5
+def test_pic_length_display_signed():         assert pic_length("S9(7)",       "DISPLAY") == 7
+def test_pic_length_display_with_v():         assert pic_length("S9(10)V99",   "DISPLAY") == 12
+def test_pic_length_comp3_odd():              assert pic_length("S9(7)V99",    "COMP-3")  == 5
+def test_pic_length_comp3_even():             assert pic_length("S9(10)V99",   "COMP-3")  == 7
+def test_pic_length_comp3_simple():           assert pic_length("9(5)",        "COMP-3")  == 3
+def test_pic_length_comp_small():             assert pic_length("9(4)",        "COMP")    == 2
+def test_pic_length_comp_medium():            assert pic_length("9(9)",        "COMP")    == 4
+def test_pic_length_comp_large():             assert pic_length("9(18)",       "COMP")    == 8
+def test_pic_length_binary_synonym():         assert pic_length("9(5)",        "COMP")    == 4
+def test_pic_length_packed_decimal_synonym(): assert pic_length("9(5)",        "COMP-3")  == 3
+def test_pic_length_unrecognized():           assert pic_length("",            "DISPLAY") is None
 
 
 # ===========================================================================
@@ -141,14 +145,19 @@ def test_occurs_elementary():
 #   01  OUTER-TABLE.
 #       05  OUTER-ENTRY OCCURS 50 TIMES.
 #           10  INNER-ENTRY OCCURS 12 TIMES.
-#               15  INNER-FIELD  PIC X(4).        <- 4 bytes per occurrence
-#           10  OUTER-FLAG   PIC X(1).            <- 1 byte per outer occurrence
+#               15  INNER-FIELD  PIC X(4).
+#           10  OUTER-FLAG   PIC X(1).
 #
-#   Per OUTER-ENTRY occurrence:
-#     INNER-ENTRY subtree = 12 * 4 = 48 bytes
-#     OUTER-FLAG          = 1 byte
-#     subtree per outer   = 49 bytes
-#   OUTER-TABLE total = 49 * 50 = 2450 bytes
+#   INNER-FIELD: no OCCURS clause of its own -> occurs=1 in flat output.
+#   INNER-ENTRY group header: occurs=12, length=12*4=48.
+#   OUTER-FLAG: offset=48, length=1.
+#   OUTER-ENTRY group header: occurs=50, length=(48+1)*50=2450.
+#   OUTER-TABLE total_bytes=2450.
+#
+#   NOTE: In a flat byte-layout, each leaf field is emitted at its base
+#   offset within ONE occurrence of the enclosing group.  The repetition
+#   count lives on the group header, not the leaf.  This is correct COBOL
+#   semantics: INNER-FIELD itself has no OCCURS; only INNER-ENTRY does.
 # ===========================================================================
 
 def test_nested_occurs():
@@ -162,24 +171,26 @@ def test_nested_occurs():
     layout = extract_layout(src, "TEST")
     assert len(layout["unresolved"]) == 0, layout["unresolved"]
 
-    # INNER-FIELD: base length=4, occurs=12, starts at offset 0
+    # INNER-FIELD: base length=4, own occurs=1 (no OCCURS on the leaf),
+    # starts at offset 0 within one INNER-ENTRY occurrence.
     f_inner = _field(layout, "OUTER-TABLE.OUTER-ENTRY.INNER-ENTRY.INNER-FIELD")
     assert f_inner["length"] == 4,  f"INNER-FIELD length: {f_inner['length']}"
-    assert f_inner["occurs"] == 12, f"INNER-FIELD occurs: {f_inner['occurs']}"
+    assert f_inner["occurs"] == 1,  f"INNER-FIELD occurs: {f_inner['occurs']}"
     assert f_inner["offset"] == 0,  f"INNER-FIELD offset: {f_inner['offset']}"
 
-    # INNER-ENTRY group header: 12*4=48 bytes total, offset 0
+    # INNER-ENTRY group header: occurs=12, length=12*4=48, offset=0
     f_inner_grp = _field(layout, "OUTER-TABLE.OUTER-ENTRY.INNER-ENTRY")
-    assert f_inner_grp["length"] == 48, f"INNER-ENTRY length: {f_inner_grp['length']}"
-    assert f_inner_grp["offset"] == 0,  f"INNER-ENTRY offset: {f_inner_grp['offset']}"
+    assert f_inner_grp["occurs"]  == 12, f"INNER-ENTRY occurs: {f_inner_grp['occurs']}"
+    assert f_inner_grp["length"]  == 48, f"INNER-ENTRY length: {f_inner_grp['length']}"
+    assert f_inner_grp["offset"]  == 0,  f"INNER-ENTRY offset: {f_inner_grp['offset']}"
     assert f_inner_grp["storage"] == "GROUP"
 
-    # OUTER-FLAG: starts at offset 48
+    # OUTER-FLAG: starts at offset 48 (after 12 * 4 bytes of INNER-ENTRY)
     f_flag = _field(layout, "OUTER-TABLE.OUTER-ENTRY.OUTER-FLAG")
     assert f_flag["offset"] == 48, f"OUTER-FLAG offset: {f_flag['offset']}"
     assert f_flag["length"] == 1,  f"OUTER-FLAG length: {f_flag['length']}"
 
-    # OUTER-ENTRY group header: (48+1)*50 = 2450 total bytes, occurs=50
+    # OUTER-ENTRY group header: occurs=50, length=(48+1)*50=2450
     f_outer = _field(layout, "OUTER-TABLE.OUTER-ENTRY")
     assert f_outer["occurs"]  == 50,   f"OUTER-ENTRY occurs: {f_outer['occurs']}"
     assert f_outer["length"]  == 2450, f"OUTER-ENTRY length: {f_outer['length']}"
@@ -192,13 +203,13 @@ def test_nested_occurs():
 
 # ===========================================================================
 # 5.  Group OCCURS: group header appears BEFORE children in flat list
-#     (regression test for the insert_pos fix)
+#     (regression for the insert_pos fix)
 # ===========================================================================
 
 def test_group_occurs_header_position():
     """
     Verify that when a group with OCCURS appears after a non-group sibling,
-    the group header still precedes its children in the flat field list.
+    the group header still precedes its own children in the flat field list.
     """
     src = _cobol_wrap("""
        01  WS-MIX.
@@ -210,10 +221,9 @@ def test_group_occurs_header_position():
     layout = extract_layout(src, "TEST")
     assert len(layout["unresolved"]) == 0
 
-    rec = _record(layout, "WS-MIX")
+    rec   = _record(layout, "WS-MIX")
     names = [f["qualified_name"] for f in rec["fields"]]
 
-    # WS-GRP header must come before WS-A and WS-B
     idx_grp = names.index("WS-MIX.WS-GRP")
     idx_a   = names.index("WS-MIX.WS-GRP.WS-A")
     idx_b   = names.index("WS-MIX.WS-GRP.WS-B")
@@ -224,13 +234,12 @@ def test_group_occurs_header_position():
     f_grp = _field(layout, "WS-MIX.WS-GRP")
     assert f_grp["length"] == 12, f"WS-GRP length: {f_grp['length']}"
 
-    # WS-A offset within group = 0 (relative to group start of 3)
     f_a = _field(layout, "WS-MIX.WS-GRP.WS-A")
-    assert f_a["offset"] == 3,  f"WS-A offset: {f_a['offset']}"
+    assert f_a["offset"] == 3
     assert f_a["length"] == 2
 
     f_b = _field(layout, "WS-MIX.WS-GRP.WS-B")
-    assert f_b["offset"] == 5,  f"WS-B offset: {f_b['offset']}"
+    assert f_b["offset"] == 5
     assert f_b["length"] == 1
 
 
@@ -248,14 +257,14 @@ def test_redefines():
     layout = extract_layout(src, "TEST")
     assert len(layout["unresolved"]) == 0
 
-    f_num  = _field(layout, "WS-DATE-GROUP.WS-DATE-NUM")
-    f_char = _field(layout, "WS-DATE-GROUP.WS-DATE-CHAR")
-    f_after= _field(layout, "WS-DATE-GROUP.WS-AFTER")
+    f_num   = _field(layout, "WS-DATE-GROUP.WS-DATE-NUM")
+    f_char  = _field(layout, "WS-DATE-GROUP.WS-DATE-CHAR")
+    f_after = _field(layout, "WS-DATE-GROUP.WS-AFTER")
 
-    assert f_num["offset"]  == 0
-    assert f_char["offset"] == 0
+    assert f_num["offset"]     == 0
+    assert f_char["offset"]    == 0
     assert f_char["redefines"] == "WS-DATE-NUM"
-    assert f_after["offset"] == 8
+    assert f_after["offset"]   == 8
 
     rec = _record(layout, "WS-DATE-GROUP")
     assert any(g["redefines_target"] == "WS-DATE-NUM"
@@ -263,14 +272,21 @@ def test_redefines():
 
 
 # ===========================================================================
-# 7.  01-level REDEFINES (group redefines)
+# 7.  01-level REDEFINES (elementary root)
+#
+#   01  WS-ACCT-REISSUE-DATE.
+#       05  WS-ACCT-REISSUE-YYYY  PIC X(4).
+#       ...                                     <- total 10 bytes
+#   01  WS-REISSUE-DATE REDEFINES WS-ACCT-REISSUE-DATE  PIC X(10).
+#
+#   WS-REISSUE-DATE is an elementary 01-level root (has pic, no children).
+#   Expected:
+#     - total_bytes = 10
+#     - redefines_groups contains an entry with redefines_target =
+#       "WS-ACCT-REISSUE-DATE"
 # ===========================================================================
 
 def test_redefines_01_level():
-    """
-    01-level REDEFINES (e.g. WS-REISSUE-DATE REDEFINES WS-ACCT-REISSUE-DATE)
-    must appear in the redefining record's redefines_groups[].
-    """
     src = _cobol_wrap("""
        01  WS-ACCT-REISSUE-DATE.
            05  WS-ACCT-REISSUE-YYYY  PIC X(4).
@@ -283,18 +299,17 @@ def test_redefines_01_level():
     layout = extract_layout(src, "TEST")
     assert len(layout["unresolved"]) == 0
 
-    # The redefining record should exist
     rec = _record(layout, "WS-REISSUE-DATE")
-    # Its redefines_groups must contain an entry pointing at WS-ACCT-REISSUE-DATE
-    assert any(g["redefines_target"] == "WS-ACCT-REISSUE-DATE"
-               for g in rec["redefines_groups"]), \
-        f"redefines_groups={rec['redefines_groups']}"
-    # Total bytes should be 10 (PIC X(10))
-    assert rec["total_bytes"] == 10, f"total_bytes={rec['total_bytes']}"
+    assert rec["total_bytes"] == 10, \
+        f"total_bytes={rec['total_bytes']} (expected 10)"
+    assert any(
+        g["redefines_target"] == "WS-ACCT-REISSUE-DATE"
+        for g in rec["redefines_groups"]
+    ), f"redefines_groups={rec['redefines_groups']}"
 
 
 # ===========================================================================
-# 8.  Unrecognized PIC: placeholder with length=null, unresolved[] entry
+# 8.  Unrecognized PIC placeholder
 # ===========================================================================
 
 def test_unrecognized_pic_placeholder():
@@ -308,10 +323,11 @@ def test_unrecognized_pic_placeholder():
 
     f_unknown = _field(layout, "WS-TEST.WS-UNKNOWN")
     assert f_unknown["length"] is None
-    assert any(u["field"] == "WS-TEST.WS-UNKNOWN" and u["reason"] == "unrecognized_pic"
-               for u in layout["unresolved"])
+    assert any(
+        u["field"] == "WS-TEST.WS-UNKNOWN" and u["reason"] == "unrecognized_pic"
+        for u in layout["unresolved"]
+    )
 
-    # Cursor should NOT have advanced past WS-UNKNOWN
     f_after = _field(layout, "WS-TEST.WS-AFTER")
     assert f_after["offset"] == 5
 

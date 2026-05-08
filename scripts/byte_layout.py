@@ -1,20 +1,24 @@
 #!/usr/bin/env python3
 # LLM-FREE — Deterministic COBOL byte layout extraction. No LLM inference.
 """
-byte_layout.py  v1.2.1
+byte_layout.py  v1.2.2
 ======================
 HermesCOBOL v1.2 — Byte Layout Extractor.
 
-Fixes applied in v1.2.1 (gate-driven):
-  1. COPY detection: use plain string match on stripped line, not
-     re.MULTILINE on already-joined logical lines.
-  2. _locate_data_section: collect all data-section starts and use the
-     earliest; do not stop after the first FILE SECTION when WORKING-
-     STORAGE follows it (as in CBACT01C).
-  3. _assign_offsets group header insertion: record insert position
-     BEFORE extending with child fields.
-  4. 01-level REDEFINES: roots with redefines clause are added to
-     redefines_groups[] in the enclosing record or top-level list.
+Fixes in v1.2.2 (gate-driven, round 2):
+  1. test_nested_occurs: the previous test assertion was wrong.
+     INNER-FIELD (leaf, no OCCURS clause) correctly has occurs=1.
+     The group header INNER-ENTRY carries occurs=12.  Test corrected.
+     No code change needed for this specific failure.
+
+  2. test_redefines_01_level / total_bytes=None:
+     Elementary 01-level roots (pic != None, children=[]) had
+     total_bytes=None because _build_record called _assign_offsets on
+     an empty children list, got end_offset=0, and the guard
+     'end_offset > 0 else None' returned None.
+     Fix: detect elementary root before the children walk and compute
+     total_bytes = pic_length(root.pic, root.storage) * root.occurs
+     directly.  A single self-field dict is emitted at offset=0.
 """
 from __future__ import annotations
 
@@ -69,8 +73,7 @@ RE_SYNC  = re.compile(r"\bSYNCHRONIZED\b|\bSYNC\b",            re.IGNORECASE)
 RE_OCCUR = re.compile(r"\bOCCURS\s+(\d+)(?:\s+TIMES)?\b",      re.IGNORECASE)
 RE_VALUE = re.compile(r"\bVALUE\b",                             re.IGNORECASE)
 
-# COPY detection: plain prefix match used in _expand_copies.
-# This regex is only used as a fallback; the primary check is startswith.
+# COPY detection: plain prefix check used in _expand_copies.
 RE_COPY_INLINE = re.compile(
     r"^COPY\s+([A-Z0-9][A-Z0-9\-]*)\s*\.?\s*$",
     re.IGNORECASE,
@@ -129,20 +132,17 @@ def _locate_data_section(
     Return logical lines from the EARLIEST data section header through
     (but not including) PROCEDURE DIVISION.
 
-    BUG FIX: the original code stopped scanning after finding the first
-    section header. In CBACT01C, FILE SECTION appears before WORKING-
-    STORAGE SECTION, so the first hit was FILE SECTION, but COPY statements
-    for CVACT01Y/CODATECN live inside WORKING-STORAGE which follows FILE
-    SECTION. The fix: scan all lines, record the first section-header index
-    and the PROCEDURE DIVISION index, then return the full slice between
-    them. This is correct because we want ALL data areas.
+    Collects FILE SECTION, WORKING-STORAGE SECTION, LINKAGE SECTION,
+    LOCAL-STORAGE SECTION — whichever comes first is the slice start.
+    All lines up to PROCEDURE DIVISION are included so programs where
+    FILE SECTION precedes WORKING-STORAGE (e.g. CBACT01C) still expose
+    their COPY statements.
     """
     start_idx = None
     end_idx   = len(logical_lines)
 
     for idx, (lineno, line) in enumerate(logical_lines):
         u = line.upper()
-        # Detect any data section header
         is_data_header = (
             ("FILE" in u and "SECTION" in u) or
             "WORKING-STORAGE" in u or
@@ -151,7 +151,6 @@ def _locate_data_section(
         )
         if start_idx is None and is_data_header:
             start_idx = idx
-        # Stop at PROCEDURE DIVISION
         if "PROCEDURE" in u and "DIVISION" in u:
             end_idx = idx
             break
@@ -169,13 +168,12 @@ def pic_length(pic: str, storage: str) -> Optional[int]:
     """
     Compute byte length from PIC clause string + storage class.
 
-    DISPLAY       : 1 byte per expanded character position (S and V contribute 0).
+    DISPLAY       : 1 byte per expanded character position (S and V free).
     COMP-3        : ceil((digit_count + 1) / 2).
     COMP / BINARY : 2 bytes (<=4 digits), 4 bytes (5-9), 8 bytes (10-18).
     INDEX/POINTER : 4 bytes fixed.
 
-    Returns None for unrecognized PIC / storage so callers can emit
-    a length=null placeholder and append to unresolved[].
+    Returns None for unrecognized PIC / storage.
     """
     storage_upper = storage.upper()
     pic_upper     = pic.upper().strip()
@@ -186,11 +184,9 @@ def pic_length(pic: str, storage: str) -> Optional[int]:
         while i < len(pic_str):
             ch = pic_str[i]
             if ch in ("(", ")"):
-                i += 1
-                continue
+                i += 1; continue
             if ch in ("S", "V", "+", "-", ".", ",", "$", "*", "B", "0"):
-                i += 1
-                continue
+                i += 1; continue
             j = i + 1
             if j < len(pic_str) and pic_str[j] == "(":
                 k = pic_str.index(")", j)
@@ -208,8 +204,7 @@ def pic_length(pic: str, storage: str) -> Optional[int]:
             ch = pic_str[i]
             if ch in ("S", "V", "+", "-", ".", ",", "$", "*", "B", "0",
                       "X", "A", "(", ")"):
-                i += 1
-                continue
+                i += 1; continue
             if ch in ("9", "Z", "P"):
                 j = i + 1
                 if j < len(pic_str) and pic_str[j] == "(":
@@ -229,8 +224,7 @@ def pic_length(pic: str, storage: str) -> Optional[int]:
 
     if storage_upper in ("COMP", "BINARY", "COMP-4", "COMP-5"):
         digits = digit_count(pic_upper)
-        if digits == 0:
-            return None
+        if digits == 0: return None
         if digits <= 4:  return 2
         if digits <= 9:  return 4
         return 8
@@ -359,13 +353,8 @@ def _expand_copies(
     """
     Expand COPY statements inline.
 
-    BUG FIX: previous version used RE_COPY with re.MULTILINE against
-    already-joined logical lines, where MULTILINE is meaningless (there
-    are no embedded newlines after _strip_and_join). The fix is a plain
-    case-insensitive startswith check on the stripped line, followed by
-    the inline regex for the name extraction.
-
-    Returns list of (lineno, logical_line, copybook_name) tuples.
+    Uses plain startswith("COPY ") check on the stripped logical line
+    rather than a MULTILINE regex on already-joined lines.
     """
     if visited is None:
         visited = set()
@@ -374,11 +363,9 @@ def _expand_copies(
 
     for lineno, line in logical_lines:
         stripped = line.strip()
-        # Detect COPY statement: starts with COPY (case-insensitive)
         if stripped.upper().startswith("COPY "):
             cm = RE_COPY_INLINE.match(stripped)
             if not cm:
-                # Malformed COPY line; keep as-is
                 result.append((lineno, line, None))
                 continue
             cpy_name = cm.group(1).upper()
@@ -468,30 +455,29 @@ def _assign_offsets(
     """
     Walk sibling nodes in source order, assign byte offsets, return flat list.
 
-    BUG FIX (group header insertion):
-      Original code did:
-          fields.extend(child_fields)
-          fields.insert(len(fields) - len(child_fields), header)
-      This is incorrect when earlier siblings already populated fields[].
-      len(fields) - len(child_fields) points to the start of child_fields
-      within the FULL fields list, but only by coincidence when there are
-      no prior siblings. With prior siblings the index is wrong and the
-      group header lands inside a different sibling's children.
-
-      Fix: record insert_pos = len(fields) BEFORE extending, then insert
-      at that position after extend.
+    Key correctness points:
+    - Elementary OCCURS n: cursor advances by base_len * n; the field
+      dict records the base length and occurs count separately.
+    - Group OCCURS n: one_occ_size = child_end - group_start (size of ONE
+      occurrence); total_size = one_occ_size * n.  The cursor advances by
+      total_size so the NEXT sibling starts correctly.
+    - Nested OCCURS: handled naturally because each level's group header
+      gets total_size = (its own one_occ_size) * (its own occurs), and
+      the parent's one_occ_size is measured from child_end which already
+      reflects the inner multiplication.
+    - Group header insert: insert_pos is captured BEFORE extending with
+      child_fields so it always points at the right slot.
+    - REDEFINES: cursor resets to target's start offset before processing
+      the redefining item.
     """
     fields: list[dict] = []
     cursor = start_offset
     redef_offset_map: dict[str, int] = {}
-    # Track the high-water mark across REDEFINES siblings so the cursor
-    # advances to the end of the widest alternative after the group.
-    redef_high_water: dict[str, int] = {}  # redef_target -> max end offset
+    redef_high_water:  dict[str, int] = {}
 
     for node in nodes:
         qname = f"{parent_qname}.{node.name}" if parent_qname else node.name
 
-        # REDEFINES: reset cursor to start of target
         if node.redefines is not None:
             target = node.redefines.upper()
             target_offset = redef_offset_map.get(target)
@@ -523,7 +509,6 @@ def _assign_offsets(
                     "copybook":        node.copybook,
                     "_offset_drifted": True,
                 })
-                # cursor NOT advanced on null-length
             else:
                 offset_here = cursor
                 if node.synchronized and node.storage in ("COMP", "BINARY"):
@@ -546,11 +531,15 @@ def _assign_offsets(
                 })
                 cursor += base_len * node.occurs
 
+                if node.redefines:
+                    hw = redef_high_water.get(node.redefines.upper(), 0)
+                    redef_high_water[node.redefines.upper()] = max(hw, cursor)
+
         else:
             # ------- Group item -------
             group_start = cursor
 
-            # FIX: record insert position BEFORE extending with children
+            # Capture insert position BEFORE extending with children
             insert_pos = len(fields)
 
             child_fields, child_end = _assign_offsets(
@@ -565,7 +554,6 @@ def _assign_offsets(
             one_occ_size = child_end - group_start
             total_size   = one_occ_size * node.occurs
 
-            # Insert group header BEFORE its children
             fields.insert(insert_pos, {
                 "qualified_name": qname,
                 "level":          node.level,
@@ -578,21 +566,15 @@ def _assign_offsets(
                 "occurs":         node.occurs,
                 "copybook":       node.copybook,
             })
-            # Append children AFTER the header
             fields.extend(child_fields)
 
             cursor = group_start + total_size
 
-            # REDEFINES high-water: if this group redefines something,
-            # track the end so later non-redefines siblings start correctly.
             if node.redefines:
                 target = node.redefines.upper()
-                prev_hw = redef_high_water.get(target, 0)
-                redef_high_water[target] = max(prev_hw, cursor)
+                hw = redef_high_water.get(target, 0)
+                redef_high_water[target] = max(hw, cursor)
 
-    # After all siblings: advance cursor past any REDEFINES high-water mark
-    # so the next sibling group starts at the right place.
-    # (Elementary REDEFINES are handled inline; this covers group REDEFINES.)
     for hw in redef_high_water.values():
         if hw > cursor:
             cursor = hw
@@ -609,6 +591,54 @@ def _build_record(
     unresolved: list[dict],
     program:    str,
 ) -> dict:
+    """
+    Convert a 01-level root _Node into the output record dict.
+
+    FIX (v1.2.2): elementary 01-level roots (pic != None, no children)
+    were getting total_bytes=None because _assign_offsets([]) returns
+    end_offset=0.  Detect this case first and compute total_bytes directly
+    from pic_length, emitting a single self-field dict at offset=0.
+    """
+    redefines_groups: list[dict] = []
+
+    # --- Elementary 01-level (e.g. 01 WS-X REDEFINES Y PIC X(10)) ---
+    if root.pic is not None:
+        base_len = pic_length(root.pic, root.storage)
+        total    = base_len * root.occurs if base_len is not None else None
+        if base_len is None:
+            unresolved.append({
+                "program": program,
+                "field":   root.name,
+                "reason":  "unrecognized_pic",
+                "pic":     root.pic,
+            })
+        clean_fields = [{
+            "qualified_name": root.name,
+            "level":          root.level,
+            "offset":         0,
+            "length":         base_len,
+            "pic":            root.pic,
+            "storage":        root.storage,
+            "redefines":      root.redefines,
+            "synchronized":   root.synchronized,
+            "occurs":         root.occurs,
+        }]
+        if root.redefines:
+            redefines_groups.append({
+                "name":             root.name,
+                "redefines_target": root.redefines,
+                "total_bytes":      total,
+                "level":            1,
+            })
+        return {
+            "name":             root.name,
+            "copybook":         root.copybook,
+            "total_bytes":      total,
+            "fields":           clean_fields,
+            "redefines_groups": redefines_groups,
+        }
+
+    # --- Group 01-level (normal case) ---
     flat_fields, end_offset = _assign_offsets(
         root.children,
         start_offset  = 0,
@@ -618,7 +648,6 @@ def _build_record(
         occurs_stack  = [root.occurs],
     )
 
-    redefines_groups: list[dict] = []
     seen_redef: set[str] = set()
     for f in flat_fields:
         if f.get("redefines") and f["qualified_name"] not in seen_redef:
@@ -668,14 +697,6 @@ def extract_layout(
 ) -> dict:
     """
     Extract byte layouts for all data records in a COBOL program.
-
-    BUG FIX (01-level REDEFINES):
-      Roots with a redefines clause (e.g. 01 WS-REISSUE-DATE REDEFINES
-      WS-ACCT-REISSUE-DATE) are detected here and recorded in the
-      top-level redefines_groups key of the enclosing logical record.
-      Previously they were invisible because _build_record only scanned
-      flat_fields produced by _assign_offsets, but 01-level items are
-      roots, not children.
     """
     unresolved: list[dict] = []
 
@@ -685,27 +706,10 @@ def extract_layout(
     roots         = _build_trees(expanded)
 
     records: list[dict] = []
-    # Keep a name->offset map for 01-level REDEFINES resolution
-    root_offset_map: dict[str, int] = {}
-    # Track cumulative offset across 01-level records
-    # (01-levels are independent; each starts at 0 within its own record.)
-    # For REDEFINES at 01-level we note the referencing root's copybook
-    # on the target record's redefines_groups list.
     for root in roots:
         if root.level not in (1, 77):
             continue
-        rec = _build_record(root, unresolved, program)
-
-        # 01-level REDEFINES: attach to the record dict
-        if root.redefines:
-            rec["redefines_groups"].append({
-                "name":             root.name,
-                "redefines_target": root.redefines,
-                "total_bytes":      rec["total_bytes"],
-                "level":            1,
-            })
-
-        records.append(rec)
+        records.append(_build_record(root, unresolved, program))
 
     return {
         "program":        program.upper(),
