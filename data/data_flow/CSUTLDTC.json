@@ -367,11 +367,6 @@
           "reason": "unresolved mutate operand: WS-RESULT"
         }
       ]
-    },
-    "A000-MAIN-EXIT": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
     }
   },
   "program_unresolved": []

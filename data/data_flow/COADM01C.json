@@ -119,13 +119,7 @@
           "line_no": 77,
           "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
-        }
-      ]
-    },
-    "PROCESS-ENTER-KEY": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "MOVE",
           "line_no": 121,
@@ -371,13 +365,7 @@
           "line_no": 121,
           "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
-        }
-      ]
-    },
-    "RETURN-TO-SIGNON-SCREEN": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "IF",
           "line_no": 165,
@@ -389,13 +377,7 @@
           "line_no": 165,
           "raw_text": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
           "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
-        }
-      ]
-    },
-    "SEND-MENU-SCREEN": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "MOVE",
           "line_no": 177,
@@ -419,18 +401,7 @@
           "line_no": 177,
           "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COADM1AO",
           "reason": "unresolved mutate operand: COADM1AO"
-        }
-      ]
-    },
-    "RECEIVE-MENU-SCREEN": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
-    },
-    "POPULATE-HEADER-INFO": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "MOVE",
           "line_no": 207,
@@ -664,13 +635,7 @@
           "line_no": 207,
           "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COADM1AO",
           "reason": "unresolved mutate operand: COADM1AO"
-        }
-      ]
-    },
-    "BUILD-MENU-OPTIONS": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "MOVE",
           "line_no": 231,
@@ -820,13 +785,7 @@
           "line_no": 231,
           "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN010O",
           "reason": "unresolved mutate operand: OPTN010O"
-        }
-      ]
-    },
-    "PGMIDERR-ERR-PARA": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "MOVE",
           "line_no": 271,
@@ -884,5 +843,9 @@
       ]
     }
   },
-  "program_unresolved": []
+  "program_unresolved": [
+    {
+      "issue": "paragraph count mismatch: local=1 facts=8"
+    }
+  ]
 }

@@ -89,13 +89,7 @@
           "line_no": 164,
           "raw_text": "DISPLAY 'CARD NUMBER ' DALYTRAN-CARD-NUM ' COULD NOT BE VERIFIED. SKIPPING TRANSACTION ID-' DALYTRAN-ID",
           "reason": "unresolved read operand: DALYTRAN-ID"
-        }
-      ]
-    },
-    "1000-DALYTRAN-GET-NEXT": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "READ",
           "line_no": 203,
@@ -185,13 +179,7 @@
           "line_no": 204,
           "raw_text": "MOVE DALYTRAN-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        }
-      ]
-    },
-    "2000-LOOKUP-XREF": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "MOVE",
           "line_no": 228,
@@ -269,13 +257,7 @@
           "line_no": 228,
           "raw_text": "DISPLAY 'CUSTOMER ID: ' XREF-CUST-ID",
           "reason": "unresolved read operand: XREF-CUST-ID"
-        }
-      ]
-    },
-    "3000-READ-ACCOUNT": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "MOVE",
           "line_no": 242,
@@ -335,13 +317,7 @@
           "line_no": 242,
           "raw_text": "READ OF ACCOUNT FILE'",
           "reason": "unresolved mutate operand: OF"
-        }
-      ]
-    },
-    "0000-DALYTRAN-OPEN": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "MOVE",
           "line_no": 253,
@@ -389,13 +365,7 @@
           "line_no": 254,
           "raw_text": "MOVE DALYTRAN-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        }
-      ]
-    },
-    "0100-CUSTFILE-OPEN": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "MOVE",
           "line_no": 272,
@@ -443,13 +413,7 @@
           "line_no": 273,
           "raw_text": "MOVE CUSTFILE-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        }
-      ]
-    },
-    "0200-XREFFILE-OPEN": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "MOVE",
           "line_no": 290,
@@ -497,13 +461,7 @@
           "line_no": 291,
           "raw_text": "MOVE XREFFILE-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        }
-      ]
-    },
-    "0300-CARDFILE-OPEN": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "MOVE",
           "line_no": 308,
@@ -551,13 +509,7 @@
           "line_no": 309,
           "raw_text": "MOVE CARDFILE-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        }
-      ]
-    },
-    "0400-ACCTFILE-OPEN": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "MOVE",
           "line_no": 326,
@@ -605,13 +557,7 @@
           "line_no": 327,
           "raw_text": "MOVE ACCTFILE-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        }
-      ]
-    },
-    "0500-TRANFILE-OPEN": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "MOVE",
           "line_no": 344,
@@ -659,13 +605,7 @@
           "line_no": 345,
           "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        }
-      ]
-    },
-    "9000-DALYTRAN-CLOSE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "ADD",
           "line_no": 362,
@@ -713,13 +653,7 @@
           "line_no": 363,
           "raw_text": "MOVE CUSTFILE-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        }
-      ]
-    },
-    "9100-CUSTFILE-CLOSE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "ADD",
           "line_no": 380,
@@ -767,13 +701,7 @@
           "line_no": 381,
           "raw_text": "MOVE CUSTFILE-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        }
-      ]
-    },
-    "9200-XREFFILE-CLOSE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "ADD",
           "line_no": 398,
@@ -821,13 +749,7 @@
           "line_no": 399,
           "raw_text": "MOVE XREFFILE-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        }
-      ]
-    },
-    "9300-CARDFILE-CLOSE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "ADD",
           "line_no": 416,
@@ -875,13 +797,7 @@
           "line_no": 417,
           "raw_text": "MOVE CARDFILE-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        }
-      ]
-    },
-    "9400-ACCTFILE-CLOSE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "ADD",
           "line_no": 434,
@@ -929,13 +845,7 @@
           "line_no": 435,
           "raw_text": "MOVE ACCTFILE-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        }
-      ]
-    },
-    "9500-TRANFILE-CLOSE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "ADD",
           "line_no": 452,
@@ -1007,13 +917,7 @@
           "line_no": 470,
           "raw_text": "CALL 'CEE3ABD' USING ABCODE, TIMING",
           "reason": "CALL USING not yet classified (TODO Section 3)"
-        }
-      ]
-    },
-    "Z-DISPLAY-IO-STATUS": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "IF",
           "line_no": 477,
@@ -1113,5 +1017,9 @@
       ]
     }
   },
-  "program_unresolved": []
+  "program_unresolved": [
+    {
+      "issue": "paragraph count mismatch: local=2 facts=18"
+    }
+  ]
 }
