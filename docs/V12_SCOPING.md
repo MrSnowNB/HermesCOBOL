@@ -458,3 +458,80 @@ Section 3 (validators T04)  [requires cics.aid_keys from v1.1]
 Section 4 (REKT wiring)     [standalone; fallback to text_scan if smojol-cli absent]
 Section 5 (schema bump)     [requires S1+S2+S3+S4 artifacts on disk]
 ```
+
+---
+
+## Session Log
+
+### Section 1 — 2026-05-08
+
+**Status:** CLOSED. Gate passed. Ready for Section 2.
+
+#### What was built
+
+- `scripts/byte_layout.py` — full PIC parser, COMP/COMP-3/BINARY length rules, OCCURS multiplier, REDEFINES offset reset, copybook expansion via `COPY` statement inline expansion.
+- `tests/test_byte_layout.py` — 21 unit tests covering all storage classes, nested OCCURS, REDEFINES at 01-level and sub-level, unresolved copybook placeholder, copybook-not-found graceful handling.
+
+#### Bugs found and fixed during review
+
+1. **`test_nested_occurs` was a wrong test assertion, not a code bug.**  
+   The test asserted `INNER-FIELD.occurs == 12`. The correct model: `occurs` lives on the *group header* (`INNER-ENTRY OCCURS 12`), not on a leaf field inside it. Leaf has `occurs=1` if it has no `OCCURS` clause of its own. Test was corrected; no code change needed in `byte_layout.py`.
+
+2. **`test_redefines_01_level` — real code bug fixed.**  
+   Elementary 01-level REDEFINES (no children, only a PIC clause) produced `total_bytes=None` because `_assign_offsets(root.children=[])` returned `end_offset=0`, triggering the `None` guard.  
+   Fix: detect `root.pic is not None` before the children walk; compute `total_bytes = pic_length(root.pic, root.storage) * root.occurs` directly and emit one self-field at offset 0.
+
+#### COBOL model clarification — REDEFINES at 01-level vs sub-level
+
+This distinction **must be understood before writing Section 2 probes**:
+
+| Situation | What the extractor produces | How to detect in JSON |
+|---|---|---|
+| Sub-level REDEFINES (inside a containing record) | `redefines_groups[]` list populated on the parent record | `r['redefines_groups']` non-empty |
+| 01-level REDEFINES (one 01-item redefines another 01-item) | Two separate sibling record entries in `records[]`; the alias record is emitted as its own record with correct `total_bytes` and fields | Check for the alias record name in `records[]` |
+
+Example from CBACT01C (`WS-REISSUE-DATE REDEFINES WS-ACCT-REISSUE-DATE`):  
+- `WS-ACCT-REISSUE-DATE` → base record, `redef_groups=0`  
+- `WS-REISSUE-DATE` → alias record, `redef_groups=1` (its own sub-level REDEFINES inside it)
+
+Example from CBTRN02C (`TWO-BYTES-ALPHA REDEFINES TWO-BYTES-BINARY`, `FILLER REDEFINES DB2-FORMAT-TS`):  
+- Both produce sibling records. `TWO-BYTES-ALPHA` → 2 bytes, 2 fields. `FILLER` → 26 bytes, 14 fields.  
+- Neither has a `redefines_groups` entry — that is correct.
+
+#### OCCURS clarification
+
+- `OCCURS` count lives on the **group/field header**, not propagated down to leaf children.
+- Leaf fields within a repeated group have `occurs=1` unless they themselves carry an `OCCURS` clause.
+- **CBACT04C has zero OCCURS clauses in its source.** `occurs_fields=0` is correct output for that program. Do not use CBACT04C as an OCCURS corpus test target.
+- If Section 2 or later needs an OCCURS corpus program, candidates with OCCURS in their copybooks include `CVCRD01Y.cpy` and `CSUTLDPY.cpy`.
+
+#### Gate probe corrections made (V12_VALIDATION_GATES.md updated same session)
+
+- CBACT01C probe: record name corrected from `ACCT-RECORD` → `ACCOUNT-RECORD` (actual 01-level name from `CVACT01Y`).
+- CBTRN02C probe: replaced `redefines_groups_total > 0` check with sibling-record presence check (`TWO-BYTES-ALPHA`, `FILLER`).
+- CBACT04C probe: `occurs_fields=0` asserted as **correct**, not as a failure. Probe now documents why.
+- Expected block updated with verified real values from corpus run on 2026-05-08.
+- Checklist row updated: `21 passed / 0 failed`.
+
+#### Verified gate output (2026-05-08)
+
+```
+Unit tests:      21 passed / 0 failed
+CBACT01C:        23 records, 95 fields, 0 unresolved
+CBTRN02C:        32 records, 120 fields, 0 unresolved
+CBACT04C:        29 records, 113 fields, 0 unresolved
+
+ACCOUNT-RECORD:  bytes=300, fields=13                          ✓
+  first field:   ACCOUNT-RECORD.ACCT-ID  offset=0  len=11  DISPLAY
+CODATECN-REC:    redef_groups=4  (sub-level REDEFINES)         ✓
+TWO-BYTES-ALPHA: bytes=2, fields=2  (CBTRN02C 01-level alias)  ✓
+FILLER:          bytes=26, fields=14 (CBTRN02C 01-level alias) ✓
+occurs_fields=0 in CBACT04C  (source has no OCCURS)            ✓
+```
+
+#### Standing rules for subsequent sections
+
+- **Always read the source before writing a probe.** Gate probes must be grounded in what the COBOL actually contains, not spec assumptions.
+- **Never push code to fix a test failure without first verifying the test is correct.** Two of the Section 1 iterations wasted cycles because a gate assertion was wrong, not the code.
+- **`redefines_groups[]` is for sub-level REDEFINES only.** 01-level REDEFINES produce sibling record entries. Gate probes for Sections 2–5 must not assume otherwise.
+- Section 1 files are frozen. Do not modify `scripts/byte_layout.py` or `tests/test_byte_layout.py` in Section 2 or later PRs.
