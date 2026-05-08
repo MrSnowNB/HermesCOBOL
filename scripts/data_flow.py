@@ -408,6 +408,8 @@ def _parse_call(
 
     The scan starts at token index 2 (first token after CALL target),
     so RETURNING without a preceding USING clause is handled correctly.
+    Single-pass cursor CALL classifier (Section 3.2).
+    RETURNING is handled unconditionally regardless of whether USING is present.
     """
     # --- extract static target ---
     target = None
@@ -777,6 +779,124 @@ def classify_statement(
         _parse_call(lineno, raw_text, tokens, qmap, context_records,
                     reads, mutates, unresolved, call_targets)
 
+    elif verb == 'INSPECT':
+        # INSPECT source [TALLYING tally-name FOR ...]
+        #                [REPLACING ... BY ...]
+        # source -> read; tally names after TALLYING ... FOR -> mutate;
+        # replacement targets after REPLACING -> mutate
+        ut = [t.upper() for t in tokens]
+        src = tokens[1] if len(tokens) > 1 else None
+        if src and src != '__LIT__':
+            _add_read(src)
+        _INSPECT_MUTATE_TRIGGERS = frozenset({'TALLYING', 'REPLACING'})
+        _INSPECT_SKIP = frozenset({
+            'TALLYING','REPLACING','FOR','ALL','LEADING','TRAILING',
+            'CHARACTERS','BY','FIRST','BEFORE','AFTER','INITIAL',
+            'CONVERTING','TO',
+        })
+        i = 2
+        in_mutate = False
+        while i < len(ut):
+            tok = ut[i]
+            if tok in _INSPECT_MUTATE_TRIGGERS:
+                in_mutate = True
+                i += 1
+                continue
+            if tok in _INSPECT_SKIP or tokens[i] == '__LIT__' or is_literal(tokens[i]):
+                i += 1
+                continue
+            if in_mutate:
+                _add_mutate(tokens[i])
+            i += 1
+
+    elif verb == 'SORT':
+        # SORT file-name ON ASCENDING/DESCENDING KEY key ...
+        #      [USING input-file ...] [GIVING output-file ...]
+        ut = [t.upper() for t in tokens]
+        file_name = tokens[1] if len(tokens) > 1 else None
+        if file_name and file_name != '__LIT__':
+            _add_mutate(file_name)
+        _SORT_SKIP = frozenset({
+            'ON','ASCENDING','DESCENDING','KEY','WITH','DUPLICATES',
+            'IN','ORDER','COLLATING','SEQUENCE',
+        })
+        mode = None
+        i = 2
+        while i < len(ut):
+            tok = ut[i]
+            if tok == 'USING':
+                mode = 'read'
+                i += 1
+                continue
+            if tok == 'GIVING':
+                mode = 'mutate'
+                i += 1
+                continue
+            if tok in _SORT_SKIP or tokens[i] == '__LIT__' or is_literal(tokens[i]):
+                i += 1
+                continue
+            if mode == 'read':
+                _add_read(tokens[i])
+            elif mode == 'mutate':
+                _add_mutate(tokens[i])
+            i += 1
+
+    elif verb == 'MERGE':
+        # MERGE file-name ON ASCENDING/DESCENDING KEY key ...
+        #       USING input-files ... GIVING output-files ...
+        ut = [t.upper() for t in tokens]
+        file_name = tokens[1] if len(tokens) > 1 else None
+        if file_name and file_name != '__LIT__':
+            _add_mutate(file_name)
+        _MERGE_SKIP = frozenset({
+            'ON','ASCENDING','DESCENDING','KEY','WITH','DUPLICATES',
+            'IN','ORDER','COLLATING','SEQUENCE',
+        })
+        mode = None
+        i = 2
+        while i < len(ut):
+            tok = ut[i]
+            if tok == 'USING':
+                mode = 'read'
+                i += 1
+                continue
+            if tok == 'GIVING':
+                mode = 'mutate'
+                i += 1
+                continue
+            if tok in _MERGE_SKIP or tokens[i] == '__LIT__' or is_literal(tokens[i]):
+                i += 1
+                continue
+            if mode == 'read':
+                _add_read(tokens[i])
+            elif mode == 'mutate':
+                _add_mutate(tokens[i])
+            i += 1
+
+    elif verb == 'RELEASE':
+        # RELEASE record-name [FROM source]
+        ut = [t.upper() for t in tokens]
+        rec = tokens[1] if len(tokens) > 1 else None
+        if rec and rec != '__LIT__':
+            _add_mutate(rec)
+        if 'FROM' in ut:
+            fi = ut.index('FROM')
+            src = tokens[fi + 1] if fi + 1 < len(tokens) else None
+            if src and src != '__LIT__':
+                _add_read(src)
+
+    elif verb == 'RETURN':
+        # RETURN file-name [INTO target]
+        ut = [t.upper() for t in tokens]
+        file_name = tokens[1] if len(tokens) > 1 else None
+        if file_name and file_name != '__LIT__':
+            _add_mutate(file_name)
+        if 'INTO' in ut:
+            ii = ut.index('INTO')
+            tgt = tokens[ii + 1] if ii + 1 < len(tokens) else None
+            if tgt and tgt != '__LIT__':
+                _add_mutate(tgt)
+
     elif verb == 'PERFORM':
         pass
 
@@ -786,10 +906,6 @@ def classify_statement(
                   'END-COMPUTE','END-ADD','END-SUBTRACT','END-MULTIPLY',
                   'END-DIVIDE','END-EXEC','END-CALL'):
         pass
-
-    if verb in ('INSPECT','SORT','MERGE','RELEASE','RETURN'):
-        unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
-                           'reason': f'{verb} not yet classified (TODO)'})
 
 
 # ---------------------------------------------------------------------------
@@ -870,7 +986,8 @@ def _dispatch_inline(lineno, text, qmap, context_records, reads, mutates, unreso
     _VERB_SPLIT_RE = re.compile(
         r'(?:^|(?<=\s))(?=(?:MOVE|ADD|SUBTRACT|MULTIPLY|DIVIDE|COMPUTE|INITIALIZE|'
         r'READ|WRITE|STRING|UNSTRING|ACCEPT|DISPLAY|IF|EVALUATE|WHEN|SET|EXEC|'
-        r'PERFORM|CALL|OPEN|CLOSE|STOP|GOBACK|CONTINUE|EXIT|GO|END-IF|'
+        r'PERFORM|CALL|INSPECT|SORT|MERGE|RELEASE|RETURN|'
+        r'OPEN|CLOSE|STOP|GOBACK|CONTINUE|EXIT|GO|END-IF|'
         r'END-EVALUATE|END-PERFORM|END-READ|END-WRITE|END-EXEC|'
         r'END-COMPUTE|END-ADD|END-SUBTRACT|END-MULTIPLY|END-DIVIDE|'
         r'END-STRING|END-UNSTRING|END-CALL)(?:\s|$))',

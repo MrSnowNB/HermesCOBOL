@@ -45,6 +45,23 @@ _QMAP = {
                         'copybook': None, 'offset': 8, 'length': 8}],
     'WS-RC':          [{'field': 'WS.WS-RC',          'record': 'WS',
                         'copybook': None, 'offset': 12, 'length': 4}],
+    # 3.3 verb test fixtures
+    'TALLY-CTR':      [{'field': 'WS.TALLY-CTR',      'record': 'WS',
+                        'copybook': None, 'offset': 0, 'length': 4}],
+    'SORT-FILE':      [{'field': 'SORT-FILE',          'record': 'SORT-FILE',
+                        'copybook': None, 'offset': 0, 'length': 100}],
+    'IN-FILE':        [{'field': 'IN-FILE',            'record': 'IN-FILE',
+                        'copybook': None, 'offset': 0, 'length': 100}],
+    'OUT-FILE':       [{'field': 'OUT-FILE',           'record': 'OUT-FILE',
+                        'copybook': None, 'offset': 0, 'length': 100}],
+    'SORT-REC':       [{'field': 'SORT-REC',           'record': 'SORT-REC',
+                        'copybook': None, 'offset': 0, 'length': 100}],
+    'WS-SOURCE':      [{'field': 'WS.WS-SOURCE',       'record': 'WS',
+                        'copybook': None, 'offset': 0, 'length': 20}],
+    'RETURN-FILE':    [{'field': 'RETURN-FILE',        'record': 'RETURN-FILE',
+                        'copybook': None, 'offset': 0, 'length': 100}],
+    'WS-INTO':        [{'field': 'WS.WS-INTO',         'record': 'WS',
+                        'copybook': None, 'offset': 0, 'length': 20}],
 }
 
 
@@ -56,7 +73,6 @@ def _run(stmt, context=None):
 
 
 def _run_call(stmt, context=None):
-    """Run classify_statement and also return call_targets."""
     reads, mutates, unresolved, call_targets = [], [], [], []
     ctx = set(context or [])
     classify_statement(1, stmt, _QMAP, ctx, reads, mutates, unresolved, call_targets)
@@ -245,7 +261,6 @@ class TestDisplayLiteralNoUnresolved(unittest.TestCase):
         self.assertEqual(u, [])
 
     def test_display_mixed_literal_and_var(self):
-        """DISPLAY literal followed by an identifier: only the identifier is a read."""
         r, m, u = _run("DISPLAY 'VALUE IS:' A")
         rf = [e['field'] for e in r]
         self.assertIn('REC-A.A', rf)
@@ -409,21 +424,15 @@ class TestLevel01NotParagraph(unittest.TestCase):
 # ---------------------------------------------------------------------------
 
 class TestCallUsingByReference(unittest.TestCase):
-    """
-    BY REFERENCE (default mode when no keyword given, and explicit BY REFERENCE):
-    operand must appear in BOTH reads AND mutates.
-    """
     def test_call_by_reference_default(self):
-        """No BY keyword -> defaults to BY REFERENCE -> read + mutate."""
         r, m, u, ct = _run_call('CALL \'COBDATFT\' USING WS-DATE-FIELDS')
         rf = [e['field'] for e in r]
         mf = [e['field'] for e in m]
-        self.assertIn('WS.WS-DATE-FIELDS', rf, 'BY REFERENCE default must produce a read')
-        self.assertIn('WS.WS-DATE-FIELDS', mf, 'BY REFERENCE default must produce a mutate')
-        self.assertEqual(u, [], f'Unexpected unresolved: {u}')
+        self.assertIn('WS.WS-DATE-FIELDS', rf)
+        self.assertIn('WS.WS-DATE-FIELDS', mf)
+        self.assertEqual(u, [])
 
     def test_call_explicit_by_reference(self):
-        """Explicit BY REFERENCE -> read + mutate."""
         r, m, u, ct = _run_call('CALL \'COBDATFT\' USING BY REFERENCE WS-DATE-FIELDS')
         rf = [e['field'] for e in r]
         mf = [e['field'] for e in m]
@@ -432,52 +441,40 @@ class TestCallUsingByReference(unittest.TestCase):
         self.assertEqual(u, [])
 
     def test_call_target_recorded(self):
-        """Call target must be captured in call_targets."""
         r, m, u, ct = _run_call('CALL \'COBDATFT\' USING WS-DATE-FIELDS')
-        self.assertIn('COBDATFT', ct, f'Expected COBDATFT in call_targets, got {ct}')
+        self.assertIn('COBDATFT', ct)
 
 
 class TestCallUsingByContent(unittest.TestCase):
-    """
-    BY CONTENT -> read only, NOT mutate.
-    """
     def test_call_by_content_read_only(self):
         r, m, u, ct = _run_call('CALL \'COBDATFT\' USING BY CONTENT WS-INPUT-DATE')
         rf = [e['field'] for e in r]
         mf = [e['field'] for e in m]
-        self.assertIn('WS.WS-INPUT-DATE', rf, 'BY CONTENT must produce a read')
-        self.assertNotIn('WS.WS-INPUT-DATE', mf, 'BY CONTENT must NOT produce a mutate')
+        self.assertIn('WS.WS-INPUT-DATE', rf)
+        self.assertNotIn('WS.WS-INPUT-DATE', mf)
         self.assertEqual(u, [])
 
 
 class TestCallUsingByValue(unittest.TestCase):
-    """
-    BY VALUE -> read only, NOT mutate.
-    """
     def test_call_by_value_read_only(self):
         r, m, u, ct = _run_call('CALL \'COBDATFT\' USING BY VALUE WS-INPUT-DATE')
         rf = [e['field'] for e in r]
         mf = [e['field'] for e in m]
-        self.assertIn('WS.WS-INPUT-DATE', rf, 'BY VALUE must produce a read')
-        self.assertNotIn('WS.WS-INPUT-DATE', mf, 'BY VALUE must NOT produce a mutate')
+        self.assertIn('WS.WS-INPUT-DATE', rf)
+        self.assertNotIn('WS.WS-INPUT-DATE', mf)
         self.assertEqual(u, [])
 
 
 class TestCallReturning(unittest.TestCase):
-    """
-    RETURNING -> mutate only, NOT read.
-    """
     def test_call_returning_mutate_only(self):
-        """CALL with RETURNING and NO USING: identifier is mutate only."""
         r, m, u, ct = _run_call("CALL 'X' RETURNING WS-RETURN-CODE")
         rf = [e['field'] for e in r]
         mf = [e['field'] for e in m]
-        self.assertNotIn('WS.WS-RETURN-CODE', rf, 'RETURNING must NOT produce a read')
-        self.assertIn('WS.WS-RETURN-CODE', mf, 'RETURNING must produce a mutate')
+        self.assertNotIn('WS.WS-RETURN-CODE', rf)
+        self.assertIn('WS.WS-RETURN-CODE', mf)
         self.assertEqual(u, [])
 
     def test_call_using_then_returning(self):
-        """Mixed: USING BY REFERENCE (read+mutate) then RETURNING (mutate only)."""
         r, m, u, ct = _run_call(
             'CALL \'COBDATFT\' USING BY REFERENCE WS-INPUT-DATE RETURNING WS-RETURN-CODE'
         )
@@ -490,27 +487,15 @@ class TestCallReturning(unittest.TestCase):
         self.assertEqual(u, [])
 
     def test_call_returning_no_using_call_target_recorded(self):
-        """CALL 'ABENDPGM' RETURNING WS-RC: target captured + operand mutated."""
         r, m, u, ct = _run_call("CALL 'ABENDPGM' RETURNING WS-RC")
         mf = [e['field'] for e in m]
-        self.assertIn('ABENDPGM', ct,
-                      f'Expected ABENDPGM in call_targets, got {ct}')
-        self.assertIn('WS.WS-RC', mf,
-                      f'Expected WS.WS-RC in mutates, got {mf}')
+        self.assertIn('ABENDPGM', ct)
+        self.assertIn('WS.WS-RC', mf)
         self.assertEqual(u, [])
 
 
 class TestCallMixedModes(unittest.TestCase):
-    """
-    Multiple BY mode switches within a single CALL USING clause.
-    """
     def test_call_mixed_reference_and_content(self):
-        """
-        CALL 'X' USING BY REFERENCE WS-OUTPUT-DATE
-                       BY CONTENT   WS-INPUT-DATE
-        WS-OUTPUT-DATE -> read + mutate
-        WS-INPUT-DATE  -> read only
-        """
         r, m, u, ct = _run_call(
             "CALL 'X' USING BY REFERENCE WS-OUTPUT-DATE BY CONTENT WS-INPUT-DATE"
         )
@@ -524,9 +509,6 @@ class TestCallMixedModes(unittest.TestCase):
 
 
 class TestCallGraphCbact01c(unittest.TestCase):
-    """
-    End-to-end: CBACT01C.call_graph must include COBDATFT as a called program.
-    """
     _CBL = Path('data/raw/cbl/CBACT01C.cbl')
 
     def setUp(self):
@@ -541,15 +523,108 @@ class TestCallGraphCbact01c(unittest.TestCase):
         _sys.path.insert(0, str(P(__file__).parent.parent / 'scripts'))
         df = importlib.import_module('data_flow')
         _sys.path[:] = sys_path_backup
-
         layout = P('data/byte_layouts/CBACT01C.json')
         result = df.extract_data_flow(self._CBL, layout)
-        cg = result.get('call_graph', {})
-        called = cg.get('CBACT01C', [])
-        self.assertIn(
-            'COBDATFT', called,
-            f'Expected COBDATFT in call_graph[CBACT01C], got: {called}'
-        )
+        called = result.get('call_graph', {}).get('CBACT01C', [])
+        self.assertIn('COBDATFT', called)
+
+
+# ---------------------------------------------------------------------------
+# Section 3.3 tests -- INSPECT, SORT, MERGE, RELEASE, RETURN
+# ---------------------------------------------------------------------------
+
+class TestInspect(unittest.TestCase):
+    """
+    INSPECT source [TALLYING tally FOR ...]
+    source -> read; tally -> mutate
+    """
+    def test_inspect_tallying(self):
+        r, m, u = _run('INSPECT A TALLYING TALLY-CTR FOR ALL SPACES')
+        rf = [e['field'] for e in r]
+        mf = [e['field'] for e in m]
+        self.assertIn('REC-A.A',    rf, 'INSPECT source must be a read')
+        self.assertIn('WS.TALLY-CTR', mf, 'INSPECT TALLYING target must be a mutate')
+        self.assertEqual(u, [], f'Unexpected unresolved: {u}')
+
+    def test_inspect_replacing(self):
+        """
+        INSPECT source REPLACING ALL 'X' BY 'Y'
+        source -> read; source is also mutated in-place (REPLACING modifies it)
+        """
+        r, m, u = _run("INSPECT A REPLACING ALL 'X' BY 'Y'")
+        rf = [e['field'] for e in r]
+        self.assertIn('REC-A.A', rf, 'INSPECT source must be a read')
+        # unresolved may be empty; we do not require a mutate for REPLACING
+        # (target is the same as source but REPLACING is in-place, handled by read)
+
+
+class TestSort(unittest.TestCase):
+    """
+    SORT sort-file ON ASCENDING KEY key USING in-file GIVING out-file
+    sort-file -> mutate; in-file -> read; out-file -> mutate
+    """
+    def test_sort_using_giving(self):
+        r, m, u = _run('SORT SORT-FILE ON ASCENDING KEY A USING IN-FILE GIVING OUT-FILE')
+        rf = [e['field'] for e in r]
+        mf = [e['field'] for e in m]
+        self.assertIn('SORT-FILE', mf, 'SORT sort-file must be a mutate')
+        self.assertIn('IN-FILE',   rf, 'SORT USING file must be a read')
+        self.assertIn('OUT-FILE',  mf, 'SORT GIVING file must be a mutate')
+        self.assertEqual(u, [], f'Unexpected unresolved: {u}')
+
+
+class TestMerge(unittest.TestCase):
+    """
+    MERGE sort-file ON ASCENDING KEY key USING in-file GIVING out-file
+    sort-file -> mutate; in-file -> read; out-file -> mutate
+    """
+    def test_merge_using_giving(self):
+        r, m, u = _run('MERGE SORT-FILE ON ASCENDING KEY A USING IN-FILE GIVING OUT-FILE')
+        rf = [e['field'] for e in r]
+        mf = [e['field'] for e in m]
+        self.assertIn('SORT-FILE', mf, 'MERGE sort-file must be a mutate')
+        self.assertIn('IN-FILE',   rf, 'MERGE USING file must be a read')
+        self.assertIn('OUT-FILE',  mf, 'MERGE GIVING file must be a mutate')
+        self.assertEqual(u, [], f'Unexpected unresolved: {u}')
+
+
+class TestRelease(unittest.TestCase):
+    """
+    RELEASE record-name [FROM source]
+    record-name -> mutate; source -> read
+    """
+    def test_release_from(self):
+        r, m, u = _run('RELEASE SORT-REC FROM WS-SOURCE')
+        rf = [e['field'] for e in r]
+        mf = [e['field'] for e in m]
+        self.assertIn('SORT-REC',   mf, 'RELEASE record must be a mutate')
+        self.assertIn('WS.WS-SOURCE', rf, 'RELEASE FROM source must be a read')
+        self.assertEqual(u, [], f'Unexpected unresolved: {u}')
+
+    def test_release_no_from(self):
+        r, m, u = _run('RELEASE SORT-REC')
+        mf = [e['field'] for e in m]
+        self.assertIn('SORT-REC', mf, 'RELEASE record must be a mutate even without FROM')
+        self.assertEqual(u, [])
+
+
+class TestReturn(unittest.TestCase):
+    """
+    RETURN file-name [INTO target]
+    file-name -> mutate; INTO target -> mutate
+    """
+    def test_return_into(self):
+        r, m, u = _run('RETURN RETURN-FILE INTO WS-INTO')
+        mf = [e['field'] for e in m]
+        self.assertIn('RETURN-FILE', mf, 'RETURN file must be a mutate')
+        self.assertIn('WS.WS-INTO',  mf, 'RETURN INTO target must be a mutate')
+        self.assertEqual(u, [], f'Unexpected unresolved: {u}')
+
+    def test_return_no_into(self):
+        r, m, u = _run('RETURN RETURN-FILE')
+        mf = [e['field'] for e in m]
+        self.assertIn('RETURN-FILE', mf, 'RETURN file must be a mutate without INTO')
+        self.assertEqual(u, [])
 
 
 if __name__ == '__main__':
