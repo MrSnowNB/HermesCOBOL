@@ -95,7 +95,13 @@
           "line_no": 221,
           "raw_text": "MOVE DATEPARM-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        },
+        }
+      ]
+    },
+    "1000-TRANFILE-GET-NEXT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "READ",
           "line_no": 249,
@@ -167,7 +173,13 @@
           "line_no": 251,
           "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        },
+        }
+      ]
+    },
+    "1100-WRITE-TRANSACTION-REPORT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "IF",
           "line_no": 275,
@@ -251,7 +263,13 @@
           "line_no": 275,
           "raw_text": "ADD TRAN-AMT TO WS-PAGE-TOTAL WS-ACCOUNT-TOTAL",
           "reason": "unresolved mutate operand: WS-ACCOUNT-TOTAL"
-        },
+        }
+      ]
+    },
+    "1110-WRITE-PAGE-TOTALS": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 294,
@@ -335,7 +353,13 @@
           "line_no": 294,
           "raw_text": "ADD 1 TO WS-LINE-COUNTER",
           "reason": "unresolved mutate operand: WS-LINE-COUNTER"
-        },
+        }
+      ]
+    },
+    "1120-WRITE-ACCOUNT-TOTALS": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 307,
@@ -401,7 +425,13 @@
           "line_no": 307,
           "raw_text": "ADD 1 TO WS-LINE-COUNTER",
           "reason": "unresolved mutate operand: WS-LINE-COUNTER"
-        },
+        }
+      ]
+    },
+    "1110-WRITE-GRAND-TOTALS": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 319,
@@ -425,7 +455,13 @@
           "line_no": 319,
           "raw_text": "MOVE REPORT-GRAND-TOTALS TO FD-REPTFILE-REC",
           "reason": "unresolved mutate operand: FD-REPTFILE-REC"
-        },
+        }
+      ]
+    },
+    "1120-WRITE-HEADERS": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 325,
@@ -521,7 +557,13 @@
           "line_no": 325,
           "raw_text": "ADD 1 TO WS-LINE-COUNTER",
           "reason": "unresolved mutate operand: WS-LINE-COUNTER"
-        },
+        }
+      ]
+    },
+    "1111-WRITE-REPORT-REC": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "WRITE",
           "line_no": 345,
@@ -725,7 +767,13 @@
           "line_no": 362,
           "raw_text": "ADD 1 TO WS-LINE-COUNTER",
           "reason": "unresolved mutate operand: WS-LINE-COUNTER"
-        },
+        }
+      ]
+    },
+    "0000-TRANFILE-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 377,
@@ -773,7 +821,13 @@
           "line_no": 378,
           "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        },
+        }
+      ]
+    },
+    "0100-REPTFILE-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 395,
@@ -821,7 +875,13 @@
           "line_no": 396,
           "raw_text": "MOVE TRANREPT-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        },
+        }
+      ]
+    },
+    "0200-CARDXREF-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 413,
@@ -869,7 +929,13 @@
           "line_no": 414,
           "raw_text": "MOVE CARDXREF-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        },
+        }
+      ]
+    },
+    "0300-TRANTYPE-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 431,
@@ -917,7 +983,13 @@
           "line_no": 432,
           "raw_text": "MOVE TRANTYPE-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        },
+        }
+      ]
+    },
+    "0400-TRANCATG-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 449,
@@ -965,7 +1037,13 @@
           "line_no": 450,
           "raw_text": "MOVE TRANCATG-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        },
+        }
+      ]
+    },
+    "0500-DATEPARM-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 467,
@@ -1013,7 +1091,13 @@
           "line_no": 468,
           "raw_text": "MOVE DATEPARM-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        },
+        }
+      ]
+    },
+    "1500-A-LOOKUP-XREF": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "READ",
           "line_no": 485,
@@ -1037,7 +1121,13 @@
           "line_no": 485,
           "raw_text": "MOVE 23 TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        },
+        }
+      ]
+    },
+    "1500-B-LOOKUP-TRANTYPE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "READ",
           "line_no": 495,
@@ -1061,7 +1151,13 @@
           "line_no": 495,
           "raw_text": "MOVE 23 TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        },
+        }
+      ]
+    },
+    "1500-C-LOOKUP-TRANCATG": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "READ",
           "line_no": 505,
@@ -1085,7 +1181,13 @@
           "line_no": 505,
           "raw_text": "MOVE 23 TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        },
+        }
+      ]
+    },
+    "9000-TRANFILE-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "ADD",
           "line_no": 515,
@@ -1151,7 +1253,13 @@
           "line_no": 516,
           "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        },
+        }
+      ]
+    },
+    "9100-REPTFILE-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "ADD",
           "line_no": 533,
@@ -1217,7 +1325,13 @@
           "line_no": 534,
           "raw_text": "MOVE TRANREPT-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        },
+        }
+      ]
+    },
+    "9200-CARDXREF-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 552,
@@ -1265,7 +1379,13 @@
           "line_no": 553,
           "raw_text": "MOVE CARDXREF-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        },
+        }
+      ]
+    },
+    "9300-TRANTYPE-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 570,
@@ -1313,7 +1433,13 @@
           "line_no": 571,
           "raw_text": "MOVE TRANTYPE-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        },
+        }
+      ]
+    },
+    "9400-TRANCATG-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 588,
@@ -1361,7 +1487,13 @@
           "line_no": 589,
           "raw_text": "MOVE TRANCATG-STATUS TO IO-STATUS",
           "reason": "unresolved mutate operand: IO-STATUS"
-        },
+        }
+      ]
+    },
+    "9500-DATEPARM-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 606,
@@ -1433,7 +1565,13 @@
           "line_no": 627,
           "raw_text": "CALL 'CEE3ABD' USING ABCODE, TIMING",
           "reason": "CALL USING not yet classified (TODO Section 3)"
-        },
+        }
+      ]
+    },
+    "9910-DISPLAY-IO-STATUS": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "IF",
           "line_no": 634,
@@ -1533,9 +1671,5 @@
       ]
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=3 facts=26"
-    }
-  ]
+  "program_unresolved": []
 }

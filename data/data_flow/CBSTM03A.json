@@ -143,6 +143,11 @@
     "9999-GOBACK": {
       "reads": [],
       "mutates": [],
+      "unresolved": []
+    },
+    "1000-XREFFILE-GET-NEXT": {
+      "reads": [],
+      "mutates": [],
       "unresolved": [
         {
           "verb": "MOVE",
@@ -719,7 +724,13 @@
           "line_no": 454,
           "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
           "reason": "unresolved read operand: HTML-FIXED-LN"
-        },
+        }
+      ]
+    },
+    "5000-CREATE-STATEMENT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "INITIALIZE",
           "line_no": 459,
@@ -1445,6 +1456,11 @@
     "5100-EXIT": {
       "reads": [],
       "mutates": [],
+      "unresolved": []
+    },
+    "5200-WRITE-HTML-NMADBS": {
+      "reads": [],
+      "mutates": [],
       "unresolved": [
         {
           "verb": "MOVE",
@@ -2153,6 +2169,11 @@
     "5200-EXIT": {
       "reads": [],
       "mutates": [],
+      "unresolved": []
+    },
+    "6000-WRITE-TRANS": {
+      "reads": [],
+      "mutates": [],
       "unresolved": [
         {
           "verb": "MOVE",
@@ -2438,6 +2459,11 @@
         }
       ]
     },
+    "8100-FILE-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
     "8100-TRNXFILE-OPEN": {
       "reads": [],
       "mutates": [],
@@ -2549,7 +2575,13 @@
           "line_no": 760,
           "raw_text": "MOVE 'READTRNX' TO WS-FL-DD",
           "reason": "unresolved mutate operand: WS-FL-DD"
-        },
+        }
+      ]
+    },
+    "8200-XREFFILE-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 766,
@@ -2591,7 +2623,13 @@
           "line_no": 779,
           "raw_text": "MOVE 'CUSTFILE' TO WS-FL-DD",
           "reason": "unresolved mutate operand: WS-FL-DD"
-        },
+        }
+      ]
+    },
+    "8300-CUSTFILE-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 784,
@@ -2633,7 +2671,13 @@
           "line_no": 797,
           "raw_text": "MOVE 'ACCTFILE' TO WS-FL-DD",
           "reason": "unresolved mutate operand: WS-FL-DD"
-        },
+        }
+      ]
+    },
+    "8400-ACCTFILE-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 802,
@@ -2669,7 +2713,13 @@
           "line_no": 807,
           "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
           "reason": "unresolved read operand: WS-M03B-RC"
-        },
+        }
+      ]
+    },
+    "8500-READTRNX-READ": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "IF",
           "line_no": 819,
@@ -2897,7 +2947,13 @@
           "line_no": 851,
           "raw_text": "MOVE 'XREFFILE' TO WS-FL-DD",
           "reason": "unresolved mutate operand: WS-FL-DD"
-        },
+        }
+      ]
+    },
+    "9100-TRNXFILE-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 857,
@@ -2933,7 +2989,13 @@
           "line_no": 862,
           "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
           "reason": "unresolved read operand: WS-M03B-RC"
-        },
+        }
+      ]
+    },
+    "9200-XREFFILE-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 874,
@@ -2969,7 +3031,13 @@
           "line_no": 879,
           "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
           "reason": "unresolved read operand: WS-M03B-RC"
-        },
+        }
+      ]
+    },
+    "9300-CUSTFILE-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 890,
@@ -3005,7 +3073,13 @@
           "line_no": 895,
           "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
           "reason": "unresolved read operand: WS-M03B-RC"
-        },
+        }
+      ]
+    },
+    "9400-ACCTFILE-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 906,
@@ -3057,9 +3131,5 @@
       ]
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=12 facts=25"
-    }
-  ]
+  "program_unresolved": []
 }

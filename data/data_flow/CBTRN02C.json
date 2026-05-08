@@ -2,6 +2,344 @@
   "program": "CBTRN02C",
   "schema_version": "1.2",
   "paragraph_data_flow": {
+    "0000-DALYTRAN-OPEN": {
+      "reads": [
+        {
+          "field": "DALYTRAN-STATUS",
+          "record": "DALYTRAN-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 238,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "IF",
+          "line_no": 238,
+          "raw_text": "IF  APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        }
+      ]
+    },
+    "0100-TRANFILE-OPEN": {
+      "reads": [
+        {
+          "field": "TRANFILE-STATUS",
+          "record": "TRANFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 256,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "IF",
+          "line_no": 256,
+          "raw_text": "IF  APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        }
+      ]
+    },
+    "0200-XREFFILE-OPEN": {
+      "reads": [
+        {
+          "field": "XREFFILE-STATUS",
+          "record": "XREFFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 275,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "IF",
+          "line_no": 275,
+          "raw_text": "IF  APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        }
+      ]
+    },
+    "0300-DALYREJS-OPEN": {
+      "reads": [
+        {
+          "field": "DALYREJS-STATUS",
+          "record": "DALYREJS-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 293,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "IF",
+          "line_no": 293,
+          "raw_text": "IF  APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        }
+      ]
+    },
+    "0400-ACCTFILE-OPEN": {
+      "reads": [
+        {
+          "field": "ACCTFILE-STATUS",
+          "record": "ACCTFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 311,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "IF",
+          "line_no": 311,
+          "raw_text": "IF  APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        }
+      ]
+    },
+    "0500-TCATBALF-OPEN": {
+      "reads": [
+        {
+          "field": "TCATBALF-STATUS",
+          "record": "TCATBALF-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 329,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "IF",
+          "line_no": 329,
+          "raw_text": "IF  APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        }
+      ]
+    },
+    "1000-DALYTRAN-GET-NEXT": {
+      "reads": [
+        {
+          "field": "DALYTRAN-STATUS",
+          "record": "DALYTRAN-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        },
+        {
+          "field": "DALYTRAN-RECORD",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 0,
+          "length": 350
+        }
+      ],
+      "mutates": [
+        {
+          "field": "DALYTRAN-RECORD",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 0,
+          "length": 350
+        },
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "END-OF-FILE",
+          "record": "END-OF-FILE",
+          "copybook": null,
+          "offset": 0,
+          "length": 1
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "unresolved": [
+        {
+          "verb": "READ",
+          "line_no": 346,
+          "raw_text": "READ DALYTRAN-FILE INTO DALYTRAN-RECORD",
+          "reason": "unresolved mutate operand: DALYTRAN-FILE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 347,
+          "raw_text": "MOVE 0 TO APPL-RESULT *",
+          "reason": "unresolved mutate operand: *"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 347,
+          "raw_text": "DISPLAY DALYTRAN-RECORD ELSE",
+          "reason": "unresolved read operand: ELSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 347,
+          "raw_text": "MOVE 16 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "IF",
+          "line_no": 347,
+          "raw_text": "IF  APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        },
+        {
+          "verb": "IF",
+          "line_no": 347,
+          "raw_text": "IF  APPL-EOF",
+          "reason": "unresolved read operand: APPL-EOF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 347,
+          "raw_text": "MOVE 'Y' TO END-OF-FILE ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        }
+      ]
+    },
     "1500-VALIDATE-TRAN": {
       "reads": [
         {
@@ -152,83 +490,6 @@
           "copybook": "CVTRA06Y",
           "offset": 278,
           "length": 26
-        },
-        {
-          "field": "DALYTRAN-RECORD.DALYTRAN-ID",
-          "record": "DALYTRAN-RECORD",
-          "copybook": "CVTRA06Y",
-          "offset": 0,
-          "length": 16
-        },
-        {
-          "field": "DALYTRAN-RECORD.DALYTRAN-TYPE-CD",
-          "record": "DALYTRAN-RECORD",
-          "copybook": "CVTRA06Y",
-          "offset": 16,
-          "length": 2
-        },
-        {
-          "field": "DALYTRAN-RECORD.DALYTRAN-CAT-CD",
-          "record": "DALYTRAN-RECORD",
-          "copybook": "CVTRA06Y",
-          "offset": 18,
-          "length": 4
-        },
-        {
-          "field": "DALYTRAN-RECORD.DALYTRAN-SOURCE",
-          "record": "DALYTRAN-RECORD",
-          "copybook": "CVTRA06Y",
-          "offset": 22,
-          "length": 10
-        },
-        {
-          "field": "DALYTRAN-RECORD.DALYTRAN-DESC",
-          "record": "DALYTRAN-RECORD",
-          "copybook": "CVTRA06Y",
-          "offset": 32,
-          "length": 100
-        },
-        {
-          "field": "DALYTRAN-RECORD.DALYTRAN-MERCHANT-ID",
-          "record": "DALYTRAN-RECORD",
-          "copybook": "CVTRA06Y",
-          "offset": 143,
-          "length": 9
-        },
-        {
-          "field": "DALYTRAN-RECORD.DALYTRAN-MERCHANT-NAME",
-          "record": "DALYTRAN-RECORD",
-          "copybook": "CVTRA06Y",
-          "offset": 152,
-          "length": 50
-        },
-        {
-          "field": "DALYTRAN-RECORD.DALYTRAN-MERCHANT-CITY",
-          "record": "DALYTRAN-RECORD",
-          "copybook": "CVTRA06Y",
-          "offset": 202,
-          "length": 50
-        },
-        {
-          "field": "DALYTRAN-RECORD.DALYTRAN-MERCHANT-ZIP",
-          "record": "DALYTRAN-RECORD",
-          "copybook": "CVTRA06Y",
-          "offset": 252,
-          "length": 10
-        },
-        {
-          "field": "DALYTRAN-RECORD.DALYTRAN-CARD-NUM",
-          "record": "DALYTRAN-RECORD",
-          "copybook": "CVTRA06Y",
-          "offset": 262,
-          "length": 16
-        },
-        {
-          "field": "DB2-FORMAT-TS",
-          "record": "DB2-FORMAT-TS",
-          "copybook": null,
-          "offset": 0,
-          "length": 26
         }
       ],
       "mutates": [
@@ -266,7 +527,148 @@
           "copybook": null,
           "offset": 18,
           "length": 11
+        }
+      ],
+      "unresolved": [
+        {
+          "verb": "READ",
+          "line_no": 394,
+          "raw_text": "READ ACCOUNT-FILE INTO ACCOUNT-RECORD INVALID KEY",
+          "reason": "unresolved mutate operand: ACCOUNT-FILE"
         },
+        {
+          "verb": "MOVE",
+          "line_no": 394,
+          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
+          "reason": "unresolved mutate operand: NOT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 394,
+          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
+          "reason": "unresolved mutate operand: INVALID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 394,
+          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
+          "reason": "unresolved mutate operand: KEY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 394,
+          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
+          "reason": "unresolved mutate operand: *"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 394,
+          "raw_text": "DISPLAY 'ACCT-CREDIT-LIMIT:' ACCT-CREDIT-LIMIT *",
+          "reason": "unresolved read operand: *"
+        },
+        {
+          "verb": "IF",
+          "line_no": 394,
+          "raw_text": "IF ACCT-EXPIRAION-DATE >= DALYTRAN-ORIG-TS (1:10)",
+          "reason": "unresolved read operand: (1:10)"
+        }
+      ]
+    },
+    "2000-POST-TRANSACTION": {
+      "reads": [
+        {
+          "field": "DALYTRAN-RECORD.DALYTRAN-ID",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "DALYTRAN-RECORD.DALYTRAN-TYPE-CD",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 16,
+          "length": 2
+        },
+        {
+          "field": "DALYTRAN-RECORD.DALYTRAN-CAT-CD",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 18,
+          "length": 4
+        },
+        {
+          "field": "DALYTRAN-RECORD.DALYTRAN-SOURCE",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 22,
+          "length": 10
+        },
+        {
+          "field": "DALYTRAN-RECORD.DALYTRAN-DESC",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 32,
+          "length": 100
+        },
+        {
+          "field": "DALYTRAN-RECORD.DALYTRAN-AMT",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 132,
+          "length": 11
+        },
+        {
+          "field": "DALYTRAN-RECORD.DALYTRAN-MERCHANT-ID",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 143,
+          "length": 9
+        },
+        {
+          "field": "DALYTRAN-RECORD.DALYTRAN-MERCHANT-NAME",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 152,
+          "length": 50
+        },
+        {
+          "field": "DALYTRAN-RECORD.DALYTRAN-MERCHANT-CITY",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 202,
+          "length": 50
+        },
+        {
+          "field": "DALYTRAN-RECORD.DALYTRAN-MERCHANT-ZIP",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 252,
+          "length": 10
+        },
+        {
+          "field": "DALYTRAN-RECORD.DALYTRAN-CARD-NUM",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 262,
+          "length": 16
+        },
+        {
+          "field": "DALYTRAN-RECORD.DALYTRAN-ORIG-TS",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 278,
+          "length": 26
+        },
+        {
+          "field": "DB2-FORMAT-TS",
+          "record": "DB2-FORMAT-TS",
+          "copybook": null,
+          "offset": 0,
+          "length": 26
+        }
+      ],
+      "mutates": [
         {
           "field": "TRAN-RECORD.TRAN-ID",
           "record": "TRAN-RECORD",
@@ -359,50 +761,7 @@
           "length": 26
         }
       ],
-      "unresolved": [
-        {
-          "verb": "READ",
-          "line_no": 394,
-          "raw_text": "READ ACCOUNT-FILE INTO ACCOUNT-RECORD INVALID KEY",
-          "reason": "unresolved mutate operand: ACCOUNT-FILE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 394,
-          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
-          "reason": "unresolved mutate operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 394,
-          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
-          "reason": "unresolved mutate operand: INVALID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 394,
-          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
-          "reason": "unresolved mutate operand: KEY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 394,
-          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
-          "reason": "unresolved mutate operand: *"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 394,
-          "raw_text": "DISPLAY 'ACCT-CREDIT-LIMIT:' ACCT-CREDIT-LIMIT *",
-          "reason": "unresolved read operand: *"
-        },
-        {
-          "verb": "IF",
-          "line_no": 394,
-          "raw_text": "IF ACCT-EXPIRAION-DATE >= DALYTRAN-ORIG-TS (1:10)",
-          "reason": "unresolved read operand: (1:10)"
-        }
-      ]
+      "unresolved": []
     },
     "2500-WRITE-REJECT-REC": {
       "reads": [
@@ -433,7 +792,68 @@
           "copybook": null,
           "offset": 0,
           "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "REJECT-RECORD.REJECT-TRAN-DATA",
+          "record": "REJECT-RECORD",
+          "copybook": null,
+          "offset": 0,
+          "length": 350
         },
+        {
+          "field": "REJECT-RECORD.VALIDATION-TRAILER",
+          "record": "REJECT-RECORD",
+          "copybook": null,
+          "offset": 350,
+          "length": 80
+        },
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "FD-REJS-RECORD",
+          "record": "FD-REJS-RECORD",
+          "copybook": null,
+          "offset": 0,
+          "length": 430
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 447,
+          "raw_text": "MOVE WS-VALIDATION-TRAILER TO VALIDATION-TRAILER *",
+          "reason": "unresolved mutate operand: *"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 447,
+          "raw_text": "MOVE 0 TO  APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "IF",
+          "line_no": 447,
+          "raw_text": "IF  APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        }
+      ]
+    },
+    "2700-UPDATE-TCATBAL": {
+      "reads": [
         {
           "field": "CARD-XREF-RECORD.XREF-ACCT-ID",
           "record": "CARD-XREF-RECORD",
@@ -475,128 +895,9 @@
           "copybook": null,
           "offset": 0,
           "length": 1
-        },
-        {
-          "field": "DALYTRAN-RECORD.DALYTRAN-AMT",
-          "record": "DALYTRAN-RECORD",
-          "copybook": "CVTRA06Y",
-          "offset": 132,
-          "length": 11
-        },
-        {
-          "field": "TRAN-CAT-BAL-RECORD.TRAN-CAT-BAL",
-          "record": "TRAN-CAT-BAL-RECORD",
-          "copybook": "CVTRA01Y",
-          "offset": 17,
-          "length": 11
-        },
-        {
-          "field": "TRAN-CAT-BAL-RECORD",
-          "record": "TRAN-CAT-BAL-RECORD",
-          "copybook": "CVTRA01Y",
-          "offset": 0,
-          "length": 50
-        },
-        {
-          "field": "FD-TRAN-CAT-BAL-RECORD",
-          "record": "FD-TRAN-CAT-BAL-RECORD",
-          "copybook": null,
-          "offset": 0,
-          "length": 50
-        },
-        {
-          "field": "ACCOUNT-RECORD.ACCT-CURR-BAL",
-          "record": "ACCOUNT-RECORD",
-          "copybook": "CVACT01Y",
-          "offset": 12,
-          "length": 12
-        },
-        {
-          "field": "ACCOUNT-RECORD.ACCT-CURR-CYC-CREDIT",
-          "record": "ACCOUNT-RECORD",
-          "copybook": "CVACT01Y",
-          "offset": 78,
-          "length": 12
-        },
-        {
-          "field": "ACCOUNT-RECORD.ACCT-CURR-CYC-DEBIT",
-          "record": "ACCOUNT-RECORD",
-          "copybook": "CVACT01Y",
-          "offset": 90,
-          "length": 12
-        },
-        {
-          "field": "TRAN-RECORD",
-          "record": "TRAN-RECORD",
-          "copybook": "CVTRA05Y",
-          "offset": 0,
-          "length": 350
-        },
-        {
-          "field": "TRANFILE-STATUS",
-          "record": "TRANFILE-STATUS",
-          "copybook": null,
-          "offset": 0,
-          "length": 2
-        },
-        {
-          "field": "DALYTRAN-STATUS",
-          "record": "DALYTRAN-STATUS",
-          "copybook": null,
-          "offset": 0,
-          "length": 2
-        },
-        {
-          "field": "XREFFILE-STATUS",
-          "record": "XREFFILE-STATUS",
-          "copybook": null,
-          "offset": 0,
-          "length": 2
-        },
-        {
-          "field": "ACCTFILE-STATUS",
-          "record": "ACCTFILE-STATUS",
-          "copybook": null,
-          "offset": 0,
-          "length": 2
         }
       ],
       "mutates": [
-        {
-          "field": "REJECT-RECORD.REJECT-TRAN-DATA",
-          "record": "REJECT-RECORD",
-          "copybook": null,
-          "offset": 0,
-          "length": 350
-        },
-        {
-          "field": "REJECT-RECORD.VALIDATION-TRAILER",
-          "record": "REJECT-RECORD",
-          "copybook": null,
-          "offset": 350,
-          "length": 80
-        },
-        {
-          "field": "APPL-RESULT",
-          "record": "APPL-RESULT",
-          "copybook": null,
-          "offset": 0,
-          "length": 4
-        },
-        {
-          "field": "FD-REJS-RECORD",
-          "record": "FD-REJS-RECORD",
-          "copybook": null,
-          "offset": 0,
-          "length": 430
-        },
-        {
-          "field": "IO-STATUS",
-          "record": "IO-STATUS",
-          "copybook": null,
-          "offset": 0,
-          "length": 2
-        },
         {
           "field": "FD-TRAN-CAT-BAL-RECORD.FD-TRAN-CAT-KEY.FD-TRANCAT-ACCT-ID",
           "record": "FD-TRAN-CAT-BAL-RECORD",
@@ -625,6 +926,102 @@
           "offset": 0,
           "length": 1
         },
+        {
+          "field": "TRAN-CAT-BAL-RECORD",
+          "record": "TRAN-CAT-BAL-RECORD",
+          "copybook": "CVTRA01Y",
+          "offset": 0,
+          "length": 50
+        },
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "unresolved": [
+        {
+          "verb": "READ",
+          "line_no": 469,
+          "raw_text": "READ TCATBAL-FILE INTO TRAN-CAT-BAL-RECORD INVALID KEY",
+          "reason": "unresolved mutate operand: TCATBAL-FILE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 481,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "IF",
+          "line_no": 481,
+          "raw_text": "IF  APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        }
+      ]
+    },
+    "2700-A-CREATE-TCATBAL-REC": {
+      "reads": [
+        {
+          "field": "CARD-XREF-RECORD.XREF-ACCT-ID",
+          "record": "CARD-XREF-RECORD",
+          "copybook": "CVACT03Y",
+          "offset": 25,
+          "length": 11
+        },
+        {
+          "field": "DALYTRAN-RECORD.DALYTRAN-TYPE-CD",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 16,
+          "length": 2
+        },
+        {
+          "field": "DALYTRAN-RECORD.DALYTRAN-CAT-CD",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 18,
+          "length": 4
+        },
+        {
+          "field": "DALYTRAN-RECORD.DALYTRAN-AMT",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 132,
+          "length": 11
+        },
+        {
+          "field": "TRAN-CAT-BAL-RECORD.TRAN-CAT-BAL",
+          "record": "TRAN-CAT-BAL-RECORD",
+          "copybook": "CVTRA01Y",
+          "offset": 17,
+          "length": 11
+        },
+        {
+          "field": "TRAN-CAT-BAL-RECORD",
+          "record": "TRAN-CAT-BAL-RECORD",
+          "copybook": "CVTRA01Y",
+          "offset": 0,
+          "length": 50
+        },
+        {
+          "field": "TCATBALF-STATUS",
+          "record": "TCATBALF-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
         {
           "field": "TRAN-CAT-BAL-RECORD",
           "record": "TRAN-CAT-BAL-RECORD",
@@ -668,87 +1065,23 @@
           "length": 50
         },
         {
-          "field": "ACCOUNT-RECORD.ACCT-CURR-BAL",
-          "record": "ACCOUNT-RECORD",
-          "copybook": "CVACT01Y",
-          "offset": 12,
-          "length": 12
-        },
-        {
-          "field": "ACCOUNT-RECORD.ACCT-CURR-CYC-CREDIT",
-          "record": "ACCOUNT-RECORD",
-          "copybook": "CVACT01Y",
-          "offset": 78,
-          "length": 12
-        },
-        {
-          "field": "ACCOUNT-RECORD.ACCT-CURR-CYC-DEBIT",
-          "record": "ACCOUNT-RECORD",
-          "copybook": "CVACT01Y",
-          "offset": 90,
-          "length": 12
-        },
-        {
-          "field": "WS-VALIDATION-TRAILER.WS-VALIDATION-FAIL-REASON",
-          "record": "WS-VALIDATION-TRAILER",
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
           "copybook": null,
           "offset": 0,
           "length": 4
         },
         {
-          "field": "WS-VALIDATION-TRAILER.WS-VALIDATION-FAIL-REASON-DESC",
-          "record": "WS-VALIDATION-TRAILER",
-          "copybook": null,
-          "offset": 4,
-          "length": 76
-        },
-        {
-          "field": "FD-TRANFILE-REC",
-          "record": "FD-TRANFILE-REC",
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
           "copybook": null,
           "offset": 0,
-          "length": 350
+          "length": 2
         }
       ],
       "unresolved": [
         {
           "verb": "MOVE",
-          "line_no": 447,
-          "raw_text": "MOVE WS-VALIDATION-TRAILER TO VALIDATION-TRAILER *",
-          "reason": "unresolved mutate operand: *"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 447,
-          "raw_text": "MOVE 0 TO  APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "IF",
-          "line_no": 447,
-          "raw_text": "IF  APPL-AOK",
-          "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "READ",
-          "line_no": 469,
-          "raw_text": "READ TCATBAL-FILE INTO TRAN-CAT-BAL-RECORD INVALID KEY",
-          "reason": "unresolved mutate operand: TCATBAL-FILE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 481,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "IF",
-          "line_no": 481,
-          "raw_text": "IF  APPL-AOK",
-          "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
           "line_no": 504,
           "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
           "reason": "unresolved mutate operand: ELSE"
@@ -758,7 +1091,85 @@
           "line_no": 504,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
+        }
+      ]
+    },
+    "2700-B-UPDATE-TCATBAL-REC": {
+      "reads": [
+        {
+          "field": "DALYTRAN-RECORD.DALYTRAN-AMT",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 132,
+          "length": 11
         },
+        {
+          "field": "TRAN-CAT-BAL-RECORD.TRAN-CAT-BAL",
+          "record": "TRAN-CAT-BAL-RECORD",
+          "copybook": "CVTRA01Y",
+          "offset": 17,
+          "length": 11
+        },
+        {
+          "field": "FD-TRAN-CAT-BAL-RECORD",
+          "record": "FD-TRAN-CAT-BAL-RECORD",
+          "copybook": null,
+          "offset": 0,
+          "length": 50
+        },
+        {
+          "field": "TRAN-CAT-BAL-RECORD",
+          "record": "TRAN-CAT-BAL-RECORD",
+          "copybook": "CVTRA01Y",
+          "offset": 0,
+          "length": 50
+        },
+        {
+          "field": "TCATBALF-STATUS",
+          "record": "TCATBALF-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "TRAN-CAT-BAL-RECORD.TRAN-CAT-BAL",
+          "record": "TRAN-CAT-BAL-RECORD",
+          "copybook": "CVTRA01Y",
+          "offset": 17,
+          "length": 11
+        },
+        {
+          "field": "FD-TRAN-CAT-BAL-RECORD",
+          "record": "FD-TRAN-CAT-BAL-RECORD",
+          "copybook": null,
+          "offset": 0,
+          "length": 50
+        },
+        {
+          "field": "TRAN-CAT-BAL-RECORD",
+          "record": "TRAN-CAT-BAL-RECORD",
+          "copybook": "CVTRA01Y",
+          "offset": 0,
+          "length": 50
+        },
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "unresolved": [
         {
           "verb": "ADD",
           "line_no": 527,
@@ -794,7 +1205,78 @@
           "line_no": 527,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
+        }
+      ]
+    },
+    "2800-UPDATE-ACCOUNT-REC": {
+      "reads": [
+        {
+          "field": "DALYTRAN-RECORD.DALYTRAN-AMT",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 132,
+          "length": 11
         },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-CURR-BAL",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 12,
+          "length": 12
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-CURR-CYC-CREDIT",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 78,
+          "length": 12
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-CURR-CYC-DEBIT",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 90,
+          "length": 12
+        }
+      ],
+      "mutates": [
+        {
+          "field": "ACCOUNT-RECORD.ACCT-CURR-BAL",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 12,
+          "length": 12
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-CURR-CYC-CREDIT",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 78,
+          "length": 12
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-CURR-CYC-DEBIT",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 90,
+          "length": 12
+        },
+        {
+          "field": "WS-VALIDATION-TRAILER.WS-VALIDATION-FAIL-REASON",
+          "record": "WS-VALIDATION-TRAILER",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "WS-VALIDATION-TRAILER.WS-VALIDATION-FAIL-REASON-DESC",
+          "record": "WS-VALIDATION-TRAILER",
+          "copybook": null,
+          "offset": 4,
+          "length": 76
+        }
+      ],
+      "unresolved": [
         {
           "verb": "ADD",
           "line_no": 547,
@@ -812,7 +1294,50 @@
           "line_no": 547,
           "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC END-REWRITE",
           "reason": "unresolved mutate operand: END-REWRITE"
+        }
+      ]
+    },
+    "2900-WRITE-TRANSACTION-FILE": {
+      "reads": [
+        {
+          "field": "TRAN-RECORD",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 0,
+          "length": 350
         },
+        {
+          "field": "TRANFILE-STATUS",
+          "record": "TRANFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "FD-TRANFILE-REC",
+          "record": "FD-TRANFILE-REC",
+          "copybook": null,
+          "offset": 0,
+          "length": 350
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 564,
@@ -824,7 +1349,36 @@
           "line_no": 564,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
+        }
+      ]
+    },
+    "9000-DALYTRAN-CLOSE": {
+      "reads": [
+        {
+          "field": "DALYTRAN-STATUS",
+          "record": "DALYTRAN-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
         },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 584,
@@ -836,7 +1390,36 @@
           "line_no": 584,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
+        }
+      ]
+    },
+    "9100-TRANFILE-CLOSE": {
+      "reads": [
+        {
+          "field": "TRANFILE-STATUS",
+          "record": "TRANFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
         },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 602,
@@ -848,7 +1431,36 @@
           "line_no": 602,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
+        }
+      ]
+    },
+    "9200-XREFFILE-CLOSE": {
+      "reads": [
+        {
+          "field": "XREFFILE-STATUS",
+          "record": "XREFFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
         },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 621,
@@ -860,7 +1472,43 @@
           "line_no": 621,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
+        }
+      ]
+    },
+    "9300-DALYREJS-CLOSE": {
+      "reads": [
+        {
+          "field": "DALYREJS-STATUS",
+          "record": "DALYREJS-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
         },
+        {
+          "field": "XREFFILE-STATUS",
+          "record": "XREFFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 639,
@@ -872,7 +1520,36 @@
           "line_no": 639,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
+        }
+      ]
+    },
+    "9400-ACCTFILE-CLOSE": {
+      "reads": [
+        {
+          "field": "ACCTFILE-STATUS",
+          "record": "ACCTFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
         },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 657,
@@ -884,7 +1561,36 @@
           "line_no": 657,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
+        }
+      ]
+    },
+    "9500-TCATBALF-CLOSE": {
+      "reads": [
+        {
+          "field": "TCATBALF-STATUS",
+          "record": "TCATBALF-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
         },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 676,
@@ -1087,6 +1793,33 @@
       ]
     },
     "9999-ABEND-PROGRAM": {
+      "reads": [],
+      "mutates": [
+        {
+          "field": "TIMING",
+          "record": "TIMING",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "ABCODE",
+          "record": "ABCODE",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        }
+      ],
+      "unresolved": [
+        {
+          "verb": "CALL",
+          "line_no": 708,
+          "raw_text": "CALL 'CEE3ABD' USING ABCODE, TIMING",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        }
+      ]
+    },
+    "9910-DISPLAY-IO-STATUS": {
       "reads": [
         {
           "field": "IO-STATUS",
@@ -1126,20 +1859,6 @@
       ],
       "mutates": [
         {
-          "field": "TIMING",
-          "record": "TIMING",
-          "copybook": null,
-          "offset": 0,
-          "length": 4
-        },
-        {
-          "field": "ABCODE",
-          "record": "ABCODE",
-          "copybook": null,
-          "offset": 0,
-          "length": 4
-        },
-        {
           "field": "IO-STATUS-04",
           "record": "IO-STATUS-04",
           "copybook": null,
@@ -1170,12 +1889,6 @@
       ],
       "unresolved": [
         {
-          "verb": "CALL",
-          "line_no": 708,
-          "raw_text": "CALL 'CEE3ABD' USING ABCODE, TIMING",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
-        },
-        {
           "verb": "IF",
           "line_no": 715,
           "raw_text": "IF  IO-STATUS NOT NUMERIC OR  IO-STAT1 = '9'",
@@ -1190,9 +1903,5 @@
       ]
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=6 facts=26"
-    }
-  ]
+  "program_unresolved": []
 }
