@@ -237,31 +237,7 @@
         {
           "verb": "MOVE",
           "line_no": 169,
-          "raw_text": "MOVE 'Confirm to",
-          "reason": "unresolved read operand: 'Confirm"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 169,
-          "raw_text": "add this transaction...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: this"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 169,
-          "raw_text": "add this transaction...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: transaction...'"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 169,
-          "raw_text": "add this transaction...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: WS-MESSAGE"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 169,
-          "raw_text": "add this transaction...' TO WS-MESSAGE",
+          "raw_text": "MOVE 'Confirm to add this transaction...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -3711,25 +3687,7 @@
         {
           "verb": "MOVE",
           "line_no": 713,
-          "raw_text": "MOVE 'Unable to",
-          "reason": "unresolved read operand: 'Unable"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 713,
-          "raw_text": "Add Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Transaction...'"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 713,
-          "raw_text": "Add Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: WS-MESSAGE"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 713,
-          "raw_text": "Add Transaction...' TO WS-MESSAGE",
+          "raw_text": "MOVE 'Unable to Add Transaction...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {

@@ -1653,37 +1653,7 @@
         {
           "verb": "MOVE",
           "line_no": 512,
-          "raw_text": "MOVE 'Unable to",
-          "reason": "unresolved read operand: 'Unable"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 512,
-          "raw_text": "Add Bill pay Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Bill"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 512,
-          "raw_text": "Add Bill pay Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: pay"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 512,
-          "raw_text": "Add Bill pay Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Transaction...'"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 512,
-          "raw_text": "Add Bill pay Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: WS-MESSAGE"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 512,
-          "raw_text": "Add Bill pay Transaction...' TO WS-MESSAGE",
+          "raw_text": "MOVE 'Unable to Add Bill pay Transaction...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {

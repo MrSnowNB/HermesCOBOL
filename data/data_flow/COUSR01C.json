@@ -1017,25 +1017,7 @@
         {
           "verb": "MOVE",
           "line_no": 250,
-          "raw_text": "MOVE 'Unable to",
-          "reason": "unresolved read operand: 'Unable"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 250,
-          "raw_text": "Add User...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: User...'"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 250,
-          "raw_text": "Add User...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: WS-MESSAGE"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 250,
-          "raw_text": "Add User...' TO WS-MESSAGE",
+          "raw_text": "MOVE 'Unable to Add User...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {

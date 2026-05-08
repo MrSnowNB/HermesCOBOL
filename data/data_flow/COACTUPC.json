@@ -877,11 +877,6 @@
         }
       ]
     },
-    "1000-PROCESS-INPUTS-EXIT": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
-    },
     "1100-RECEIVE-MAP": {
       "reads": [],
       "mutates": [],
@@ -6613,11 +6608,6 @@
     "1205-COMPARE-OLD-NEW-EXIT": {
       "reads": [],
       "mutates": [],
-      "unresolved": []
-    },
-    "1210-EDIT-ACCOUNT": {
-      "reads": [],
-      "mutates": [],
       "unresolved": [
         {
           "verb": "SET",
@@ -6740,76 +6730,10 @@
           "reason": "unresolved read operand: WS-RETURN-MSG-OFF"
         },
         {
-          "verb": "IF",
+          "verb": "STRING",
           "line_no": 1784,
-          "raw_text": "if supplied must be a 11 digit' ' Non-Zero Number' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: supplied"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1784,
-          "raw_text": "if supplied must be a 11 digit' ' Non-Zero Number' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: must"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1784,
-          "raw_text": "if supplied must be a 11 digit' ' Non-Zero Number' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1784,
-          "raw_text": "if supplied must be a 11 digit' ' Non-Zero Number' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: a"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1784,
-          "raw_text": "if supplied must be a 11 digit' ' Non-Zero Number' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: digit__LIT__"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1784,
-          "raw_text": "if supplied must be a 11 digit' ' Non-Zero Number' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Non-Zero"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1784,
-          "raw_text": "if supplied must be a 11 digit' ' Non-Zero Number' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Number'"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1784,
-          "raw_text": "if supplied must be a 11 digit' ' Non-Zero Number' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: DELIMITED"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1784,
-          "raw_text": "if supplied must be a 11 digit' ' Non-Zero Number' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: BY"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1784,
-          "raw_text": "if supplied must be a 11 digit' ' Non-Zero Number' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: SIZE"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1784,
-          "raw_text": "if supplied must be a 11 digit' ' Non-Zero Number' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: INTO"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1784,
-          "raw_text": "if supplied must be a 11 digit' ' Non-Zero Number' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: WS-RETURN-MSG"
+          "raw_text": "STRING 'Account Number if supplied must be a 11 digit' ' Non-Zero Number' DELIMITED BY SIZE INTO WS-RETURN-MSG",
+          "reason": "unresolved mutate operand: WS-RETURN-MSG"
         },
         {
           "verb": "MOVE",
@@ -9453,11 +9377,6 @@
       ]
     },
     "1275-EDIT-FICO-SCORE-EXIT": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
-    },
-    "1280-EDIT-US-STATE-ZIP-CD": {
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -21527,7 +21446,7 @@
   },
   "program_unresolved": [
     {
-      "issue": "paragraph count mismatch: local=85 facts=87"
+      "issue": "paragraph count mismatch: local=82 facts=87"
     }
   ]
 }

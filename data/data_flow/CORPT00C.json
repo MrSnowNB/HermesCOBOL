@@ -2277,14 +2277,8 @@
         {
           "verb": "MOVE",
           "line_no": 525,
-          "raw_text": "MOVE 'Unable to",
-          "reason": "unresolved read operand: 'Unable"
-        },
-        {
-          "verb": "WRITE",
-          "line_no": 525,
-          "raw_text": "Write TDQ (JOBS)...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: TDQ"
+          "raw_text": "MOVE 'Unable to Write TDQ (JOBS)...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
           "verb": "MOVE",
