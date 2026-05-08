@@ -2911,6 +2911,9 @@
       ]
     }
   },
+  "call_graph": {
+    "COACTVWC": []
+  },
   "program_unresolved": [
     {
       "issue": "paragraph count mismatch: local=34 facts=36"

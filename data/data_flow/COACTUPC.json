@@ -18495,6 +18495,9 @@
       "unresolved": []
     }
   },
+  "call_graph": {
+    "COACTUPC": []
+  },
   "program_unresolved": [
     {
       "issue": "paragraph count mismatch: local=85 facts=87"

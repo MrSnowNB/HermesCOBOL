@@ -968,5 +968,8 @@
       ]
     }
   },
+  "call_graph": {
+    "COMEN01C": []
+  },
   "program_unresolved": []
 }

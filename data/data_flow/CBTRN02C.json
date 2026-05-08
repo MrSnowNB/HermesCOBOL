@@ -1736,7 +1736,15 @@
       ]
     },
     "9999-ABEND-PROGRAM": {
-      "reads": [],
+      "reads": [
+        {
+          "field": "TIMING",
+          "record": "TIMING",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        }
+      ],
       "mutates": [
         {
           "field": "TIMING",
@@ -1758,7 +1766,7 @@
           "verb": "CALL",
           "line_no": 708,
           "raw_text": "CALL 'CEE3ABD' USING ABCODE, TIMING",
-          "reason": "CALL USING not yet classified (TODO Section 3)"
+          "reason": "unresolved CALL USING operand: ABCODE,"
         }
       ]
     },
@@ -1845,6 +1853,11 @@
         }
       ]
     }
+  },
+  "call_graph": {
+    "CBTRN02C": [
+      "CEE3ABD"
+    ]
   },
   "program_unresolved": []
 }

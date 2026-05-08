@@ -1807,5 +1807,8 @@
       ]
     }
   },
+  "call_graph": {
+    "COUSR02C": []
+  },
   "program_unresolved": []
 }

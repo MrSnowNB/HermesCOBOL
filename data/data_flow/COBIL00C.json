@@ -1842,5 +1842,8 @@
       ]
     }
   },
+  "call_graph": {
+    "COBIL00C": []
+  },
   "program_unresolved": []
 }

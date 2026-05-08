@@ -892,5 +892,8 @@
       ]
     }
   },
+  "call_graph": {
+    "COCRDUPC": []
+  },
   "program_unresolved": []
 }

@@ -5463,6 +5463,9 @@
       "unresolved": []
     }
   },
+  "call_graph": {
+    "COCRDLIC": []
+  },
   "program_unresolved": [
     {
       "issue": "paragraph count mismatch: local=39 facts=41"
