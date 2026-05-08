@@ -1,0 +1,1205 @@
+{
+  "program": "CBACT01C",
+  "schema_version": "1.2",
+  "records": [
+    {
+      "name": "FD-ACCTFILE-REC",
+      "copybook": null,
+      "total_bytes": 300,
+      "fields": [
+        {
+          "qualified_name": "FD-ACCTFILE-REC.FD-ACCT-ID",
+          "level": 5,
+          "offset": 0,
+          "length": 11,
+          "pic": "9(11)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FD-ACCTFILE-REC.FD-ACCT-DATA",
+          "level": 5,
+          "offset": 11,
+          "length": 289,
+          "pic": "X(289)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "OUT-ACCT-REC",
+      "copybook": null,
+      "total_bytes": 112,
+      "fields": [
+        {
+          "qualified_name": "OUT-ACCT-REC.OUT-ACCT-ID",
+          "level": 5,
+          "offset": 0,
+          "length": 11,
+          "pic": "9(11)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "OUT-ACCT-REC.OUT-ACCT-ACTIVE-STATUS",
+          "level": 5,
+          "offset": 11,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "OUT-ACCT-REC.OUT-ACCT-CURR-BAL",
+          "level": 5,
+          "offset": 12,
+          "length": 12,
+          "pic": "S9(10)V99",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "OUT-ACCT-REC.OUT-ACCT-CREDIT-LIMIT",
+          "level": 5,
+          "offset": 24,
+          "length": 12,
+          "pic": "S9(10)V99",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "OUT-ACCT-REC.OUT-ACCT-CASH-CREDIT-LIMIT",
+          "level": 5,
+          "offset": 36,
+          "length": 12,
+          "pic": "S9(10)V99",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "OUT-ACCT-REC.OUT-ACCT-OPEN-DATE",
+          "level": 5,
+          "offset": 48,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "OUT-ACCT-REC.OUT-ACCT-EXPIRAION-DATE",
+          "level": 5,
+          "offset": 58,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "OUT-ACCT-REC.OUT-ACCT-REISSUE-DATE",
+          "level": 5,
+          "offset": 68,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "OUT-ACCT-REC.OUT-ACCT-CURR-CYC-CREDIT",
+          "level": 5,
+          "offset": 78,
+          "length": 12,
+          "pic": "S9(10)V99",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "OUT-ACCT-REC.OUT-ACCT-CURR-CYC-DEBIT",
+          "level": 5,
+          "offset": 90,
+          "length": 12,
+          "pic": "S9(10)V99",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "OUT-ACCT-REC.OUT-ACCT-GROUP-ID",
+          "level": 5,
+          "offset": 102,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "ARR-ARRAY-REC",
+      "copybook": null,
+      "total_bytes": 135,
+      "fields": [
+        {
+          "qualified_name": "ARR-ARRAY-REC.ARR-ACCT-ID",
+          "level": 5,
+          "offset": 0,
+          "length": 11,
+          "pic": "9(11)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "ARR-ARRAY-REC.ARR-ACCT-BAL",
+          "level": 5,
+          "offset": 11,
+          "length": 120,
+          "pic": null,
+          "storage": "GROUP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 5
+        },
+        {
+          "qualified_name": "ARR-ARRAY-REC.ARR-ACCT-BAL.ARR-ACCT-CURR-BAL",
+          "level": 10,
+          "offset": 11,
+          "length": 12,
+          "pic": "S9(10)V99",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "ARR-ARRAY-REC.ARR-ACCT-BAL.ARR-ACCT-CURR-CYC-DEBIT",
+          "level": 10,
+          "offset": 23,
+          "length": 12,
+          "pic": "S9(10)V99",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "ARR-ARRAY-REC.ARR-FILLER",
+          "level": 5,
+          "offset": 131,
+          "length": 4,
+          "pic": "X(04)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "VBR-REC",
+      "copybook": null,
+      "total_bytes": null,
+      "fields": [],
+      "redefines_groups": []
+    },
+    {
+      "name": "ACCOUNT-RECORD",
+      "copybook": "CVACT01Y",
+      "total_bytes": 300,
+      "fields": [
+        {
+          "qualified_name": "ACCOUNT-RECORD.ACCT-ID",
+          "level": 5,
+          "offset": 0,
+          "length": 11,
+          "pic": "9(11)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT01Y"
+        },
+        {
+          "qualified_name": "ACCOUNT-RECORD.ACCT-ACTIVE-STATUS",
+          "level": 5,
+          "offset": 11,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT01Y"
+        },
+        {
+          "qualified_name": "ACCOUNT-RECORD.ACCT-CURR-BAL",
+          "level": 5,
+          "offset": 12,
+          "length": 12,
+          "pic": "S9(10)V99",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT01Y"
+        },
+        {
+          "qualified_name": "ACCOUNT-RECORD.ACCT-CREDIT-LIMIT",
+          "level": 5,
+          "offset": 24,
+          "length": 12,
+          "pic": "S9(10)V99",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT01Y"
+        },
+        {
+          "qualified_name": "ACCOUNT-RECORD.ACCT-CASH-CREDIT-LIMIT",
+          "level": 5,
+          "offset": 36,
+          "length": 12,
+          "pic": "S9(10)V99",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT01Y"
+        },
+        {
+          "qualified_name": "ACCOUNT-RECORD.ACCT-OPEN-DATE",
+          "level": 5,
+          "offset": 48,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT01Y"
+        },
+        {
+          "qualified_name": "ACCOUNT-RECORD.ACCT-EXPIRAION-DATE",
+          "level": 5,
+          "offset": 58,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT01Y"
+        },
+        {
+          "qualified_name": "ACCOUNT-RECORD.ACCT-REISSUE-DATE",
+          "level": 5,
+          "offset": 68,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT01Y"
+        },
+        {
+          "qualified_name": "ACCOUNT-RECORD.ACCT-CURR-CYC-CREDIT",
+          "level": 5,
+          "offset": 78,
+          "length": 12,
+          "pic": "S9(10)V99",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT01Y"
+        },
+        {
+          "qualified_name": "ACCOUNT-RECORD.ACCT-CURR-CYC-DEBIT",
+          "level": 5,
+          "offset": 90,
+          "length": 12,
+          "pic": "S9(10)V99",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT01Y"
+        },
+        {
+          "qualified_name": "ACCOUNT-RECORD.ACCT-ADDR-ZIP",
+          "level": 5,
+          "offset": 102,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT01Y"
+        },
+        {
+          "qualified_name": "ACCOUNT-RECORD.ACCT-GROUP-ID",
+          "level": 5,
+          "offset": 112,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT01Y"
+        },
+        {
+          "qualified_name": "ACCOUNT-RECORD.FILLER",
+          "level": 5,
+          "offset": 122,
+          "length": 178,
+          "pic": "X(178)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT01Y"
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "CODATECN-REC",
+      "copybook": "CODATECN",
+      "total_bytes": 80,
+      "fields": [
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-IN-REC",
+          "level": 5,
+          "offset": 0,
+          "length": 21,
+          "pic": null,
+          "storage": "GROUP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-IN-REC.CODATECN-TYPE",
+          "level": 10,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-IN-REC.CODATECN-INP-DATE",
+          "level": 10,
+          "offset": 1,
+          "length": 20,
+          "pic": "X(20)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-IN-REC.CODATECN-1INP",
+          "level": 10,
+          "offset": 1,
+          "length": 20,
+          "pic": null,
+          "storage": "GROUP",
+          "redefines": "CODATECN-INP-DATE",
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-IN-REC.CODATECN-1INP.CODATECN-1YYYY",
+          "level": 15,
+          "offset": 1,
+          "length": 4,
+          "pic": "XXXX",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-IN-REC.CODATECN-1INP.CODATECN-1MM",
+          "level": 15,
+          "offset": 5,
+          "length": 2,
+          "pic": "XX",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-IN-REC.CODATECN-1INP.CODATECN-1DD",
+          "level": 15,
+          "offset": 7,
+          "length": 2,
+          "pic": "XX",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-IN-REC.CODATECN-1INP.CODATECN-1FIL",
+          "level": 15,
+          "offset": 9,
+          "length": 12,
+          "pic": "X(12)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-IN-REC.CODATECN-2INP",
+          "level": 10,
+          "offset": 1,
+          "length": 20,
+          "pic": null,
+          "storage": "GROUP",
+          "redefines": "CODATECN-INP-DATE",
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-IN-REC.CODATECN-2INP.CODATECN-1O-YYYY",
+          "level": 15,
+          "offset": 1,
+          "length": 4,
+          "pic": "XXXX",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-IN-REC.CODATECN-2INP.CODATECN-1I-S1",
+          "level": 15,
+          "offset": 5,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-IN-REC.CODATECN-2INP.CODATECN-1MM",
+          "level": 15,
+          "offset": 6,
+          "length": 2,
+          "pic": "XX",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-IN-REC.CODATECN-2INP.CODATECN-1I-S2",
+          "level": 15,
+          "offset": 8,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-IN-REC.CODATECN-2INP.CODATECN-2YY",
+          "level": 15,
+          "offset": 9,
+          "length": 2,
+          "pic": "XX",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-IN-REC.CODATECN-2INP.CODATECN-2FIL",
+          "level": 15,
+          "offset": 11,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-OUT-REC",
+          "level": 5,
+          "offset": 21,
+          "length": 21,
+          "pic": null,
+          "storage": "GROUP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-OUT-REC.CODATECN-OUTTYPE",
+          "level": 10,
+          "offset": 21,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-OUT-REC.CODATECN-0UT-DATE",
+          "level": 10,
+          "offset": 22,
+          "length": 20,
+          "pic": "X(20)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-OUT-REC.CODATECN-1OUT",
+          "level": 10,
+          "offset": 22,
+          "length": 20,
+          "pic": null,
+          "storage": "GROUP",
+          "redefines": "CODATECN-0UT-DATE",
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-OUT-REC.CODATECN-1OUT.CODATECN-1O-YYYY",
+          "level": 15,
+          "offset": 22,
+          "length": 4,
+          "pic": "XXXX",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-OUT-REC.CODATECN-1OUT.CODATECN-1O-S1",
+          "level": 15,
+          "offset": 26,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-OUT-REC.CODATECN-1OUT.CODATECN-1O-MM",
+          "level": 15,
+          "offset": 27,
+          "length": 2,
+          "pic": "XX",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-OUT-REC.CODATECN-1OUT.CODATECN-1O-S2",
+          "level": 15,
+          "offset": 29,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-OUT-REC.CODATECN-1OUT.CODATECN-1O-DD",
+          "level": 15,
+          "offset": 30,
+          "length": 2,
+          "pic": "XX",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-OUT-REC.CODATECN-1OUT.CODATECN-1OFIL",
+          "level": 15,
+          "offset": 32,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-OUT-REC.CODATECN-2OUT",
+          "level": 10,
+          "offset": 22,
+          "length": 20,
+          "pic": null,
+          "storage": "GROUP",
+          "redefines": "CODATECN-0UT-DATE",
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-OUT-REC.CODATECN-2OUT.CODATECN-2O-YYYY",
+          "level": 15,
+          "offset": 22,
+          "length": 4,
+          "pic": "XXXX",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-OUT-REC.CODATECN-2OUT.CODATECN-2O-MM",
+          "level": 15,
+          "offset": 26,
+          "length": 2,
+          "pic": "XX",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-OUT-REC.CODATECN-2OUT.CODATECN-2O-DD",
+          "level": 15,
+          "offset": 28,
+          "length": 2,
+          "pic": "XX",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-OUT-REC.CODATECN-2OUT.CODATECN-2OFIL",
+          "level": 15,
+          "offset": 30,
+          "length": 12,
+          "pic": "X(12)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        },
+        {
+          "qualified_name": "CODATECN-REC.CODATECN-ERROR-MSG",
+          "level": 5,
+          "offset": 42,
+          "length": 38,
+          "pic": "X(38)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CODATECN"
+        }
+      ],
+      "redefines_groups": [
+        {
+          "name": "CODATECN-REC.CODATECN-IN-REC.CODATECN-1INP",
+          "redefines_target": "CODATECN-INP-DATE",
+          "total_bytes": 20
+        },
+        {
+          "name": "CODATECN-REC.CODATECN-IN-REC.CODATECN-2INP",
+          "redefines_target": "CODATECN-INP-DATE",
+          "total_bytes": 20
+        },
+        {
+          "name": "CODATECN-REC.CODATECN-OUT-REC.CODATECN-1OUT",
+          "redefines_target": "CODATECN-0UT-DATE",
+          "total_bytes": 20
+        },
+        {
+          "name": "CODATECN-REC.CODATECN-OUT-REC.CODATECN-2OUT",
+          "redefines_target": "CODATECN-0UT-DATE",
+          "total_bytes": 20
+        }
+      ]
+    },
+    {
+      "name": "ACCTFILE-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "ACCTFILE-STATUS.ACCTFILE-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "ACCTFILE-STATUS.ACCTFILE-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "OUTFILE-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "OUTFILE-STATUS.OUTFILE-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "OUTFILE-STATUS.OUTFILE-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "ARRYFILE-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "ARRYFILE-STATUS.ARRYFILE-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "ARRYFILE-STATUS.ARRYFILE-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "VBRCFILE-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "VBRCFILE-STATUS.VBRCFILE-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "VBRCFILE-STATUS.VBRCFILE-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "IO-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "IO-STATUS.IO-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "IO-STATUS.IO-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TWO-BYTES-BINARY",
+      "copybook": null,
+      "total_bytes": null,
+      "fields": [],
+      "redefines_groups": []
+    },
+    {
+      "name": "TWO-BYTES-ALPHA",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "TWO-BYTES-ALPHA.TWO-BYTES-LEFT",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "TWO-BYTES-ALPHA.TWO-BYTES-RIGHT",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "IO-STATUS-04",
+      "copybook": null,
+      "total_bytes": 4,
+      "fields": [
+        {
+          "qualified_name": "IO-STATUS-04.IO-STATUS-0401",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "9",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "IO-STATUS-04.IO-STATUS-0403",
+          "level": 5,
+          "offset": 1,
+          "length": 3,
+          "pic": "999",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "APPL-RESULT",
+      "copybook": null,
+      "total_bytes": null,
+      "fields": [],
+      "redefines_groups": []
+    },
+    {
+      "name": "END-OF-FILE",
+      "copybook": null,
+      "total_bytes": null,
+      "fields": [],
+      "redefines_groups": []
+    },
+    {
+      "name": "ABCODE",
+      "copybook": null,
+      "total_bytes": null,
+      "fields": [],
+      "redefines_groups": []
+    },
+    {
+      "name": "TIMING",
+      "copybook": null,
+      "total_bytes": null,
+      "fields": [],
+      "redefines_groups": []
+    },
+    {
+      "name": "WS-RECD-LEN",
+      "copybook": null,
+      "total_bytes": null,
+      "fields": [],
+      "redefines_groups": []
+    },
+    {
+      "name": "VBRC-REC1",
+      "copybook": null,
+      "total_bytes": 12,
+      "fields": [
+        {
+          "qualified_name": "VBRC-REC1.VB1-ACCT-ID",
+          "level": 5,
+          "offset": 0,
+          "length": 11,
+          "pic": "9(11)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "VBRC-REC1.VB1-ACCT-ACTIVE-STATUS",
+          "level": 5,
+          "offset": 11,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "VBRC-REC2",
+      "copybook": null,
+      "total_bytes": 39,
+      "fields": [
+        {
+          "qualified_name": "VBRC-REC2.VB2-ACCT-ID",
+          "level": 5,
+          "offset": 0,
+          "length": 11,
+          "pic": "9(11)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "VBRC-REC2.VB2-ACCT-CURR-BAL",
+          "level": 5,
+          "offset": 11,
+          "length": 12,
+          "pic": "S9(10)V99",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "VBRC-REC2.VB2-ACCT-CREDIT-LIMIT",
+          "level": 5,
+          "offset": 23,
+          "length": 12,
+          "pic": "S9(10)V99",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "VBRC-REC2.VB2-ACCT-REISSUE-YYYY",
+          "level": 5,
+          "offset": 35,
+          "length": 4,
+          "pic": "X(04)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "WS-ACCT-REISSUE-DATE",
+      "copybook": null,
+      "total_bytes": 10,
+      "fields": [
+        {
+          "qualified_name": "WS-ACCT-REISSUE-DATE.WS-ACCT-REISSUE-YYYY",
+          "level": 5,
+          "offset": 0,
+          "length": 4,
+          "pic": "X(04)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-ACCT-REISSUE-DATE.WS-FILLER-1",
+          "level": 5,
+          "offset": 4,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-ACCT-REISSUE-DATE.WS-ACCT-REISSUE-MM",
+          "level": 5,
+          "offset": 5,
+          "length": 2,
+          "pic": "X(02)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-ACCT-REISSUE-DATE.WS-FILLER-2",
+          "level": 5,
+          "offset": 7,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-ACCT-REISSUE-DATE.WS-ACCT-REISSUE-DD",
+          "level": 5,
+          "offset": 8,
+          "length": 2,
+          "pic": "X(02)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "WS-REISSUE-DATE",
+      "copybook": null,
+      "total_bytes": null,
+      "fields": [],
+      "redefines_groups": []
+    }
+  ],
+  "unresolved": []
+}
