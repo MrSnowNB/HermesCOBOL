@@ -37,6 +37,14 @@ _NOT_PARA = frozenset({
     'ELSE', 'THEN', 'WHEN', 'OTHER',
 })
 
+# CardDemo paragraph labels always start with a 4-digit numeric prefix.
+_CARDEMO_PARA_PREFIX_RE = re.compile(r'^\d{4}-', re.IGNORECASE)
+
+_PARA_HEADER_RE = re.compile(
+    r'^([A-Z0-9][A-Z0-9\-]*)\s*\.\s*$',
+    re.IGNORECASE
+)
+
 
 # ---------------------------------------------------------------------------
 # Source normalisation
@@ -63,45 +71,70 @@ def _normalise_source(raw: str) -> list:
 
 
 # ---------------------------------------------------------------------------
-# Period-aware line joiner  (used at source level before paragraph detection)
+# Period-aware helpers
 # ---------------------------------------------------------------------------
 
 def _ends_statement(text: str) -> bool:
-    """
-    Return True if *text* ends a COBOL statement (i.e. its last non-space
-    character outside a quoted string is a period).
-    """
-    in_sq = False
-    in_dq = False
-    last_non_space = ''
+    """True if the last non-space character outside quotes is a period."""
+    in_sq = in_dq = False
+    last = ''
     for ch in text:
         if ch == "'" and not in_dq:
             in_sq = not in_sq
         elif ch == '"' and not in_sq:
             in_dq = not in_dq
         if not in_sq and not in_dq and ch != ' ':
-            last_non_space = ch
-    return last_non_space == '.'
+            last = ch
+    return last == '.'
 
+
+def _is_para_header_line(text: str) -> bool:
+    """True if the stripped text looks like a paragraph/section header label."""
+    stripped = text.strip()
+    m = _PARA_HEADER_RE.match(stripped)
+    if not m:
+        return False
+    candidate = m.group(1).upper()
+    return candidate not in _NOT_PARA
+
+
+# ---------------------------------------------------------------------------
+# Targeted continuation joiner for procedure-division source lines
+# ---------------------------------------------------------------------------
 
 def _join_source_lines(lines: list) -> list:
     """
-    Join physical source lines so that continuation lines (those whose
-    logical predecessor did NOT end with a statement-terminating period)
-    are fused back into the preceding line.
+    Fuse physical continuation lines back into their logical predecessor.
 
-    This prevents a MOVE target sitting alone on its own line:
+    A line is treated as a continuation candidate ONLY when ALL three
+    conditions hold:
+      1. The predecessor did NOT end with a statement-terminating period.
+      2. The candidate line is NOT a paragraph/section header
+         (i.e. does not match _PARA_HEADER_RE or is in _NOT_PARA).
+      3. The candidate does NOT start with the CardDemo 4-digit prefix
+         pattern (^\d{4}-)  -- extra guard to preserve real paragraph names
+         that the regex alone might mis-classify.
+
+    This targets exactly the two offending patterns:
         MOVE A TO B
-                   WS-REISSUE-DATE.
-    from looking like a paragraph header after the period split.
+                   WS-REISSUE-DATE.    <- continuation target, no prefix
+        MOVE A TO B
+                   VB2-ACCT-ID.        <- same
+    while leaving all real paragraph headers (0000-, 1000-, ...) intact.
     """
     if not lines:
         return []
-    joined = [list(lines[0])]   # [lineno, text]  (mutable)
+    joined = [[lines[0][0], lines[0][1]]]
     for lineno, text in lines[1:]:
-        prev_text = joined[-1][1]
-        if not _ends_statement(prev_text):
-            joined[-1][1] = prev_text + ' ' + text.strip()
+        stripped = text.strip()
+        prev_ends = _ends_statement(joined[-1][1])
+        candidate_is_header = _is_para_header_line(text)
+        candidate_has_prefix = bool(_CARDEMO_PARA_PREFIX_RE.match(stripped))
+
+        if (not prev_ends
+                and not candidate_is_header
+                and not candidate_has_prefix):
+            joined[-1][1] = joined[-1][1] + ' ' + stripped
         else:
             joined.append([lineno, text])
     return [(ln, txt) for ln, txt in joined]
@@ -180,7 +213,7 @@ def is_literal(token: str) -> bool:
 
 
 # ---------------------------------------------------------------------------
-# Tokeniser  -- strips quoted string literals before returning tokens
+# Tokeniser
 # ---------------------------------------------------------------------------
 
 def _tokens(text: str) -> list:
@@ -196,8 +229,7 @@ def _tokens(text: str) -> list:
 def _split_on_period(text: str) -> list:
     parts = []
     current = []
-    in_sq = False
-    in_dq = False
+    in_sq = in_dq = False
     i = 0
     while i < len(text):
         ch = text[i]
@@ -229,40 +261,30 @@ def _split_on_period(text: str) -> list:
 # Paragraph extractor
 # ---------------------------------------------------------------------------
 
-_PARA_HEADER_RE = re.compile(
-    r'^([A-Z0-9][A-Z0-9\-]*)\s*\.\s*$',
-    re.IGNORECASE
-)
-
-
 def extract_paragraphs(lines: list) -> dict:
     """
     Extract paragraphs from normalised source lines.
 
-    Lines are first joined across physical continuations (so that a MOVE
-    target sitting alone on its own line is fused back into the MOVE) before
-    paragraph headers are detected.
+    Procedure-division lines are first passed through _join_source_lines()
+    so that MOVE continuation targets sitting alone on their own line
+    (e.g. WS-REISSUE-DATE.) are fused back into their statement and never
+    mistaken for paragraph headers.
     """
     paragraphs = {}
     current = '__MAIN__'
     paragraphs[current] = []
-    in_procedure = False
 
-    # Collect procedure-division lines separately so we can join them
-    pre_proc = []
     proc_lines_raw = []
+    in_procedure = False
     for entry in lines:
         lineno, text = entry
         stripped = text.strip()
         if stripped.upper().startswith('PROCEDURE DIVISION'):
             in_procedure = True
             continue
-        if not in_procedure:
-            pre_proc.append(entry)
-        else:
+        if in_procedure:
             proc_lines_raw.append(entry)
 
-    # Join continuation lines in the procedure division before scanning headers
     proc_lines = _join_source_lines(proc_lines_raw)
 
     for lineno, text in proc_lines:
@@ -286,11 +308,6 @@ def extract_paragraphs(lines: list) -> dict:
 # ---------------------------------------------------------------------------
 
 def _join_lines(lines: list) -> list:
-    """
-    Secondary join for already-classified paragraph body lines.
-    After _join_source_lines has run at the extract_paragraphs level this
-    is mostly a no-op, but kept for safety.
-    """
     joined = []
     for lineno, text in lines:
         if joined and not _ends_statement(joined[-1][1]):
@@ -348,7 +365,6 @@ def classify_statement(
                     mutates.append(h)
                     context_records.add(h['record'])
 
-    # MOVE
     if verb == 'MOVE':
         if len(tokens) >= 2 and tokens[1].upper() == 'CORRESPONDING':
             try:
@@ -375,7 +391,6 @@ def classify_statement(
                 unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                                    'reason': 'MOVE missing TO keyword'})
 
-    # ADD
     elif verb == 'ADD':
         ut = [t.upper() for t in tokens]
         if 'GIVING' in ut:
@@ -392,7 +407,6 @@ def classify_statement(
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                                'reason': 'ADD missing TO or GIVING'})
 
-    # SUBTRACT
     elif verb == 'SUBTRACT':
         ut = [t.upper() for t in tokens]
         if 'GIVING' in ut:
@@ -409,7 +423,6 @@ def classify_statement(
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                                'reason': 'SUBTRACT missing FROM'})
 
-    # MULTIPLY
     elif verb == 'MULTIPLY':
         ut = [t.upper() for t in tokens]
         if 'GIVING' in ut:
@@ -426,7 +439,6 @@ def classify_statement(
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                                'reason': 'MULTIPLY missing BY'})
 
-    # DIVIDE
     elif verb == 'DIVIDE':
         ut = [t.upper() for t in tokens]
         if 'GIVING' in ut:
@@ -446,7 +458,6 @@ def classify_statement(
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                                'reason': 'DIVIDE missing INTO/BY'})
 
-    # COMPUTE
     elif verb == 'COMPUTE':
         ut = [t.upper() for t in tokens]
         if '=' in ut:
@@ -459,7 +470,6 @@ def classify_statement(
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                                'reason': 'COMPUTE missing = sign'})
 
-    # INITIALIZE
     elif verb == 'INITIALIZE':
         for t in tokens[1:]:
             if t.upper() in ('REPLACING','BY','ALPHABETIC','ALPHANUMERIC',
@@ -467,7 +477,6 @@ def classify_statement(
                 break
             _add_mutate(t)
 
-    # READ
     elif verb == 'READ':
         ut = [t.upper() for t in tokens]
         file_name = tokens[1] if len(tokens) > 1 else None
@@ -477,7 +486,6 @@ def classify_statement(
             dst = tokens[ii + 1] if ii + 1 < len(tokens) else None
             if dst: _add_mutate(dst)
 
-    # WRITE
     elif verb == 'WRITE':
         ut = [t.upper() for t in tokens]
         record_name = tokens[1] if len(tokens) > 1 else None
@@ -487,7 +495,6 @@ def classify_statement(
             src = tokens[fi + 1] if fi + 1 < len(tokens) else None
             if src: _add_read(src)
 
-    # STRING
     elif verb == 'STRING':
         ut = [t.upper() for t in tokens]
         ii = ut.index('INTO')    if 'INTO'    in ut else None
@@ -502,7 +509,6 @@ def classify_statement(
             ptr = tokens[pi + 1] if pi + 1 < len(tokens) else None
             if ptr: _add_read(ptr); _add_mutate(ptr)
 
-    # UNSTRING
     elif verb == 'UNSTRING':
         ut = [t.upper() for t in tokens]
         src = tokens[1] if len(tokens) > 1 else None
@@ -522,12 +528,10 @@ def classify_statement(
             tv = tokens[ti + 2] if ti + 2 < len(tokens) else None
             if tv: _add_mutate(tv)
 
-    # ACCEPT
     elif verb == 'ACCEPT':
         dst = tokens[1] if len(tokens) > 1 else None
         if dst and dst != '__LIT__': _add_mutate(dst)
 
-    # DISPLAY
     elif verb == 'DISPLAY':
         for t in tokens[1:]:
             if t.upper() in ('UPON','WITH','NO','ADVANCING'):
@@ -535,7 +539,6 @@ def classify_statement(
             if t != '__LIT__':
                 _add_read(t)
 
-    # IF / EVALUATE / WHEN
     elif verb in ('IF', 'EVALUATE', 'WHEN'):
         skip = {'IF','EVALUATE','WHEN','THEN','ELSE','END-IF',
                 'AND','OR','NOT','TRUE','FALSE','OTHER',
@@ -546,7 +549,6 @@ def classify_statement(
                 continue
             _add_read(t)
 
-    # SET
     elif verb == 'SET':
         ut = [t.upper() for t in tokens]
         if 'TO' in ut:
@@ -559,7 +561,6 @@ def classify_statement(
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                                'reason': 'SET missing TO'})
 
-    # EXEC CICS
     elif verb == 'EXEC':
         cics_r = {'FROM','LENGTH','RESP','RESP2'}
         cics_m = {'INTO','RESP','RESP2'}
