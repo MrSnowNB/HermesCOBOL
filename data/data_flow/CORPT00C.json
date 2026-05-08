@@ -170,94 +170,10 @@
         }
       ]
     },
-    "END-EXEC": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
-        {
-          "verb": "EVALUATE",
-          "line_no": 205,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 205,
-          "raw_text": "WHEN DFHRESP(NORMAL)",
-          "reason": "unresolved read operand: DFHRESP(NORMAL)"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 205,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 205,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 205,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 205,
-          "raw_text": "MOVE 'Unable to",
-          "reason": "unresolved read operand: 'Unable"
-        },
-        {
-          "verb": "WRITE",
-          "line_no": 205,
-          "raw_text": "Write TDQ (JOBS)...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: TDQ"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 205,
-          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
-          "reason": "unresolved mutate operand: MONTHLYL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 205,
-          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 205,
-          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
-          "reason": "unresolved mutate operand: CORPT0AI"
-        }
-      ]
-    },
     "PROCESS-ENTER-KEY": {
       "reads": [],
       "mutates": [],
       "unresolved": [
-        {
-          "verb": "DISPLAY",
-          "line_no": 210,
-          "raw_text": "DISPLAY 'PROCESS ENTER KEY'",
-          "reason": "unresolved read operand: 'PROCESS"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 210,
-          "raw_text": "DISPLAY 'PROCESS ENTER KEY'",
-          "reason": "unresolved read operand: ENTER"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 210,
-          "raw_text": "DISPLAY 'PROCESS ENTER KEY'",
-          "reason": "unresolved read operand: KEY'"
-        },
         {
           "verb": "WHEN",
           "line_no": 210,
@@ -640,54 +556,6 @@
           "verb": "MOVE",
           "line_no": 210,
           "raw_text": "MOVE 'Start Date - Month can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Start"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Month can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Date"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Month can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: -"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Month can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Month"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Month can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: can"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Month can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Month can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Month can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: empty...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Month can NOT be empty...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -731,54 +599,6 @@
           "line_no": 210,
           "raw_text": "WHEN SDTDDI OF CORPT0AI = SPACES OR LOW-VALUES",
           "reason": "unresolved read operand: CORPT0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Day can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Start"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Day can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Date"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Day can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: -"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Day can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Day"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Day can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: can"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Day can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Day can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Day can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: empty...'"
         },
         {
           "verb": "MOVE",
@@ -832,54 +652,6 @@
           "verb": "MOVE",
           "line_no": 210,
           "raw_text": "MOVE 'Start Date - Year can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Start"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Year can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Date"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Year can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: -"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Year can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Year"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Year can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: can"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Year can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Year can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Year can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: empty...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Year can NOT be empty...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -923,54 +695,6 @@
           "line_no": 210,
           "raw_text": "WHEN EDTMMI OF CORPT0AI = SPACES OR LOW-VALUES",
           "reason": "unresolved read operand: CORPT0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Month can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'End"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Month can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Date"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Month can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: -"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Month can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Month"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Month can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: can"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Month can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Month can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Month can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: empty...'"
         },
         {
           "verb": "MOVE",
@@ -1024,54 +748,6 @@
           "verb": "MOVE",
           "line_no": 210,
           "raw_text": "MOVE 'End Date - Day can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'End"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Day can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Date"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Day can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: -"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Day can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Day"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Day can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: can"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Day can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Day can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Day can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: empty...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Day can NOT be empty...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -1115,54 +791,6 @@
           "line_no": 210,
           "raw_text": "WHEN EDTYYYYI OF CORPT0AI = SPACES OR LOW-VALUES",
           "reason": "unresolved read operand: CORPT0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Year can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'End"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Year can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Date"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Year can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: -"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Year can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Year"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Year can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: can"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Year can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Year can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Year can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: empty...'"
         },
         {
           "verb": "MOVE",
@@ -1606,48 +1234,6 @@
           "verb": "MOVE",
           "line_no": 210,
           "raw_text": "MOVE 'Start Date - Not a valid Month...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Start"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Month...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Date"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Month...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: -"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Month...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Not"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Month...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: a"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Month...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: valid"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Month...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Month...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Month...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -1726,48 +1312,6 @@
           "verb": "MOVE",
           "line_no": 210,
           "raw_text": "MOVE 'Start Date - Not a valid Day...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Start"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Day...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Date"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Day...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: -"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Day...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Not"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Day...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: a"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Day...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: valid"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Day...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Day...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Day...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -1823,48 +1367,6 @@
           "line_no": 210,
           "raw_text": "IF SDTYYYYI OF CORPT0AI IS NOT NUMERIC",
           "reason": "unresolved read operand: NUMERIC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Year...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Start"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Year...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Date"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Year...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: -"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Year...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Not"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Year...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: a"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Year...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: valid"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid Year...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Year...'"
         },
         {
           "verb": "MOVE",
@@ -1948,48 +1450,6 @@
           "verb": "MOVE",
           "line_no": 210,
           "raw_text": "MOVE 'End Date - Not a valid Month...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'End"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Month...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Date"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Month...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: -"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Month...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Not"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Month...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: a"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Month...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: valid"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Month...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Month...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Month...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -2068,48 +1528,6 @@
           "verb": "MOVE",
           "line_no": 210,
           "raw_text": "MOVE 'End Date - Not a valid Day...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'End"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Day...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Date"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Day...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: -"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Day...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Not"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Day...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: a"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Day...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: valid"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Day...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Day...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Day...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -2165,48 +1583,6 @@
           "line_no": 210,
           "raw_text": "IF EDTYYYYI OF CORPT0AI IS NOT NUMERIC",
           "reason": "unresolved read operand: NUMERIC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Year...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'End"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Year...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Date"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Year...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: -"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Year...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Not"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Year...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: a"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Year...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: valid"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid Year...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Year...'"
         },
         {
           "verb": "MOVE",
@@ -2434,48 +1810,6 @@
           "verb": "MOVE",
           "line_no": 210,
           "raw_text": "MOVE 'Start Date - Not a valid date...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Start"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid date...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Date"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid date...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: -"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid date...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Not"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid date...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: a"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid date...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: valid"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid date...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: date...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Start Date - Not a valid date...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -2549,48 +1883,6 @@
           "line_no": 210,
           "raw_text": "IF CSUTLDTC-RESULT-MSG-NUM NOT = '2513'",
           "reason": "unresolved read operand: CSUTLDTC-RESULT-MSG-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid date...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'End"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid date...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Date"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid date...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: -"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid date...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Not"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid date...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: a"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid date...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: valid"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'End Date - Not a valid date...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: date...'"
         },
         {
           "verb": "MOVE",
@@ -2674,48 +1966,6 @@
           "verb": "MOVE",
           "line_no": 210,
           "raw_text": "MOVE 'Select a report type to print report...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Select"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Select a report type to print report...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: a"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Select a report type to print report...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: report"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Select a report type to print report...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: type"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Select a report type to print report...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: print"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Select a report type to print report...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: report...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Select a report type to print report...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE 'Select a report type to print report...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -2782,42 +2032,6 @@
           "verb": "STRING",
           "line_no": 210,
           "raw_text": "STRING WS-REPORT-NAME   DELIMITED BY SPACE ' report submitted for printing ...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 210,
-          "raw_text": "STRING WS-REPORT-NAME   DELIMITED BY SPACE ' report submitted for printing ...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: report"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 210,
-          "raw_text": "STRING WS-REPORT-NAME   DELIMITED BY SPACE ' report submitted for printing ...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: submitted"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 210,
-          "raw_text": "STRING WS-REPORT-NAME   DELIMITED BY SPACE ' report submitted for printing ...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: for"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 210,
-          "raw_text": "STRING WS-REPORT-NAME   DELIMITED BY SPACE ' report submitted for printing ...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: printing"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 210,
-          "raw_text": "STRING WS-REPORT-NAME   DELIMITED BY SPACE ' report submitted for printing ...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: ...'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 210,
-          "raw_text": "STRING WS-REPORT-NAME   DELIMITED BY SPACE ' report submitted for printing ...' DELIMITED BY SIZE INTO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -2839,11 +2053,6 @@
           "reason": "unresolved mutate operand: CORPT0AI"
         }
       ]
-    },
-    "END-IF": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
     },
     "SUBMIT-JOB-TO-INTRDR": {
       "reads": [],
@@ -2871,55 +2080,7 @@
           "verb": "STRING",
           "line_no": 464,
           "raw_text": "STRING 'Please confirm to print the ' DELIMITED BY SIZE WS-REPORT-NAME    DELIMITED BY SPACE ' report...'      DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Please"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 464,
-          "raw_text": "STRING 'Please confirm to print the ' DELIMITED BY SIZE WS-REPORT-NAME    DELIMITED BY SPACE ' report...'      DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: confirm"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 464,
-          "raw_text": "STRING 'Please confirm to print the ' DELIMITED BY SIZE WS-REPORT-NAME    DELIMITED BY SPACE ' report...'      DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: to"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 464,
-          "raw_text": "STRING 'Please confirm to print the ' DELIMITED BY SIZE WS-REPORT-NAME    DELIMITED BY SPACE ' report...'      DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: print"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 464,
-          "raw_text": "STRING 'Please confirm to print the ' DELIMITED BY SIZE WS-REPORT-NAME    DELIMITED BY SPACE ' report...'      DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: the"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 464,
-          "raw_text": "STRING 'Please confirm to print the ' DELIMITED BY SIZE WS-REPORT-NAME    DELIMITED BY SPACE ' report...'      DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 464,
-          "raw_text": "STRING 'Please confirm to print the ' DELIMITED BY SIZE WS-REPORT-NAME    DELIMITED BY SPACE ' report...'      DELIMITED BY SIZE INTO WS-MESSAGE",
           "reason": "unresolved read operand: WS-REPORT-NAME"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 464,
-          "raw_text": "STRING 'Please confirm to print the ' DELIMITED BY SIZE WS-REPORT-NAME    DELIMITED BY SPACE ' report...'      DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 464,
-          "raw_text": "STRING 'Please confirm to print the ' DELIMITED BY SIZE WS-REPORT-NAME    DELIMITED BY SPACE ' report...'      DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: report...'"
         },
         {
           "verb": "STRING",
@@ -3016,54 +2177,6 @@
           "line_no": 464,
           "raw_text": "STRING '\"'               DELIMITED BY SIZE CONFIRMI OF CORPT0AI    DELIMITED BY SPACE '\" is not a valid value to confirm...' DELIMITED BY SIZE INTO WS-MESSAGE",
           "reason": "unresolved read operand: CORPT0AI"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 464,
-          "raw_text": "STRING '\"'               DELIMITED BY SIZE CONFIRMI OF CORPT0AI    DELIMITED BY SPACE '\" is not a valid value to confirm...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: '\""
-        },
-        {
-          "verb": "STRING",
-          "line_no": 464,
-          "raw_text": "STRING '\"'               DELIMITED BY SIZE CONFIRMI OF CORPT0AI    DELIMITED BY SPACE '\" is not a valid value to confirm...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: is"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 464,
-          "raw_text": "STRING '\"'               DELIMITED BY SIZE CONFIRMI OF CORPT0AI    DELIMITED BY SPACE '\" is not a valid value to confirm...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: not"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 464,
-          "raw_text": "STRING '\"'               DELIMITED BY SIZE CONFIRMI OF CORPT0AI    DELIMITED BY SPACE '\" is not a valid value to confirm...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: a"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 464,
-          "raw_text": "STRING '\"'               DELIMITED BY SIZE CONFIRMI OF CORPT0AI    DELIMITED BY SPACE '\" is not a valid value to confirm...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: valid"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 464,
-          "raw_text": "STRING '\"'               DELIMITED BY SIZE CONFIRMI OF CORPT0AI    DELIMITED BY SPACE '\" is not a valid value to confirm...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: value"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 464,
-          "raw_text": "STRING '\"'               DELIMITED BY SIZE CONFIRMI OF CORPT0AI    DELIMITED BY SPACE '\" is not a valid value to confirm...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: to"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 464,
-          "raw_text": "STRING '\"'               DELIMITED BY SIZE CONFIRMI OF CORPT0AI    DELIMITED BY SPACE '\" is not a valid value to confirm...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: confirm...'"
         },
         {
           "verb": "STRING",
@@ -3148,13 +2261,68 @@
           "line_no": 517,
           "raw_text": "EXEC CICS WRITEQ TD QUEUE ('JOBS') FROM (JCL-RECORD) LENGTH (LENGTH OF JCL-RECORD) RESP(WS-RESP-CD) RESP2(WS-REAS-CD)",
           "reason": "unresolved read operand: (LENGTH"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 525,
+          "raw_text": "EVALUATE WS-RESP-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 525,
+          "raw_text": "WHEN DFHRESP(NORMAL)",
+          "reason": "unresolved read operand: DFHRESP(NORMAL)"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 525,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 525,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-REAS-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 525,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 525,
+          "raw_text": "MOVE 'Unable to",
+          "reason": "unresolved read operand: 'Unable"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 525,
+          "raw_text": "Write TDQ (JOBS)...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: TDQ"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 525,
+          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: MONTHLYL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 525,
+          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 525,
+          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
         }
       ]
-    },
-    "END-EVALUATE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
     },
     "RETURN-TO-PREV-SCREEN": {
       "reads": [],
@@ -3700,9 +2868,5 @@
       "unresolved": []
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=14 facts=10"
-    }
-  ]
+  "program_unresolved": []
 }

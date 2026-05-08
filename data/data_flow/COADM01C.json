@@ -122,11 +122,6 @@
         }
       ]
     },
-    "END-EXEC": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
-    },
     "PROCESS-ENTER-KEY": {
       "reads": [],
       "mutates": [],
@@ -183,13 +178,7 @@
           "verb": "MOVE",
           "line_no": 121,
           "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
-          "reason": "unresolved mutate operand: '"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 121,
-          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
-          "reason": "unresolved mutate operand: '"
+          "reason": "literal as mutate target (ignored): __LIT__"
         },
         {
           "verb": "MOVE",
@@ -201,7 +190,7 @@
           "verb": "MOVE",
           "line_no": 121,
           "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
-          "reason": "literal as mutate target (ignored): '0'"
+          "reason": "literal as mutate target (ignored): __LIT__"
         },
         {
           "verb": "MOVE",
@@ -285,42 +274,6 @@
           "verb": "MOVE",
           "line_no": 121,
           "raw_text": "MOVE 'Please enter a valid option number...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Please"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 121,
-          "raw_text": "MOVE 'Please enter a valid option number...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: enter"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 121,
-          "raw_text": "MOVE 'Please enter a valid option number...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: a"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 121,
-          "raw_text": "MOVE 'Please enter a valid option number...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: valid"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 121,
-          "raw_text": "MOVE 'Please enter a valid option number...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: option"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 121,
-          "raw_text": "MOVE 'Please enter a valid option number...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: number...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 121,
-          "raw_text": "MOVE 'Please enter a valid option number...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -399,24 +352,6 @@
           "verb": "STRING",
           "line_no": 121,
           "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: 'This"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 121,
-          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: option"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 121,
-          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 121,
-          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
           "reason": "unresolved read operand: *"
         },
         {
@@ -435,38 +370,9 @@
           "verb": "STRING",
           "line_no": 121,
           "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: 'is"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 121,
-          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: not"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 121,
-          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: installed"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 121,
-          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: ...'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 121,
-          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         }
       ]
-    },
-    "END-IF": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
     },
     "RETURN-TO-SIGNON-SCREEN": {
       "reads": [],
@@ -899,11 +805,6 @@
         }
       ]
     },
-    "END-PERFORM": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
-    },
     "PGMIDERR-ERR-PARA": {
       "reads": [],
       "mutates": [],
@@ -942,24 +843,6 @@
           "verb": "STRING",
           "line_no": 271,
           "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: 'This"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 271,
-          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: option"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 271,
-          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 271,
-          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
           "reason": "unresolved read operand: *"
         },
         {
@@ -978,38 +861,10 @@
           "verb": "STRING",
           "line_no": 271,
           "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: 'is"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 271,
-          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: not"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 271,
-          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: installed"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 271,
-          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: ...'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 271,
-          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         }
       ]
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=11 facts=8"
-    }
-  ]
+  "program_unresolved": []
 }

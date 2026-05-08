@@ -206,11 +206,6 @@
         }
       ]
     },
-    "END-EXEC": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
-    },
     "PROCESS-ENTER-KEY": {
       "reads": [],
       "mutates": [],
@@ -244,42 +239,6 @@
           "line_no": 156,
           "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
           "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'Acct ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Acct"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'Acct ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'Acct ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: can"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'Acct ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'Acct ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'Acct ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: empty...'"
         },
         {
           "verb": "MOVE",
@@ -477,36 +436,6 @@
           "verb": "MOVE",
           "line_no": 156,
           "raw_text": "MOVE 'You have nothing to pay...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'You"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'You have nothing to pay...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: have"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'You have nothing to pay...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: nothing"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'You have nothing to pay...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: pay...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'You have nothing to pay...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'You have nothing to pay...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -603,43 +532,7 @@
           "verb": "MOVE",
           "line_no": 156,
           "raw_text": "MOVE 'POS TERM'           TO TRAN-SOURCE",
-          "reason": "unresolved read operand: 'POS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'POS TERM'           TO TRAN-SOURCE",
-          "reason": "unresolved read operand: TERM'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'POS TERM'           TO TRAN-SOURCE",
           "reason": "unresolved mutate operand: TRAN-SOURCE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'BILL PAYMENT - ONLINE' TO TRAN-DESC",
-          "reason": "unresolved read operand: 'BILL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'BILL PAYMENT - ONLINE' TO TRAN-DESC",
-          "reason": "unresolved read operand: PAYMENT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'BILL PAYMENT - ONLINE' TO TRAN-DESC",
-          "reason": "unresolved read operand: -"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'BILL PAYMENT - ONLINE' TO TRAN-DESC",
-          "reason": "unresolved read operand: ONLINE'"
         },
         {
           "verb": "MOVE",
@@ -676,18 +569,6 @@
           "line_no": 156,
           "raw_text": "MOVE 999999999            TO TRAN-MERCHANT-ID",
           "reason": "unresolved mutate operand: TRAN-MERCHANT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'BILL PAYMENT'       TO TRAN-MERCHANT-NAME",
-          "reason": "unresolved read operand: 'BILL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'BILL PAYMENT'       TO TRAN-MERCHANT-NAME",
-          "reason": "unresolved read operand: PAYMENT'"
         },
         {
           "verb": "MOVE",
@@ -747,42 +628,6 @@
           "verb": "MOVE",
           "line_no": 156,
           "raw_text": "MOVE 'Confirm to make a bill payment...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Confirm"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'Confirm to make a bill payment...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: make"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'Confirm to make a bill payment...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: a"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'Confirm to make a bill payment...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: bill"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'Confirm to make a bill payment...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: payment...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'Confirm to make a bill payment...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE 'Confirm to make a bill payment...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -804,11 +649,6 @@
           "reason": "unresolved mutate operand: COBIL0AI"
         }
       ]
-    },
-    "END-IF": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
     },
     "GET-CURRENT-TIMESTAMP": {
       "reads": [],
@@ -1219,30 +1059,6 @@
           "verb": "MOVE",
           "line_no": 345,
           "raw_text": "MOVE 'Account ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Account"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE 'Account ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE 'Account ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE 'Account ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: found...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE 'Account ID NOT found...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -1285,30 +1101,6 @@
           "verb": "MOVE",
           "line_no": 345,
           "raw_text": "MOVE 'Unable to lookup Account...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Unable"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE 'Unable to lookup Account...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: lookup"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE 'Unable to lookup Account...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: Account...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE 'Unable to lookup Account...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE 'Unable to lookup Account...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -1330,11 +1122,6 @@
           "reason": "unresolved mutate operand: COBIL0AI"
         }
       ]
-    },
-    "END-EVALUATE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
     },
     "UPDATE-ACCTDAT-FILE": {
       "reads": [],
@@ -1404,30 +1191,6 @@
           "verb": "MOVE",
           "line_no": 379,
           "raw_text": "MOVE 'Account ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Account"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 379,
-          "raw_text": "MOVE 'Account ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 379,
-          "raw_text": "MOVE 'Account ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 379,
-          "raw_text": "MOVE 'Account ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: found...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 379,
-          "raw_text": "MOVE 'Account ID NOT found...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -1465,30 +1228,6 @@
           "line_no": 379,
           "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
           "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 379,
-          "raw_text": "MOVE 'Unable to Update Account...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Unable"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 379,
-          "raw_text": "MOVE 'Unable to Update Account...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: Update"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 379,
-          "raw_text": "MOVE 'Unable to Update Account...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: Account...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 379,
-          "raw_text": "MOVE 'Unable to Update Account...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: TO"
         },
         {
           "verb": "MOVE",
@@ -1560,30 +1299,6 @@
           "verb": "MOVE",
           "line_no": 410,
           "raw_text": "MOVE 'Account ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Account"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 410,
-          "raw_text": "MOVE 'Account ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 410,
-          "raw_text": "MOVE 'Account ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 410,
-          "raw_text": "MOVE 'Account ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: found...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 410,
-          "raw_text": "MOVE 'Account ID NOT found...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -1621,42 +1336,6 @@
           "line_no": 410,
           "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
           "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 410,
-          "raw_text": "MOVE 'Unable to lookup XREF AIX file...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Unable"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 410,
-          "raw_text": "MOVE 'Unable to lookup XREF AIX file...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: lookup"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 410,
-          "raw_text": "MOVE 'Unable to lookup XREF AIX file...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: XREF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 410,
-          "raw_text": "MOVE 'Unable to lookup XREF AIX file...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: AIX"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 410,
-          "raw_text": "MOVE 'Unable to lookup XREF AIX file...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: file...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 410,
-          "raw_text": "MOVE 'Unable to lookup XREF AIX file...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: TO"
         },
         {
           "verb": "MOVE",
@@ -1740,30 +1419,6 @@
           "verb": "MOVE",
           "line_no": 443,
           "raw_text": "MOVE 'Transaction ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Transaction"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 443,
-          "raw_text": "MOVE 'Transaction ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 443,
-          "raw_text": "MOVE 'Transaction ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 443,
-          "raw_text": "MOVE 'Transaction ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: found...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 443,
-          "raw_text": "MOVE 'Transaction ID NOT found...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -1801,30 +1456,6 @@
           "line_no": 443,
           "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
           "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 443,
-          "raw_text": "MOVE 'Unable to lookup Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Unable"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 443,
-          "raw_text": "MOVE 'Unable to lookup Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: lookup"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 443,
-          "raw_text": "MOVE 'Unable to lookup Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: Transaction...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 443,
-          "raw_text": "MOVE 'Unable to lookup Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: TO"
         },
         {
           "verb": "MOVE",
@@ -1938,30 +1569,6 @@
           "verb": "MOVE",
           "line_no": 474,
           "raw_text": "MOVE 'Unable to lookup Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Unable"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 474,
-          "raw_text": "MOVE 'Unable to lookup Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: lookup"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 474,
-          "raw_text": "MOVE 'Unable to lookup Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: Transaction...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 474,
-          "raw_text": "MOVE 'Unable to lookup Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 474,
-          "raw_text": "MOVE 'Unable to lookup Transaction...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -2064,30 +1671,6 @@
           "line_no": 512,
           "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
           "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 512,
-          "raw_text": "MOVE 'Tran ID already exist...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Tran"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 512,
-          "raw_text": "MOVE 'Tran ID already exist...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 512,
-          "raw_text": "MOVE 'Tran ID already exist...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: already"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 512,
-          "raw_text": "MOVE 'Tran ID already exist...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: exist...'"
         },
         {
           "verb": "MOVE",
@@ -2276,9 +1859,5 @@
       "unresolved": []
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=20 facts=16"
-    }
-  ]
+  "program_unresolved": []
 }

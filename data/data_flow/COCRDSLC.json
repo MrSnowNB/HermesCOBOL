@@ -628,18 +628,6 @@
           "verb": "MOVE",
           "line_no": 101,
           "raw_text": "MOVE 'UNEXPECTED STATE' TO WS-MSG",
-          "reason": "unresolved read operand: 'UNEXPECTED"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 101,
-          "raw_text": "MOVE 'UNEXPECTED STATE' TO WS-MSG",
-          "reason": "unresolved read operand: STATE'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 101,
-          "raw_text": "MOVE 'UNEXPECTED STATE' TO WS-MSG",
           "reason": "unresolved mutate operand: WS-MSG"
         }
       ]
@@ -679,11 +667,6 @@
           "reason": "unresolved mutate operand: WS-THIS-PROGCOMMAREA)"
         }
       ]
-    },
-    "END-EXEC": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
     },
     "1000-SEND-MAP": {
       "reads": [],
@@ -942,18 +925,6 @@
       "mutates": [],
       "unresolved": []
     },
-    "EXIT": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
-        {
-          "verb": "READ",
-          "line_no": 262,
-          "raw_text": "READ DATA SECTION * ****************************************************************** ****************************************************************** * *    RETURN SECTION * ******************************************************************",
-          "reason": "unresolved mutate operand: DATA"
-        }
-      ]
-    },
     "2000-PROCESS-INPUTS": {
       "reads": [],
       "mutates": [],
@@ -1046,54 +1017,6 @@
           "verb": "MOVE",
           "line_no": 268,
           "raw_text": "MOVE 'ACCT ID OR CARD NUMBER MUST BE ENTERED' TO WS-MSG",
-          "reason": "unresolved read operand: 'ACCT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 268,
-          "raw_text": "MOVE 'ACCT ID OR CARD NUMBER MUST BE ENTERED' TO WS-MSG",
-          "reason": "unresolved read operand: ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 268,
-          "raw_text": "MOVE 'ACCT ID OR CARD NUMBER MUST BE ENTERED' TO WS-MSG",
-          "reason": "unresolved read operand: OR"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 268,
-          "raw_text": "MOVE 'ACCT ID OR CARD NUMBER MUST BE ENTERED' TO WS-MSG",
-          "reason": "unresolved read operand: CARD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 268,
-          "raw_text": "MOVE 'ACCT ID OR CARD NUMBER MUST BE ENTERED' TO WS-MSG",
-          "reason": "unresolved read operand: NUMBER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 268,
-          "raw_text": "MOVE 'ACCT ID OR CARD NUMBER MUST BE ENTERED' TO WS-MSG",
-          "reason": "unresolved read operand: MUST"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 268,
-          "raw_text": "MOVE 'ACCT ID OR CARD NUMBER MUST BE ENTERED' TO WS-MSG",
-          "reason": "unresolved read operand: BE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 268,
-          "raw_text": "MOVE 'ACCT ID OR CARD NUMBER MUST BE ENTERED' TO WS-MSG",
-          "reason": "unresolved read operand: ENTERED'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 268,
-          "raw_text": "MOVE 'ACCT ID OR CARD NUMBER MUST BE ENTERED' TO WS-MSG",
           "reason": "unresolved mutate operand: WS-MSG"
         },
         {
@@ -1113,7 +1036,14 @@
     "2000-PROCESS-INPUTS-EXIT": {
       "reads": [],
       "mutates": [],
-      "unresolved": []
+      "unresolved": [
+        {
+          "verb": "READ",
+          "line_no": 301,
+          "raw_text": "READ DATA SECTION * ******************************************************************",
+          "reason": "unresolved mutate operand: DATA"
+        }
+      ]
     },
     "9000-READ-DATA": {
       "reads": [],
@@ -1181,9 +1111,5 @@
       ]
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=11 facts=9"
-    }
-  ]
+  "program_unresolved": []
 }

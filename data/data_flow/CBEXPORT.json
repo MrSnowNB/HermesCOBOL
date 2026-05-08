@@ -7,11 +7,6 @@
       "mutates": [],
       "unresolved": []
     },
-    "GOBACK": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
-    },
     "1000-INITIALIZE": {
       "reads": [],
       "mutates": [],
@@ -19,86 +14,8 @@
         {
           "verb": "DISPLAY",
           "line_no": 162,
-          "raw_text": "DISPLAY 'CBEXPORT: Starting Customer Data Export'",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'CBEXPORT: Starting Customer Data Export'",
-          "reason": "unresolved read operand: Starting"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'CBEXPORT: Starting Customer Data Export'",
-          "reason": "unresolved read operand: Customer"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'CBEXPORT: Starting Customer Data Export'",
-          "reason": "unresolved read operand: Data"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'CBEXPORT: Starting Customer Data Export'",
-          "reason": "unresolved read operand: Export'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'CBEXPORT: Export Date: ' WS-EXPORT-DATE",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'CBEXPORT: Export Date: ' WS-EXPORT-DATE",
-          "reason": "unresolved read operand: Export"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'CBEXPORT: Export Date: ' WS-EXPORT-DATE",
-          "reason": "unresolved read operand: Date:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'CBEXPORT: Export Date: ' WS-EXPORT-DATE",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
           "raw_text": "DISPLAY 'CBEXPORT: Export Date: ' WS-EXPORT-DATE",
           "reason": "unresolved read operand: WS-EXPORT-DATE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'CBEXPORT: Export Time: ' WS-EXPORT-TIME",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'CBEXPORT: Export Time: ' WS-EXPORT-TIME",
-          "reason": "unresolved read operand: Export"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'CBEXPORT: Export Time: ' WS-EXPORT-TIME",
-          "reason": "unresolved read operand: Time:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'CBEXPORT: Export Time: ' WS-EXPORT-TIME",
-          "reason": "unresolved read operand: '"
         },
         {
           "verb": "DISPLAY",
@@ -177,18 +94,6 @@
           "line_no": 173,
           "raw_text": "STRING WS-EXPORT-DATE ' ' WS-EXPORT-TIME '.00' DELIMITED BY SIZE INTO WS-FORMATTED-TIMESTAMP",
           "reason": "unresolved read operand: WS-EXPORT-DATE"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 173,
-          "raw_text": "STRING WS-EXPORT-DATE ' ' WS-EXPORT-TIME '.00' DELIMITED BY SIZE INTO WS-FORMATTED-TIMESTAMP",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 173,
-          "raw_text": "STRING WS-EXPORT-DATE ' ' WS-EXPORT-TIME '.00' DELIMITED BY SIZE INTO WS-FORMATTED-TIMESTAMP",
-          "reason": "unresolved read operand: '"
         },
         {
           "verb": "STRING",
@@ -318,64 +223,10 @@
         }
       ]
     },
-    "END-IF": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
-    },
     "2000-EXPORT-CUSTOMERS": {
       "reads": [],
       "mutates": [],
-      "unresolved": [
-        {
-          "verb": "DISPLAY",
-          "line_no": 244,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing customer records'",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 244,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing customer records'",
-          "reason": "unresolved read operand: Processing"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 244,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing customer records'",
-          "reason": "unresolved read operand: customer"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 244,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing customer records'",
-          "reason": "unresolved read operand: records'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 244,
-          "raw_text": "DISPLAY 'CBEXPORT: Customers exported: '",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 244,
-          "raw_text": "DISPLAY 'CBEXPORT: Customers exported: '",
-          "reason": "unresolved read operand: Customers"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 244,
-          "raw_text": "DISPLAY 'CBEXPORT: Customers exported: '",
-          "reason": "unresolved read operand: exported:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 244,
-          "raw_text": "DISPLAY 'CBEXPORT: Customers exported: '",
-          "reason": "unresolved read operand: '"
-        }
-      ]
+      "unresolved": []
     },
     "WS-CUSTOMER-RECORDS-EXPORTED": {
       "reads": [],
@@ -403,36 +254,6 @@
           "line_no": 259,
           "raw_text": "IF NOT WS-CUSTOMER-OK AND NOT WS-CUSTOMER-EOF",
           "reason": "unresolved read operand: WS-CUSTOMER-EOF"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 259,
-          "raw_text": "DISPLAY 'ERROR: Reading CUSTOMER-INPUT, Status: ' WS-CUSTOMER-STATUS",
-          "reason": "unresolved read operand: 'ERROR:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 259,
-          "raw_text": "DISPLAY 'ERROR: Reading CUSTOMER-INPUT, Status: ' WS-CUSTOMER-STATUS",
-          "reason": "unresolved read operand: Reading"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 259,
-          "raw_text": "DISPLAY 'ERROR: Reading CUSTOMER-INPUT, Status: ' WS-CUSTOMER-STATUS",
-          "reason": "unresolved read operand: CUSTOMER-INPUT,"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 259,
-          "raw_text": "DISPLAY 'ERROR: Reading CUSTOMER-INPUT, Status: ' WS-CUSTOMER-STATUS",
-          "reason": "unresolved read operand: Status:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 259,
-          "raw_text": "DISPLAY 'ERROR: Reading CUSTOMER-INPUT, Status: ' WS-CUSTOMER-STATUS",
-          "reason": "unresolved read operand: '"
         },
         {
           "verb": "DISPLAY",
@@ -798,42 +619,6 @@
           "verb": "DISPLAY",
           "line_no": 270,
           "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: 'ERROR:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 270,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: Writing"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 270,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: export"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 270,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: record,"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 270,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: Status:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 270,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 270,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
           "reason": "unresolved read operand: WS-EXPORT-STATUS"
         },
         {
@@ -865,56 +650,7 @@
     "3000-EXPORT-ACCOUNTS": {
       "reads": [],
       "mutates": [],
-      "unresolved": [
-        {
-          "verb": "DISPLAY",
-          "line_no": 313,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing account records'",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 313,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing account records'",
-          "reason": "unresolved read operand: Processing"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 313,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing account records'",
-          "reason": "unresolved read operand: account"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 313,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing account records'",
-          "reason": "unresolved read operand: records'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 313,
-          "raw_text": "DISPLAY 'CBEXPORT: Accounts exported: '",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 313,
-          "raw_text": "DISPLAY 'CBEXPORT: Accounts exported: '",
-          "reason": "unresolved read operand: Accounts"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 313,
-          "raw_text": "DISPLAY 'CBEXPORT: Accounts exported: '",
-          "reason": "unresolved read operand: exported:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 313,
-          "raw_text": "DISPLAY 'CBEXPORT: Accounts exported: '",
-          "reason": "unresolved read operand: '"
-        }
-      ]
+      "unresolved": []
     },
     "WS-ACCOUNT-RECORDS-EXPORTED": {
       "reads": [],
@@ -942,36 +678,6 @@
           "line_no": 328,
           "raw_text": "IF NOT WS-ACCOUNT-OK AND NOT WS-ACCOUNT-EOF",
           "reason": "unresolved read operand: WS-ACCOUNT-EOF"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 328,
-          "raw_text": "DISPLAY 'ERROR: Reading ACCOUNT-INPUT, Status: ' WS-ACCOUNT-STATUS",
-          "reason": "unresolved read operand: 'ERROR:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 328,
-          "raw_text": "DISPLAY 'ERROR: Reading ACCOUNT-INPUT, Status: ' WS-ACCOUNT-STATUS",
-          "reason": "unresolved read operand: Reading"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 328,
-          "raw_text": "DISPLAY 'ERROR: Reading ACCOUNT-INPUT, Status: ' WS-ACCOUNT-STATUS",
-          "reason": "unresolved read operand: ACCOUNT-INPUT,"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 328,
-          "raw_text": "DISPLAY 'ERROR: Reading ACCOUNT-INPUT, Status: ' WS-ACCOUNT-STATUS",
-          "reason": "unresolved read operand: Status:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 328,
-          "raw_text": "DISPLAY 'ERROR: Reading ACCOUNT-INPUT, Status: ' WS-ACCOUNT-STATUS",
-          "reason": "unresolved read operand: '"
         },
         {
           "verb": "DISPLAY",
@@ -1265,42 +971,6 @@
           "verb": "DISPLAY",
           "line_no": 339,
           "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: 'ERROR:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 339,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: Writing"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 339,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: export"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 339,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: record,"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 339,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: Status:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 339,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 339,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
           "reason": "unresolved read operand: WS-EXPORT-STATUS"
         },
         {
@@ -1332,56 +1002,7 @@
     "4000-EXPORT-XREFS": {
       "reads": [],
       "mutates": [],
-      "unresolved": [
-        {
-          "verb": "DISPLAY",
-          "line_no": 377,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing cross-reference records'",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 377,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing cross-reference records'",
-          "reason": "unresolved read operand: Processing"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 377,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing cross-reference records'",
-          "reason": "unresolved read operand: cross-reference"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 377,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing cross-reference records'",
-          "reason": "unresolved read operand: records'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 377,
-          "raw_text": "DISPLAY 'CBEXPORT: Cross-references exported: '",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 377,
-          "raw_text": "DISPLAY 'CBEXPORT: Cross-references exported: '",
-          "reason": "unresolved read operand: Cross-references"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 377,
-          "raw_text": "DISPLAY 'CBEXPORT: Cross-references exported: '",
-          "reason": "unresolved read operand: exported:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 377,
-          "raw_text": "DISPLAY 'CBEXPORT: Cross-references exported: '",
-          "reason": "unresolved read operand: '"
-        }
-      ]
+      "unresolved": []
     },
     "WS-XREF-RECORDS-EXPORTED": {
       "reads": [],
@@ -1409,36 +1030,6 @@
           "line_no": 392,
           "raw_text": "IF NOT WS-XREF-OK AND NOT WS-XREF-EOF",
           "reason": "unresolved read operand: WS-XREF-EOF"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 392,
-          "raw_text": "DISPLAY 'ERROR: Reading XREF-INPUT, Status: ' WS-XREF-STATUS",
-          "reason": "unresolved read operand: 'ERROR:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 392,
-          "raw_text": "DISPLAY 'ERROR: Reading XREF-INPUT, Status: ' WS-XREF-STATUS",
-          "reason": "unresolved read operand: Reading"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 392,
-          "raw_text": "DISPLAY 'ERROR: Reading XREF-INPUT, Status: ' WS-XREF-STATUS",
-          "reason": "unresolved read operand: XREF-INPUT,"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 392,
-          "raw_text": "DISPLAY 'ERROR: Reading XREF-INPUT, Status: ' WS-XREF-STATUS",
-          "reason": "unresolved read operand: Status:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 392,
-          "raw_text": "DISPLAY 'ERROR: Reading XREF-INPUT, Status: ' WS-XREF-STATUS",
-          "reason": "unresolved read operand: '"
         },
         {
           "verb": "DISPLAY",
@@ -1624,42 +1215,6 @@
           "verb": "DISPLAY",
           "line_no": 403,
           "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: 'ERROR:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 403,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: Writing"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 403,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: export"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 403,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: record,"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 403,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: Status:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 403,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 403,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
           "reason": "unresolved read operand: WS-EXPORT-STATUS"
         },
         {
@@ -1691,56 +1246,7 @@
     "5000-EXPORT-TRANSACTIONS": {
       "reads": [],
       "mutates": [],
-      "unresolved": [
-        {
-          "verb": "DISPLAY",
-          "line_no": 432,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing transaction records'",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 432,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing transaction records'",
-          "reason": "unresolved read operand: Processing"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 432,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing transaction records'",
-          "reason": "unresolved read operand: transaction"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 432,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing transaction records'",
-          "reason": "unresolved read operand: records'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 432,
-          "raw_text": "DISPLAY 'CBEXPORT: Transactions exported: '",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 432,
-          "raw_text": "DISPLAY 'CBEXPORT: Transactions exported: '",
-          "reason": "unresolved read operand: Transactions"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 432,
-          "raw_text": "DISPLAY 'CBEXPORT: Transactions exported: '",
-          "reason": "unresolved read operand: exported:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 432,
-          "raw_text": "DISPLAY 'CBEXPORT: Transactions exported: '",
-          "reason": "unresolved read operand: '"
-        }
-      ]
+      "unresolved": []
     },
     "WS-TRAN-RECORDS-EXPORTED": {
       "reads": [],
@@ -1768,36 +1274,6 @@
           "line_no": 447,
           "raw_text": "IF NOT WS-TRANSACTION-OK AND NOT WS-TRANSACTION-EOF",
           "reason": "unresolved read operand: WS-TRANSACTION-EOF"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 447,
-          "raw_text": "DISPLAY 'ERROR: Reading TRANSACTION-INPUT, Status: ' WS-TRANSACTION-STATUS",
-          "reason": "unresolved read operand: 'ERROR:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 447,
-          "raw_text": "DISPLAY 'ERROR: Reading TRANSACTION-INPUT, Status: ' WS-TRANSACTION-STATUS",
-          "reason": "unresolved read operand: Reading"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 447,
-          "raw_text": "DISPLAY 'ERROR: Reading TRANSACTION-INPUT, Status: ' WS-TRANSACTION-STATUS",
-          "reason": "unresolved read operand: TRANSACTION-INPUT,"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 447,
-          "raw_text": "DISPLAY 'ERROR: Reading TRANSACTION-INPUT, Status: ' WS-TRANSACTION-STATUS",
-          "reason": "unresolved read operand: Status:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 447,
-          "raw_text": "DISPLAY 'ERROR: Reading TRANSACTION-INPUT, Status: ' WS-TRANSACTION-STATUS",
-          "reason": "unresolved read operand: '"
         },
         {
           "verb": "DISPLAY",
@@ -2103,42 +1579,6 @@
           "verb": "DISPLAY",
           "line_no": 458,
           "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: 'ERROR:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 458,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: Writing"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 458,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: export"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 458,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: record,"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 458,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: Status:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 458,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 458,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
           "reason": "unresolved read operand: WS-EXPORT-STATUS"
         },
         {
@@ -2170,56 +1610,7 @@
     "5500-EXPORT-CARDS": {
       "reads": [],
       "mutates": [],
-      "unresolved": [
-        {
-          "verb": "DISPLAY",
-          "line_no": 497,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing card records'",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 497,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing card records'",
-          "reason": "unresolved read operand: Processing"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 497,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing card records'",
-          "reason": "unresolved read operand: card"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 497,
-          "raw_text": "DISPLAY 'CBEXPORT: Processing card records'",
-          "reason": "unresolved read operand: records'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 497,
-          "raw_text": "DISPLAY 'CBEXPORT: Cards exported: '",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 497,
-          "raw_text": "DISPLAY 'CBEXPORT: Cards exported: '",
-          "reason": "unresolved read operand: Cards"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 497,
-          "raw_text": "DISPLAY 'CBEXPORT: Cards exported: '",
-          "reason": "unresolved read operand: exported:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 497,
-          "raw_text": "DISPLAY 'CBEXPORT: Cards exported: '",
-          "reason": "unresolved read operand: '"
-        }
-      ]
+      "unresolved": []
     },
     "WS-CARD-RECORDS-EXPORTED": {
       "reads": [],
@@ -2247,36 +1638,6 @@
           "line_no": 512,
           "raw_text": "IF NOT WS-CARD-OK AND NOT WS-CARD-EOF",
           "reason": "unresolved read operand: WS-CARD-EOF"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 512,
-          "raw_text": "DISPLAY 'ERROR: Reading CARD-INPUT, Status: ' WS-CARD-STATUS",
-          "reason": "unresolved read operand: 'ERROR:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 512,
-          "raw_text": "DISPLAY 'ERROR: Reading CARD-INPUT, Status: ' WS-CARD-STATUS",
-          "reason": "unresolved read operand: Reading"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 512,
-          "raw_text": "DISPLAY 'ERROR: Reading CARD-INPUT, Status: ' WS-CARD-STATUS",
-          "reason": "unresolved read operand: CARD-INPUT,"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 512,
-          "raw_text": "DISPLAY 'ERROR: Reading CARD-INPUT, Status: ' WS-CARD-STATUS",
-          "reason": "unresolved read operand: Status:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 512,
-          "raw_text": "DISPLAY 'ERROR: Reading CARD-INPUT, Status: ' WS-CARD-STATUS",
-          "reason": "unresolved read operand: '"
         },
         {
           "verb": "DISPLAY",
@@ -2498,42 +1859,6 @@
           "verb": "DISPLAY",
           "line_no": 523,
           "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: 'ERROR:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 523,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: Writing"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 523,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: export"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 523,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: record,"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 523,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: Status:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 523,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 523,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
           "reason": "unresolved read operand: WS-EXPORT-STATUS"
         },
         {
@@ -2569,74 +1894,8 @@
         {
           "verb": "DISPLAY",
           "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Export completed'",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Export completed'",
-          "reason": "unresolved read operand: Export"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Export completed'",
-          "reason": "unresolved read operand: completed'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Customers Exported: ' WS-CUSTOMER-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Customers Exported: ' WS-CUSTOMER-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: Customers"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Customers Exported: ' WS-CUSTOMER-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: Exported:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Customers Exported: ' WS-CUSTOMER-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
           "raw_text": "DISPLAY 'CBEXPORT: Customers Exported: ' WS-CUSTOMER-RECORDS-EXPORTED",
           "reason": "unresolved read operand: WS-CUSTOMER-RECORDS-EXPORTED"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Accounts Exported: ' WS-ACCOUNT-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Accounts Exported: ' WS-ACCOUNT-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: Accounts"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Accounts Exported: ' WS-ACCOUNT-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: Exported:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Accounts Exported: ' WS-ACCOUNT-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: '"
         },
         {
           "verb": "DISPLAY",
@@ -2648,55 +1907,7 @@
           "verb": "DISPLAY",
           "line_no": 555,
           "raw_text": "DISPLAY 'CBEXPORT: XRefs Exported: ' WS-XREF-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: XRefs Exported: ' WS-XREF-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: XRefs"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: XRefs Exported: ' WS-XREF-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: Exported:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: XRefs Exported: ' WS-XREF-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: XRefs Exported: ' WS-XREF-RECORDS-EXPORTED",
           "reason": "unresolved read operand: WS-XREF-RECORDS-EXPORTED"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Transactions Exported: ' WS-TRAN-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Transactions Exported: ' WS-TRAN-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: Transactions"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Transactions Exported: ' WS-TRAN-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: Exported:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Transactions Exported: ' WS-TRAN-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: '"
         },
         {
           "verb": "DISPLAY",
@@ -2708,61 +1919,7 @@
           "verb": "DISPLAY",
           "line_no": 555,
           "raw_text": "DISPLAY 'CBEXPORT: Cards Exported: ' WS-CARD-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Cards Exported: ' WS-CARD-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: Cards"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Cards Exported: ' WS-CARD-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: Exported:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Cards Exported: ' WS-CARD-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Cards Exported: ' WS-CARD-RECORDS-EXPORTED",
           "reason": "unresolved read operand: WS-CARD-RECORDS-EXPORTED"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Total Records Exported: '",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Total Records Exported: '",
-          "reason": "unresolved read operand: Total"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Total Records Exported: '",
-          "reason": "unresolved read operand: Records"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Total Records Exported: '",
-          "reason": "unresolved read operand: Exported:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 555,
-          "raw_text": "DISPLAY 'CBEXPORT: Total Records Exported: '",
-          "reason": "unresolved read operand: '"
         }
       ]
     },
@@ -2776,24 +1933,6 @@
       "mutates": [],
       "unresolved": [
         {
-          "verb": "DISPLAY",
-          "line_no": 577,
-          "raw_text": "DISPLAY 'CBEXPORT: ABENDING PROGRAM'",
-          "reason": "unresolved read operand: 'CBEXPORT:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 577,
-          "raw_text": "DISPLAY 'CBEXPORT: ABENDING PROGRAM'",
-          "reason": "unresolved read operand: ABENDING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 577,
-          "raw_text": "DISPLAY 'CBEXPORT: ABENDING PROGRAM'",
-          "reason": "unresolved read operand: PROGRAM'"
-        },
-        {
           "verb": "CALL",
           "line_no": 577,
           "raw_text": "CALL 'CEE3ABD'",
@@ -2804,7 +1943,7 @@
   },
   "program_unresolved": [
     {
-      "issue": "paragraph count mismatch: local=29 facts=21"
+      "issue": "paragraph count mismatch: local=27 facts=21"
     }
   ]
 }

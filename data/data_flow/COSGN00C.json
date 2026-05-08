@@ -116,374 +116,106 @@
         }
       ]
     },
-    "END-IF": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
-    },
-    "END-EXEC": {
+    "PROCESS-ENTER-KEY": {
       "reads": [],
       "mutates": [],
       "unresolved": [
         {
           "verb": "WHEN",
-          "line_no": 105,
+          "line_no": 117,
           "raw_text": "WHEN USERIDI OF COSGN0AI = SPACES OR LOW-VALUES",
           "reason": "unresolved read operand: USERIDI"
         },
         {
           "verb": "WHEN",
-          "line_no": 105,
+          "line_no": 117,
           "raw_text": "WHEN USERIDI OF COSGN0AI = SPACES OR LOW-VALUES",
           "reason": "unresolved read operand: OF"
         },
         {
           "verb": "WHEN",
-          "line_no": 105,
+          "line_no": 117,
           "raw_text": "WHEN USERIDI OF COSGN0AI = SPACES OR LOW-VALUES",
           "reason": "unresolved read operand: COSGN0AI"
         },
         {
           "verb": "MOVE",
-          "line_no": 105,
+          "line_no": 117,
           "raw_text": "MOVE 'Y'      TO WS-ERR-FLG",
           "reason": "unresolved mutate operand: WS-ERR-FLG"
         },
         {
           "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Please enter User ID ...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Please"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Please enter User ID ...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: enter"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Please enter User ID ...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: User"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Please enter User ID ...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Please enter User ID ...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: ...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
+          "line_no": 117,
           "raw_text": "MOVE 'Please enter User ID ...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
           "verb": "MOVE",
-          "line_no": 105,
+          "line_no": 117,
           "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
           "reason": "unresolved mutate operand: USERIDL"
         },
         {
           "verb": "MOVE",
-          "line_no": 105,
+          "line_no": 117,
           "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
           "reason": "unresolved mutate operand: OF"
         },
         {
           "verb": "MOVE",
-          "line_no": 105,
+          "line_no": 117,
           "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
           "reason": "unresolved mutate operand: COSGN0AI"
         },
         {
           "verb": "WHEN",
-          "line_no": 105,
+          "line_no": 117,
           "raw_text": "WHEN PASSWDI OF COSGN0AI = SPACES OR LOW-VALUES",
           "reason": "unresolved read operand: PASSWDI"
         },
         {
           "verb": "WHEN",
-          "line_no": 105,
+          "line_no": 117,
           "raw_text": "WHEN PASSWDI OF COSGN0AI = SPACES OR LOW-VALUES",
           "reason": "unresolved read operand: OF"
         },
         {
           "verb": "WHEN",
-          "line_no": 105,
+          "line_no": 117,
           "raw_text": "WHEN PASSWDI OF COSGN0AI = SPACES OR LOW-VALUES",
           "reason": "unresolved read operand: COSGN0AI"
         },
         {
           "verb": "MOVE",
-          "line_no": 105,
+          "line_no": 117,
           "raw_text": "MOVE 'Y'      TO WS-ERR-FLG",
           "reason": "unresolved mutate operand: WS-ERR-FLG"
         },
         {
           "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Please enter Password ...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Please"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Please enter Password ...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: enter"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Please enter Password ...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Password"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Please enter Password ...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: ...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
+          "line_no": 117,
           "raw_text": "MOVE 'Please enter Password ...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
           "verb": "MOVE",
-          "line_no": 105,
+          "line_no": 117,
           "raw_text": "MOVE -1       TO PASSWDL OF COSGN0AI",
           "reason": "unresolved mutate operand: PASSWDL"
         },
         {
           "verb": "MOVE",
-          "line_no": 105,
+          "line_no": 117,
           "raw_text": "MOVE -1       TO PASSWDL OF COSGN0AI",
           "reason": "unresolved mutate operand: OF"
         },
         {
           "verb": "MOVE",
-          "line_no": 105,
+          "line_no": 117,
           "raw_text": "MOVE -1       TO PASSWDL OF COSGN0AI",
           "reason": "unresolved mutate operand: COSGN0AI"
         },
-        {
-          "verb": "EVALUATE",
-          "line_no": 105,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "IF",
-          "line_no": 105,
-          "raw_text": "IF SEC-USR-PWD = WS-USER-PWD",
-          "reason": "unresolved read operand: SEC-USR-PWD"
-        },
-        {
-          "verb": "IF",
-          "line_no": 105,
-          "raw_text": "IF SEC-USR-PWD = WS-USER-PWD",
-          "reason": "unresolved read operand: WS-USER-PWD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
-          "reason": "unresolved read operand: WS-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
-          "reason": "unresolved mutate operand: CDEMO-FROM-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved read operand: WS-PGMNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE WS-USER-ID   TO CDEMO-USER-ID",
-          "reason": "unresolved read operand: WS-USER-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE WS-USER-ID   TO CDEMO-USER-ID",
-          "reason": "unresolved mutate operand: CDEMO-USER-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE SEC-USR-TYPE TO CDEMO-USER-TYPE",
-          "reason": "unresolved read operand: SEC-USR-TYPE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE SEC-USR-TYPE TO CDEMO-USER-TYPE",
-          "reason": "unresolved mutate operand: CDEMO-USER-TYPE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE ZEROS        TO CDEMO-PGM-CONTEXT",
-          "reason": "unresolved mutate operand: CDEMO-PGM-CONTEXT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 105,
-          "raw_text": "IF CDEMO-USRTYP-ADMIN",
-          "reason": "unresolved read operand: CDEMO-USRTYP-ADMIN"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Wrong Password",
-          "reason": "MOVE missing TO keyword"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE -1       TO PASSWDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: PASSWDL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE -1       TO PASSWDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE -1       TO PASSWDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: COSGN0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Y'      TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'User not found",
-          "reason": "MOVE missing TO keyword"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: USERIDL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: COSGN0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Y'      TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Unable to verify the User ...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Unable"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Unable to verify the User ...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: verify"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Unable to verify the User ...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: the"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Unable to verify the User ...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: User"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Unable to verify the User ...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: ...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Unable to verify the User ...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Unable to verify the User ...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: USERIDL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: COSGN0AI"
-        }
-      ]
-    },
-    "PROCESS-ENTER-KEY": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
-    },
-    "END-EVALUATE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 132,
@@ -848,13 +580,171 @@
           "line_no": 211,
           "raw_text": "READ DATASET   (WS-USRSEC-FILE) INTO      (SEC-USER-DATA) LENGTH    (LENGTH OF SEC-USER-DATA) RIDFLD    (WS-USER-ID) KEYLENGTH (LENGTH OF WS-USER-ID) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
           "reason": "unresolved mutate operand: (SEC-USER-DATA)"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 221,
+          "raw_text": "EVALUATE WS-RESP-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "IF",
+          "line_no": 221,
+          "raw_text": "IF SEC-USR-PWD = WS-USER-PWD",
+          "reason": "unresolved read operand: SEC-USR-PWD"
+        },
+        {
+          "verb": "IF",
+          "line_no": 221,
+          "raw_text": "IF SEC-USR-PWD = WS-USER-PWD",
+          "reason": "unresolved read operand: WS-USER-PWD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
+          "reason": "unresolved read operand: WS-TRANID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
+          "reason": "unresolved mutate operand: CDEMO-FROM-TRANID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
+          "reason": "unresolved read operand: WS-PGMNAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
+          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE WS-USER-ID   TO CDEMO-USER-ID",
+          "reason": "unresolved read operand: WS-USER-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE WS-USER-ID   TO CDEMO-USER-ID",
+          "reason": "unresolved mutate operand: CDEMO-USER-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE SEC-USR-TYPE TO CDEMO-USER-TYPE",
+          "reason": "unresolved read operand: SEC-USR-TYPE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE SEC-USR-TYPE TO CDEMO-USER-TYPE",
+          "reason": "unresolved mutate operand: CDEMO-USER-TYPE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE ZEROS        TO CDEMO-PGM-CONTEXT",
+          "reason": "unresolved mutate operand: CDEMO-PGM-CONTEXT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 221,
+          "raw_text": "IF CDEMO-USRTYP-ADMIN",
+          "reason": "unresolved read operand: CDEMO-USRTYP-ADMIN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE 'Wrong Password",
+          "reason": "MOVE missing TO keyword"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE -1       TO PASSWDL OF COSGN0AI",
+          "reason": "unresolved mutate operand: PASSWDL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE -1       TO PASSWDL OF COSGN0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE -1       TO PASSWDL OF COSGN0AI",
+          "reason": "unresolved mutate operand: COSGN0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE 'Y'      TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE 'User not found",
+          "reason": "MOVE missing TO keyword"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
+          "reason": "unresolved mutate operand: USERIDL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
+          "reason": "unresolved mutate operand: COSGN0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE 'Y'      TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE 'Unable to verify the User ...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
+          "reason": "unresolved mutate operand: USERIDL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
+          "reason": "unresolved mutate operand: COSGN0AI"
         }
       ]
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=9 facts=6"
-    }
-  ]
+  "program_unresolved": []
 }

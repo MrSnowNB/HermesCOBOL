@@ -730,24 +730,6 @@
           "verb": "MOVE",
           "line_no": 297,
           "raw_text": "MOVE 'UNEXPECTED DATA SCENARIO' TO WS-RETURN-MSG",
-          "reason": "unresolved read operand: 'UNEXPECTED"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 297,
-          "raw_text": "MOVE 'UNEXPECTED DATA SCENARIO' TO WS-RETURN-MSG",
-          "reason": "unresolved read operand: DATA"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 297,
-          "raw_text": "MOVE 'UNEXPECTED DATA SCENARIO' TO WS-RETURN-MSG",
-          "reason": "unresolved read operand: SCENARIO'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 297,
-          "raw_text": "MOVE 'UNEXPECTED DATA SCENARIO' TO WS-RETURN-MSG",
           "reason": "unresolved mutate operand: WS-RETURN-MSG"
         },
         {
@@ -2717,54 +2699,6 @@
           "verb": "MOVE",
           "line_no": 650,
           "raw_text": "MOVE 'Account Filter must  be a non-zero 11 digit number' TO WS-RETURN-MSG",
-          "reason": "unresolved read operand: 'Account"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 650,
-          "raw_text": "MOVE 'Account Filter must  be a non-zero 11 digit number' TO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Filter"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 650,
-          "raw_text": "MOVE 'Account Filter must  be a non-zero 11 digit number' TO WS-RETURN-MSG",
-          "reason": "unresolved read operand: must"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 650,
-          "raw_text": "MOVE 'Account Filter must  be a non-zero 11 digit number' TO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 650,
-          "raw_text": "MOVE 'Account Filter must  be a non-zero 11 digit number' TO WS-RETURN-MSG",
-          "reason": "unresolved read operand: a"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 650,
-          "raw_text": "MOVE 'Account Filter must  be a non-zero 11 digit number' TO WS-RETURN-MSG",
-          "reason": "unresolved read operand: non-zero"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 650,
-          "raw_text": "MOVE 'Account Filter must  be a non-zero 11 digit number' TO WS-RETURN-MSG",
-          "reason": "unresolved read operand: digit"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 650,
-          "raw_text": "MOVE 'Account Filter must  be a non-zero 11 digit number' TO WS-RETURN-MSG",
-          "reason": "unresolved read operand: number'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 650,
-          "raw_text": "MOVE 'Account Filter must  be a non-zero 11 digit number' TO WS-RETURN-MSG",
           "reason": "unresolved mutate operand: WS-RETURN-MSG"
         },
         {
@@ -3164,67 +3098,7 @@
           "verb": "STRING",
           "line_no": 776,
           "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 776,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: not"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 776,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: found"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 776,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: in'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 776,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 776,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Acct"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 776,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Master"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 776,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: file.Resp:'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 776,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved read operand: ERROR-RESP"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 776,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 776,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Reas:'"
         },
         {
           "verb": "STRING",
@@ -3433,67 +3307,7 @@
           "verb": "STRING",
           "line_no": 826,
           "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 826,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: not"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 826,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: found'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 826,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 826,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: in"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 826,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: customer"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 826,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: master.Resp:"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 826,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 826,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved read operand: ERROR-RESP"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 826,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 826,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: REAS:'"
         },
         {
           "verb": "STRING",
@@ -3646,24 +3460,6 @@
           "line_no": 918,
           "raw_text": "IF ABEND-MSG EQUAL LOW-VALUES",
           "reason": "unresolved read operand: ABEND-MSG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 918,
-          "raw_text": "MOVE 'UNEXPECTED ABEND OCCURRED.' TO ABEND-MSG",
-          "reason": "unresolved read operand: 'UNEXPECTED"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 918,
-          "raw_text": "MOVE 'UNEXPECTED ABEND OCCURRED.' TO ABEND-MSG",
-          "reason": "unresolved read operand: ABEND"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 918,
-          "raw_text": "MOVE 'UNEXPECTED ABEND OCCURRED.' TO ABEND-MSG",
-          "reason": "unresolved read operand: OCCURRED.'"
         },
         {
           "verb": "MOVE",

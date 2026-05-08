@@ -2,110 +2,6 @@
   "program": "CBTRN02C",
   "schema_version": "1.2",
   "paragraph_data_flow": {
-    "END-PERFORM": {
-      "reads": [
-        {
-          "field": "WS-COUNTERS.WS-TRANSACTION-COUNT",
-          "record": "WS-COUNTERS",
-          "copybook": null,
-          "offset": 0,
-          "length": 9
-        },
-        {
-          "field": "WS-COUNTERS.WS-REJECT-COUNT",
-          "record": "WS-COUNTERS",
-          "copybook": null,
-          "offset": 9,
-          "length": 9
-        }
-      ],
-      "mutates": [],
-      "unresolved": [
-        {
-          "verb": "DISPLAY",
-          "line_no": 227,
-          "raw_text": "DISPLAY 'TRANSACTIONS PROCESSED :' WS-TRANSACTION-COUNT",
-          "reason": "unresolved read operand: 'TRANSACTIONS"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 227,
-          "raw_text": "DISPLAY 'TRANSACTIONS PROCESSED :' WS-TRANSACTION-COUNT",
-          "reason": "unresolved read operand: PROCESSED"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 227,
-          "raw_text": "DISPLAY 'TRANSACTIONS PROCESSED :' WS-TRANSACTION-COUNT",
-          "reason": "unresolved read operand: :'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 227,
-          "raw_text": "DISPLAY 'TRANSACTIONS REJECTED  :' WS-REJECT-COUNT",
-          "reason": "unresolved read operand: 'TRANSACTIONS"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 227,
-          "raw_text": "DISPLAY 'TRANSACTIONS REJECTED  :' WS-REJECT-COUNT",
-          "reason": "unresolved read operand: REJECTED"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 227,
-          "raw_text": "DISPLAY 'TRANSACTIONS REJECTED  :' WS-REJECT-COUNT",
-          "reason": "unresolved read operand: :'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 227,
-          "raw_text": "MOVE 4 TO RETURN-CODE",
-          "reason": "unresolved mutate operand: RETURN-CODE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 227,
-          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBTRN02C'",
-          "reason": "unresolved read operand: 'END"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 227,
-          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBTRN02C'",
-          "reason": "unresolved read operand: OF"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 227,
-          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBTRN02C'",
-          "reason": "unresolved read operand: EXECUTION"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 227,
-          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBTRN02C'",
-          "reason": "unresolved read operand: OF"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 227,
-          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBTRN02C'",
-          "reason": "unresolved read operand: PROGRAM"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 227,
-          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBTRN02C'",
-          "reason": "unresolved read operand: CBTRN02C'"
-        }
-      ]
-    },
-    "GOBACK": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
-    },
     "0000-DALYTRAN-OPEN": {
       "reads": [
         {
@@ -144,31 +40,8 @@
           "line_no": 238,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 238,
-          "raw_text": "DISPLAY 'ERROR OPENING DALYTRAN'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 238,
-          "raw_text": "DISPLAY 'ERROR OPENING DALYTRAN'",
-          "reason": "unresolved read operand: OPENING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 238,
-          "raw_text": "DISPLAY 'ERROR OPENING DALYTRAN'",
-          "reason": "unresolved read operand: DALYTRAN'"
         }
       ]
-    },
-    "EXIT": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
     },
     "0100-TRANFILE-OPEN": {
       "reads": [
@@ -208,30 +81,6 @@
           "line_no": 256,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 256,
-          "raw_text": "DISPLAY 'ERROR OPENING TRANSACTION FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 256,
-          "raw_text": "DISPLAY 'ERROR OPENING TRANSACTION FILE'",
-          "reason": "unresolved read operand: OPENING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 256,
-          "raw_text": "DISPLAY 'ERROR OPENING TRANSACTION FILE'",
-          "reason": "unresolved read operand: TRANSACTION"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 256,
-          "raw_text": "DISPLAY 'ERROR OPENING TRANSACTION FILE'",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
     },
@@ -273,36 +122,6 @@
           "line_no": 275,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 275,
-          "raw_text": "DISPLAY 'ERROR OPENING CROSS REF FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 275,
-          "raw_text": "DISPLAY 'ERROR OPENING CROSS REF FILE'",
-          "reason": "unresolved read operand: OPENING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 275,
-          "raw_text": "DISPLAY 'ERROR OPENING CROSS REF FILE'",
-          "reason": "unresolved read operand: CROSS"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 275,
-          "raw_text": "DISPLAY 'ERROR OPENING CROSS REF FILE'",
-          "reason": "unresolved read operand: REF"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 275,
-          "raw_text": "DISPLAY 'ERROR OPENING CROSS REF FILE'",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
     },
@@ -344,36 +163,6 @@
           "line_no": 293,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 293,
-          "raw_text": "DISPLAY 'ERROR OPENING DALY REJECTS FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 293,
-          "raw_text": "DISPLAY 'ERROR OPENING DALY REJECTS FILE'",
-          "reason": "unresolved read operand: OPENING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 293,
-          "raw_text": "DISPLAY 'ERROR OPENING DALY REJECTS FILE'",
-          "reason": "unresolved read operand: DALY"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 293,
-          "raw_text": "DISPLAY 'ERROR OPENING DALY REJECTS FILE'",
-          "reason": "unresolved read operand: REJECTS"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 293,
-          "raw_text": "DISPLAY 'ERROR OPENING DALY REJECTS FILE'",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
     },
@@ -415,36 +204,6 @@
           "line_no": 311,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 311,
-          "raw_text": "DISPLAY 'ERROR OPENING ACCOUNT MASTER FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 311,
-          "raw_text": "DISPLAY 'ERROR OPENING ACCOUNT MASTER FILE'",
-          "reason": "unresolved read operand: OPENING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 311,
-          "raw_text": "DISPLAY 'ERROR OPENING ACCOUNT MASTER FILE'",
-          "reason": "unresolved read operand: ACCOUNT"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 311,
-          "raw_text": "DISPLAY 'ERROR OPENING ACCOUNT MASTER FILE'",
-          "reason": "unresolved read operand: MASTER"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 311,
-          "raw_text": "DISPLAY 'ERROR OPENING ACCOUNT MASTER FILE'",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
     },
@@ -486,36 +245,6 @@
           "line_no": 329,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 329,
-          "raw_text": "DISPLAY 'ERROR OPENING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 329,
-          "raw_text": "DISPLAY 'ERROR OPENING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: OPENING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 329,
-          "raw_text": "DISPLAY 'ERROR OPENING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: TRANSACTION"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 329,
-          "raw_text": "DISPLAY 'ERROR OPENING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: BALANCE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 329,
-          "raw_text": "DISPLAY 'ERROR OPENING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
     },
@@ -608,30 +337,6 @@
           "line_no": 347,
           "raw_text": "MOVE 'Y' TO END-OF-FILE ELSE",
           "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 347,
-          "raw_text": "DISPLAY 'ERROR READING DALYTRAN FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 347,
-          "raw_text": "DISPLAY 'ERROR READING DALYTRAN FILE'",
-          "reason": "unresolved read operand: READING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 347,
-          "raw_text": "DISPLAY 'ERROR READING DALYTRAN FILE'",
-          "reason": "unresolved read operand: DALYTRAN"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 347,
-          "raw_text": "DISPLAY 'ERROR READING DALYTRAN FILE'",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
     },
@@ -697,52 +402,10 @@
       ],
       "unresolved": [
         {
-          "verb": "DISPLAY",
-          "line_no": 381,
-          "raw_text": "DISPLAY 'CARD NUMBER: ' DALYTRAN-CARD-NUM",
-          "reason": "unresolved read operand: 'CARD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 381,
-          "raw_text": "DISPLAY 'CARD NUMBER: ' DALYTRAN-CARD-NUM",
-          "reason": "unresolved read operand: NUMBER:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 381,
-          "raw_text": "DISPLAY 'CARD NUMBER: ' DALYTRAN-CARD-NUM",
-          "reason": "unresolved read operand: '"
-        },
-        {
           "verb": "READ",
           "line_no": 381,
           "raw_text": "READ XREF-FILE INTO CARD-XREF-RECORD INVALID KEY",
           "reason": "unresolved mutate operand: XREF-FILE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 381,
-          "raw_text": "MOVE 'INVALID CARD NUMBER FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
-          "reason": "unresolved read operand: 'INVALID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 381,
-          "raw_text": "MOVE 'INVALID CARD NUMBER FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
-          "reason": "unresolved read operand: CARD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 381,
-          "raw_text": "MOVE 'INVALID CARD NUMBER FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
-          "reason": "unresolved read operand: NUMBER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 381,
-          "raw_text": "MOVE 'INVALID CARD NUMBER FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
-          "reason": "unresolved read operand: FOUND'"
         },
         {
           "verb": "MOVE",
@@ -767,24 +430,6 @@
           "line_no": 381,
           "raw_text": "MOVE 'INVALID CARD NUMBER FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
           "reason": "unresolved mutate operand: *"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 381,
-          "raw_text": "DISPLAY 'ACCOUNT RECORD FOUND'",
-          "reason": "unresolved read operand: 'ACCOUNT"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 381,
-          "raw_text": "DISPLAY 'ACCOUNT RECORD FOUND'",
-          "reason": "unresolved read operand: RECORD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 381,
-          "raw_text": "DISPLAY 'ACCOUNT RECORD FOUND'",
-          "reason": "unresolved read operand: FOUND'"
         }
       ]
     },
@@ -895,30 +540,6 @@
           "verb": "MOVE",
           "line_no": 394,
           "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
-          "reason": "unresolved read operand: 'ACCOUNT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 394,
-          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
-          "reason": "unresolved read operand: RECORD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 394,
-          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 394,
-          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
-          "reason": "unresolved read operand: FOUND'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 394,
-          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
           "reason": "unresolved mutate operand: NOT"
         },
         {
@@ -946,64 +567,10 @@
           "reason": "unresolved read operand: *"
         },
         {
-          "verb": "DISPLAY",
-          "line_no": 394,
-          "raw_text": "DISPLAY 'TRAN-AMT         :' DALYTRAN-AMT",
-          "reason": "unresolved read operand: 'TRAN-AMT"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 394,
-          "raw_text": "DISPLAY 'TRAN-AMT         :' DALYTRAN-AMT",
-          "reason": "unresolved read operand: :'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 394,
-          "raw_text": "MOVE 'OVERLIMIT TRANSACTION' TO WS-VALIDATION-FAIL-REASON-DESC",
-          "reason": "unresolved read operand: 'OVERLIMIT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 394,
-          "raw_text": "MOVE 'OVERLIMIT TRANSACTION' TO WS-VALIDATION-FAIL-REASON-DESC",
-          "reason": "unresolved read operand: TRANSACTION'"
-        },
-        {
           "verb": "IF",
           "line_no": 394,
           "raw_text": "IF ACCT-EXPIRAION-DATE >= DALYTRAN-ORIG-TS (1:10)",
           "reason": "unresolved read operand: (1:10)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 394,
-          "raw_text": "MOVE 'TRANSACTION RECEIVED AFTER ACCT EXPIRATION' TO WS-VALIDATION-FAIL-REASON-DESC",
-          "reason": "unresolved read operand: 'TRANSACTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 394,
-          "raw_text": "MOVE 'TRANSACTION RECEIVED AFTER ACCT EXPIRATION' TO WS-VALIDATION-FAIL-REASON-DESC",
-          "reason": "unresolved read operand: RECEIVED"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 394,
-          "raw_text": "MOVE 'TRANSACTION RECEIVED AFTER ACCT EXPIRATION' TO WS-VALIDATION-FAIL-REASON-DESC",
-          "reason": "unresolved read operand: AFTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 394,
-          "raw_text": "MOVE 'TRANSACTION RECEIVED AFTER ACCT EXPIRATION' TO WS-VALIDATION-FAIL-REASON-DESC",
-          "reason": "unresolved read operand: ACCT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 394,
-          "raw_text": "MOVE 'TRANSACTION RECEIVED AFTER ACCT EXPIRATION' TO WS-VALIDATION-FAIL-REASON-DESC",
-          "reason": "unresolved read operand: EXPIRATION'"
         }
       ]
     },
@@ -1282,36 +849,6 @@
           "line_no": 447,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 447,
-          "raw_text": "DISPLAY 'ERROR WRITING TO REJECTS FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 447,
-          "raw_text": "DISPLAY 'ERROR WRITING TO REJECTS FILE'",
-          "reason": "unresolved read operand: WRITING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 447,
-          "raw_text": "DISPLAY 'ERROR WRITING TO REJECTS FILE'",
-          "reason": "unresolved read operand: TO"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 447,
-          "raw_text": "DISPLAY 'ERROR WRITING TO REJECTS FILE'",
-          "reason": "unresolved read operand: REJECTS"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 447,
-          "raw_text": "DISPLAY 'ERROR WRITING TO REJECTS FILE'",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
     },
@@ -1344,6 +881,20 @@
           "copybook": null,
           "offset": 0,
           "length": 17
+        },
+        {
+          "field": "TCATBALF-STATUS",
+          "record": "TCATBALF-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        },
+        {
+          "field": "WS-FLAGS.WS-CREATE-TRANCAT-REC",
+          "record": "WS-FLAGS",
+          "copybook": null,
+          "offset": 0,
+          "length": 1
         }
       ],
       "mutates": [
@@ -1381,82 +932,7 @@
           "copybook": "CVTRA01Y",
           "offset": 0,
           "length": 50
-        }
-      ],
-      "unresolved": [
-        {
-          "verb": "READ",
-          "line_no": 469,
-          "raw_text": "READ TCATBAL-FILE INTO TRAN-CAT-BAL-RECORD INVALID KEY",
-          "reason": "unresolved mutate operand: TCATBAL-FILE"
         },
-        {
-          "verb": "DISPLAY",
-          "line_no": 469,
-          "raw_text": "DISPLAY 'TCATBAL record not found for key : ' FD-TRAN-CAT-KEY '",
-          "reason": "unresolved read operand: 'TCATBAL"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 469,
-          "raw_text": "DISPLAY 'TCATBAL record not found for key : ' FD-TRAN-CAT-KEY '",
-          "reason": "unresolved read operand: record"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 469,
-          "raw_text": "DISPLAY 'TCATBAL record not found for key : ' FD-TRAN-CAT-KEY '",
-          "reason": "unresolved read operand: not"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 469,
-          "raw_text": "DISPLAY 'TCATBAL record not found for key : ' FD-TRAN-CAT-KEY '",
-          "reason": "unresolved read operand: found"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 469,
-          "raw_text": "DISPLAY 'TCATBAL record not found for key : ' FD-TRAN-CAT-KEY '",
-          "reason": "unresolved read operand: for"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 469,
-          "raw_text": "DISPLAY 'TCATBAL record not found for key : ' FD-TRAN-CAT-KEY '",
-          "reason": "unresolved read operand: key"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 469,
-          "raw_text": "DISPLAY 'TCATBAL record not found for key : ' FD-TRAN-CAT-KEY '",
-          "reason": "unresolved read operand: :"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 469,
-          "raw_text": "DISPLAY 'TCATBAL record not found for key : ' FD-TRAN-CAT-KEY '",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 469,
-          "raw_text": "DISPLAY 'TCATBAL record not found for key : ' FD-TRAN-CAT-KEY '",
-          "reason": "unresolved read operand: '"
-        }
-      ]
-    },
-    "END-READ": {
-      "reads": [
-        {
-          "field": "TCATBALF-STATUS",
-          "record": "TCATBALF-STATUS",
-          "copybook": null,
-          "offset": 0,
-          "length": 2
-        }
-      ],
-      "mutates": [
         {
           "field": "APPL-RESULT",
           "record": "APPL-RESULT",
@@ -1474,6 +950,18 @@
       ],
       "unresolved": [
         {
+          "verb": "READ",
+          "line_no": 469,
+          "raw_text": "READ TCATBAL-FILE INTO TRAN-CAT-BAL-RECORD INVALID KEY",
+          "reason": "unresolved mutate operand: TCATBAL-FILE"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 469,
+          "raw_text": "DISPLAY 'TCATBAL record not found for key : ' FD-TRAN-CAT-KEY '",
+          "reason": "unresolved read operand: '"
+        },
+        {
           "verb": "MOVE",
           "line_no": 481,
           "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
@@ -1484,51 +972,8 @@
           "line_no": 481,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 481,
-          "raw_text": "DISPLAY 'ERROR READING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 481,
-          "raw_text": "DISPLAY 'ERROR READING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: READING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 481,
-          "raw_text": "DISPLAY 'ERROR READING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: TRANSACTION"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 481,
-          "raw_text": "DISPLAY 'ERROR READING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: BALANCE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 481,
-          "raw_text": "DISPLAY 'ERROR READING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
-    },
-    "END-IF": {
-      "reads": [
-        {
-          "field": "WS-FLAGS.WS-CREATE-TRANCAT-REC",
-          "record": "WS-FLAGS",
-          "copybook": null,
-          "offset": 0,
-          "length": 1
-        }
-      ],
-      "mutates": [],
-      "unresolved": []
     },
     "2700-A-CREATE-TCATBAL-REC": {
       "reads": [
@@ -1652,36 +1097,6 @@
           "line_no": 504,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 504,
-          "raw_text": "DISPLAY 'ERROR WRITING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 504,
-          "raw_text": "DISPLAY 'ERROR WRITING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: WRITING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 504,
-          "raw_text": "DISPLAY 'ERROR WRITING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: TRANSACTION"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 504,
-          "raw_text": "DISPLAY 'ERROR WRITING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: BALANCE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 504,
-          "raw_text": "DISPLAY 'ERROR WRITING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
     },
@@ -1796,36 +1211,6 @@
           "line_no": 527,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 527,
-          "raw_text": "DISPLAY 'ERROR REWRITING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 527,
-          "raw_text": "DISPLAY 'ERROR REWRITING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: REWRITING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 527,
-          "raw_text": "DISPLAY 'ERROR REWRITING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: TRANSACTION"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 527,
-          "raw_text": "DISPLAY 'ERROR REWRITING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: BALANCE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 527,
-          "raw_text": "DISPLAY 'ERROR REWRITING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
     },
@@ -1909,30 +1294,6 @@
           "line_no": 547,
           "raw_text": "ADD DALYTRAN-AMT TO ACCT-CURR-CYC-CREDIT ELSE",
           "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 547,
-          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC",
-          "reason": "unresolved read operand: 'ACCOUNT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 547,
-          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC",
-          "reason": "unresolved read operand: RECORD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 547,
-          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 547,
-          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC",
-          "reason": "unresolved read operand: FOUND'"
         }
       ]
     },
@@ -1993,36 +1354,6 @@
           "line_no": 564,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 564,
-          "raw_text": "DISPLAY 'ERROR WRITING TO TRANSACTION FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 564,
-          "raw_text": "DISPLAY 'ERROR WRITING TO TRANSACTION FILE'",
-          "reason": "unresolved read operand: WRITING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 564,
-          "raw_text": "DISPLAY 'ERROR WRITING TO TRANSACTION FILE'",
-          "reason": "unresolved read operand: TO"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 564,
-          "raw_text": "DISPLAY 'ERROR WRITING TO TRANSACTION FILE'",
-          "reason": "unresolved read operand: TRANSACTION"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 564,
-          "raw_text": "DISPLAY 'ERROR WRITING TO TRANSACTION FILE'",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
     },
@@ -2064,30 +1395,6 @@
           "line_no": 584,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 584,
-          "raw_text": "DISPLAY 'ERROR CLOSING DALYTRAN FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 584,
-          "raw_text": "DISPLAY 'ERROR CLOSING DALYTRAN FILE'",
-          "reason": "unresolved read operand: CLOSING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 584,
-          "raw_text": "DISPLAY 'ERROR CLOSING DALYTRAN FILE'",
-          "reason": "unresolved read operand: DALYTRAN"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 584,
-          "raw_text": "DISPLAY 'ERROR CLOSING DALYTRAN FILE'",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
     },
@@ -2129,30 +1436,6 @@
           "line_no": 602,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 602,
-          "raw_text": "DISPLAY 'ERROR CLOSING TRANSACTION FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 602,
-          "raw_text": "DISPLAY 'ERROR CLOSING TRANSACTION FILE'",
-          "reason": "unresolved read operand: CLOSING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 602,
-          "raw_text": "DISPLAY 'ERROR CLOSING TRANSACTION FILE'",
-          "reason": "unresolved read operand: TRANSACTION"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 602,
-          "raw_text": "DISPLAY 'ERROR CLOSING TRANSACTION FILE'",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
     },
@@ -2194,36 +1477,6 @@
           "line_no": 621,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 621,
-          "raw_text": "DISPLAY 'ERROR CLOSING CROSS REF FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 621,
-          "raw_text": "DISPLAY 'ERROR CLOSING CROSS REF FILE'",
-          "reason": "unresolved read operand: CLOSING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 621,
-          "raw_text": "DISPLAY 'ERROR CLOSING CROSS REF FILE'",
-          "reason": "unresolved read operand: CROSS"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 621,
-          "raw_text": "DISPLAY 'ERROR CLOSING CROSS REF FILE'",
-          "reason": "unresolved read operand: REF"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 621,
-          "raw_text": "DISPLAY 'ERROR CLOSING CROSS REF FILE'",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
     },
@@ -2272,36 +1525,6 @@
           "line_no": 639,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 639,
-          "raw_text": "DISPLAY 'ERROR CLOSING DAILY REJECTS FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 639,
-          "raw_text": "DISPLAY 'ERROR CLOSING DAILY REJECTS FILE'",
-          "reason": "unresolved read operand: CLOSING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 639,
-          "raw_text": "DISPLAY 'ERROR CLOSING DAILY REJECTS FILE'",
-          "reason": "unresolved read operand: DAILY"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 639,
-          "raw_text": "DISPLAY 'ERROR CLOSING DAILY REJECTS FILE'",
-          "reason": "unresolved read operand: REJECTS"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 639,
-          "raw_text": "DISPLAY 'ERROR CLOSING DAILY REJECTS FILE'",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
     },
@@ -2343,30 +1566,6 @@
           "line_no": 657,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 657,
-          "raw_text": "DISPLAY 'ERROR CLOSING ACCOUNT FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 657,
-          "raw_text": "DISPLAY 'ERROR CLOSING ACCOUNT FILE'",
-          "reason": "unresolved read operand: CLOSING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 657,
-          "raw_text": "DISPLAY 'ERROR CLOSING ACCOUNT FILE'",
-          "reason": "unresolved read operand: ACCOUNT"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 657,
-          "raw_text": "DISPLAY 'ERROR CLOSING ACCOUNT FILE'",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
     },
@@ -2408,36 +1607,6 @@
           "line_no": 676,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 676,
-          "raw_text": "DISPLAY 'ERROR CLOSING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 676,
-          "raw_text": "DISPLAY 'ERROR CLOSING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: CLOSING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 676,
-          "raw_text": "DISPLAY 'ERROR CLOSING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: TRANSACTION"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 676,
-          "raw_text": "DISPLAY 'ERROR CLOSING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: BALANCE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 676,
-          "raw_text": "DISPLAY 'ERROR CLOSING TRANSACTION BALANCE FILE'",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
     },
@@ -2625,24 +1794,6 @@
           "line_no": 693,
           "raw_text": "MOVE '.' TO DB2-DOT-1 DB2-DOT-2 DB2-DOT-3 *",
           "reason": "unresolved mutate operand: *"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 693,
-          "raw_text": "DISPLAY 'DB2-TIMESTAMP = ' DB2-FORMAT-TS",
-          "reason": "unresolved read operand: 'DB2-TIMESTAMP"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 693,
-          "raw_text": "DISPLAY 'DB2-TIMESTAMP = ' DB2-FORMAT-TS",
-          "reason": "unresolved read operand: ="
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 693,
-          "raw_text": "DISPLAY 'DB2-TIMESTAMP = ' DB2-FORMAT-TS",
-          "reason": "unresolved read operand: '"
         }
       ]
     },
@@ -2665,18 +1816,6 @@
         }
       ],
       "unresolved": [
-        {
-          "verb": "DISPLAY",
-          "line_no": 708,
-          "raw_text": "DISPLAY 'ABENDING PROGRAM'",
-          "reason": "unresolved read operand: 'ABENDING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 708,
-          "raw_text": "DISPLAY 'ABENDING PROGRAM'",
-          "reason": "unresolved read operand: PROGRAM'"
-        },
         {
           "verb": "CALL",
           "line_no": 708,
@@ -2764,62 +1903,10 @@
           "verb": "DISPLAY",
           "line_no": 715,
           "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
-          "reason": "unresolved read operand: 'FILE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 715,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
-          "reason": "unresolved read operand: STATUS"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 715,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
-          "reason": "unresolved read operand: IS:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 715,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
-          "reason": "unresolved read operand: NNNN'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 715,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
           "reason": "unresolved read operand: ELSE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 715,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
-          "reason": "unresolved read operand: 'FILE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 715,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
-          "reason": "unresolved read operand: STATUS"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 715,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
-          "reason": "unresolved read operand: IS:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 715,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
-          "reason": "unresolved read operand: NNNN'"
         }
       ]
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=32 facts=26"
-    }
-  ]
+  "program_unresolved": []
 }

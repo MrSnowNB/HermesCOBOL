@@ -2,53 +2,6 @@
   "program": "CBCUS01C",
   "schema_version": "1.2",
   "paragraph_data_flow": {
-    "END-PERFORM": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
-        {
-          "verb": "DISPLAY",
-          "line_no": 85,
-          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBCUS01C'",
-          "reason": "unresolved read operand: 'END"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 85,
-          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBCUS01C'",
-          "reason": "unresolved read operand: OF"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 85,
-          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBCUS01C'",
-          "reason": "unresolved read operand: EXECUTION"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 85,
-          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBCUS01C'",
-          "reason": "unresolved read operand: OF"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 85,
-          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBCUS01C'",
-          "reason": "unresolved read operand: PROGRAM"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 85,
-          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBCUS01C'",
-          "reason": "unresolved read operand: CBCUS01C'"
-        }
-      ]
-    },
-    "GOBACK": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
-    },
     "1000-CUSTFILE-GET-NEXT": {
       "reads": [],
       "mutates": [],
@@ -138,30 +91,6 @@
           "reason": "unresolved mutate operand: ELSE"
         },
         {
-          "verb": "DISPLAY",
-          "line_no": 94,
-          "raw_text": "DISPLAY 'ERROR READING CUSTOMER FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 94,
-          "raw_text": "DISPLAY 'ERROR READING CUSTOMER FILE'",
-          "reason": "unresolved read operand: READING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 94,
-          "raw_text": "DISPLAY 'ERROR READING CUSTOMER FILE'",
-          "reason": "unresolved read operand: CUSTOMER"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 94,
-          "raw_text": "DISPLAY 'ERROR READING CUSTOMER FILE'",
-          "reason": "unresolved read operand: FILE'"
-        },
-        {
           "verb": "MOVE",
           "line_no": 94,
           "raw_text": "MOVE CUSTFILE-STATUS TO IO-STATUS",
@@ -174,11 +103,6 @@
           "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
-    },
-    "EXIT": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
     },
     "0000-CUSTFILE-OPEN": {
       "reads": [],
@@ -219,24 +143,6 @@
           "line_no": 120,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 120,
-          "raw_text": "DISPLAY 'ERROR OPENING CUSTFILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 120,
-          "raw_text": "DISPLAY 'ERROR OPENING CUSTFILE'",
-          "reason": "unresolved read operand: OPENING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 120,
-          "raw_text": "DISPLAY 'ERROR OPENING CUSTFILE'",
-          "reason": "unresolved read operand: CUSTFILE'"
         },
         {
           "verb": "MOVE",
@@ -311,30 +217,6 @@
           "reason": "unresolved read operand: APPL-AOK"
         },
         {
-          "verb": "DISPLAY",
-          "line_no": 138,
-          "raw_text": "DISPLAY 'ERROR CLOSING CUSTOMER FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 138,
-          "raw_text": "DISPLAY 'ERROR CLOSING CUSTOMER FILE'",
-          "reason": "unresolved read operand: CLOSING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 138,
-          "raw_text": "DISPLAY 'ERROR CLOSING CUSTOMER FILE'",
-          "reason": "unresolved read operand: CUSTOMER"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 138,
-          "raw_text": "DISPLAY 'ERROR CLOSING CUSTOMER FILE'",
-          "reason": "unresolved read operand: FILE'"
-        },
-        {
           "verb": "MOVE",
           "line_no": 138,
           "raw_text": "MOVE CUSTFILE-STATUS TO IO-STATUS",
@@ -352,18 +234,6 @@
       "reads": [],
       "mutates": [],
       "unresolved": [
-        {
-          "verb": "DISPLAY",
-          "line_no": 155,
-          "raw_text": "DISPLAY 'ABENDING PROGRAM'",
-          "reason": "unresolved read operand: 'ABENDING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 155,
-          "raw_text": "DISPLAY 'ABENDING PROGRAM'",
-          "reason": "unresolved read operand: PROGRAM'"
-        },
         {
           "verb": "MOVE",
           "line_no": 155,
@@ -452,30 +322,6 @@
           "verb": "DISPLAY",
           "line_no": 162,
           "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
-          "reason": "unresolved read operand: 'FILE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
-          "reason": "unresolved read operand: STATUS"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
-          "reason": "unresolved read operand: IS:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
-          "reason": "unresolved read operand: NNNN'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
           "reason": "unresolved read operand: IO-STATUS-04"
         },
         {
@@ -506,38 +352,10 @@
           "verb": "DISPLAY",
           "line_no": 162,
           "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
-          "reason": "unresolved read operand: 'FILE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
-          "reason": "unresolved read operand: STATUS"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
-          "reason": "unresolved read operand: IS:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
-          "reason": "unresolved read operand: NNNN'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
           "reason": "unresolved read operand: IO-STATUS-04"
         }
       ]
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=8 facts=5"
-    }
-  ]
+  "program_unresolved": []
 }

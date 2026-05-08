@@ -2,53 +2,6 @@
   "program": "CBACT01C",
   "schema_version": "1.2",
   "paragraph_data_flow": {
-    "END-PERFORM": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
-        {
-          "verb": "DISPLAY",
-          "line_no": 158,
-          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBACT01C'",
-          "reason": "unresolved read operand: 'END"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 158,
-          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBACT01C'",
-          "reason": "unresolved read operand: OF"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 158,
-          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBACT01C'",
-          "reason": "unresolved read operand: EXECUTION"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 158,
-          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBACT01C'",
-          "reason": "unresolved read operand: OF"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 158,
-          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBACT01C'",
-          "reason": "unresolved read operand: PROGRAM"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 158,
-          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBACT01C'",
-          "reason": "unresolved read operand: CBACT01C'"
-        }
-      ]
-    },
-    "GOBACK": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
-    },
     "1000-ACCTFILE-GET-NEXT": {
       "reads": [
         {
@@ -133,37 +86,8 @@
           "line_no": 167,
           "raw_text": "MOVE 'Y' TO END-OF-FILE ELSE",
           "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 167,
-          "raw_text": "DISPLAY 'ERROR READING ACCOUNT FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 167,
-          "raw_text": "DISPLAY 'ERROR READING ACCOUNT FILE'",
-          "reason": "unresolved read operand: READING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 167,
-          "raw_text": "DISPLAY 'ERROR READING ACCOUNT FILE'",
-          "reason": "unresolved read operand: ACCOUNT"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 167,
-          "raw_text": "DISPLAY 'ERROR READING ACCOUNT FILE'",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
-    },
-    "EXIT": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
     },
     "1100-DISPLAY-ACCT-RECORD": {
       "reads": [
@@ -246,140 +170,7 @@
         }
       ],
       "mutates": [],
-      "unresolved": [
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-ID                 :'   ACCT-ID",
-          "reason": "unresolved read operand: 'ACCT-ID"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-ID                 :'   ACCT-ID",
-          "reason": "unresolved read operand: :'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-ACTIVE-STATUS      :'   ACCT-ACTIVE-STATUS",
-          "reason": "unresolved read operand: 'ACCT-ACTIVE-STATUS"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-ACTIVE-STATUS      :'   ACCT-ACTIVE-STATUS",
-          "reason": "unresolved read operand: :'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-CURR-BAL           :'   ACCT-CURR-BAL",
-          "reason": "unresolved read operand: 'ACCT-CURR-BAL"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-CURR-BAL           :'   ACCT-CURR-BAL",
-          "reason": "unresolved read operand: :'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-CREDIT-LIMIT       :'   ACCT-CREDIT-LIMIT",
-          "reason": "unresolved read operand: 'ACCT-CREDIT-LIMIT"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-CREDIT-LIMIT       :'   ACCT-CREDIT-LIMIT",
-          "reason": "unresolved read operand: :'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-CASH-CREDIT-LIMIT  :'   ACCT-CASH-CREDIT-LIMIT",
-          "reason": "unresolved read operand: 'ACCT-CASH-CREDIT-LIMIT"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-CASH-CREDIT-LIMIT  :'   ACCT-CASH-CREDIT-LIMIT",
-          "reason": "unresolved read operand: :'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-OPEN-DATE          :'   ACCT-OPEN-DATE",
-          "reason": "unresolved read operand: 'ACCT-OPEN-DATE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-OPEN-DATE          :'   ACCT-OPEN-DATE",
-          "reason": "unresolved read operand: :'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-EXPIRAION-DATE     :'   ACCT-EXPIRAION-DATE",
-          "reason": "unresolved read operand: 'ACCT-EXPIRAION-DATE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-EXPIRAION-DATE     :'   ACCT-EXPIRAION-DATE",
-          "reason": "unresolved read operand: :'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-REISSUE-DATE       :'   ACCT-REISSUE-DATE",
-          "reason": "unresolved read operand: 'ACCT-REISSUE-DATE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-REISSUE-DATE       :'   ACCT-REISSUE-DATE",
-          "reason": "unresolved read operand: :'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-CURR-CYC-CREDIT    :'   ACCT-CURR-CYC-CREDIT",
-          "reason": "unresolved read operand: 'ACCT-CURR-CYC-CREDIT"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-CURR-CYC-CREDIT    :'   ACCT-CURR-CYC-CREDIT",
-          "reason": "unresolved read operand: :'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-CURR-CYC-DEBIT     :'   ACCT-CURR-CYC-DEBIT",
-          "reason": "unresolved read operand: 'ACCT-CURR-CYC-DEBIT"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-CURR-CYC-DEBIT     :'   ACCT-CURR-CYC-DEBIT",
-          "reason": "unresolved read operand: :'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-GROUP-ID           :'   ACCT-GROUP-ID",
-          "reason": "unresolved read operand: 'ACCT-GROUP-ID"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 201,
-          "raw_text": "DISPLAY 'ACCT-GROUP-ID           :'   ACCT-GROUP-ID",
-          "reason": "unresolved read operand: :'"
-        }
-      ]
+      "unresolved": []
     },
     "1300-POPUL-ACCT-RECORD": {
       "reads": [
@@ -522,6 +313,13 @@
           "copybook": "CVACT01Y",
           "offset": 90,
           "length": 12
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-GROUP-ID",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 112,
+          "length": 10
         }
       ],
       "mutates": [
@@ -559,6 +357,13 @@
           "copybook": null,
           "offset": 90,
           "length": 12
+        },
+        {
+          "field": "OUT-ACCT-REC.OUT-ACCT-GROUP-ID",
+          "record": "OUT-ACCT-REC",
+          "copybook": null,
+          "offset": 102,
+          "length": 10
         }
       ],
       "unresolved": [
@@ -569,27 +374,6 @@
           "reason": "CALL USING not yet classified (TODO Section 3)"
         }
       ]
-    },
-    "END-IF": {
-      "reads": [
-        {
-          "field": "ACCOUNT-RECORD.ACCT-GROUP-ID",
-          "record": "ACCOUNT-RECORD",
-          "copybook": "CVACT01Y",
-          "offset": 112,
-          "length": 10
-        }
-      ],
-      "mutates": [
-        {
-          "field": "OUT-ACCT-REC.OUT-ACCT-GROUP-ID",
-          "record": "OUT-ACCT-REC",
-          "copybook": null,
-          "offset": 102,
-          "length": 10
-        }
-      ],
-      "unresolved": []
     },
     "1350-WRITE-ACCT-RECORD": {
       "reads": [
@@ -985,24 +769,6 @@
           "line_no": 319,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 319,
-          "raw_text": "DISPLAY 'ERROR OPENING ACCTFILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 319,
-          "raw_text": "DISPLAY 'ERROR OPENING ACCTFILE'",
-          "reason": "unresolved read operand: OPENING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 319,
-          "raw_text": "DISPLAY 'ERROR OPENING ACCTFILE'",
-          "reason": "unresolved read operand: ACCTFILE'"
         }
       ]
     },
@@ -1044,24 +810,6 @@
           "line_no": 336,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 336,
-          "raw_text": "DISPLAY 'ERROR OPENING OUTFILE'  OUTFILE-STATUS",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 336,
-          "raw_text": "DISPLAY 'ERROR OPENING OUTFILE'  OUTFILE-STATUS",
-          "reason": "unresolved read operand: OPENING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 336,
-          "raw_text": "DISPLAY 'ERROR OPENING OUTFILE'  OUTFILE-STATUS",
-          "reason": "unresolved read operand: OUTFILE'"
         }
       ]
     },
@@ -1103,24 +851,6 @@
           "line_no": 354,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 354,
-          "raw_text": "DISPLAY 'ERROR OPENING ARRAYFILE'  ARRYFILE-STATUS",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 354,
-          "raw_text": "DISPLAY 'ERROR OPENING ARRAYFILE'  ARRYFILE-STATUS",
-          "reason": "unresolved read operand: OPENING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 354,
-          "raw_text": "DISPLAY 'ERROR OPENING ARRAYFILE'  ARRYFILE-STATUS",
-          "reason": "unresolved read operand: ARRAYFILE'"
         }
       ]
     },
@@ -1162,30 +892,6 @@
           "line_no": 372,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 372,
-          "raw_text": "DISPLAY 'ERROR OPENING VBRC FILE'  VBRCFILE-STATUS",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 372,
-          "raw_text": "DISPLAY 'ERROR OPENING VBRC FILE'  VBRCFILE-STATUS",
-          "reason": "unresolved read operand: OPENING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 372,
-          "raw_text": "DISPLAY 'ERROR OPENING VBRC FILE'  VBRCFILE-STATUS",
-          "reason": "unresolved read operand: VBRC"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 372,
-          "raw_text": "DISPLAY 'ERROR OPENING VBRC FILE'  VBRCFILE-STATUS",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
     },
@@ -1240,30 +946,6 @@
           "line_no": 390,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 390,
-          "raw_text": "DISPLAY 'ERROR CLOSING ACCOUNT FILE'",
-          "reason": "unresolved read operand: 'ERROR"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 390,
-          "raw_text": "DISPLAY 'ERROR CLOSING ACCOUNT FILE'",
-          "reason": "unresolved read operand: CLOSING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 390,
-          "raw_text": "DISPLAY 'ERROR CLOSING ACCOUNT FILE'",
-          "reason": "unresolved read operand: ACCOUNT"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 390,
-          "raw_text": "DISPLAY 'ERROR CLOSING ACCOUNT FILE'",
-          "reason": "unresolved read operand: FILE'"
         }
       ]
     },
@@ -1286,18 +968,6 @@
         }
       ],
       "unresolved": [
-        {
-          "verb": "DISPLAY",
-          "line_no": 407,
-          "raw_text": "DISPLAY 'ABENDING PROGRAM'",
-          "reason": "unresolved read operand: 'ABENDING"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 407,
-          "raw_text": "DISPLAY 'ABENDING PROGRAM'",
-          "reason": "unresolved read operand: PROGRAM'"
-        },
         {
           "verb": "CALL",
           "line_no": 407,
@@ -1385,62 +1055,14 @@
           "verb": "DISPLAY",
           "line_no": 414,
           "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
-          "reason": "unresolved read operand: 'FILE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 414,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
-          "reason": "unresolved read operand: STATUS"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 414,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
-          "reason": "unresolved read operand: IS:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 414,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
-          "reason": "unresolved read operand: NNNN'"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 414,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
           "reason": "unresolved read operand: ELSE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 414,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
-          "reason": "unresolved read operand: 'FILE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 414,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
-          "reason": "unresolved read operand: STATUS"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 414,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
-          "reason": "unresolved read operand: IS:"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 414,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
-          "reason": "unresolved read operand: NNNN'"
         }
       ]
     }
   },
   "program_unresolved": [
     {
-      "issue": "paragraph count mismatch: local=22 facts=16"
+      "issue": "paragraph count mismatch: local=18 facts=16"
     }
   ]
 }

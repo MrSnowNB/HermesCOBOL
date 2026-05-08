@@ -218,150 +218,6 @@
         }
       ]
     },
-    "END-EXEC": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
-        {
-          "verb": "EVALUATE",
-          "line_no": 141,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 141,
-          "raw_text": "WHEN DFHRESP(NORMAL)",
-          "reason": "unresolved read operand: DFHRESP(NORMAL)"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 141,
-          "raw_text": "WHEN DFHRESP(NOTFND)",
-          "reason": "unresolved read operand: DFHRESP(NOTFND)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 141,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 141,
-          "raw_text": "MOVE 'Transaction ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Transaction"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 141,
-          "raw_text": "MOVE 'Transaction ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 141,
-          "raw_text": "MOVE 'Transaction ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 141,
-          "raw_text": "MOVE 'Transaction ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: found...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 141,
-          "raw_text": "MOVE 'Transaction ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 141,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN1AI",
-          "reason": "unresolved mutate operand: TRNIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 141,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN1AI",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 141,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN1AI",
-          "reason": "unresolved mutate operand: COTRN1AI"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 141,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 141,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 141,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 141,
-          "raw_text": "MOVE 'Unable to lookup Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Unable"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 141,
-          "raw_text": "MOVE 'Unable to lookup Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: lookup"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 141,
-          "raw_text": "MOVE 'Unable to lookup Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: Transaction...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 141,
-          "raw_text": "MOVE 'Unable to lookup Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 141,
-          "raw_text": "MOVE 'Unable to lookup Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 141,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN1AI",
-          "reason": "unresolved mutate operand: TRNIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 141,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN1AI",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 141,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN1AI",
-          "reason": "unresolved mutate operand: COTRN1AI"
-        }
-      ]
-    },
     "PROCESS-ENTER-KEY": {
       "reads": [],
       "mutates": [],
@@ -389,42 +245,6 @@
           "line_no": 146,
           "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
           "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 146,
-          "raw_text": "MOVE 'Tran ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Tran"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 146,
-          "raw_text": "MOVE 'Tran ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 146,
-          "raw_text": "MOVE 'Tran ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: can"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 146,
-          "raw_text": "MOVE 'Tran ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 146,
-          "raw_text": "MOVE 'Tran ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 146,
-          "raw_text": "MOVE 'Tran ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: empty...'"
         },
         {
           "verb": "MOVE",
@@ -731,13 +551,7 @@
           "line_no": 146,
           "raw_text": "MOVE TRNIDINI  OF COTRN1AI TO TRAN-ID",
           "reason": "unresolved mutate operand: TRAN-ID"
-        }
-      ]
-    },
-    "END-IF": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "IF",
           "line_no": 176,
@@ -1408,13 +1222,98 @@
           "line_no": 269,
           "raw_text": "READ DATASET   (WS-TRANSACT-FILE) INTO      (TRAN-RECORD) LENGTH    (LENGTH OF TRAN-RECORD) RIDFLD    (TRAN-ID) KEYLENGTH (LENGTH OF TRAN-ID) UPDATE RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
           "reason": "unresolved mutate operand: (TRAN-RECORD)"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 280,
+          "raw_text": "EVALUATE WS-RESP-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 280,
+          "raw_text": "WHEN DFHRESP(NORMAL)",
+          "reason": "unresolved read operand: DFHRESP(NORMAL)"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 280,
+          "raw_text": "WHEN DFHRESP(NOTFND)",
+          "reason": "unresolved read operand: DFHRESP(NOTFND)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE 'Transaction ID NOT found...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN1AI",
+          "reason": "unresolved mutate operand: TRNIDINL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN1AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN1AI",
+          "reason": "unresolved mutate operand: COTRN1AI"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 280,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 280,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-REAS-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE 'Unable to lookup Transaction...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN1AI",
+          "reason": "unresolved mutate operand: TRNIDINL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN1AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN1AI",
+          "reason": "unresolved mutate operand: COTRN1AI"
         }
       ]
-    },
-    "END-EVALUATE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
     },
     "CLEAR-CURRENT-SCREEN": {
       "reads": [],
@@ -1703,9 +1602,5 @@
       "unresolved": []
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=13 facts=9"
-    }
-  ]
+  "program_unresolved": []
 }

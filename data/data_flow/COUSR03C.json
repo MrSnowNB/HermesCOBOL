@@ -224,450 +224,6 @@
         }
       ]
     },
-    "END-EXEC": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
-        {
-          "verb": "EVALUATE",
-          "line_no": 139,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 139,
-          "raw_text": "WHEN DFHRESP(NORMAL)",
-          "reason": "unresolved read operand: DFHRESP(NORMAL)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Press PF5 key to delete this user ...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Press"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Press PF5 key to delete this user ...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: PF5"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Press PF5 key to delete this user ...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: key"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Press PF5 key to delete this user ...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: delete"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Press PF5 key to delete this user ...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: this"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Press PF5 key to delete this user ...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: user"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Press PF5 key to delete this user ...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: ...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Press PF5 key to delete this user ...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Press PF5 key to delete this user ...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE DFHNEUTR       TO ERRMSGC  OF COUSR3AO",
-          "reason": "unresolved read operand: DFHNEUTR"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE DFHNEUTR       TO ERRMSGC  OF COUSR3AO",
-          "reason": "unresolved mutate operand: ERRMSGC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE DFHNEUTR       TO ERRMSGC  OF COUSR3AO",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE DFHNEUTR       TO ERRMSGC  OF COUSR3AO",
-          "reason": "unresolved mutate operand: COUSR3AO"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 139,
-          "raw_text": "WHEN DFHRESP(NOTFND)",
-          "reason": "unresolved read operand: DFHRESP(NOTFND)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'User ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'User"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'User ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'User ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'User ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: found...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'User ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE -1       TO USRIDINL OF COUSR3AI",
-          "reason": "unresolved mutate operand: USRIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE -1       TO USRIDINL OF COUSR3AI",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE -1       TO USRIDINL OF COUSR3AI",
-          "reason": "unresolved mutate operand: COUSR3AI"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 139,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 139,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Unable to lookup User...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Unable"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Unable to lookup User...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: lookup"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Unable to lookup User...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: User...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Unable to lookup User...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Unable to lookup User...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE -1       TO FNAMEL OF COUSR3AI",
-          "reason": "unresolved mutate operand: FNAMEL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE -1       TO FNAMEL OF COUSR3AI",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE -1       TO FNAMEL OF COUSR3AI",
-          "reason": "unresolved mutate operand: COUSR3AI"
-        },
-        {
-          "verb": "EVALUATE",
-          "line_no": 139,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 139,
-          "raw_text": "WHEN DFHRESP(NORMAL)",
-          "reason": "unresolved read operand: DFHRESP(NORMAL)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE SPACES             TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COUSR3AO",
-          "reason": "unresolved read operand: DFHGREEN"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COUSR3AO",
-          "reason": "unresolved mutate operand: ERRMSGC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COUSR3AO",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COUSR3AO",
-          "reason": "unresolved mutate operand: COUSR3AO"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 139,
-          "raw_text": "STRING 'User '     DELIMITED BY SIZE SEC-USR-ID  DELIMITED BY SPACE ' has been deleted ...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: 'User"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 139,
-          "raw_text": "STRING 'User '     DELIMITED BY SIZE SEC-USR-ID  DELIMITED BY SPACE ' has been deleted ...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 139,
-          "raw_text": "STRING 'User '     DELIMITED BY SIZE SEC-USR-ID  DELIMITED BY SPACE ' has been deleted ...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: SEC-USR-ID"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 139,
-          "raw_text": "STRING 'User '     DELIMITED BY SIZE SEC-USR-ID  DELIMITED BY SPACE ' has been deleted ...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 139,
-          "raw_text": "STRING 'User '     DELIMITED BY SIZE SEC-USR-ID  DELIMITED BY SPACE ' has been deleted ...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: has"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 139,
-          "raw_text": "STRING 'User '     DELIMITED BY SIZE SEC-USR-ID  DELIMITED BY SPACE ' has been deleted ...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: been"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 139,
-          "raw_text": "STRING 'User '     DELIMITED BY SIZE SEC-USR-ID  DELIMITED BY SPACE ' has been deleted ...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: deleted"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 139,
-          "raw_text": "STRING 'User '     DELIMITED BY SIZE SEC-USR-ID  DELIMITED BY SPACE ' has been deleted ...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: ...'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 139,
-          "raw_text": "STRING 'User '     DELIMITED BY SIZE SEC-USR-ID  DELIMITED BY SPACE ' has been deleted ...' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 139,
-          "raw_text": "WHEN DFHRESP(NOTFND)",
-          "reason": "unresolved read operand: DFHRESP(NOTFND)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'User ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'User"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'User ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'User ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'User ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: found...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'User ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE -1       TO USRIDINL OF COUSR3AI",
-          "reason": "unresolved mutate operand: USRIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE -1       TO USRIDINL OF COUSR3AI",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE -1       TO USRIDINL OF COUSR3AI",
-          "reason": "unresolved mutate operand: COUSR3AI"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 139,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 139,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Unable to Update User...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Unable"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Unable to Update User...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: Update"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Unable to Update User...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: User...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Unable to Update User...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE 'Unable to Update User...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE -1       TO FNAMEL OF COUSR3AI",
-          "reason": "unresolved mutate operand: FNAMEL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE -1       TO FNAMEL OF COUSR3AI",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 139,
-          "raw_text": "MOVE -1       TO FNAMEL OF COUSR3AI",
-          "reason": "unresolved mutate operand: COUSR3AI"
-        }
-      ]
-    },
     "PROCESS-ENTER-KEY": {
       "reads": [],
       "mutates": [],
@@ -695,42 +251,6 @@
           "line_no": 144,
           "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
           "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 144,
-          "raw_text": "MOVE 'User ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'User"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 144,
-          "raw_text": "MOVE 'User ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 144,
-          "raw_text": "MOVE 'User ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: can"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 144,
-          "raw_text": "MOVE 'User ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 144,
-          "raw_text": "MOVE 'User ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 144,
-          "raw_text": "MOVE 'User ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: empty...'"
         },
         {
           "verb": "MOVE",
@@ -857,13 +377,7 @@
           "line_no": 144,
           "raw_text": "MOVE USRIDINI  OF COUSR3AI TO SEC-USR-ID",
           "reason": "unresolved mutate operand: SEC-USR-ID"
-        }
-      ]
-    },
-    "END-IF": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "IF",
           "line_no": 164,
@@ -971,42 +485,6 @@
           "line_no": 176,
           "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
           "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 176,
-          "raw_text": "MOVE 'User ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'User"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 176,
-          "raw_text": "MOVE 'User ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 176,
-          "raw_text": "MOVE 'User ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: can"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 176,
-          "raw_text": "MOVE 'User ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 176,
-          "raw_text": "MOVE 'User ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 176,
-          "raw_text": "MOVE 'User ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: empty...'"
         },
         {
           "verb": "MOVE",
@@ -1420,13 +898,128 @@
           "line_no": 269,
           "raw_text": "READ DATASET   (WS-USRSEC-FILE) INTO      (SEC-USER-DATA) LENGTH    (LENGTH OF SEC-USER-DATA) RIDFLD    (SEC-USR-ID) KEYLENGTH (LENGTH OF SEC-USR-ID) UPDATE RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
           "reason": "unresolved mutate operand: (SEC-USER-DATA)"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 280,
+          "raw_text": "EVALUATE WS-RESP-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 280,
+          "raw_text": "WHEN DFHRESP(NORMAL)",
+          "reason": "unresolved read operand: DFHRESP(NORMAL)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE 'Press PF5 key to delete this user ...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE DFHNEUTR       TO ERRMSGC  OF COUSR3AO",
+          "reason": "unresolved read operand: DFHNEUTR"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE DFHNEUTR       TO ERRMSGC  OF COUSR3AO",
+          "reason": "unresolved mutate operand: ERRMSGC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE DFHNEUTR       TO ERRMSGC  OF COUSR3AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE DFHNEUTR       TO ERRMSGC  OF COUSR3AO",
+          "reason": "unresolved mutate operand: COUSR3AO"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 280,
+          "raw_text": "WHEN DFHRESP(NOTFND)",
+          "reason": "unresolved read operand: DFHRESP(NOTFND)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE 'User ID NOT found...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR3AI",
+          "reason": "unresolved mutate operand: USRIDINL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR3AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR3AI",
+          "reason": "unresolved mutate operand: COUSR3AI"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 280,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 280,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-REAS-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE 'Unable to lookup User...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE -1       TO FNAMEL OF COUSR3AI",
+          "reason": "unresolved mutate operand: FNAMEL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE -1       TO FNAMEL OF COUSR3AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 280,
+          "raw_text": "MOVE -1       TO FNAMEL OF COUSR3AI",
+          "reason": "unresolved mutate operand: COUSR3AI"
         }
       ]
-    },
-    "END-EVALUATE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
     },
     "DELETE-USER-SEC-FILE": {
       "reads": [],
@@ -1455,6 +1048,138 @@
           "line_no": 307,
           "raw_text": "EXEC CICS DELETE DATASET   (WS-USRSEC-FILE) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
           "reason": "unresolved mutate operand: (WS-REAS-CD)"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 313,
+          "raw_text": "EVALUATE WS-RESP-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 313,
+          "raw_text": "WHEN DFHRESP(NORMAL)",
+          "reason": "unresolved read operand: DFHRESP(NORMAL)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 313,
+          "raw_text": "MOVE SPACES             TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 313,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COUSR3AO",
+          "reason": "unresolved read operand: DFHGREEN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 313,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COUSR3AO",
+          "reason": "unresolved mutate operand: ERRMSGC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 313,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COUSR3AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 313,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COUSR3AO",
+          "reason": "unresolved mutate operand: COUSR3AO"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 313,
+          "raw_text": "STRING 'User '     DELIMITED BY SIZE SEC-USR-ID  DELIMITED BY SPACE ' has been deleted ...' DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved read operand: SEC-USR-ID"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 313,
+          "raw_text": "STRING 'User '     DELIMITED BY SIZE SEC-USR-ID  DELIMITED BY SPACE ' has been deleted ...' DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 313,
+          "raw_text": "WHEN DFHRESP(NOTFND)",
+          "reason": "unresolved read operand: DFHRESP(NOTFND)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 313,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 313,
+          "raw_text": "MOVE 'User ID NOT found...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 313,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR3AI",
+          "reason": "unresolved mutate operand: USRIDINL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 313,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR3AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 313,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR3AI",
+          "reason": "unresolved mutate operand: COUSR3AI"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 313,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 313,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-REAS-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 313,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 313,
+          "raw_text": "MOVE 'Unable to Update User...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 313,
+          "raw_text": "MOVE -1       TO FNAMEL OF COUSR3AI",
+          "reason": "unresolved mutate operand: FNAMEL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 313,
+          "raw_text": "MOVE -1       TO FNAMEL OF COUSR3AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 313,
+          "raw_text": "MOVE -1       TO FNAMEL OF COUSR3AI",
+          "reason": "unresolved mutate operand: COUSR3AI"
         }
       ]
     },
@@ -1565,9 +1290,5 @@
       "unresolved": []
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=15 facts=11"
-    }
-  ]
+  "program_unresolved": []
 }

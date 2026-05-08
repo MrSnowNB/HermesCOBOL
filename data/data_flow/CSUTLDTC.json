@@ -262,24 +262,6 @@
           "verb": "MOVE",
           "line_no": 105,
           "raw_text": "MOVE 'Date is valid'      TO WS-RESULT",
-          "reason": "unresolved read operand: 'Date"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Date is valid'      TO WS-RESULT",
-          "reason": "unresolved read operand: is"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Date is valid'      TO WS-RESULT",
-          "reason": "unresolved read operand: valid'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Date is valid'      TO WS-RESULT",
           "reason": "unresolved mutate operand: WS-RESULT"
         },
         {
@@ -304,18 +286,6 @@
           "verb": "MOVE",
           "line_no": 105,
           "raw_text": "MOVE 'Datevalue error'    TO WS-RESULT",
-          "reason": "unresolved read operand: 'Datevalue"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Datevalue error'    TO WS-RESULT",
-          "reason": "unresolved read operand: error'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Datevalue error'    TO WS-RESULT",
           "reason": "unresolved mutate operand: WS-RESULT"
         },
         {
@@ -323,24 +293,6 @@
           "line_no": 105,
           "raw_text": "WHEN FC-INVALID-ERA",
           "reason": "unresolved read operand: FC-INVALID-ERA"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Invalid Era    '    TO WS-RESULT",
-          "reason": "unresolved read operand: 'Invalid"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Invalid Era    '    TO WS-RESULT",
-          "reason": "unresolved read operand: Era"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Invalid Era    '    TO WS-RESULT",
-          "reason": "unresolved read operand: '"
         },
         {
           "verb": "MOVE",
@@ -370,24 +322,6 @@
           "verb": "MOVE",
           "line_no": 105,
           "raw_text": "MOVE 'Invalid month  '    TO WS-RESULT",
-          "reason": "unresolved read operand: 'Invalid"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Invalid month  '    TO WS-RESULT",
-          "reason": "unresolved read operand: month"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Invalid month  '    TO WS-RESULT",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Invalid month  '    TO WS-RESULT",
           "reason": "unresolved mutate operand: WS-RESULT"
         },
         {
@@ -412,18 +346,6 @@
           "verb": "MOVE",
           "line_no": 105,
           "raw_text": "MOVE 'Nonnumeric data'    TO WS-RESULT",
-          "reason": "unresolved read operand: 'Nonnumeric"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Nonnumeric data'    TO WS-RESULT",
-          "reason": "unresolved read operand: data'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Nonnumeric data'    TO WS-RESULT",
           "reason": "unresolved mutate operand: WS-RESULT"
         },
         {
@@ -436,43 +358,7 @@
           "verb": "MOVE",
           "line_no": 105,
           "raw_text": "MOVE 'YearInEra is 0 '    TO WS-RESULT",
-          "reason": "unresolved read operand: 'YearInEra"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'YearInEra is 0 '    TO WS-RESULT",
-          "reason": "unresolved read operand: is"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'YearInEra is 0 '    TO WS-RESULT",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'YearInEra is 0 '    TO WS-RESULT",
           "reason": "unresolved mutate operand: WS-RESULT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Date is invalid'    TO WS-RESULT",
-          "reason": "unresolved read operand: 'Date"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Date is invalid'    TO WS-RESULT",
-          "reason": "unresolved read operand: is"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE 'Date is invalid'    TO WS-RESULT",
-          "reason": "unresolved read operand: invalid'"
         },
         {
           "verb": "MOVE",

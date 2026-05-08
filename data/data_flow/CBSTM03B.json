@@ -19,11 +19,6 @@
       "mutates": [],
       "unresolved": []
     },
-    "GOBACK": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
-    },
     "1000-TRNXFILE-PROC": {
       "reads": [],
       "mutates": [],
@@ -33,13 +28,7 @@
           "line_no": 135,
           "raw_text": "IF M03B-OPEN",
           "reason": "unresolved read operand: M03B-OPEN"
-        }
-      ]
-    },
-    "END-IF": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "IF",
           "line_no": 140,
@@ -60,115 +49,7 @@
         },
         {
           "verb": "IF",
-          "line_no": 140,
-          "raw_text": "IF M03B-CLOSE",
-          "reason": "unresolved read operand: M03B-CLOSE"
-        },
-        {
-          "verb": "IF",
-          "line_no": 140,
-          "raw_text": "IF M03B-READ",
-          "reason": "unresolved read operand: M03B-READ"
-        },
-        {
-          "verb": "READ",
-          "line_no": 140,
-          "raw_text": "READ XREF-FILE INTO LK-M03B-FLDT",
-          "reason": "unresolved mutate operand: XREF-FILE"
-        },
-        {
-          "verb": "READ",
-          "line_no": 140,
-          "raw_text": "READ XREF-FILE INTO LK-M03B-FLDT",
-          "reason": "unresolved mutate operand: LK-M03B-FLDT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 140,
-          "raw_text": "IF M03B-CLOSE",
-          "reason": "unresolved read operand: M03B-CLOSE"
-        },
-        {
-          "verb": "IF",
-          "line_no": 140,
-          "raw_text": "IF M03B-READ-K",
-          "reason": "unresolved read operand: M03B-READ-K"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 140,
-          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-CUST-ID",
-          "reason": "unresolved read operand: LK-M03B-KEY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 140,
-          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-CUST-ID",
-          "reason": "unresolved read operand: (1:LK-M03B-KEY-LN)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 140,
-          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-CUST-ID",
-          "reason": "unresolved mutate operand: FD-CUST-ID"
-        },
-        {
-          "verb": "READ",
-          "line_no": 140,
-          "raw_text": "READ CUST-FILE INTO LK-M03B-FLDT",
-          "reason": "unresolved mutate operand: CUST-FILE"
-        },
-        {
-          "verb": "READ",
-          "line_no": 140,
-          "raw_text": "READ CUST-FILE INTO LK-M03B-FLDT",
-          "reason": "unresolved mutate operand: LK-M03B-FLDT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 140,
-          "raw_text": "IF M03B-CLOSE",
-          "reason": "unresolved read operand: M03B-CLOSE"
-        },
-        {
-          "verb": "IF",
-          "line_no": 140,
-          "raw_text": "IF M03B-READ-K",
-          "reason": "unresolved read operand: M03B-READ-K"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 140,
-          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-ACCT-ID",
-          "reason": "unresolved read operand: LK-M03B-KEY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 140,
-          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-ACCT-ID",
-          "reason": "unresolved read operand: (1:LK-M03B-KEY-LN)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 140,
-          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-ACCT-ID",
-          "reason": "unresolved mutate operand: FD-ACCT-ID"
-        },
-        {
-          "verb": "READ",
-          "line_no": 140,
-          "raw_text": "READ ACCT-FILE INTO LK-M03B-FLDT",
-          "reason": "unresolved mutate operand: ACCT-FILE"
-        },
-        {
-          "verb": "READ",
-          "line_no": 140,
-          "raw_text": "READ ACCT-FILE INTO LK-M03B-FLDT",
-          "reason": "unresolved mutate operand: LK-M03B-FLDT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 140,
+          "line_no": 146,
           "raw_text": "IF M03B-CLOSE",
           "reason": "unresolved read operand: M03B-CLOSE"
         }
@@ -197,11 +78,6 @@
       "mutates": [],
       "unresolved": []
     },
-    "EXIT": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
-    },
     "2000-XREFFILE-PROC": {
       "reads": [],
       "mutates": [],
@@ -211,6 +87,30 @@
           "line_no": 159,
           "raw_text": "IF M03B-OPEN",
           "reason": "unresolved read operand: M03B-OPEN"
+        },
+        {
+          "verb": "IF",
+          "line_no": 164,
+          "raw_text": "IF M03B-READ",
+          "reason": "unresolved read operand: M03B-READ"
+        },
+        {
+          "verb": "READ",
+          "line_no": 164,
+          "raw_text": "READ XREF-FILE INTO LK-M03B-FLDT",
+          "reason": "unresolved mutate operand: XREF-FILE"
+        },
+        {
+          "verb": "READ",
+          "line_no": 164,
+          "raw_text": "READ XREF-FILE INTO LK-M03B-FLDT",
+          "reason": "unresolved mutate operand: LK-M03B-FLDT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 170,
+          "raw_text": "IF M03B-CLOSE",
+          "reason": "unresolved read operand: M03B-CLOSE"
         }
       ]
     },
@@ -246,6 +146,48 @@
           "line_no": 183,
           "raw_text": "IF M03B-OPEN",
           "reason": "unresolved read operand: M03B-OPEN"
+        },
+        {
+          "verb": "IF",
+          "line_no": 188,
+          "raw_text": "IF M03B-READ-K",
+          "reason": "unresolved read operand: M03B-READ-K"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 188,
+          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-CUST-ID",
+          "reason": "unresolved read operand: LK-M03B-KEY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 188,
+          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-CUST-ID",
+          "reason": "unresolved read operand: (1:LK-M03B-KEY-LN)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 188,
+          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-CUST-ID",
+          "reason": "unresolved mutate operand: FD-CUST-ID"
+        },
+        {
+          "verb": "READ",
+          "line_no": 188,
+          "raw_text": "READ CUST-FILE INTO LK-M03B-FLDT",
+          "reason": "unresolved mutate operand: CUST-FILE"
+        },
+        {
+          "verb": "READ",
+          "line_no": 188,
+          "raw_text": "READ CUST-FILE INTO LK-M03B-FLDT",
+          "reason": "unresolved mutate operand: LK-M03B-FLDT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 195,
+          "raw_text": "IF M03B-CLOSE",
+          "reason": "unresolved read operand: M03B-CLOSE"
         }
       ]
     },
@@ -281,6 +223,48 @@
           "line_no": 208,
           "raw_text": "IF M03B-OPEN",
           "reason": "unresolved read operand: M03B-OPEN"
+        },
+        {
+          "verb": "IF",
+          "line_no": 213,
+          "raw_text": "IF M03B-READ-K",
+          "reason": "unresolved read operand: M03B-READ-K"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 213,
+          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-ACCT-ID",
+          "reason": "unresolved read operand: LK-M03B-KEY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 213,
+          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-ACCT-ID",
+          "reason": "unresolved read operand: (1:LK-M03B-KEY-LN)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 213,
+          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-ACCT-ID",
+          "reason": "unresolved mutate operand: FD-ACCT-ID"
+        },
+        {
+          "verb": "READ",
+          "line_no": 213,
+          "raw_text": "READ ACCT-FILE INTO LK-M03B-FLDT",
+          "reason": "unresolved mutate operand: ACCT-FILE"
+        },
+        {
+          "verb": "READ",
+          "line_no": 213,
+          "raw_text": "READ ACCT-FILE INTO LK-M03B-FLDT",
+          "reason": "unresolved mutate operand: LK-M03B-FLDT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 220,
+          "raw_text": "IF M03B-CLOSE",
+          "reason": "unresolved read operand: M03B-CLOSE"
         }
       ]
     },
@@ -308,9 +292,5 @@
       "unresolved": []
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=17 facts=14"
-    }
-  ]
+  "program_unresolved": []
 }

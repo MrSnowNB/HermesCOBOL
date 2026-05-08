@@ -4459,18 +4459,6 @@
           "verb": "MOVE",
           "line_no": 1446,
           "raw_text": "MOVE 'Account Status'          TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'Account"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Account Status'          TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Status'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Account Status'          TO WS-EDIT-VARIABLE-NAME",
           "reason": "unresolved mutate operand: WS-EDIT-VARIABLE-NAME"
         },
         {
@@ -4496,18 +4484,6 @@
           "line_no": 1446,
           "raw_text": "MOVE WS-EDIT-YES-NO            TO WS-EDIT-ACCT-STATUS",
           "reason": "unresolved mutate operand: WS-EDIT-ACCT-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Open Date'              TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'Open"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Open Date'              TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Date'"
         },
         {
           "verb": "MOVE",
@@ -4543,18 +4519,6 @@
           "verb": "MOVE",
           "line_no": 1446,
           "raw_text": "MOVE 'Credit Limit'           TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'Credit"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Credit Limit'           TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Limit'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Credit Limit'           TO WS-EDIT-VARIABLE-NAME",
           "reason": "unresolved mutate operand: WS-EDIT-VARIABLE-NAME"
         },
         {
@@ -4580,18 +4544,6 @@
           "line_no": 1446,
           "raw_text": "MOVE WS-FLG-SIGNED-NUMBER-EDIT  TO WS-EDIT-CREDIT-LIMIT",
           "reason": "unresolved mutate operand: WS-EDIT-CREDIT-LIMIT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Expiry Date'            TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'Expiry"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Expiry Date'            TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Date'"
         },
         {
           "verb": "MOVE",
@@ -4627,24 +4579,6 @@
           "verb": "MOVE",
           "line_no": 1446,
           "raw_text": "MOVE 'Cash Credit Limit'      TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'Cash"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Cash Credit Limit'      TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Credit"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Cash Credit Limit'      TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Limit'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Cash Credit Limit'      TO WS-EDIT-VARIABLE-NAME",
           "reason": "unresolved mutate operand: WS-EDIT-VARIABLE-NAME"
         },
         {
@@ -4670,18 +4604,6 @@
           "line_no": 1446,
           "raw_text": "MOVE WS-FLG-SIGNED-NUMBER-EDIT TO WS-EDIT-CASH-CREDIT-LIMIT",
           "reason": "unresolved mutate operand: WS-EDIT-CASH-CREDIT-LIMIT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Reissue Date'           TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'Reissue"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Reissue Date'           TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Date'"
         },
         {
           "verb": "MOVE",
@@ -4717,18 +4639,6 @@
           "verb": "MOVE",
           "line_no": 1446,
           "raw_text": "MOVE 'Current Balance'        TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'Current"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Current Balance'        TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Balance'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Current Balance'        TO WS-EDIT-VARIABLE-NAME",
           "reason": "unresolved mutate operand: WS-EDIT-VARIABLE-NAME"
         },
         {
@@ -4759,30 +4669,6 @@
           "verb": "MOVE",
           "line_no": 1446,
           "raw_text": "MOVE 'Current Cycle Credit Limit' TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'Current"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Current Cycle Credit Limit' TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Cycle"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Current Cycle Credit Limit' TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Credit"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Current Cycle Credit Limit' TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Limit'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Current Cycle Credit Limit' TO WS-EDIT-VARIABLE-NAME",
           "reason": "unresolved mutate operand: WS-EDIT-VARIABLE-NAME"
         },
         {
@@ -4808,30 +4694,6 @@
           "line_no": 1446,
           "raw_text": "MOVE WS-FLG-SIGNED-NUMBER-EDIT   TO WS-EDIT-CURR-CYC-CREDIT",
           "reason": "unresolved mutate operand: WS-EDIT-CURR-CYC-CREDIT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Current Cycle Debit Limit' TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'Current"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Current Cycle Debit Limit' TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Cycle"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Current Cycle Debit Limit' TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Debit"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Current Cycle Debit Limit' TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Limit'"
         },
         {
           "verb": "MOVE",
@@ -4868,24 +4730,6 @@
           "line_no": 1446,
           "raw_text": "MOVE 'SSN'                    TO WS-EDIT-VARIABLE-NAME",
           "reason": "unresolved mutate operand: WS-EDIT-VARIABLE-NAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Date of Birth'          TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'Date"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Date of Birth'          TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: of"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Date of Birth'          TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Birth'"
         },
         {
           "verb": "MOVE",
@@ -4939,18 +4783,6 @@
           "verb": "MOVE",
           "line_no": 1446,
           "raw_text": "MOVE 'FICO Score'             TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'FICO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'FICO Score'             TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Score'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'FICO Score'             TO WS-EDIT-VARIABLE-NAME",
           "reason": "unresolved mutate operand: WS-EDIT-VARIABLE-NAME"
         },
         {
@@ -4993,18 +4825,6 @@
           "verb": "MOVE",
           "line_no": 1446,
           "raw_text": "MOVE 'First Name'             TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'First"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'First Name'             TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Name'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'First Name'             TO WS-EDIT-VARIABLE-NAME",
           "reason": "unresolved mutate operand: WS-EDIT-VARIABLE-NAME"
         },
         {
@@ -5036,18 +4856,6 @@
           "line_no": 1446,
           "raw_text": "MOVE WS-EDIT-ALPHA-ONLY-FLAGS TO WS-EDIT-FIRST-NAME-FLGS",
           "reason": "unresolved mutate operand: WS-EDIT-FIRST-NAME-FLGS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Middle Name'            TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'Middle"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Middle Name'            TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Name'"
         },
         {
           "verb": "MOVE",
@@ -5089,18 +4897,6 @@
           "verb": "MOVE",
           "line_no": 1446,
           "raw_text": "MOVE 'Last Name'              TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'Last"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Last Name'              TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Name'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Last Name'              TO WS-EDIT-VARIABLE-NAME",
           "reason": "unresolved mutate operand: WS-EDIT-VARIABLE-NAME"
         },
         {
@@ -5132,24 +4928,6 @@
           "line_no": 1446,
           "raw_text": "MOVE WS-EDIT-ALPHA-ONLY-FLAGS TO WS-EDIT-LAST-NAME-FLGS",
           "reason": "unresolved mutate operand: WS-EDIT-LAST-NAME-FLGS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Address Line 1'         TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'Address"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Address Line 1'         TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Line"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Address Line 1'         TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 1'"
         },
         {
           "verb": "MOVE",
@@ -5311,24 +5089,6 @@
           "verb": "MOVE",
           "line_no": 1446,
           "raw_text": "MOVE 'Address Line 2'         TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'Address"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Address Line 2'         TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Line"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Address Line 2'         TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 2'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Address Line 2'         TO WS-EDIT-VARIABLE-NAME",
           "reason": "unresolved mutate operand: WS-EDIT-VARIABLE-NAME"
         },
         {
@@ -5407,24 +5167,6 @@
           "verb": "MOVE",
           "line_no": 1446,
           "raw_text": "MOVE 'Phone Number 1'         TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'Phone"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Phone Number 1'         TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Number"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Phone Number 1'         TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 1'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Phone Number 1'         TO WS-EDIT-VARIABLE-NAME",
           "reason": "unresolved mutate operand: WS-EDIT-VARIABLE-NAME"
         },
         {
@@ -5455,24 +5197,6 @@
           "verb": "MOVE",
           "line_no": 1446,
           "raw_text": "MOVE 'Phone Number 2'         TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'Phone"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Phone Number 2'         TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Number"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Phone Number 2'         TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 2'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Phone Number 2'         TO WS-EDIT-VARIABLE-NAME",
           "reason": "unresolved mutate operand: WS-EDIT-VARIABLE-NAME"
         },
         {
@@ -5498,24 +5222,6 @@
           "line_no": 1446,
           "raw_text": "MOVE WS-EDIT-US-PHONE-NUM-FLGS TO WS-EDIT-PHONE-NUM-2-FLGS",
           "reason": "unresolved mutate operand: WS-EDIT-PHONE-NUM-2-FLGS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'EFT Account Id'         TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'EFT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'EFT Account Id'         TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Account"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'EFT Account Id'         TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Id'"
         },
         {
           "verb": "MOVE",
@@ -5552,24 +5258,6 @@
           "line_no": 1446,
           "raw_text": "MOVE WS-EDIT-ALPHANUM-ONLY-FLAGS TO WS-EFT-ACCOUNT-ID-FLGS",
           "reason": "unresolved mutate operand: WS-EFT-ACCOUNT-ID-FLGS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Primary Card Holder'    TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'Primary"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Primary Card Holder'    TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Card"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1446,
-          "raw_text": "MOVE 'Primary Card Holder'    TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Holder'"
         },
         {
           "verb": "MOVE",
@@ -7079,13 +6767,7 @@
           "verb": "IF",
           "line_no": 1784,
           "raw_text": "if supplied must be a 11 digit' ' Non-Zero Number' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: digit'"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1784,
-          "raw_text": "if supplied must be a 11 digit' ' Non-Zero Number' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
+          "reason": "unresolved read operand: digit__LIT__"
         },
         {
           "verb": "IF",
@@ -7258,30 +6940,6 @@
           "verb": "STRING",
           "line_no": 1825,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1825,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: must"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1825,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1825,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: supplied.'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1825,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved mutate operand: WS-RETURN-MSG"
         },
         {
@@ -7383,30 +7041,6 @@
           "verb": "STRING",
           "line_no": 1857,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1857,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: must"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1857,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1857,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: supplied.'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1857,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved mutate operand: WS-RETURN-MSG"
         },
         {
@@ -7444,42 +7078,6 @@
           "line_no": 1857,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be Y or N.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved read operand: TRIM(WS-EDIT-VARIABLE-NAME)"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1857,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be Y or N.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1857,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be Y or N.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: must"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1857,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be Y or N.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1857,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be Y or N.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Y"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1857,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be Y or N.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: or"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1857,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be Y or N.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: N.'"
         },
         {
           "verb": "STRING",
@@ -7587,30 +7185,6 @@
           "line_no": 1899,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved read operand: TRIM(WS-EDIT-VARIABLE-NAME)"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1899,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1899,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: must"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1899,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1899,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: supplied.'"
         },
         {
           "verb": "STRING",
@@ -7736,36 +7310,6 @@
           "verb": "STRING",
           "line_no": 1899,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1899,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: can"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1899,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: have"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1899,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: alphabets"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1899,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: only.'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1899,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved mutate operand: WS-RETURN-MSG"
         },
         {
@@ -7874,30 +7418,6 @@
           "line_no": 1956,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved read operand: TRIM(WS-EDIT-VARIABLE-NAME)"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1956,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1956,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: must"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1956,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1956,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: supplied.'"
         },
         {
           "verb": "STRING",
@@ -8018,48 +7538,6 @@
           "line_no": 1956,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have numbers or alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved read operand: TRIM(WS-EDIT-VARIABLE-NAME)"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1956,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have numbers or alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1956,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have numbers or alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: can"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1956,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have numbers or alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: have"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1956,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have numbers or alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: numbers"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1956,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have numbers or alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: or"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1956,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have numbers or alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: alphabets"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 1956,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have numbers or alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: only.'"
         },
         {
           "verb": "STRING",
@@ -8263,36 +7741,6 @@
           "line_no": 2013,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved read operand: TRIM(WS-EDIT-VARIABLE-NAME)"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2013,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2013,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: can"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2013,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: have"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2013,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: alphabets"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2013,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: only.'"
         },
         {
           "verb": "STRING",
@@ -8525,48 +7973,6 @@
           "verb": "STRING",
           "line_no": 2062,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have numbers or alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2062,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have numbers or alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: can"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2062,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have numbers or alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: have"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2062,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have numbers or alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: numbers"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2062,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have numbers or alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: or"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2062,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have numbers or alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: alphabets"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2062,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have numbers or alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: only.'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2062,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' can have numbers or alphabets only.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved mutate operand: WS-RETURN-MSG"
         },
         {
@@ -8680,30 +8086,6 @@
           "verb": "STRING",
           "line_no": 2110,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2110,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: must"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2110,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2110,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: supplied.'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2110,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved mutate operand: WS-RETURN-MSG"
         },
         {
@@ -8758,36 +8140,6 @@
           "verb": "STRING",
           "line_no": 2110,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be all numeric.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2110,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be all numeric.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: must"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2110,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be all numeric.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2110,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be all numeric.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: all"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2110,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be all numeric.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: numeric.'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2110,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be all numeric.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved mutate operand: WS-RETURN-MSG"
         },
         {
@@ -8837,36 +8189,6 @@
           "line_no": 2110,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must not be zero.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved read operand: TRIM(WS-EDIT-VARIABLE-NAME)"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2110,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must not be zero.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2110,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must not be zero.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: must"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2110,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must not be zero.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: not"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2110,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must not be zero.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2110,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must not be zero.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: zero.'"
         },
         {
           "verb": "STRING",
@@ -8961,30 +8283,6 @@
           "verb": "STRING",
           "line_no": 2181,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2181,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: must"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2181,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2181,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: supplied.'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2181,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved mutate operand: WS-RETURN-MSG"
         },
         {
@@ -9028,30 +8326,6 @@
           "line_no": 2181,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' is not valid' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved read operand: TRIM(WS-EDIT-VARIABLE-NAME)"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2181,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' is not valid' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2181,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' is not valid' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: is"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2181,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' is not valid' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: not"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2181,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ' is not valid' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: valid'"
         },
         {
           "verb": "STRING",
@@ -9284,42 +8558,6 @@
           "verb": "STRING",
           "line_no": 2247,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: ':"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Area"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: code"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: must"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: supplied.'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved mutate operand: WS-RETURN-MSG"
         },
         {
@@ -9374,54 +8612,6 @@
           "verb": "STRING",
           "line_no": 2247,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code must be A 3 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: ':"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code must be A 3 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Area"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code must be A 3 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: code"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code must be A 3 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: must"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code must be A 3 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code must be A 3 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: A"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code must be A 3 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: digit"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code must be A 3 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: number.'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code must be A 3 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved mutate operand: WS-RETURN-MSG"
         },
         {
@@ -9459,42 +8649,6 @@
           "line_no": 2247,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved read operand: TRIM(WS-EDIT-VARIABLE-NAME)"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: ':"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Area"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: code"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: cannot"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Area code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: zero'"
         },
         {
           "verb": "STRING",
@@ -9566,60 +8720,6 @@
           "verb": "STRING",
           "line_no": 2247,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Not valid North America general purpose area code' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: ':"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Not valid North America general purpose area code' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Not"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Not valid North America general purpose area code' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: valid"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Not valid North America general purpose area code' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: North"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Not valid North America general purpose area code' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: America"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Not valid North America general purpose area code' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: general"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Not valid North America general purpose area code' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: purpose"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Not valid North America general purpose area code' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: area"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Not valid North America general purpose area code' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: code'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2247,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Not valid North America general purpose area code' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved mutate operand: WS-RETURN-MSG"
         },
         {
@@ -9680,42 +8780,6 @@
           "verb": "STRING",
           "line_no": 2318,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: ':"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Prefix"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: code"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: must"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: supplied.'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved mutate operand: WS-RETURN-MSG"
         },
         {
@@ -9770,54 +8834,6 @@
           "verb": "STRING",
           "line_no": 2318,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code must be A 3 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: ':"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code must be A 3 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Prefix"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code must be A 3 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: code"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code must be A 3 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: must"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code must be A 3 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code must be A 3 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: A"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code must be A 3 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: digit"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code must be A 3 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: number.'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code must be A 3 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved mutate operand: WS-RETURN-MSG"
         },
         {
@@ -9855,42 +8871,6 @@
           "line_no": 2318,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved read operand: TRIM(WS-EDIT-VARIABLE-NAME)"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: ':"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Prefix"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: code"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: cannot"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2318,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Prefix code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: zero'"
         },
         {
           "verb": "STRING",
@@ -9956,48 +8936,6 @@
           "verb": "STRING",
           "line_no": 2371,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: ':"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Line"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: number"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: code"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: must"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: supplied.'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code must be supplied.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved mutate operand: WS-RETURN-MSG"
         },
         {
@@ -10052,60 +8990,6 @@
           "verb": "STRING",
           "line_no": 2371,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code must be A 4 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: ':"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code must be A 4 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Line"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code must be A 4 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: number"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code must be A 4 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: code"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code must be A 4 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: must"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code must be A 4 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code must be A 4 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: A"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code must be A 4 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: digit"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code must be A 4 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: number.'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code must be A 4 digit number.' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved mutate operand: WS-RETURN-MSG"
         },
         {
@@ -10148,48 +9032,6 @@
           "verb": "STRING",
           "line_no": 2371,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: ':"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Line"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: number"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: code"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: cannot"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: zero'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2371,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': Line number code cannot be zero' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved mutate operand: WS-RETURN-MSG"
         },
         {
@@ -10214,24 +9056,6 @@
       "reads": [],
       "mutates": [],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 2436,
-          "raw_text": "MOVE 'SSN: First 3 chars'     TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'SSN:"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2436,
-          "raw_text": "MOVE 'SSN: First 3 chars'     TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: First"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2436,
-          "raw_text": "MOVE 'SSN: First 3 chars'     TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: chars'"
-        },
         {
           "verb": "MOVE",
           "line_no": 2436,
@@ -10392,97 +9216,7 @@
           "verb": "STRING",
           "line_no": 2436,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': should not be 000, 666, or between 900 and 999' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: ':"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2436,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': should not be 000, 666, or between 900 and 999' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: should"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2436,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': should not be 000, 666, or between 900 and 999' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: not"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2436,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': should not be 000, 666, or between 900 and 999' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2436,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': should not be 000, 666, or between 900 and 999' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: 000,"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2436,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': should not be 000, 666, or between 900 and 999' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: 666,"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2436,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': should not be 000, 666, or between 900 and 999' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: or"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2436,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': should not be 000, 666, or between 900 and 999' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: between"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2436,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': should not be 000, 666, or between 900 and 999' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: and"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2436,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': should not be 000, 666, or between 900 and 999' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: 999'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2436,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': should not be 000, 666, or between 900 and 999' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved mutate operand: WS-RETURN-MSG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2436,
-          "raw_text": "MOVE 'SSN 4th & 5th chars'    TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'SSN"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2436,
-          "raw_text": "MOVE 'SSN 4th & 5th chars'    TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 4th"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2436,
-          "raw_text": "MOVE 'SSN 4th & 5th chars'    TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: &"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2436,
-          "raw_text": "MOVE 'SSN 4th & 5th chars'    TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 5th"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2436,
-          "raw_text": "MOVE 'SSN 4th & 5th chars'    TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: chars'"
         },
         {
           "verb": "MOVE",
@@ -10561,24 +9295,6 @@
           "line_no": 2436,
           "raw_text": "MOVE WS-EDIT-ALPHANUM-ONLY-FLAGS TO WS-EDIT-US-SSN-PART2-FLGS ****************************************************************** *    Edit SSN Part 3 ******************************************************************",
           "reason": "unresolved mutate operand: ******************************************************************"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2436,
-          "raw_text": "MOVE 'SSN Last 4 chars'       TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: 'SSN"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2436,
-          "raw_text": "MOVE 'SSN Last 4 chars'       TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: Last"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2436,
-          "raw_text": "MOVE 'SSN Last 4 chars'       TO WS-EDIT-VARIABLE-NAME",
-          "reason": "unresolved read operand: chars'"
         },
         {
           "verb": "MOVE",
@@ -10679,48 +9395,6 @@
           "verb": "STRING",
           "line_no": 2494,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': is not a valid state code' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: ':"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2494,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': is not a valid state code' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: is"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2494,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': is not a valid state code' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: not"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2494,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': is not a valid state code' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: a"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2494,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': is not a valid state code' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: valid"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2494,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': is not a valid state code' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: state"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2494,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': is not a valid state code' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: code'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2494,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': is not a valid state code' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved mutate operand: WS-RETURN-MSG"
         }
       ]
@@ -10769,42 +9443,6 @@
           "line_no": 2515,
           "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': should be between 300 and 850' DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved read operand: TRIM(WS-EDIT-VARIABLE-NAME)"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2515,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': should be between 300 and 850' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: ':"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2515,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': should be between 300 and 850' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: should"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2515,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': should be between 300 and 850' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2515,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': should be between 300 and 850' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: between"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2515,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': should be between 300 and 850' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: and"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2515,
-          "raw_text": "STRING FUNCTION TRIM(WS-EDIT-VARIABLE-NAME) ': should be between 300 and 850' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: 850'"
         },
         {
           "verb": "STRING",
@@ -10870,36 +9508,6 @@
           "line_no": 2537,
           "raw_text": "IF WS-RETURN-MSG-OFF",
           "reason": "unresolved read operand: WS-RETURN-MSG-OFF"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2537,
-          "raw_text": "STRING 'Invalid zip code for state' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: 'Invalid"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2537,
-          "raw_text": "STRING 'Invalid zip code for state' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: zip"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2537,
-          "raw_text": "STRING 'Invalid zip code for state' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: code"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2537,
-          "raw_text": "STRING 'Invalid zip code for state' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: for"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 2537,
-          "raw_text": "STRING 'Invalid zip code for state' DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: state'"
         },
         {
           "verb": "STRING",
@@ -11175,24 +9783,6 @@
           "line_no": 2566,
           "raw_text": "MOVE SPACES         TO ABEND-REASON",
           "reason": "unresolved mutate operand: ABEND-REASON"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2566,
-          "raw_text": "MOVE 'UNEXPECTED DATA SCENARIO' TO ABEND-MSG",
-          "reason": "unresolved read operand: 'UNEXPECTED"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2566,
-          "raw_text": "MOVE 'UNEXPECTED DATA SCENARIO' TO ABEND-MSG",
-          "reason": "unresolved read operand: DATA"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2566,
-          "raw_text": "MOVE 'UNEXPECTED DATA SCENARIO' TO ABEND-MSG",
-          "reason": "unresolved read operand: SCENARIO'"
         },
         {
           "verb": "MOVE",
@@ -19786,67 +18376,7 @@
           "verb": "STRING",
           "line_no": 3703,
           "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3703,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: not"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3703,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: found"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3703,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: in'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3703,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3703,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Acct"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3703,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Master"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3703,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: file.Resp:'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3703,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved read operand: ERROR-RESP"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3703,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3703,
-          "raw_text": "STRING 'Account:' WS-CARD-RID-ACCT-ID-X ' not found in' ' Acct Master file.Resp:' ERROR-RESP ' Reas:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: Reas:'"
         },
         {
           "verb": "STRING",
@@ -20055,67 +18585,7 @@
           "verb": "STRING",
           "line_no": 3753,
           "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3753,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: not"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3753,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: found'"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3753,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3753,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: in"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3753,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: customer"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3753,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: master.Resp:"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3753,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3753,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
           "reason": "unresolved read operand: ERROR-RESP"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3753,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: '"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 3753,
-          "raw_text": "STRING 'CustId:' WS-CARD-RID-CUST-ID-X ' not found' ' in customer master.Resp: ' ERROR-RESP ' REAS:' ERROR-RESP2 DELIMITED BY SIZE INTO WS-RETURN-MSG",
-          "reason": "unresolved read operand: REAS:'"
         },
         {
           "verb": "STRING",
@@ -21877,7 +20347,7 @@
           "verb": "STRING",
           "line_no": 3890,
           "raw_text": "STRING '(', ACUP-NEW-CUST-PHONE-NUM-1A, ')', ACUP-NEW-CUST-PHONE-NUM-1B, '-', ACUP-NEW-CUST-PHONE-NUM-1C DELIMITED BY SIZE    INTO CUST-UPDATE-PHONE-NUM-1",
-          "reason": "unresolved read operand: '(',"
+          "reason": "unresolved read operand: __LIT__,"
         },
         {
           "verb": "STRING",
@@ -21889,7 +20359,7 @@
           "verb": "STRING",
           "line_no": 3890,
           "raw_text": "STRING '(', ACUP-NEW-CUST-PHONE-NUM-1A, ')', ACUP-NEW-CUST-PHONE-NUM-1B, '-', ACUP-NEW-CUST-PHONE-NUM-1C DELIMITED BY SIZE    INTO CUST-UPDATE-PHONE-NUM-1",
-          "reason": "unresolved read operand: ')',"
+          "reason": "unresolved read operand: __LIT__,"
         },
         {
           "verb": "STRING",
@@ -21901,7 +20371,7 @@
           "verb": "STRING",
           "line_no": 3890,
           "raw_text": "STRING '(', ACUP-NEW-CUST-PHONE-NUM-1A, ')', ACUP-NEW-CUST-PHONE-NUM-1B, '-', ACUP-NEW-CUST-PHONE-NUM-1C DELIMITED BY SIZE    INTO CUST-UPDATE-PHONE-NUM-1",
-          "reason": "unresolved read operand: '-',"
+          "reason": "unresolved read operand: __LIT__,"
         },
         {
           "verb": "STRING",
@@ -21919,7 +20389,7 @@
           "verb": "STRING",
           "line_no": 3890,
           "raw_text": "STRING '(', ACUP-NEW-CUST-PHONE-NUM-2A, ')', ACUP-NEW-CUST-PHONE-NUM-2B, '-', ACUP-NEW-CUST-PHONE-NUM-2C DELIMITED BY SIZE    INTO CUST-UPDATE-PHONE-NUM-2",
-          "reason": "unresolved read operand: '(',"
+          "reason": "unresolved read operand: __LIT__,"
         },
         {
           "verb": "STRING",
@@ -21931,7 +20401,7 @@
           "verb": "STRING",
           "line_no": 3890,
           "raw_text": "STRING '(', ACUP-NEW-CUST-PHONE-NUM-2A, ')', ACUP-NEW-CUST-PHONE-NUM-2B, '-', ACUP-NEW-CUST-PHONE-NUM-2C DELIMITED BY SIZE    INTO CUST-UPDATE-PHONE-NUM-2",
-          "reason": "unresolved read operand: ')',"
+          "reason": "unresolved read operand: __LIT__,"
         },
         {
           "verb": "STRING",
@@ -21943,7 +20413,7 @@
           "verb": "STRING",
           "line_no": 3890,
           "raw_text": "STRING '(', ACUP-NEW-CUST-PHONE-NUM-2A, ')', ACUP-NEW-CUST-PHONE-NUM-2B, '-', ACUP-NEW-CUST-PHONE-NUM-2C DELIMITED BY SIZE    INTO CUST-UPDATE-PHONE-NUM-2",
-          "reason": "unresolved read operand: '-',"
+          "reason": "unresolved read operand: __LIT__,"
         },
         {
           "verb": "STRING",
@@ -22100,13 +20570,7 @@
           "line_no": 3890,
           "raw_text": "EXEC CICS REWRITE FILE(LIT-ACCTFILENAME) FROM(ACCT-UPDATE-RECORD) LENGTH(LENGTH OF ACCT-UPDATE-RECORD) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
           "reason": "unresolved mutate operand: (WS-REAS-CD)"
-        }
-      ]
-    },
-    "END-EXEC": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "IF",
           "line_no": 4072,
@@ -22128,42 +20592,42 @@
         {
           "verb": "EXEC",
           "line_no": 4072,
-          "raw_text": "EXEC CICS REWRITE FILE(LIT-CUSTFILENAME) FROM(CUST-UPDATE-RECORD) LENGTH(LENGTH OF CUST-UPDATE-RECORD) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD) ***************************************************************** * Did customer update succeed ? * *****************************************************************",
+          "raw_text": "EXEC CICS REWRITE FILE(LIT-CUSTFILENAME) FROM(CUST-UPDATE-RECORD) LENGTH(LENGTH OF CUST-UPDATE-RECORD) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
           "reason": "unresolved read operand: (WS-RESP-CD)"
         },
         {
           "verb": "EXEC",
           "line_no": 4072,
-          "raw_text": "EXEC CICS REWRITE FILE(LIT-CUSTFILENAME) FROM(CUST-UPDATE-RECORD) LENGTH(LENGTH OF CUST-UPDATE-RECORD) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD) ***************************************************************** * Did customer update succeed ? * *****************************************************************",
+          "raw_text": "EXEC CICS REWRITE FILE(LIT-CUSTFILENAME) FROM(CUST-UPDATE-RECORD) LENGTH(LENGTH OF CUST-UPDATE-RECORD) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
           "reason": "unresolved mutate operand: (WS-RESP-CD)"
         },
         {
           "verb": "EXEC",
           "line_no": 4072,
-          "raw_text": "EXEC CICS REWRITE FILE(LIT-CUSTFILENAME) FROM(CUST-UPDATE-RECORD) LENGTH(LENGTH OF CUST-UPDATE-RECORD) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD) ***************************************************************** * Did customer update succeed ? * *****************************************************************",
+          "raw_text": "EXEC CICS REWRITE FILE(LIT-CUSTFILENAME) FROM(CUST-UPDATE-RECORD) LENGTH(LENGTH OF CUST-UPDATE-RECORD) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
           "reason": "unresolved read operand: (WS-REAS-CD)"
         },
         {
           "verb": "EXEC",
           "line_no": 4072,
-          "raw_text": "EXEC CICS REWRITE FILE(LIT-CUSTFILENAME) FROM(CUST-UPDATE-RECORD) LENGTH(LENGTH OF CUST-UPDATE-RECORD) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD) ***************************************************************** * Did customer update succeed ? * *****************************************************************",
+          "raw_text": "EXEC CICS REWRITE FILE(LIT-CUSTFILENAME) FROM(CUST-UPDATE-RECORD) LENGTH(LENGTH OF CUST-UPDATE-RECORD) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
           "reason": "unresolved mutate operand: (WS-REAS-CD)"
         },
         {
           "verb": "IF",
-          "line_no": 4072,
+          "line_no": 4092,
           "raw_text": "IF WS-RESP-CD EQUAL TO DFHRESP(NORMAL)",
           "reason": "unresolved read operand: WS-RESP-CD"
         },
         {
           "verb": "IF",
-          "line_no": 4072,
+          "line_no": 4092,
           "raw_text": "IF WS-RESP-CD EQUAL TO DFHRESP(NORMAL)",
           "reason": "unresolved read operand: DFHRESP(NORMAL)"
         },
         {
           "verb": "SET",
-          "line_no": 4072,
+          "line_no": 4092,
           "raw_text": "SET LOCKED-BUT-UPDATE-FAILED    TO TRUE",
           "reason": "unresolved mutate operand: LOCKED-BUT-UPDATE-FAILED"
         }
@@ -23009,24 +21473,6 @@
           "verb": "MOVE",
           "line_no": 4205,
           "raw_text": "MOVE 'UNEXPECTED ABEND OCCURRED.' TO ABEND-MSG",
-          "reason": "unresolved read operand: 'UNEXPECTED"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 4205,
-          "raw_text": "MOVE 'UNEXPECTED ABEND OCCURRED.' TO ABEND-MSG",
-          "reason": "unresolved read operand: ABEND"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 4205,
-          "raw_text": "MOVE 'UNEXPECTED ABEND OCCURRED.' TO ABEND-MSG",
-          "reason": "unresolved read operand: OCCURRED.'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 4205,
-          "raw_text": "MOVE 'UNEXPECTED ABEND OCCURRED.' TO ABEND-MSG",
           "reason": "unresolved mutate operand: ABEND-MSG"
         },
         {
@@ -23055,5 +21501,9 @@
       "unresolved": []
     }
   },
-  "program_unresolved": []
+  "program_unresolved": [
+    {
+      "issue": "paragraph count mismatch: local=85 facts=87"
+    }
+  ]
 }

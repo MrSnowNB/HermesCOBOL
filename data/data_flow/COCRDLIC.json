@@ -4839,36 +4839,6 @@
           "verb": "MOVE",
           "line_no": 906,
           "raw_text": "MOVE 'NO PREVIOUS PAGES TO DISPLAY' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: 'NO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 906,
-          "raw_text": "MOVE 'NO PREVIOUS PAGES TO DISPLAY' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: PREVIOUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 906,
-          "raw_text": "MOVE 'NO PREVIOUS PAGES TO DISPLAY' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: PAGES"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 906,
-          "raw_text": "MOVE 'NO PREVIOUS PAGES TO DISPLAY' TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: DISPLAY'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 906,
-          "raw_text": "MOVE 'NO PREVIOUS PAGES TO DISPLAY' TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 906,
-          "raw_text": "MOVE 'NO PREVIOUS PAGES TO DISPLAY' TO WS-ERROR-MSG",
           "reason": "unresolved mutate operand: WS-ERROR-MSG"
         },
         {
@@ -4888,36 +4858,6 @@
           "line_no": 906,
           "raw_text": "WHEN CCARD-AID-PFK08 AND CA-NEXT-PAGE-NOT-EXISTS AND CA-LAST-PAGE-SHOWN",
           "reason": "unresolved read operand: CA-LAST-PAGE-SHOWN"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 906,
-          "raw_text": "MOVE 'NO MORE PAGES TO DISPLAY' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: 'NO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 906,
-          "raw_text": "MOVE 'NO MORE PAGES TO DISPLAY' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: MORE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 906,
-          "raw_text": "MOVE 'NO MORE PAGES TO DISPLAY' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: PAGES"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 906,
-          "raw_text": "MOVE 'NO MORE PAGES TO DISPLAY' TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: DISPLAY'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 906,
-          "raw_text": "MOVE 'NO MORE PAGES TO DISPLAY' TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: TO"
         },
         {
           "verb": "MOVE",
@@ -5444,54 +5384,6 @@
           "verb": "MOVE",
           "line_no": 1014,
           "raw_text": "MOVE 'ACCOUNT FILTER,IF SUPPLIED MUST BE A 11 DIGIT NUMBER' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: 'ACCOUNT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1014,
-          "raw_text": "MOVE 'ACCOUNT FILTER,IF SUPPLIED MUST BE A 11 DIGIT NUMBER' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: FILTER,IF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1014,
-          "raw_text": "MOVE 'ACCOUNT FILTER,IF SUPPLIED MUST BE A 11 DIGIT NUMBER' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: SUPPLIED"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1014,
-          "raw_text": "MOVE 'ACCOUNT FILTER,IF SUPPLIED MUST BE A 11 DIGIT NUMBER' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: MUST"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1014,
-          "raw_text": "MOVE 'ACCOUNT FILTER,IF SUPPLIED MUST BE A 11 DIGIT NUMBER' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: BE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1014,
-          "raw_text": "MOVE 'ACCOUNT FILTER,IF SUPPLIED MUST BE A 11 DIGIT NUMBER' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: A"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1014,
-          "raw_text": "MOVE 'ACCOUNT FILTER,IF SUPPLIED MUST BE A 11 DIGIT NUMBER' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: DIGIT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1014,
-          "raw_text": "MOVE 'ACCOUNT FILTER,IF SUPPLIED MUST BE A 11 DIGIT NUMBER' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: NUMBER'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1014,
-          "raw_text": "MOVE 'ACCOUNT FILTER,IF SUPPLIED MUST BE A 11 DIGIT NUMBER' TO WS-ERROR-MSG",
           "reason": "unresolved mutate operand: WS-ERROR-MSG"
         },
         {
@@ -5629,60 +5521,6 @@
           "verb": "MOVE",
           "line_no": 1047,
           "raw_text": "MOVE 'CARD ID FILTER,IF SUPPLIED MUST BE A 16 DIGIT NUMBER' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: 'CARD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1047,
-          "raw_text": "MOVE 'CARD ID FILTER,IF SUPPLIED MUST BE A 16 DIGIT NUMBER' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1047,
-          "raw_text": "MOVE 'CARD ID FILTER,IF SUPPLIED MUST BE A 16 DIGIT NUMBER' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: FILTER,IF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1047,
-          "raw_text": "MOVE 'CARD ID FILTER,IF SUPPLIED MUST BE A 16 DIGIT NUMBER' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: SUPPLIED"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1047,
-          "raw_text": "MOVE 'CARD ID FILTER,IF SUPPLIED MUST BE A 16 DIGIT NUMBER' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: MUST"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1047,
-          "raw_text": "MOVE 'CARD ID FILTER,IF SUPPLIED MUST BE A 16 DIGIT NUMBER' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: BE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1047,
-          "raw_text": "MOVE 'CARD ID FILTER,IF SUPPLIED MUST BE A 16 DIGIT NUMBER' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: A"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1047,
-          "raw_text": "MOVE 'CARD ID FILTER,IF SUPPLIED MUST BE A 16 DIGIT NUMBER' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: DIGIT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1047,
-          "raw_text": "MOVE 'CARD ID FILTER,IF SUPPLIED MUST BE A 16 DIGIT NUMBER' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: NUMBER'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1047,
-          "raw_text": "MOVE 'CARD ID FILTER,IF SUPPLIED MUST BE A 16 DIGIT NUMBER' TO WS-ERROR-MSG",
           "reason": "unresolved mutate operand: WS-ERROR-MSG"
         },
         {
@@ -5784,7 +5622,7 @@
           "verb": "MOVE",
           "line_no": 1085,
           "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "literal as mutate target (ignored): 'S'"
+          "reason": "literal as mutate target (ignored): __LIT__"
         },
         {
           "verb": "MOVE",
@@ -5796,7 +5634,7 @@
           "verb": "MOVE",
           "line_no": 1085,
           "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "literal as mutate target (ignored): '1'"
+          "reason": "literal as mutate target (ignored): __LIT__"
         },
         {
           "verb": "MOVE",
@@ -5808,7 +5646,7 @@
           "verb": "MOVE",
           "line_no": 1085,
           "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "literal as mutate target (ignored): 'U'"
+          "reason": "literal as mutate target (ignored): __LIT__"
         },
         {
           "verb": "MOVE",
@@ -5820,7 +5658,7 @@
           "verb": "MOVE",
           "line_no": 1085,
           "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "literal as mutate target (ignored): '1'"
+          "reason": "literal as mutate target (ignored): __LIT__"
         },
         {
           "verb": "MOVE",
@@ -5838,7 +5676,7 @@
           "verb": "MOVE",
           "line_no": 1085,
           "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "literal as mutate target (ignored): '0'"
+          "reason": "literal as mutate target (ignored): __LIT__"
         },
         {
           "verb": "MOVE",
@@ -6239,36 +6077,6 @@
           "verb": "MOVE",
           "line_no": 1134,
           "raw_text": "MOVE 'NO MORE RECORDS TO SHOW' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: 'NO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE 'NO MORE RECORDS TO SHOW' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: MORE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE 'NO MORE RECORDS TO SHOW' TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: RECORDS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE 'NO MORE RECORDS TO SHOW' TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: SHOW'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE 'NO MORE RECORDS TO SHOW' TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE 'NO MORE RECORDS TO SHOW' TO WS-ERROR-MSG",
           "reason": "unresolved mutate operand: WS-ERROR-MSG"
         },
         {
@@ -6425,36 +6233,6 @@
           "verb": "MOVE",
           "line_no": 1134,
           "raw_text": "MOVE 'NO MORE RECORDS TO SHOW'  TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: 'NO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE 'NO MORE RECORDS TO SHOW'  TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: MORE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE 'NO MORE RECORDS TO SHOW'  TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: RECORDS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE 'NO MORE RECORDS TO SHOW'  TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: SHOW'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE 'NO MORE RECORDS TO SHOW'  TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE 'NO MORE RECORDS TO SHOW'  TO WS-ERROR-MSG",
           "reason": "unresolved mutate operand: WS-ERROR-MSG"
         },
         {
@@ -6474,30 +6252,6 @@
           "line_no": 1134,
           "raw_text": "IF WS-CA-SCREEN-NUM = 1 AND WS-SCRN-COUNTER = 0 *",
           "reason": "unresolved read operand: *"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE 'NO RECORDS TO SHOW'  TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: 'NO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE 'NO RECORDS TO SHOW'  TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: RECORDS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE 'NO RECORDS TO SHOW'  TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: SHOW'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE 'NO RECORDS TO SHOW'  TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: TO"
         },
         {
           "verb": "MOVE",

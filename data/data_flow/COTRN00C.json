@@ -188,498 +188,6 @@
         }
       ]
     },
-    "END-EXEC": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
-        {
-          "verb": "EVALUATE",
-          "line_no": 143,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 143,
-          "raw_text": "WHEN DFHRESP(NORMAL)",
-          "reason": "unresolved read operand: DFHRESP(NORMAL)"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 143,
-          "raw_text": "WHEN DFHRESP(NOTFND)",
-          "reason": "unresolved read operand: DFHRESP(NOTFND)"
-        },
-        {
-          "verb": "SET",
-          "line_no": 143,
-          "raw_text": "SET TRANSACT-EOF TO TRUE",
-          "reason": "unresolved mutate operand: TRANSACT-EOF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You are at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'You"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You are at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: are"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You are at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: at"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You are at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: the"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You are at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: top"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You are at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: of"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You are at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: the"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You are at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: page...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You are at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
-          "reason": "unresolved mutate operand: TRNIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
-          "reason": "unresolved mutate operand: COTRN0AI"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 143,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 143,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'Unable to lookup transaction...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Unable"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'Unable to lookup transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: lookup"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'Unable to lookup transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: transaction...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'Unable to lookup transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'Unable to lookup transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
-          "reason": "unresolved mutate operand: TRNIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
-          "reason": "unresolved mutate operand: COTRN0AI"
-        },
-        {
-          "verb": "EVALUATE",
-          "line_no": 143,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 143,
-          "raw_text": "WHEN DFHRESP(NORMAL)",
-          "reason": "unresolved read operand: DFHRESP(NORMAL)"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 143,
-          "raw_text": "WHEN DFHRESP(ENDFILE)",
-          "reason": "unresolved read operand: DFHRESP(ENDFILE)"
-        },
-        {
-          "verb": "SET",
-          "line_no": 143,
-          "raw_text": "SET TRANSACT-EOF TO TRUE",
-          "reason": "unresolved mutate operand: TRANSACT-EOF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You have reached the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'You"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You have reached the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: have"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You have reached the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: reached"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You have reached the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: the"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You have reached the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: bottom"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You have reached the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: of"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You have reached the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: the"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You have reached the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: page...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You have reached the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
-          "reason": "unresolved mutate operand: TRNIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
-          "reason": "unresolved mutate operand: COTRN0AI"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 143,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 143,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'Unable to lookup transaction...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Unable"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'Unable to lookup transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: lookup"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'Unable to lookup transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: transaction...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'Unable to lookup transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'Unable to lookup transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
-          "reason": "unresolved mutate operand: TRNIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
-          "reason": "unresolved mutate operand: COTRN0AI"
-        },
-        {
-          "verb": "EVALUATE",
-          "line_no": 143,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 143,
-          "raw_text": "WHEN DFHRESP(NORMAL)",
-          "reason": "unresolved read operand: DFHRESP(NORMAL)"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 143,
-          "raw_text": "WHEN DFHRESP(ENDFILE)",
-          "reason": "unresolved read operand: DFHRESP(ENDFILE)"
-        },
-        {
-          "verb": "SET",
-          "line_no": 143,
-          "raw_text": "SET TRANSACT-EOF TO TRUE",
-          "reason": "unresolved mutate operand: TRANSACT-EOF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You have reached the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'You"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You have reached the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: have"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You have reached the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: reached"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You have reached the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: the"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You have reached the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: top"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You have reached the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: of"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You have reached the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: the"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You have reached the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: page...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'You have reached the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
-          "reason": "unresolved mutate operand: TRNIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
-          "reason": "unresolved mutate operand: COTRN0AI"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 143,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 143,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'Unable to lookup transaction...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Unable"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'Unable to lookup transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: lookup"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'Unable to lookup transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: transaction...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'Unable to lookup transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE 'Unable to lookup transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
-          "reason": "unresolved mutate operand: TRNIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 143,
-          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
-          "reason": "unresolved mutate operand: COTRN0AI"
-        }
-      ]
-    },
     "PROCESS-ENTER-KEY": {
       "reads": [],
       "mutates": [],
@@ -1564,42 +1072,6 @@
           "verb": "MOVE",
           "line_no": 148,
           "raw_text": "MOVE 'Tran ID must be Numeric ...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'Tran"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 148,
-          "raw_text": "MOVE 'Tran ID must be Numeric ...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 148,
-          "raw_text": "MOVE 'Tran ID must be Numeric ...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: must"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 148,
-          "raw_text": "MOVE 'Tran ID must be Numeric ...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: be"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 148,
-          "raw_text": "MOVE 'Tran ID must be Numeric ...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: Numeric"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 148,
-          "raw_text": "MOVE 'Tran ID must be Numeric ...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: ...'"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 148,
-          "raw_text": "MOVE 'Tran ID must be Numeric ...' TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
@@ -1670,11 +1142,6 @@
         }
       ]
     },
-    "END-IF": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
-    },
     "PROCESS-PF7-KEY": {
       "reads": [],
       "mutates": [],
@@ -1738,60 +1205,6 @@
           "line_no": 236,
           "raw_text": "IF CDEMO-CT00-PAGE-NUM > 1",
           "reason": "unresolved read operand: CDEMO-CT00-PAGE-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 236,
-          "raw_text": "MOVE 'You are already at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'You"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 236,
-          "raw_text": "MOVE 'You are already at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: are"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 236,
-          "raw_text": "MOVE 'You are already at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: already"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 236,
-          "raw_text": "MOVE 'You are already at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: at"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 236,
-          "raw_text": "MOVE 'You are already at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: the"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 236,
-          "raw_text": "MOVE 'You are already at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: top"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 236,
-          "raw_text": "MOVE 'You are already at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: of"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 236,
-          "raw_text": "MOVE 'You are already at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: the"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 236,
-          "raw_text": "MOVE 'You are already at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: page...'"
         },
         {
           "verb": "MOVE",
@@ -1864,60 +1277,6 @@
           "line_no": 259,
           "raw_text": "IF NEXT-PAGE-YES",
           "reason": "unresolved read operand: NEXT-PAGE-YES"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 259,
-          "raw_text": "MOVE 'You are already at the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: 'You"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 259,
-          "raw_text": "MOVE 'You are already at the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: are"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 259,
-          "raw_text": "MOVE 'You are already at the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: already"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 259,
-          "raw_text": "MOVE 'You are already at the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: at"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 259,
-          "raw_text": "MOVE 'You are already at the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: the"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 259,
-          "raw_text": "MOVE 'You are already at the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: bottom"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 259,
-          "raw_text": "MOVE 'You are already at the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: of"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 259,
-          "raw_text": "MOVE 'You are already at the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: the"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 259,
-          "raw_text": "MOVE 'You are already at the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved read operand: page...'"
         },
         {
           "verb": "MOVE",
@@ -3349,11 +2708,6 @@
         }
       ]
     },
-    "END-EVALUATE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
-    },
     "INITIALIZE-TRAN-DATA": {
       "reads": [],
       "mutates": [],
@@ -4442,6 +3796,96 @@
           "line_no": 593,
           "raw_text": "EXEC CICS STARTBR DATASET   (WS-TRANSACT-FILE) RIDFLD    (TRAN-ID) KEYLENGTH (LENGTH OF TRAN-ID) *         GTEQ RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
           "reason": "unresolved mutate operand: (WS-REAS-CD)"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 602,
+          "raw_text": "EVALUATE WS-RESP-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 602,
+          "raw_text": "WHEN DFHRESP(NORMAL)",
+          "reason": "unresolved read operand: DFHRESP(NORMAL)"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 602,
+          "raw_text": "WHEN DFHRESP(NOTFND)",
+          "reason": "unresolved read operand: DFHRESP(NOTFND)"
+        },
+        {
+          "verb": "SET",
+          "line_no": 602,
+          "raw_text": "SET TRANSACT-EOF TO TRUE",
+          "reason": "unresolved mutate operand: TRANSACT-EOF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 602,
+          "raw_text": "MOVE 'You are at the top of the page...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 602,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
+          "reason": "unresolved mutate operand: TRNIDINL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 602,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 602,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
+          "reason": "unresolved mutate operand: COTRN0AI"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 602,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 602,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-REAS-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 602,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 602,
+          "raw_text": "MOVE 'Unable to lookup transaction...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 602,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
+          "reason": "unresolved mutate operand: TRNIDINL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 602,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 602,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
+          "reason": "unresolved mutate operand: COTRN0AI"
         }
       ]
     },
@@ -4484,6 +3928,96 @@
           "line_no": 626,
           "raw_text": "EXEC CICS READNEXT DATASET   (WS-TRANSACT-FILE) INTO      (TRAN-RECORD) LENGTH    (LENGTH OF TRAN-RECORD) RIDFLD    (TRAN-ID) KEYLENGTH (LENGTH OF TRAN-ID) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
           "reason": "unresolved mutate operand: (WS-REAS-CD)"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 636,
+          "raw_text": "EVALUATE WS-RESP-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 636,
+          "raw_text": "WHEN DFHRESP(NORMAL)",
+          "reason": "unresolved read operand: DFHRESP(NORMAL)"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 636,
+          "raw_text": "WHEN DFHRESP(ENDFILE)",
+          "reason": "unresolved read operand: DFHRESP(ENDFILE)"
+        },
+        {
+          "verb": "SET",
+          "line_no": 636,
+          "raw_text": "SET TRANSACT-EOF TO TRUE",
+          "reason": "unresolved mutate operand: TRANSACT-EOF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 636,
+          "raw_text": "MOVE 'You have reached the bottom of the page...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 636,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
+          "reason": "unresolved mutate operand: TRNIDINL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 636,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 636,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
+          "reason": "unresolved mutate operand: COTRN0AI"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 636,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 636,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-REAS-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 636,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 636,
+          "raw_text": "MOVE 'Unable to lookup transaction...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 636,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
+          "reason": "unresolved mutate operand: TRNIDINL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 636,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 636,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
+          "reason": "unresolved mutate operand: COTRN0AI"
         }
       ]
     },
@@ -4526,6 +4060,96 @@
           "line_no": 660,
           "raw_text": "EXEC CICS READPREV DATASET   (WS-TRANSACT-FILE) INTO      (TRAN-RECORD) LENGTH    (LENGTH OF TRAN-RECORD) RIDFLD    (TRAN-ID) KEYLENGTH (LENGTH OF TRAN-ID) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
           "reason": "unresolved mutate operand: (WS-REAS-CD)"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 670,
+          "raw_text": "EVALUATE WS-RESP-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 670,
+          "raw_text": "WHEN DFHRESP(NORMAL)",
+          "reason": "unresolved read operand: DFHRESP(NORMAL)"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 670,
+          "raw_text": "WHEN DFHRESP(ENDFILE)",
+          "reason": "unresolved read operand: DFHRESP(ENDFILE)"
+        },
+        {
+          "verb": "SET",
+          "line_no": 670,
+          "raw_text": "SET TRANSACT-EOF TO TRUE",
+          "reason": "unresolved mutate operand: TRANSACT-EOF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 670,
+          "raw_text": "MOVE 'You have reached the top of the page...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 670,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
+          "reason": "unresolved mutate operand: TRNIDINL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 670,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 670,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
+          "reason": "unresolved mutate operand: COTRN0AI"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 670,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 670,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-REAS-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 670,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 670,
+          "raw_text": "MOVE 'Unable to lookup transaction...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 670,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
+          "reason": "unresolved mutate operand: TRNIDINL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 670,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 670,
+          "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
+          "reason": "unresolved mutate operand: COTRN0AI"
         }
       ]
     },
@@ -4535,9 +4159,5 @@
       "unresolved": []
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=19 facts=16"
-    }
-  ]
+  "program_unresolved": []
 }
