@@ -182,14 +182,17 @@ class TestDisplayLiteralInVerbSplit(unittest.TestCase):
 
 class TestScopeTerminatorsNotParagraphs(unittest.TestCase):
     def test_end_perform_not_paragraph(self):
-        source = """
-       PROCEDURE DIVISION.
-       MAIN-PARA.
-           PERFORM VARYING I FROM 1 BY 1 UNTIL I > 10
-               DISPLAY I
-           END-PERFORM.
-           GOBACK.
-"""
+        # NOTE: inline CBL source MUST use 6-digit sequence numbers so that
+        # _normalise_source strips them as the sequence field (not as real spaces),
+        # leaving col 8 at text[0] with the correct Area-A/B indentation.
+        source = (
+            "000001 PROCEDURE DIVISION.\n"
+            "000002 MAIN-PARA.\n"
+            "000003            PERFORM VARYING I FROM 1 BY 1 UNTIL I > 10\n"
+            "000004                DISPLAY I\n"
+            "000005            END-PERFORM.\n"
+            "000006            GOBACK.\n"
+        )
         lines = _normalise_source(source)
         paras = extract_paragraphs(lines)
         para_names = [k for k in paras if k != '__MAIN__']
@@ -205,16 +208,18 @@ class TestContinuationJoin(unittest.TestCase):
         indented in Area B) must be fused into the MOVE, not become
         a paragraph header.
         """
-        source = """
-       PROCEDURE DIVISION.
-       1300-POPUL-ACCT-RECORD.
-           MOVE   ACCT-REISSUE-DATE  TO  CODATECN-INP-DATE
-                                         WS-REISSUE-DATE.
-           EXIT.
-       1350-WRITE-ACCT-RECORD.
-           WRITE OUT-ACCT-REC.
-           EXIT.
-"""
+        # 6-digit sequence numbers are required so _normalise_source correctly
+        # identifies Area A (col 8) vs Area B (col 12+) indentation.
+        source = (
+            "000001 PROCEDURE DIVISION.\n"
+            "000002 1300-POPUL-ACCT-RECORD.\n"
+            "000003            MOVE   ACCT-REISSUE-DATE  TO  CODATECN-INP-DATE\n"
+            "000004                                          WS-REISSUE-DATE.\n"
+            "000005            EXIT.\n"
+            "000006 1350-WRITE-ACCT-RECORD.\n"
+            "000007            WRITE OUT-ACCT-REC.\n"
+            "000008            EXIT.\n"
+        )
         lines = _normalise_source(source)
         paras = extract_paragraphs(lines)
         para_names = [k for k in paras if k != '__MAIN__']
@@ -224,28 +229,28 @@ class TestContinuationJoin(unittest.TestCase):
 
     def test_real_paragraphs_all_detected(self):
         """
-        All 16 CardDemo CBACT01C paragraph names must be detected when
-        processing the inline snippet.
+        Paragraph names from a CBACT01C-style snippet must all be detected,
+        and Area-B MOVE continuation targets must NOT become paragraphs.
         """
         expected = [
             '1300-POPUL-ACCT-RECORD',
             '1350-WRITE-ACCT-RECORD',
             '1500-POPUL-VBRC-RECORD',
         ]
-        source = """
-       PROCEDURE DIVISION.
-       1300-POPUL-ACCT-RECORD.
-           MOVE ACCT-ID TO CODATECN-INP-DATE
-                           WS-REISSUE-DATE.
-           EXIT.
-       1350-WRITE-ACCT-RECORD.
-           WRITE OUT-ACCT-REC.
-           EXIT.
-       1500-POPUL-VBRC-RECORD.
-           MOVE ACCT-ID TO VB1-ACCT-ID
-                           VB2-ACCT-ID.
-           EXIT.
-"""
+        source = (
+            "000001 PROCEDURE DIVISION.\n"
+            "000002 1300-POPUL-ACCT-RECORD.\n"
+            "000003            MOVE ACCT-ID TO CODATECN-INP-DATE\n"
+            "000004                             WS-REISSUE-DATE.\n"
+            "000005            EXIT.\n"
+            "000006 1350-WRITE-ACCT-RECORD.\n"
+            "000007            WRITE OUT-ACCT-REC.\n"
+            "000008            EXIT.\n"
+            "000009 1500-POPUL-VBRC-RECORD.\n"
+            "000010            MOVE ACCT-ID TO VB1-ACCT-ID\n"
+            "000011                             VB2-ACCT-ID.\n"
+            "000012            EXIT.\n"
+        )
         lines = _normalise_source(source)
         paras = extract_paragraphs(lines)
         para_names = [k for k in paras if k != '__MAIN__']
@@ -266,6 +271,7 @@ class TestNonPrefixedParagraphDetection(unittest.TestCase):
     COADM01C pattern: MAIN-PARA., PROCESS-ENTER-KEY., SEND-MENU-SCREEN. etc.
     """
     def test_non_prefixed_paragraphs_detected(self):
+        # 6-digit sequence numbers required for correct Area-A detection.
         source = (
             "000001 PROCEDURE DIVISION.\n"
             "000002 MAIN-PARA.\n"
@@ -296,6 +302,7 @@ class TestAreaBContinuationStillFused(unittest.TestCase):
     """
     def test_indented_ws_reissue_date_fused(self):
         # WS-REISSUE-DATE. is indented (Area B) — must not become a paragraph.
+        # 6-digit sequence numbers required for correct Area-A/B detection.
         source = (
             "000001 PROCEDURE DIVISION.\n"
             "000002 MAIN-PARA.\n"
@@ -319,6 +326,10 @@ class TestSectionHeaderNotFalseParagraph(unittest.TestCase):
     WORKING-STORAGE SECTION. and similar section headers must never be
     detected as paragraphs.  They appear in Area A and match the
     superficial pattern but must be excluded.
+
+    These tests call _is_area_a_paragraph() directly with already-stripped
+    text (no leading spaces) to test the exclusion logic independently of
+    the Area-A positional rule.
     """
     def test_working_storage_section_not_paragraph(self):
         self.assertFalse(
@@ -351,6 +362,9 @@ class TestDivisionHeaderNotParagraph(unittest.TestCase):
     """
     Division header lines (PROCEDURE DIVISION., DATA DIVISION. etc.) must
     never be detected as paragraphs, including forms with USING clauses.
+
+    These tests call _is_area_a_paragraph() directly with already-stripped
+    text to test the keyword-exclusion rules independently.
     """
     def test_procedure_division_not_paragraph(self):
         self.assertFalse(
@@ -358,7 +372,7 @@ class TestDivisionHeaderNotParagraph(unittest.TestCase):
             'PROCEDURE DIVISION. must not be a paragraph'
         )
 
-    def test_data_division_not_paragraph(self):
+    def test_data_division_not_paragraph(self):\
         self.assertFalse(
             _is_area_a_paragraph('DATA DIVISION.'),
             'DATA DIVISION. must not be a paragraph'
@@ -383,6 +397,9 @@ class TestLevel01NotParagraph(unittest.TestCase):
     """
     Level-number data items (01 WS-REC., 05 FILLER., 77 WS-CTR.) start
     in Area A but are data definitions, never paragraph names.
+
+    These tests call _is_area_a_paragraph() directly with already-stripped
+    text (no leading spaces) to test the level-number exclusion rule.
     """
     def test_level_01_not_paragraph(self):
         self.assertFalse(
