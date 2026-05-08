@@ -8,7 +8,6 @@ import sys
 import unittest
 from pathlib import Path
 
-# Make scripts/ importable regardless of working directory.
 sys.path.insert(0, str(Path(__file__).parent.parent / 'scripts'))
 
 from data_flow import (
@@ -35,6 +34,15 @@ _QMAP = {
     'GROUP2': [{'field': 'GROUP2', 'record': 'GROUP2', 'copybook': None, 'offset': 0, 'length': 20}],
     'OUTFILE-STATUS': [{'field': 'OUTFILE-STATUS', 'record': 'OUTFILE-STATUS',
                         'copybook': None, 'offset': 0, 'length': 2}],
+    # 3.2 CALL test fixtures
+    'WS-DATE-FIELDS': [{'field': 'WS.WS-DATE-FIELDS', 'record': 'WS',
+                        'copybook': None, 'offset': 0, 'length': 8}],
+    'WS-RETURN-CODE': [{'field': 'WS.WS-RETURN-CODE', 'record': 'WS',
+                        'copybook': None, 'offset': 8, 'length': 4}],
+    'WS-INPUT-DATE':  [{'field': 'WS.WS-INPUT-DATE',  'record': 'WS',
+                        'copybook': None, 'offset': 0, 'length': 8}],
+    'WS-OUTPUT-DATE': [{'field': 'WS.WS-OUTPUT-DATE', 'record': 'WS',
+                        'copybook': None, 'offset': 8, 'length': 8}],
 }
 
 
@@ -45,95 +53,66 @@ def _run(stmt, context=None):
     return reads, mutates, unresolved
 
 
+def _run_call(stmt, context=None):
+    """Run classify_statement and also return call_targets."""
+    reads, mutates, unresolved, call_targets = [], [], [], []
+    ctx = set(context or [])
+    classify_statement(1, stmt, _QMAP, ctx, reads, mutates, unresolved, call_targets)
+    return reads, mutates, unresolved, call_targets
+
+
 # ---------------------------------------------------------------------------
-# _normalise_source column-layout diagnostic tests  (Section 3.1 new)
+# _normalise_source column-layout diagnostic tests  (Section 3.1)
 # ---------------------------------------------------------------------------
 
 class TestNormaliseSourceColumnLayout(unittest.TestCase):
-    """
-    Verify that _normalise_source uses FIXED COBOL column positions
-    (cols 1-6 = sequence, col 7 = indicator, cols 8-72 = code area)
-    unconditionally, regardless of whether the sequence area contains
-    digits or blanks.
-    """
-
     def test_digit_sequence_area_a_paragraph(self):
-        """Line with 6-digit sequence: col 8 content must be text[0]."""
         raw = "000100 0000-ACCTFILE-OPEN.\n"
         result = _normalise_source(raw)
-        self.assertEqual(len(result), 1, 'Expected exactly one normalised line')
+        self.assertEqual(len(result), 1)
         lineno, text = result[0]
-        self.assertEqual(text, '0000-ACCTFILE-OPEN.',
-                         f'code area mismatch: got {repr(text)}')
-        self.assertEqual(text[0], '0',
-                         'First char must be Area-A content, not a space')
+        self.assertEqual(text, '0000-ACCTFILE-OPEN.')
+        self.assertEqual(text[0], '0')
 
     def test_blank_sequence_area_a_paragraph(self):
-        """Line with blank sequence area (7 leading spaces): same result."""
-        # cols 1-6 = spaces, col 7 = space (indicator), cols 8+ = paragraph name
         raw = "       0000-ACCTFILE-OPEN.\n"
         result = _normalise_source(raw)
-        self.assertEqual(len(result), 1, 'Expected exactly one normalised line')
+        self.assertEqual(len(result), 1)
         lineno, text = result[0]
-        self.assertEqual(text, '0000-ACCTFILE-OPEN.',
-                         f'code area mismatch: got {repr(text)}')
-        self.assertEqual(text[0], '0',
-                         'First char must be Area-A content, not a space')
+        self.assertEqual(text, '0000-ACCTFILE-OPEN.')
+        self.assertEqual(text[0], '0')
 
     def test_area_b_line_has_leading_spaces(self):
-        """Area-B line must have text[0]==' ' after normalisation."""
         raw = "000040                             WS-REISSUE-DATE.\n"
         result = _normalise_source(raw)
         self.assertEqual(len(result), 1)
         lineno, text = result[0]
-        self.assertEqual(text[0], ' ',
-                         'Area-B line must start with a space after normalisation')
+        self.assertEqual(text[0], ' ')
         self.assertIn('WS-REISSUE-DATE', text)
 
     def test_comment_line_skipped(self):
-        """Lines with '*' in col 7 must be skipped."""
         raw = "000001*This is a comment\n"
         result = _normalise_source(raw)
-        self.assertEqual(result, [], 'Comment lines must produce no output')
+        self.assertEqual(result, [])
 
     def test_short_line_skipped(self):
-        """Lines shorter than 7 chars must be silently skipped."""
         raw = "short\n"
         result = _normalise_source(raw)
-        self.assertEqual(result, [], 'Short lines must produce no output')
+        self.assertEqual(result, [])
 
 
 # ---------------------------------------------------------------------------
-# Golden integration test: real CBACT01C file on disk  (Section 3.1 new)
+# Golden integration test: real CBACT01C file on disk  (Section 3.1)
 # ---------------------------------------------------------------------------
 
 class TestCbact01cRealFileParagraphCount(unittest.TestCase):
-    """
-    End-to-end gate: read data/raw/cbl/CBACT01C.cbl from disk, run
-    extract_paragraphs, and assert exactly 16 paragraphs with the
-    exact names known from facts/CBACT01C.json.
-
-    This test MUST exercise the same _normalise_source code path as the
-    corpus run.  It is the ground truth for 3.1 gating.
-    """
-
     _CBL = Path('data/raw/cbl/CBACT01C.cbl')
     _EXPECTED = [
-        '0000-ACCTFILE-OPEN',
-        '1000-ACCTFILE-GET-NEXT',
-        '1100-DISPLAY-ACCT-RECORD',
-        '1300-POPUL-ACCT-RECORD',
-        '1350-WRITE-ACCT-RECORD',
-        '1400-POPUL-ARRAY-RECORD',
-        '1450-WRITE-ARRY-RECORD',
-        '1500-POPUL-VBRC-RECORD',
-        '1550-WRITE-VB1-RECORD',
-        '1575-WRITE-VB2-RECORD',
-        '2000-OUTFILE-OPEN',
-        '3000-ARRFILE-OPEN',
-        '4000-VBRFILE-OPEN',
-        '9000-ACCTFILE-CLOSE',
-        '9910-DISPLAY-IO-STATUS',
+        '0000-ACCTFILE-OPEN', '1000-ACCTFILE-GET-NEXT', '1100-DISPLAY-ACCT-RECORD',
+        '1300-POPUL-ACCT-RECORD', '1350-WRITE-ACCT-RECORD', '1400-POPUL-ARRAY-RECORD',
+        '1450-WRITE-ARRY-RECORD', '1500-POPUL-VBRC-RECORD', '1550-WRITE-VB1-RECORD',
+        '1575-WRITE-VB2-RECORD', '2000-OUTFILE-OPEN', '3000-ARRFILE-OPEN',
+        '4000-VBRFILE-OPEN', '9000-ACCTFILE-CLOSE', '9910-DISPLAY-IO-STATUS',
         '9999-ABEND-PROGRAM',
     ]
 
@@ -146,19 +125,13 @@ class TestCbact01cRealFileParagraphCount(unittest.TestCase):
         lines = _normalise_source(raw)
         paras = extract_paragraphs(lines)
         names = sorted(k for k in paras if k != '__MAIN__')
-        self.assertEqual(
-            len(names), 16,
-            f'Expected 16 paragraphs, got {len(names)}: {names}'
-        )
+        self.assertEqual(len(names), 16, f'Expected 16, got {len(names)}: {names}')
         for expected in self._EXPECTED:
-            self.assertIn(
-                expected, names,
-                f'Missing paragraph: {expected}  (found: {names})'
-            )
+            self.assertIn(expected, names)
 
 
 # ---------------------------------------------------------------------------
-# Section 2 tests (must remain green)
+# Section 2 tests
 # ---------------------------------------------------------------------------
 
 class TestMoveSingleTarget(unittest.TestCase):
@@ -280,10 +253,6 @@ class TestDisplayLiteralNoUnresolved(unittest.TestCase):
 
 
 class TestDisplayLiteralInVerbSplit(unittest.TestCase):
-    """
-    CBACT01C line 245: the literal 'ACCOUNT FILE WRITE STATUS IS:' contains
-    the word WRITE.  _dispatch_inline must not split on that embedded keyword.
-    """
     def test_display_literal_containing_verb_keyword(self):
         stmt = "DISPLAY 'ACCOUNT FILE WRITE STATUS IS:'  OUTFILE-STATUS"
         reads, mutates, unresolved = [], [], []
@@ -295,9 +264,6 @@ class TestDisplayLiteralInVerbSplit(unittest.TestCase):
 
 class TestScopeTerminatorsNotParagraphs(unittest.TestCase):
     def test_end_perform_not_paragraph(self):
-        # Inline source uses blank sequence area (7 leading spaces = 6 blank
-        # seq cols + 1 indicator space), matching files without sequence numbers.
-        # _normalise_source treats col 7 (index 6) as indicator unconditionally.
         source = (
             "       PROCEDURE DIVISION.\n"
             "       MAIN-PARA.\n"
@@ -316,11 +282,6 @@ class TestScopeTerminatorsNotParagraphs(unittest.TestCase):
 
 class TestContinuationJoin(unittest.TestCase):
     def test_move_continuation_not_a_paragraph(self):
-        """
-        A MOVE target sitting alone on its own line (no 4-digit prefix,
-        indented in Area B) must be fused into the MOVE, not become
-        a paragraph header.
-        """
         source = (
             "       PROCEDURE DIVISION.\n"
             "       1300-POPUL-ACCT-RECORD.\n"
@@ -339,15 +300,7 @@ class TestContinuationJoin(unittest.TestCase):
         self.assertNotIn('WS-REISSUE-DATE', para_names)
 
     def test_real_paragraphs_all_detected(self):
-        """
-        Paragraph names from a CBACT01C-style snippet must all be detected,
-        and Area-B MOVE continuation targets must NOT become paragraphs.
-        """
-        expected = [
-            '1300-POPUL-ACCT-RECORD',
-            '1350-WRITE-ACCT-RECORD',
-            '1500-POPUL-VBRC-RECORD',
-        ]
+        expected = ['1300-POPUL-ACCT-RECORD', '1350-WRITE-ACCT-RECORD', '1500-POPUL-VBRC-RECORD']
         source = (
             "       PROCEDURE DIVISION.\n"
             "       1300-POPUL-ACCT-RECORD.\n"
@@ -371,16 +324,7 @@ class TestContinuationJoin(unittest.TestCase):
         self.assertNotIn('VB2-ACCT-ID', para_names)
 
 
-# ---------------------------------------------------------------------------
-# Section 3.1 NEW tests
-# ---------------------------------------------------------------------------
-
 class TestNonPrefixedParagraphDetection(unittest.TestCase):
-    """
-    Programs that use free-form (non-4-digit) paragraph names must have
-    all their paragraphs detected correctly.
-    COADM01C pattern: MAIN-PARA., PROCESS-ENTER-KEY., SEND-MENU-SCREEN. etc.
-    """
     def test_non_prefixed_paragraphs_detected(self):
         source = (
             "       PROCEDURE DIVISION.\n"
@@ -394,22 +338,13 @@ class TestNonPrefixedParagraphDetection(unittest.TestCase):
         lines = _normalise_source(source)
         paras = extract_paragraphs(lines)
         para_names = [k for k in paras if k != '__MAIN__']
-        self.assertIn('MAIN-PARA', para_names,
-                      'MAIN-PARA must be detected as a paragraph')
-        self.assertIn('PROCESS-RECORDS', para_names,
-                      'PROCESS-RECORDS must be detected as a paragraph')
-        self.assertIn('FINALIZE-PARA', para_names,
-                      'FINALIZE-PARA must be detected as a paragraph')
-        self.assertEqual(len(para_names), 3,
-                         f'Expected 3 paragraphs, got: {para_names}')
+        self.assertIn('MAIN-PARA', para_names)
+        self.assertIn('PROCESS-RECORDS', para_names)
+        self.assertIn('FINALIZE-PARA', para_names)
+        self.assertEqual(len(para_names), 3)
 
 
 class TestAreaBContinuationStillFused(unittest.TestCase):
-    """
-    An Area-B line (indented) that looks like a paragraph header must be
-    fused as a continuation of the preceding open statement, NOT treated
-    as a new paragraph.
-    """
     def test_indented_ws_reissue_date_fused(self):
         source = (
             "       PROCEDURE DIVISION.\n"
@@ -422,19 +357,13 @@ class TestAreaBContinuationStillFused(unittest.TestCase):
         lines = _normalise_source(source)
         paras = extract_paragraphs(lines)
         para_names = [k for k in paras if k != '__MAIN__']
-        self.assertNotIn('WS-REISSUE-DATE', para_names,
-                         'Indented WS-REISSUE-DATE. must be fused as continuation')
+        self.assertNotIn('WS-REISSUE-DATE', para_names)
         self.assertIn('MAIN-PARA', para_names)
         self.assertIn('NEXT-PARA', para_names)
         self.assertEqual(len(para_names), 2)
 
 
 class TestSectionHeaderNotFalseParagraph(unittest.TestCase):
-    """
-    WORKING-STORAGE SECTION. and similar section headers must never be
-    detected as paragraphs.  Called directly with stripped text (no leading
-    spaces) to test the exclusion logic independently of the Area-A rule.
-    """
     def test_working_storage_section_not_paragraph(self):
         self.assertFalse(_is_area_a_paragraph('WORKING-STORAGE SECTION.'))
 
@@ -449,10 +378,6 @@ class TestSectionHeaderNotFalseParagraph(unittest.TestCase):
 
 
 class TestDivisionHeaderNotParagraph(unittest.TestCase):
-    """
-    Division headers must never be detected as paragraphs.
-    Called directly with stripped text.
-    """
     def test_procedure_division_not_paragraph(self):
         self.assertFalse(_is_area_a_paragraph('PROCEDURE DIVISION.'))
 
@@ -467,10 +392,6 @@ class TestDivisionHeaderNotParagraph(unittest.TestCase):
 
 
 class TestLevel01NotParagraph(unittest.TestCase):
-    """
-    Level-number data items must never be detected as paragraphs.
-    Called directly with stripped text.
-    """
     def test_level_01_not_paragraph(self):
         self.assertFalse(_is_area_a_paragraph('01 WS-REC.'))
 
@@ -479,6 +400,147 @@ class TestLevel01NotParagraph(unittest.TestCase):
 
     def test_level_05_not_paragraph(self):
         self.assertFalse(_is_area_a_paragraph('05 FILLER.'))
+
+
+# ---------------------------------------------------------------------------
+# Section 3.2 tests -- CALL USING mode-aware classification
+# ---------------------------------------------------------------------------
+
+class TestCallUsingByReference(unittest.TestCase):
+    """
+    BY REFERENCE (default mode when no keyword given, and explicit BY REFERENCE):
+    operand must appear in BOTH reads AND mutates.
+    """
+    def test_call_by_reference_default(self):
+        """No BY keyword -> defaults to BY REFERENCE -> read + mutate."""
+        r, m, u, ct = _run_call('CALL \'COBDATFT\' USING WS-DATE-FIELDS')
+        rf = [e['field'] for e in r]
+        mf = [e['field'] for e in m]
+        self.assertIn('WS.WS-DATE-FIELDS', rf, 'BY REFERENCE default must produce a read')
+        self.assertIn('WS.WS-DATE-FIELDS', mf, 'BY REFERENCE default must produce a mutate')
+        self.assertEqual(u, [], f'Unexpected unresolved: {u}')
+
+    def test_call_explicit_by_reference(self):
+        """Explicit BY REFERENCE -> read + mutate."""
+        r, m, u, ct = _run_call('CALL \'COBDATFT\' USING BY REFERENCE WS-DATE-FIELDS')
+        rf = [e['field'] for e in r]
+        mf = [e['field'] for e in m]
+        self.assertIn('WS.WS-DATE-FIELDS', rf)
+        self.assertIn('WS.WS-DATE-FIELDS', mf)
+        self.assertEqual(u, [])
+
+    def test_call_target_recorded(self):
+        """Call target must be captured in call_targets."""
+        r, m, u, ct = _run_call('CALL \'COBDATFT\' USING WS-DATE-FIELDS')
+        self.assertIn('COBDATFT', ct, f'Expected COBDATFT in call_targets, got {ct}')
+
+
+class TestCallUsingByContent(unittest.TestCase):
+    """
+    BY CONTENT -> read only, NOT mutate.
+    """
+    def test_call_by_content_read_only(self):
+        r, m, u, ct = _run_call('CALL \'COBDATFT\' USING BY CONTENT WS-INPUT-DATE')
+        rf = [e['field'] for e in r]
+        mf = [e['field'] for e in m]
+        self.assertIn('WS.WS-INPUT-DATE', rf, 'BY CONTENT must produce a read')
+        self.assertNotIn('WS.WS-INPUT-DATE', mf, 'BY CONTENT must NOT produce a mutate')
+        self.assertEqual(u, [])
+
+
+class TestCallUsingByValue(unittest.TestCase):
+    """
+    BY VALUE -> read only, NOT mutate.
+    """
+    def test_call_by_value_read_only(self):
+        r, m, u, ct = _run_call('CALL \'COBDATFT\' USING BY VALUE WS-INPUT-DATE')
+        rf = [e['field'] for e in r]
+        mf = [e['field'] for e in m]
+        self.assertIn('WS.WS-INPUT-DATE', rf, 'BY VALUE must produce a read')
+        self.assertNotIn('WS.WS-INPUT-DATE', mf, 'BY VALUE must NOT produce a mutate')
+        self.assertEqual(u, [])
+
+
+class TestCallReturning(unittest.TestCase):
+    """
+    RETURNING -> mutate only, NOT read.
+    """
+    def test_call_returning_mutate_only(self):
+        r, m, u, ct = _run_call('CALL \'COBDATFT\' RETURNING WS-RETURN-CODE')
+        rf = [e['field'] for e in r]
+        mf = [e['field'] for e in m]
+        self.assertNotIn('WS.WS-RETURN-CODE', rf, 'RETURNING must NOT produce a read')
+        self.assertIn('WS.WS-RETURN-CODE', mf, 'RETURNING must produce a mutate')
+        self.assertEqual(u, [])
+
+    def test_call_using_then_returning(self):
+        """Mixed: USING BY REFERENCE (read+mutate) then RETURNING (mutate only)."""
+        r, m, u, ct = _run_call(
+            'CALL \'COBDATFT\' USING BY REFERENCE WS-INPUT-DATE RETURNING WS-RETURN-CODE'
+        )
+        rf = [e['field'] for e in r]
+        mf = [e['field'] for e in m]
+        self.assertIn('WS.WS-INPUT-DATE', rf)
+        self.assertIn('WS.WS-INPUT-DATE', mf)
+        self.assertNotIn('WS.WS-RETURN-CODE', rf)
+        self.assertIn('WS.WS-RETURN-CODE', mf)
+        self.assertEqual(u, [])
+
+
+class TestCallMixedModes(unittest.TestCase):
+    """
+    Multiple BY mode switches within a single CALL USING clause.
+    """
+    def test_call_mixed_reference_and_content(self):
+        """
+        CALL 'X' USING BY REFERENCE WS-OUTPUT-DATE
+                       BY CONTENT   WS-INPUT-DATE
+        WS-OUTPUT-DATE -> read + mutate
+        WS-INPUT-DATE  -> read only
+        """
+        r, m, u, ct = _run_call(
+            "CALL 'X' USING BY REFERENCE WS-OUTPUT-DATE BY CONTENT WS-INPUT-DATE"
+        )
+        rf = [e['field'] for e in r]
+        mf = [e['field'] for e in m]
+        self.assertIn('WS.WS-OUTPUT-DATE', rf)
+        self.assertIn('WS.WS-OUTPUT-DATE', mf)
+        self.assertIn('WS.WS-INPUT-DATE', rf)
+        self.assertNotIn('WS.WS-INPUT-DATE', mf)
+        self.assertEqual(u, [])
+
+
+class TestCallGraphCbact01c(unittest.TestCase):
+    """
+    End-to-end: CBACT01C.call_graph must include COBDATFT as a called program.
+    CBACT01C paragraph 1300-POPUL-ACCT-RECORD contains:
+      CALL 'COBDATFT' USING BY REFERENCE ACCT-REISSUE-DATE
+    """
+    _CBL = Path('data/raw/cbl/CBACT01C.cbl')
+
+    def setUp(self):
+        if not self._CBL.exists():
+            self.skipTest(f'Real corpus file not found: {self._CBL}')
+
+    def test_call_graph_contains_cobdatft(self):
+        import json
+        from pathlib import Path as P
+        # Import extract_data_flow directly
+        import importlib
+        import sys as _sys
+        sys_path_backup = _sys.path[:]
+        _sys.path.insert(0, str(P(__file__).parent.parent / 'scripts'))
+        df = importlib.import_module('data_flow')
+        _sys.path[:] = sys_path_backup
+
+        layout = P('data/byte_layouts/CBACT01C.json')
+        result = df.extract_data_flow(self._CBL, layout)
+        cg = result.get('call_graph', {})
+        called = cg.get('CBACT01C', [])
+        self.assertIn(
+            'COBDATFT', called,
+            f'Expected COBDATFT in call_graph[CBACT01C], got: {called}'
+        )
 
 
 if __name__ == '__main__':

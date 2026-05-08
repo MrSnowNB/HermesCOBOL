@@ -21,7 +21,7 @@ CBL_DIR          = Path("data/raw/cbl")
 OUT_DIR          = Path("data/data_flow")
 FACTS_DIR        = Path("data/facts")
 
-_SEQ_RE = re.compile(r'^\d{6}(.*)$')   # kept for backward compat; not used in _normalise_source
+_SEQ_RE = re.compile(r'^\d{6}(.*)$')   # kept for backward compat; NOT used in _normalise_source
 _LITERAL_RE = re.compile(
     r"^(?:'[^']*'|\"[^\"]*\"|[-+]?\d+\.?\d*"
     r"|ZERO|ZEROS|ZEROES|SPACES|SPACE|HIGH-VALUES|LOW-VALUES"
@@ -29,7 +29,6 @@ _LITERAL_RE = re.compile(
     re.IGNORECASE
 )
 
-# Scope terminators and keywords that are never paragraph names.
 _NOT_PARA = frozenset({
     'END-PERFORM', 'END-IF', 'END-EVALUATE', 'END-READ', 'END-WRITE',
     'END-COMPUTE', 'END-ADD', 'END-SUBTRACT', 'END-MULTIPLY', 'END-DIVIDE',
@@ -38,22 +37,14 @@ _NOT_PARA = frozenset({
     'ELSE', 'THEN', 'WHEN', 'OTHER',
 })
 
-# Area-A keywords that look like paragraph headers (match _PARA_HEADER_RE)
-# but are COBOL division/section/structural headers, not paragraph names.
 _NOT_HEADER_KEYWORDS = frozenset({
-    # Divisions
     'IDENTIFICATION', 'ENVIRONMENT', 'DATA', 'PROCEDURE',
-    # Sections (bare word before SECTION keyword on same line)
     'WORKING-STORAGE', 'LINKAGE', 'FILE', 'LOCAL-STORAGE',
     'INPUT-OUTPUT', 'CONFIGURATION', 'COMMUNICATION', 'REPORT',
-    # Sub-section headers within non-procedure divisions
     'FILE-CONTROL', 'SPECIAL-NAMES', 'SOURCE-COMPUTER', 'OBJECT-COMPUTER',
     'REPOSITORY', 'CLASS-CONTROL',
 })
 
-# Matches level-number data items: two-digit level number followed by a space.
-# e.g. "01 WS-REC." or "77 WS-CTR."  Does NOT match "0000-ACCTFILE-OPEN."
-# because that has a hyphen as the 3rd character, not a space.
 _LEVEL_NUM_RE = re.compile(r'^\d{2}\s')
 
 _PARA_HEADER_RE = re.compile(
@@ -61,9 +52,15 @@ _PARA_HEADER_RE = re.compile(
     re.IGNORECASE
 )
 
-# A SECTION header looks like: NAME SECTION. or NAME SECTION USING ...
 _SECTION_HEADER_RE = re.compile(
     r'^[A-Z0-9][A-Z0-9\-]*\s+SECTION\b',
+    re.IGNORECASE
+)
+
+# Regex to extract the static call target from a CALL statement.
+# Matches: CALL 'PROGNAME'   or   CALL PROGNAME
+_CALL_TARGET_RE = re.compile(
+    r'^CALL\s+(?:\'([^\']+)\'|"([^"]+)"|([A-Z0-9][A-Z0-9\-]*))',
     re.IGNORECASE
 )
 
@@ -96,24 +93,18 @@ def _normalise_source(raw: str) -> list:
       raw[6]     indicator
       raw[7:72]  code area
 
-    This implementation uses FIXED COLUMN POSITIONS unconditionally.
-    It does NOT rely on _strip_seq or any regex to locate the indicator
-    column, because the COBOL standard defines columns by position, not
-    by content.  Lines shorter than 7 characters (e.g. blank lines in
-    editors that strip trailing whitespace) are silently skipped.
+    FIXED COLUMN POSITIONS -- no _strip_seq, no regex to find the indicator.
+    Lines shorter than 7 characters are silently skipped.
     """
     result = []
     for lineno, raw_line in enumerate(raw.splitlines(), start=1):
-        # Strip only the line terminator; preserve internal spacing.
         line = raw_line.rstrip('\r\n')
         if len(line) < 7:
-            # Line is too short to have an indicator column -- skip.
             continue
-        indicator = line[6]          # col 7 (0-based index 6)
+        indicator = line[6]
         if indicator in ('*', '/', '$'):
-            # Comment or compiler-directive line.
             continue
-        code = line[7:72].rstrip()   # cols 8-72 (0-based 7:72)
+        code = line[7:72].rstrip()
         if code.strip():
             result.append((lineno, code))
     return result
@@ -124,7 +115,6 @@ def _normalise_source(raw: str) -> list:
 # ---------------------------------------------------------------------------
 
 def _ends_statement(text: str) -> bool:
-    """True if the last non-space character outside quotes is a period."""
     in_sq = in_dq = False
     last = ''
     for ch in text:
@@ -138,7 +128,6 @@ def _ends_statement(text: str) -> bool:
 
 
 def _is_para_header_line(text: str) -> bool:
-    """Legacy helper. True if stripped text looks like a paragraph header."""
     stripped = text.strip()
     m = _PARA_HEADER_RE.match(stripped)
     if not m:
@@ -150,20 +139,15 @@ def _is_para_header_line(text: str) -> bool:
 def _is_area_a_paragraph(text: str) -> bool:
     """
     Return True if this code-area text (raw[7:72] from _normalise_source)
-    is a paragraph header that should start a new paragraph scope.
+    is a paragraph header.
 
-    After _normalise_source, the text value is exactly cols 8-72 of the
-    original source with trailing spaces removed.  A line that begins in
-    Area A (col 8) therefore has NO leading spaces: text[0] != ' '.
-    A line that begins in Area B (col 12+) has 4+ leading spaces.
-
-    Rules (all must hold):
-      1. text[0] is not a space  (Area A: content starts at col 8)
-      2. Does NOT match _LEVEL_NUM_RE  (not a level-number data item)
-      3. Does NOT match _SECTION_HEADER_RE  (not a SECTION header)
-      4. Matches _PARA_HEADER_RE  (single token ending in period)
-      5. Candidate name NOT in _NOT_PARA
-      6. Candidate name NOT in _NOT_HEADER_KEYWORDS
+    Rules (ALL must hold):
+      1. text[0] != ' '  (Area A)
+      2. NOT _LEVEL_NUM_RE
+      3. NOT _SECTION_HEADER_RE
+      4. Matches _PARA_HEADER_RE
+      5. Candidate NOT in _NOT_PARA
+      6. Candidate NOT in _NOT_HEADER_KEYWORDS
     """
     if not text or text[0] == ' ':
         return False
@@ -182,28 +166,16 @@ def _is_area_a_paragraph(text: str) -> bool:
 
 
 # ---------------------------------------------------------------------------
-# Targeted continuation joiner for procedure-division source lines
+# Continuation joiner
 # ---------------------------------------------------------------------------
 
 def _join_source_lines(lines: list) -> list:
-    """
-    Fuse physical continuation lines back into their logical predecessor.
-
-    A line is fused as a continuation when BOTH conditions hold:
-      1. The predecessor did NOT end with a statement-terminating period.
-      2. The candidate is NOT an Area-A paragraph header.
-
-    Because _normalise_source now uses fixed column positions, text[0]
-    reliably reflects whether the line starts in Area A (col 8, no leading
-    space) or Area B (col 12+, leading spaces).
-    """
     if not lines:
         return []
     joined = [[lines[0][0], lines[0][1]]]
     for lineno, text in lines[1:]:
         prev_ends    = _ends_statement(joined[-1][1])
         cand_is_para = _is_area_a_paragraph(text)
-
         if not prev_ends and not cand_is_para:
             joined[-1][1] = joined[-1][1] + ' ' + text.strip()
         else:
@@ -294,17 +266,10 @@ def _tokens(text: str) -> list:
 
 
 # ---------------------------------------------------------------------------
-# Literal masker (for verb-split pre-processing only)
+# Literal masker
 # ---------------------------------------------------------------------------
 
 def _mask_literals(text: str) -> str:
-    """
-    Replace every quoted string with an equal-length run of underscores
-    so that COBOL keywords embedded inside literals are invisible to the
-    verb-split regex.  The returned string has identical length to the
-    original so that character-position slicing from the original is
-    correct.  classify_statement always receives the ORIGINAL text.
-    """
     result = list(text)
     i = 0
     while i < len(text):
@@ -322,16 +287,10 @@ def _mask_literals(text: str) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Period splitter that respects quoted strings
+# Period splitter
 # ---------------------------------------------------------------------------
 
 def _split_on_period(text: str) -> list:
-    """
-    Split a logical COBOL source line on statement-terminating periods.
-    A period is a statement terminator only when:
-      - it is outside a quoted string, AND
-      - it is followed by a space, end-of-line, or is the last character.
-    """
     parts = []
     current = []
     in_sq = in_dq = False
@@ -367,18 +326,6 @@ def _split_on_period(text: str) -> list:
 # ---------------------------------------------------------------------------
 
 def extract_paragraphs(lines: list) -> dict:
-    """
-    Extract paragraphs from normalised source lines.
-
-    Only lines AFTER 'PROCEDURE DIVISION' are considered for paragraph
-    header detection.  Lines in earlier divisions are never paragraphs.
-
-    Procedure-division lines are passed through _join_source_lines() so
-    that continuation targets are fused before header detection.
-
-    SECTION headers (e.g. '1000-MAIN SECTION.') are NOT counted as
-    paragraphs.  See docs/V12_VALIDATION_GATES.md for the policy.
-    """
     paragraphs = {}
     current = '__MAIN__'
     paragraphs[current] = []
@@ -423,6 +370,145 @@ def _join_lines(lines: list) -> list:
 
 
 # ---------------------------------------------------------------------------
+# CALL USING parser  (Section 3.2)
+# ---------------------------------------------------------------------------
+
+def _parse_call(
+    lineno: int,
+    raw_text: str,
+    tokens: list,
+    qmap: dict,
+    context_records: set,
+    reads: list,
+    mutates: list,
+    unresolved: list,
+    call_targets: list,
+):
+    """
+    Classify a CALL statement:
+
+      CALL target [USING [BY REFERENCE | BY CONTENT | BY VALUE]
+                         operand ...
+                         [BY REFERENCE | BY CONTENT | BY VALUE operand ...]
+                        ]
+                  [RETURNING identifier]
+                  [ON EXCEPTION ...]
+                  [NOT ON EXCEPTION ...]
+                  [END-CALL]
+
+    Mode semantics:
+      BY REFERENCE (default)  ->  read + mutate
+      BY CONTENT              ->  read only
+      BY VALUE                ->  read only
+      RETURNING               ->  mutate only
+
+    Appends the static call target (uppercased, quotes stripped) to
+    call_targets so the caller can build the call_graph.
+    """
+    _STOP_KEYWORDS = frozenset({
+        'ON', 'NOT', 'EXCEPTION', 'END-CALL',
+        'OVERFLOW', 'ERROR',
+    })
+
+    # Extract target (token after CALL; strip quotes)
+    target = None
+    if len(tokens) >= 2:
+        raw_target = tokens[1]
+        if raw_target in ('__LIT__', ):
+            # Literal: pull from original raw_text
+            m = _CALL_TARGET_RE.match(raw_text.strip())
+            if m:
+                target = (m.group(1) or m.group(2) or m.group(3) or '').upper()
+        elif not is_literal(raw_target):
+            target = raw_target.upper()
+        else:
+            m = re.match(r"^['\"]([^'\"]+)['\"]$", raw_target)
+            if m:
+                target = m.group(1).upper()
+
+    if target:
+        call_targets.append(target)
+
+    # Find USING index
+    ut = [t.upper() for t in tokens]
+    if 'USING' not in ut:
+        return
+
+    using_start = ut.index('USING') + 1
+
+    # Default mode is BY REFERENCE
+    # Walk tokens from USING onward, updating mode on BY ... keywords
+    mode = 'REFERENCE'   # default
+    i = using_start
+    while i < len(ut):
+        tok = ut[i]
+        if tok in _STOP_KEYWORDS:
+            break
+        if tok == 'BY':
+            if i + 1 < len(ut):
+                next_tok = ut[i + 1]
+                if next_tok in ('REFERENCE', 'CONTENT', 'VALUE'):
+                    mode = next_tok
+                    i += 2
+                    continue
+            i += 1
+            continue
+        if tok in ('REFERENCE', 'CONTENT', 'VALUE'):
+            mode = tok
+            i += 1
+            continue
+        if tok == 'RETURNING':
+            mode = 'RETURNING'
+            i += 1
+            continue
+        # Operand token
+        operand = tokens[i]
+        if operand == '__LIT__' or is_literal(operand):
+            i += 1
+            continue
+        if mode in ('REFERENCE',):
+            # BY REFERENCE: both read and mutate
+            hits = resolve(operand, qmap, context_records)
+            if not hits:
+                unresolved.append({'verb': 'CALL', 'line_no': lineno,
+                                   'raw_text': raw_text,
+                                   'reason': f'unresolved CALL USING operand: {operand}'})
+            else:
+                for h in hits:
+                    if h not in reads:
+                        reads.append(h)
+                        context_records.add(h['record'])
+                    if h not in mutates:
+                        mutates.append(h)
+                        context_records.add(h['record'])
+        elif mode in ('CONTENT', 'VALUE'):
+            # BY CONTENT / BY VALUE: read only
+            hits = resolve(operand, qmap, context_records)
+            if not hits:
+                unresolved.append({'verb': 'CALL', 'line_no': lineno,
+                                   'raw_text': raw_text,
+                                   'reason': f'unresolved CALL USING operand: {operand}'})
+            else:
+                for h in hits:
+                    if h not in reads:
+                        reads.append(h)
+                        context_records.add(h['record'])
+        elif mode == 'RETURNING':
+            # RETURNING: mutate only
+            hits = resolve(operand, qmap, context_records)
+            if not hits:
+                unresolved.append({'verb': 'CALL', 'line_no': lineno,
+                                   'raw_text': raw_text,
+                                   'reason': f'unresolved CALL RETURNING operand: {operand}'})
+            else:
+                for h in hits:
+                    if h not in mutates:
+                        mutates.append(h)
+                        context_records.add(h['record'])
+        i += 1
+
+
+# ---------------------------------------------------------------------------
 # Verb classifier
 # ---------------------------------------------------------------------------
 
@@ -434,7 +520,10 @@ def classify_statement(
     reads: list,
     mutates: list,
     unresolved: list,
+    call_targets: list = None,
 ):
+    if call_targets is None:
+        call_targets = []
     raw_text = text.strip().rstrip('.')
     tokens = _tokens(raw_text)
     if not tokens:
@@ -675,18 +764,18 @@ def classify_statement(
             if tu in cics_m and i + 1 < len(tokens) and tokens[i+1] != '__LIT__':
                 _add_mutate(tokens[i + 1])
 
+    elif verb == 'CALL':
+        _parse_call(lineno, raw_text, tokens, qmap, context_records,
+                    reads, mutates, unresolved, call_targets)
+
     elif verb == 'PERFORM':
         pass
-
-    elif verb == 'CALL':
-        unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
-                           'reason': 'CALL USING not yet classified (TODO Section 3)'})
 
     elif verb in ('OPEN','CLOSE','STOP','GOBACK','CONTINUE','EXIT',
                   'GO','NEXT','END-READ','END-WRITE','END-IF',
                   'END-EVALUATE','END-PERFORM','END-STRING','END-UNSTRING',
                   'END-COMPUTE','END-ADD','END-SUBTRACT','END-MULTIPLY',
-                  'END-DIVIDE','END-EXEC'):
+                  'END-DIVIDE','END-EXEC','END-CALL'):
         pass
 
     if verb in ('INSPECT','SORT','MERGE','RELEASE','RETURN'):
@@ -729,18 +818,27 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
         except Exception as exc:
             print(f"WARNING [{program_name}]: could not read facts: {exc}", file=sys.stderr)
 
+    # Build call_graph and paragraph_data_flow simultaneously
+    call_graph_set = []   # ordered unique list of called programs
     paragraph_data_flow = {}
+
     for para_name, para_lines in paragraphs.items():
         if para_name == '__MAIN__':
             continue
         reads = []; mutates = []; unresolved_list = []
+        para_call_targets = []
         context_records: set = set()
 
         for lineno, text in _join_lines(para_lines):
             for part in _split_on_period(text):
                 if part:
                     _dispatch_inline(lineno, part, qmap, context_records,
-                                     reads, mutates, unresolved_list)
+                                     reads, mutates, unresolved_list,
+                                     para_call_targets)
+
+        for t in para_call_targets:
+            if t not in call_graph_set:
+                call_graph_set.append(t)
 
         paragraph_data_flow[para_name] = {
             'reads':      reads,
@@ -752,28 +850,22 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
         'program':             program_name,
         'schema_version':      SCHEMA_VERSION,
         'paragraph_data_flow': paragraph_data_flow,
+        'call_graph':          {program_name: call_graph_set},
         'program_unresolved':  program_unresolved,
     }
 
 
-def _dispatch_inline(lineno, text, qmap, context_records, reads, mutates, unresolved):
-    """
-    Split a single logical COBOL statement (or fused run of statements)
-    into individual verb-led clauses and classify each one.
-
-    The verb-split regex is applied to a literal-MASKED copy of the text
-    so that COBOL keywords embedded inside quoted strings (e.g. WRITE
-    inside 'ACCOUNT FILE WRITE STATUS IS:') are invisible to the splitter.
-    Each fragment is then classified using a slice of the ORIGINAL text
-    so that _tokens() can still collapse the real literal to __LIT__.
-    """
+def _dispatch_inline(lineno, text, qmap, context_records, reads, mutates, unresolved,
+                     call_targets=None):
+    if call_targets is None:
+        call_targets = []
     _VERB_SPLIT_RE = re.compile(
         r'(?:^|(?<=\s))(?=(?:MOVE|ADD|SUBTRACT|MULTIPLY|DIVIDE|COMPUTE|INITIALIZE|'
         r'READ|WRITE|STRING|UNSTRING|ACCEPT|DISPLAY|IF|EVALUATE|WHEN|SET|EXEC|'
         r'PERFORM|CALL|OPEN|CLOSE|STOP|GOBACK|CONTINUE|EXIT|GO|END-IF|'
         r'END-EVALUATE|END-PERFORM|END-READ|END-WRITE|END-EXEC|'
         r'END-COMPUTE|END-ADD|END-SUBTRACT|END-MULTIPLY|END-DIVIDE|'
-        r'END-STRING|END-UNSTRING)(?:\s|$))',
+        r'END-STRING|END-UNSTRING|END-CALL)(?:\s|$))',
         re.IGNORECASE,
     )
     masked = _mask_literals(text)
@@ -782,7 +874,7 @@ def _dispatch_inline(lineno, text, qmap, context_records, reads, mutates, unreso
         part = text.strip()
         if part:
             classify_statement(lineno, part, qmap, context_records,
-                               reads, mutates, unresolved)
+                               reads, mutates, unresolved, call_targets)
         return
     positions.append(len(text))
     for i, start in enumerate(positions[:-1]):
@@ -790,7 +882,7 @@ def _dispatch_inline(lineno, text, qmap, context_records, reads, mutates, unreso
         part = text[start:end].strip()
         if part:
             classify_statement(lineno, part, qmap, context_records,
-                               reads, mutates, unresolved)
+                               reads, mutates, unresolved, call_targets)
 
 
 # ---------------------------------------------------------------------------
