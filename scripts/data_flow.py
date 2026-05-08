@@ -66,7 +66,6 @@ def _normalise_source(raw: str) -> list:
         indicator = line[0]
         if indicator in ('*', '/', '$'):
             continue
-        # col 7-72 (1-based) = index 1-71 after stripping seq field
         text = line[1:72].rstrip() if len(line) > 1 else ''
         if text.strip():
             result.append((lineno, text))
@@ -108,8 +107,8 @@ def _in_a_margin(text: str) -> bool:
     starts at col 7 (1-based), so A-margin content begins at index 0
     of the stored text (no leading space).
     Paragraph/section headers and 01/77 level items appear in the A-margin.
-    Statement continuations appear in the B-margin (index >= 4, i.e. at
-    least one leading space in the stored text).
+    Statement continuations appear in the B-margin (at least one leading
+    space in the stored text).
     """
     return len(text) > 0 and text[0] != ' '
 
@@ -123,26 +122,22 @@ def _join_source_lines(lines: list) -> list:
     Fuse physical continuation lines back into their logical predecessor.
 
     A line is fused as a continuation when BOTH conditions hold:
-      1. The predecessor did NOT end with a statement-terminating period
-         (i.e. the logical statement is still open).
-      2. The candidate is NOT in the A-margin (i.e. it starts with at
-         least one leading space in the stored text).
+      1. The predecessor did NOT end with a statement-terminating period.
+      2. The candidate is NOT in the A-margin (starts with at least one
+         leading space in the stored text).
 
-    Paragraph and section headers always appear in the A-margin (no
-    leading space after the indicator is stripped).  Continuation targets
-    like WS-REISSUE-DATE. appear indented in the B-margin and will be
-    fused back into their open MOVE statement regardless of whether they
+    Paragraph and section headers always appear at the A-margin (index 0,
+    no leading space). Continuation targets like WS-REISSUE-DATE. appear
+    indented in the B-margin and are absorbed regardless of whether they
     happen to match _PARA_HEADER_RE.
     """
     if not lines:
         return []
     joined = [[lines[0][0], lines[0][1]]]
     for lineno, text in lines[1:]:
-        prev_ends      = _ends_statement(joined[-1][1])
-        in_a           = _in_a_margin(text)
-
+        prev_ends = _ends_statement(joined[-1][1])
+        in_a      = _in_a_margin(text)
         if not prev_ends and not in_a:
-            # B-margin continuation: absorb into open statement
             joined[-1][1] = joined[-1][1] + ' ' + text.strip()
         else:
             joined.append([lineno, text])
@@ -232,6 +227,35 @@ def _tokens(text: str) -> list:
 
 
 # ---------------------------------------------------------------------------
+# Literal masker for verb-split pre-processing
+# ---------------------------------------------------------------------------
+
+def _mask_literals(text: str) -> str:
+    """
+    Replace every quoted string with an equal-length run of underscores
+    so that keywords embedded inside literals are invisible to regex
+    verb-splitting.  The returned string has the same length and character
+    positions as the original, ensuring that any offset-based logic (if
+    added later) would remain correct.  classify_statement always receives
+    the original, unmasked text.
+    """
+    result = list(text)
+    i = 0
+    while i < len(text):
+        if text[i] in ("'", '"'):
+            quote = text[i]
+            result[i] = '_'
+            i += 1
+            while i < len(text) and text[i] != quote:
+                result[i] = '_'
+                i += 1
+            if i < len(text):
+                result[i] = '_'
+        i += 1
+    return ''.join(result)
+
+
+# ---------------------------------------------------------------------------
 # Period splitter that respects quoted strings
 # ---------------------------------------------------------------------------
 
@@ -241,9 +265,6 @@ def _split_on_period(text: str) -> list:
     A period is a statement terminator only when:
       - it is outside a quoted string, AND
       - it is followed by a space, end-of-line, or is the last character.
-    Quoted content is tracked character-by-character so that a period
-    inside a string literal (e.g. 'WRITE STATUS IS:') is never treated
-    as a terminator.
     """
     parts = []
     current = []
@@ -671,8 +692,20 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
 
 
 def _dispatch_inline(lineno, text, qmap, context_records, reads, mutates, unresolved):
+    """
+    Split a single logical COBOL statement (or a fused run of statements
+    separated by scope terminators) into individual verb-led clauses and
+    classify each one.
+
+    IMPORTANT: verb-keyword splitting is done on a literal-masked copy of
+    the text (_mask_literals) so that keywords embedded inside quoted
+    strings (e.g. WRITE inside 'ACCOUNT FILE WRITE STATUS IS:') are
+    invisible to the regex.  Each resulting fragment is then classified
+    using a slice of the ORIGINAL text so that _tokens() can still
+    collapse the real literal to __LIT__.
+    """
     _VERB_SPLIT_RE = re.compile(
-        r'(?:^|\s)(?=(?:MOVE|ADD|SUBTRACT|MULTIPLY|DIVIDE|COMPUTE|INITIALIZE|'
+        r'(?:^|(?<=\s))(?=(?:MOVE|ADD|SUBTRACT|MULTIPLY|DIVIDE|COMPUTE|INITIALIZE|'
         r'READ|WRITE|STRING|UNSTRING|ACCEPT|DISPLAY|IF|EVALUATE|WHEN|SET|EXEC|'
         r'PERFORM|CALL|OPEN|CLOSE|STOP|GOBACK|CONTINUE|EXIT|GO|END-IF|'
         r'END-EVALUATE|END-PERFORM|END-READ|END-WRITE|END-EXEC|'
@@ -680,8 +713,19 @@ def _dispatch_inline(lineno, text, qmap, context_records, reads, mutates, unreso
         r'END-STRING|END-UNSTRING)(?:\s|$))',
         re.IGNORECASE,
     )
-    for part in _VERB_SPLIT_RE.split(text):
-        part = part.strip()
+    masked = _mask_literals(text)
+    # Find split positions in the masked string, then slice from original.
+    positions = [m.start() for m in _VERB_SPLIT_RE.finditer(masked)]
+    if not positions:
+        part = text.strip()
+        if part:
+            classify_statement(lineno, part, qmap, context_records,
+                               reads, mutates, unresolved)
+        return
+    positions.append(len(text))
+    for i, start in enumerate(positions[:-1]):
+        end = positions[i + 1]
+        part = text[start:end].strip()
         if part:
             classify_statement(lineno, part, qmap, context_records,
                                reads, mutates, unresolved)

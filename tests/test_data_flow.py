@@ -31,6 +31,8 @@ _QMAP = {
     ],
     'GROUP1': [{'field': 'GROUP1', 'record': 'GROUP1', 'copybook': None, 'offset': 0, 'length': 20}],
     'GROUP2': [{'field': 'GROUP2', 'record': 'GROUP2', 'copybook': None, 'offset': 0, 'length': 20}],
+    'OUTFILE-STATUS': [{'field': 'OUTFILE-STATUS', 'record': 'OUTFILE-STATUS',
+                        'copybook': None, 'offset': 0, 'length': 2}],
 }
 
 
@@ -157,6 +159,31 @@ class TestDisplayLiteralNoUnresolved(unittest.TestCase):
         for entry in u:
             self.assertNotIn('__LIT__', entry.get('reason', ''))
             self.assertNotIn("'VALUE", entry.get('reason', ''))
+
+
+class TestDisplayLiteralInVerbSplit(unittest.TestCase):
+    """
+    CBACT01C line 245: the literal 'ACCOUNT FILE WRITE STATUS IS:' contains
+    the word WRITE. _dispatch_inline must not split on that embedded keyword.
+    Only OUTFILE-STATUS (the real operand) should appear as a read;
+    unresolved must be empty.
+    """
+
+    def test_display_literal_containing_verb_keyword(self):
+        """
+        DISPLAY 'ACCOUNT FILE WRITE STATUS IS:'  OUTFILE-STATUS
+        reads:      [OUTFILE-STATUS]
+        unresolved: []
+        """
+        from data_flow import _dispatch_inline
+        stmt = "DISPLAY 'ACCOUNT FILE WRITE STATUS IS:'  OUTFILE-STATUS"
+        reads, mutates, unresolved = [], [], []
+        _dispatch_inline(245, stmt, _QMAP, set(), reads, mutates, unresolved)
+        rf = [e['field'] for e in reads]
+        self.assertIn('OUTFILE-STATUS', rf,
+                      'OUTFILE-STATUS must be recognised as a read operand')
+        self.assertEqual(unresolved, [],
+                         f'Expected empty unresolved, got: {unresolved}')
 
 
 class TestScopeTerminatorsNotParagraphs(unittest.TestCase):
