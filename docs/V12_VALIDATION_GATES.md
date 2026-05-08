@@ -1,113 +1,134 @@
-# HermesCOBOL v1.2 — Validation Gates
+# HermesCOBOL Validation Gates — Schema v1.2 / v1.3
 
-This document accumulates the gate commands for each Section.  
-Each gate is the single source of truth for "Section N is closed."
+## Section 2 Gate (FROZEN — commit `609922d` / `f8d1eaf`)
 
----
+**Branch:** `feature/schema-v1.2-section2-dataflow` → merged to `main` 2026-05-08
 
-## Section 1 Gate — Byte Layout
+### Passing criteria (verified locally and on CI)
 
-```powershell
-# Section 1 Gate — Byte Layout
-python scripts\byte_layout.py data\raw\cbl\CBACT01C.cbl > data\byte_layouts\CBACT01C.json
+| Criterion | Expected |
+|---|---|
+| `test_data_flow.py` | 18/18 PASS |
+| `CBACT01C` paragraph_count | 16 |
+| `CBACT01C` para_diff | local=16 facts=16, no delta |
+| `1300_unresolved` | CALL `COBDATFT` USING — accepted Section 3 TODO |
+| `1350_unresolved` | `[]` |
+| `program_unresolved` | `[]` |
+| `data_flow.py --all` | 31 files, 0 ERROR lines |
 
-python -c "
-import json
-d = json.load(open(r'data\\byte_layouts\\CBACT01C.json'))
-print('records=',          len(d['records']))
-print('unresolved=',       d['unresolved'])
+### Frozen contracts (must not change without re-gating)
 
-acct = next(r for r in d['records'] if r['name'] == 'ACCOUNT-RECORD')
-print('ACCOUNT-RECORD total_bytes=', acct['total_bytes'])
-
-fields = {f['qualified_name'].split('.')[-1]: f for f in acct['fields']}
-print('ACCT-ID offset=',          fields['ACCT-ID']['offset'])
-print('ACCT-ID length=',          fields['ACCT-ID']['length'])
-print('ACCT-ACTIVE-STATUS offset=', fields['ACCT-ACTIVE-STATUS']['offset'])
-print('ACCT-ACTIVE-STATUS length=', fields['ACCT-ACTIVE-STATUS']['length'])
-
-print('redefines_groups=',
-      [(r['name'], r['redefines_target'])
-       for rec in d['records'] for r in rec['redefines_groups']])
-
-occurs = [f for rec in d['records'] for f in rec['fields'] if f.get('occurs',1) > 1]
-print('occurs_fields=', len(occurs))
-"
-```
-
-**Expected output (Section 1 closed):**
-```
-records= 17
-unresolved= []
-ACCOUNT-RECORD total_bytes= 300
-ACCT-ID offset= 0
-ACCT-ID length= 11
-ACCT-ACTIVE-STATUS offset= 11
-ACCT-ACTIVE-STATUS length= 1
-redefines_groups= [('CODATECN-REC.CODATECN-IN-REC.CODATECN-1INP', 'CODATECN-INP-DATE'),
-                   ('CODATECN-REC.CODATECN-IN-REC.CODATECN-2INP', 'CODATECN-INP-DATE'),
-                   ('CODATECN-REC.CODATECN-OUT-REC.CODATECN-1OUT', 'CODATECN-0UT-DATE'),
-                   ('CODATECN-REC.CODATECN-OUT-REC.CODATECN-2OUT', 'CODATECN-0UT-DATE')]
-occurs_fields= 1
-```
+- `_join_source_lines` — 4-digit prefix guard (Section 2 version, now superseded in Section 3.1)
+- `extract_paragraphs` — procedure-division only, `_join_source_lines` then `_PARA_HEADER_RE`
+- `_mask_literals` — equal-length underscore replacement of quoted strings
+- `_dispatch_inline` — verb-splits on masked copy, slices parts from original text
 
 ---
 
-## Section 2 Gate — Data Flow Extractor
+## Section 3.1 Gate — Generalized Paragraph Detection
+
+**Branch:** `feature/schema-v1.3-section3-paradetect`  
+**Target merge:** `main` after all criteria below pass simultaneously
+
+### SECTION header policy
+
+**Decision: SECTION headers are NOT counted as paragraphs by the local extractor.**
+
+Rationale:
+- The CardDemo corpus does not use `PROCEDURE DIVISION SECTION` headers in any
+  program with a 4-digit paragraph naming scheme.
+- Programs that do use section headers (if any) would have their section names
+  listed in `facts/PROGRAM.json` under a separate `sections_defined` key, not
+  under `paragraphs_defined`.
+- Counting section headers as paragraphs would inflate `local` counts and produce
+  false-positive para_diff deltas.
+- If a future program requires section-as-paragraph semantics, introduce a
+  `count_sections_as_paragraphs: bool` flag in the extractor rather than changing
+  the default policy.
+
+Implementation: `_SECTION_HEADER_RE` matches `NAME SECTION.` or `NAME SECTION USING`.
+Any line matching this pattern is excluded from paragraph detection in
+`_is_area_a_paragraph()`.
+
+### Division/section exclusion list (`_NOT_HEADER_KEYWORDS`)
+
+The following tokens, when appearing as the first word of an Area-A line,
+are structural COBOL keywords and never paragraph names:
+
+```
+IDENTIFICATION, ENVIRONMENT, DATA, PROCEDURE
+WORKING-STORAGE, LINKAGE, FILE, LOCAL-STORAGE
+INPUT-OUTPUT, CONFIGURATION, COMMUNICATION, REPORT
+FILE-CONTROL, SPECIAL-NAMES, SOURCE-COMPUTER, OBJECT-COMPUTER
+REPOSITORY, CLASS-CONTROL
+```
+
+Level-number data items (`01 NAME.`, `77 NAME.`, `05 FILLER.`) are excluded
+via `_LEVEL_NUM_RE` (`^\d{2}\s`).
+
+### Area-A paragraph detection rule (`_is_area_a_paragraph`)
+
+After `_normalise_source` strips the 6-character sequence field and the
+1-character indicator column, **column 8** of the original source lands at
+`text[0]`. A line is a paragraph header if and only if ALL of the following
+hold:
+
+1. `text[0] != ' '` (Area A: not indented)
+2. Does NOT match `_LEVEL_NUM_RE` (not a data item)
+3. Does NOT match `_SECTION_HEADER_RE` (not a section header)
+4. Matches `_PARA_HEADER_RE` (`^([A-Z0-9][A-Z0-9-]*)\s*\.\s*$`)
+5. Candidate name NOT in `_NOT_PARA`
+6. Candidate name NOT in `_NOT_HEADER_KEYWORDS`
+
+Consequences:
+- 4-digit CardDemo paragraphs (`0000-ACCTFILE-OPEN.`) → detected ✓
+- Free-form paragraphs (`MAIN-PARA.`, `PROCESS-ENTER-KEY.`) → detected ✓
+- Indented MOVE targets (`    WS-REISSUE-DATE.`) → NOT detected (rule 1) ✓
+- Division headers (`PROCEDURE DIVISION.`) → NOT detected (rule 6) ✓
+- Section headers (`WORKING-STORAGE SECTION.`) → NOT detected (rule 3) ✓
+- Level numbers (`01 WS-REC.`) → NOT detected (rule 2) ✓
+
+### 3.1 Gate criteria
 
 ```powershell
-# Section 2 — Data Flow Extractor Gate
-# What this proves:
-# 1) data_flow.py produces paragraph_data_flow for real programs
-# 2) qmap lookup is resolving to ACCOUNT-RECORD fields from byte_layout
-# 3) unresolved[] is low and explainable on target paragraphs
+python tests\test_data_flow.py
+# -> 23/23 PASS (18 Section 2 + 5 new Section 3.1 test classes)
 
 python scripts\data_flow.py data\raw\cbl\CBACT01C.cbl > data\data_flow\CBACT01C.json
-
 python -c "
-import json
-d = json.load(open(r'data\\data_flow\\CBACT01C.json'))
-print('program=',         d['program'])
+import json; d=json.load(open(r'data\\data_flow\\CBACT01C.json'))
 print('paragraph_count=', len(d['paragraph_data_flow']))
-print('sample_paragraphs=', list(d['paragraph_data_flow'])[:5])
-
-p = d['paragraph_data_flow'].get('1300-POPUL-ACCT-RECORD')
-print('1300_exists=', p is not None)
-if p:
-    print('1300_reads_count=',   len(p['reads']))
-    print('1300_mutates_count=', len(p['mutates']))
-    print('1300_first_mutate=',  p['mutates'][0] if p['mutates'] else None)
-    print('1300_unresolved=',    p['unresolved'])
-
-p = d['paragraph_data_flow'].get('1350-WRITE-ACCT-RECORD')
-print('1350_exists=', p is not None)
-if p:
-    print('1350_reads=',      p['reads'])
-    print('1350_mutates=',    p['mutates'])
-    print('1350_unresolved=', p['unresolved'])
-
 print('program_unresolved=', d['program_unresolved'])
 "
-```
+# -> paragraph_count=16, program_unresolved=[]
 
-**Expected gate output (Section 2 closed when all true):**
-- `paragraph_count` matches v1.1 facts `paragraphs_defined` for CBACT01C (±1).
-- `1300-POPUL-ACCT-RECORD.mutates` contains at least one field qualified as `ACCOUNT-RECORD.*`  
-  with offsets matching byte layout (`ACCT-ID` offset 0 length 11, `ACCT-ACTIVE-STATUS` offset 11 length 1).
-- `1350-WRITE-ACCT-RECORD.reads` and `.mutates` both non-empty,  
-  with at least one entry bound to the file-record of `ACCTFILE`.
-- `unresolved[]` on both paragraphs is empty (or contains only acceptable CICS operands).
-- `program_unresolved=[]`.
+python scripts\para_diff.py CBACT01C
+# -> local=16 facts=16, no delta
 
-```powershell
-# Corpus batch run
 python scripts\data_flow.py --all
-
-# Confirm 31 files written
-python -c "
-import glob
-files = glob.glob(r'data\\data_flow\\*.json')
-print('data_flow_files=', len(files))
-print('programs=', sorted([f.split('\\\\')[-1] for f in files]))
-"
+# -> 31 files, 0 ERROR lines
+# -> ZERO WARNINGs of the form: paragraph count mismatch: local=1 facts=N
+# -> Close-mismatch WARNINGs (COACTUPC, COACTVWC, COCRDLIC etc.) MAY remain
+#    and are deferred to Section 3.4
 ```
+
+---
+
+## Section 3.2 Gate — CALL USING Classification (planned)
+
+- Mode-aware: BY REFERENCE → read+mutate; BY CONTENT/VALUE → read only; RETURNING → mutate only
+- Emits `call_graph: { program → [called_programs] }` in output
+- `CBACT01C` `1300_unresolved` becomes `[]`
+- `CBACT01C.call_graph` includes `"COBDATFT"`
+
+## Section 3.3 Gate — Missing Verb Handlers (planned)
+
+- INSPECT, SORT, MERGE, RELEASE, RETURN
+- After each handler: zero lines containing that verb in the corpus may produce
+  an unresolved entry whose reason is `UNKNOWN_VERB`
+
+## Section 3.4 Gate — Schema v1.3 + section_name (planned)
+
+- `SCHEMA_VERSION` bumped to `"1.3"`
+- `section_name` field added to paragraph entries
+- Close-mismatch WARNINGs resolved (COACTUPC, COACTVWC, COCRDLIC, COCRDSLC, COCRDUPC)

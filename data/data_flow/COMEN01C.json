@@ -119,7 +119,13 @@
           "line_no": 77,
           "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
+        }
+      ]
+    },
+    "PROCESS-ENTER-KEY": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 117,
@@ -471,57 +477,27 @@
         {
           "verb": "MOVE",
           "line_no": 117,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM *",
+          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
           "reason": "unresolved read operand: WS-PGMNAME"
         },
         {
           "verb": "MOVE",
           "line_no": 117,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM *",
+          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
           "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM *",
-          "reason": "unresolved mutate operand: *"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-USER-ID   TO CDEMO-USER-ID *",
-          "reason": "unresolved read operand: WS-USER-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-USER-ID   TO CDEMO-USER-ID *",
-          "reason": "unresolved mutate operand: CDEMO-USER-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-USER-ID   TO CDEMO-USER-ID *",
-          "reason": "unresolved mutate operand: *"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE SEC-USR-TYPE TO CDEMO-USER-TYPE",
-          "reason": "unresolved read operand: SEC-USR-TYPE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE SEC-USR-TYPE TO CDEMO-USER-TYPE",
-          "reason": "unresolved mutate operand: CDEMO-USER-TYPE"
         },
         {
           "verb": "MOVE",
           "line_no": 117,
           "raw_text": "MOVE ZEROS        TO CDEMO-PGM-CONTEXT",
           "reason": "unresolved mutate operand: CDEMO-PGM-CONTEXT"
-        },
+        }
+      ]
+    },
+    "RETURN-TO-SIGNON-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "IF",
           "line_no": 198,
@@ -533,7 +509,13 @@
           "line_no": 198,
           "raw_text": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
           "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
-        },
+        }
+      ]
+    },
+    "SEND-MENU-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 210,
@@ -557,7 +539,18 @@
           "line_no": 210,
           "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COMEN1AO",
           "reason": "unresolved mutate operand: COMEN1AO"
-        },
+        }
+      ]
+    },
+    "RECEIVE-MENU-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "POPULATE-HEADER-INFO": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 240,
@@ -791,7 +784,13 @@
           "line_no": 240,
           "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COMEN1AO",
           "reason": "unresolved mutate operand: COMEN1AO"
-        },
+        }
+      ]
+    },
+    "BUILD-MENU-OPTIONS": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 264,
@@ -969,9 +968,5 @@
       ]
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=1 facts=7"
-    }
-  ]
+  "program_unresolved": []
 }

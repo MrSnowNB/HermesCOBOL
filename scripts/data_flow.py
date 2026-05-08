@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-data_flow.py  --  Section 2: deterministic per-paragraph reads[]/mutates[] extractor.
+data_flow.py  --  Section 2/3: deterministic per-paragraph reads[]/mutates[] extractor.
 
 Usage:
     single program : python scripts/data_flow.py data/raw/cbl/CBACT01C.cbl
@@ -21,7 +21,7 @@ CBL_DIR          = Path("data/raw/cbl")
 OUT_DIR          = Path("data/data_flow")
 FACTS_DIR        = Path("data/facts")
 
-_SEQ_RE = re.compile(r'^\d{6}(.*)$')
+_SEQ_RE = re.compile(r'^\d{6}(.*)$')   # kept for backward compat; not used in _normalise_source
 _LITERAL_RE = re.compile(
     r"^(?:'[^']*'|\"[^\"]*\"|[-+]?\d+\.?\d*"
     r"|ZERO|ZEROS|ZEROES|SPACES|SPACE|HIGH-VALUES|LOW-VALUES"
@@ -29,6 +29,7 @@ _LITERAL_RE = re.compile(
     re.IGNORECASE
 )
 
+# Scope terminators and keywords that are never paragraph names.
 _NOT_PARA = frozenset({
     'END-PERFORM', 'END-IF', 'END-EVALUATE', 'END-READ', 'END-WRITE',
     'END-COMPUTE', 'END-ADD', 'END-SUBTRACT', 'END-MULTIPLY', 'END-DIVIDE',
@@ -37,36 +38,84 @@ _NOT_PARA = frozenset({
     'ELSE', 'THEN', 'WHEN', 'OTHER',
 })
 
-# CardDemo paragraph labels always start with a 4-digit numeric prefix.
-_CARDEMO_PARA_PREFIX_RE = re.compile(r'^\d{4}-', re.IGNORECASE)
+# Area-A keywords that look like paragraph headers (match _PARA_HEADER_RE)
+# but are COBOL division/section/structural headers, not paragraph names.
+_NOT_HEADER_KEYWORDS = frozenset({
+    # Divisions
+    'IDENTIFICATION', 'ENVIRONMENT', 'DATA', 'PROCEDURE',
+    # Sections (bare word before SECTION keyword on same line)
+    'WORKING-STORAGE', 'LINKAGE', 'FILE', 'LOCAL-STORAGE',
+    'INPUT-OUTPUT', 'CONFIGURATION', 'COMMUNICATION', 'REPORT',
+    # Sub-section headers within non-procedure divisions
+    'FILE-CONTROL', 'SPECIAL-NAMES', 'SOURCE-COMPUTER', 'OBJECT-COMPUTER',
+    'REPOSITORY', 'CLASS-CONTROL',
+})
+
+# Matches level-number data items: two-digit level number followed by a space.
+# e.g. "01 WS-REC." or "77 WS-CTR."  Does NOT match "0000-ACCTFILE-OPEN."
+# because that has a hyphen as the 3rd character, not a space.
+_LEVEL_NUM_RE = re.compile(r'^\d{2}\s')
 
 _PARA_HEADER_RE = re.compile(
     r'^([A-Z0-9][A-Z0-9\-]*)\s*\.\s*$',
     re.IGNORECASE
 )
 
+# A SECTION header looks like: NAME SECTION. or NAME SECTION USING ...
+_SECTION_HEADER_RE = re.compile(
+    r'^[A-Z0-9][A-Z0-9\-]*\s+SECTION\b',
+    re.IGNORECASE
+)
+
 
 # ---------------------------------------------------------------------------
-# Source normalisation
+# Source normalisation  --  FIXED COLUMN POSITIONS (COBOL fixed format)
 # ---------------------------------------------------------------------------
 
 def _strip_seq(line: str) -> str:
+    """Legacy helper kept for backward compatibility. Not used internally."""
     m = _SEQ_RE.match(line)
     return m.group(1) if m else line
 
 
 def _normalise_source(raw: str) -> list:
+    """
+    Convert raw COBOL fixed-format source text into a list of (lineno, text)
+    pairs where `text` is the code area (columns 8-72) of each non-comment,
+    non-blank line.
+
+    COBOL fixed-format column layout (1-based, standard):
+      Cols  1- 6  Sequence area   -- ignored
+      Col   7     Indicator area  -- '*' or '/' = comment; '-' = continuation;
+                                     ' ' or 'D' = normal code
+      Cols  8-72  Code area       -- the text returned in each tuple
+      Cols 73-80  Identification  -- ignored
+
+    In 0-based Python indexing:
+      raw[0:6]   sequence area
+      raw[6]     indicator
+      raw[7:72]  code area
+
+    This implementation uses FIXED COLUMN POSITIONS unconditionally.
+    It does NOT rely on _strip_seq or any regex to locate the indicator
+    column, because the COBOL standard defines columns by position, not
+    by content.  Lines shorter than 7 characters (e.g. blank lines in
+    editors that strip trailing whitespace) are silently skipped.
+    """
     result = []
     for lineno, raw_line in enumerate(raw.splitlines(), start=1):
-        line = _strip_seq(raw_line)
-        if not line:
+        # Strip only the line terminator; preserve internal spacing.
+        line = raw_line.rstrip('\r\n')
+        if len(line) < 7:
+            # Line is too short to have an indicator column -- skip.
             continue
-        indicator = line[0]
+        indicator = line[6]          # col 7 (0-based index 6)
         if indicator in ('*', '/', '$'):
+            # Comment or compiler-directive line.
             continue
-        text = line[1:72].rstrip() if len(line) > 1 else ''
-        if text.strip():
-            result.append((lineno, text))
+        code = line[7:72].rstrip()   # cols 8-72 (0-based 7:72)
+        if code.strip():
+            result.append((lineno, code))
     return result
 
 
@@ -89,13 +138,47 @@ def _ends_statement(text: str) -> bool:
 
 
 def _is_para_header_line(text: str) -> bool:
-    """True if the stripped text looks like a paragraph/section header label."""
+    """Legacy helper. True if stripped text looks like a paragraph header."""
     stripped = text.strip()
     m = _PARA_HEADER_RE.match(stripped)
     if not m:
         return False
     candidate = m.group(1).upper()
     return candidate not in _NOT_PARA
+
+
+def _is_area_a_paragraph(text: str) -> bool:
+    """
+    Return True if this code-area text (raw[7:72] from _normalise_source)
+    is a paragraph header that should start a new paragraph scope.
+
+    After _normalise_source, the text value is exactly cols 8-72 of the
+    original source with trailing spaces removed.  A line that begins in
+    Area A (col 8) therefore has NO leading spaces: text[0] != ' '.
+    A line that begins in Area B (col 12+) has 4+ leading spaces.
+
+    Rules (all must hold):
+      1. text[0] is not a space  (Area A: content starts at col 8)
+      2. Does NOT match _LEVEL_NUM_RE  (not a level-number data item)
+      3. Does NOT match _SECTION_HEADER_RE  (not a SECTION header)
+      4. Matches _PARA_HEADER_RE  (single token ending in period)
+      5. Candidate name NOT in _NOT_PARA
+      6. Candidate name NOT in _NOT_HEADER_KEYWORDS
+    """
+    if not text or text[0] == ' ':
+        return False
+    stripped = text.strip()
+    if _LEVEL_NUM_RE.match(stripped):
+        return False
+    if _SECTION_HEADER_RE.match(stripped):
+        return False
+    m = _PARA_HEADER_RE.match(stripped)
+    if not m:
+        return False
+    candidate = m.group(1).upper()
+    if candidate in _NOT_PARA or candidate in _NOT_HEADER_KEYWORDS:
+        return False
+    return True
 
 
 # ---------------------------------------------------------------------------
@@ -107,30 +190,22 @@ def _join_source_lines(lines: list) -> list:
     Fuse physical continuation lines back into their logical predecessor.
 
     A line is fused as a continuation when BOTH conditions hold:
-      1. The predecessor did NOT end with a statement-terminating period
-         (i.e. the logical statement is still open).
-      2. The candidate does NOT start with the CardDemo 4-digit prefix
-         pattern (^\\d{4}-).  Real paragraph headers in this codebase
-         always carry that prefix; non-prefixed tokens that look like
-         headers (e.g. WS-REISSUE-DATE., VB2-ACCT-ID.) are MOVE
-         continuation targets and must be absorbed.
+      1. The predecessor did NOT end with a statement-terminating period.
+      2. The candidate is NOT an Area-A paragraph header.
 
-    Note: the _is_para_header_line check is intentionally NOT used here.
-    A line that looks like a header but whose predecessor is an open
-    statement IS a continuation target -- that is exactly the bug we are
-    fixing.  Only the 4-digit prefix guard is authoritative for whether
-    a token can start a new paragraph.
+    Because _normalise_source now uses fixed column positions, text[0]
+    reliably reflects whether the line starts in Area A (col 8, no leading
+    space) or Area B (col 12+, leading spaces).
     """
     if not lines:
         return []
     joined = [[lines[0][0], lines[0][1]]]
     for lineno, text in lines[1:]:
-        stripped = text.strip()
-        prev_ends            = _ends_statement(joined[-1][1])
-        candidate_has_prefix = bool(_CARDEMO_PARA_PREFIX_RE.match(stripped))
+        prev_ends    = _ends_statement(joined[-1][1])
+        cand_is_para = _is_area_a_paragraph(text)
 
-        if not prev_ends and not candidate_has_prefix:
-            joined[-1][1] = joined[-1][1] + ' ' + stripped
+        if not prev_ends and not cand_is_para:
+            joined[-1][1] = joined[-1][1] + ' ' + text.strip()
         else:
             joined.append([lineno, text])
     return [(ln, txt) for ln, txt in joined]
@@ -295,10 +370,14 @@ def extract_paragraphs(lines: list) -> dict:
     """
     Extract paragraphs from normalised source lines.
 
-    Procedure-division lines are first passed through _join_source_lines()
-    so that MOVE continuation targets sitting alone on their own line
-    (e.g. WS-REISSUE-DATE.) are fused back into their statement and never
-    mistaken for paragraph headers.
+    Only lines AFTER 'PROCEDURE DIVISION' are considered for paragraph
+    header detection.  Lines in earlier divisions are never paragraphs.
+
+    Procedure-division lines are passed through _join_source_lines() so
+    that continuation targets are fused before header detection.
+
+    SECTION headers (e.g. '1000-MAIN SECTION.') are NOT counted as
+    paragraphs.  See docs/V12_VALIDATION_GATES.md for the policy.
     """
     paragraphs = {}
     current = '__MAIN__'
@@ -318,16 +397,11 @@ def extract_paragraphs(lines: list) -> dict:
     proc_lines = _join_source_lines(proc_lines_raw)
 
     for lineno, text in proc_lines:
-        stripped = text.strip()
-        m = _PARA_HEADER_RE.match(stripped)
-        if m:
-            candidate = m.group(1).upper()
-            if candidate in _NOT_PARA:
-                paragraphs[current].append((lineno, text))
-            else:
-                current = candidate
-                if current not in paragraphs:
-                    paragraphs[current] = []
+        if _is_area_a_paragraph(text):
+            candidate = _PARA_HEADER_RE.match(text.strip()).group(1).upper()
+            current = candidate
+            if current not in paragraphs:
+                paragraphs[current] = []
         else:
             paragraphs[current].append((lineno, text))
     return paragraphs

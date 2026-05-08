@@ -215,7 +215,13 @@
           "line_no": 88,
           "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
+        }
+      ]
+    },
+    "PROCESS-ENTER-KEY": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "WHEN",
           "line_no": 146,
@@ -875,7 +881,13 @@
           "line_no": 176,
           "raw_text": "MOVE TRAN-MERCHANT-ZIP       TO MZIPI  OF COTRN1AI",
           "reason": "unresolved mutate operand: COTRN1AI"
-        },
+        }
+      ]
+    },
+    "RETURN-TO-PREV-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "IF",
           "line_no": 199,
@@ -917,7 +929,13 @@
           "line_no": 199,
           "raw_text": "MOVE ZEROS        TO CDEMO-PGM-CONTEXT",
           "reason": "unresolved mutate operand: CDEMO-PGM-CONTEXT"
-        },
+        }
+      ]
+    },
+    "SEND-TRNVIEW-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 215,
@@ -941,7 +959,18 @@
           "line_no": 215,
           "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COTRN1AO",
           "reason": "unresolved mutate operand: COTRN1AO"
-        },
+        }
+      ]
+    },
+    "RECEIVE-TRNVIEW-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "POPULATE-HEADER-INFO": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 245,
@@ -1175,7 +1204,13 @@
           "line_no": 245,
           "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COTRN1AO",
           "reason": "unresolved mutate operand: COTRN1AO"
-        },
+        }
+      ]
+    },
+    "READ-TRANSACT-FILE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "READ",
           "line_no": 269,
@@ -1277,7 +1312,18 @@
           "line_no": 280,
           "raw_text": "MOVE -1       TO TRNIDINL OF COTRN1AI",
           "reason": "unresolved mutate operand: COTRN1AI"
-        },
+        }
+      ]
+    },
+    "CLEAR-CURRENT-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "INITIALIZE-ALL-FIELDS": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 311,
@@ -1557,9 +1603,5 @@
       ]
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=1 facts=9"
-    }
-  ]
+  "program_unresolved": []
 }
