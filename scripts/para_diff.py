@@ -5,7 +5,7 @@ and facts file for one program.
 
 Usage:
     python scripts/para_diff.py CBACT01C
-    python scripts/para_diff.py CBACT01C --all
+    python scripts/para_diff.py --all
 """
 import json
 import sys
@@ -18,13 +18,30 @@ CBL_DIR   = Path('data/raw/cbl')
 FACTS_DIR = Path('data/facts')
 
 
+def _para_name_from_entry(entry) -> str:
+    """
+    paragraphs_defined entries may be:
+      - a plain string:        "1000-ACCTFILE-GET-NEXT"
+      - a dict with 'name':   {"name": "1000-ACCTFILE-GET-NEXT", ...}
+    Return the uppercased name in both cases.
+    """
+    if isinstance(entry, str):
+        return entry.upper()
+    if isinstance(entry, dict):
+        for key in ('name', 'paragraph', 'para', 'label', 'id'):
+            if key in entry:
+                return str(entry[key]).upper()
+        # last resort: first string value in the dict
+        for v in entry.values():
+            if isinstance(v, str):
+                return v.upper()
+    return str(entry).upper()
+
+
 def diff_program(program_name: str):
     program_name = program_name.upper()
-    cbl_path   = CBL_DIR   / f"{program_name}.cbl"
-    facts_path = FACTS_DIR / f"{program_name}.json"
-
+    cbl_path = CBL_DIR / f"{program_name}.cbl"
     if not cbl_path.exists():
-        # try upper extension
         cbl_path = CBL_DIR / f"{program_name}.CBL"
     if not cbl_path.exists():
         print(f"[{program_name}] ERROR: .cbl not found in {CBL_DIR}")
@@ -36,14 +53,17 @@ def diff_program(program_name: str):
     local_set = sorted(k for k in paras if k != '__MAIN__')
 
     facts_set = []
+    facts_path = FACTS_DIR / f"{program_name}.json"
     if facts_path.exists():
         with open(facts_path, encoding='utf-8') as fh:
             facts = json.load(fh)
         raw_val = facts.get('paragraphs_defined', [])
         if isinstance(raw_val, list):
-            facts_set = sorted(v.upper() for v in raw_val)
+            facts_set = sorted(_para_name_from_entry(v) for v in raw_val)
         elif isinstance(raw_val, int):
             facts_set = [f'<count only: {raw_val}>']
+        else:
+            facts_set = [str(raw_val)]
     else:
         facts_set = ['<no facts file>']
 
@@ -54,6 +74,12 @@ def diff_program(program_name: str):
     print(f"  {program_name}")
     print(f"  local={len(local_set)}  facts={len(facts_set)}")
     print(f"{'='*60}")
+    print(f"  local paragraphs ({len(local_set)}):")
+    for n in local_set:
+        print(f"    {n}")
+    print(f"  facts paragraphs ({len(facts_set)}):")
+    for n in facts_set:
+        print(f"    {n}")
     print(f"  local_only (+{len(local_only)}):")
     for n in local_only:
         print(f"    + {n}")
@@ -65,9 +91,9 @@ def diff_program(program_name: str):
 
 
 if __name__ == '__main__':
-    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    args  = [a for a in sys.argv[1:] if not a.startswith('--')]
     flags = [a for a in sys.argv[1:] if a.startswith('--')]
-    if not args:
+    if not args and '--all' not in flags:
         print("Usage: python scripts/para_diff.py <PROGRAM> [--all]")
         sys.exit(1)
     if '--all' in flags:
