@@ -66,36 +66,7 @@ Synthetic CBL source strings in `tests/test_data_flow.py` **must** use the
 
 ### SECTION header policy
 
-**Decision: SECTION headers are NOT counted as paragraphs.**
-
-Rationale:
-- The CardDemo corpus does not use `PROCEDURE DIVISION SECTION` headers in
-  programs with a 4-digit paragraph naming scheme.
-- Section names are listed in `facts/PROGRAM.json` under `sections_defined`,
-  not `paragraphs_defined`.
-- Counting section headers as paragraphs would inflate `local` counts.
-- If future programs require section-as-paragraph semantics, introduce a
-  `count_sections_as_paragraphs: bool` flag rather than changing the default.
-
-Implementation: `_SECTION_HEADER_RE` matches `NAME SECTION.` or
-`NAME SECTION USING`. Any line matching this pattern is excluded by
-`_is_area_a_paragraph()`.
-
-### Division/section exclusion list (`_NOT_HEADER_KEYWORDS`)
-
-The following tokens, when appearing as the first word of an Area-A line,
-are structural COBOL keywords and **never** paragraph names:
-
-```
-IDENTIFICATION, ENVIRONMENT, DATA, PROCEDURE
-WORKING-STORAGE, LINKAGE, FILE, LOCAL-STORAGE
-INPUT-OUTPUT, CONFIGURATION, COMMUNICATION, REPORT
-FILE-CONTROL, SPECIAL-NAMES, SOURCE-COMPUTER, OBJECT-COMPUTER
-REPOSITORY, CLASS-CONTROL
-```
-
-Level-number data items (`01 NAME.`, `77 NAME.`, `05 FILLER.`) are excluded
-via `_LEVEL_NUM_RE` (`^\d{2}\s`).
+SECTION headers are NOT counted as paragraphs. See 3.1 branch notes for full rationale.
 
 ### Area-A paragraph detection rule (`_is_area_a_paragraph`)
 
@@ -110,100 +81,152 @@ header if and only if ALL of the following hold:
 5. Candidate name NOT in `_NOT_PARA`
 6. Candidate name NOT in `_NOT_HEADER_KEYWORDS`
 
-Consequences:
-- 4-digit CardDemo paragraphs (`0000-ACCTFILE-OPEN.`) → detected ✓
-- Free-form paragraphs (`MAIN-PARA.`, `PROCESS-ENTER-KEY.`) → detected ✓
-- Indented MOVE targets (`    WS-REISSUE-DATE.`) → NOT detected (rule 1) ✓
-- Division headers (`PROCEDURE DIVISION.`) → NOT detected (rule 6) ✓
-- Section headers (`WORKING-STORAGE SECTION.`) → NOT detected (rule 3) ✓
-- Level numbers (`01 WS-REC.`) → NOT detected (rule 2) ✓
-
 ### 3.1 Gate criteria (FROZEN — 37/37 PASS on `e3aa8ae`)
 
 ```powershell
 python tests\test_data_flow.py
 # -> 37/37 PASS
-#    Includes: TestNormaliseSourceColumnLayout (5 cases)
-#    Includes: TestCbact01cRealFileParagraphCount (1 case, reads real disk file)
 
 python scripts\data_flow.py data\raw\cbl\CBACT01C.cbl > data\data_flow\CBACT01C.json
-python -c "import json; d=json.load(open(r'data\\data_flow\\CBACT01C.json')); print('paragraph_count=', len(d['paragraph_data_flow'])); print('program_unresolved=', d['program_unresolved'])"
-# -> paragraph_count=16
-# -> program_unresolved=[]
+python -c "..."
+# -> paragraph_count=16, program_unresolved=[]
 
 python scripts\para_diff.py CBACT01C
-# -> local=16  facts=16  (no delta)
+# -> local=16 facts=16, no delta
 
 python scripts\data_flow.py --all
-# -> 31 files written
-# -> 0 ERROR lines
-# -> ZERO WARNINGs with local=0
-# -> ZERO WARNINGs with local=1
-# -> Allowed WARNINGs: COACTUPC, COACTVWC, COCRDLIC close-mismatch (deferred to 3.4)
+# -> 31 files, 0 ERROR, ZERO local=0, ZERO local=1
+# -> Allowed: COACTUPC/COACTVWC/COCRDLIC close-mismatch WARNINGs (deferred to 3.4)
 ```
 
 ---
 
-## Section 3.2 Gate — CALL USING Classification
+## Section 3.2 Gate (FROZEN — commit `e9f68d3`, merged to `main` 2026-05-08)
 
-**Branch:** `feature/schema-v1.3-section3-call-using`
+**Branch:** `feature/schema-v1.3-section3-call-using` → merged to `main`
 
-### Specification
+### LOCKED: `_parse_call` single-pass cursor contract
 
-**Mode-aware operand classification after `USING`:**
+`_parse_call` **must** use a single forward-scanning cursor starting at
+token index 2 (immediately after `CALL` + target token). The cursor
+processes all remaining tokens in one pass:
+
+```python
+in_using       = False
+mode           = 'REFERENCE'   # default USING operand mode
+returning_next = False         # True: next identifier -> mutate only, then stop
+
+i = 2   # always start after CALL + target
+while i < len(ut):
+    tok = ut[i]
+    if tok in _CALL_STOP_KEYWORDS: break
+    if tok == 'USING':     in_using = True; mode = 'REFERENCE'; i+=1; continue
+    if tok == 'RETURNING': returning_next = True; in_using = False; i+=1; continue
+    if tok == 'BY': ...    # update mode from next token
+    # operand: check returning_next first, then in_using + mode
+```
+
+**Why this matters:** `CALL 'X' RETURNING id` (no `USING`) must still produce
+a mutate for `id`. An implementation that only enters the cursor loop after
+finding `USING` silently drops RETURNING-without-USING operands.
+
+### LOCKED: Mode semantics
 
 | Mode | Reads | Mutates |
 |---|---|---|
-| `BY REFERENCE` (default) | ✓ | ✓ |
+| `BY REFERENCE` (default inside USING) | ✓ | ✓ |
 | `BY CONTENT` | ✓ | ✗ |
 | `BY VALUE` | ✓ | ✗ |
-| `RETURNING` | ✗ | ✓ |
+| `RETURNING` (anywhere after target) | ✗ | ✓ |
 
-**Call graph emission:** Each program output must include a `call_graph` key:
+### LOCKED: `call_graph` key
+
+Every program output JSON **must** include a top-level `call_graph` key:
 
 ```json
 "call_graph": {
-  "CBACT01C": ["COBDATFT"]
+  "CBACT01C": ["COBDATFT", "CEE3ABD"]
 }
 ```
 
-### Required tests
+- Value is an ordered list of unique static call targets (string literals
+  and bare identifiers after `CALL`).
+- `CBACT01C.call_graph` MUST contain `'COBDATFT'` and MAY contain additional
+  runtime targets (e.g. `'CEE3ABD'`) that are correct and expected.
 
-- `TestCallUsingByReference` — operand appears in both reads and mutates
-- `TestCallUsingByContent` — operand appears in reads only
-- `TestCallUsingByValue` — operand appears in reads only
-- `TestCallReturning` — operand appears in mutates only
-- `TestCallGraphCbact01c` — `CBACT01C.call_graph` contains `"COBDATFT"`
+### LOCKED: `unresolved_count` is informational only
 
-### 3.2 Gate criteria
+`unresolved_count` (the per-program stderr line) is **not** a gate criterion.
+Small ±1–4 shifts relative to prior gates are expected whenever a new verb
+handler classifies previously-unclassified tokens. The gate criteria that
+matter are:
+
+- All tests PASS
+- `1300_unresolved == []`
+- `--all` zero `local=0` and zero `local=1` WARNINGs
+- Only the three documented close-mismatch WARNINGs allowed
+  (COACTUPC, COACTVWC, COCRDLIC)
+
+### 3.2 Gate criteria (FROZEN — 47/47 PASS on `e9f68d3`)
 
 ```powershell
 python tests\test_data_flow.py
-# -> 42+ PASS (37 + 5 new CALL tests)
+# -> 47/47 PASS
+#    Includes: TestCallUsingByReference (3), TestCallUsingByContent (1),
+#              TestCallUsingByValue (1), TestCallReturning (3),
+#              TestCallMixedModes (1), TestCallGraphCbact01c (1)
 
-# CBACT01C 1300-POPUL-ACCT-RECORD unresolved == []
-# CBACT01C.call_graph contains "COBDATFT"
-# --all: zero local=0 WARNINGs, zero local=1 WARNINGs
-# Only COACTUPC / COACTVWC / COCRDLIC close-mismatch WARNINGs allowed
+python scripts\data_flow.py data\raw\cbl\CBACT01C.cbl > data\data_flow\CBACT01C.json
+python -c "import json; d=json.load(open(r'data\\data_flow\\CBACT01C.json')); \
+           print('call_graph=', d['call_graph']); \
+           print('1300_unresolved=', d['paragraph_data_flow']['1300-POPUL-ACCT-RECORD']['unresolved'])"
+# -> call_graph={'CBACT01C': ['COBDATFT', 'CEE3ABD']}
+# -> 1300_unresolved=[]
+
+python scripts\data_flow.py --all
+# -> 31 files, 0 ERROR
+# -> ZERO local=0 WARNINGs, ZERO local=1 WARNINGs
+# -> Allowed: COACTUPC / COACTVWC / COCRDLIC close-mismatch WARNINGs only
 ```
 
-### Frozen contracts (do NOT touch in 3.2)
+### Frozen contracts (do NOT touch in 3.3 or later without re-gating 3.2)
 
 `_normalise_source`, `_join_source_lines`, `extract_paragraphs`,
 `_is_area_a_paragraph`, `_mask_literals`, `_dispatch_inline`
 
 ---
 
-## Section 3.3 Gate — Missing Verb Handlers (planned)
+## Section 3.3 Gate — Missing Verb Handlers
 
 **Branch:** `feature/schema-v1.3-section3-verbs`  
-**Prerequisite:** 3.2 merged to main; rebase 3.3 onto post-3.2 main before merge.
+**Prerequisite:** rebased onto post-3.2 main before merge.
 
 ### Specification
 
-- Add handlers for: `INSPECT`, `SORT`, `MERGE`, `RELEASE`, `RETURN`
-- After each handler: zero corpus lines for that verb may produce an
-  unresolved entry with reason `UNKNOWN_VERB`
+Add deterministic handlers for the five verbs currently emitting
+`reason: 'VERB not yet classified (TODO)'` in the corpus:
+
+| Verb | Operand semantics |
+|---|---|
+| `INSPECT` | source identifier (read); TALLYING/REPLACING targets (mutate) |
+| `SORT` | file name (mutate); USING files (read); GIVING files (mutate) |
+| `MERGE` | file name (mutate); USING files (read); GIVING files (mutate) |
+| `RELEASE` | record name (mutate); FROM source (read) |
+| `RETURN` | file name (mutate); INTO target (mutate) |
+
+### 3.3 Gate criteria
+
+```powershell
+python tests\test_data_flow.py
+# -> 52+ PASS (47 + at least 5 new verb handler tests, one per verb)
+
+python scripts\data_flow.py --all
+# -> 31 files, 0 ERROR
+# -> ZERO local=0 WARNINGs, ZERO local=1 WARNINGs
+# -> Zero corpus lines for INSPECT/SORT/MERGE/RELEASE/RETURN produce
+#    an unresolved entry with reason 'UNKNOWN_VERB' or 'not yet classified'
+# -> Only COACTUPC / COACTVWC / COCRDLIC close-mismatch WARNINGs allowed
+```
 
 ### Frozen contracts (do NOT touch in 3.3)
 
