@@ -37,6 +37,9 @@ _NOT_PARA = frozenset({
     'ELSE', 'THEN', 'WHEN', 'OTHER',
 })
 
+# CardDemo paragraph labels always start with a 4-digit numeric prefix.
+_CARDEMO_PARA_PREFIX_RE = re.compile(r'^\d{4}-', re.IGNORECASE)
+
 _PARA_HEADER_RE = re.compile(
     r'^([A-Z0-9][A-Z0-9\-]*)\s*\.\s*$',
     re.IGNORECASE
@@ -53,11 +56,6 @@ def _strip_seq(line: str) -> str:
 
 
 def _normalise_source(raw: str) -> list:
-    """
-    Returns (lineno, text) pairs where text is cols 7-72 (0-indexed: 1-71)
-    of the source line after stripping the sequence number field.
-    Leading spaces ARE preserved -- they encode A-margin vs B-margin.
-    """
     result = []
     for lineno, raw_line in enumerate(raw.splitlines(), start=1):
         line = _strip_seq(raw_line)
@@ -100,19 +98,6 @@ def _is_para_header_line(text: str) -> bool:
     return candidate not in _NOT_PARA
 
 
-def _in_a_margin(text: str) -> bool:
-    """
-    In fixed-format COBOL the A-margin is cols 8-11 (1-based).
-    After _normalise_source strips the indicator byte, the stored text
-    starts at col 7 (1-based), so A-margin content begins at index 0
-    of the stored text (no leading space).
-    Paragraph/section headers and 01/77 level items appear in the A-margin.
-    Statement continuations appear in the B-margin (at least one leading
-    space in the stored text).
-    """
-    return len(text) > 0 and text[0] != ' '
-
-
 # ---------------------------------------------------------------------------
 # Targeted continuation joiner for procedure-division source lines
 # ---------------------------------------------------------------------------
@@ -122,23 +107,30 @@ def _join_source_lines(lines: list) -> list:
     Fuse physical continuation lines back into their logical predecessor.
 
     A line is fused as a continuation when BOTH conditions hold:
-      1. The predecessor did NOT end with a statement-terminating period.
-      2. The candidate is NOT in the A-margin (starts with at least one
-         leading space in the stored text).
+      1. The predecessor did NOT end with a statement-terminating period
+         (i.e. the logical statement is still open).
+      2. The candidate does NOT start with the CardDemo 4-digit prefix
+         pattern (^\\d{4}-).  Real paragraph headers in this codebase
+         always carry that prefix; non-prefixed tokens that look like
+         headers (e.g. WS-REISSUE-DATE., VB2-ACCT-ID.) are MOVE
+         continuation targets and must be absorbed.
 
-    Paragraph and section headers always appear at the A-margin (index 0,
-    no leading space). Continuation targets like WS-REISSUE-DATE. appear
-    indented in the B-margin and are absorbed regardless of whether they
-    happen to match _PARA_HEADER_RE.
+    Note: the _is_para_header_line check is intentionally NOT used here.
+    A line that looks like a header but whose predecessor is an open
+    statement IS a continuation target -- that is exactly the bug we are
+    fixing.  Only the 4-digit prefix guard is authoritative for whether
+    a token can start a new paragraph.
     """
     if not lines:
         return []
     joined = [[lines[0][0], lines[0][1]]]
     for lineno, text in lines[1:]:
-        prev_ends = _ends_statement(joined[-1][1])
-        in_a      = _in_a_margin(text)
-        if not prev_ends and not in_a:
-            joined[-1][1] = joined[-1][1] + ' ' + text.strip()
+        stripped = text.strip()
+        prev_ends            = _ends_statement(joined[-1][1])
+        candidate_has_prefix = bool(_CARDEMO_PARA_PREFIX_RE.match(stripped))
+
+        if not prev_ends and not candidate_has_prefix:
+            joined[-1][1] = joined[-1][1] + ' ' + stripped
         else:
             joined.append([lineno, text])
     return [(ln, txt) for ln, txt in joined]
@@ -227,17 +219,16 @@ def _tokens(text: str) -> list:
 
 
 # ---------------------------------------------------------------------------
-# Literal masker for verb-split pre-processing
+# Literal masker (for verb-split pre-processing only)
 # ---------------------------------------------------------------------------
 
 def _mask_literals(text: str) -> str:
     """
     Replace every quoted string with an equal-length run of underscores
-    so that keywords embedded inside literals are invisible to regex
-    verb-splitting.  The returned string has the same length and character
-    positions as the original, ensuring that any offset-based logic (if
-    added later) would remain correct.  classify_statement always receives
-    the original, unmasked text.
+    so that COBOL keywords embedded inside literals are invisible to the
+    verb-split regex.  The returned string has identical length to the
+    original so that character-position slicing from the original is
+    correct.  classify_statement always receives the ORIGINAL text.
     """
     result = list(text)
     i = 0
@@ -693,16 +684,14 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
 
 def _dispatch_inline(lineno, text, qmap, context_records, reads, mutates, unresolved):
     """
-    Split a single logical COBOL statement (or a fused run of statements
-    separated by scope terminators) into individual verb-led clauses and
-    classify each one.
+    Split a single logical COBOL statement (or fused run of statements)
+    into individual verb-led clauses and classify each one.
 
-    IMPORTANT: verb-keyword splitting is done on a literal-masked copy of
-    the text (_mask_literals) so that keywords embedded inside quoted
-    strings (e.g. WRITE inside 'ACCOUNT FILE WRITE STATUS IS:') are
-    invisible to the regex.  Each resulting fragment is then classified
-    using a slice of the ORIGINAL text so that _tokens() can still
-    collapse the real literal to __LIT__.
+    The verb-split regex is applied to a literal-MASKED copy of the text
+    so that COBOL keywords embedded inside quoted strings (e.g. WRITE
+    inside 'ACCOUNT FILE WRITE STATUS IS:') are invisible to the splitter.
+    Each fragment is then classified using a slice of the ORIGINAL text
+    so that _tokens() can still collapse the real literal to __LIT__.
     """
     _VERB_SPLIT_RE = re.compile(
         r'(?:^|(?<=\s))(?=(?:MOVE|ADD|SUBTRACT|MULTIPLY|DIVIDE|COMPUTE|INITIALIZE|'
@@ -714,7 +703,6 @@ def _dispatch_inline(lineno, text, qmap, context_records, reads, mutates, unreso
         re.IGNORECASE,
     )
     masked = _mask_literals(text)
-    # Find split positions in the masked string, then slice from original.
     positions = [m.start() for m in _VERB_SPLIT_RE.finditer(masked)]
     if not positions:
         part = text.strip()

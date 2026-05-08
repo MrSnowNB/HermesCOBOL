@@ -13,6 +13,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / 'scripts'))
 from data_flow import (
     classify_statement, extract_paragraphs, _normalise_source,
     is_literal, _join_source_lines, _is_para_header_line,
+    _dispatch_inline,
 )
 
 _QMAP = {
@@ -164,18 +165,16 @@ class TestDisplayLiteralNoUnresolved(unittest.TestCase):
 class TestDisplayLiteralInVerbSplit(unittest.TestCase):
     """
     CBACT01C line 245: the literal 'ACCOUNT FILE WRITE STATUS IS:' contains
-    the word WRITE. _dispatch_inline must not split on that embedded keyword.
-    Only OUTFILE-STATUS (the real operand) should appear as a read;
+    the word WRITE.  _dispatch_inline must not split on that embedded keyword.
+    Only OUTFILE-STATUS (the trailing real operand) must appear as a read;
     unresolved must be empty.
     """
 
     def test_display_literal_containing_verb_keyword(self):
         """
         DISPLAY 'ACCOUNT FILE WRITE STATUS IS:'  OUTFILE-STATUS
-        reads:      [OUTFILE-STATUS]
-        unresolved: []
+        -> reads includes OUTFILE-STATUS, unresolved == []
         """
-        from data_flow import _dispatch_inline
         stmt = "DISPLAY 'ACCOUNT FILE WRITE STATUS IS:'  OUTFILE-STATUS"
         reads, mutates, unresolved = [], [], []
         _dispatch_inline(245, stmt, _QMAP, set(), reads, mutates, unresolved)
