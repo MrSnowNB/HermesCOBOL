@@ -99,6 +99,13 @@ PERFORM_NON_TARGETS = frozenset([
 # extract_fallthrough.py CICS_TERMINATOR_OPS).  Used to detect exit_points.
 CICS_TERMINATOR_OPS = frozenset(["RETURN", "XCTL"])
 
+# Valid AID token length range (inclusive).
+# DFH tokens shorter than 4 or longer than 10 chars are noise:
+#   too short: e.g. bare 'DFH' prefix match artefacts
+#   too long:  e.g. internal data-name false positives
+_AID_MIN_LEN = 4
+_AID_MAX_LEN = 10
+
 
 # ===========================================================================
 # 2.  REGEX LIBRARY
@@ -192,12 +199,37 @@ RE_CICS_MAPSET     = re.compile(
 RE_CICS_SEND_MAP   = re.compile(r"\bEXEC[ \t]+CICS[ \t]+SEND[ \t]+MAP\b", re.I)
 # EXEC CICS RECEIVE MAP
 RE_CICS_RECV_MAP   = re.compile(r"\bEXEC[ \t]+CICS[ \t]+RECEIVE[ \t]+MAP\b", re.I)
-# EIBAID = DFHxxx  or  EIBAID = DFHAID.xxx
-RE_EIBAID_EQ       = re.compile(
+
+# --- AID key matchers ---
+# Three complementary matchers cover the full CardDemo AID-key vocabulary.
+#
+# Primary (dominant CardDemo pattern):
+#   EVALUATE EIBAID
+#       WHEN DFHENTER   PERFORM ...
+#       WHEN DFHPF3     PERFORM ...
+#   END-EVALUATE
+# The block scanner RE_EVAL_EIBAID_START + RE_WHEN_DFH (see Section 9)
+# handles this case by scanning forward to END-EVALUATE.
+RE_EVAL_EIBAID_START = re.compile(r"\bEVALUATE[ \t]+EIBAID\b", re.I)
+RE_WHEN_DFH          = re.compile(r"\bWHEN[ \t]+(DFH[A-Z0-9]+)\b", re.I)
+
+# Secondary:
+#   IF EIBAID = DFHPF3 / IF EIBAID NOT = DFHENTER
+# Note: does NOT require DFHAID. prefix -- matches the bare constant form
+# that is most common in CardDemo.
+RE_IF_EIBAID = re.compile(
+    r"\bEIBAID[ \t]*(?:NOT[ \t]*)?=[ \t]*(DFH[A-Z0-9]+)\b",
+    re.I,
+)
+
+# Fallback (legacy form with DFHAID. prefix):
+#   EIBAID = DFHAID.PF3   or   DFHAID.PF3
+# These appear in some IBM sample programs; retained as a secondary path.
+RE_EIBAID_EQ  = re.compile(
     r"EIBAID[ \t]*=[ \t]*DFHAID[ \t]*\.?([A-Z0-9]+)", re.I
 )
-# Dotted DFHAID.xxx usage  (common in EVALUATE EIBAID WHEN DFHAID.PF3)
-RE_DFHAID_DOT      = re.compile(r"\bDFHAID\.([A-Z0-9]+)\b", re.I)
+RE_DFHAID_DOT = re.compile(r"\bDFHAID\.([A-Z0-9]+)\b", re.I)
+
 # DFHCOMMAREA present in source
 RE_COMMAREA        = re.compile(r"\bDFHCOMMAREA\b", re.I)
 # EXEC SQL (flag only, no deep extraction at this stage)
@@ -213,6 +245,89 @@ RE_ACT_EVALUATE  = re.compile(r"\bEVALUATE\b",  re.I)
 # Name patterns that identify abend / error paragraphs
 RE_ABEND_NAME    = re.compile(r"(ABEND|9999|ABORT|STORUN)", re.I)
 RE_ERROR_NAME    = re.compile(r"(ERROR|STATUS|STAT|INVALID|EXCEPT)", re.I)
+
+
+# ===========================================================================
+# 2b. AID KEY UTILITIES
+# ===========================================================================
+
+def _is_valid_aid_token(token: str) -> bool:
+    """
+    Return True iff *token* looks like a real DFHAID constant.
+
+    Rules:
+      * Must start with 'DFH' (callers already ensure this via regex group)
+      * Total length 4-10 characters (inclusive)
+        - min 4: DFHx (e.g. DFHPF1 is 6, but DFHPA1 is 6 -- shortest real
+          constants are DFHPA1=6, DFHPF1=6; but we accept 4 to be safe)
+        - max 10: DFHMSRE=7, DFHOPID=7 -- nothing legitimate exceeds 10
+    """
+    return _AID_MIN_LEN <= len(token) <= _AID_MAX_LEN
+
+
+def _extract_aid_keys_from_text(text: str) -> set[str]:
+    """
+    Extract all AID key constants from *text* using the three matcher strategy.
+
+    Operates on the procedure body text (not the EXEC-CICS-collapsed form,
+    because EVALUATE EIBAID blocks live outside EXEC CICS statements).
+
+    Returns a set of upper-cased DFHxxx constants that pass the length filter.
+
+    Matcher priority (all feed the same output set):
+      1. EVALUATE EIBAID block scanner  -- dominant CardDemo pattern
+      2. IF EIBAID = DFHxxx             -- conditional comparison form
+      3. EIBAID = DFHAID.xxx / DFHAID.x -- legacy dotted form (fallback)
+    """
+    keys: set[str] = set()
+    lines = text.splitlines()
+
+    # --- Matcher 1: EVALUATE EIBAID block scanner ---
+    # Scan the text line-by-line.  When we encounter EVALUATE EIBAID, enter
+    # a block-collection mode and gather every WHEN DFHxxx until END-EVALUATE.
+    # This handles the dominant pattern used by all CardDemo CICS programs.
+    in_eval_eibaid = False
+    for line in lines:
+        # Skip COBOL comment lines (col 7 indicator)
+        if len(line) >= 7 and line[6] in ("*", "/"):
+            continue
+        upper = line.upper()
+        if not in_eval_eibaid:
+            if RE_EVAL_EIBAID_START.search(line):
+                in_eval_eibaid = True
+                # The EVALUATE line itself won't contain WHEN DFH, but start
+                # scanning immediately in case it is a single-line form.
+        if in_eval_eibaid:
+            # Collect every WHEN DFHxxx on this line
+            for m in RE_WHEN_DFH.finditer(line):
+                tok = m.group(1).upper()
+                if _is_valid_aid_token(tok):
+                    keys.add(tok)
+            # Exit block on END-EVALUATE
+            if "END-EVALUATE" in upper and RE_EVAL_EIBAID_START.search(line) is None:
+                in_eval_eibaid = False
+
+    # --- Matcher 2: IF EIBAID = DFHxxx  /  IF EIBAID NOT = DFHxxx ---
+    for m in RE_IF_EIBAID.finditer(text):
+        tok = m.group(1).upper()
+        if _is_valid_aid_token(tok):
+            keys.add(tok)
+
+    # --- Matcher 3: legacy DFHAID. prefix forms (fallback) ---
+    for m in RE_EIBAID_EQ.finditer(text):
+        tok = m.group(1).upper()
+        # Reconstruct full token for length check: the captured group is
+        # only the suffix after DFHAID., so prepend DFH for the check.
+        full = "DFH" + tok
+        if _is_valid_aid_token(full):
+            keys.add(full)
+    for m in RE_DFHAID_DOT.finditer(text):
+        tok = m.group(1).upper()
+        full = "DFH" + tok
+        if _is_valid_aid_token(full):
+            keys.add(full)
+
+    return keys
 
 
 # ===========================================================================
@@ -452,12 +567,17 @@ def classify_paragraph_actions(name: str, body: str) -> list[str]:
 
       open_file, close_file, read_file, write_file, rewrite_file,
       delete_record, start_browse, call_program,
-      cics_command, send_map, receive_map,
+      cics_command, send_map, receive_map, aid_branch,
       branch_logic, abend, program_exit, display_error, display_output,
       transform_data, no_action_detected
 
     The paragraph *name* is used for abend / error heuristics (adapted from
     CardDemo extract_cfg_local.py dead-code detection heuristics).
+
+    aid_branch is added when the paragraph body contains an EVALUATE EIBAID
+    block -- this is the primary AID-driven dispatch pattern in CardDemo CICS
+    programs.  It is separate from branch_logic so downstream consumers can
+    identify AID-conditioned branches without scanning cics.aid_keys.
     """
     # Use the collapsed version so multi-line EXEC CICS is seen as one unit
     collapsed = collapse_exec_cics_blocks(body)
@@ -484,12 +604,24 @@ def classify_paragraph_actions(name: str, body: str) -> list[str]:
         if RE_CICS_RECV_MAP.search(collapsed):
             actions.add("receive_map")
 
+    # --- AID branch: EVALUATE EIBAID present in paragraph body ---
+    # Uses the raw body (not collapsed) because EVALUATE EIBAID is never
+    # inside an EXEC CICS block -- it is standard COBOL conditional logic.
+    if RE_EVAL_EIBAID_START.search(body):
+        actions.add("aid_branch")
+        actions.add("branch_logic")   # aid_branch implies branch_logic
+
+    # --- IF EIBAID comparison form also implies aid_branch ---
+    if RE_IF_EIBAID.search(body):
+        actions.add("aid_branch")
+        actions.add("branch_logic")
+
     # --- DISPLAY ---
     if RE_ACT_DISPLAY.search(collapsed):
         # Distinguish error display (paragraph name heuristic) from generic
         actions.add("display_error" if RE_ERROR_NAME.search(name) else "display_output")
 
-    # --- Branch logic ---
+    # --- Branch logic (non-AID) ---
     if RE_ACT_IF.search(collapsed) or RE_ACT_EVALUATE.search(collapsed):
         actions.add("branch_logic")
 
@@ -626,30 +758,39 @@ def extract_cics(
         "commands":      list[str],   -- sorted unique command verbs
         "maps_used":     list[str],
         "mapsets_used":  list[str],
-        "aid_keys":      list[str],   -- PF keys / AID constants
-        "screen_flow":   list[{paragraph, action, map}]
+        "aid_keys":      list[str],   -- sorted unique DFHxxx AID constants
+        "screen_flow":   list[dict]   -- see below
       }
 
-    Multi-line EXEC CICS handling follows the strategy in CardDemo
-    pass1_annotate.py: collapse each EXEC CICS ... END-EXEC block into a
-    single logical line *before* applying extraction regexes, so that the
-    command keyword and MAP()/MAPSET() clauses are always on the same logical
-    line regardless of how the source splits the block.
+    AID key extraction (three complementary matchers, all deterministic):
+      1. EVALUATE EIBAID block scanner  -- dominant CardDemo CICS pattern
+         Scans forward line-by-line from EVALUATE EIBAID to END-EVALUATE,
+         collecting every WHEN DFHxxx constant.  Applied per-paragraph so
+         aid_keys can be associated with screen_flow entries.
+      2. IF EIBAID = DFHxxx form         -- secondary comparison pattern
+      3. EIBAID = DFHAID.xxx / DFHAID.x  -- legacy dotted form (fallback)
 
-    AID key extraction covers two patterns (from CardDemo pass1_annotate.py
-    EVALUATE EIBAID multiline handling):
-      1. EIBAID = DFHAID.xxx  (conditional form)
-      2. DFHAID.xxx           (direct reference form in EVALUATE WHEN clauses)
+    All three matchers feed a single de-duplicated, alphabetically sorted
+    cics.aid_keys list.  A defensive length filter (4-10 chars) discards
+    obvious false positives.
+
+    screen_flow entries:
+      Standard (send/receive without AID context):
+        {"paragraph": str, "action": "send_map"|"receive_map", "map": str|None}
+      Enhanced (paragraph also has EVALUATE EIBAID):
+        {"paragraph": str, "action": "aid_dispatch",
+         "aid_keys": [str, ...], "maps": [str, ...]}
     """
-    # Collapse blocks for the full source before extracting commands/maps
+    # Collapse EXEC CICS blocks for command/map extraction.
+    # AID key extraction intentionally uses the NON-collapsed form because
+    # EVALUATE EIBAID blocks are pure COBOL, never inside EXEC CICS blocks.
     collapsed_full = collapse_exec_cics_blocks(clean)
 
     # --- Command verbs ---
     commands: set[str] = set()
     for m in RE_EXEC_CICS_CMD.finditer(collapsed_full):
         commands.add(m.group(1).upper())
-    # Remove 'MAP' if present -- it is a SEND MAP clause keyword, not a verb
-    commands.discard("MAP")
+    commands.discard("MAP")     # MAP is a clause keyword, not a command verb
     commands.discard("MAPSET")
 
     # --- Map and mapset names ---
@@ -660,36 +801,54 @@ def extract_cics(
     for m in RE_CICS_MAPSET.finditer(collapsed_full):
         mapsets_used.add(m.group(1).upper())
 
-    # --- AID keys ---
-    # Pattern 1: EIBAID = DFHAID.PF3  (comparison form)
-    aid_keys: set[str] = set()
-    for m in RE_EIBAID_EQ.finditer(collapsed_full):
-        aid_keys.add(m.group(1).upper())
-    # Pattern 2: DFHAID.PF3  (EVALUATE WHEN ... DFHAID.xxx)
-    for m in RE_DFHAID_DOT.finditer(collapsed_full):
-        aid_keys.add(m.group(1).upper())
+    # --- AID keys (program-wide, all three matchers) ---
+    # Run over the full clean (non-collapsed) procedure text so that
+    # EVALUATE EIBAID blocks spanning many lines are picked up correctly.
+    aid_keys: set[str] = _extract_aid_keys_from_text(clean)
 
     # --- COMMAREA ---
     commarea_used = bool(RE_COMMAREA.search(raw))
 
-    # --- Screen flow: per-paragraph SEND/RECEIVE MAP ---
+    # --- Screen flow: per-paragraph, with AID context ---
     screen_flow: list[dict] = []
     for para, body in para_bodies.items():
         collapsed_body = collapse_exec_cics_blocks(body)
-        if RE_CICS_SEND_MAP.search(collapsed_body):
-            map_m = RE_CICS_MAP.search(collapsed_body)
+
+        # Collect maps referenced in this paragraph
+        para_maps: list[str] = [
+            m.group(1).upper() for m in RE_CICS_MAP.finditer(collapsed_body)
+        ]
+
+        # Collect AID keys for this specific paragraph (non-collapsed body)
+        para_aids = sorted(_extract_aid_keys_from_text(body))
+
+        if para_aids:
+            # Paragraph has AID-driven dispatch -- emit enhanced screen_flow
+            # entry regardless of whether it also does send/receive.
+            # action = "aid_dispatch" signals this is the primary entry-condition
+            # paragraph (typically the MAIN-PARA / KEY-HANDLER equivalent).
             screen_flow.append({
                 "paragraph": para,
-                "action":    "send_map",
-                "map":       map_m.group(1).upper() if map_m else None,
+                "action":    "aid_dispatch",
+                "aid_keys":  para_aids,
+                "maps":      para_maps if para_maps else None,
             })
-        if RE_CICS_RECV_MAP.search(collapsed_body):
-            map_m = RE_CICS_MAP.search(collapsed_body)
-            screen_flow.append({
-                "paragraph": para,
-                "action":    "receive_map",
-                "map":       map_m.group(1).upper() if map_m else None,
-            })
+        else:
+            # Standard send/receive map entries (no AID context)
+            if RE_CICS_SEND_MAP.search(collapsed_body):
+                map_m = RE_CICS_MAP.search(collapsed_body)
+                screen_flow.append({
+                    "paragraph": para,
+                    "action":    "send_map",
+                    "map":       map_m.group(1).upper() if map_m else None,
+                })
+            if RE_CICS_RECV_MAP.search(collapsed_body):
+                map_m = RE_CICS_MAP.search(collapsed_body)
+                screen_flow.append({
+                    "paragraph": para,
+                    "action":    "receive_map",
+                    "map":       map_m.group(1).upper() if map_m else None,
+                })
 
     return {
         "commarea_used": commarea_used,
@@ -758,6 +917,11 @@ def build_cfg_text_scan(
       Entry point  = first paragraph in source order.
       Exit points  = paragraphs whose last verb is a terminal statement OR
                      whose name matches the abend heuristic.
+
+    Structural-minimal programs (COBSWAIT pattern):
+      When paragraphs_defined is empty and cics_present is False, no edges
+      are emitted and cfg_note is set to 'structural_minimal: no paragraphs
+      detected' so downstream consumers have a machine-readable annotation.
     """
     para_order  = [p["name"] for p in defined]
     para_names  = set(para_order)
@@ -784,7 +948,6 @@ def build_cfg_text_scan(
         for m in RE_PERFORM_THRU.finditer(collapsed):
             t_start = m.group(1).upper()
             t_end   = m.group(2).upper()
-            # Emit as perform_thru with the range encoded in the edge
             key = (para, t_start, "perform_thru")
             if key not in seen_edges:
                 seen_edges.add(key)
@@ -815,8 +978,6 @@ def build_cfg_text_scan(
         # --- CALL '<name>' ---
         for m in RE_CALL.finditer(collapsed):
             t = m.group(1).upper()
-            # Call edges go to external programs (not in para_names)
-            # Record unconditionally for completeness
             key = (para, t, "call")
             if key not in seen_edges:
                 seen_edges.add(key)
@@ -825,29 +986,34 @@ def build_cfg_text_scan(
         # --- Fallthrough (extract_fallthrough.py rule) ---
         terminator = _last_verb_terminator(body)
         if terminator is None:
-            # Implicit: falls through to next paragraph in source order
             if idx < len(para_order) - 1:
                 nxt = para_order[idx + 1]
                 add_edge(para, nxt, "fallthrough")
             else:
-                # Last paragraph with no terminator
                 exit_points.add(para)
         else:
-            exit_points.add(para)   # explicit terminator -> exit point
+            exit_points.add(para)
 
-        # Abend name heuristic (from extract_cfg_local.dead_code_paragraphs logic)
         if RE_ABEND_NAME.search(para):
             exit_points.add(para)
 
     entry_points = [para_order[0]] if para_order else []
 
-    return {
+    cfg = {
         "cfg_source":   "text_scan",
         "entry_points": entry_points,
         "exit_points":  sorted(exit_points),
         "edges":        edges,
         "unresolved":   sorted(set(unresolved)),
     }
+
+    # Structural-minimal annotation: COBSWAIT pattern.
+    # Set when no paragraphs were found AND the program is not a CICS program
+    # (CICS programs with no batch paragraphs are handled separately in enrich).
+    if not para_order:
+        cfg["cfg_note"] = "structural_minimal: no paragraphs detected"
+
+    return cfg
 
 
 # ===========================================================================
@@ -903,7 +1069,7 @@ def build_cfg_from_rekt(
         exit_points  += [str(p) for p in data.get("exit_points",  [])]
 
     if not edges:
-        return None   # REKT present but empty -- caller falls back to text_scan
+        return None
 
     return {
         "cfg_source":   "rekt",
@@ -916,7 +1082,6 @@ def build_cfg_from_rekt(
 
 # ===========================================================================
 # 12. TOP-LEVEL ENRICH FUNCTION
-#     Called by scripts/extract_facts.py to produce v1.1 enrichment fields.
 # ===========================================================================
 
 def enrich(
@@ -935,60 +1100,35 @@ def enrich(
     program_name        : The COBOL program name (used for REKT lookup).
     raw_cobol           : Raw COBOL source text (required).
     preprocessed_cobol  : cobc -E output if available; otherwise None.
-                          When provided, paragraph extraction uses the
-                          expanded form for better accuracy.  Raw is still
-                          used for source-line provenance.
-    rekt_json           : Pre-loaded REKT CFG dict (optional, alternative to
-                          rekt_dir file scan).
+    rekt_json           : Pre-loaded REKT CFG dict (optional).
     base_facts          : v1.0 facts dict (used to read cics_present flag).
     rekt_dir            : Path to directory containing REKT report subdirs.
-                          Used when rekt_json is not pre-loaded.
 
     Returns
     -------
-    dict with keys:
-        paragraphs_defined, paragraphs_referenced,
-        paragraph_actions, file_lineage, file_operations,
-        control_flow, cics
-
-    The caller (extract_facts.py) merges this dict into the base facts.
+    dict with v1.1 enrichment keys merged into base facts by extract_facts.py.
     """
     cics_present: bool = base_facts.get("cics_present", False)
 
-    # Use preprocessed source if available (better copybook expansion),
-    # otherwise fall back to raw.  Strip comments before analysis.
     analysis_text = strip_fixed_format_comments(
         preprocessed_cobol if preprocessed_cobol else raw_cobol
     )
-    raw_clean = strip_fixed_format_comments(raw_cobol)
 
-    # --- Paragraphs ---
     defined    = extract_paragraphs_defined(raw_cobol, analysis_text)
     referenced = extract_paragraphs_referenced(analysis_text, defined)
-
-    # --- Procedure body split ---
     para_bodies = split_procedure_bodies(analysis_text)
 
-    # --- Paragraph actions ---
     paragraph_actions: dict[str, list[str]] = {
         p["name"]: classify_paragraph_actions(p["name"], para_bodies.get(p["name"], ""))
         for p in defined
     }
 
-    # --- File lineage ---
-    file_lineage = extract_file_lineage(analysis_text)
-    file_names   = {f["name"] for f in file_lineage}
-
-    # --- File operations ---
+    file_lineage    = extract_file_lineage(analysis_text)
+    file_names      = {f["name"] for f in file_lineage}
     file_operations = extract_file_operations(para_bodies, file_names)
 
-    # --- Control flow ---
-    # For non-CICS programs: try REKT first, fall back to text_scan.
-    # For CICS programs: always text_scan (no CICS translator available).
     control_flow: dict | None = None
-
     if not cics_present:
-        # Try pre-loaded REKT dict
         if rekt_json and isinstance(rekt_json.get("edges"), list) and rekt_json["edges"]:
             control_flow = {
                 "cfg_source":   "rekt",
@@ -997,7 +1137,6 @@ def enrich(
                 "edges":        rekt_json["edges"],
                 "unresolved":   rekt_json.get("unresolved", []),
             }
-        # Try REKT directory scan
         elif rekt_dir and rekt_dir.is_dir():
             control_flow = build_cfg_from_rekt(rekt_dir, program_name)
 
@@ -1010,14 +1149,6 @@ def enrich(
                 "captured separately in the 'cics' subtree."
             )
 
-    # Flag structural-minimal programs (COBSWAIT pattern)
-    if not defined and not cics_present:
-        control_flow["cfg_note"] = (
-            "structural_minimal: no paragraphs detected. "
-            "Gate passed trivially; manual review recommended."
-        )
-
-    # --- CICS subtree ---
     cics_facts: dict | None = (
         extract_cics(raw_cobol, analysis_text, para_bodies)
         if cics_present else None
@@ -1036,8 +1167,6 @@ def enrich(
 
 # ===========================================================================
 # 13. CLI SMOKE TEST
-#     Reads a COBOL file from disk and prints a short summary.
-#     Usage:  python scripts/hermes_v11_combined_extractor.py <file.cbl>
 # ===========================================================================
 
 if __name__ == "__main__":
@@ -1050,10 +1179,10 @@ if __name__ == "__main__":
         print(f"ERROR: file not found: {src}", file=sys.stderr)
         sys.exit(2)
 
-    raw = src.read_text(encoding="utf-8", errors="replace")
+    raw  = src.read_text(encoding="utf-8", errors="replace")
     cics = bool(RE_EXEC_CICS_START.search(raw))
-
     base = {"cics_present": cics, "sql_present": bool(RE_EXEC_SQL.search(raw))}
+
     result = enrich(
         program_name=src.stem.upper(),
         raw_cobol=raw,
@@ -1074,15 +1203,23 @@ if __name__ == "__main__":
     print(f"Exit points   : {cf.get('exit_points', [])}")
     print(f"Unresolved    : {cf.get('unresolved', [])}")
     print(f"Files         : {[f['name'] for f in result['file_lineage']]}")
+    if cf.get("cfg_note"):
+        print(f"CFG note      : {cf['cfg_note']}")
     print()
     print("Paragraph actions (first 5 paragraphs):")
     for name, acts in list(result["paragraph_actions"].items())[:5]:
         print(f"  {name:<32s}: {acts}")
     if cics and result["cics"]:
         c = result["cics"]
+        sf_with_aids = [e for e in c["screen_flow"] if e.get("aid_keys")]
         print()
         print(f"CICS commands : {c['commands']}")
         print(f"Maps used     : {c['maps_used']}")
         print(f"AID keys      : {c['aid_keys']}")
         print(f"COMMAREA      : {c['commarea_used']}")
-        print(f"Screen flow   : {len(c['screen_flow'])} entries")
+        print(f"Screen flow   : {len(c['screen_flow'])} entries "
+              f"({len(sf_with_aids)} with aid_keys)")
+        if sf_with_aids:
+            print("  AID dispatch entries:")
+            for e in sf_with_aids:
+                print(f"    {e['paragraph']}: {e['aid_keys']}")
