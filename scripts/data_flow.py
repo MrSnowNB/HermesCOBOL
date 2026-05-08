@@ -57,8 +57,6 @@ _SECTION_HEADER_RE = re.compile(
     re.IGNORECASE
 )
 
-# Regex to extract the static call target from a CALL statement.
-# Matches: CALL 'PROGNAME'   or   CALL PROGNAME
 _CALL_TARGET_RE = re.compile(
     r'^CALL\s+(?:\'([^\']+)\'|"([^"]+)"|([A-Z0-9][A-Z0-9\-]*))',
     re.IGNORECASE
@@ -81,19 +79,18 @@ def _normalise_source(raw: str) -> list:
     pairs where `text` is the code area (columns 8-72) of each non-comment,
     non-blank line.
 
-    COBOL fixed-format column layout (1-based, standard):
+    COBOL fixed-format column layout (1-based):
       Cols  1- 6  Sequence area   -- ignored
-      Col   7     Indicator area  -- '*' or '/' = comment; '-' = continuation;
-                                     ' ' or 'D' = normal code
-      Cols  8-72  Code area       -- the text returned in each tuple
+      Col   7     Indicator area  -- '*' or '/' = comment
+      Cols  8-72  Code area
       Cols 73-80  Identification  -- ignored
 
     In 0-based Python indexing:
-      raw[0:6]   sequence area
-      raw[6]     indicator
-      raw[7:72]  code area
+      raw[0:6]  sequence area
+      raw[6]    indicator
+      raw[7:72] code area
 
-    FIXED COLUMN POSITIONS -- no _strip_seq, no regex to find the indicator.
+    FIXED COLUMN POSITIONS -- no _strip_seq, no regex for indicator.
     Lines shorter than 7 characters are silently skipped.
     """
     result = []
@@ -373,6 +370,12 @@ def _join_lines(lines: list) -> list:
 # CALL USING parser  (Section 3.2)
 # ---------------------------------------------------------------------------
 
+# Keywords that signal the end of the USING/RETURNING argument list.
+_CALL_STOP_KEYWORDS = frozenset({
+    'ON', 'NOT', 'EXCEPTION', 'END-CALL', 'OVERFLOW', 'ERROR',
+})
+
+
 def _parse_call(
     lineno: int,
     raw_text: str,
@@ -385,37 +388,33 @@ def _parse_call(
     call_targets: list,
 ):
     """
-    Classify a CALL statement:
+    Classify a CALL statement with a single forward-scanning cursor.
 
-      CALL target [USING [BY REFERENCE | BY CONTENT | BY VALUE]
-                         operand ...
-                         [BY REFERENCE | BY CONTENT | BY VALUE operand ...]
-                        ]
-                  [RETURNING identifier]
-                  [ON EXCEPTION ...]
-                  [NOT ON EXCEPTION ...]
-                  [END-CALL]
+    Grammar handled:
+      CALL target
+           [USING [BY REFERENCE | BY CONTENT | BY VALUE]
+                  operand ...
+                  [BY REFERENCE | BY CONTENT | BY VALUE] operand ...]
+           [RETURNING identifier]
+           [ON EXCEPTION ...]
+           [NOT ON EXCEPTION ...]
+           [END-CALL]
 
     Mode semantics:
-      BY REFERENCE (default)  ->  read + mutate
-      BY CONTENT              ->  read only
-      BY VALUE                ->  read only
-      RETURNING               ->  mutate only
+      BY REFERENCE (default inside USING)  ->  read + mutate
+      BY CONTENT                           ->  read only
+      BY VALUE                             ->  read only
+      RETURNING (anywhere after target)    ->  next identifier is mutate only;
+                                               scanning stops after that.
 
-    Appends the static call target (uppercased, quotes stripped) to
-    call_targets so the caller can build the call_graph.
+    The scan starts at token index 2 (first token after CALL target),
+    so RETURNING without a preceding USING clause is handled correctly.
     """
-    _STOP_KEYWORDS = frozenset({
-        'ON', 'NOT', 'EXCEPTION', 'END-CALL',
-        'OVERFLOW', 'ERROR',
-    })
-
-    # Extract target (token after CALL; strip quotes)
+    # --- extract static target ---
     target = None
     if len(tokens) >= 2:
         raw_target = tokens[1]
-        if raw_target in ('__LIT__', ):
-            # Literal: pull from original raw_text
+        if raw_target == '__LIT__':
             m = _CALL_TARGET_RE.match(raw_text.strip())
             if m:
                 target = (m.group(1) or m.group(2) or m.group(3) or '').upper()
@@ -429,82 +428,97 @@ def _parse_call(
     if target:
         call_targets.append(target)
 
-    # Find USING index
+    # --- single-pass cursor from token 2 ---
+    # mode only matters while in_using == True
+    in_using   = False
+    mode       = 'REFERENCE'   # default USING mode
+    returning_next = False     # True: very next identifier -> mutate only then stop
+
     ut = [t.upper() for t in tokens]
-    if 'USING' not in ut:
-        return
+    i  = 2   # skip CALL + target
 
-    using_start = ut.index('USING') + 1
-
-    # Default mode is BY REFERENCE
-    # Walk tokens from USING onward, updating mode on BY ... keywords
-    mode = 'REFERENCE'   # default
-    i = using_start
     while i < len(ut):
         tok = ut[i]
-        if tok in _STOP_KEYWORDS:
+
+        if tok in _CALL_STOP_KEYWORDS:
             break
-        if tok == 'BY':
-            if i + 1 < len(ut):
-                next_tok = ut[i + 1]
-                if next_tok in ('REFERENCE', 'CONTENT', 'VALUE'):
-                    mode = next_tok
-                    i += 2
-                    continue
+
+        if tok == 'USING':
+            in_using = True
+            mode = 'REFERENCE'
             i += 1
             continue
+
+        if tok == 'RETURNING':
+            # RETURNING is valid with or without a preceding USING
+            returning_next = True
+            in_using = False
+            i += 1
+            continue
+
+        if tok == 'BY':
+            if i + 1 < len(ut) and ut[i + 1] in ('REFERENCE', 'CONTENT', 'VALUE'):
+                mode = ut[i + 1]
+                i += 2
+            else:
+                i += 1
+            continue
+
         if tok in ('REFERENCE', 'CONTENT', 'VALUE'):
             mode = tok
             i += 1
             continue
-        if tok == 'RETURNING':
-            mode = 'RETURNING'
-            i += 1
-            continue
-        # Operand token
+
+        # --- operand token ---
         operand = tokens[i]
         if operand == '__LIT__' or is_literal(operand):
             i += 1
             continue
-        if mode in ('REFERENCE',):
-            # BY REFERENCE: both read and mutate
+
+        if returning_next:
+            # RETURNING identifier -> mutate only, then we are done
             hits = resolve(operand, qmap, context_records)
             if not hits:
-                unresolved.append({'verb': 'CALL', 'line_no': lineno,
-                                   'raw_text': raw_text,
-                                   'reason': f'unresolved CALL USING operand: {operand}'})
-            else:
-                for h in hits:
-                    if h not in reads:
-                        reads.append(h)
-                        context_records.add(h['record'])
-                    if h not in mutates:
-                        mutates.append(h)
-                        context_records.add(h['record'])
-        elif mode in ('CONTENT', 'VALUE'):
-            # BY CONTENT / BY VALUE: read only
-            hits = resolve(operand, qmap, context_records)
-            if not hits:
-                unresolved.append({'verb': 'CALL', 'line_no': lineno,
-                                   'raw_text': raw_text,
-                                   'reason': f'unresolved CALL USING operand: {operand}'})
-            else:
-                for h in hits:
-                    if h not in reads:
-                        reads.append(h)
-                        context_records.add(h['record'])
-        elif mode == 'RETURNING':
-            # RETURNING: mutate only
-            hits = resolve(operand, qmap, context_records)
-            if not hits:
-                unresolved.append({'verb': 'CALL', 'line_no': lineno,
-                                   'raw_text': raw_text,
-                                   'reason': f'unresolved CALL RETURNING operand: {operand}'})
+                unresolved.append({
+                    'verb': 'CALL', 'line_no': lineno, 'raw_text': raw_text,
+                    'reason': f'unresolved CALL RETURNING operand: {operand}'
+                })
             else:
                 for h in hits:
                     if h not in mutates:
                         mutates.append(h)
                         context_records.add(h['record'])
+            break   # nothing after RETURNING identifier is relevant
+
+        if in_using:
+            if mode in ('REFERENCE',):
+                hits = resolve(operand, qmap, context_records)
+                if not hits:
+                    unresolved.append({
+                        'verb': 'CALL', 'line_no': lineno, 'raw_text': raw_text,
+                        'reason': f'unresolved CALL USING operand: {operand}'
+                    })
+                else:
+                    for h in hits:
+                        if h not in reads:
+                            reads.append(h)
+                            context_records.add(h['record'])
+                        if h not in mutates:
+                            mutates.append(h)
+                            context_records.add(h['record'])
+            elif mode in ('CONTENT', 'VALUE'):
+                hits = resolve(operand, qmap, context_records)
+                if not hits:
+                    unresolved.append({
+                        'verb': 'CALL', 'line_no': lineno, 'raw_text': raw_text,
+                        'reason': f'unresolved CALL USING operand: {operand}'
+                    })
+                else:
+                    for h in hits:
+                        if h not in reads:
+                            reads.append(h)
+                            context_records.add(h['record'])
+
         i += 1
 
 
@@ -818,8 +832,7 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
         except Exception as exc:
             print(f"WARNING [{program_name}]: could not read facts: {exc}", file=sys.stderr)
 
-    # Build call_graph and paragraph_data_flow simultaneously
-    call_graph_set = []   # ordered unique list of called programs
+    call_graph_set = []
     paragraph_data_flow = {}
 
     for para_name, para_lines in paragraphs.items():

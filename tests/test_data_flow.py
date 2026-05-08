@@ -43,6 +43,8 @@ _QMAP = {
                         'copybook': None, 'offset': 0, 'length': 8}],
     'WS-OUTPUT-DATE': [{'field': 'WS.WS-OUTPUT-DATE', 'record': 'WS',
                         'copybook': None, 'offset': 8, 'length': 8}],
+    'WS-RC':          [{'field': 'WS.WS-RC',          'record': 'WS',
+                        'copybook': None, 'offset': 12, 'length': 4}],
 }
 
 
@@ -466,7 +468,8 @@ class TestCallReturning(unittest.TestCase):
     RETURNING -> mutate only, NOT read.
     """
     def test_call_returning_mutate_only(self):
-        r, m, u, ct = _run_call('CALL \'COBDATFT\' RETURNING WS-RETURN-CODE')
+        """CALL with RETURNING and NO USING: identifier is mutate only."""
+        r, m, u, ct = _run_call("CALL 'X' RETURNING WS-RETURN-CODE")
         rf = [e['field'] for e in r]
         mf = [e['field'] for e in m]
         self.assertNotIn('WS.WS-RETURN-CODE', rf, 'RETURNING must NOT produce a read')
@@ -484,6 +487,16 @@ class TestCallReturning(unittest.TestCase):
         self.assertIn('WS.WS-INPUT-DATE', mf)
         self.assertNotIn('WS.WS-RETURN-CODE', rf)
         self.assertIn('WS.WS-RETURN-CODE', mf)
+        self.assertEqual(u, [])
+
+    def test_call_returning_no_using_call_target_recorded(self):
+        """CALL 'ABENDPGM' RETURNING WS-RC: target captured + operand mutated."""
+        r, m, u, ct = _run_call("CALL 'ABENDPGM' RETURNING WS-RC")
+        mf = [e['field'] for e in m]
+        self.assertIn('ABENDPGM', ct,
+                      f'Expected ABENDPGM in call_targets, got {ct}')
+        self.assertIn('WS.WS-RC', mf,
+                      f'Expected WS.WS-RC in mutates, got {mf}')
         self.assertEqual(u, [])
 
 
@@ -513,8 +526,6 @@ class TestCallMixedModes(unittest.TestCase):
 class TestCallGraphCbact01c(unittest.TestCase):
     """
     End-to-end: CBACT01C.call_graph must include COBDATFT as a called program.
-    CBACT01C paragraph 1300-POPUL-ACCT-RECORD contains:
-      CALL 'COBDATFT' USING BY REFERENCE ACCT-REISSUE-DATE
     """
     _CBL = Path('data/raw/cbl/CBACT01C.cbl')
 
@@ -523,11 +534,9 @@ class TestCallGraphCbact01c(unittest.TestCase):
             self.skipTest(f'Real corpus file not found: {self._CBL}')
 
     def test_call_graph_contains_cobdatft(self):
-        import json
-        from pathlib import Path as P
-        # Import extract_data_flow directly
         import importlib
         import sys as _sys
+        from pathlib import Path as P
         sys_path_backup = _sys.path[:]
         _sys.path.insert(0, str(P(__file__).parent.parent / 'scripts'))
         df = importlib.import_module('data_flow')
