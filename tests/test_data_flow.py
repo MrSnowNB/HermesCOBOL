@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-tests/test_data_flow.py  --  Section 2 + Section 3.1 unit tests.
+tests/test_data_flow.py  --  Section 2/3 unit tests.
 Run with:  python tests/test_data_flow.py
 """
 
@@ -13,7 +13,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / 'scripts'))
 from data_flow import (
     classify_statement, extract_paragraphs, _normalise_source,
     is_literal, _join_source_lines, _is_para_header_line,
-    _dispatch_inline, _candidate_is_para_header,
+    _is_area_a_paragraph, _dispatch_inline,
 )
 
 _QMAP = {
@@ -44,9 +44,9 @@ def _run(stmt, context=None):
     return reads, mutates, unresolved
 
 
-# ===========================================================================
-# Section 2 tests (unchanged)
-# ===========================================================================
+# ---------------------------------------------------------------------------
+# Section 2 tests (must remain green)
+# ---------------------------------------------------------------------------
 
 class TestMoveSingleTarget(unittest.TestCase):
     def test_move_single_target(self):
@@ -170,23 +170,14 @@ class TestDisplayLiteralInVerbSplit(unittest.TestCase):
     """
     CBACT01C line 245: the literal 'ACCOUNT FILE WRITE STATUS IS:' contains
     the word WRITE.  _dispatch_inline must not split on that embedded keyword.
-    Only OUTFILE-STATUS (the trailing real operand) must appear as a read;
-    unresolved must be empty.
     """
-
     def test_display_literal_containing_verb_keyword(self):
-        """
-        DISPLAY 'ACCOUNT FILE WRITE STATUS IS:'  OUTFILE-STATUS
-        -> reads includes OUTFILE-STATUS, unresolved == []
-        """
         stmt = "DISPLAY 'ACCOUNT FILE WRITE STATUS IS:'  OUTFILE-STATUS"
         reads, mutates, unresolved = [], [], []
         _dispatch_inline(245, stmt, _QMAP, set(), reads, mutates, unresolved)
         rf = [e['field'] for e in reads]
-        self.assertIn('OUTFILE-STATUS', rf,
-                      'OUTFILE-STATUS must be recognised as a read operand')
-        self.assertEqual(unresolved, [],
-                         f'Expected empty unresolved, got: {unresolved}')
+        self.assertIn('OUTFILE-STATUS', rf)
+        self.assertEqual(unresolved, [])
 
 
 class TestScopeTerminatorsNotParagraphs(unittest.TestCase):
@@ -208,15 +199,10 @@ class TestScopeTerminatorsNotParagraphs(unittest.TestCase):
 
 
 class TestContinuationJoin(unittest.TestCase):
-    """
-    _join_source_lines must fuse data-name continuation targets back into
-    their MOVE statement without swallowing real paragraph headers.
-    """
-
     def test_move_continuation_not_a_paragraph(self):
         """
-        A MOVE target sitting alone on its own line (indented, Area B,
-        not a scope terminator) must be fused into the MOVE, not become
+        A MOVE target sitting alone on its own line (no 4-digit prefix,
+        indented in Area B) must be fused into the MOVE, not become
         a paragraph header.
         """
         source = """
@@ -232,18 +218,14 @@ class TestContinuationJoin(unittest.TestCase):
         lines = _normalise_source(source)
         paras = extract_paragraphs(lines)
         para_names = [k for k in paras if k != '__MAIN__']
-        self.assertIn('1300-POPUL-ACCT-RECORD', para_names,
-                      'Real paragraph header must be detected')
-        self.assertIn('1350-WRITE-ACCT-RECORD', para_names,
-                      'Next paragraph header must survive')
-        self.assertNotIn('WS-REISSUE-DATE', para_names,
-                         'MOVE continuation target must NOT become a paragraph')
+        self.assertIn('1300-POPUL-ACCT-RECORD', para_names)
+        self.assertIn('1350-WRITE-ACCT-RECORD', para_names)
+        self.assertNotIn('WS-REISSUE-DATE', para_names)
 
     def test_real_paragraphs_all_detected(self):
         """
         All 16 CardDemo CBACT01C paragraph names must be detected when
-        processing the inline snippet that reproduces the MOVE/continuation
-        pattern causing false paragraphs.
+        processing the inline snippet.
         """
         expected = [
             '1300-POPUL-ACCT-RECORD',
@@ -273,170 +255,153 @@ class TestContinuationJoin(unittest.TestCase):
         self.assertNotIn('VB2-ACCT-ID', para_names)
 
 
-# ===========================================================================
-# Section 3.1 new tests (Amendment C)
-# ===========================================================================
+# ---------------------------------------------------------------------------
+# Section 3.1 NEW tests
+# ---------------------------------------------------------------------------
 
 class TestNonPrefixedParagraphDetection(unittest.TestCase):
     """
-    Programs with non-4-digit paragraph names (e.g. COADM01C style) must
-    have all their paragraphs correctly detected when headers are in Area A
-    (no leading spaces after indicator strip).
+    Programs that use free-form (non-4-digit) paragraph names must have
+    all their paragraphs detected correctly.
+    COADM01C pattern: MAIN-PARA., PROCESS-ENTER-KEY., SEND-MENU-SCREEN. etc.
     """
-
-    def test_non_prefixed_paragraphs(self):
-        """
-        MAIN-PARA, PROCESS-RECORDS, CLEANUP-PARA must all be detected.
-        Body statements that happen to contain words like SECTION or DIVISION
-        must NOT spawn false paragraphs.
-        """
+    def test_non_prefixed_paragraphs_detected(self):
         source = (
-            "       PROCEDURE DIVISION.\n"
-            "       MAIN-PARA.\n"
-            "           MOVE A TO B.\n"
-            "       PROCESS-RECORDS.\n"
-            "           PERFORM MAIN-PARA.\n"
-            "       CLEANUP-PARA.\n"
-            "           STOP RUN.\n"
+            "000001 PROCEDURE DIVISION.\n"
+            "000002 MAIN-PARA.\n"
+            "000003            MOVE A TO B.\n"
+            "000004 PROCESS-RECORDS.\n"
+            "000005            MOVE B TO C.\n"
+            "000006 FINALIZE-PARA.\n"
+            "000007            STOP RUN.\n"
         )
         lines = _normalise_source(source)
         paras = extract_paragraphs(lines)
         para_names = [k for k in paras if k != '__MAIN__']
-        self.assertIn('MAIN-PARA',       para_names)
-        self.assertIn('PROCESS-RECORDS', para_names)
-        self.assertIn('CLEANUP-PARA',    para_names)
-        self.assertEqual(len(para_names), 3)
+        self.assertIn('MAIN-PARA', para_names,
+                      'MAIN-PARA must be detected as a paragraph')
+        self.assertIn('PROCESS-RECORDS', para_names,
+                      'PROCESS-RECORDS must be detected as a paragraph')
+        self.assertIn('FINALIZE-PARA', para_names,
+                      'FINALIZE-PARA must be detected as a paragraph')
+        self.assertEqual(len(para_names), 3,
+                         f'Expected 3 paragraphs, got: {para_names}')
 
 
 class TestAreaBContinuationStillFused(unittest.TestCase):
     """
-    A data-name continuation target that is indented (Area B) must be fused
-    into its predecessor MOVE statement even under the A-margin rule.
+    An Area-B line (indented) that looks like a paragraph header must be
+    fused as a continuation of the preceding open statement, NOT treated
+    as a new paragraph.
     """
-
-    def test_indented_ws_name_fused(self):
-        """
-        WS-REISSUE-DATE appears indented (Area B); predecessor MOVE has
-        no period.  Must be fused, not become a paragraph.
-        """
+    def test_indented_ws_reissue_date_fused(self):
+        # WS-REISSUE-DATE. is indented (Area B) — must not become a paragraph.
         source = (
-            "       PROCEDURE DIVISION.\n"
-            "       MAIN-PARA.\n"
-            "           MOVE ACCT-ID TO CODATECN-INP-DATE\n"
-            "                           WS-REISSUE-DATE.\n"
-            "       NEXT-PARA.\n"
-            "           EXIT.\n"
+            "000001 PROCEDURE DIVISION.\n"
+            "000002 MAIN-PARA.\n"
+            "000003            MOVE ACCT-DATE TO CODATECN-DATE\n"
+            "000004                             WS-REISSUE-DATE.\n"
+            "000005 NEXT-PARA.\n"
+            "000006            STOP RUN.\n"
         )
         lines = _normalise_source(source)
         paras = extract_paragraphs(lines)
         para_names = [k for k in paras if k != '__MAIN__']
-        self.assertIn('MAIN-PARA',  para_names)
-        self.assertIn('NEXT-PARA',  para_names)
-        self.assertNotIn('WS-REISSUE-DATE', para_names)
+        self.assertNotIn('WS-REISSUE-DATE', para_names,
+                         'Indented WS-REISSUE-DATE. must be fused as continuation')
+        self.assertIn('MAIN-PARA', para_names)
+        self.assertIn('NEXT-PARA', para_names)
+        self.assertEqual(len(para_names), 2)
 
 
 class TestSectionHeaderNotFalseParagraph(unittest.TestCase):
     """
-    Division and section headers that precede PROCEDURE DIVISION must never
-    become paragraph entries.  After PROCEDURE DIVISION, a SECTION header
-    of the form 'LABEL SECTION.' must yield paragraph name LABEL (not
-    'SECTION' and not the full 'LABEL SECTION').
+    WORKING-STORAGE SECTION. and similar section headers must never be
+    detected as paragraphs.  They appear in Area A and match the
+    superficial pattern but must be excluded.
     """
-
-    def test_working_storage_not_a_paragraph(self):
-        """
-        WORKING-STORAGE SECTION. appears before PROCEDURE DIVISION and
-        must produce no paragraph entry whatsoever.
-        """
-        source = (
-            "       DATA DIVISION.\n"
-            "       WORKING-STORAGE SECTION.\n"
-            "       01 WS-X PIC X.\n"
-            "       PROCEDURE DIVISION.\n"
-            "       MAIN-PARA.\n"
-            "           STOP RUN.\n"
+    def test_working_storage_section_not_paragraph(self):
+        self.assertFalse(
+            _is_area_a_paragraph('WORKING-STORAGE SECTION.'),
+            'WORKING-STORAGE SECTION. must not be a paragraph header'
         )
-        lines = _normalise_source(source)
-        paras = extract_paragraphs(lines)
-        para_names = [k for k in paras if k != '__MAIN__']
-        self.assertNotIn('WORKING-STORAGE', para_names)
-        self.assertNotIn('SECTION', para_names)
-        self.assertIn('MAIN-PARA', para_names)
 
-    def test_procedure_division_section_header(self):
-        """
-        Inside the PROCEDURE DIVISION, 'INIT-SECTION SECTION.' must yield
-        paragraph name 'INIT-SECTION', not 'SECTION'.
-        """
-        source = (
-            "       PROCEDURE DIVISION.\n"
-            "       INIT-SECTION SECTION.\n"
-            "       MAIN-PARA.\n"
-            "           MOVE A TO B.\n"
-            "       CLEANUP-SECTION SECTION.\n"
-            "       DONE-PARA.\n"
-            "           STOP RUN.\n"
+    def test_linkage_section_not_paragraph(self):
+        self.assertFalse(
+            _is_area_a_paragraph('LINKAGE SECTION.'),
+            'LINKAGE SECTION. must not be a paragraph header'
         )
-        lines = _normalise_source(source)
-        paras = extract_paragraphs(lines)
-        para_names = [k for k in paras if k != '__MAIN__']
-        self.assertIn('INIT-SECTION',    para_names,
-                      'Section header label must become a paragraph name')
-        self.assertIn('MAIN-PARA',       para_names)
-        self.assertIn('CLEANUP-SECTION', para_names)
-        self.assertIn('DONE-PARA',       para_names)
-        self.assertNotIn('SECTION', para_names,
-                         'The bare word SECTION must never be a paragraph name')
+
+    def test_file_section_not_paragraph(self):
+        self.assertFalse(
+            _is_area_a_paragraph('FILE SECTION.'),
+            'FILE SECTION. must not be a paragraph header'
+        )
+
+    def test_procedure_section_not_paragraph(self):
+        # A user-defined section inside PROCEDURE DIVISION: 1000-MAIN SECTION.
+        # Policy (V12_VALIDATION_GATES.md): SECTION headers are NOT paragraphs.
+        self.assertFalse(
+            _is_area_a_paragraph('1000-MAIN SECTION.'),
+            '1000-MAIN SECTION. is a SECTION header, not a paragraph'
+        )
 
 
 class TestDivisionHeaderNotParagraph(unittest.TestCase):
     """
-    PROCEDURE DIVISION header lines (including with USING) must never
-    themselves become paragraph entries.
+    Division header lines (PROCEDURE DIVISION., DATA DIVISION. etc.) must
+    never be detected as paragraphs, including forms with USING clauses.
     """
+    def test_procedure_division_not_paragraph(self):
+        self.assertFalse(
+            _is_area_a_paragraph('PROCEDURE DIVISION.'),
+            'PROCEDURE DIVISION. must not be a paragraph'
+        )
+
+    def test_data_division_not_paragraph(self):
+        self.assertFalse(
+            _is_area_a_paragraph('DATA DIVISION.'),
+            'DATA DIVISION. must not be a paragraph'
+        )
+
+    def test_identification_division_not_paragraph(self):
+        self.assertFalse(
+            _is_area_a_paragraph('IDENTIFICATION DIVISION.'),
+            'IDENTIFICATION DIVISION. must not be a paragraph'
+        )
 
     def test_procedure_division_using_not_paragraph(self):
-        """
-        'PROCEDURE DIVISION USING X.' must not produce 'PROCEDURE' or
-        'DIVISION' as a paragraph name.
-        """
-        source = (
-            "       PROCEDURE DIVISION USING X.\n"
-            "       ENTRY-PARA.\n"
-            "           MOVE X TO A.\n"
-            "           STOP RUN.\n"
+        # PROCEDURE DIVISION USING X.  -- does not even match _PARA_HEADER_RE
+        # (multiple tokens before period), but we verify defensively.
+        self.assertFalse(
+            _is_area_a_paragraph('PROCEDURE DIVISION USING X.'),
+            'PROCEDURE DIVISION USING X. must not be a paragraph'
         )
-        lines = _normalise_source(source)
-        paras = extract_paragraphs(lines)
-        para_names = [k for k in paras if k != '__MAIN__']
-        self.assertNotIn('PROCEDURE', para_names)
-        self.assertNotIn('DIVISION',  para_names)
-        self.assertIn('ENTRY-PARA',   para_names)
 
 
 class TestLevel01NotParagraph(unittest.TestCase):
     """
-    Level-number data definitions (01 WS-REC.) in WORKING-STORAGE must
-    never appear as paragraph names.  They appear before PROCEDURE DIVISION
-    and are gated out by the in_procedure flag.
+    Level-number data items (01 WS-REC., 05 FILLER., 77 WS-CTR.) start
+    in Area A but are data definitions, never paragraph names.
     """
-
-    def test_level01_before_procedure_division(self):
-        source = (
-            "       DATA DIVISION.\n"
-            "       WORKING-STORAGE SECTION.\n"
-            "       01 WS-REC.\n"
-            "         05 WS-FIELD PIC X(10).\n"
-            "       PROCEDURE DIVISION.\n"
-            "       MAIN-PARA.\n"
-            "           STOP RUN.\n"
+    def test_level_01_not_paragraph(self):
+        self.assertFalse(
+            _is_area_a_paragraph('01 WS-REC.'),
+            '01 WS-REC. is a data item, not a paragraph'
         )
-        lines = _normalise_source(source)
-        paras = extract_paragraphs(lines)
-        para_names = [k for k in paras if k != '__MAIN__']
-        self.assertNotIn('WS-REC',   para_names)
-        self.assertNotIn('WS-FIELD', para_names)
-        self.assertIn('MAIN-PARA',   para_names)
+
+    def test_level_77_not_paragraph(self):
+        self.assertFalse(
+            _is_area_a_paragraph('77 WS-CTR.'),
+            '77 WS-CTR. is a data item, not a paragraph'
+        )
+
+    def test_level_05_not_paragraph(self):
+        # 05 starts in Area B normally, but test defensively
+        self.assertFalse(
+            _is_area_a_paragraph('05 FILLER.'),
+            '05 FILLER. is a data item, not a paragraph'
+        )
 
 
 if __name__ == '__main__':

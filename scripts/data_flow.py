@@ -7,20 +7,6 @@ Usage:
     corpus batch   : python scripts/data_flow.py --all
 
 Output is written to stdout (single) or data/data_flow/<PROGRAM>.json (batch).
-
-Section 3.1 changes
--------------------
-* _join_source_lines now uses a COBOL fixed-format A-margin test instead of
-  the CardDemo-only 4-digit numeric prefix guard.  A candidate line is treated
-  as a new paragraph header (NOT fused as a continuation) only when BOTH:
-    1. The predecessor ended with a statement-terminating period, OR
-    2. The candidate starts in Area A (text[0] != ' ') AND matches
-       _PARA_HEADER_RE AND is not in _NOT_PARA.
-* _NOT_PARA is extended with all division/section/special-area keywords.
-* SECTION policy (documented in docs/V12_VALIDATION_GATES.md):
-    A line of the form  "LABEL SECTION."  inside the PROCEDURE DIVISION
-    is treated as a paragraph whose name is LABEL (the word before SECTION).
-    This matches how facts/paragraphs_defined counts them.
 """
 
 import json
@@ -43,47 +29,44 @@ _LITERAL_RE = re.compile(
     re.IGNORECASE
 )
 
-# ---------------------------------------------------------------------------
-# Keywords that must NEVER be treated as paragraph names.
-# Extended in Section 3.1 to cover all division/section/special-area headers.
-# ---------------------------------------------------------------------------
+# Scope terminators and keywords that are never paragraph names.
 _NOT_PARA = frozenset({
-    # Scope terminators
     'END-PERFORM', 'END-IF', 'END-EVALUATE', 'END-READ', 'END-WRITE',
     'END-COMPUTE', 'END-ADD', 'END-SUBTRACT', 'END-MULTIPLY', 'END-DIVIDE',
     'END-STRING', 'END-UNSTRING', 'END-EXEC', 'END-CALL',
-    # Statement keywords that can appear at Area A in some styles
     'GOBACK', 'STOP', 'EXIT', 'CONTINUE', 'NEXT',
     'ELSE', 'THEN', 'WHEN', 'OTHER',
-    # COBOL divisions  (these appear at Area A)
-    'IDENTIFICATION', 'ENVIRONMENT', 'DATA', 'PROCEDURE',
-    # COBOL sections that can appear in any division
-    'WORKING-STORAGE', 'LOCAL-STORAGE', 'LINKAGE', 'FILE',
-    'INPUT-OUTPUT', 'CONFIGURATION', 'COMMUNICATION',
-    'REPORT', 'SCREEN',
-    # Sub-section / paragraph-like headers inside ENVIRONMENT/DATA
-    'FILE-CONTROL', 'I-O-CONTROL',
-    'SPECIAL-NAMES', 'REPOSITORY',
-    'SOURCE-COMPUTER', 'OBJECT-COMPUTER',
-    # Bare keyword SECTION itself
-    'SECTION',
-    # PROGRAM-ID and similar ID division entries
-    'PROGRAM-ID', 'AUTHOR', 'INSTALLATION', 'DATE-WRITTEN',
-    'DATE-COMPILED', 'SECURITY', 'REMARKS',
-    # Level numbers look like tokens; guard against 01-level names leaking
-    # (they won't reach here because they are pre-PROCEDURE DIVISION, but
-    # belt-and-suspenders)
-    'FD', 'SD',
 })
 
+# Area-A keywords that look like paragraph headers (match _PARA_HEADER_RE)
+# but are COBOL division/section/structural headers, not paragraph names.
+# These must never be treated as paragraph labels by the extractor.
+_NOT_HEADER_KEYWORDS = frozenset({
+    # Divisions
+    'IDENTIFICATION', 'ENVIRONMENT', 'DATA', 'PROCEDURE',
+    # Sections (bare word before SECTION keyword on same line)
+    'WORKING-STORAGE', 'LINKAGE', 'FILE', 'LOCAL-STORAGE',
+    'INPUT-OUTPUT', 'CONFIGURATION', 'COMMUNICATION', 'REPORT',
+    # Sub-section / paragraph headers within divisions (non-procedure)
+    'FILE-CONTROL', 'SPECIAL-NAMES', 'SOURCE-COMPUTER', 'OBJECT-COMPUTER',
+    'REPOSITORY', 'CLASS-CONTROL',
+    # Level numbers are never paragraph names (01, 05, 77, 88, etc.)
+    # Handled separately via _LEVEL_NUM_RE below.
+})
+
+# A line that starts with a level number (01, 05, 77, 88, 66) is a data item,
+# never a paragraph header.
+_LEVEL_NUM_RE = re.compile(r'^\d{2}\s', re.IGNORECASE)
+
 _PARA_HEADER_RE = re.compile(
-    r'^([A-Z0-9][A-Z0-9\-]*)(?:\s+SECTION)?\s*\.\s*$',
+    r'^([A-Z0-9][A-Z0-9\-]*)\s*\.\s*$',
     re.IGNORECASE
 )
 
-# Secondary regex: detect "LABEL SECTION." to extract just the label
+# A SECTION header looks like: NAME SECTION. or NAME SECTION USING ...
+# We detect it by the presence of SECTION as the second token on an Area-A line.
 _SECTION_HEADER_RE = re.compile(
-    r'^([A-Z0-9][A-Z0-9\-]*)\s+SECTION\s*\.\s*$',
+    r'^[A-Z0-9][A-Z0-9\-]*\s+SECTION\b',
     re.IGNORECASE
 )
 
@@ -140,32 +123,38 @@ def _is_para_header_line(text: str) -> bool:
     return candidate not in _NOT_PARA
 
 
-# ---------------------------------------------------------------------------
-# A-margin paragraph header detector
-# ---------------------------------------------------------------------------
-
-def _candidate_is_para_header(text: str) -> bool:
+def _is_area_a_paragraph(text: str) -> bool:
     """
-    Return True when a post-PROCEDURE-DIVISION source line (with the
-    6-digit sequence number and indicator column already stripped) should
-    be treated as a new paragraph header rather than fused as a
-    continuation of the previous logical statement.
+    Return True if this source line (after sequence+indicator strip) is
+    a paragraph header that should start a new paragraph scope.
 
     Rules (all must hold):
-      1. The line starts in Area A: text[0] is not a space.
-         (After _strip_seq + indicator removal, col 8 is index 0.)
-      2. The stripped text matches _PARA_HEADER_RE  ("WORD." or
-         "WORD SECTION.").
-      3. The first word (before any SECTION keyword) is not in _NOT_PARA.
+      1. The line starts at Area A: text[0] is not a space.
+      2. The stripped content matches _PARA_HEADER_RE  (NAME. form)
+         OR is a bare name followed by a period at end of stripped text.
+      3. The candidate name is not in _NOT_PARA.
+      4. The candidate name is not in _NOT_HEADER_KEYWORDS.
+      5. The line is not a SECTION header (NAME SECTION.).
+      6. The line does not begin with a 2-digit level number.
     """
     if not text or text[0] == ' ':
         return False
     stripped = text.strip()
+    # Rule 6: level number data items
+    if _LEVEL_NUM_RE.match(stripped):
+        return False
+    # Rule 5: SECTION headers
+    if _SECTION_HEADER_RE.match(stripped):
+        return False
+    # Rule 2: must match paragraph header pattern (single token ending in period)
     m = _PARA_HEADER_RE.match(stripped)
     if not m:
         return False
     candidate = m.group(1).upper()
-    return candidate not in _NOT_PARA
+    # Rule 3 & 4
+    if candidate in _NOT_PARA or candidate in _NOT_HEADER_KEYWORDS:
+        return False
+    return True
 
 
 # ---------------------------------------------------------------------------
@@ -178,27 +167,28 @@ def _join_source_lines(lines: list) -> list:
 
     A line is fused as a continuation when BOTH conditions hold:
       1. The predecessor did NOT end with a statement-terminating period.
-      2. The candidate is NOT an Area-A paragraph/section header.
+      2. The candidate is NOT an Area-A paragraph header.
 
-    Area A is identified by text[0] != ' ' (after sequence-number and
-    indicator-column stripping performed by _normalise_source).
+    Area-A paragraph header detection (_is_area_a_paragraph) uses the
+    COBOL fixed-format column rule: after _normalise_source strips the
+    6-digit sequence number and the 1-character indicator, column 8 of
+    the original source lands at text[0].  A paragraph header must start
+    in Area A (col 8, no leading spaces) AND match the paragraph name
+    pattern AND not be a division/section/structural keyword.
 
-    SECTION policy: a line of the form "LABEL SECTION." inside the
-    PROCEDURE DIVISION starts a new paragraph named LABEL.  This is
-    consistent with how facts/paragraphs_defined counts section headers.
-
-    This replaces the earlier CardDemo-only 4-digit numeric prefix guard
-    (^\\d{4}-) with a general COBOL fixed-format rule that works for all
-    paragraph naming conventions in the corpus.
+    This replaces the previous CardDemo-specific \\d{4}- prefix guard
+    and correctly handles both 4-digit CardDemo names (0000-MAIN.) and
+    free-form names (MAIN-PARA., PROCESS-ENTER-KEY.) while still fusing
+    indented (Area-B) continuation targets like WS-REISSUE-DATE.
     """
     if not lines:
         return []
     joined = [[lines[0][0], lines[0][1]]]
     for lineno, text in lines[1:]:
-        prev_ends    = _ends_statement(joined[-1][1])
-        cand_is_hdr  = _candidate_is_para_header(text)
+        prev_ends       = _ends_statement(joined[-1][1])
+        cand_is_para    = _is_area_a_paragraph(text)
 
-        if not prev_ends and not cand_is_hdr:
+        if not prev_ends and not cand_is_para:
             joined[-1][1] = joined[-1][1] + ' ' + text.strip()
         else:
             joined.append([lineno, text])
@@ -364,17 +354,14 @@ def extract_paragraphs(lines: list) -> dict:
     """
     Extract paragraphs from normalised source lines.
 
-    Only lines AFTER the PROCEDURE DIVISION header are considered as
-    potential paragraph starts.  Lines before PROCEDURE DIVISION are
-    never paragraphs.
+    Only lines AFTER 'PROCEDURE DIVISION' are considered for paragraph
+    header detection.  Lines in earlier divisions are never paragraphs.
 
-    Procedure-division lines are first passed through _join_source_lines()
-    so that MOVE continuation targets sitting alone on their own line
-    (indented, Area B) are fused back into their statement and never
-    mistaken for paragraph headers.
+    Procedure-division lines are passed through _join_source_lines() so
+    that continuation targets are fused before header detection.
 
-    SECTION policy: a line of the form "LABEL SECTION." inside the
-    PROCEDURE DIVISION is recorded as a paragraph named LABEL.
+    SECTION headers (e.g. '1000-MAIN SECTION.') are NOT counted as
+    paragraphs.  See docs/V12_VALIDATION_GATES.md for the policy.
     """
     paragraphs = {}
     current = '__MAIN__'
@@ -394,26 +381,11 @@ def extract_paragraphs(lines: list) -> dict:
     proc_lines = _join_source_lines(proc_lines_raw)
 
     for lineno, text in proc_lines:
-        stripped = text.strip()
-        # Check for SECTION header first (e.g. "1000-MAIN SECTION.")
-        ms = _SECTION_HEADER_RE.match(stripped)
-        if ms:
-            candidate = ms.group(1).upper()
-            if candidate not in _NOT_PARA:
-                current = candidate
-                if current not in paragraphs:
-                    paragraphs[current] = []
-                continue
-        # Then check plain paragraph header (e.g. "MAIN-PARA.")
-        m = _PARA_HEADER_RE.match(stripped)
-        if m:
-            candidate = m.group(1).upper()
-            if candidate in _NOT_PARA:
-                paragraphs[current].append((lineno, text))
-            else:
-                current = candidate
-                if current not in paragraphs:
-                    paragraphs[current] = []
+        if _is_area_a_paragraph(text):
+            candidate = _PARA_HEADER_RE.match(text.strip()).group(1).upper()
+            current = candidate
+            if current not in paragraphs:
+                paragraphs[current] = []
         else:
             paragraphs[current].append((lineno, text))
     return paragraphs
@@ -692,7 +664,7 @@ def classify_statement(
 
     elif verb == 'CALL':
         unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
-                           'reason': 'CALL USING not yet classified (TODO Section 3.2)'})
+                           'reason': 'CALL USING not yet classified (TODO Section 3)'})
 
     elif verb in ('OPEN','CLOSE','STOP','GOBACK','CONTINUE','EXIT',
                   'GO','NEXT','END-READ','END-WRITE','END-IF',
@@ -703,7 +675,7 @@ def classify_statement(
 
     if verb in ('INSPECT','SORT','MERGE','RELEASE','RETURN'):
         unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
-                           'reason': f'{verb} not yet classified (TODO Section 3.3)'})
+                           'reason': f'{verb} not yet classified (TODO)'})
 
 
 # ---------------------------------------------------------------------------
