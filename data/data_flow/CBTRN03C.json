@@ -1,0 +1,2326 @@
+{
+  "program": "CBTRN03C",
+  "schema_version": "1.2",
+  "paragraph_data_flow": {
+    "END-PERFORM": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "DISPLAY",
+          "line_no": 215,
+          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBTRN03C'",
+          "reason": "unresolved read operand: 'END"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 215,
+          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBTRN03C'",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 215,
+          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBTRN03C'",
+          "reason": "unresolved read operand: EXECUTION"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 215,
+          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBTRN03C'",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 215,
+          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBTRN03C'",
+          "reason": "unresolved read operand: PROGRAM"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 215,
+          "raw_text": "DISPLAY 'END OF EXECUTION OF PROGRAM CBTRN03C'",
+          "reason": "unresolved read operand: CBTRN03C'"
+        }
+      ]
+    },
+    "GOBACK": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "READ",
+          "line_no": 219,
+          "raw_text": "Read the date parameter file",
+          "reason": "unresolved mutate operand: the"
+        }
+      ]
+    },
+    "0550-DATEPARM-READ": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "READ",
+          "line_no": 221,
+          "raw_text": "READ DATE-PARMS-FILE INTO WS-DATEPARM-RECORD",
+          "reason": "unresolved mutate operand: DATE-PARMS-FILE"
+        },
+        {
+          "verb": "READ",
+          "line_no": 221,
+          "raw_text": "READ DATE-PARMS-FILE INTO WS-DATEPARM-RECORD",
+          "reason": "unresolved mutate operand: WS-DATEPARM-RECORD"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 221,
+          "raw_text": "EVALUATE DATEPARM-STATUS",
+          "reason": "unresolved read operand: DATEPARM-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE 0 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE 16 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE 12 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 221,
+          "raw_text": "IF APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 221,
+          "raw_text": "DISPLAY 'Reporting from ' WS-START-DATE ' to ' WS-END-DATE ELSE",
+          "reason": "unresolved read operand: 'Reporting"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 221,
+          "raw_text": "DISPLAY 'Reporting from ' WS-START-DATE ' to ' WS-END-DATE ELSE",
+          "reason": "unresolved read operand: from"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 221,
+          "raw_text": "DISPLAY 'Reporting from ' WS-START-DATE ' to ' WS-END-DATE ELSE",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 221,
+          "raw_text": "DISPLAY 'Reporting from ' WS-START-DATE ' to ' WS-END-DATE ELSE",
+          "reason": "unresolved read operand: WS-START-DATE"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 221,
+          "raw_text": "DISPLAY 'Reporting from ' WS-START-DATE ' to ' WS-END-DATE ELSE",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 221,
+          "raw_text": "DISPLAY 'Reporting from ' WS-START-DATE ' to ' WS-END-DATE ELSE",
+          "reason": "unresolved read operand: to"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 221,
+          "raw_text": "DISPLAY 'Reporting from ' WS-START-DATE ' to ' WS-END-DATE ELSE",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 221,
+          "raw_text": "DISPLAY 'Reporting from ' WS-START-DATE ' to ' WS-END-DATE ELSE",
+          "reason": "unresolved read operand: WS-END-DATE"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 221,
+          "raw_text": "DISPLAY 'Reporting from ' WS-START-DATE ' to ' WS-END-DATE ELSE",
+          "reason": "unresolved read operand: ELSE"
+        },
+        {
+          "verb": "IF",
+          "line_no": 221,
+          "raw_text": "IF APPL-EOF",
+          "reason": "unresolved read operand: APPL-EOF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE 'Y' TO END-OF-FILE ELSE",
+          "reason": "unresolved mutate operand: END-OF-FILE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE 'Y' TO END-OF-FILE ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 221,
+          "raw_text": "DISPLAY 'ERROR READING DATEPARM FILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 221,
+          "raw_text": "DISPLAY 'ERROR READING DATEPARM FILE'",
+          "reason": "unresolved read operand: READING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 221,
+          "raw_text": "DISPLAY 'ERROR READING DATEPARM FILE'",
+          "reason": "unresolved read operand: DATEPARM"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 221,
+          "raw_text": "DISPLAY 'ERROR READING DATEPARM FILE'",
+          "reason": "unresolved read operand: FILE'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE DATEPARM-STATUS TO IO-STATUS",
+          "reason": "unresolved read operand: DATEPARM-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 221,
+          "raw_text": "MOVE DATEPARM-STATUS TO IO-STATUS",
+          "reason": "unresolved mutate operand: IO-STATUS"
+        }
+      ]
+    },
+    "1000-TRANFILE-GET-NEXT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "READ",
+          "line_no": 249,
+          "raw_text": "READ TRANSACT-FILE INTO TRAN-RECORD",
+          "reason": "unresolved mutate operand: TRANSACT-FILE"
+        },
+        {
+          "verb": "READ",
+          "line_no": 249,
+          "raw_text": "READ TRANSACT-FILE INTO TRAN-RECORD",
+          "reason": "unresolved mutate operand: TRAN-RECORD"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 251,
+          "raw_text": "EVALUATE TRANFILE-STATUS",
+          "reason": "unresolved read operand: TRANFILE-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 251,
+          "raw_text": "MOVE 0 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 251,
+          "raw_text": "MOVE 16 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 251,
+          "raw_text": "MOVE 12 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 251,
+          "raw_text": "IF APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        },
+        {
+          "verb": "IF",
+          "line_no": 251,
+          "raw_text": "IF APPL-EOF",
+          "reason": "unresolved read operand: APPL-EOF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 251,
+          "raw_text": "MOVE 'Y' TO END-OF-FILE ELSE",
+          "reason": "unresolved mutate operand: END-OF-FILE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 251,
+          "raw_text": "MOVE 'Y' TO END-OF-FILE ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 251,
+          "raw_text": "DISPLAY 'ERROR READING TRANSACTION FILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 251,
+          "raw_text": "DISPLAY 'ERROR READING TRANSACTION FILE'",
+          "reason": "unresolved read operand: READING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 251,
+          "raw_text": "DISPLAY 'ERROR READING TRANSACTION FILE'",
+          "reason": "unresolved read operand: TRANSACTION"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 251,
+          "raw_text": "DISPLAY 'ERROR READING TRANSACTION FILE'",
+          "reason": "unresolved read operand: FILE'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 251,
+          "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
+          "reason": "unresolved read operand: TRANFILE-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 251,
+          "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
+          "reason": "unresolved mutate operand: IO-STATUS"
+        }
+      ]
+    },
+    "EXIT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "1100-WRITE-TRANSACTION-REPORT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "IF",
+          "line_no": 275,
+          "raw_text": "IF WS-FIRST-TIME = 'Y'",
+          "reason": "unresolved read operand: WS-FIRST-TIME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 275,
+          "raw_text": "MOVE 'N' TO WS-FIRST-TIME",
+          "reason": "unresolved mutate operand: WS-FIRST-TIME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 275,
+          "raw_text": "MOVE WS-START-DATE TO REPT-START-DATE",
+          "reason": "unresolved read operand: WS-START-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 275,
+          "raw_text": "MOVE WS-START-DATE TO REPT-START-DATE",
+          "reason": "unresolved mutate operand: REPT-START-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 275,
+          "raw_text": "MOVE WS-END-DATE TO REPT-END-DATE",
+          "reason": "unresolved read operand: WS-END-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 275,
+          "raw_text": "MOVE WS-END-DATE TO REPT-END-DATE",
+          "reason": "unresolved mutate operand: REPT-END-DATE"
+        },
+        {
+          "verb": "IF",
+          "line_no": 275,
+          "raw_text": "IF FUNCTION MOD(WS-LINE-COUNTER, WS-PAGE-SIZE) = 0",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "IF",
+          "line_no": 275,
+          "raw_text": "IF FUNCTION MOD(WS-LINE-COUNTER, WS-PAGE-SIZE) = 0",
+          "reason": "unresolved read operand: MOD(WS-LINE-COUNTER,"
+        },
+        {
+          "verb": "IF",
+          "line_no": 275,
+          "raw_text": "IF FUNCTION MOD(WS-LINE-COUNTER, WS-PAGE-SIZE) = 0",
+          "reason": "unresolved read operand: WS-PAGE-SIZE)"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 275,
+          "raw_text": "ADD TRAN-AMT TO WS-PAGE-TOTAL WS-ACCOUNT-TOTAL",
+          "reason": "unresolved read operand: TRAN-AMT"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 275,
+          "raw_text": "ADD TRAN-AMT TO WS-PAGE-TOTAL WS-ACCOUNT-TOTAL",
+          "reason": "unresolved read operand: WS-PAGE-TOTAL"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 275,
+          "raw_text": "ADD TRAN-AMT TO WS-PAGE-TOTAL WS-ACCOUNT-TOTAL",
+          "reason": "unresolved mutate operand: WS-PAGE-TOTAL"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 275,
+          "raw_text": "ADD TRAN-AMT TO WS-PAGE-TOTAL WS-ACCOUNT-TOTAL",
+          "reason": "unresolved read operand: WS-ACCOUNT-TOTAL"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 275,
+          "raw_text": "ADD TRAN-AMT TO WS-PAGE-TOTAL WS-ACCOUNT-TOTAL",
+          "reason": "unresolved mutate operand: WS-ACCOUNT-TOTAL"
+        }
+      ]
+    },
+    "1110-WRITE-PAGE-TOTALS": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 294,
+          "raw_text": "MOVE WS-PAGE-TOTAL TO REPT-PAGE-TOTAL",
+          "reason": "unresolved read operand: WS-PAGE-TOTAL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 294,
+          "raw_text": "MOVE WS-PAGE-TOTAL TO REPT-PAGE-TOTAL",
+          "reason": "unresolved mutate operand: REPT-PAGE-TOTAL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 294,
+          "raw_text": "MOVE REPORT-PAGE-TOTALS TO FD-REPTFILE-REC",
+          "reason": "unresolved read operand: REPORT-PAGE-TOTALS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 294,
+          "raw_text": "MOVE REPORT-PAGE-TOTALS TO FD-REPTFILE-REC",
+          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 294,
+          "raw_text": "ADD WS-PAGE-TOTAL TO WS-GRAND-TOTAL",
+          "reason": "unresolved read operand: WS-PAGE-TOTAL"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 294,
+          "raw_text": "ADD WS-PAGE-TOTAL TO WS-GRAND-TOTAL",
+          "reason": "unresolved read operand: WS-GRAND-TOTAL"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 294,
+          "raw_text": "ADD WS-PAGE-TOTAL TO WS-GRAND-TOTAL",
+          "reason": "unresolved mutate operand: WS-GRAND-TOTAL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 294,
+          "raw_text": "MOVE 0 TO WS-PAGE-TOTAL",
+          "reason": "unresolved mutate operand: WS-PAGE-TOTAL"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 294,
+          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
+          "reason": "unresolved read operand: WS-LINE-COUNTER"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 294,
+          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
+          "reason": "unresolved mutate operand: WS-LINE-COUNTER"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 294,
+          "raw_text": "MOVE TRANSACTION-HEADER-2 TO FD-REPTFILE-REC",
+          "reason": "unresolved read operand: TRANSACTION-HEADER-2"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 294,
+          "raw_text": "MOVE TRANSACTION-HEADER-2 TO FD-REPTFILE-REC",
+          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 294,
+          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
+          "reason": "unresolved read operand: WS-LINE-COUNTER"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 294,
+          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
+          "reason": "unresolved mutate operand: WS-LINE-COUNTER"
+        }
+      ]
+    },
+    "1120-WRITE-ACCOUNT-TOTALS": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 307,
+          "raw_text": "MOVE WS-ACCOUNT-TOTAL   TO REPT-ACCOUNT-TOTAL",
+          "reason": "unresolved read operand: WS-ACCOUNT-TOTAL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 307,
+          "raw_text": "MOVE WS-ACCOUNT-TOTAL   TO REPT-ACCOUNT-TOTAL",
+          "reason": "unresolved mutate operand: REPT-ACCOUNT-TOTAL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 307,
+          "raw_text": "MOVE REPORT-ACCOUNT-TOTALS TO FD-REPTFILE-REC",
+          "reason": "unresolved read operand: REPORT-ACCOUNT-TOTALS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 307,
+          "raw_text": "MOVE REPORT-ACCOUNT-TOTALS TO FD-REPTFILE-REC",
+          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 307,
+          "raw_text": "MOVE 0 TO WS-ACCOUNT-TOTAL",
+          "reason": "unresolved mutate operand: WS-ACCOUNT-TOTAL"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 307,
+          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
+          "reason": "unresolved read operand: WS-LINE-COUNTER"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 307,
+          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
+          "reason": "unresolved mutate operand: WS-LINE-COUNTER"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 307,
+          "raw_text": "MOVE TRANSACTION-HEADER-2 TO FD-REPTFILE-REC",
+          "reason": "unresolved read operand: TRANSACTION-HEADER-2"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 307,
+          "raw_text": "MOVE TRANSACTION-HEADER-2 TO FD-REPTFILE-REC",
+          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 307,
+          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
+          "reason": "unresolved read operand: WS-LINE-COUNTER"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 307,
+          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
+          "reason": "unresolved mutate operand: WS-LINE-COUNTER"
+        }
+      ]
+    },
+    "1110-WRITE-GRAND-TOTALS": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 319,
+          "raw_text": "MOVE WS-GRAND-TOTAL TO REPT-GRAND-TOTAL",
+          "reason": "unresolved read operand: WS-GRAND-TOTAL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 319,
+          "raw_text": "MOVE WS-GRAND-TOTAL TO REPT-GRAND-TOTAL",
+          "reason": "unresolved mutate operand: REPT-GRAND-TOTAL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 319,
+          "raw_text": "MOVE REPORT-GRAND-TOTALS TO FD-REPTFILE-REC",
+          "reason": "unresolved read operand: REPORT-GRAND-TOTALS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 319,
+          "raw_text": "MOVE REPORT-GRAND-TOTALS TO FD-REPTFILE-REC",
+          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
+        }
+      ]
+    },
+    "1120-WRITE-HEADERS": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 325,
+          "raw_text": "MOVE REPORT-NAME-HEADER TO FD-REPTFILE-REC",
+          "reason": "unresolved read operand: REPORT-NAME-HEADER"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 325,
+          "raw_text": "MOVE REPORT-NAME-HEADER TO FD-REPTFILE-REC",
+          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 325,
+          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
+          "reason": "unresolved read operand: WS-LINE-COUNTER"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 325,
+          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
+          "reason": "unresolved mutate operand: WS-LINE-COUNTER"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 325,
+          "raw_text": "MOVE WS-BLANK-LINE TO FD-REPTFILE-REC",
+          "reason": "unresolved read operand: WS-BLANK-LINE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 325,
+          "raw_text": "MOVE WS-BLANK-LINE TO FD-REPTFILE-REC",
+          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 325,
+          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
+          "reason": "unresolved read operand: WS-LINE-COUNTER"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 325,
+          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
+          "reason": "unresolved mutate operand: WS-LINE-COUNTER"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 325,
+          "raw_text": "MOVE TRANSACTION-HEADER-1 TO FD-REPTFILE-REC",
+          "reason": "unresolved read operand: TRANSACTION-HEADER-1"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 325,
+          "raw_text": "MOVE TRANSACTION-HEADER-1 TO FD-REPTFILE-REC",
+          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 325,
+          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
+          "reason": "unresolved read operand: WS-LINE-COUNTER"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 325,
+          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
+          "reason": "unresolved mutate operand: WS-LINE-COUNTER"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 325,
+          "raw_text": "MOVE TRANSACTION-HEADER-2 TO FD-REPTFILE-REC",
+          "reason": "unresolved read operand: TRANSACTION-HEADER-2"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 325,
+          "raw_text": "MOVE TRANSACTION-HEADER-2 TO FD-REPTFILE-REC",
+          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 325,
+          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
+          "reason": "unresolved read operand: WS-LINE-COUNTER"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 325,
+          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
+          "reason": "unresolved mutate operand: WS-LINE-COUNTER"
+        }
+      ]
+    },
+    "1111-WRITE-REPORT-REC": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "WRITE",
+          "line_no": 345,
+          "raw_text": "WRITE FD-REPTFILE-REC",
+          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
+        },
+        {
+          "verb": "IF",
+          "line_no": 345,
+          "raw_text": "IF TRANREPT-STATUS = '00'",
+          "reason": "unresolved read operand: TRANREPT-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 345,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 345,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 345,
+          "raw_text": "MOVE 12 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 345,
+          "raw_text": "IF APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 345,
+          "raw_text": "DISPLAY 'ERROR WRITING REPTFILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 345,
+          "raw_text": "DISPLAY 'ERROR WRITING REPTFILE'",
+          "reason": "unresolved read operand: WRITING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 345,
+          "raw_text": "DISPLAY 'ERROR WRITING REPTFILE'",
+          "reason": "unresolved read operand: REPTFILE'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 345,
+          "raw_text": "MOVE TRANREPT-STATUS TO IO-STATUS",
+          "reason": "unresolved read operand: TRANREPT-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 345,
+          "raw_text": "MOVE TRANREPT-STATUS TO IO-STATUS",
+          "reason": "unresolved mutate operand: IO-STATUS"
+        }
+      ]
+    },
+    "1120-WRITE-DETAIL": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "INITIALIZE",
+          "line_no": 362,
+          "raw_text": "INITIALIZE TRANSACTION-DETAIL-REPORT",
+          "reason": "unresolved mutate operand: TRANSACTION-DETAIL-REPORT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRAN-ID TO TRAN-REPORT-TRANS-ID",
+          "reason": "unresolved read operand: TRAN-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRAN-ID TO TRAN-REPORT-TRANS-ID",
+          "reason": "unresolved mutate operand: TRAN-REPORT-TRANS-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE XREF-ACCT-ID TO TRAN-REPORT-ACCOUNT-ID",
+          "reason": "unresolved read operand: XREF-ACCT-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE XREF-ACCT-ID TO TRAN-REPORT-ACCOUNT-ID",
+          "reason": "unresolved mutate operand: TRAN-REPORT-ACCOUNT-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRAN-TYPE-CD OF TRAN-RECORD TO TRAN-REPORT-TYPE-CD",
+          "reason": "unresolved read operand: TRAN-TYPE-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRAN-TYPE-CD OF TRAN-RECORD TO TRAN-REPORT-TYPE-CD",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRAN-TYPE-CD OF TRAN-RECORD TO TRAN-REPORT-TYPE-CD",
+          "reason": "unresolved read operand: TRAN-RECORD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRAN-TYPE-CD OF TRAN-RECORD TO TRAN-REPORT-TYPE-CD",
+          "reason": "unresolved mutate operand: TRAN-REPORT-TYPE-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRAN-TYPE-DESC TO TRAN-REPORT-TYPE-DESC",
+          "reason": "unresolved read operand: TRAN-TYPE-DESC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRAN-TYPE-DESC TO TRAN-REPORT-TYPE-DESC",
+          "reason": "unresolved mutate operand: TRAN-REPORT-TYPE-DESC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRAN-CAT-CD OF TRAN-RECORD  TO TRAN-REPORT-CAT-CD",
+          "reason": "unresolved read operand: TRAN-CAT-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRAN-CAT-CD OF TRAN-RECORD  TO TRAN-REPORT-CAT-CD",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRAN-CAT-CD OF TRAN-RECORD  TO TRAN-REPORT-CAT-CD",
+          "reason": "unresolved read operand: TRAN-RECORD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRAN-CAT-CD OF TRAN-RECORD  TO TRAN-REPORT-CAT-CD",
+          "reason": "unresolved mutate operand: TRAN-REPORT-CAT-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRAN-CAT-TYPE-DESC TO TRAN-REPORT-CAT-DESC",
+          "reason": "unresolved read operand: TRAN-CAT-TYPE-DESC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRAN-CAT-TYPE-DESC TO TRAN-REPORT-CAT-DESC",
+          "reason": "unresolved mutate operand: TRAN-REPORT-CAT-DESC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRAN-SOURCE TO TRAN-REPORT-SOURCE",
+          "reason": "unresolved read operand: TRAN-SOURCE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRAN-SOURCE TO TRAN-REPORT-SOURCE",
+          "reason": "unresolved mutate operand: TRAN-REPORT-SOURCE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRAN-AMT TO TRAN-REPORT-AMT",
+          "reason": "unresolved read operand: TRAN-AMT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRAN-AMT TO TRAN-REPORT-AMT",
+          "reason": "unresolved mutate operand: TRAN-REPORT-AMT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRANSACTION-DETAIL-REPORT TO FD-REPTFILE-REC",
+          "reason": "unresolved read operand: TRANSACTION-DETAIL-REPORT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 362,
+          "raw_text": "MOVE TRANSACTION-DETAIL-REPORT TO FD-REPTFILE-REC",
+          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 362,
+          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
+          "reason": "unresolved read operand: WS-LINE-COUNTER"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 362,
+          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
+          "reason": "unresolved mutate operand: WS-LINE-COUNTER"
+        }
+      ]
+    },
+    "0000-TRANFILE-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 377,
+          "raw_text": "MOVE 8 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 378,
+          "raw_text": "IF TRANFILE-STATUS = '00'",
+          "reason": "unresolved read operand: TRANFILE-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 378,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 378,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 378,
+          "raw_text": "MOVE 12 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 378,
+          "raw_text": "IF APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 378,
+          "raw_text": "DISPLAY 'ERROR OPENING TRANFILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 378,
+          "raw_text": "DISPLAY 'ERROR OPENING TRANFILE'",
+          "reason": "unresolved read operand: OPENING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 378,
+          "raw_text": "DISPLAY 'ERROR OPENING TRANFILE'",
+          "reason": "unresolved read operand: TRANFILE'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 378,
+          "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
+          "reason": "unresolved read operand: TRANFILE-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 378,
+          "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
+          "reason": "unresolved mutate operand: IO-STATUS"
+        }
+      ]
+    },
+    "0100-REPTFILE-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 395,
+          "raw_text": "MOVE 8 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 396,
+          "raw_text": "IF TRANREPT-STATUS = '00'",
+          "reason": "unresolved read operand: TRANREPT-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 396,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 396,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 396,
+          "raw_text": "MOVE 12 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 396,
+          "raw_text": "IF APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 396,
+          "raw_text": "DISPLAY 'ERROR OPENING REPTFILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 396,
+          "raw_text": "DISPLAY 'ERROR OPENING REPTFILE'",
+          "reason": "unresolved read operand: OPENING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 396,
+          "raw_text": "DISPLAY 'ERROR OPENING REPTFILE'",
+          "reason": "unresolved read operand: REPTFILE'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 396,
+          "raw_text": "MOVE TRANREPT-STATUS TO IO-STATUS",
+          "reason": "unresolved read operand: TRANREPT-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 396,
+          "raw_text": "MOVE TRANREPT-STATUS TO IO-STATUS",
+          "reason": "unresolved mutate operand: IO-STATUS"
+        }
+      ]
+    },
+    "0200-CARDXREF-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 413,
+          "raw_text": "MOVE 8 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 414,
+          "raw_text": "IF  CARDXREF-STATUS = '00'",
+          "reason": "unresolved read operand: CARDXREF-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 414,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 414,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 414,
+          "raw_text": "MOVE 12 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 414,
+          "raw_text": "IF  APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 414,
+          "raw_text": "DISPLAY 'ERROR OPENING CROSS REF FILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 414,
+          "raw_text": "DISPLAY 'ERROR OPENING CROSS REF FILE'",
+          "reason": "unresolved read operand: OPENING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 414,
+          "raw_text": "DISPLAY 'ERROR OPENING CROSS REF FILE'",
+          "reason": "unresolved read operand: CROSS"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 414,
+          "raw_text": "DISPLAY 'ERROR OPENING CROSS REF FILE'",
+          "reason": "unresolved read operand: REF"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 414,
+          "raw_text": "DISPLAY 'ERROR OPENING CROSS REF FILE'",
+          "reason": "unresolved read operand: FILE'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 414,
+          "raw_text": "MOVE CARDXREF-STATUS TO IO-STATUS",
+          "reason": "unresolved read operand: CARDXREF-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 414,
+          "raw_text": "MOVE CARDXREF-STATUS TO IO-STATUS",
+          "reason": "unresolved mutate operand: IO-STATUS"
+        }
+      ]
+    },
+    "0300-TRANTYPE-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 431,
+          "raw_text": "MOVE 8 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 432,
+          "raw_text": "IF  TRANTYPE-STATUS = '00'",
+          "reason": "unresolved read operand: TRANTYPE-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 432,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 432,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 432,
+          "raw_text": "MOVE 12 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 432,
+          "raw_text": "IF  APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 432,
+          "raw_text": "DISPLAY 'ERROR OPENING TRANSACTION TYPE FILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 432,
+          "raw_text": "DISPLAY 'ERROR OPENING TRANSACTION TYPE FILE'",
+          "reason": "unresolved read operand: OPENING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 432,
+          "raw_text": "DISPLAY 'ERROR OPENING TRANSACTION TYPE FILE'",
+          "reason": "unresolved read operand: TRANSACTION"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 432,
+          "raw_text": "DISPLAY 'ERROR OPENING TRANSACTION TYPE FILE'",
+          "reason": "unresolved read operand: TYPE"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 432,
+          "raw_text": "DISPLAY 'ERROR OPENING TRANSACTION TYPE FILE'",
+          "reason": "unresolved read operand: FILE'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 432,
+          "raw_text": "MOVE TRANTYPE-STATUS TO IO-STATUS",
+          "reason": "unresolved read operand: TRANTYPE-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 432,
+          "raw_text": "MOVE TRANTYPE-STATUS TO IO-STATUS",
+          "reason": "unresolved mutate operand: IO-STATUS"
+        }
+      ]
+    },
+    "0400-TRANCATG-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 449,
+          "raw_text": "MOVE 8 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 450,
+          "raw_text": "IF  TRANCATG-STATUS = '00'",
+          "reason": "unresolved read operand: TRANCATG-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 450,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 450,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 450,
+          "raw_text": "MOVE 12 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 450,
+          "raw_text": "IF  APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 450,
+          "raw_text": "DISPLAY 'ERROR OPENING TRANSACTION CATG FILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 450,
+          "raw_text": "DISPLAY 'ERROR OPENING TRANSACTION CATG FILE'",
+          "reason": "unresolved read operand: OPENING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 450,
+          "raw_text": "DISPLAY 'ERROR OPENING TRANSACTION CATG FILE'",
+          "reason": "unresolved read operand: TRANSACTION"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 450,
+          "raw_text": "DISPLAY 'ERROR OPENING TRANSACTION CATG FILE'",
+          "reason": "unresolved read operand: CATG"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 450,
+          "raw_text": "DISPLAY 'ERROR OPENING TRANSACTION CATG FILE'",
+          "reason": "unresolved read operand: FILE'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 450,
+          "raw_text": "MOVE TRANCATG-STATUS TO IO-STATUS",
+          "reason": "unresolved read operand: TRANCATG-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 450,
+          "raw_text": "MOVE TRANCATG-STATUS TO IO-STATUS",
+          "reason": "unresolved mutate operand: IO-STATUS"
+        }
+      ]
+    },
+    "0500-DATEPARM-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 467,
+          "raw_text": "MOVE 8 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 468,
+          "raw_text": "IF  DATEPARM-STATUS = '00'",
+          "reason": "unresolved read operand: DATEPARM-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 468,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 468,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 468,
+          "raw_text": "MOVE 12 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 468,
+          "raw_text": "IF  APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 468,
+          "raw_text": "DISPLAY 'ERROR OPENING DATE PARM FILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 468,
+          "raw_text": "DISPLAY 'ERROR OPENING DATE PARM FILE'",
+          "reason": "unresolved read operand: OPENING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 468,
+          "raw_text": "DISPLAY 'ERROR OPENING DATE PARM FILE'",
+          "reason": "unresolved read operand: DATE"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 468,
+          "raw_text": "DISPLAY 'ERROR OPENING DATE PARM FILE'",
+          "reason": "unresolved read operand: PARM"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 468,
+          "raw_text": "DISPLAY 'ERROR OPENING DATE PARM FILE'",
+          "reason": "unresolved read operand: FILE'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 468,
+          "raw_text": "MOVE DATEPARM-STATUS TO IO-STATUS",
+          "reason": "unresolved read operand: DATEPARM-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 468,
+          "raw_text": "MOVE DATEPARM-STATUS TO IO-STATUS",
+          "reason": "unresolved mutate operand: IO-STATUS"
+        }
+      ]
+    },
+    "1500-A-LOOKUP-XREF": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "READ",
+          "line_no": 485,
+          "raw_text": "READ XREF-FILE INTO CARD-XREF-RECORD INVALID KEY",
+          "reason": "unresolved mutate operand: XREF-FILE"
+        },
+        {
+          "verb": "READ",
+          "line_no": 485,
+          "raw_text": "READ XREF-FILE INTO CARD-XREF-RECORD INVALID KEY",
+          "reason": "unresolved mutate operand: CARD-XREF-RECORD"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 485,
+          "raw_text": "DISPLAY 'INVALID CARD NUMBER : '  FD-XREF-CARD-NUM",
+          "reason": "unresolved read operand: 'INVALID"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 485,
+          "raw_text": "DISPLAY 'INVALID CARD NUMBER : '  FD-XREF-CARD-NUM",
+          "reason": "unresolved read operand: CARD"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 485,
+          "raw_text": "DISPLAY 'INVALID CARD NUMBER : '  FD-XREF-CARD-NUM",
+          "reason": "unresolved read operand: NUMBER"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 485,
+          "raw_text": "DISPLAY 'INVALID CARD NUMBER : '  FD-XREF-CARD-NUM",
+          "reason": "unresolved read operand: :"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 485,
+          "raw_text": "DISPLAY 'INVALID CARD NUMBER : '  FD-XREF-CARD-NUM",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 485,
+          "raw_text": "DISPLAY 'INVALID CARD NUMBER : '  FD-XREF-CARD-NUM",
+          "reason": "unresolved read operand: FD-XREF-CARD-NUM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 485,
+          "raw_text": "MOVE 23 TO IO-STATUS",
+          "reason": "unresolved mutate operand: IO-STATUS"
+        }
+      ]
+    },
+    "1500-B-LOOKUP-TRANTYPE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "READ",
+          "line_no": 495,
+          "raw_text": "READ TRANTYPE-FILE INTO TRAN-TYPE-RECORD INVALID KEY",
+          "reason": "unresolved mutate operand: TRANTYPE-FILE"
+        },
+        {
+          "verb": "READ",
+          "line_no": 495,
+          "raw_text": "READ TRANTYPE-FILE INTO TRAN-TYPE-RECORD INVALID KEY",
+          "reason": "unresolved mutate operand: TRAN-TYPE-RECORD"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 495,
+          "raw_text": "DISPLAY 'INVALID TRANSACTION TYPE : '  FD-TRAN-TYPE",
+          "reason": "unresolved read operand: 'INVALID"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 495,
+          "raw_text": "DISPLAY 'INVALID TRANSACTION TYPE : '  FD-TRAN-TYPE",
+          "reason": "unresolved read operand: TRANSACTION"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 495,
+          "raw_text": "DISPLAY 'INVALID TRANSACTION TYPE : '  FD-TRAN-TYPE",
+          "reason": "unresolved read operand: TYPE"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 495,
+          "raw_text": "DISPLAY 'INVALID TRANSACTION TYPE : '  FD-TRAN-TYPE",
+          "reason": "unresolved read operand: :"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 495,
+          "raw_text": "DISPLAY 'INVALID TRANSACTION TYPE : '  FD-TRAN-TYPE",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 495,
+          "raw_text": "DISPLAY 'INVALID TRANSACTION TYPE : '  FD-TRAN-TYPE",
+          "reason": "unresolved read operand: FD-TRAN-TYPE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 495,
+          "raw_text": "MOVE 23 TO IO-STATUS",
+          "reason": "unresolved mutate operand: IO-STATUS"
+        }
+      ]
+    },
+    "1500-C-LOOKUP-TRANCATG": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "READ",
+          "line_no": 505,
+          "raw_text": "READ TRANCATG-FILE INTO TRAN-CAT-RECORD INVALID KEY",
+          "reason": "unresolved mutate operand: TRANCATG-FILE"
+        },
+        {
+          "verb": "READ",
+          "line_no": 505,
+          "raw_text": "READ TRANCATG-FILE INTO TRAN-CAT-RECORD INVALID KEY",
+          "reason": "unresolved mutate operand: TRAN-CAT-RECORD"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 505,
+          "raw_text": "DISPLAY 'INVALID TRAN CATG KEY : '  FD-TRAN-CAT-KEY",
+          "reason": "unresolved read operand: 'INVALID"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 505,
+          "raw_text": "DISPLAY 'INVALID TRAN CATG KEY : '  FD-TRAN-CAT-KEY",
+          "reason": "unresolved read operand: TRAN"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 505,
+          "raw_text": "DISPLAY 'INVALID TRAN CATG KEY : '  FD-TRAN-CAT-KEY",
+          "reason": "unresolved read operand: CATG"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 505,
+          "raw_text": "DISPLAY 'INVALID TRAN CATG KEY : '  FD-TRAN-CAT-KEY",
+          "reason": "unresolved read operand: KEY"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 505,
+          "raw_text": "DISPLAY 'INVALID TRAN CATG KEY : '  FD-TRAN-CAT-KEY",
+          "reason": "unresolved read operand: :"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 505,
+          "raw_text": "DISPLAY 'INVALID TRAN CATG KEY : '  FD-TRAN-CAT-KEY",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 505,
+          "raw_text": "DISPLAY 'INVALID TRAN CATG KEY : '  FD-TRAN-CAT-KEY",
+          "reason": "unresolved read operand: FD-TRAN-CAT-KEY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 505,
+          "raw_text": "MOVE 23 TO IO-STATUS",
+          "reason": "unresolved mutate operand: IO-STATUS"
+        }
+      ]
+    },
+    "9000-TRANFILE-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "ADD",
+          "line_no": 515,
+          "raw_text": "ADD 8 TO ZERO GIVING APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 516,
+          "raw_text": "IF TRANFILE-STATUS = '00'",
+          "reason": "unresolved read operand: TRANFILE-STATUS"
+        },
+        {
+          "verb": "SUBTRACT",
+          "line_no": 516,
+          "raw_text": "SUBTRACT APPL-RESULT FROM APPL-RESULT ELSE",
+          "reason": "unresolved read operand: APPL-RESULT"
+        },
+        {
+          "verb": "SUBTRACT",
+          "line_no": 516,
+          "raw_text": "SUBTRACT APPL-RESULT FROM APPL-RESULT ELSE",
+          "reason": "unresolved read operand: APPL-RESULT"
+        },
+        {
+          "verb": "SUBTRACT",
+          "line_no": 516,
+          "raw_text": "SUBTRACT APPL-RESULT FROM APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "SUBTRACT",
+          "line_no": 516,
+          "raw_text": "SUBTRACT APPL-RESULT FROM APPL-RESULT ELSE",
+          "reason": "unresolved read operand: ELSE"
+        },
+        {
+          "verb": "SUBTRACT",
+          "line_no": 516,
+          "raw_text": "SUBTRACT APPL-RESULT FROM APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 516,
+          "raw_text": "ADD 12 TO ZERO GIVING APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 516,
+          "raw_text": "IF APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 516,
+          "raw_text": "DISPLAY 'ERROR CLOSING POSTED TRANSACTION FILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 516,
+          "raw_text": "DISPLAY 'ERROR CLOSING POSTED TRANSACTION FILE'",
+          "reason": "unresolved read operand: CLOSING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 516,
+          "raw_text": "DISPLAY 'ERROR CLOSING POSTED TRANSACTION FILE'",
+          "reason": "unresolved read operand: POSTED"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 516,
+          "raw_text": "DISPLAY 'ERROR CLOSING POSTED TRANSACTION FILE'",
+          "reason": "unresolved read operand: TRANSACTION"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 516,
+          "raw_text": "DISPLAY 'ERROR CLOSING POSTED TRANSACTION FILE'",
+          "reason": "unresolved read operand: FILE'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 516,
+          "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
+          "reason": "unresolved read operand: TRANFILE-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 516,
+          "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
+          "reason": "unresolved mutate operand: IO-STATUS"
+        }
+      ]
+    },
+    "9100-REPTFILE-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "ADD",
+          "line_no": 533,
+          "raw_text": "ADD 8 TO ZERO GIVING APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 534,
+          "raw_text": "IF TRANREPT-STATUS = '00'",
+          "reason": "unresolved read operand: TRANREPT-STATUS"
+        },
+        {
+          "verb": "SUBTRACT",
+          "line_no": 534,
+          "raw_text": "SUBTRACT APPL-RESULT FROM APPL-RESULT ELSE",
+          "reason": "unresolved read operand: APPL-RESULT"
+        },
+        {
+          "verb": "SUBTRACT",
+          "line_no": 534,
+          "raw_text": "SUBTRACT APPL-RESULT FROM APPL-RESULT ELSE",
+          "reason": "unresolved read operand: APPL-RESULT"
+        },
+        {
+          "verb": "SUBTRACT",
+          "line_no": 534,
+          "raw_text": "SUBTRACT APPL-RESULT FROM APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "SUBTRACT",
+          "line_no": 534,
+          "raw_text": "SUBTRACT APPL-RESULT FROM APPL-RESULT ELSE",
+          "reason": "unresolved read operand: ELSE"
+        },
+        {
+          "verb": "SUBTRACT",
+          "line_no": 534,
+          "raw_text": "SUBTRACT APPL-RESULT FROM APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 534,
+          "raw_text": "ADD 12 TO ZERO GIVING APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 534,
+          "raw_text": "IF APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 534,
+          "raw_text": "DISPLAY 'ERROR CLOSING REPORT FILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 534,
+          "raw_text": "DISPLAY 'ERROR CLOSING REPORT FILE'",
+          "reason": "unresolved read operand: CLOSING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 534,
+          "raw_text": "DISPLAY 'ERROR CLOSING REPORT FILE'",
+          "reason": "unresolved read operand: REPORT"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 534,
+          "raw_text": "DISPLAY 'ERROR CLOSING REPORT FILE'",
+          "reason": "unresolved read operand: FILE'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 534,
+          "raw_text": "MOVE TRANREPT-STATUS TO IO-STATUS",
+          "reason": "unresolved read operand: TRANREPT-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 534,
+          "raw_text": "MOVE TRANREPT-STATUS TO IO-STATUS",
+          "reason": "unresolved mutate operand: IO-STATUS"
+        }
+      ]
+    },
+    "9200-CARDXREF-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 552,
+          "raw_text": "MOVE 8 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 553,
+          "raw_text": "IF  CARDXREF-STATUS = '00'",
+          "reason": "unresolved read operand: CARDXREF-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 553,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 553,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 553,
+          "raw_text": "MOVE 12 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 553,
+          "raw_text": "IF  APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 553,
+          "raw_text": "DISPLAY 'ERROR CLOSING CROSS REF FILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 553,
+          "raw_text": "DISPLAY 'ERROR CLOSING CROSS REF FILE'",
+          "reason": "unresolved read operand: CLOSING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 553,
+          "raw_text": "DISPLAY 'ERROR CLOSING CROSS REF FILE'",
+          "reason": "unresolved read operand: CROSS"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 553,
+          "raw_text": "DISPLAY 'ERROR CLOSING CROSS REF FILE'",
+          "reason": "unresolved read operand: REF"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 553,
+          "raw_text": "DISPLAY 'ERROR CLOSING CROSS REF FILE'",
+          "reason": "unresolved read operand: FILE'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 553,
+          "raw_text": "MOVE CARDXREF-STATUS TO IO-STATUS",
+          "reason": "unresolved read operand: CARDXREF-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 553,
+          "raw_text": "MOVE CARDXREF-STATUS TO IO-STATUS",
+          "reason": "unresolved mutate operand: IO-STATUS"
+        }
+      ]
+    },
+    "9300-TRANTYPE-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 570,
+          "raw_text": "MOVE 8 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 571,
+          "raw_text": "IF  TRANTYPE-STATUS = '00'",
+          "reason": "unresolved read operand: TRANTYPE-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 571,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 571,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 571,
+          "raw_text": "MOVE 12 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 571,
+          "raw_text": "IF  APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 571,
+          "raw_text": "DISPLAY 'ERROR CLOSING TRANSACTION TYPE FILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 571,
+          "raw_text": "DISPLAY 'ERROR CLOSING TRANSACTION TYPE FILE'",
+          "reason": "unresolved read operand: CLOSING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 571,
+          "raw_text": "DISPLAY 'ERROR CLOSING TRANSACTION TYPE FILE'",
+          "reason": "unresolved read operand: TRANSACTION"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 571,
+          "raw_text": "DISPLAY 'ERROR CLOSING TRANSACTION TYPE FILE'",
+          "reason": "unresolved read operand: TYPE"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 571,
+          "raw_text": "DISPLAY 'ERROR CLOSING TRANSACTION TYPE FILE'",
+          "reason": "unresolved read operand: FILE'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 571,
+          "raw_text": "MOVE TRANTYPE-STATUS TO IO-STATUS",
+          "reason": "unresolved read operand: TRANTYPE-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 571,
+          "raw_text": "MOVE TRANTYPE-STATUS TO IO-STATUS",
+          "reason": "unresolved mutate operand: IO-STATUS"
+        }
+      ]
+    },
+    "9400-TRANCATG-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 588,
+          "raw_text": "MOVE 8 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 589,
+          "raw_text": "IF  TRANCATG-STATUS = '00'",
+          "reason": "unresolved read operand: TRANCATG-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 589,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 589,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 589,
+          "raw_text": "MOVE 12 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 589,
+          "raw_text": "IF  APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 589,
+          "raw_text": "DISPLAY 'ERROR CLOSING TRANSACTION CATG FILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 589,
+          "raw_text": "DISPLAY 'ERROR CLOSING TRANSACTION CATG FILE'",
+          "reason": "unresolved read operand: CLOSING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 589,
+          "raw_text": "DISPLAY 'ERROR CLOSING TRANSACTION CATG FILE'",
+          "reason": "unresolved read operand: TRANSACTION"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 589,
+          "raw_text": "DISPLAY 'ERROR CLOSING TRANSACTION CATG FILE'",
+          "reason": "unresolved read operand: CATG"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 589,
+          "raw_text": "DISPLAY 'ERROR CLOSING TRANSACTION CATG FILE'",
+          "reason": "unresolved read operand: FILE'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 589,
+          "raw_text": "MOVE TRANCATG-STATUS TO IO-STATUS",
+          "reason": "unresolved read operand: TRANCATG-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 589,
+          "raw_text": "MOVE TRANCATG-STATUS TO IO-STATUS",
+          "reason": "unresolved mutate operand: IO-STATUS"
+        }
+      ]
+    },
+    "9500-DATEPARM-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 606,
+          "raw_text": "MOVE 8 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 607,
+          "raw_text": "IF  DATEPARM-STATUS = '00'",
+          "reason": "unresolved read operand: DATEPARM-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 607,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 607,
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 607,
+          "raw_text": "MOVE 12 TO APPL-RESULT",
+          "reason": "unresolved mutate operand: APPL-RESULT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 607,
+          "raw_text": "IF  APPL-AOK",
+          "reason": "unresolved read operand: APPL-AOK"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 607,
+          "raw_text": "DISPLAY 'ERROR CLOSING DATE PARM FILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 607,
+          "raw_text": "DISPLAY 'ERROR CLOSING DATE PARM FILE'",
+          "reason": "unresolved read operand: CLOSING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 607,
+          "raw_text": "DISPLAY 'ERROR CLOSING DATE PARM FILE'",
+          "reason": "unresolved read operand: DATE"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 607,
+          "raw_text": "DISPLAY 'ERROR CLOSING DATE PARM FILE'",
+          "reason": "unresolved read operand: PARM"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 607,
+          "raw_text": "DISPLAY 'ERROR CLOSING DATE PARM FILE'",
+          "reason": "unresolved read operand: FILE'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 607,
+          "raw_text": "MOVE DATEPARM-STATUS TO IO-STATUS",
+          "reason": "unresolved read operand: DATEPARM-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 607,
+          "raw_text": "MOVE DATEPARM-STATUS TO IO-STATUS",
+          "reason": "unresolved mutate operand: IO-STATUS"
+        }
+      ]
+    },
+    "9999-ABEND-PROGRAM": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "DISPLAY",
+          "line_no": 627,
+          "raw_text": "DISPLAY 'ABENDING PROGRAM'",
+          "reason": "unresolved read operand: 'ABENDING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 627,
+          "raw_text": "DISPLAY 'ABENDING PROGRAM'",
+          "reason": "unresolved read operand: PROGRAM'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 627,
+          "raw_text": "MOVE 0 TO TIMING",
+          "reason": "unresolved mutate operand: TIMING"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 627,
+          "raw_text": "MOVE 999 TO ABCODE",
+          "reason": "unresolved mutate operand: ABCODE"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 627,
+          "raw_text": "CALL 'CEE3ABD' USING ABCODE, TIMING",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        }
+      ]
+    },
+    "9910-DISPLAY-IO-STATUS": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "IF",
+          "line_no": 634,
+          "raw_text": "IF IO-STATUS NOT NUMERIC OR IO-STAT1 = '9'",
+          "reason": "unresolved read operand: IO-STATUS"
+        },
+        {
+          "verb": "IF",
+          "line_no": 634,
+          "raw_text": "IF IO-STATUS NOT NUMERIC OR IO-STAT1 = '9'",
+          "reason": "unresolved read operand: NUMERIC"
+        },
+        {
+          "verb": "IF",
+          "line_no": 634,
+          "raw_text": "IF IO-STATUS NOT NUMERIC OR IO-STAT1 = '9'",
+          "reason": "unresolved read operand: IO-STAT1"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 634,
+          "raw_text": "MOVE IO-STAT1 TO IO-STATUS-04(1:1)",
+          "reason": "unresolved read operand: IO-STAT1"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 634,
+          "raw_text": "MOVE IO-STAT1 TO IO-STATUS-04(1:1)",
+          "reason": "unresolved mutate operand: IO-STATUS-04(1:1)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 634,
+          "raw_text": "MOVE 0 TO TWO-BYTES-BINARY",
+          "reason": "unresolved mutate operand: TWO-BYTES-BINARY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 634,
+          "raw_text": "MOVE IO-STAT2 TO TWO-BYTES-RIGHT",
+          "reason": "unresolved read operand: IO-STAT2"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 634,
+          "raw_text": "MOVE IO-STAT2 TO TWO-BYTES-RIGHT",
+          "reason": "unresolved mutate operand: TWO-BYTES-RIGHT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 634,
+          "raw_text": "MOVE TWO-BYTES-BINARY TO IO-STATUS-0403",
+          "reason": "unresolved read operand: TWO-BYTES-BINARY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 634,
+          "raw_text": "MOVE TWO-BYTES-BINARY TO IO-STATUS-0403",
+          "reason": "unresolved mutate operand: IO-STATUS-0403"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 634,
+          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
+          "reason": "unresolved read operand: 'FILE"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 634,
+          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
+          "reason": "unresolved read operand: STATUS"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 634,
+          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
+          "reason": "unresolved read operand: IS:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 634,
+          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
+          "reason": "unresolved read operand: NNNN'"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 634,
+          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
+          "reason": "unresolved read operand: IO-STATUS-04"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 634,
+          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
+          "reason": "unresolved read operand: ELSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 634,
+          "raw_text": "MOVE '0000' TO IO-STATUS-04",
+          "reason": "unresolved mutate operand: IO-STATUS-04"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 634,
+          "raw_text": "MOVE IO-STATUS TO IO-STATUS-04(3:2)",
+          "reason": "unresolved read operand: IO-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 634,
+          "raw_text": "MOVE IO-STATUS TO IO-STATUS-04(3:2)",
+          "reason": "unresolved mutate operand: IO-STATUS-04(3:2)"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 634,
+          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
+          "reason": "unresolved read operand: 'FILE"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 634,
+          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
+          "reason": "unresolved read operand: STATUS"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 634,
+          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
+          "reason": "unresolved read operand: IS:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 634,
+          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
+          "reason": "unresolved read operand: NNNN'"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 634,
+          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
+          "reason": "unresolved read operand: IO-STATUS-04"
+        }
+      ]
+    }
+  },
+  "program_unresolved": [
+    {
+      "issue": "paragraph count mismatch: local=29 facts=26"
+    }
+  ]
+}

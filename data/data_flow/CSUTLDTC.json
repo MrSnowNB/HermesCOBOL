@@ -1,0 +1,492 @@
+{
+  "program": "CSUTLDTC",
+  "schema_version": "1.2",
+  "paragraph_data_flow": {
+    "A000-MAIN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LENGTH OF LS-DATE TO VSTRING-LENGTH  OF WS-DATE-TO-TEST",
+          "reason": "unresolved read operand: LENGTH"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LENGTH OF LS-DATE TO VSTRING-LENGTH  OF WS-DATE-TO-TEST",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LENGTH OF LS-DATE TO VSTRING-LENGTH  OF WS-DATE-TO-TEST",
+          "reason": "unresolved read operand: LS-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LENGTH OF LS-DATE TO VSTRING-LENGTH  OF WS-DATE-TO-TEST",
+          "reason": "unresolved mutate operand: VSTRING-LENGTH"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LENGTH OF LS-DATE TO VSTRING-LENGTH  OF WS-DATE-TO-TEST",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LENGTH OF LS-DATE TO VSTRING-LENGTH  OF WS-DATE-TO-TEST",
+          "reason": "unresolved mutate operand: WS-DATE-TO-TEST"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LS-DATE TO VSTRING-TEXT    OF WS-DATE-TO-TEST WS-DATE",
+          "reason": "unresolved read operand: LS-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LS-DATE TO VSTRING-TEXT    OF WS-DATE-TO-TEST WS-DATE",
+          "reason": "unresolved mutate operand: VSTRING-TEXT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LS-DATE TO VSTRING-TEXT    OF WS-DATE-TO-TEST WS-DATE",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LS-DATE TO VSTRING-TEXT    OF WS-DATE-TO-TEST WS-DATE",
+          "reason": "unresolved mutate operand: WS-DATE-TO-TEST"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LS-DATE TO VSTRING-TEXT    OF WS-DATE-TO-TEST WS-DATE",
+          "reason": "unresolved mutate operand: WS-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LENGTH OF LS-DATE-FORMAT TO VSTRING-LENGTH OF WS-DATE-FORMAT",
+          "reason": "unresolved read operand: LENGTH"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LENGTH OF LS-DATE-FORMAT TO VSTRING-LENGTH OF WS-DATE-FORMAT",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LENGTH OF LS-DATE-FORMAT TO VSTRING-LENGTH OF WS-DATE-FORMAT",
+          "reason": "unresolved read operand: LS-DATE-FORMAT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LENGTH OF LS-DATE-FORMAT TO VSTRING-LENGTH OF WS-DATE-FORMAT",
+          "reason": "unresolved mutate operand: VSTRING-LENGTH"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LENGTH OF LS-DATE-FORMAT TO VSTRING-LENGTH OF WS-DATE-FORMAT",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LENGTH OF LS-DATE-FORMAT TO VSTRING-LENGTH OF WS-DATE-FORMAT",
+          "reason": "unresolved mutate operand: WS-DATE-FORMAT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LS-DATE-FORMAT TO VSTRING-TEXT   OF WS-DATE-FORMAT WS-DATE-FMT",
+          "reason": "unresolved read operand: LS-DATE-FORMAT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LS-DATE-FORMAT TO VSTRING-TEXT   OF WS-DATE-FORMAT WS-DATE-FMT",
+          "reason": "unresolved mutate operand: VSTRING-TEXT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LS-DATE-FORMAT TO VSTRING-TEXT   OF WS-DATE-FORMAT WS-DATE-FMT",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LS-DATE-FORMAT TO VSTRING-TEXT   OF WS-DATE-FORMAT WS-DATE-FMT",
+          "reason": "unresolved mutate operand: WS-DATE-FORMAT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE LS-DATE-FORMAT TO VSTRING-TEXT   OF WS-DATE-FORMAT WS-DATE-FMT",
+          "reason": "unresolved mutate operand: WS-DATE-FMT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 0        TO OUTPUT-LILLIAN",
+          "reason": "unresolved mutate operand: OUTPUT-LILLIAN"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 105,
+          "raw_text": "CALL \"CEEDAYS\" USING WS-DATE-TO-TEST, WS-DATE-FORMAT, OUTPUT-LILLIAN, FEEDBACK-CODE",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE WS-DATE-TO-TEST            TO WS-DATE",
+          "reason": "unresolved read operand: WS-DATE-TO-TEST"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE WS-DATE-TO-TEST            TO WS-DATE",
+          "reason": "unresolved mutate operand: WS-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE SEVERITY OF FEEDBACK-CODE  TO WS-SEVERITY-N",
+          "reason": "unresolved read operand: SEVERITY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE SEVERITY OF FEEDBACK-CODE  TO WS-SEVERITY-N",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE SEVERITY OF FEEDBACK-CODE  TO WS-SEVERITY-N",
+          "reason": "unresolved read operand: FEEDBACK-CODE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE SEVERITY OF FEEDBACK-CODE  TO WS-SEVERITY-N",
+          "reason": "unresolved mutate operand: WS-SEVERITY-N"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345'",
+          "reason": "unresolved read operand: MSG-NO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345'",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345'",
+          "reason": "unresolved read operand: FEEDBACK-CODE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345'",
+          "reason": "unresolved mutate operand: WS-MSG-NO-N"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345'",
+          "reason": "unresolved mutate operand: *"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345'",
+          "reason": "unresolved mutate operand: WS-RESULT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345'",
+          "reason": "unresolved mutate operand: IS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345'",
+          "reason": "literal as mutate target (ignored): 15"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345'",
+          "reason": "unresolved mutate operand: CHARACTERS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345'",
+          "reason": "unresolved mutate operand: *"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345'",
+          "reason": "unresolved mutate operand: 123456789012345'"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 105,
+          "raw_text": "WHEN FC-INVALID-DATE",
+          "reason": "unresolved read operand: FC-INVALID-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Date is valid'      TO WS-RESULT",
+          "reason": "unresolved read operand: 'Date"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Date is valid'      TO WS-RESULT",
+          "reason": "unresolved read operand: is"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Date is valid'      TO WS-RESULT",
+          "reason": "unresolved read operand: valid'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Date is valid'      TO WS-RESULT",
+          "reason": "unresolved mutate operand: WS-RESULT"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 105,
+          "raw_text": "WHEN FC-INSUFFICIENT-DATA",
+          "reason": "unresolved read operand: FC-INSUFFICIENT-DATA"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Insufficient'       TO WS-RESULT",
+          "reason": "unresolved mutate operand: WS-RESULT"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 105,
+          "raw_text": "WHEN FC-BAD-DATE-VALUE",
+          "reason": "unresolved read operand: FC-BAD-DATE-VALUE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Datevalue error'    TO WS-RESULT",
+          "reason": "unresolved read operand: 'Datevalue"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Datevalue error'    TO WS-RESULT",
+          "reason": "unresolved read operand: error'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Datevalue error'    TO WS-RESULT",
+          "reason": "unresolved mutate operand: WS-RESULT"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 105,
+          "raw_text": "WHEN FC-INVALID-ERA",
+          "reason": "unresolved read operand: FC-INVALID-ERA"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Invalid Era    '    TO WS-RESULT",
+          "reason": "unresolved read operand: 'Invalid"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Invalid Era    '    TO WS-RESULT",
+          "reason": "unresolved read operand: Era"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Invalid Era    '    TO WS-RESULT",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Invalid Era    '    TO WS-RESULT",
+          "reason": "unresolved mutate operand: WS-RESULT"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 105,
+          "raw_text": "WHEN FC-UNSUPP-RANGE",
+          "reason": "unresolved read operand: FC-UNSUPP-RANGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Unsupp",
+          "reason": "MOVE missing TO keyword"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 105,
+          "raw_text": "WHEN FC-INVALID-MONTH",
+          "reason": "unresolved read operand: FC-INVALID-MONTH"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Invalid month  '    TO WS-RESULT",
+          "reason": "unresolved read operand: 'Invalid"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Invalid month  '    TO WS-RESULT",
+          "reason": "unresolved read operand: month"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Invalid month  '    TO WS-RESULT",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Invalid month  '    TO WS-RESULT",
+          "reason": "unresolved mutate operand: WS-RESULT"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 105,
+          "raw_text": "WHEN FC-BAD-PIC-STRING",
+          "reason": "unresolved read operand: FC-BAD-PIC-STRING"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Bad Pic",
+          "reason": "MOVE missing TO keyword"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 105,
+          "raw_text": "WHEN FC-NON-NUMERIC-DATA",
+          "reason": "unresolved read operand: FC-NON-NUMERIC-DATA"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Nonnumeric data'    TO WS-RESULT",
+          "reason": "unresolved read operand: 'Nonnumeric"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Nonnumeric data'    TO WS-RESULT",
+          "reason": "unresolved read operand: data'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Nonnumeric data'    TO WS-RESULT",
+          "reason": "unresolved mutate operand: WS-RESULT"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 105,
+          "raw_text": "WHEN FC-YEAR-IN-ERA-ZERO",
+          "reason": "unresolved read operand: FC-YEAR-IN-ERA-ZERO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'YearInEra is 0 '    TO WS-RESULT",
+          "reason": "unresolved read operand: 'YearInEra"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'YearInEra is 0 '    TO WS-RESULT",
+          "reason": "unresolved read operand: is"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'YearInEra is 0 '    TO WS-RESULT",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'YearInEra is 0 '    TO WS-RESULT",
+          "reason": "unresolved mutate operand: WS-RESULT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Date is invalid'    TO WS-RESULT",
+          "reason": "unresolved read operand: 'Date"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Date is invalid'    TO WS-RESULT",
+          "reason": "unresolved read operand: is"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Date is invalid'    TO WS-RESULT",
+          "reason": "unresolved read operand: invalid'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Date is invalid'    TO WS-RESULT",
+          "reason": "unresolved mutate operand: WS-RESULT"
+        }
+      ]
+    },
+    "A000-MAIN-EXIT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    }
+  },
+  "program_unresolved": []
+}

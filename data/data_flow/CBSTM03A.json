@@ -1,0 +1,4109 @@
+{
+  "program": "CBSTM03A",
+  "schema_version": "1.2",
+  "paragraph_data_flow": {
+    "END-PERFORM": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "IF",
+          "line_no": 287,
+          "raw_text": "IF NOT NULL-UCB",
+          "reason": "unresolved read operand: NULL-UCB"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 287,
+          "raw_text": "DISPLAY ': ' TIOCDDNM ' -- valid UCB' ELSE",
+          "reason": "unresolved read operand: ':"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 287,
+          "raw_text": "DISPLAY ': ' TIOCDDNM ' -- valid UCB' ELSE",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 287,
+          "raw_text": "DISPLAY ': ' TIOCDDNM ' -- valid UCB' ELSE",
+          "reason": "unresolved read operand: TIOCDDNM"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 287,
+          "raw_text": "DISPLAY ': ' TIOCDDNM ' -- valid UCB' ELSE",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 287,
+          "raw_text": "DISPLAY ': ' TIOCDDNM ' -- valid UCB' ELSE",
+          "reason": "unresolved read operand: --"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 287,
+          "raw_text": "DISPLAY ': ' TIOCDDNM ' -- valid UCB' ELSE",
+          "reason": "unresolved read operand: valid"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 287,
+          "raw_text": "DISPLAY ': ' TIOCDDNM ' -- valid UCB' ELSE",
+          "reason": "unresolved read operand: UCB'"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 287,
+          "raw_text": "DISPLAY ': ' TIOCDDNM ' -- valid UCB' ELSE",
+          "reason": "unresolved read operand: ELSE"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 287,
+          "raw_text": "DISPLAY ': ' TIOCDDNM ' -- null  UCB'",
+          "reason": "unresolved read operand: ':"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 287,
+          "raw_text": "DISPLAY ': ' TIOCDDNM ' -- null  UCB'",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 287,
+          "raw_text": "DISPLAY ': ' TIOCDDNM ' -- null  UCB'",
+          "reason": "unresolved read operand: TIOCDDNM"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 287,
+          "raw_text": "DISPLAY ': ' TIOCDDNM ' -- null  UCB'",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 287,
+          "raw_text": "DISPLAY ': ' TIOCDDNM ' -- null  UCB'",
+          "reason": "unresolved read operand: --"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 287,
+          "raw_text": "DISPLAY ': ' TIOCDDNM ' -- null  UCB'",
+          "reason": "unresolved read operand: null"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 287,
+          "raw_text": "DISPLAY ': ' TIOCDDNM ' -- null  UCB'",
+          "reason": "unresolved read operand: UCB'"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 433,
+          "raw_text": "MOVE WS-TOTAL-AMT TO WS-TRN-AMT",
+          "reason": "unresolved read operand: WS-TOTAL-AMT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 433,
+          "raw_text": "MOVE WS-TOTAL-AMT TO WS-TRN-AMT",
+          "reason": "unresolved mutate operand: WS-TRN-AMT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 434,
+          "raw_text": "MOVE WS-TRN-AMT TO ST-TOTAL-TRAMT",
+          "reason": "unresolved read operand: WS-TRN-AMT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 434,
+          "raw_text": "MOVE WS-TRN-AMT TO ST-TOTAL-TRAMT",
+          "reason": "unresolved mutate operand: ST-TOTAL-TRAMT"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 435,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE12",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 435,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE12",
+          "reason": "unresolved read operand: ST-LINE12"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 436,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE14A",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 436,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE14A",
+          "reason": "unresolved read operand: ST-LINE14A"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 437,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE15",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 437,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE15",
+          "reason": "unresolved read operand: ST-LINE15"
+        },
+        {
+          "verb": "SET",
+          "line_no": 439,
+          "raw_text": "SET HTML-LTRS TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTRS"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 440,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 440,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 441,
+          "raw_text": "SET HTML-L10 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L10"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 442,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 442,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 443,
+          "raw_text": "SET HTML-L75 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L75"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 444,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 444,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 445,
+          "raw_text": "SET HTML-LTDE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTDE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 446,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 446,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 447,
+          "raw_text": "SET HTML-LTRE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTRE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 448,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 448,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 449,
+          "raw_text": "SET HTML-L78 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L78"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 450,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 450,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 451,
+          "raw_text": "SET HTML-L79 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L79"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 452,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 452,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 453,
+          "raw_text": "SET HTML-L80 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L80"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 454,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 454,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        }
+      ]
+    },
+    "END-IF": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "INITIALIZE",
+          "line_no": 294,
+          "raw_text": "INITIALIZE WS-TRNX-TABLE WS-TRN-TBL-CNTR",
+          "reason": "unresolved mutate operand: WS-TRNX-TABLE"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 294,
+          "raw_text": "INITIALIZE WS-TRNX-TABLE WS-TRN-TBL-CNTR",
+          "reason": "unresolved mutate operand: WS-TRN-TBL-CNTR"
+        },
+        {
+          "verb": "SET",
+          "line_no": 744,
+          "raw_text": "SET M03B-READ TO TRUE",
+          "reason": "unresolved mutate operand: M03B-READ"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 745,
+          "raw_text": "MOVE SPACES TO WS-M03B-FLDT",
+          "reason": "unresolved mutate operand: WS-M03B-FLDT"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 746,
+          "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        },
+        {
+          "verb": "IF",
+          "line_no": 748,
+          "raw_text": "IF WS-M03B-RC = '00' OR '04'",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 748,
+          "raw_text": "DISPLAY 'ERROR READING TRNXFILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 748,
+          "raw_text": "DISPLAY 'ERROR READING TRNXFILE'",
+          "reason": "unresolved read operand: READING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 748,
+          "raw_text": "DISPLAY 'ERROR READING TRNXFILE'",
+          "reason": "unresolved read operand: TRNXFILE'"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 748,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: 'RETURN"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 748,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: CODE:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 748,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 748,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 748,
+          "raw_text": "MOVE WS-M03B-FLDT TO TRNX-RECORD",
+          "reason": "unresolved read operand: WS-M03B-FLDT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 748,
+          "raw_text": "MOVE WS-M03B-FLDT TO TRNX-RECORD",
+          "reason": "unresolved mutate operand: TRNX-RECORD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 757,
+          "raw_text": "MOVE TRNX-CARD-NUM TO WS-SAVE-CARD",
+          "reason": "unresolved read operand: TRNX-CARD-NUM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 757,
+          "raw_text": "MOVE TRNX-CARD-NUM TO WS-SAVE-CARD",
+          "reason": "unresolved mutate operand: WS-SAVE-CARD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 758,
+          "raw_text": "MOVE 1 TO CR-CNT",
+          "reason": "unresolved mutate operand: CR-CNT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 759,
+          "raw_text": "MOVE 0 TO TR-CNT",
+          "reason": "unresolved mutate operand: TR-CNT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 760,
+          "raw_text": "MOVE 'READTRNX' TO WS-FL-DD",
+          "reason": "unresolved mutate operand: WS-FL-DD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 779,
+          "raw_text": "MOVE 'CUSTFILE' TO WS-FL-DD",
+          "reason": "unresolved mutate operand: WS-FL-DD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 797,
+          "raw_text": "MOVE 'ACCTFILE' TO WS-FL-DD",
+          "reason": "unresolved mutate operand: WS-FL-DD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 827,
+          "raw_text": "MOVE TRNX-CARD-NUM TO WS-CARD-NUM (CR-CNT)",
+          "reason": "unresolved read operand: TRNX-CARD-NUM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 827,
+          "raw_text": "MOVE TRNX-CARD-NUM TO WS-CARD-NUM (CR-CNT)",
+          "reason": "unresolved mutate operand: WS-CARD-NUM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 827,
+          "raw_text": "MOVE TRNX-CARD-NUM TO WS-CARD-NUM (CR-CNT)",
+          "reason": "unresolved mutate operand: (CR-CNT)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 828,
+          "raw_text": "MOVE TRNX-ID TO WS-TRAN-NUM (CR-CNT, TR-CNT)",
+          "reason": "unresolved read operand: TRNX-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 828,
+          "raw_text": "MOVE TRNX-ID TO WS-TRAN-NUM (CR-CNT, TR-CNT)",
+          "reason": "unresolved mutate operand: WS-TRAN-NUM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 828,
+          "raw_text": "MOVE TRNX-ID TO WS-TRAN-NUM (CR-CNT, TR-CNT)",
+          "reason": "unresolved mutate operand: (CR-CNT,"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 828,
+          "raw_text": "MOVE TRNX-ID TO WS-TRAN-NUM (CR-CNT, TR-CNT)",
+          "reason": "unresolved mutate operand: TR-CNT)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 829,
+          "raw_text": "MOVE TRNX-REST TO WS-TRAN-REST (CR-CNT, TR-CNT)",
+          "reason": "unresolved read operand: TRNX-REST"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 829,
+          "raw_text": "MOVE TRNX-REST TO WS-TRAN-REST (CR-CNT, TR-CNT)",
+          "reason": "unresolved mutate operand: WS-TRAN-REST"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 829,
+          "raw_text": "MOVE TRNX-REST TO WS-TRAN-REST (CR-CNT, TR-CNT)",
+          "reason": "unresolved mutate operand: (CR-CNT,"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 829,
+          "raw_text": "MOVE TRNX-REST TO WS-TRAN-REST (CR-CNT, TR-CNT)",
+          "reason": "unresolved mutate operand: TR-CNT)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 830,
+          "raw_text": "MOVE TRNX-CARD-NUM TO WS-SAVE-CARD",
+          "reason": "unresolved read operand: TRNX-CARD-NUM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 830,
+          "raw_text": "MOVE TRNX-CARD-NUM TO WS-SAVE-CARD",
+          "reason": "unresolved mutate operand: WS-SAVE-CARD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 832,
+          "raw_text": "MOVE 'TRNXFILE' TO WS-M03B-DD",
+          "reason": "unresolved mutate operand: WS-M03B-DD"
+        },
+        {
+          "verb": "SET",
+          "line_no": 833,
+          "raw_text": "SET M03B-READ TO TRUE",
+          "reason": "unresolved mutate operand: M03B-READ"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 834,
+          "raw_text": "MOVE SPACES TO WS-M03B-FLDT",
+          "reason": "unresolved mutate operand: WS-M03B-FLDT"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 835,
+          "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 837,
+          "raw_text": "EVALUATE WS-M03B-RC",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 837,
+          "raw_text": "MOVE WS-M03B-FLDT TO TRNX-RECORD",
+          "reason": "unresolved read operand: WS-M03B-FLDT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 837,
+          "raw_text": "MOVE WS-M03B-FLDT TO TRNX-RECORD",
+          "reason": "unresolved mutate operand: TRNX-RECORD"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 837,
+          "raw_text": "DISPLAY 'ERROR READING TRNXFILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 837,
+          "raw_text": "DISPLAY 'ERROR READING TRNXFILE'",
+          "reason": "unresolved read operand: READING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 837,
+          "raw_text": "DISPLAY 'ERROR READING TRNXFILE'",
+          "reason": "unresolved read operand: TRNXFILE'"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 837,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: 'RETURN"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 837,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: CODE:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 837,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 837,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        }
+      ]
+    },
+    "0000-START": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "EVALUATE",
+          "line_no": 298,
+          "raw_text": "EVALUATE WS-FL-DD",
+          "reason": "unresolved read operand: WS-FL-DD"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 298,
+          "raw_text": "WHEN 'TRNXFILE' ALTER 8100-FILE-OPEN TO PROCEED TO 8100-TRNXFILE-OPEN",
+          "reason": "unresolved read operand: ALTER"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 298,
+          "raw_text": "WHEN 'TRNXFILE' ALTER 8100-FILE-OPEN TO PROCEED TO 8100-TRNXFILE-OPEN",
+          "reason": "unresolved read operand: 8100-FILE-OPEN"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 298,
+          "raw_text": "WHEN 'TRNXFILE' ALTER 8100-FILE-OPEN TO PROCEED TO 8100-TRNXFILE-OPEN",
+          "reason": "unresolved read operand: PROCEED"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 298,
+          "raw_text": "WHEN 'TRNXFILE' ALTER 8100-FILE-OPEN TO PROCEED TO 8100-TRNXFILE-OPEN",
+          "reason": "unresolved read operand: 8100-TRNXFILE-OPEN"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 298,
+          "raw_text": "WHEN 'XREFFILE' ALTER 8100-FILE-OPEN TO PROCEED TO 8200-XREFFILE-OPEN",
+          "reason": "unresolved read operand: ALTER"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 298,
+          "raw_text": "WHEN 'XREFFILE' ALTER 8100-FILE-OPEN TO PROCEED TO 8200-XREFFILE-OPEN",
+          "reason": "unresolved read operand: 8100-FILE-OPEN"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 298,
+          "raw_text": "WHEN 'XREFFILE' ALTER 8100-FILE-OPEN TO PROCEED TO 8200-XREFFILE-OPEN",
+          "reason": "unresolved read operand: PROCEED"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 298,
+          "raw_text": "WHEN 'XREFFILE' ALTER 8100-FILE-OPEN TO PROCEED TO 8200-XREFFILE-OPEN",
+          "reason": "unresolved read operand: 8200-XREFFILE-OPEN"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 298,
+          "raw_text": "WHEN 'CUSTFILE' ALTER 8100-FILE-OPEN TO PROCEED TO 8300-CUSTFILE-OPEN",
+          "reason": "unresolved read operand: ALTER"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 298,
+          "raw_text": "WHEN 'CUSTFILE' ALTER 8100-FILE-OPEN TO PROCEED TO 8300-CUSTFILE-OPEN",
+          "reason": "unresolved read operand: 8100-FILE-OPEN"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 298,
+          "raw_text": "WHEN 'CUSTFILE' ALTER 8100-FILE-OPEN TO PROCEED TO 8300-CUSTFILE-OPEN",
+          "reason": "unresolved read operand: PROCEED"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 298,
+          "raw_text": "WHEN 'CUSTFILE' ALTER 8100-FILE-OPEN TO PROCEED TO 8300-CUSTFILE-OPEN",
+          "reason": "unresolved read operand: 8300-CUSTFILE-OPEN"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 298,
+          "raw_text": "WHEN 'ACCTFILE' ALTER 8100-FILE-OPEN TO PROCEED TO 8400-ACCTFILE-OPEN",
+          "reason": "unresolved read operand: ALTER"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 298,
+          "raw_text": "WHEN 'ACCTFILE' ALTER 8100-FILE-OPEN TO PROCEED TO 8400-ACCTFILE-OPEN",
+          "reason": "unresolved read operand: 8100-FILE-OPEN"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 298,
+          "raw_text": "WHEN 'ACCTFILE' ALTER 8100-FILE-OPEN TO PROCEED TO 8400-ACCTFILE-OPEN",
+          "reason": "unresolved read operand: PROCEED"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 298,
+          "raw_text": "WHEN 'ACCTFILE' ALTER 8100-FILE-OPEN TO PROCEED TO 8400-ACCTFILE-OPEN",
+          "reason": "unresolved read operand: 8400-ACCTFILE-OPEN"
+        }
+      ]
+    },
+    "1000-MAINLINE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "IF",
+          "line_no": 317,
+          "raw_text": "IF  END-OF-FILE = 'N'",
+          "reason": "unresolved read operand: END-OF-FILE"
+        },
+        {
+          "verb": "IF",
+          "line_no": 317,
+          "raw_text": "IF  END-OF-FILE = 'N'",
+          "reason": "unresolved read operand: END-OF-FILE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 317,
+          "raw_text": "MOVE 1 TO CR-JMP",
+          "reason": "unresolved mutate operand: CR-JMP"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 317,
+          "raw_text": "MOVE ZERO TO WS-TOTAL-AMT",
+          "reason": "unresolved mutate operand: WS-TOTAL-AMT"
+        }
+      ]
+    },
+    "9999-GOBACK": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "GOBACK": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "1000-XREFFILE-GET-NEXT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 347,
+          "raw_text": "MOVE 'XREFFILE' TO WS-M03B-DD",
+          "reason": "unresolved mutate operand: WS-M03B-DD"
+        },
+        {
+          "verb": "SET",
+          "line_no": 348,
+          "raw_text": "SET M03B-READ TO TRUE",
+          "reason": "unresolved mutate operand: M03B-READ"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 349,
+          "raw_text": "MOVE ZERO TO WS-M03B-RC",
+          "reason": "unresolved mutate operand: WS-M03B-RC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 350,
+          "raw_text": "MOVE SPACES TO WS-M03B-FLDT",
+          "reason": "unresolved mutate operand: WS-M03B-FLDT"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 351,
+          "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 353,
+          "raw_text": "EVALUATE WS-M03B-RC",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 353,
+          "raw_text": "MOVE 'Y' TO END-OF-FILE",
+          "reason": "unresolved mutate operand: END-OF-FILE"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 353,
+          "raw_text": "DISPLAY 'ERROR READING XREFFILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 353,
+          "raw_text": "DISPLAY 'ERROR READING XREFFILE'",
+          "reason": "unresolved read operand: READING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 353,
+          "raw_text": "DISPLAY 'ERROR READING XREFFILE'",
+          "reason": "unresolved read operand: XREFFILE'"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 353,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: 'RETURN"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 353,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: CODE:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 353,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 353,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        }
+      ]
+    },
+    "END-EVALUATE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 364,
+          "raw_text": "MOVE WS-M03B-FLDT TO CARD-XREF-RECORD",
+          "reason": "unresolved read operand: WS-M03B-FLDT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 364,
+          "raw_text": "MOVE WS-M03B-FLDT TO CARD-XREF-RECORD",
+          "reason": "unresolved mutate operand: CARD-XREF-RECORD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 388,
+          "raw_text": "MOVE WS-M03B-FLDT TO CUSTOMER-RECORD",
+          "reason": "unresolved read operand: WS-M03B-FLDT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 388,
+          "raw_text": "MOVE WS-M03B-FLDT TO CUSTOMER-RECORD",
+          "reason": "unresolved mutate operand: CUSTOMER-RECORD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 412,
+          "raw_text": "MOVE WS-M03B-FLDT TO ACCOUNT-RECORD",
+          "reason": "unresolved read operand: WS-M03B-FLDT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 412,
+          "raw_text": "MOVE WS-M03B-FLDT TO ACCOUNT-RECORD",
+          "reason": "unresolved mutate operand: ACCOUNT-RECORD"
+        }
+      ]
+    },
+    "EXIT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "2000-CUSTFILE-GET": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 370,
+          "raw_text": "MOVE 'CUSTFILE' TO WS-M03B-DD",
+          "reason": "unresolved mutate operand: WS-M03B-DD"
+        },
+        {
+          "verb": "SET",
+          "line_no": 371,
+          "raw_text": "SET M03B-READ-K TO TRUE",
+          "reason": "unresolved mutate operand: M03B-READ-K"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 372,
+          "raw_text": "MOVE XREF-CUST-ID TO WS-M03B-KEY",
+          "reason": "unresolved read operand: XREF-CUST-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 372,
+          "raw_text": "MOVE XREF-CUST-ID TO WS-M03B-KEY",
+          "reason": "unresolved mutate operand: WS-M03B-KEY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 373,
+          "raw_text": "MOVE ZERO TO WS-M03B-KEY-LN",
+          "reason": "unresolved mutate operand: WS-M03B-KEY-LN"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 374,
+          "raw_text": "COMPUTE WS-M03B-KEY-LN = LENGTH OF XREF-CUST-ID",
+          "reason": "unresolved mutate operand: WS-M03B-KEY-LN"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 374,
+          "raw_text": "COMPUTE WS-M03B-KEY-LN = LENGTH OF XREF-CUST-ID",
+          "reason": "unresolved read operand: LENGTH"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 374,
+          "raw_text": "COMPUTE WS-M03B-KEY-LN = LENGTH OF XREF-CUST-ID",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 374,
+          "raw_text": "COMPUTE WS-M03B-KEY-LN = LENGTH OF XREF-CUST-ID",
+          "reason": "unresolved read operand: XREF-CUST-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 375,
+          "raw_text": "MOVE ZERO TO WS-M03B-RC",
+          "reason": "unresolved mutate operand: WS-M03B-RC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 376,
+          "raw_text": "MOVE SPACES TO WS-M03B-FLDT",
+          "reason": "unresolved mutate operand: WS-M03B-FLDT"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 377,
+          "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 379,
+          "raw_text": "EVALUATE WS-M03B-RC",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 379,
+          "raw_text": "DISPLAY 'ERROR READING CUSTFILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 379,
+          "raw_text": "DISPLAY 'ERROR READING CUSTFILE'",
+          "reason": "unresolved read operand: READING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 379,
+          "raw_text": "DISPLAY 'ERROR READING CUSTFILE'",
+          "reason": "unresolved read operand: CUSTFILE'"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 379,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: 'RETURN"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 379,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: CODE:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 379,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 379,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        }
+      ]
+    },
+    "3000-ACCTFILE-GET": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 394,
+          "raw_text": "MOVE 'ACCTFILE' TO WS-M03B-DD",
+          "reason": "unresolved mutate operand: WS-M03B-DD"
+        },
+        {
+          "verb": "SET",
+          "line_no": 395,
+          "raw_text": "SET M03B-READ-K TO TRUE",
+          "reason": "unresolved mutate operand: M03B-READ-K"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 396,
+          "raw_text": "MOVE XREF-ACCT-ID TO WS-M03B-KEY",
+          "reason": "unresolved read operand: XREF-ACCT-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 396,
+          "raw_text": "MOVE XREF-ACCT-ID TO WS-M03B-KEY",
+          "reason": "unresolved mutate operand: WS-M03B-KEY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 397,
+          "raw_text": "MOVE ZERO TO WS-M03B-KEY-LN",
+          "reason": "unresolved mutate operand: WS-M03B-KEY-LN"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 398,
+          "raw_text": "COMPUTE WS-M03B-KEY-LN = LENGTH OF XREF-ACCT-ID",
+          "reason": "unresolved mutate operand: WS-M03B-KEY-LN"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 398,
+          "raw_text": "COMPUTE WS-M03B-KEY-LN = LENGTH OF XREF-ACCT-ID",
+          "reason": "unresolved read operand: LENGTH"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 398,
+          "raw_text": "COMPUTE WS-M03B-KEY-LN = LENGTH OF XREF-ACCT-ID",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 398,
+          "raw_text": "COMPUTE WS-M03B-KEY-LN = LENGTH OF XREF-ACCT-ID",
+          "reason": "unresolved read operand: XREF-ACCT-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 399,
+          "raw_text": "MOVE ZERO TO WS-M03B-RC",
+          "reason": "unresolved mutate operand: WS-M03B-RC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 400,
+          "raw_text": "MOVE SPACES TO WS-M03B-FLDT",
+          "reason": "unresolved mutate operand: WS-M03B-FLDT"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 401,
+          "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 403,
+          "raw_text": "EVALUATE WS-M03B-RC",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 403,
+          "raw_text": "DISPLAY 'ERROR READING ACCTFILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 403,
+          "raw_text": "DISPLAY 'ERROR READING ACCTFILE'",
+          "reason": "unresolved read operand: READING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 403,
+          "raw_text": "DISPLAY 'ERROR READING ACCTFILE'",
+          "reason": "unresolved read operand: ACCTFILE'"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 403,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: 'RETURN"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 403,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: CODE:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 403,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 403,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        }
+      ]
+    },
+    "4000-TRNXFILE-GET": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "IF",
+          "line_no": 417,
+          "raw_text": "IF XREF-CARD-NUM = WS-CARD-NUM (CR-JMP)",
+          "reason": "unresolved read operand: XREF-CARD-NUM"
+        },
+        {
+          "verb": "IF",
+          "line_no": 417,
+          "raw_text": "IF XREF-CARD-NUM = WS-CARD-NUM (CR-JMP)",
+          "reason": "unresolved read operand: WS-CARD-NUM"
+        },
+        {
+          "verb": "IF",
+          "line_no": 417,
+          "raw_text": "IF XREF-CARD-NUM = WS-CARD-NUM (CR-JMP)",
+          "reason": "unresolved read operand: (CR-JMP)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 417,
+          "raw_text": "MOVE WS-CARD-NUM (CR-JMP) TO TRNX-CARD-NUM",
+          "reason": "unresolved read operand: WS-CARD-NUM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 417,
+          "raw_text": "MOVE WS-CARD-NUM (CR-JMP) TO TRNX-CARD-NUM",
+          "reason": "unresolved read operand: (CR-JMP)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 417,
+          "raw_text": "MOVE WS-CARD-NUM (CR-JMP) TO TRNX-CARD-NUM",
+          "reason": "unresolved mutate operand: TRNX-CARD-NUM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 417,
+          "raw_text": "MOVE WS-TRAN-NUM (CR-JMP, TR-JMP) TO TRNX-ID",
+          "reason": "unresolved read operand: WS-TRAN-NUM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 417,
+          "raw_text": "MOVE WS-TRAN-NUM (CR-JMP, TR-JMP) TO TRNX-ID",
+          "reason": "unresolved read operand: (CR-JMP,"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 417,
+          "raw_text": "MOVE WS-TRAN-NUM (CR-JMP, TR-JMP) TO TRNX-ID",
+          "reason": "unresolved read operand: TR-JMP)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 417,
+          "raw_text": "MOVE WS-TRAN-NUM (CR-JMP, TR-JMP) TO TRNX-ID",
+          "reason": "unresolved mutate operand: TRNX-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 417,
+          "raw_text": "MOVE WS-TRAN-REST (CR-JMP, TR-JMP) TO TRNX-REST",
+          "reason": "unresolved read operand: WS-TRAN-REST"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 417,
+          "raw_text": "MOVE WS-TRAN-REST (CR-JMP, TR-JMP) TO TRNX-REST",
+          "reason": "unresolved read operand: (CR-JMP,"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 417,
+          "raw_text": "MOVE WS-TRAN-REST (CR-JMP, TR-JMP) TO TRNX-REST",
+          "reason": "unresolved read operand: TR-JMP)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 417,
+          "raw_text": "MOVE WS-TRAN-REST (CR-JMP, TR-JMP) TO TRNX-REST",
+          "reason": "unresolved mutate operand: TRNX-REST"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 417,
+          "raw_text": "ADD TRNX-AMT TO WS-TOTAL-AMT",
+          "reason": "unresolved read operand: TRNX-AMT"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 417,
+          "raw_text": "ADD TRNX-AMT TO WS-TOTAL-AMT",
+          "reason": "unresolved read operand: WS-TOTAL-AMT"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 417,
+          "raw_text": "ADD TRNX-AMT TO WS-TOTAL-AMT",
+          "reason": "unresolved mutate operand: WS-TOTAL-AMT"
+        }
+      ]
+    },
+    "5000-CREATE-STATEMENT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "INITIALIZE",
+          "line_no": 459,
+          "raw_text": "INITIALIZE STATEMENT-LINES",
+          "reason": "unresolved mutate operand: STATEMENT-LINES"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 460,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE0",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 460,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE0",
+          "reason": "unresolved read operand: ST-LINE0"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 462,
+          "raw_text": "STRING CUST-FIRST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-MIDDLE-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-LAST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-NAME",
+          "reason": "unresolved read operand: CUST-FIRST-NAME"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 462,
+          "raw_text": "STRING CUST-FIRST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-MIDDLE-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-LAST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-NAME",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 462,
+          "raw_text": "STRING CUST-FIRST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-MIDDLE-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-LAST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-NAME",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 462,
+          "raw_text": "STRING CUST-FIRST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-MIDDLE-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-LAST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-NAME",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 462,
+          "raw_text": "STRING CUST-FIRST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-MIDDLE-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-LAST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-NAME",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 462,
+          "raw_text": "STRING CUST-FIRST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-MIDDLE-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-LAST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-NAME",
+          "reason": "unresolved read operand: CUST-MIDDLE-NAME"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 462,
+          "raw_text": "STRING CUST-FIRST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-MIDDLE-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-LAST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-NAME",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 462,
+          "raw_text": "STRING CUST-FIRST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-MIDDLE-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-LAST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-NAME",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 462,
+          "raw_text": "STRING CUST-FIRST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-MIDDLE-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-LAST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-NAME",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 462,
+          "raw_text": "STRING CUST-FIRST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-MIDDLE-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-LAST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-NAME",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 462,
+          "raw_text": "STRING CUST-FIRST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-MIDDLE-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-LAST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-NAME",
+          "reason": "unresolved read operand: CUST-LAST-NAME"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 462,
+          "raw_text": "STRING CUST-FIRST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-MIDDLE-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-LAST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-NAME",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 462,
+          "raw_text": "STRING CUST-FIRST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-MIDDLE-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-LAST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-NAME",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 462,
+          "raw_text": "STRING CUST-FIRST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-MIDDLE-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-LAST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-NAME",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 462,
+          "raw_text": "STRING CUST-FIRST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-MIDDLE-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-LAST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-NAME",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 462,
+          "raw_text": "STRING CUST-FIRST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-MIDDLE-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-LAST-NAME DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-NAME",
+          "reason": "unresolved mutate operand: ST-NAME"
+        }
+      ]
+    },
+    "END-STRING": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 470,
+          "raw_text": "MOVE CUST-ADDR-LINE-1 TO ST-ADD1",
+          "reason": "unresolved read operand: CUST-ADDR-LINE-1"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 470,
+          "raw_text": "MOVE CUST-ADDR-LINE-1 TO ST-ADD1",
+          "reason": "unresolved mutate operand: ST-ADD1"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 471,
+          "raw_text": "MOVE CUST-ADDR-LINE-2 TO ST-ADD2",
+          "reason": "unresolved read operand: CUST-ADDR-LINE-2"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 471,
+          "raw_text": "MOVE CUST-ADDR-LINE-2 TO ST-ADD2",
+          "reason": "unresolved mutate operand: ST-ADD2"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: CUST-ADDR-LINE-3"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: CUST-ADDR-STATE-CD"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: CUST-ADDR-COUNTRY-CD"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: CUST-ADDR-ZIP"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 472,
+          "raw_text": "STRING CUST-ADDR-LINE-3 DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-STATE-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-COUNTRY-CD DELIMITED BY ' ' ' ' DELIMITED BY SIZE CUST-ADDR-ZIP DELIMITED BY ' ' ' ' DELIMITED BY SIZE INTO ST-ADD3",
+          "reason": "unresolved mutate operand: ST-ADD3"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 472,
+          "raw_text": "MOVE ACCT-ID TO ST-ACCT-ID",
+          "reason": "unresolved read operand: ACCT-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 472,
+          "raw_text": "MOVE ACCT-ID TO ST-ACCT-ID",
+          "reason": "unresolved mutate operand: ST-ACCT-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 484,
+          "raw_text": "MOVE ACCT-CURR-BAL TO ST-CURR-BAL",
+          "reason": "unresolved read operand: ACCT-CURR-BAL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 484,
+          "raw_text": "MOVE ACCT-CURR-BAL TO ST-CURR-BAL",
+          "reason": "unresolved mutate operand: ST-CURR-BAL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 485,
+          "raw_text": "MOVE CUST-FICO-CREDIT-SCORE TO ST-FICO-SCORE",
+          "reason": "unresolved read operand: CUST-FICO-CREDIT-SCORE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 485,
+          "raw_text": "MOVE CUST-FICO-CREDIT-SCORE TO ST-FICO-SCORE",
+          "reason": "unresolved mutate operand: ST-FICO-SCORE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 488,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE1",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 488,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE1",
+          "reason": "unresolved read operand: ST-LINE1"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 489,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE2",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 489,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE2",
+          "reason": "unresolved read operand: ST-LINE2"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 490,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE3",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 490,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE3",
+          "reason": "unresolved read operand: ST-LINE3"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 491,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE4",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 491,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE4",
+          "reason": "unresolved read operand: ST-LINE4"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 492,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE5",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 492,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE5",
+          "reason": "unresolved read operand: ST-LINE5"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 493,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE6",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 493,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE6",
+          "reason": "unresolved read operand: ST-LINE6"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 494,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE5",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 494,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE5",
+          "reason": "unresolved read operand: ST-LINE5"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 495,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE7",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 495,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE7",
+          "reason": "unresolved read operand: ST-LINE7"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 496,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE8",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 496,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE8",
+          "reason": "unresolved read operand: ST-LINE8"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 497,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE9",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 497,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE9",
+          "reason": "unresolved read operand: ST-LINE9"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 498,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE10",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 498,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE10",
+          "reason": "unresolved read operand: ST-LINE10"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 499,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE11",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 499,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE11",
+          "reason": "unresolved read operand: ST-LINE11"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 500,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE12",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 500,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE12",
+          "reason": "unresolved read operand: ST-LINE12"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 501,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE13",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 501,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE13",
+          "reason": "unresolved read operand: ST-LINE13"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 502,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE12",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 502,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE12",
+          "reason": "unresolved read operand: ST-LINE12"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 568,
+          "raw_text": "WRITE FD-HTMLFILE-REC",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 569,
+          "raw_text": "MOVE SPACES TO HTML-ADDR-LN",
+          "reason": "unresolved mutate operand: HTML-ADDR-LN"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 570,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-ADD1 DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO HTML-ADDR-LN",
+          "reason": "unresolved read operand: ST-ADD1"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 570,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-ADD1 DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO HTML-ADDR-LN",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 570,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-ADD1 DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO HTML-ADDR-LN",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 570,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-ADD1 DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO HTML-ADDR-LN",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 570,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-ADD1 DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO HTML-ADDR-LN",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 570,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-ADD1 DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO HTML-ADDR-LN",
+          "reason": "unresolved mutate operand: HTML-ADDR-LN"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 570,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-ADDR-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 570,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-ADDR-LN",
+          "reason": "unresolved read operand: HTML-ADDR-LN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 577,
+          "raw_text": "MOVE SPACES TO HTML-ADDR-LN",
+          "reason": "unresolved mutate operand: HTML-ADDR-LN"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 578,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-ADD2 DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO HTML-ADDR-LN",
+          "reason": "unresolved read operand: ST-ADD2"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 578,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-ADD2 DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO HTML-ADDR-LN",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 578,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-ADD2 DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO HTML-ADDR-LN",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 578,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-ADD2 DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO HTML-ADDR-LN",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 578,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-ADD2 DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO HTML-ADDR-LN",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 578,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-ADD2 DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO HTML-ADDR-LN",
+          "reason": "unresolved mutate operand: HTML-ADDR-LN"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 578,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-ADDR-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 578,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-ADDR-LN",
+          "reason": "unresolved read operand: HTML-ADDR-LN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 585,
+          "raw_text": "MOVE SPACES TO HTML-ADDR-LN",
+          "reason": "unresolved mutate operand: HTML-ADDR-LN"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 586,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-ADD3 DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO HTML-ADDR-LN",
+          "reason": "unresolved read operand: ST-ADD3"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 586,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-ADD3 DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO HTML-ADDR-LN",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 586,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-ADD3 DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO HTML-ADDR-LN",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 586,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-ADD3 DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO HTML-ADDR-LN",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 586,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-ADD3 DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO HTML-ADDR-LN",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 586,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-ADD3 DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO HTML-ADDR-LN",
+          "reason": "unresolved mutate operand: HTML-ADDR-LN"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 586,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-ADDR-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 586,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-ADDR-LN",
+          "reason": "unresolved read operand: HTML-ADDR-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 594,
+          "raw_text": "SET HTML-LTDE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTDE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 595,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 595,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 596,
+          "raw_text": "SET HTML-LTRE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTRE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 597,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 597,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 598,
+          "raw_text": "SET HTML-LTRS TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTRS"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 599,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 599,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 600,
+          "raw_text": "SET HTML-L30-42 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L30-42"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 601,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 601,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 602,
+          "raw_text": "SET HTML-L31 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L31"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 603,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 603,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 604,
+          "raw_text": "SET HTML-LTDE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTDE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 605,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 605,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 606,
+          "raw_text": "SET HTML-LTRE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTRE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 607,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 607,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 608,
+          "raw_text": "SET HTML-LTRS TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTRS"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 609,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 609,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 610,
+          "raw_text": "SET HTML-L22-35 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L22-35"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 611,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 611,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 613,
+          "raw_text": "MOVE SPACES TO HTML-BSIC-LN",
+          "reason": "unresolved mutate operand: HTML-BSIC-LN"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 614,
+          "raw_text": "STRING '<p>Account ID         : ' DELIMITED BY '*' ST-ACCT-ID DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-BSIC-LN",
+          "reason": "unresolved read operand: '<p>Account"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 614,
+          "raw_text": "STRING '<p>Account ID         : ' DELIMITED BY '*' ST-ACCT-ID DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-BSIC-LN",
+          "reason": "unresolved read operand: ID"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 614,
+          "raw_text": "STRING '<p>Account ID         : ' DELIMITED BY '*' ST-ACCT-ID DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-BSIC-LN",
+          "reason": "unresolved read operand: :"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 614,
+          "raw_text": "STRING '<p>Account ID         : ' DELIMITED BY '*' ST-ACCT-ID DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-BSIC-LN",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 614,
+          "raw_text": "STRING '<p>Account ID         : ' DELIMITED BY '*' ST-ACCT-ID DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-BSIC-LN",
+          "reason": "unresolved read operand: ST-ACCT-ID"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 614,
+          "raw_text": "STRING '<p>Account ID         : ' DELIMITED BY '*' ST-ACCT-ID DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-BSIC-LN",
+          "reason": "unresolved mutate operand: HTML-BSIC-LN"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 614,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-BSIC-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 614,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-BSIC-LN",
+          "reason": "unresolved read operand: HTML-BSIC-LN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 620,
+          "raw_text": "MOVE SPACES TO HTML-BSIC-LN",
+          "reason": "unresolved mutate operand: HTML-BSIC-LN"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 621,
+          "raw_text": "STRING '<p>Current Balance    : ' DELIMITED BY '*' ST-CURR-BAL DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-BSIC-LN",
+          "reason": "unresolved read operand: '<p>Current"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 621,
+          "raw_text": "STRING '<p>Current Balance    : ' DELIMITED BY '*' ST-CURR-BAL DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-BSIC-LN",
+          "reason": "unresolved read operand: Balance"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 621,
+          "raw_text": "STRING '<p>Current Balance    : ' DELIMITED BY '*' ST-CURR-BAL DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-BSIC-LN",
+          "reason": "unresolved read operand: :"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 621,
+          "raw_text": "STRING '<p>Current Balance    : ' DELIMITED BY '*' ST-CURR-BAL DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-BSIC-LN",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 621,
+          "raw_text": "STRING '<p>Current Balance    : ' DELIMITED BY '*' ST-CURR-BAL DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-BSIC-LN",
+          "reason": "unresolved read operand: ST-CURR-BAL"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 621,
+          "raw_text": "STRING '<p>Current Balance    : ' DELIMITED BY '*' ST-CURR-BAL DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-BSIC-LN",
+          "reason": "unresolved mutate operand: HTML-BSIC-LN"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 621,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-BSIC-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 621,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-BSIC-LN",
+          "reason": "unresolved read operand: HTML-BSIC-LN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 627,
+          "raw_text": "MOVE SPACES TO HTML-BSIC-LN",
+          "reason": "unresolved mutate operand: HTML-BSIC-LN"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 628,
+          "raw_text": "STRING '<p>FICO Score         : ' DELIMITED BY '*' ST-FICO-SCORE DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-BSIC-LN",
+          "reason": "unresolved read operand: '<p>FICO"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 628,
+          "raw_text": "STRING '<p>FICO Score         : ' DELIMITED BY '*' ST-FICO-SCORE DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-BSIC-LN",
+          "reason": "unresolved read operand: Score"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 628,
+          "raw_text": "STRING '<p>FICO Score         : ' DELIMITED BY '*' ST-FICO-SCORE DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-BSIC-LN",
+          "reason": "unresolved read operand: :"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 628,
+          "raw_text": "STRING '<p>FICO Score         : ' DELIMITED BY '*' ST-FICO-SCORE DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-BSIC-LN",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 628,
+          "raw_text": "STRING '<p>FICO Score         : ' DELIMITED BY '*' ST-FICO-SCORE DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-BSIC-LN",
+          "reason": "unresolved read operand: ST-FICO-SCORE"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 628,
+          "raw_text": "STRING '<p>FICO Score         : ' DELIMITED BY '*' ST-FICO-SCORE DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-BSIC-LN",
+          "reason": "unresolved mutate operand: HTML-BSIC-LN"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 628,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-BSIC-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 628,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-BSIC-LN",
+          "reason": "unresolved read operand: HTML-BSIC-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 634,
+          "raw_text": "SET HTML-LTDE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTDE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 635,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 635,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 636,
+          "raw_text": "SET HTML-LTRE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTRE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 637,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 637,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 638,
+          "raw_text": "SET HTML-LTRS TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTRS"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 639,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 639,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 640,
+          "raw_text": "SET HTML-L30-42 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L30-42"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 641,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 641,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 642,
+          "raw_text": "SET HTML-L43 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L43"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 643,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 643,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 644,
+          "raw_text": "SET HTML-LTDE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTDE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 645,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 645,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 646,
+          "raw_text": "SET HTML-LTRE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTRE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 647,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 647,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 648,
+          "raw_text": "SET HTML-LTRS TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTRS"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 649,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 649,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 650,
+          "raw_text": "SET HTML-L47 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L47"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 651,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 651,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 652,
+          "raw_text": "SET HTML-L48 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L48"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 653,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 653,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 654,
+          "raw_text": "SET HTML-LTDE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTDE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 655,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 655,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 656,
+          "raw_text": "SET HTML-L50 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L50"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 657,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 657,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 658,
+          "raw_text": "SET HTML-L51 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L51"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 659,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 659,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 660,
+          "raw_text": "SET HTML-LTDE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTDE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 661,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 661,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 662,
+          "raw_text": "SET HTML-L53 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L53"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 663,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 663,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 664,
+          "raw_text": "SET HTML-L54 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L54"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 665,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 665,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 666,
+          "raw_text": "SET HTML-LTDE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTDE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 667,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 667,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 668,
+          "raw_text": "SET HTML-LTRE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTRE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 669,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 669,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 692,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-TRAN-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 692,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-TRAN-LN",
+          "reason": "unresolved read operand: HTML-TRAN-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 693,
+          "raw_text": "SET HTML-LTDE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTDE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 694,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 694,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 696,
+          "raw_text": "SET HTML-L61 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L61"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 697,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 697,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 698,
+          "raw_text": "MOVE SPACES TO HTML-TRAN-LN",
+          "reason": "unresolved mutate operand: HTML-TRAN-LN"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 699,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-TRANDT DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-TRAN-LN",
+          "reason": "unresolved read operand: ST-TRANDT"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 699,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-TRANDT DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-TRAN-LN",
+          "reason": "unresolved mutate operand: HTML-TRAN-LN"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 699,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-TRAN-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 699,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-TRAN-LN",
+          "reason": "unresolved read operand: HTML-TRAN-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 705,
+          "raw_text": "SET HTML-LTDE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTDE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 706,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 706,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 708,
+          "raw_text": "SET HTML-L64 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L64"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 709,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 709,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 710,
+          "raw_text": "MOVE SPACES TO HTML-TRAN-LN",
+          "reason": "unresolved mutate operand: HTML-TRAN-LN"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 711,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-TRANAMT DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-TRAN-LN",
+          "reason": "unresolved read operand: ST-TRANAMT"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 711,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-TRANAMT DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-TRAN-LN",
+          "reason": "unresolved mutate operand: HTML-TRAN-LN"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 711,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-TRAN-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 711,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-TRAN-LN",
+          "reason": "unresolved read operand: HTML-TRAN-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 717,
+          "raw_text": "SET HTML-LTDE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTDE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 718,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 718,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 720,
+          "raw_text": "SET HTML-LTRE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTRE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 721,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 721,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        }
+      ]
+    },
+    "5100-WRITE-HTML-HEADER": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "SET",
+          "line_no": 508,
+          "raw_text": "SET HTML-L01 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L01"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 509,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 509,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 510,
+          "raw_text": "SET HTML-L02 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L02"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 511,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 511,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 512,
+          "raw_text": "SET HTML-L03 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L03"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 513,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 513,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 514,
+          "raw_text": "SET HTML-L04 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L04"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 515,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 515,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 516,
+          "raw_text": "SET HTML-L05 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L05"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 517,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 517,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 518,
+          "raw_text": "SET HTML-L06 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L06"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 519,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 519,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 520,
+          "raw_text": "SET HTML-L07 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L07"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 521,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 521,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 522,
+          "raw_text": "SET HTML-L08 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L08"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 523,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 523,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 524,
+          "raw_text": "SET HTML-LTRS TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTRS"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 525,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 525,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 526,
+          "raw_text": "SET HTML-L10 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L10"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 527,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 527,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 529,
+          "raw_text": "MOVE ACCT-ID TO L11-ACCT",
+          "reason": "unresolved read operand: ACCT-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 529,
+          "raw_text": "MOVE ACCT-ID TO L11-ACCT",
+          "reason": "unresolved mutate operand: L11-ACCT"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 530,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-L11",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 530,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-L11",
+          "reason": "unresolved read operand: HTML-L11"
+        },
+        {
+          "verb": "SET",
+          "line_no": 531,
+          "raw_text": "SET HTML-LTDE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTDE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 532,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 532,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 533,
+          "raw_text": "SET HTML-LTRE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTRE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 534,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 534,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 535,
+          "raw_text": "SET HTML-LTRS TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTRS"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 536,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 536,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 537,
+          "raw_text": "SET HTML-L15 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L15"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 538,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 538,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 539,
+          "raw_text": "SET HTML-L16 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L16"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 540,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 540,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 541,
+          "raw_text": "SET HTML-L17 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L17"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 542,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 542,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 543,
+          "raw_text": "SET HTML-L18 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L18"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 544,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 544,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 545,
+          "raw_text": "SET HTML-LTDE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTDE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 546,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 546,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 547,
+          "raw_text": "SET HTML-LTRE TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTRE"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 548,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 548,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 549,
+          "raw_text": "SET HTML-LTRS TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTRS"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 550,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 550,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 551,
+          "raw_text": "SET HTML-L22-35 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L22-35"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 552,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 552,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        }
+      ]
+    },
+    "5100-EXIT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "5200-WRITE-HTML-NMADBS": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 560,
+          "raw_text": "MOVE ST-NAME TO L23-NAME",
+          "reason": "unresolved read operand: ST-NAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 560,
+          "raw_text": "MOVE ST-NAME TO L23-NAME",
+          "reason": "unresolved mutate operand: L23-NAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 561,
+          "raw_text": "MOVE SPACES TO FD-HTMLFILE-REC",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 561,
+          "raw_text": "STRING '<p style=\"font-size:16px\">' DELIMITED BY '*' L23-NAME DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO FD-HTMLFILE-REC",
+          "reason": "unresolved read operand: '<p"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 561,
+          "raw_text": "STRING '<p style=\"font-size:16px\">' DELIMITED BY '*' L23-NAME DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO FD-HTMLFILE-REC",
+          "reason": "unresolved read operand: style=\"font-size:16px\">'"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 561,
+          "raw_text": "STRING '<p style=\"font-size:16px\">' DELIMITED BY '*' L23-NAME DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO FD-HTMLFILE-REC",
+          "reason": "unresolved read operand: L23-NAME"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 561,
+          "raw_text": "STRING '<p style=\"font-size:16px\">' DELIMITED BY '*' L23-NAME DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO FD-HTMLFILE-REC",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 561,
+          "raw_text": "STRING '<p style=\"font-size:16px\">' DELIMITED BY '*' L23-NAME DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO FD-HTMLFILE-REC",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 561,
+          "raw_text": "STRING '<p style=\"font-size:16px\">' DELIMITED BY '*' L23-NAME DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO FD-HTMLFILE-REC",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 561,
+          "raw_text": "STRING '<p style=\"font-size:16px\">' DELIMITED BY '*' L23-NAME DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO FD-HTMLFILE-REC",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 561,
+          "raw_text": "STRING '<p style=\"font-size:16px\">' DELIMITED BY '*' L23-NAME DELIMITED BY '  ' '  ' DELIMITED BY SIZE '</p>' DELIMITED BY '*' INTO FD-HTMLFILE-REC",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        }
+      ]
+    },
+    "5200-EXIT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "6000-WRITE-TRANS": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 676,
+          "raw_text": "MOVE TRNX-ID TO ST-TRANID",
+          "reason": "unresolved read operand: TRNX-ID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 676,
+          "raw_text": "MOVE TRNX-ID TO ST-TRANID",
+          "reason": "unresolved mutate operand: ST-TRANID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 677,
+          "raw_text": "MOVE TRNX-DESC TO ST-TRANDT",
+          "reason": "unresolved read operand: TRNX-DESC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 677,
+          "raw_text": "MOVE TRNX-DESC TO ST-TRANDT",
+          "reason": "unresolved mutate operand: ST-TRANDT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 678,
+          "raw_text": "MOVE TRNX-AMT TO ST-TRANAMT",
+          "reason": "unresolved read operand: TRNX-AMT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 678,
+          "raw_text": "MOVE TRNX-AMT TO ST-TRANAMT",
+          "reason": "unresolved mutate operand: ST-TRANAMT"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 679,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE14",
+          "reason": "unresolved mutate operand: FD-STMTFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 679,
+          "raw_text": "WRITE FD-STMTFILE-REC FROM ST-LINE14",
+          "reason": "unresolved read operand: ST-LINE14"
+        },
+        {
+          "verb": "SET",
+          "line_no": 681,
+          "raw_text": "SET HTML-LTRS TO TRUE",
+          "reason": "unresolved mutate operand: HTML-LTRS"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 682,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 682,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "SET",
+          "line_no": 684,
+          "raw_text": "SET HTML-L58 TO TRUE",
+          "reason": "unresolved mutate operand: HTML-L58"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 685,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved mutate operand: FD-HTMLFILE-REC"
+        },
+        {
+          "verb": "WRITE",
+          "line_no": 685,
+          "raw_text": "WRITE FD-HTMLFILE-REC FROM HTML-FIXED-LN",
+          "reason": "unresolved read operand: HTML-FIXED-LN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 686,
+          "raw_text": "MOVE SPACES TO HTML-TRAN-LN",
+          "reason": "unresolved mutate operand: HTML-TRAN-LN"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 687,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-TRANID DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-TRAN-LN",
+          "reason": "unresolved read operand: ST-TRANID"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 687,
+          "raw_text": "STRING '<p>' DELIMITED BY '*' ST-TRANID DELIMITED BY '*' '</p>' DELIMITED BY '*' INTO HTML-TRAN-LN",
+          "reason": "unresolved mutate operand: HTML-TRAN-LN"
+        }
+      ]
+    },
+    "8100-FILE-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "8100-TRNXFILE-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 731,
+          "raw_text": "MOVE 'TRNXFILE' TO WS-M03B-DD",
+          "reason": "unresolved mutate operand: WS-M03B-DD"
+        },
+        {
+          "verb": "SET",
+          "line_no": 732,
+          "raw_text": "SET M03B-OPEN TO TRUE",
+          "reason": "unresolved mutate operand: M03B-OPEN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 733,
+          "raw_text": "MOVE ZERO TO WS-M03B-RC",
+          "reason": "unresolved mutate operand: WS-M03B-RC"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 734,
+          "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        },
+        {
+          "verb": "IF",
+          "line_no": 736,
+          "raw_text": "IF WS-M03B-RC = '00' OR '04'",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 736,
+          "raw_text": "DISPLAY 'ERROR OPENING TRNXFILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 736,
+          "raw_text": "DISPLAY 'ERROR OPENING TRNXFILE'",
+          "reason": "unresolved read operand: OPENING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 736,
+          "raw_text": "DISPLAY 'ERROR OPENING TRNXFILE'",
+          "reason": "unresolved read operand: TRNXFILE'"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 736,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: 'RETURN"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 736,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: CODE:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 736,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 736,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        }
+      ]
+    },
+    "8200-XREFFILE-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 766,
+          "raw_text": "MOVE 'XREFFILE' TO WS-M03B-DD",
+          "reason": "unresolved mutate operand: WS-M03B-DD"
+        },
+        {
+          "verb": "SET",
+          "line_no": 767,
+          "raw_text": "SET M03B-OPEN TO TRUE",
+          "reason": "unresolved mutate operand: M03B-OPEN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 768,
+          "raw_text": "MOVE ZERO TO WS-M03B-RC",
+          "reason": "unresolved mutate operand: WS-M03B-RC"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 769,
+          "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        },
+        {
+          "verb": "IF",
+          "line_no": 771,
+          "raw_text": "IF WS-M03B-RC = '00' OR '04'",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 771,
+          "raw_text": "DISPLAY 'ERROR OPENING XREFFILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 771,
+          "raw_text": "DISPLAY 'ERROR OPENING XREFFILE'",
+          "reason": "unresolved read operand: OPENING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 771,
+          "raw_text": "DISPLAY 'ERROR OPENING XREFFILE'",
+          "reason": "unresolved read operand: XREFFILE'"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 771,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: 'RETURN"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 771,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: CODE:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 771,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 771,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        }
+      ]
+    },
+    "8300-CUSTFILE-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 784,
+          "raw_text": "MOVE 'CUSTFILE' TO WS-M03B-DD",
+          "reason": "unresolved mutate operand: WS-M03B-DD"
+        },
+        {
+          "verb": "SET",
+          "line_no": 785,
+          "raw_text": "SET M03B-OPEN TO TRUE",
+          "reason": "unresolved mutate operand: M03B-OPEN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 786,
+          "raw_text": "MOVE ZERO TO WS-M03B-RC",
+          "reason": "unresolved mutate operand: WS-M03B-RC"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 787,
+          "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        },
+        {
+          "verb": "IF",
+          "line_no": 789,
+          "raw_text": "IF WS-M03B-RC = '00' OR '04'",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 789,
+          "raw_text": "DISPLAY 'ERROR OPENING CUSTFILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 789,
+          "raw_text": "DISPLAY 'ERROR OPENING CUSTFILE'",
+          "reason": "unresolved read operand: OPENING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 789,
+          "raw_text": "DISPLAY 'ERROR OPENING CUSTFILE'",
+          "reason": "unresolved read operand: CUSTFILE'"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 789,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: 'RETURN"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 789,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: CODE:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 789,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 789,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        }
+      ]
+    },
+    "8400-ACCTFILE-OPEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 802,
+          "raw_text": "MOVE 'ACCTFILE' TO WS-M03B-DD",
+          "reason": "unresolved mutate operand: WS-M03B-DD"
+        },
+        {
+          "verb": "SET",
+          "line_no": 803,
+          "raw_text": "SET M03B-OPEN TO TRUE",
+          "reason": "unresolved mutate operand: M03B-OPEN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 804,
+          "raw_text": "MOVE ZERO TO WS-M03B-RC",
+          "reason": "unresolved mutate operand: WS-M03B-RC"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 805,
+          "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        },
+        {
+          "verb": "IF",
+          "line_no": 807,
+          "raw_text": "IF WS-M03B-RC = '00' OR '04'",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 807,
+          "raw_text": "DISPLAY 'ERROR OPENING ACCTFILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 807,
+          "raw_text": "DISPLAY 'ERROR OPENING ACCTFILE'",
+          "reason": "unresolved read operand: OPENING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 807,
+          "raw_text": "DISPLAY 'ERROR OPENING ACCTFILE'",
+          "reason": "unresolved read operand: ACCTFILE'"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 807,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: 'RETURN"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 807,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: CODE:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 807,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 807,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        }
+      ]
+    },
+    "8500-READTRNX-READ": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "IF",
+          "line_no": 819,
+          "raw_text": "IF WS-SAVE-CARD = TRNX-CARD-NUM",
+          "reason": "unresolved read operand: WS-SAVE-CARD"
+        },
+        {
+          "verb": "IF",
+          "line_no": 819,
+          "raw_text": "IF WS-SAVE-CARD = TRNX-CARD-NUM",
+          "reason": "unresolved read operand: TRNX-CARD-NUM"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 819,
+          "raw_text": "ADD 1 TO TR-CNT ELSE",
+          "reason": "unresolved read operand: TR-CNT"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 819,
+          "raw_text": "ADD 1 TO TR-CNT ELSE",
+          "reason": "unresolved mutate operand: TR-CNT"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 819,
+          "raw_text": "ADD 1 TO TR-CNT ELSE",
+          "reason": "unresolved read operand: ELSE"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 819,
+          "raw_text": "ADD 1 TO TR-CNT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 819,
+          "raw_text": "MOVE TR-CNT TO WS-TRCT (CR-CNT)",
+          "reason": "unresolved read operand: TR-CNT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 819,
+          "raw_text": "MOVE TR-CNT TO WS-TRCT (CR-CNT)",
+          "reason": "unresolved mutate operand: WS-TRCT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 819,
+          "raw_text": "MOVE TR-CNT TO WS-TRCT (CR-CNT)",
+          "reason": "unresolved mutate operand: (CR-CNT)"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 819,
+          "raw_text": "ADD 1 TO CR-CNT",
+          "reason": "unresolved read operand: CR-CNT"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 819,
+          "raw_text": "ADD 1 TO CR-CNT",
+          "reason": "unresolved mutate operand: CR-CNT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 819,
+          "raw_text": "MOVE 1 TO TR-CNT",
+          "reason": "unresolved mutate operand: TR-CNT"
+        }
+      ]
+    },
+    "8599-EXIT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 850,
+          "raw_text": "MOVE TR-CNT TO WS-TRCT (CR-CNT)",
+          "reason": "unresolved read operand: TR-CNT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 850,
+          "raw_text": "MOVE TR-CNT TO WS-TRCT (CR-CNT)",
+          "reason": "unresolved mutate operand: WS-TRCT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 850,
+          "raw_text": "MOVE TR-CNT TO WS-TRCT (CR-CNT)",
+          "reason": "unresolved mutate operand: (CR-CNT)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 851,
+          "raw_text": "MOVE 'XREFFILE' TO WS-FL-DD",
+          "reason": "unresolved mutate operand: WS-FL-DD"
+        }
+      ]
+    },
+    "9100-TRNXFILE-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 857,
+          "raw_text": "MOVE 'TRNXFILE' TO WS-M03B-DD",
+          "reason": "unresolved mutate operand: WS-M03B-DD"
+        },
+        {
+          "verb": "SET",
+          "line_no": 858,
+          "raw_text": "SET M03B-CLOSE TO TRUE",
+          "reason": "unresolved mutate operand: M03B-CLOSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 859,
+          "raw_text": "MOVE ZERO TO WS-M03B-RC",
+          "reason": "unresolved mutate operand: WS-M03B-RC"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 860,
+          "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        },
+        {
+          "verb": "IF",
+          "line_no": 862,
+          "raw_text": "IF WS-M03B-RC = '00' OR '04'",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 862,
+          "raw_text": "DISPLAY 'ERROR CLOSING TRNXFILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 862,
+          "raw_text": "DISPLAY 'ERROR CLOSING TRNXFILE'",
+          "reason": "unresolved read operand: CLOSING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 862,
+          "raw_text": "DISPLAY 'ERROR CLOSING TRNXFILE'",
+          "reason": "unresolved read operand: TRNXFILE'"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 862,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: 'RETURN"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 862,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: CODE:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 862,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 862,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        }
+      ]
+    },
+    "9200-XREFFILE-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 874,
+          "raw_text": "MOVE 'XREFFILE' TO WS-M03B-DD",
+          "reason": "unresolved mutate operand: WS-M03B-DD"
+        },
+        {
+          "verb": "SET",
+          "line_no": 875,
+          "raw_text": "SET M03B-CLOSE TO TRUE",
+          "reason": "unresolved mutate operand: M03B-CLOSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 876,
+          "raw_text": "MOVE ZERO TO WS-M03B-RC",
+          "reason": "unresolved mutate operand: WS-M03B-RC"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 877,
+          "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        },
+        {
+          "verb": "IF",
+          "line_no": 879,
+          "raw_text": "IF WS-M03B-RC = '00' OR '04'",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 879,
+          "raw_text": "DISPLAY 'ERROR CLOSING XREFFILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 879,
+          "raw_text": "DISPLAY 'ERROR CLOSING XREFFILE'",
+          "reason": "unresolved read operand: CLOSING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 879,
+          "raw_text": "DISPLAY 'ERROR CLOSING XREFFILE'",
+          "reason": "unresolved read operand: XREFFILE'"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 879,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: 'RETURN"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 879,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: CODE:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 879,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 879,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        }
+      ]
+    },
+    "9300-CUSTFILE-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 890,
+          "raw_text": "MOVE 'CUSTFILE' TO WS-M03B-DD",
+          "reason": "unresolved mutate operand: WS-M03B-DD"
+        },
+        {
+          "verb": "SET",
+          "line_no": 891,
+          "raw_text": "SET M03B-CLOSE TO TRUE",
+          "reason": "unresolved mutate operand: M03B-CLOSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 892,
+          "raw_text": "MOVE ZERO TO WS-M03B-RC",
+          "reason": "unresolved mutate operand: WS-M03B-RC"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 893,
+          "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        },
+        {
+          "verb": "IF",
+          "line_no": 895,
+          "raw_text": "IF WS-M03B-RC = '00' OR '04'",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 895,
+          "raw_text": "DISPLAY 'ERROR CLOSING CUSTFILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 895,
+          "raw_text": "DISPLAY 'ERROR CLOSING CUSTFILE'",
+          "reason": "unresolved read operand: CLOSING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 895,
+          "raw_text": "DISPLAY 'ERROR CLOSING CUSTFILE'",
+          "reason": "unresolved read operand: CUSTFILE'"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 895,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: 'RETURN"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 895,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: CODE:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 895,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 895,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        }
+      ]
+    },
+    "9400-ACCTFILE-CLOSE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 906,
+          "raw_text": "MOVE 'ACCTFILE' TO WS-M03B-DD",
+          "reason": "unresolved mutate operand: WS-M03B-DD"
+        },
+        {
+          "verb": "SET",
+          "line_no": 907,
+          "raw_text": "SET M03B-CLOSE TO TRUE",
+          "reason": "unresolved mutate operand: M03B-CLOSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 908,
+          "raw_text": "MOVE ZERO TO WS-M03B-RC",
+          "reason": "unresolved mutate operand: WS-M03B-RC"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 909,
+          "raw_text": "CALL 'CBSTM03B' USING WS-M03B-AREA",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        },
+        {
+          "verb": "IF",
+          "line_no": 911,
+          "raw_text": "IF WS-M03B-RC = '00' OR '04'",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 911,
+          "raw_text": "DISPLAY 'ERROR CLOSING ACCTFILE'",
+          "reason": "unresolved read operand: 'ERROR"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 911,
+          "raw_text": "DISPLAY 'ERROR CLOSING ACCTFILE'",
+          "reason": "unresolved read operand: CLOSING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 911,
+          "raw_text": "DISPLAY 'ERROR CLOSING ACCTFILE'",
+          "reason": "unresolved read operand: ACCTFILE'"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 911,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: 'RETURN"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 911,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: CODE:"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 911,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: '"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 911,
+          "raw_text": "DISPLAY 'RETURN CODE: ' WS-M03B-RC",
+          "reason": "unresolved read operand: WS-M03B-RC"
+        }
+      ]
+    },
+    "9999-ABEND-PROGRAM": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "DISPLAY",
+          "line_no": 922,
+          "raw_text": "DISPLAY 'ABENDING PROGRAM'",
+          "reason": "unresolved read operand: 'ABENDING"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 922,
+          "raw_text": "DISPLAY 'ABENDING PROGRAM'",
+          "reason": "unresolved read operand: PROGRAM'"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 922,
+          "raw_text": "CALL 'CEE3ABD'",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        }
+      ]
+    }
+  },
+  "program_unresolved": [
+    {
+      "issue": "paragraph count mismatch: local=31 facts=25"
+    }
+  ]
+}
