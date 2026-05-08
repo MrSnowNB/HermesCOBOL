@@ -144,15 +144,56 @@ def is_literal(token: str) -> bool:
 
 def _tokens(text: str) -> list:
     """
-    Split text on whitespace, but first collapse every single-quoted string
-    (including multi-word ones) to the placeholder __LIT__ so that words
-    inside literals are never treated as identifiers.
-    Also collapses double-quoted strings.
+    Collapse every single-quoted or double-quoted string to __LIT__ so that
+    words inside literals are never treated as identifiers.
     """
-    # Replace 'anything here' and "anything here" with a single placeholder
-    cleaned = re.sub(r"'[^']*'", "__LIT__", text)
-    cleaned = re.sub(r'"[^"]*"', "__LIT__", cleaned)
+    cleaned = re.sub(r"'[^']*'", '__LIT__', text)
+    cleaned = re.sub(r'"[^"]*"', '__LIT__', cleaned)
     return cleaned.strip().split()
+
+
+# ---------------------------------------------------------------------------
+# Period splitter that respects quoted strings
+# ---------------------------------------------------------------------------
+
+def _split_on_period(text: str) -> list:
+    """
+    Split *text* on bare '.' (period followed by whitespace or end-of-string)
+    without splitting inside single- or double-quoted string literals.
+
+    This prevents   DISPLAY 'ACCOUNT FILE WRITE STATUS IS:'  OUTFILE-STATUS
+    from being torn apart when the period inside the literal is encountered.
+    """
+    parts = []
+    current = []
+    in_sq = False   # inside single-quoted literal
+    in_dq = False   # inside double-quoted literal
+    i = 0
+    while i < len(text):
+        ch = text[i]
+        if ch == "'" and not in_dq:
+            in_sq = not in_sq
+            current.append(ch)
+        elif ch == '"' and not in_sq:
+            in_dq = not in_dq
+            current.append(ch)
+        elif ch == '.' and not in_sq and not in_dq:
+            # only treat as statement terminator if followed by whitespace or EOS
+            rest = text[i+1:]
+            if not rest or rest[0] in (' ', '\t', '\r', '\n'):
+                segment = ''.join(current).strip()
+                if segment:
+                    parts.append(segment)
+                current = []
+            else:
+                current.append(ch)   # decimal point inside a number / qualified name
+        else:
+            current.append(ch)
+        i += 1
+    tail = ''.join(current).strip()
+    if tail:
+        parts.append(tail)
+    return parts
 
 
 # ---------------------------------------------------------------------------
@@ -181,9 +222,7 @@ def extract_paragraphs(lines: list) -> dict:
         m = _PARA_HEADER_RE.match(stripped)
         if m:
             candidate = m.group(1).upper()
-            # Reject reserved scope-terminators and control words
             if candidate in _NOT_PARA:
-                # Treat as a statement line in the current paragraph
                 paragraphs[current].append((lineno, text))
             else:
                 current = candidate
@@ -195,7 +234,7 @@ def extract_paragraphs(lines: list) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Statement tokeniser / continuation joiner
+# Statement continuation joiner
 # ---------------------------------------------------------------------------
 
 def _join_lines(lines: list) -> list:
@@ -540,8 +579,7 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
         context_records: set = set()
 
         for lineno, text in _join_lines(para_lines):
-            for part in re.split(r'\.(?=\s|$)', text):
-                part = part.strip()
+            for part in _split_on_period(text):
                 if part:
                     _dispatch_inline(lineno, part, qmap, context_records,
                                      reads, mutates, unresolved_list)
