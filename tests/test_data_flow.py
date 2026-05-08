@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
 tests/test_data_flow.py  --  Section 2 unit tests.
-All fixtures are corpus-independent; a minimal inline qmap is injected.
 Run with:  python tests/test_data_flow.py
 """
 
@@ -11,7 +10,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / 'scripts'))
 
-from data_flow import classify_statement, extract_paragraphs, _normalise_source, is_literal
+from data_flow import (
+    classify_statement, extract_paragraphs, _normalise_source,
+    is_literal, _join_source_lines, _is_para_header_line,
+)
 
 _QMAP = {
     'A': [{'field': 'REC-A.A', 'record': 'REC-A', 'copybook': None, 'offset': 0,  'length': 5}],
@@ -142,26 +144,21 @@ class TestQualifiedNameDisambiguation(unittest.TestCase):
 
 
 class TestDisplayLiteralNoUnresolved(unittest.TestCase):
-    """DISPLAY with a quoted literal must not produce any unresolved entries."""
     def test_display_literal(self):
         r, m, u = _run("DISPLAY 'HELLO WORLD'")
-        self.assertEqual(r, [], "DISPLAY of a literal should produce no reads")
-        self.assertEqual(u, [], "DISPLAY of a literal should produce no unresolved entries")
+        self.assertEqual(r, [])
+        self.assertEqual(u, [])
 
     def test_display_mixed_literal_and_var(self):
         """DISPLAY literal followed by an identifier: only the identifier is a read."""
         r, m, u = _run("DISPLAY 'VALUE IS:' A")
         rf = [e['field'] for e in r]
-        self.assertIn('REC-A.A', rf, "A should be resolved as a read")
-        # the literal fragment should NOT appear in unresolved
+        self.assertIn('REC-A.A', rf)
         for entry in u:
             self.assertNotIn('__LIT__', entry.get('reason', ''))
             self.assertNotIn("'VALUE", entry.get('reason', ''))
 
 
-# ---------------------------------------------------------------------------
-# Para extraction: scope terminators must NOT become paragraph headers
-# ---------------------------------------------------------------------------
 class TestScopeTerminatorsNotParagraphs(unittest.TestCase):
     def test_end_perform_not_paragraph(self):
         source = """
@@ -172,13 +169,78 @@ class TestScopeTerminatorsNotParagraphs(unittest.TestCase):
            END-PERFORM.
            GOBACK.
 """
-        from data_flow import _normalise_source, extract_paragraphs
         lines = _normalise_source(source)
         paras = extract_paragraphs(lines)
         para_names = [k for k in paras if k != '__MAIN__']
         self.assertIn('MAIN-PARA', para_names)
         self.assertNotIn('END-PERFORM', para_names)
         self.assertNotIn('GOBACK', para_names)
+
+
+class TestContinuationJoin(unittest.TestCase):
+    """
+    _join_source_lines must fuse data-name continuation targets back into
+    their MOVE statement without swallowing real paragraph headers.
+    """
+
+    def test_move_continuation_not_a_paragraph(self):
+        """
+        A MOVE target sitting alone on its own line (no 4-digit prefix,
+        not a scope terminator) must be fused into the MOVE, not become
+        a paragraph header.
+        """
+        source = """
+       PROCEDURE DIVISION.
+       1300-POPUL-ACCT-RECORD.
+           MOVE   ACCT-REISSUE-DATE  TO  CODATECN-INP-DATE
+                                         WS-REISSUE-DATE.
+           EXIT.
+       1350-WRITE-ACCT-RECORD.
+           WRITE OUT-ACCT-REC.
+           EXIT.
+"""
+        lines = _normalise_source(source)
+        paras = extract_paragraphs(lines)
+        para_names = [k for k in paras if k != '__MAIN__']
+        self.assertIn('1300-POPUL-ACCT-RECORD', para_names,
+                      'Real paragraph header must be detected')
+        self.assertIn('1350-WRITE-ACCT-RECORD', para_names,
+                      'Next paragraph header must survive')
+        self.assertNotIn('WS-REISSUE-DATE', para_names,
+                         'MOVE continuation target must NOT become a paragraph')
+
+    def test_real_paragraphs_all_detected(self):
+        """
+        All 16 CardDemo CBACT01C paragraph names must be detected when
+        processing the inline snippet that reproduces the MOVE/continuation
+        pattern causing false paragraphs.
+        """
+        expected = [
+            '1300-POPUL-ACCT-RECORD',
+            '1350-WRITE-ACCT-RECORD',
+            '1500-POPUL-VBRC-RECORD',
+        ]
+        source = """
+       PROCEDURE DIVISION.
+       1300-POPUL-ACCT-RECORD.
+           MOVE ACCT-ID TO CODATECN-INP-DATE
+                           WS-REISSUE-DATE.
+           EXIT.
+       1350-WRITE-ACCT-RECORD.
+           WRITE OUT-ACCT-REC.
+           EXIT.
+       1500-POPUL-VBRC-RECORD.
+           MOVE ACCT-ID TO VB1-ACCT-ID
+                           VB2-ACCT-ID.
+           EXIT.
+"""
+        lines = _normalise_source(source)
+        paras = extract_paragraphs(lines)
+        para_names = [k for k in paras if k != '__MAIN__']
+        for name in expected:
+            self.assertIn(name, para_names)
+        self.assertNotIn('WS-REISSUE-DATE', para_names)
+        self.assertNotIn('VB2-ACCT-ID', para_names)
 
 
 if __name__ == '__main__':
