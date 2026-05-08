@@ -21,7 +21,7 @@ CBL_DIR          = Path("data/raw/cbl")
 OUT_DIR          = Path("data/data_flow")
 FACTS_DIR        = Path("data/facts")
 
-_SEQ_RE = re.compile(r'^\d{6}(.*)$')
+_SEQ_RE = re.compile(r'^\d{6}(.*)$')   # kept for backward compat; not used in _normalise_source
 _LITERAL_RE = re.compile(
     r"^(?:'[^']*'|\"[^\"]*\"|[-+]?\d+\.?\d*"
     r"|ZERO|ZEROS|ZEROES|SPACES|SPACE|HIGH-VALUES|LOW-VALUES"
@@ -40,23 +40,21 @@ _NOT_PARA = frozenset({
 
 # Area-A keywords that look like paragraph headers (match _PARA_HEADER_RE)
 # but are COBOL division/section/structural headers, not paragraph names.
-# These must never be treated as paragraph labels by the extractor.
 _NOT_HEADER_KEYWORDS = frozenset({
     # Divisions
     'IDENTIFICATION', 'ENVIRONMENT', 'DATA', 'PROCEDURE',
     # Sections (bare word before SECTION keyword on same line)
     'WORKING-STORAGE', 'LINKAGE', 'FILE', 'LOCAL-STORAGE',
     'INPUT-OUTPUT', 'CONFIGURATION', 'COMMUNICATION', 'REPORT',
-    # Sub-section / paragraph headers within divisions (non-procedure)
+    # Sub-section headers within non-procedure divisions
     'FILE-CONTROL', 'SPECIAL-NAMES', 'SOURCE-COMPUTER', 'OBJECT-COMPUTER',
     'REPOSITORY', 'CLASS-CONTROL',
-    # Level numbers are never paragraph names (01, 05, 77, 88, etc.)
-    # Handled separately via _LEVEL_NUM_RE below.
 })
 
-# A line that starts with a level number (01, 05, 77, 88, 66) is a data item,
-# never a paragraph header.
-_LEVEL_NUM_RE = re.compile(r'^\d{2}\s', re.IGNORECASE)
+# Matches level-number data items: two-digit level number followed by a space.
+# e.g. "01 WS-REC." or "77 WS-CTR."  Does NOT match "0000-ACCTFILE-OPEN."
+# because that has a hyphen as the 3rd character, not a space.
+_LEVEL_NUM_RE = re.compile(r'^\d{2}\s')
 
 _PARA_HEADER_RE = re.compile(
     r'^([A-Z0-9][A-Z0-9\-]*)\s*\.\s*$',
@@ -64,7 +62,6 @@ _PARA_HEADER_RE = re.compile(
 )
 
 # A SECTION header looks like: NAME SECTION. or NAME SECTION USING ...
-# We detect it by the presence of SECTION as the second token on an Area-A line.
 _SECTION_HEADER_RE = re.compile(
     r'^[A-Z0-9][A-Z0-9\-]*\s+SECTION\b',
     re.IGNORECASE
@@ -72,26 +69,53 @@ _SECTION_HEADER_RE = re.compile(
 
 
 # ---------------------------------------------------------------------------
-# Source normalisation
+# Source normalisation  --  FIXED COLUMN POSITIONS (COBOL fixed format)
 # ---------------------------------------------------------------------------
 
 def _strip_seq(line: str) -> str:
+    """Legacy helper kept for backward compatibility. Not used internally."""
     m = _SEQ_RE.match(line)
     return m.group(1) if m else line
 
 
 def _normalise_source(raw: str) -> list:
+    """
+    Convert raw COBOL fixed-format source text into a list of (lineno, text)
+    pairs where `text` is the code area (columns 8-72) of each non-comment,
+    non-blank line.
+
+    COBOL fixed-format column layout (1-based, standard):
+      Cols  1- 6  Sequence area   -- ignored
+      Col   7     Indicator area  -- '*' or '/' = comment; '-' = continuation;
+                                     ' ' or 'D' = normal code
+      Cols  8-72  Code area       -- the text returned in each tuple
+      Cols 73-80  Identification  -- ignored
+
+    In 0-based Python indexing:
+      raw[0:6]   sequence area
+      raw[6]     indicator
+      raw[7:72]  code area
+
+    This implementation uses FIXED COLUMN POSITIONS unconditionally.
+    It does NOT rely on _strip_seq or any regex to locate the indicator
+    column, because the COBOL standard defines columns by position, not
+    by content.  Lines shorter than 7 characters (e.g. blank lines in
+    editors that strip trailing whitespace) are silently skipped.
+    """
     result = []
     for lineno, raw_line in enumerate(raw.splitlines(), start=1):
-        line = _strip_seq(raw_line)
-        if not line:
+        # Strip only the line terminator; preserve internal spacing.
+        line = raw_line.rstrip('\r\n')
+        if len(line) < 7:
+            # Line is too short to have an indicator column -- skip.
             continue
-        indicator = line[0]
+        indicator = line[6]          # col 7 (0-based index 6)
         if indicator in ('*', '/', '$'):
+            # Comment or compiler-directive line.
             continue
-        text = line[1:72].rstrip() if len(line) > 1 else ''
-        if text.strip():
-            result.append((lineno, text))
+        code = line[7:72].rstrip()   # cols 8-72 (0-based 7:72)
+        if code.strip():
+            result.append((lineno, code))
     return result
 
 
@@ -114,7 +138,7 @@ def _ends_statement(text: str) -> bool:
 
 
 def _is_para_header_line(text: str) -> bool:
-    """True if the stripped text looks like a paragraph/section header label."""
+    """Legacy helper. True if stripped text looks like a paragraph header."""
     stripped = text.strip()
     m = _PARA_HEADER_RE.match(stripped)
     if not m:
@@ -125,33 +149,33 @@ def _is_para_header_line(text: str) -> bool:
 
 def _is_area_a_paragraph(text: str) -> bool:
     """
-    Return True if this source line (after sequence+indicator strip) is
-    a paragraph header that should start a new paragraph scope.
+    Return True if this code-area text (raw[7:72] from _normalise_source)
+    is a paragraph header that should start a new paragraph scope.
+
+    After _normalise_source, the text value is exactly cols 8-72 of the
+    original source with trailing spaces removed.  A line that begins in
+    Area A (col 8) therefore has NO leading spaces: text[0] != ' '.
+    A line that begins in Area B (col 12+) has 4+ leading spaces.
 
     Rules (all must hold):
-      1. The line starts at Area A: text[0] is not a space.
-      2. The stripped content matches _PARA_HEADER_RE  (NAME. form)
-         OR is a bare name followed by a period at end of stripped text.
-      3. The candidate name is not in _NOT_PARA.
-      4. The candidate name is not in _NOT_HEADER_KEYWORDS.
-      5. The line is not a SECTION header (NAME SECTION.).
-      6. The line does not begin with a 2-digit level number.
+      1. text[0] is not a space  (Area A: content starts at col 8)
+      2. Does NOT match _LEVEL_NUM_RE  (not a level-number data item)
+      3. Does NOT match _SECTION_HEADER_RE  (not a SECTION header)
+      4. Matches _PARA_HEADER_RE  (single token ending in period)
+      5. Candidate name NOT in _NOT_PARA
+      6. Candidate name NOT in _NOT_HEADER_KEYWORDS
     """
     if not text or text[0] == ' ':
         return False
     stripped = text.strip()
-    # Rule 6: level number data items
     if _LEVEL_NUM_RE.match(stripped):
         return False
-    # Rule 5: SECTION headers
     if _SECTION_HEADER_RE.match(stripped):
         return False
-    # Rule 2: must match paragraph header pattern (single token ending in period)
     m = _PARA_HEADER_RE.match(stripped)
     if not m:
         return False
     candidate = m.group(1).upper()
-    # Rule 3 & 4
     if candidate in _NOT_PARA or candidate in _NOT_HEADER_KEYWORDS:
         return False
     return True
@@ -169,24 +193,16 @@ def _join_source_lines(lines: list) -> list:
       1. The predecessor did NOT end with a statement-terminating period.
       2. The candidate is NOT an Area-A paragraph header.
 
-    Area-A paragraph header detection (_is_area_a_paragraph) uses the
-    COBOL fixed-format column rule: after _normalise_source strips the
-    6-digit sequence number and the 1-character indicator, column 8 of
-    the original source lands at text[0].  A paragraph header must start
-    in Area A (col 8, no leading spaces) AND match the paragraph name
-    pattern AND not be a division/section/structural keyword.
-
-    This replaces the previous CardDemo-specific \\d{4}- prefix guard
-    and correctly handles both 4-digit CardDemo names (0000-MAIN.) and
-    free-form names (MAIN-PARA., PROCESS-ENTER-KEY.) while still fusing
-    indented (Area-B) continuation targets like WS-REISSUE-DATE.
+    Because _normalise_source now uses fixed column positions, text[0]
+    reliably reflects whether the line starts in Area A (col 8, no leading
+    space) or Area B (col 12+, leading spaces).
     """
     if not lines:
         return []
     joined = [[lines[0][0], lines[0][1]]]
     for lineno, text in lines[1:]:
-        prev_ends       = _ends_statement(joined[-1][1])
-        cand_is_para    = _is_area_a_paragraph(text)
+        prev_ends    = _ends_statement(joined[-1][1])
+        cand_is_para = _is_area_a_paragraph(text)
 
         if not prev_ends and not cand_is_para:
             joined[-1][1] = joined[-1][1] + ' ' + text.strip()

@@ -8,6 +8,7 @@ import sys
 import unittest
 from pathlib import Path
 
+# Make scripts/ importable regardless of working directory.
 sys.path.insert(0, str(Path(__file__).parent.parent / 'scripts'))
 
 from data_flow import (
@@ -42,6 +43,118 @@ def _run(stmt, context=None):
     ctx = set(context or [])
     classify_statement(1, stmt, _QMAP, ctx, reads, mutates, unresolved)
     return reads, mutates, unresolved
+
+
+# ---------------------------------------------------------------------------
+# _normalise_source column-layout diagnostic tests  (Section 3.1 new)
+# ---------------------------------------------------------------------------
+
+class TestNormaliseSourceColumnLayout(unittest.TestCase):
+    """
+    Verify that _normalise_source uses FIXED COBOL column positions
+    (cols 1-6 = sequence, col 7 = indicator, cols 8-72 = code area)
+    unconditionally, regardless of whether the sequence area contains
+    digits or blanks.
+    """
+
+    def test_digit_sequence_area_a_paragraph(self):
+        """Line with 6-digit sequence: col 8 content must be text[0]."""
+        raw = "000100 0000-ACCTFILE-OPEN.\n"
+        result = _normalise_source(raw)
+        self.assertEqual(len(result), 1, 'Expected exactly one normalised line')
+        lineno, text = result[0]
+        self.assertEqual(text, '0000-ACCTFILE-OPEN.',
+                         f'code area mismatch: got {repr(text)}')
+        self.assertEqual(text[0], '0',
+                         'First char must be Area-A content, not a space')
+
+    def test_blank_sequence_area_a_paragraph(self):
+        """Line with blank sequence area (7 leading spaces): same result."""
+        # cols 1-6 = spaces, col 7 = space (indicator), cols 8+ = paragraph name
+        raw = "       0000-ACCTFILE-OPEN.\n"
+        result = _normalise_source(raw)
+        self.assertEqual(len(result), 1, 'Expected exactly one normalised line')
+        lineno, text = result[0]
+        self.assertEqual(text, '0000-ACCTFILE-OPEN.',
+                         f'code area mismatch: got {repr(text)}')
+        self.assertEqual(text[0], '0',
+                         'First char must be Area-A content, not a space')
+
+    def test_area_b_line_has_leading_spaces(self):
+        """Area-B line must have text[0]==' ' after normalisation."""
+        raw = "000040                             WS-REISSUE-DATE.\n"
+        result = _normalise_source(raw)
+        self.assertEqual(len(result), 1)
+        lineno, text = result[0]
+        self.assertEqual(text[0], ' ',
+                         'Area-B line must start with a space after normalisation')
+        self.assertIn('WS-REISSUE-DATE', text)
+
+    def test_comment_line_skipped(self):
+        """Lines with '*' in col 7 must be skipped."""
+        raw = "000001*This is a comment\n"
+        result = _normalise_source(raw)
+        self.assertEqual(result, [], 'Comment lines must produce no output')
+
+    def test_short_line_skipped(self):
+        """Lines shorter than 7 chars must be silently skipped."""
+        raw = "short\n"
+        result = _normalise_source(raw)
+        self.assertEqual(result, [], 'Short lines must produce no output')
+
+
+# ---------------------------------------------------------------------------
+# Golden integration test: real CBACT01C file on disk  (Section 3.1 new)
+# ---------------------------------------------------------------------------
+
+class TestCbact01cRealFileParagraphCount(unittest.TestCase):
+    """
+    End-to-end gate: read data/raw/cbl/CBACT01C.cbl from disk, run
+    extract_paragraphs, and assert exactly 16 paragraphs with the
+    exact names known from facts/CBACT01C.json.
+
+    This test MUST exercise the same _normalise_source code path as the
+    corpus run.  It is the ground truth for 3.1 gating.
+    """
+
+    _CBL = Path('data/raw/cbl/CBACT01C.cbl')
+    _EXPECTED = [
+        '0000-ACCTFILE-OPEN',
+        '1000-ACCTFILE-GET-NEXT',
+        '1100-DISPLAY-ACCT-RECORD',
+        '1300-POPUL-ACCT-RECORD',
+        '1350-WRITE-ACCT-RECORD',
+        '1400-POPUL-ARRAY-RECORD',
+        '1450-WRITE-ARRY-RECORD',
+        '1500-POPUL-VBRC-RECORD',
+        '1550-WRITE-VB1-RECORD',
+        '1575-WRITE-VB2-RECORD',
+        '2000-OUTFILE-OPEN',
+        '3000-ARRFILE-OPEN',
+        '4000-VBRFILE-OPEN',
+        '9000-ACCTFILE-CLOSE',
+        '9910-DISPLAY-IO-STATUS',
+        '9999-ABEND-PROGRAM',
+    ]
+
+    def setUp(self):
+        if not self._CBL.exists():
+            self.skipTest(f'Real corpus file not found: {self._CBL}')
+
+    def test_cbact01c_paragraph_count_is_16(self):
+        raw   = self._CBL.read_text(encoding='utf-8', errors='replace')
+        lines = _normalise_source(raw)
+        paras = extract_paragraphs(lines)
+        names = sorted(k for k in paras if k != '__MAIN__')
+        self.assertEqual(
+            len(names), 16,
+            f'Expected 16 paragraphs, got {len(names)}: {names}'
+        )
+        for expected in self._EXPECTED:
+            self.assertIn(
+                expected, names,
+                f'Missing paragraph: {expected}  (found: {names})'
+            )
 
 
 # ---------------------------------------------------------------------------
@@ -182,16 +295,16 @@ class TestDisplayLiteralInVerbSplit(unittest.TestCase):
 
 class TestScopeTerminatorsNotParagraphs(unittest.TestCase):
     def test_end_perform_not_paragraph(self):
-        # NOTE: inline CBL source MUST use 6-digit sequence numbers so that
-        # _normalise_source strips them as the sequence field (not as real spaces),
-        # leaving col 8 at text[0] with the correct Area-A/B indentation.
+        # Inline source uses blank sequence area (7 leading spaces = 6 blank
+        # seq cols + 1 indicator space), matching files without sequence numbers.
+        # _normalise_source treats col 7 (index 6) as indicator unconditionally.
         source = (
-            "000001 PROCEDURE DIVISION.\n"
-            "000002 MAIN-PARA.\n"
-            "000003            PERFORM VARYING I FROM 1 BY 1 UNTIL I > 10\n"
-            "000004                DISPLAY I\n"
-            "000005            END-PERFORM.\n"
-            "000006            GOBACK.\n"
+            "       PROCEDURE DIVISION.\n"
+            "       MAIN-PARA.\n"
+            "           PERFORM VARYING I FROM 1 BY 1 UNTIL I > 10\n"
+            "               DISPLAY I\n"
+            "           END-PERFORM.\n"
+            "           GOBACK.\n"
         )
         lines = _normalise_source(source)
         paras = extract_paragraphs(lines)
@@ -208,17 +321,15 @@ class TestContinuationJoin(unittest.TestCase):
         indented in Area B) must be fused into the MOVE, not become
         a paragraph header.
         """
-        # 6-digit sequence numbers are required so _normalise_source correctly
-        # identifies Area A (col 8) vs Area B (col 12+) indentation.
         source = (
-            "000001 PROCEDURE DIVISION.\n"
-            "000002 1300-POPUL-ACCT-RECORD.\n"
-            "000003            MOVE   ACCT-REISSUE-DATE  TO  CODATECN-INP-DATE\n"
-            "000004                                          WS-REISSUE-DATE.\n"
-            "000005            EXIT.\n"
-            "000006 1350-WRITE-ACCT-RECORD.\n"
-            "000007            WRITE OUT-ACCT-REC.\n"
-            "000008            EXIT.\n"
+            "       PROCEDURE DIVISION.\n"
+            "       1300-POPUL-ACCT-RECORD.\n"
+            "           MOVE   ACCT-REISSUE-DATE  TO  CODATECN-INP-DATE\n"
+            "                                         WS-REISSUE-DATE.\n"
+            "           EXIT.\n"
+            "       1350-WRITE-ACCT-RECORD.\n"
+            "           WRITE OUT-ACCT-REC.\n"
+            "           EXIT.\n"
         )
         lines = _normalise_source(source)
         paras = extract_paragraphs(lines)
@@ -238,18 +349,18 @@ class TestContinuationJoin(unittest.TestCase):
             '1500-POPUL-VBRC-RECORD',
         ]
         source = (
-            "000001 PROCEDURE DIVISION.\n"
-            "000002 1300-POPUL-ACCT-RECORD.\n"
-            "000003            MOVE ACCT-ID TO CODATECN-INP-DATE\n"
-            "000004                             WS-REISSUE-DATE.\n"
-            "000005            EXIT.\n"
-            "000006 1350-WRITE-ACCT-RECORD.\n"
-            "000007            WRITE OUT-ACCT-REC.\n"
-            "000008            EXIT.\n"
-            "000009 1500-POPUL-VBRC-RECORD.\n"
-            "000010            MOVE ACCT-ID TO VB1-ACCT-ID\n"
-            "000011                             VB2-ACCT-ID.\n"
-            "000012            EXIT.\n"
+            "       PROCEDURE DIVISION.\n"
+            "       1300-POPUL-ACCT-RECORD.\n"
+            "           MOVE ACCT-ID TO CODATECN-INP-DATE\n"
+            "                           WS-REISSUE-DATE.\n"
+            "           EXIT.\n"
+            "       1350-WRITE-ACCT-RECORD.\n"
+            "           WRITE OUT-ACCT-REC.\n"
+            "           EXIT.\n"
+            "       1500-POPUL-VBRC-RECORD.\n"
+            "           MOVE ACCT-ID TO VB1-ACCT-ID\n"
+            "                           VB2-ACCT-ID.\n"
+            "           EXIT.\n"
         )
         lines = _normalise_source(source)
         paras = extract_paragraphs(lines)
@@ -271,15 +382,14 @@ class TestNonPrefixedParagraphDetection(unittest.TestCase):
     COADM01C pattern: MAIN-PARA., PROCESS-ENTER-KEY., SEND-MENU-SCREEN. etc.
     """
     def test_non_prefixed_paragraphs_detected(self):
-        # 6-digit sequence numbers required for correct Area-A detection.
         source = (
-            "000001 PROCEDURE DIVISION.\n"
-            "000002 MAIN-PARA.\n"
-            "000003            MOVE A TO B.\n"
-            "000004 PROCESS-RECORDS.\n"
-            "000005            MOVE B TO C.\n"
-            "000006 FINALIZE-PARA.\n"
-            "000007            STOP RUN.\n"
+            "       PROCEDURE DIVISION.\n"
+            "       MAIN-PARA.\n"
+            "           MOVE A TO B.\n"
+            "       PROCESS-RECORDS.\n"
+            "           MOVE B TO C.\n"
+            "       FINALIZE-PARA.\n"
+            "           STOP RUN.\n"
         )
         lines = _normalise_source(source)
         paras = extract_paragraphs(lines)
@@ -301,15 +411,13 @@ class TestAreaBContinuationStillFused(unittest.TestCase):
     as a new paragraph.
     """
     def test_indented_ws_reissue_date_fused(self):
-        # WS-REISSUE-DATE. is indented (Area B) — must not become a paragraph.
-        # 6-digit sequence numbers required for correct Area-A/B detection.
         source = (
-            "000001 PROCEDURE DIVISION.\n"
-            "000002 MAIN-PARA.\n"
-            "000003            MOVE ACCT-DATE TO CODATECN-DATE\n"
-            "000004                             WS-REISSUE-DATE.\n"
-            "000005 NEXT-PARA.\n"
-            "000006            STOP RUN.\n"
+            "       PROCEDURE DIVISION.\n"
+            "       MAIN-PARA.\n"
+            "           MOVE ACCT-DATE TO CODATECN-DATE\n"
+            "                            WS-REISSUE-DATE.\n"
+            "       NEXT-PARA.\n"
+            "           STOP RUN.\n"
         )
         lines = _normalise_source(source)
         paras = extract_paragraphs(lines)
@@ -324,101 +432,53 @@ class TestAreaBContinuationStillFused(unittest.TestCase):
 class TestSectionHeaderNotFalseParagraph(unittest.TestCase):
     """
     WORKING-STORAGE SECTION. and similar section headers must never be
-    detected as paragraphs.  They appear in Area A and match the
-    superficial pattern but must be excluded.
-
-    These tests call _is_area_a_paragraph() directly with already-stripped
-    text (no leading spaces) to test the exclusion logic independently of
-    the Area-A positional rule.
+    detected as paragraphs.  Called directly with stripped text (no leading
+    spaces) to test the exclusion logic independently of the Area-A rule.
     """
     def test_working_storage_section_not_paragraph(self):
-        self.assertFalse(
-            _is_area_a_paragraph('WORKING-STORAGE SECTION.'),
-            'WORKING-STORAGE SECTION. must not be a paragraph header'
-        )
+        self.assertFalse(_is_area_a_paragraph('WORKING-STORAGE SECTION.'))
 
     def test_linkage_section_not_paragraph(self):
-        self.assertFalse(
-            _is_area_a_paragraph('LINKAGE SECTION.'),
-            'LINKAGE SECTION. must not be a paragraph header'
-        )
+        self.assertFalse(_is_area_a_paragraph('LINKAGE SECTION.'))
 
     def test_file_section_not_paragraph(self):
-        self.assertFalse(
-            _is_area_a_paragraph('FILE SECTION.'),
-            'FILE SECTION. must not be a paragraph header'
-        )
+        self.assertFalse(_is_area_a_paragraph('FILE SECTION.'))
 
     def test_procedure_section_not_paragraph(self):
-        # A user-defined section inside PROCEDURE DIVISION: 1000-MAIN SECTION.
-        # Policy (V12_VALIDATION_GATES.md): SECTION headers are NOT paragraphs.
-        self.assertFalse(
-            _is_area_a_paragraph('1000-MAIN SECTION.'),
-            '1000-MAIN SECTION. is a SECTION header, not a paragraph'
-        )
+        self.assertFalse(_is_area_a_paragraph('1000-MAIN SECTION.'))
 
 
 class TestDivisionHeaderNotParagraph(unittest.TestCase):
     """
-    Division header lines (PROCEDURE DIVISION., DATA DIVISION. etc.) must
-    never be detected as paragraphs, including forms with USING clauses.
-
-    These tests call _is_area_a_paragraph() directly with already-stripped
-    text to test the keyword-exclusion rules independently.
+    Division headers must never be detected as paragraphs.
+    Called directly with stripped text.
     """
     def test_procedure_division_not_paragraph(self):
-        self.assertFalse(
-            _is_area_a_paragraph('PROCEDURE DIVISION.'),
-            'PROCEDURE DIVISION. must not be a paragraph'
-        )
+        self.assertFalse(_is_area_a_paragraph('PROCEDURE DIVISION.'))
 
-    def test_data_division_not_paragraph(self):\
-        self.assertFalse(
-            _is_area_a_paragraph('DATA DIVISION.'),
-            'DATA DIVISION. must not be a paragraph'
-        )
+    def test_data_division_not_paragraph(self):
+        self.assertFalse(_is_area_a_paragraph('DATA DIVISION.'))
 
     def test_identification_division_not_paragraph(self):
-        self.assertFalse(
-            _is_area_a_paragraph('IDENTIFICATION DIVISION.'),
-            'IDENTIFICATION DIVISION. must not be a paragraph'
-        )
+        self.assertFalse(_is_area_a_paragraph('IDENTIFICATION DIVISION.'))
 
     def test_procedure_division_using_not_paragraph(self):
-        # PROCEDURE DIVISION USING X.  -- does not even match _PARA_HEADER_RE
-        # (multiple tokens before period), but we verify defensively.
-        self.assertFalse(
-            _is_area_a_paragraph('PROCEDURE DIVISION USING X.'),
-            'PROCEDURE DIVISION USING X. must not be a paragraph'
-        )
+        self.assertFalse(_is_area_a_paragraph('PROCEDURE DIVISION USING X.'))
 
 
 class TestLevel01NotParagraph(unittest.TestCase):
     """
-    Level-number data items (01 WS-REC., 05 FILLER., 77 WS-CTR.) start
-    in Area A but are data definitions, never paragraph names.
-
-    These tests call _is_area_a_paragraph() directly with already-stripped
-    text (no leading spaces) to test the level-number exclusion rule.
+    Level-number data items must never be detected as paragraphs.
+    Called directly with stripped text.
     """
     def test_level_01_not_paragraph(self):
-        self.assertFalse(
-            _is_area_a_paragraph('01 WS-REC.'),
-            '01 WS-REC. is a data item, not a paragraph'
-        )
+        self.assertFalse(_is_area_a_paragraph('01 WS-REC.'))
 
     def test_level_77_not_paragraph(self):
-        self.assertFalse(
-            _is_area_a_paragraph('77 WS-CTR.'),
-            '77 WS-CTR. is a data item, not a paragraph'
-        )
+        self.assertFalse(_is_area_a_paragraph('77 WS-CTR.'))
 
     def test_level_05_not_paragraph(self):
-        # 05 starts in Area B normally, but test defensively
-        self.assertFalse(
-            _is_area_a_paragraph('05 FILLER.'),
-            '05 FILLER. is a data item, not a paragraph'
-        )
+        self.assertFalse(_is_area_a_paragraph('05 FILLER.'))
 
 
 if __name__ == '__main__':
