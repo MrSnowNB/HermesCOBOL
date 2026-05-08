@@ -167,7 +167,13 @@
           "line_no": 165,
           "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
+        }
+      ]
+    },
+    "PROCESS-ENTER-KEY": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "WHEN",
           "line_no": 210,
@@ -2045,7 +2051,13 @@
           "line_no": 210,
           "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
           "reason": "unresolved mutate operand: CORPT0AI"
-        },
+        }
+      ]
+    },
+    "SUBMIT-JOB-TO-INTRDR": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "IF",
           "line_no": 464,
@@ -2231,7 +2243,13 @@
           "line_no": 464,
           "raw_text": "SET END-LOOP-YES TO TRUE",
           "reason": "unresolved mutate operand: END-LOOP-YES"
-        },
+        }
+      ]
+    },
+    "WIRTE-JOBSUB-TDQ": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "EXEC",
           "line_no": 517,
@@ -2297,7 +2315,13 @@
           "line_no": 525,
           "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
           "reason": "unresolved mutate operand: CORPT0AI"
-        },
+        }
+      ]
+    },
+    "RETURN-TO-PREV-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "IF",
           "line_no": 542,
@@ -2339,7 +2363,13 @@
           "line_no": 542,
           "raw_text": "MOVE ZEROS        TO CDEMO-PGM-CONTEXT",
           "reason": "unresolved mutate operand: CDEMO-PGM-CONTEXT"
-        },
+        }
+      ]
+    },
+    "SEND-TRNRPT-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 558,
@@ -2369,7 +2399,23 @@
           "line_no": 558,
           "raw_text": "IF SEND-ERASE-YES",
           "reason": "unresolved read operand: SEND-ERASE-YES"
-        },
+        }
+      ]
+    },
+    "RETURN-TO-CICS": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "RECEIVE-TRNRPT-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "POPULATE-HEADER-INFO": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 611,
@@ -2603,7 +2649,13 @@
           "line_no": 611,
           "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF CORPT0AO",
           "reason": "unresolved mutate operand: CORPT0AO"
-        },
+        }
+      ]
+    },
+    "INITIALIZE-ALL-FIELDS": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 635,
@@ -2811,9 +2863,5 @@
       ]
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=1 facts=10"
-    }
-  ]
+  "program_unresolved": []
 }

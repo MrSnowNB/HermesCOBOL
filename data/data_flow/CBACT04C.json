@@ -1134,13 +1134,6 @@
           "copybook": null,
           "offset": 14,
           "length": 2
-        },
-        {
-          "field": "DB2-FORMAT-TS",
-          "record": "DB2-FORMAT-TS",
-          "copybook": null,
-          "offset": 0,
-          "length": 26
         }
       ],
       "mutates": [
@@ -1262,12 +1255,6 @@
           "line_no": 614,
           "raw_text": "MOVE FUNCTION CURRENT-DATE TO COBOL-TS",
           "reason": "unresolved read operand: CURRENT-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 614,
-          "raw_text": "MOVE '.' TO DB2-DOT-1 DB2-DOT-2 DB2-DOT-3 *",
-          "reason": "unresolved mutate operand: *"
         }
       ]
     },

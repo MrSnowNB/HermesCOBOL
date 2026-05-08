@@ -189,100 +189,147 @@
         {
           "verb": "MOVE",
           "line_no": 105,
-          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345' EVALUATE TRUE WHEN FC-INVALID-DATE MOVE 'Date is valid'      TO WS-RESULT WHEN FC-INSUFFICIENT-DATA MOVE 'Insufficient'       TO WS-RESULT WHEN FC-BAD-DATE-VALUE MOVE 'Datevalue error'    TO WS-RESULT WHEN FC-INVALID-ERA MOVE 'Invalid Era    '    TO WS-RESULT WHEN FC-UNSUPP-RANGE MOVE 'Unsupp",
+          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N",
           "reason": "unresolved read operand: MSG-NO"
         },
         {
           "verb": "MOVE",
           "line_no": 105,
-          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345' EVALUATE TRUE WHEN FC-INVALID-DATE MOVE 'Date is valid'      TO WS-RESULT WHEN FC-INSUFFICIENT-DATA MOVE 'Insufficient'       TO WS-RESULT WHEN FC-BAD-DATE-VALUE MOVE 'Datevalue error'    TO WS-RESULT WHEN FC-INVALID-ERA MOVE 'Invalid Era    '    TO WS-RESULT WHEN FC-UNSUPP-RANGE MOVE 'Unsupp",
+          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N",
           "reason": "unresolved read operand: OF"
         },
         {
           "verb": "MOVE",
           "line_no": 105,
-          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345' EVALUATE TRUE WHEN FC-INVALID-DATE MOVE 'Date is valid'      TO WS-RESULT WHEN FC-INSUFFICIENT-DATA MOVE 'Insufficient'       TO WS-RESULT WHEN FC-BAD-DATE-VALUE MOVE 'Datevalue error'    TO WS-RESULT WHEN FC-INVALID-ERA MOVE 'Invalid Era    '    TO WS-RESULT WHEN FC-UNSUPP-RANGE MOVE 'Unsupp",
+          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N",
           "reason": "unresolved read operand: FEEDBACK-CODE"
         },
         {
           "verb": "MOVE",
           "line_no": 105,
-          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345' EVALUATE TRUE WHEN FC-INVALID-DATE MOVE 'Date is valid'      TO WS-RESULT WHEN FC-INSUFFICIENT-DATA MOVE 'Insufficient'       TO WS-RESULT WHEN FC-BAD-DATE-VALUE MOVE 'Datevalue error'    TO WS-RESULT WHEN FC-INVALID-ERA MOVE 'Invalid Era    '    TO WS-RESULT WHEN FC-UNSUPP-RANGE MOVE 'Unsupp",
+          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N",
           "reason": "unresolved mutate operand: WS-MSG-NO-N"
         },
         {
-          "verb": "MOVE",
+          "verb": "WHEN",
           "line_no": 105,
-          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345' EVALUATE TRUE WHEN FC-INVALID-DATE MOVE 'Date is valid'      TO WS-RESULT WHEN FC-INSUFFICIENT-DATA MOVE 'Insufficient'       TO WS-RESULT WHEN FC-BAD-DATE-VALUE MOVE 'Datevalue error'    TO WS-RESULT WHEN FC-INVALID-ERA MOVE 'Invalid Era    '    TO WS-RESULT WHEN FC-UNSUPP-RANGE MOVE 'Unsupp",
-          "reason": "unresolved mutate operand: *"
+          "raw_text": "WHEN FC-INVALID-DATE",
+          "reason": "unresolved read operand: FC-INVALID-DATE"
         },
         {
           "verb": "MOVE",
           "line_no": 105,
-          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345' EVALUATE TRUE WHEN FC-INVALID-DATE MOVE 'Date is valid'      TO WS-RESULT WHEN FC-INSUFFICIENT-DATA MOVE 'Insufficient'       TO WS-RESULT WHEN FC-BAD-DATE-VALUE MOVE 'Datevalue error'    TO WS-RESULT WHEN FC-INVALID-ERA MOVE 'Invalid Era    '    TO WS-RESULT WHEN FC-UNSUPP-RANGE MOVE 'Unsupp",
+          "raw_text": "MOVE 'Date is valid'      TO WS-RESULT",
+          "reason": "unresolved mutate operand: WS-RESULT"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 105,
+          "raw_text": "WHEN FC-INSUFFICIENT-DATA",
+          "reason": "unresolved read operand: FC-INSUFFICIENT-DATA"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Insufficient'       TO WS-RESULT",
+          "reason": "unresolved mutate operand: WS-RESULT"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 105,
+          "raw_text": "WHEN FC-BAD-DATE-VALUE",
+          "reason": "unresolved read operand: FC-BAD-DATE-VALUE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Datevalue error'    TO WS-RESULT",
+          "reason": "unresolved mutate operand: WS-RESULT"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 105,
+          "raw_text": "WHEN FC-INVALID-ERA",
+          "reason": "unresolved read operand: FC-INVALID-ERA"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Invalid Era    '    TO WS-RESULT",
+          "reason": "unresolved mutate operand: WS-RESULT"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 105,
+          "raw_text": "WHEN FC-UNSUPP-RANGE",
+          "reason": "unresolved read operand: FC-UNSUPP-RANGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Unsupp. Range  '    TO WS-RESULT",
+          "reason": "unresolved mutate operand: WS-RESULT"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 105,
+          "raw_text": "WHEN FC-INVALID-MONTH",
+          "reason": "unresolved read operand: FC-INVALID-MONTH"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Invalid month  '    TO WS-RESULT",
+          "reason": "unresolved mutate operand: WS-RESULT"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 105,
+          "raw_text": "WHEN FC-BAD-PIC-STRING",
+          "reason": "unresolved read operand: FC-BAD-PIC-STRING"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Bad Pic String '    TO WS-RESULT",
+          "reason": "unresolved mutate operand: WS-RESULT"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 105,
+          "raw_text": "WHEN FC-NON-NUMERIC-DATA",
+          "reason": "unresolved read operand: FC-NON-NUMERIC-DATA"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'Nonnumeric data'    TO WS-RESULT",
+          "reason": "unresolved mutate operand: WS-RESULT"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 105,
+          "raw_text": "WHEN FC-YEAR-IN-ERA-ZERO",
+          "reason": "unresolved read operand: FC-YEAR-IN-ERA-ZERO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 105,
+          "raw_text": "MOVE 'YearInEra is 0 '    TO WS-RESULT",
           "reason": "unresolved mutate operand: WS-RESULT"
         },
         {
           "verb": "MOVE",
           "line_no": 105,
-          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345' EVALUATE TRUE WHEN FC-INVALID-DATE MOVE 'Date is valid'      TO WS-RESULT WHEN FC-INSUFFICIENT-DATA MOVE 'Insufficient'       TO WS-RESULT WHEN FC-BAD-DATE-VALUE MOVE 'Datevalue error'    TO WS-RESULT WHEN FC-INVALID-ERA MOVE 'Invalid Era    '    TO WS-RESULT WHEN FC-UNSUPP-RANGE MOVE 'Unsupp",
-          "reason": "unresolved mutate operand: IS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345' EVALUATE TRUE WHEN FC-INVALID-DATE MOVE 'Date is valid'      TO WS-RESULT WHEN FC-INSUFFICIENT-DATA MOVE 'Insufficient'       TO WS-RESULT WHEN FC-BAD-DATE-VALUE MOVE 'Datevalue error'    TO WS-RESULT WHEN FC-INVALID-ERA MOVE 'Invalid Era    '    TO WS-RESULT WHEN FC-UNSUPP-RANGE MOVE 'Unsupp",
-          "reason": "literal as mutate target (ignored): 15"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345' EVALUATE TRUE WHEN FC-INVALID-DATE MOVE 'Date is valid'      TO WS-RESULT WHEN FC-INSUFFICIENT-DATA MOVE 'Insufficient'       TO WS-RESULT WHEN FC-BAD-DATE-VALUE MOVE 'Datevalue error'    TO WS-RESULT WHEN FC-INVALID-ERA MOVE 'Invalid Era    '    TO WS-RESULT WHEN FC-UNSUPP-RANGE MOVE 'Unsupp",
-          "reason": "unresolved mutate operand: CHARACTERS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345' EVALUATE TRUE WHEN FC-INVALID-DATE MOVE 'Date is valid'      TO WS-RESULT WHEN FC-INSUFFICIENT-DATA MOVE 'Insufficient'       TO WS-RESULT WHEN FC-BAD-DATE-VALUE MOVE 'Datevalue error'    TO WS-RESULT WHEN FC-INVALID-ERA MOVE 'Invalid Era    '    TO WS-RESULT WHEN FC-UNSUPP-RANGE MOVE 'Unsupp",
-          "reason": "unresolved mutate operand: *"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345' EVALUATE TRUE WHEN FC-INVALID-DATE MOVE 'Date is valid'      TO WS-RESULT WHEN FC-INSUFFICIENT-DATA MOVE 'Insufficient'       TO WS-RESULT WHEN FC-BAD-DATE-VALUE MOVE 'Datevalue error'    TO WS-RESULT WHEN FC-INVALID-ERA MOVE 'Invalid Era    '    TO WS-RESULT WHEN FC-UNSUPP-RANGE MOVE 'Unsupp",
-          "reason": "unresolved mutate operand: 123456789012345__LIT__Date"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345' EVALUATE TRUE WHEN FC-INVALID-DATE MOVE 'Date is valid'      TO WS-RESULT WHEN FC-INSUFFICIENT-DATA MOVE 'Insufficient'       TO WS-RESULT WHEN FC-BAD-DATE-VALUE MOVE 'Datevalue error'    TO WS-RESULT WHEN FC-INVALID-ERA MOVE 'Invalid Era    '    TO WS-RESULT WHEN FC-UNSUPP-RANGE MOVE 'Unsupp",
-          "reason": "unresolved mutate operand: is"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345' EVALUATE TRUE WHEN FC-INVALID-DATE MOVE 'Date is valid'      TO WS-RESULT WHEN FC-INSUFFICIENT-DATA MOVE 'Insufficient'       TO WS-RESULT WHEN FC-BAD-DATE-VALUE MOVE 'Datevalue error'    TO WS-RESULT WHEN FC-INVALID-ERA MOVE 'Invalid Era    '    TO WS-RESULT WHEN FC-UNSUPP-RANGE MOVE 'Unsupp",
-          "reason": "unresolved mutate operand: valid__LIT__Insufficient__LIT__Datevalue"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345' EVALUATE TRUE WHEN FC-INVALID-DATE MOVE 'Date is valid'      TO WS-RESULT WHEN FC-INSUFFICIENT-DATA MOVE 'Insufficient'       TO WS-RESULT WHEN FC-BAD-DATE-VALUE MOVE 'Datevalue error'    TO WS-RESULT WHEN FC-INVALID-ERA MOVE 'Invalid Era    '    TO WS-RESULT WHEN FC-UNSUPP-RANGE MOVE 'Unsupp",
-          "reason": "unresolved mutate operand: error__LIT__Invalid"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345' EVALUATE TRUE WHEN FC-INVALID-DATE MOVE 'Date is valid'      TO WS-RESULT WHEN FC-INSUFFICIENT-DATA MOVE 'Insufficient'       TO WS-RESULT WHEN FC-BAD-DATE-VALUE MOVE 'Datevalue error'    TO WS-RESULT WHEN FC-INVALID-ERA MOVE 'Invalid Era    '    TO WS-RESULT WHEN FC-UNSUPP-RANGE MOVE 'Unsupp",
-          "reason": "unresolved mutate operand: Era"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N *    WS-RESULT IS 15 CHARACTERS *                123456789012345' EVALUATE TRUE WHEN FC-INVALID-DATE MOVE 'Date is valid'      TO WS-RESULT WHEN FC-INSUFFICIENT-DATA MOVE 'Insufficient'       TO WS-RESULT WHEN FC-BAD-DATE-VALUE MOVE 'Datevalue error'    TO WS-RESULT WHEN FC-INVALID-ERA MOVE 'Invalid Era    '    TO WS-RESULT WHEN FC-UNSUPP-RANGE MOVE 'Unsupp",
-          "reason": "unresolved mutate operand: __LIT__Unsupp"
+          "raw_text": "MOVE 'Date is invalid'    TO WS-RESULT",
+          "reason": "unresolved mutate operand: WS-RESULT"
         }
       ]
+    },
+    "A000-MAIN-EXIT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
     }
   },
   "program_unresolved": []

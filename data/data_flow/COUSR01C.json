@@ -161,7 +161,13 @@
           "line_no": 73,
           "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
+        }
+      ]
+    },
+    "PROCESS-ENTER-KEY": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "WHEN",
           "line_no": 117,
@@ -545,7 +551,13 @@
           "line_no": 117,
           "raw_text": "MOVE USRTYPEI OF COUSR1AI TO SEC-USR-TYPE",
           "reason": "unresolved mutate operand: SEC-USR-TYPE"
-        },
+        }
+      ]
+    },
+    "RETURN-TO-PREV-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "IF",
           "line_no": 167,
@@ -573,57 +585,27 @@
         {
           "verb": "MOVE",
           "line_no": 167,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM *",
+          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
           "reason": "unresolved read operand: WS-PGMNAME"
         },
         {
           "verb": "MOVE",
           "line_no": 167,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM *",
+          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
           "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 167,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM *",
-          "reason": "unresolved mutate operand: *"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 167,
-          "raw_text": "MOVE WS-USER-ID   TO CDEMO-USER-ID *",
-          "reason": "unresolved read operand: WS-USER-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 167,
-          "raw_text": "MOVE WS-USER-ID   TO CDEMO-USER-ID *",
-          "reason": "unresolved mutate operand: CDEMO-USER-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 167,
-          "raw_text": "MOVE WS-USER-ID   TO CDEMO-USER-ID *",
-          "reason": "unresolved mutate operand: *"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 167,
-          "raw_text": "MOVE SEC-USR-TYPE TO CDEMO-USER-TYPE",
-          "reason": "unresolved read operand: SEC-USR-TYPE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 167,
-          "raw_text": "MOVE SEC-USR-TYPE TO CDEMO-USER-TYPE",
-          "reason": "unresolved mutate operand: CDEMO-USER-TYPE"
         },
         {
           "verb": "MOVE",
           "line_no": 167,
           "raw_text": "MOVE ZEROS        TO CDEMO-PGM-CONTEXT",
           "reason": "unresolved mutate operand: CDEMO-PGM-CONTEXT"
-        },
+        }
+      ]
+    },
+    "SEND-USRADD-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 186,
@@ -647,7 +629,18 @@
           "line_no": 186,
           "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COUSR1AO",
           "reason": "unresolved mutate operand: COUSR1AO"
-        },
+        }
+      ]
+    },
+    "RECEIVE-USRADD-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "POPULATE-HEADER-INFO": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 216,
@@ -881,7 +874,13 @@
           "line_no": 216,
           "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COUSR1AO",
           "reason": "unresolved mutate operand: COUSR1AO"
-        },
+        }
+      ]
+    },
+    "WRITE-USER-SEC-FILE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "WRITE",
           "line_no": 240,
@@ -991,24 +990,6 @@
           "reason": "unresolved mutate operand: COUSR1AI"
         },
         {
-          "verb": "WHEN",
-          "line_no": 250,
-          "raw_text": "WHEN OTHER *",
-          "reason": "unresolved read operand: *"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 250,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 250,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
           "verb": "MOVE",
           "line_no": 250,
           "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
@@ -1037,7 +1018,18 @@
           "line_no": 250,
           "raw_text": "MOVE -1       TO FNAMEL OF COUSR1AI",
           "reason": "unresolved mutate operand: COUSR1AI"
-        },
+        }
+      ]
+    },
+    "CLEAR-CURRENT-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "INITIALIZE-ALL-FIELDS": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 289,
@@ -1155,9 +1147,5 @@
       ]
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=1 facts=9"
-    }
-  ]
+  "program_unresolved": []
 }

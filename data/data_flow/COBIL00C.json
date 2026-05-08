@@ -203,7 +203,13 @@
           "line_no": 101,
           "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
+        }
+      ]
+    },
+    "PROCESS-ENTER-KEY": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "SET",
           "line_no": 156,
@@ -641,7 +647,13 @@
           "line_no": 156,
           "raw_text": "MOVE -1       TO CONFIRML OF COBIL0AI",
           "reason": "unresolved mutate operand: COBIL0AI"
-        },
+        }
+      ]
+    },
+    "GET-CURRENT-TIMESTAMP": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "INITIALIZE",
           "line_no": 251,
@@ -677,7 +689,13 @@
           "line_no": 251,
           "raw_text": "MOVE ZEROS           TO WS-TIMESTAMP-TM-MS6",
           "reason": "unresolved mutate operand: WS-TIMESTAMP-TM-MS6"
-        },
+        }
+      ]
+    },
+    "RETURN-TO-PREV-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "IF",
           "line_no": 275,
@@ -719,7 +737,13 @@
           "line_no": 275,
           "raw_text": "MOVE ZEROS        TO CDEMO-PGM-CONTEXT",
           "reason": "unresolved mutate operand: CDEMO-PGM-CONTEXT"
-        },
+        }
+      ]
+    },
+    "SEND-BILLPAY-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 291,
@@ -743,7 +767,18 @@
           "line_no": 291,
           "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COBIL0AO",
           "reason": "unresolved mutate operand: COBIL0AO"
-        },
+        }
+      ]
+    },
+    "RECEIVE-BILLPAY-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "POPULATE-HEADER-INFO": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 321,
@@ -977,7 +1012,13 @@
           "line_no": 321,
           "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COBIL0AO",
           "reason": "unresolved mutate operand: COBIL0AO"
-        },
+        }
+      ]
+    },
+    "READ-ACCTDAT-FILE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "READ",
           "line_no": 345,
@@ -1079,7 +1120,13 @@
           "line_no": 345,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
           "reason": "unresolved mutate operand: COBIL0AI"
-        },
+        }
+      ]
+    },
+    "UPDATE-ACCTDAT-FILE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "EXEC",
           "line_no": 379,
@@ -1205,7 +1252,13 @@
           "line_no": 379,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
           "reason": "unresolved mutate operand: COBIL0AI"
-        },
+        }
+      ]
+    },
+    "READ-CXACAIX-FILE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "READ",
           "line_no": 410,
@@ -1307,7 +1360,13 @@
           "line_no": 410,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
           "reason": "unresolved mutate operand: COBIL0AI"
-        },
+        }
+      ]
+    },
+    "STARTBR-TRANSACT-FILE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "EXEC",
           "line_no": 443,
@@ -1421,7 +1480,13 @@
           "line_no": 443,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
           "reason": "unresolved mutate operand: COBIL0AI"
-        },
+        }
+      ]
+    },
+    "READPREV-TRANSACT-FILE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "EXEC",
           "line_no": 474,
@@ -1523,7 +1588,18 @@
           "line_no": 474,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
           "reason": "unresolved mutate operand: COBIL0AI"
-        },
+        }
+      ]
+    },
+    "ENDBR-TRANSACT-FILE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "WRITE-TRANSACT-FILE": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "WRITE",
           "line_no": 512,
@@ -1673,7 +1749,18 @@
           "line_no": 512,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
           "reason": "unresolved mutate operand: COBIL0AI"
-        },
+        }
+      ]
+    },
+    "CLEAR-CURRENT-SCREEN": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "INITIALIZE-ALL-FIELDS": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 562,
@@ -1755,9 +1842,5 @@
       ]
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=1 facts=16"
-    }
-  ]
+  "program_unresolved": []
 }

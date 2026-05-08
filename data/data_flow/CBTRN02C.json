@@ -256,13 +256,6 @@
           "copybook": null,
           "offset": 0,
           "length": 2
-        },
-        {
-          "field": "DALYTRAN-RECORD",
-          "record": "DALYTRAN-RECORD",
-          "copybook": "CVTRA06Y",
-          "offset": 0,
-          "length": 350
         }
       ],
       "mutates": [
@@ -305,14 +298,8 @@
         {
           "verb": "MOVE",
           "line_no": 347,
-          "raw_text": "MOVE 0 TO APPL-RESULT *",
-          "reason": "unresolved mutate operand: *"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 347,
-          "raw_text": "DISPLAY DALYTRAN-RECORD ELSE",
-          "reason": "unresolved read operand: ELSE"
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
         },
         {
           "verb": "MOVE",
@@ -351,14 +338,7 @@
         }
       ],
       "mutates": [],
-      "unresolved": [
-        {
-          "verb": "ADD",
-          "line_no": 372,
-          "raw_text": "ADD MORE VALIDATIONS HERE",
-          "reason": "ADD missing TO or GIVING"
-        }
-      ]
+      "unresolved": []
     },
     "1500-A-LOOKUP-XREF": {
       "reads": [
@@ -403,33 +383,27 @@
       "unresolved": [
         {
           "verb": "READ",
-          "line_no": 381,
+          "line_no": 382,
           "raw_text": "READ XREF-FILE INTO CARD-XREF-RECORD INVALID KEY",
           "reason": "unresolved mutate operand: XREF-FILE"
         },
         {
           "verb": "MOVE",
-          "line_no": 381,
-          "raw_text": "MOVE 'INVALID CARD NUMBER FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
+          "line_no": 382,
+          "raw_text": "MOVE 'INVALID CARD NUMBER FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY",
           "reason": "unresolved mutate operand: NOT"
         },
         {
           "verb": "MOVE",
-          "line_no": 381,
-          "raw_text": "MOVE 'INVALID CARD NUMBER FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
+          "line_no": 382,
+          "raw_text": "MOVE 'INVALID CARD NUMBER FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY",
           "reason": "unresolved mutate operand: INVALID"
         },
         {
           "verb": "MOVE",
-          "line_no": 381,
-          "raw_text": "MOVE 'INVALID CARD NUMBER FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
+          "line_no": 382,
+          "raw_text": "MOVE 'INVALID CARD NUMBER FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY",
           "reason": "unresolved mutate operand: KEY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 381,
-          "raw_text": "MOVE 'INVALID CARD NUMBER FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
-          "reason": "unresolved mutate operand: *"
         }
       ]
     },
@@ -440,20 +414,6 @@
           "record": "CARD-XREF-RECORD",
           "copybook": "CVACT03Y",
           "offset": 25,
-          "length": 11
-        },
-        {
-          "field": "ACCOUNT-RECORD.ACCT-CREDIT-LIMIT",
-          "record": "ACCOUNT-RECORD",
-          "copybook": "CVACT01Y",
-          "offset": 24,
-          "length": 12
-        },
-        {
-          "field": "DALYTRAN-RECORD.DALYTRAN-AMT",
-          "record": "DALYTRAN-RECORD",
-          "copybook": "CVTRA06Y",
-          "offset": 132,
           "length": 11
         },
         {
@@ -468,6 +428,20 @@
           "record": "ACCOUNT-RECORD",
           "copybook": "CVACT01Y",
           "offset": 90,
+          "length": 12
+        },
+        {
+          "field": "DALYTRAN-RECORD.DALYTRAN-AMT",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 132,
+          "length": 11
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-CREDIT-LIMIT",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 24,
           "length": 12
         },
         {
@@ -539,32 +513,20 @@
         {
           "verb": "MOVE",
           "line_no": 394,
-          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
+          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY",
           "reason": "unresolved mutate operand: NOT"
         },
         {
           "verb": "MOVE",
           "line_no": 394,
-          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
+          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY",
           "reason": "unresolved mutate operand: INVALID"
         },
         {
           "verb": "MOVE",
           "line_no": 394,
-          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
+          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY",
           "reason": "unresolved mutate operand: KEY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 394,
-          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC NOT INVALID KEY *",
-          "reason": "unresolved mutate operand: *"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 394,
-          "raw_text": "DISPLAY 'ACCT-CREDIT-LIMIT:' ACCT-CREDIT-LIMIT *",
-          "reason": "unresolved read operand: *"
         },
         {
           "verb": "IF",
@@ -832,12 +794,6 @@
         }
       ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 447,
-          "raw_text": "MOVE WS-VALIDATION-TRAILER TO VALIDATION-TRAILER *",
-          "reason": "unresolved mutate operand: *"
-        },
         {
           "verb": "MOVE",
           "line_no": 447,
@@ -1655,13 +1611,6 @@
           "copybook": null,
           "offset": 14,
           "length": 2
-        },
-        {
-          "field": "DB2-FORMAT-TS",
-          "record": "DB2-FORMAT-TS",
-          "copybook": null,
-          "offset": 0,
-          "length": 26
         }
       ],
       "mutates": [
@@ -1783,12 +1732,6 @@
           "line_no": 693,
           "raw_text": "MOVE FUNCTION CURRENT-DATE TO COBOL-TS",
           "reason": "unresolved read operand: CURRENT-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 693,
-          "raw_text": "MOVE '.' TO DB2-DOT-1 DB2-DOT-2 DB2-DOT-3 *",
-          "reason": "unresolved mutate operand: *"
         }
       ]
     },

@@ -27,26 +27,14 @@
         {
           "verb": "MOVE",
           "line_no": 94,
-          "raw_text": "MOVE 0 TO APPL-RESULT *",
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
           "reason": "unresolved mutate operand: APPL-RESULT"
         },
         {
           "verb": "MOVE",
           "line_no": 94,
-          "raw_text": "MOVE 0 TO APPL-RESULT *",
-          "reason": "unresolved mutate operand: *"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 94,
-          "raw_text": "DISPLAY CARD-RECORD ELSE",
-          "reason": "unresolved read operand: CARD-RECORD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 94,
-          "raw_text": "DISPLAY CARD-RECORD ELSE",
-          "reason": "unresolved read operand: ELSE"
+          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
+          "reason": "unresolved mutate operand: ELSE"
         },
         {
           "verb": "IF",
