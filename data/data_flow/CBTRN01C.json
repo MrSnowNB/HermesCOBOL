@@ -1007,13 +1007,7 @@
           "line_no": 470,
           "raw_text": "CALL 'CEE3ABD' USING ABCODE, TIMING",
           "reason": "CALL USING not yet classified (TODO Section 3)"
-        }
-      ]
-    },
-    "Z-DISPLAY-IO-STATUS": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "IF",
           "line_no": 477,

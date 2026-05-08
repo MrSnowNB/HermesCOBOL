@@ -113,13 +113,7 @@
           "line_no": 75,
           "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
-        }
-      ]
-    },
-    "PROCESS-ENTER-KEY": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "WHEN",
           "line_no": 117,
@@ -287,13 +281,7 @@
           "line_no": 132,
           "raw_text": "IF NOT ERR-FLG-ON",
           "reason": "unresolved read operand: ERR-FLG-ON"
-        }
-      ]
-    },
-    "SEND-SIGNON-SCREEN": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "MOVE",
           "line_no": 147,
@@ -317,18 +305,7 @@
           "line_no": 147,
           "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COSGN0AO",
           "reason": "unresolved mutate operand: COSGN0AO"
-        }
-      ]
-    },
-    "SEND-PLAIN-TEXT": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
-    },
-    "POPULATE-HEADER-INFO": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "MOVE",
           "line_no": 179,
@@ -562,13 +539,7 @@
           "line_no": 179,
           "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COSGN0AO",
           "reason": "unresolved mutate operand: COSGN0AO"
-        }
-      ]
-    },
-    "READ-USER-SEC-FILE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "READ",
           "line_no": 211,
@@ -746,5 +717,9 @@
       ]
     }
   },
-  "program_unresolved": []
+  "program_unresolved": [
+    {
+      "issue": "paragraph count mismatch: local=1 facts=6"
+    }
+  ]
 }

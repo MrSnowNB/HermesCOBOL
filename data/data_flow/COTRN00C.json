@@ -185,13 +185,7 @@
           "line_no": 97,
           "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
-        }
-      ]
-    },
-    "PROCESS-ENTER-KEY": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "WHEN",
           "line_no": 148,
@@ -1139,13 +1133,7 @@
           "line_no": 148,
           "raw_text": "MOVE SPACE   TO TRNIDINO  OF COTRN0AO",
           "reason": "unresolved mutate operand: COTRN0AO"
-        }
-      ]
-    },
-    "PROCESS-PF7-KEY": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "IF",
           "line_no": 236,
@@ -1217,13 +1205,7 @@
           "line_no": 236,
           "raw_text": "SET SEND-ERASE-NO TO TRUE",
           "reason": "unresolved mutate operand: SEND-ERASE-NO"
-        }
-      ]
-    },
-    "PROCESS-PF8-KEY": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "IF",
           "line_no": 259,
@@ -1289,13 +1271,7 @@
           "line_no": 259,
           "raw_text": "SET SEND-ERASE-NO TO TRUE",
           "reason": "unresolved mutate operand: SEND-ERASE-NO"
-        }
-      ]
-    },
-    "PROCESS-PAGE-FORWARD": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "IF",
           "line_no": 281,
@@ -1487,13 +1463,7 @@
           "line_no": 281,
           "raw_text": "MOVE SPACE   TO TRNIDINO  OF COTRN0AO",
           "reason": "unresolved mutate operand: COTRN0AO"
-        }
-      ]
-    },
-    "PROCESS-PAGE-BACKWARD": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "IF",
           "line_no": 335,
@@ -1649,13 +1619,7 @@
           "line_no": 335,
           "raw_text": "MOVE CDEMO-CT00-PAGE-NUM TO PAGENUMI  OF COTRN0AI",
           "reason": "unresolved mutate operand: COTRN0AI"
-        }
-      ]
-    },
-    "POPULATE-TRAN-DATA": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "MOVE",
           "line_no": 383,
@@ -2705,13 +2669,7 @@
           "line_no": 383,
           "raw_text": "MOVE WS-TRAN-AMT  TO TAMT010I OF COTRN0AI",
           "reason": "unresolved mutate operand: COTRN0AI"
-        }
-      ]
-    },
-    "INITIALIZE-TRAN-DATA": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "EVALUATE",
           "line_no": 452,
@@ -3437,13 +3395,7 @@
           "line_no": 452,
           "raw_text": "MOVE SPACES TO TAMT010I OF COTRN0AI",
           "reason": "unresolved mutate operand: COTRN0AI"
-        }
-      ]
-    },
-    "RETURN-TO-PREV-SCREEN": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "IF",
           "line_no": 512,
@@ -3485,13 +3437,7 @@
           "line_no": 512,
           "raw_text": "MOVE ZEROS        TO CDEMO-PGM-CONTEXT",
           "reason": "unresolved mutate operand: CDEMO-PGM-CONTEXT"
-        }
-      ]
-    },
-    "SEND-TRNLST-SCREEN": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "MOVE",
           "line_no": 529,
@@ -3521,18 +3467,7 @@
           "line_no": 529,
           "raw_text": "IF SEND-ERASE-YES",
           "reason": "unresolved read operand: SEND-ERASE-YES"
-        }
-      ]
-    },
-    "RECEIVE-TRNLST-SCREEN": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
-    },
-    "POPULATE-HEADER-INFO": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "MOVE",
           "line_no": 569,
@@ -3766,13 +3701,7 @@
           "line_no": 569,
           "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COTRN0AO",
           "reason": "unresolved mutate operand: COTRN0AO"
-        }
-      ]
-    },
-    "STARTBR-TRANSACT-FILE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "EXEC",
           "line_no": 593,
@@ -3886,13 +3815,7 @@
           "line_no": 602,
           "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
           "reason": "unresolved mutate operand: COTRN0AI"
-        }
-      ]
-    },
-    "READNEXT-TRANSACT-FILE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "EXEC",
           "line_no": 626,
@@ -4018,13 +3941,7 @@
           "line_no": 636,
           "raw_text": "MOVE -1       TO TRNIDINL OF COTRN0AI",
           "reason": "unresolved mutate operand: COTRN0AI"
-        }
-      ]
-    },
-    "READPREV-TRANSACT-FILE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+        },
         {
           "verb": "EXEC",
           "line_no": 660,
@@ -4152,12 +4069,11 @@
           "reason": "unresolved mutate operand: COTRN0AI"
         }
       ]
-    },
-    "ENDBR-TRANSACT-FILE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
     }
   },
-  "program_unresolved": []
+  "program_unresolved": [
+    {
+      "issue": "paragraph count mismatch: local=1 facts=16"
+    }
+  ]
 }

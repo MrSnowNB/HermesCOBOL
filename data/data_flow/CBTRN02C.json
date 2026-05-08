@@ -1288,13 +1288,14 @@
           "line_no": 547,
           "raw_text": "ADD DALYTRAN-AMT TO ACCT-CURR-CYC-CREDIT ELSE",
           "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 547,
+          "raw_text": "MOVE 'ACCOUNT RECORD NOT FOUND' TO WS-VALIDATION-FAIL-REASON-DESC END-REWRITE",
+          "reason": "unresolved mutate operand: END-REWRITE"
         }
       ]
-    },
-    "END-REWRITE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
     },
     "2900-WRITE-TRANSACTION-FILE": {
       "reads": [

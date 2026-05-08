@@ -1557,13 +1557,14 @@
           "line_no": 456,
           "raw_text": "DISPLAY 'CBIMPORT: Errors Written: ' WS-ERROR-RECORDS-WRITTEN",
           "reason": "unresolved read operand: WS-ERROR-RECORDS-WRITTEN"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 456,
+          "raw_text": "DISPLAY 'CBIMPORT: Unknown Record Types: ' WS-UNKNOWN-RECORD-TYPE-COUNT",
+          "reason": "unresolved read operand: WS-UNKNOWN-RECORD-TYPE-COUNT"
         }
       ]
-    },
-    "WS-UNKNOWN-RECORD-TYPE-COUNT": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
     },
     "9999-ABEND-PROGRAM": {
       "reads": [],

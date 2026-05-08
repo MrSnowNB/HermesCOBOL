@@ -229,6 +229,34 @@
           "copybook": "CVACT01Y",
           "offset": 68,
           "length": 10
+        },
+        {
+          "field": "CODATECN-REC.CODATECN-OUT-REC.CODATECN-0UT-DATE",
+          "record": "CODATECN-REC",
+          "copybook": "CODATECN",
+          "offset": 22,
+          "length": 20
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-CURR-CYC-CREDIT",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 78,
+          "length": 12
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-CURR-CYC-DEBIT",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 90,
+          "length": 12
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-GROUP-ID",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 112,
+          "length": 10
         }
       ],
       "mutates": [
@@ -287,42 +315,14 @@
           "copybook": "CODATECN",
           "offset": 1,
           "length": 20
-        }
-      ],
-      "unresolved": []
-    },
-    "WS-REISSUE-DATE": {
-      "reads": [
-        {
-          "field": "CODATECN-REC.CODATECN-OUT-REC.CODATECN-0UT-DATE",
-          "record": "CODATECN-REC",
-          "copybook": "CODATECN",
-          "offset": 22,
-          "length": 20
         },
         {
-          "field": "ACCOUNT-RECORD.ACCT-CURR-CYC-CREDIT",
-          "record": "ACCOUNT-RECORD",
-          "copybook": "CVACT01Y",
-          "offset": 78,
-          "length": 12
-        },
-        {
-          "field": "ACCOUNT-RECORD.ACCT-CURR-CYC-DEBIT",
-          "record": "ACCOUNT-RECORD",
-          "copybook": "CVACT01Y",
-          "offset": 90,
-          "length": 12
-        },
-        {
-          "field": "ACCOUNT-RECORD.ACCT-GROUP-ID",
-          "record": "ACCOUNT-RECORD",
-          "copybook": "CVACT01Y",
-          "offset": 112,
+          "field": "WS-REISSUE-DATE",
+          "record": "WS-REISSUE-DATE",
+          "copybook": null,
+          "offset": 0,
           "length": 10
-        }
-      ],
-      "mutates": [
+        },
         {
           "field": "CODATECN-REC.CODATECN-IN-REC.CODATECN-TYPE",
           "record": "CODATECN-REC",
@@ -519,21 +519,7 @@
           "copybook": "CVACT01Y",
           "offset": 0,
           "length": 11
-        }
-      ],
-      "mutates": [
-        {
-          "field": "VBRC-REC1.VB1-ACCT-ID",
-          "record": "VBRC-REC1",
-          "copybook": null,
-          "offset": 0,
-          "length": 11
-        }
-      ],
-      "unresolved": []
-    },
-    "VB2-ACCT-ID": {
-      "reads": [
+        },
         {
           "field": "ACCOUNT-RECORD.ACCT-ACTIVE-STATUS",
           "record": "ACCOUNT-RECORD",
@@ -578,6 +564,20 @@
         }
       ],
       "mutates": [
+        {
+          "field": "VBRC-REC1.VB1-ACCT-ID",
+          "record": "VBRC-REC1",
+          "copybook": null,
+          "offset": 0,
+          "length": 11
+        },
+        {
+          "field": "VBRC-REC2.VB2-ACCT-ID",
+          "record": "VBRC-REC2",
+          "copybook": null,
+          "offset": 0,
+          "length": 11
+        },
         {
           "field": "VBRC-REC1.VB1-ACCT-ACTIVE-STATUS",
           "record": "VBRC-REC1",
@@ -1060,9 +1060,5 @@
       ]
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=18 facts=16"
-    }
-  ]
+  "program_unresolved": []
 }

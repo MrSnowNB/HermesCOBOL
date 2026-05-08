@@ -226,12 +226,14 @@
     "2000-EXPORT-CUSTOMERS": {
       "reads": [],
       "mutates": [],
-      "unresolved": []
-    },
-    "WS-CUSTOMER-RECORDS-EXPORTED": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
+      "unresolved": [
+        {
+          "verb": "DISPLAY",
+          "line_no": 244,
+          "raw_text": "DISPLAY 'CBEXPORT: Customers exported: ' WS-CUSTOMER-RECORDS-EXPORTED",
+          "reason": "unresolved read operand: WS-CUSTOMER-RECORDS-EXPORTED"
+        }
+      ]
     },
     "2100-READ-CUSTOMER-RECORD": {
       "reads": [],
@@ -650,12 +652,14 @@
     "3000-EXPORT-ACCOUNTS": {
       "reads": [],
       "mutates": [],
-      "unresolved": []
-    },
-    "WS-ACCOUNT-RECORDS-EXPORTED": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
+      "unresolved": [
+        {
+          "verb": "DISPLAY",
+          "line_no": 313,
+          "raw_text": "DISPLAY 'CBEXPORT: Accounts exported: ' WS-ACCOUNT-RECORDS-EXPORTED",
+          "reason": "unresolved read operand: WS-ACCOUNT-RECORDS-EXPORTED"
+        }
+      ]
     },
     "3100-READ-ACCOUNT-RECORD": {
       "reads": [],
@@ -1002,12 +1006,14 @@
     "4000-EXPORT-XREFS": {
       "reads": [],
       "mutates": [],
-      "unresolved": []
-    },
-    "WS-XREF-RECORDS-EXPORTED": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
+      "unresolved": [
+        {
+          "verb": "DISPLAY",
+          "line_no": 377,
+          "raw_text": "DISPLAY 'CBEXPORT: Cross-references exported: ' WS-XREF-RECORDS-EXPORTED",
+          "reason": "unresolved read operand: WS-XREF-RECORDS-EXPORTED"
+        }
+      ]
     },
     "4100-READ-XREF-RECORD": {
       "reads": [],
@@ -1246,12 +1252,14 @@
     "5000-EXPORT-TRANSACTIONS": {
       "reads": [],
       "mutates": [],
-      "unresolved": []
-    },
-    "WS-TRAN-RECORDS-EXPORTED": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
+      "unresolved": [
+        {
+          "verb": "DISPLAY",
+          "line_no": 432,
+          "raw_text": "DISPLAY 'CBEXPORT: Transactions exported: ' WS-TRAN-RECORDS-EXPORTED",
+          "reason": "unresolved read operand: WS-TRAN-RECORDS-EXPORTED"
+        }
+      ]
     },
     "5100-READ-TRANSACTION-RECORD": {
       "reads": [],
@@ -1610,12 +1618,14 @@
     "5500-EXPORT-CARDS": {
       "reads": [],
       "mutates": [],
-      "unresolved": []
-    },
-    "WS-CARD-RECORDS-EXPORTED": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
+      "unresolved": [
+        {
+          "verb": "DISPLAY",
+          "line_no": 497,
+          "raw_text": "DISPLAY 'CBEXPORT: Cards exported: ' WS-CARD-RECORDS-EXPORTED",
+          "reason": "unresolved read operand: WS-CARD-RECORDS-EXPORTED"
+        }
+      ]
     },
     "5600-READ-CARD-RECORD": {
       "reads": [],
@@ -1920,13 +1930,14 @@
           "line_no": 555,
           "raw_text": "DISPLAY 'CBEXPORT: Cards Exported: ' WS-CARD-RECORDS-EXPORTED",
           "reason": "unresolved read operand: WS-CARD-RECORDS-EXPORTED"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 555,
+          "raw_text": "DISPLAY 'CBEXPORT: Total Records Exported: ' WS-TOTAL-RECORDS-EXPORTED",
+          "reason": "unresolved read operand: WS-TOTAL-RECORDS-EXPORTED"
         }
       ]
-    },
-    "WS-TOTAL-RECORDS-EXPORTED": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": []
     },
     "9999-ABEND-PROGRAM": {
       "reads": [],
@@ -1941,9 +1952,5 @@
       ]
     }
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=27 facts=21"
-    }
-  ]
+  "program_unresolved": []
 }
