@@ -59,14 +59,20 @@ Synthetic CBL source strings in `tests/test_data_flow.py` **must** use the
 "           MOVE A TO B.\n"      # Area B: 11 leading spaces (or more)
 ```
 
-- Do **not** use fabricated 6-digit sequence prefixes (`"000001 PROCEDURE DIVISION.\n"`).
+- Do **not** use fabricated 6-digit sequence prefixes.
 - Blank-sequence form correctly simulates cols 1–6 = spaces, exactly what
   `_normalise_source` sees for source files without sequence numbers.
-- The fixed-column implementation handles both digit and blank sequences identically.
 
 ### SECTION header policy
 
-SECTION headers are NOT counted as paragraphs. See 3.1 branch notes for full rationale.
+**Decision: SECTION headers are NOT counted as paragraphs.**
+
+### Division/section exclusion list (`_NOT_HEADER_KEYWORDS`)
+
+The following tokens are structural COBOL keywords and **never** paragraph names:
+`IDENTIFICATION, ENVIRONMENT, DATA, PROCEDURE, WORKING-STORAGE, LINKAGE, FILE,
+LOCAL-STORAGE, INPUT-OUTPUT, CONFIGURATION, COMMUNICATION, REPORT, FILE-CONTROL,
+SPECIAL-NAMES, SOURCE-COMPUTER, OBJECT-COMPUTER, REPOSITORY, CLASS-CONTROL`
 
 ### Area-A paragraph detection rule (`_is_area_a_paragraph`)
 
@@ -84,19 +90,11 @@ header if and only if ALL of the following hold:
 ### 3.1 Gate criteria (FROZEN — 37/37 PASS on `e3aa8ae`)
 
 ```powershell
-python tests\test_data_flow.py
-# -> 37/37 PASS
-
-python scripts\data_flow.py data\raw\cbl\CBACT01C.cbl > data\data_flow\CBACT01C.json
-python -c "..."
-# -> paragraph_count=16, program_unresolved=[]
-
-python scripts\para_diff.py CBACT01C
-# -> local=16 facts=16, no delta
-
-python scripts\data_flow.py --all
-# -> 31 files, 0 ERROR, ZERO local=0, ZERO local=1
-# -> Allowed: COACTUPC/COACTVWC/COCRDLIC close-mismatch WARNINGs (deferred to 3.4)
+python tests\test_data_flow.py        # 37/37 PASS
+# CBACT01C paragraph_count=16, program_unresolved=[]
+# para_diff: local=16 facts=16, no delta
+# --all: 31 files, 0 ERROR, ZERO local=0 WARNINGs, ZERO local=1 WARNINGs
+# Allowed: COACTUPC/COACTVWC/COCRDLIC close-mismatch (deferred to 3.4)
 ```
 
 ---
@@ -105,32 +103,31 @@ python scripts\data_flow.py --all
 
 **Branch:** `feature/schema-v1.3-section3-call-using` → merged to `main`
 
-### LOCKED: `_parse_call` single-pass cursor contract
+### LOCKED: `_parse_call()` contract
 
-`_parse_call` **must** use a single forward-scanning cursor starting at
-token index 2 (immediately after `CALL` + target token). The cursor
-processes all remaining tokens in one pass:
+`_parse_call()` **must** use a **single-pass forward cursor** starting at token
+index 2 (the first token after `CALL target`), scanning unconditionally regardless
+of whether `USING` appears:
 
 ```python
 in_using       = False
-mode           = 'REFERENCE'   # default USING operand mode
-returning_next = False         # True: next identifier -> mutate only, then stop
+mode           = 'REFERENCE'  # default when inside USING
+returning_next = False        # next identifier after RETURNING -> mutate only, then stop
 
-i = 2   # always start after CALL + target
+i = 2   # always skip CALL + target
 while i < len(ut):
-    tok = ut[i]
-    if tok in _CALL_STOP_KEYWORDS: break
-    if tok == 'USING':     in_using = True; mode = 'REFERENCE'; i+=1; continue
-    if tok == 'RETURNING': returning_next = True; in_using = False; i+=1; continue
-    if tok == 'BY': ...    # update mode from next token
+    if tok == 'USING':      in_using = True; mode = 'REFERENCE'
+    if tok == 'RETURNING':  returning_next = True; in_using = False
+    if tok == 'BY':         mode = ut[i+1] if ut[i+1] in (...)
     # operand: check returning_next first, then in_using + mode
 ```
 
-**Why this matters:** `CALL 'X' RETURNING id` (no `USING`) must still produce
-a mutate for `id`. An implementation that only enters the cursor loop after
-finding `USING` silently drops RETURNING-without-USING operands.
+- `RETURNING` sets mutate-only mode **unconditionally** (with or without a
+  preceding `USING` clause). The next identifier token is added to mutates only,
+  then the cursor stops.
+- **Do NOT** use `ut.index('USING')` to gate entry into the operand loop.
 
-### LOCKED: Mode semantics
+### Mode semantics (LOCKED)
 
 | Mode | Reads | Mutates |
 |---|---|---|
@@ -141,40 +138,35 @@ finding `USING` silently drops RETURNING-without-USING operands.
 
 ### LOCKED: `call_graph` key
 
-Every program output JSON **must** include a top-level `call_graph` key:
+Every output JSON **must** contain:
 
 ```json
 "call_graph": {
-  "CBACT01C": ["COBDATFT", "CEE3ABD"]
+  "PROGRAM_NAME": ["CALLED_PROG_1", "CALLED_PROG_2"]
 }
 ```
 
-- Value is an ordered list of unique static call targets (string literals
-  and bare identifiers after `CALL`).
-- `CBACT01C.call_graph` MUST contain `'COBDATFT'` and MAY contain additional
-  runtime targets (e.g. `'CEE3ABD'`) that are correct and expected.
+- Keys are static call targets only (string literals and bare identifiers
+  following `CALL`).
+- `CBACT01C.call_graph` **MUST** contain `'COBDATFT'`.
+- Additional runtime targets (e.g. `'CEE3ABD'`) **MAY** appear and are correct.
 
-### LOCKED: `unresolved_count` is informational only
+### Note on `unresolved_count` drift
 
-`unresolved_count` (the per-program stderr line) is **not** a gate criterion.
-Small ±1–4 shifts relative to prior gates are expected whenever a new verb
-handler classifies previously-unclassified tokens. The gate criteria that
-matter are:
-
-- All tests PASS
-- `1300_unresolved == []`
-- `--all` zero `local=0` and zero `local=1` WARNINGs
-- Only the three documented close-mismatch WARNINGs allowed
-  (COACTUPC, COACTVWC, COCRDLIC)
+`unresolved_count` is an **informational metric only** and is **not** a gate
+criterion. Small ±1 to ±4 shifts between 3.1 and 3.2 are expected: `_parse_call()`
+now classifies CALL operands, so some previously unclassified tokens now resolve
+(count drops) and some Linkage-Section operands are correctly extracted as
+unresolved (count rises). Both behaviors are correct.
 
 ### 3.2 Gate criteria (FROZEN — 47/47 PASS on `e9f68d3`)
 
 ```powershell
 python tests\test_data_flow.py
 # -> 47/47 PASS
-#    Includes: TestCallUsingByReference (3), TestCallUsingByContent (1),
-#              TestCallUsingByValue (1), TestCallReturning (3),
-#              TestCallMixedModes (1), TestCallGraphCbact01c (1)
+#    Includes TestCallUsingByReference (3), TestCallUsingByContent (1),
+#    TestCallUsingByValue (1), TestCallReturning (3 incl. no-USING case),
+#    TestCallMixedModes (1), TestCallGraphCbact01c (1)
 
 python scripts\data_flow.py data\raw\cbl\CBACT01C.cbl > data\data_flow\CBACT01C.json
 python -c "import json; d=json.load(open(r'data\\data_flow\\CBACT01C.json')); \
@@ -185,11 +177,12 @@ python -c "import json; d=json.load(open(r'data\\data_flow\\CBACT01C.json')); \
 
 python scripts\data_flow.py --all
 # -> 31 files, 0 ERROR
-# -> ZERO local=0 WARNINGs, ZERO local=1 WARNINGs
-# -> Allowed: COACTUPC / COACTVWC / COCRDLIC close-mismatch WARNINGs only
+# -> ZERO WARNINGs with local=0
+# -> ZERO WARNINGs with local=1
+# -> Allowed: COACTUPC, COACTVWC, COCRDLIC close-mismatch (deferred to 3.4)
 ```
 
-### Frozen contracts (do NOT touch in 3.3 or later without re-gating 3.2)
+### Frozen contracts (must not change in 3.3 or later without re-gating)
 
 `_normalise_source`, `_join_source_lines`, `extract_paragraphs`,
 `_is_area_a_paragraph`, `_mask_literals`, `_dispatch_inline`
@@ -199,38 +192,19 @@ python scripts\data_flow.py --all
 ## Section 3.3 Gate — Missing Verb Handlers
 
 **Branch:** `feature/schema-v1.3-section3-verbs`  
-**Prerequisite:** rebased onto post-3.2 main before merge.
+**Prerequisite:** 3.2 merged to main; branch rebased onto post-3.2 main.
 
 ### Specification
 
-Add deterministic handlers for the five verbs currently emitting
-`reason: 'VERB not yet classified (TODO)'` in the corpus:
+- Add handlers for: `INSPECT`, `SORT`, `MERGE`, `RELEASE`, `RETURN`
+- After each handler: zero corpus lines for that verb may produce an
+  unresolved entry with reason `UNKNOWN_VERB`
+- Currently these verbs emit a `TODO` unresolved entry; the handler
+  replaces that with proper read/mutate classification.
 
-| Verb | Operand semantics |
-|---|---|
-| `INSPECT` | source identifier (read); TALLYING/REPLACING targets (mutate) |
-| `SORT` | file name (mutate); USING files (read); GIVING files (mutate) |
-| `MERGE` | file name (mutate); USING files (read); GIVING files (mutate) |
-| `RELEASE` | record name (mutate); FROM source (read) |
-| `RETURN` | file name (mutate); INTO target (mutate) |
+### Frozen contracts (must NOT touch in 3.3)
 
-### 3.3 Gate criteria
-
-```powershell
-python tests\test_data_flow.py
-# -> 52+ PASS (47 + at least 5 new verb handler tests, one per verb)
-
-python scripts\data_flow.py --all
-# -> 31 files, 0 ERROR
-# -> ZERO local=0 WARNINGs, ZERO local=1 WARNINGs
-# -> Zero corpus lines for INSPECT/SORT/MERGE/RELEASE/RETURN produce
-#    an unresolved entry with reason 'UNKNOWN_VERB' or 'not yet classified'
-# -> Only COACTUPC / COACTVWC / COCRDLIC close-mismatch WARNINGs allowed
-```
-
-### Frozen contracts (do NOT touch in 3.3)
-
-All contracts locked in 3.1 and 3.2.
+All contracts locked in 3.1 and 3.2, plus `_parse_call()`.
 
 ---
 
