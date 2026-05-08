@@ -1,0 +1,2819 @@
+{
+  "program": "CORPT00C",
+  "schema_version": "1.2",
+  "paragraph_data_flow": {
+    "MAIN-PARA": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "SET",
+          "line_no": 165,
+          "raw_text": "SET ERR-FLG-OFF TO TRUE",
+          "reason": "unresolved mutate operand: ERR-FLG-OFF"
+        },
+        {
+          "verb": "SET",
+          "line_no": 165,
+          "raw_text": "SET TRANSACT-NOT-EOF TO TRUE",
+          "reason": "unresolved mutate operand: TRANSACT-NOT-EOF"
+        },
+        {
+          "verb": "SET",
+          "line_no": 165,
+          "raw_text": "SET SEND-ERASE-YES TO TRUE",
+          "reason": "unresolved mutate operand: SEND-ERASE-YES"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 165,
+          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF CORPT0AO",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 165,
+          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF CORPT0AO",
+          "reason": "unresolved mutate operand: ERRMSGO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 165,
+          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF CORPT0AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 165,
+          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF CORPT0AO",
+          "reason": "unresolved mutate operand: CORPT0AO"
+        },
+        {
+          "verb": "IF",
+          "line_no": 165,
+          "raw_text": "IF EIBCALEN = 0",
+          "reason": "unresolved read operand: EIBCALEN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 165,
+          "raw_text": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
+          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 165,
+          "raw_text": "MOVE DFHCOMMAREA(1:EIBCALEN) TO CARDDEMO-COMMAREA",
+          "reason": "unresolved read operand: DFHCOMMAREA(1:EIBCALEN)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 165,
+          "raw_text": "MOVE DFHCOMMAREA(1:EIBCALEN) TO CARDDEMO-COMMAREA",
+          "reason": "unresolved mutate operand: CARDDEMO-COMMAREA"
+        },
+        {
+          "verb": "IF",
+          "line_no": 165,
+          "raw_text": "IF NOT CDEMO-PGM-REENTER",
+          "reason": "unresolved read operand: CDEMO-PGM-REENTER"
+        },
+        {
+          "verb": "SET",
+          "line_no": 165,
+          "raw_text": "SET CDEMO-PGM-REENTER    TO TRUE",
+          "reason": "unresolved mutate operand: CDEMO-PGM-REENTER"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 165,
+          "raw_text": "MOVE LOW-VALUES          TO CORPT0AO",
+          "reason": "unresolved mutate operand: CORPT0AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 165,
+          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: MONTHLYL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 165,
+          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 165,
+          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 165,
+          "raw_text": "EVALUATE EIBAID",
+          "reason": "unresolved read operand: EIBAID"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 165,
+          "raw_text": "WHEN DFHENTER",
+          "reason": "unresolved read operand: DFHENTER"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 165,
+          "raw_text": "WHEN DFHPF3",
+          "reason": "unresolved read operand: DFHPF3"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 165,
+          "raw_text": "MOVE 'COMEN01C' TO CDEMO-TO-PROGRAM",
+          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 165,
+          "raw_text": "MOVE 'Y'                       TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 165,
+          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: MONTHLYL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 165,
+          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 165,
+          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 165,
+          "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
+          "reason": "unresolved read operand: CCDA-MSG-INVALID-KEY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 165,
+          "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN MONTHLYI OF CORPT0AI NOT = SPACES AND LOW-VALUES",
+          "reason": "unresolved read operand: MONTHLYI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN MONTHLYI OF CORPT0AI NOT = SPACES AND LOW-VALUES",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN MONTHLYI OF CORPT0AI NOT = SPACES AND LOW-VALUES",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Monthly'   TO WS-REPORT-NAME",
+          "reason": "unresolved mutate operand: WS-REPORT-NAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
+          "reason": "unresolved read operand: CURRENT-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
+          "reason": "unresolved mutate operand: WS-CURDATE-DATA"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-CURDATE-YEAR     TO WS-START-DATE-YYYY",
+          "reason": "unresolved read operand: WS-CURDATE-YEAR"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-CURDATE-YEAR     TO WS-START-DATE-YYYY",
+          "reason": "unresolved mutate operand: WS-START-DATE-YYYY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-CURDATE-MONTH    TO WS-START-DATE-MM",
+          "reason": "unresolved read operand: WS-CURDATE-MONTH"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-CURDATE-MONTH    TO WS-START-DATE-MM",
+          "reason": "unresolved mutate operand: WS-START-DATE-MM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE '01'                TO WS-START-DATE-DD",
+          "reason": "unresolved mutate operand: WS-START-DATE-DD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-START-DATE       TO PARM-START-DATE-1 PARM-START-DATE-2",
+          "reason": "unresolved read operand: WS-START-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-START-DATE       TO PARM-START-DATE-1 PARM-START-DATE-2",
+          "reason": "unresolved mutate operand: PARM-START-DATE-1"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-START-DATE       TO PARM-START-DATE-1 PARM-START-DATE-2",
+          "reason": "unresolved mutate operand: PARM-START-DATE-2"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 1              TO WS-CURDATE-DAY",
+          "reason": "unresolved mutate operand: WS-CURDATE-DAY"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 210,
+          "raw_text": "ADD 1               TO WS-CURDATE-MONTH",
+          "reason": "unresolved read operand: WS-CURDATE-MONTH"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 210,
+          "raw_text": "ADD 1               TO WS-CURDATE-MONTH",
+          "reason": "unresolved mutate operand: WS-CURDATE-MONTH"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF WS-CURDATE-MONTH > 12",
+          "reason": "unresolved read operand: WS-CURDATE-MONTH"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 210,
+          "raw_text": "ADD 1           TO WS-CURDATE-YEAR",
+          "reason": "unresolved read operand: WS-CURDATE-YEAR"
+        },
+        {
+          "verb": "ADD",
+          "line_no": 210,
+          "raw_text": "ADD 1           TO WS-CURDATE-YEAR",
+          "reason": "unresolved mutate operand: WS-CURDATE-YEAR"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 1          TO WS-CURDATE-MONTH",
+          "reason": "unresolved mutate operand: WS-CURDATE-MONTH"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-CURDATE-N = FUNCTION DATE-OF-INTEGER( FUNCTION INTEGER-OF-DATE(WS-CURDATE-N) - 1)",
+          "reason": "unresolved mutate operand: WS-CURDATE-N"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-CURDATE-N = FUNCTION DATE-OF-INTEGER( FUNCTION INTEGER-OF-DATE(WS-CURDATE-N) - 1)",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-CURDATE-N = FUNCTION DATE-OF-INTEGER( FUNCTION INTEGER-OF-DATE(WS-CURDATE-N) - 1)",
+          "reason": "unresolved read operand: DATE-OF-INTEGER("
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-CURDATE-N = FUNCTION DATE-OF-INTEGER( FUNCTION INTEGER-OF-DATE(WS-CURDATE-N) - 1)",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-CURDATE-N = FUNCTION DATE-OF-INTEGER( FUNCTION INTEGER-OF-DATE(WS-CURDATE-N) - 1)",
+          "reason": "unresolved read operand: INTEGER-OF-DATE(WS-CURDATE-N)"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-CURDATE-N = FUNCTION DATE-OF-INTEGER( FUNCTION INTEGER-OF-DATE(WS-CURDATE-N) - 1)",
+          "reason": "unresolved read operand: 1)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-CURDATE-YEAR     TO WS-END-DATE-YYYY",
+          "reason": "unresolved read operand: WS-CURDATE-YEAR"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-CURDATE-YEAR     TO WS-END-DATE-YYYY",
+          "reason": "unresolved mutate operand: WS-END-DATE-YYYY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-CURDATE-MONTH    TO WS-END-DATE-MM",
+          "reason": "unresolved read operand: WS-CURDATE-MONTH"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-CURDATE-MONTH    TO WS-END-DATE-MM",
+          "reason": "unresolved mutate operand: WS-END-DATE-MM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-CURDATE-DAY      TO WS-END-DATE-DD",
+          "reason": "unresolved read operand: WS-CURDATE-DAY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-CURDATE-DAY      TO WS-END-DATE-DD",
+          "reason": "unresolved mutate operand: WS-END-DATE-DD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-END-DATE         TO PARM-END-DATE-1 PARM-END-DATE-2",
+          "reason": "unresolved read operand: WS-END-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-END-DATE         TO PARM-END-DATE-1 PARM-END-DATE-2",
+          "reason": "unresolved mutate operand: PARM-END-DATE-1"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-END-DATE         TO PARM-END-DATE-1 PARM-END-DATE-2",
+          "reason": "unresolved mutate operand: PARM-END-DATE-2"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN YEARLYI OF CORPT0AI NOT = SPACES AND LOW-VALUES",
+          "reason": "unresolved read operand: YEARLYI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN YEARLYI OF CORPT0AI NOT = SPACES AND LOW-VALUES",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN YEARLYI OF CORPT0AI NOT = SPACES AND LOW-VALUES",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Yearly'   TO WS-REPORT-NAME",
+          "reason": "unresolved mutate operand: WS-REPORT-NAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
+          "reason": "unresolved read operand: CURRENT-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
+          "reason": "unresolved mutate operand: WS-CURDATE-DATA"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-CURDATE-YEAR     TO WS-START-DATE-YYYY WS-END-DATE-YYYY",
+          "reason": "unresolved read operand: WS-CURDATE-YEAR"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-CURDATE-YEAR     TO WS-START-DATE-YYYY WS-END-DATE-YYYY",
+          "reason": "unresolved mutate operand: WS-START-DATE-YYYY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-CURDATE-YEAR     TO WS-START-DATE-YYYY WS-END-DATE-YYYY",
+          "reason": "unresolved mutate operand: WS-END-DATE-YYYY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE '01'                TO WS-START-DATE-MM WS-START-DATE-DD",
+          "reason": "unresolved mutate operand: WS-START-DATE-MM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE '01'                TO WS-START-DATE-MM WS-START-DATE-DD",
+          "reason": "unresolved mutate operand: WS-START-DATE-DD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-START-DATE       TO PARM-START-DATE-1 PARM-START-DATE-2",
+          "reason": "unresolved read operand: WS-START-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-START-DATE       TO PARM-START-DATE-1 PARM-START-DATE-2",
+          "reason": "unresolved mutate operand: PARM-START-DATE-1"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-START-DATE       TO PARM-START-DATE-1 PARM-START-DATE-2",
+          "reason": "unresolved mutate operand: PARM-START-DATE-2"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE '12'                TO WS-END-DATE-MM",
+          "reason": "unresolved mutate operand: WS-END-DATE-MM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE '31'                TO WS-END-DATE-DD",
+          "reason": "unresolved mutate operand: WS-END-DATE-DD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-END-DATE         TO PARM-END-DATE-1 PARM-END-DATE-2",
+          "reason": "unresolved read operand: WS-END-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-END-DATE         TO PARM-END-DATE-1 PARM-END-DATE-2",
+          "reason": "unresolved mutate operand: PARM-END-DATE-1"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-END-DATE         TO PARM-END-DATE-1 PARM-END-DATE-2",
+          "reason": "unresolved mutate operand: PARM-END-DATE-2"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN CUSTOMI OF CORPT0AI NOT = SPACES AND LOW-VALUES",
+          "reason": "unresolved read operand: CUSTOMI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN CUSTOMI OF CORPT0AI NOT = SPACES AND LOW-VALUES",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN CUSTOMI OF CORPT0AI NOT = SPACES AND LOW-VALUES",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN SDTMMI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: SDTMMI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN SDTMMI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN SDTMMI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Start Date - Month can NOT be empty...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTMML OF CORPT0AI",
+          "reason": "unresolved mutate operand: SDTMML"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTMML OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTMML OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN SDTDDI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: SDTDDI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN SDTDDI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN SDTDDI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Start Date - Day can NOT be empty...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTDDL OF CORPT0AI",
+          "reason": "unresolved mutate operand: SDTDDL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTDDL OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTDDL OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN SDTYYYYI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: SDTYYYYI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN SDTYYYYI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN SDTYYYYI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Start Date - Year can NOT be empty...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTYYYYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: SDTYYYYL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTYYYYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTYYYYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN EDTMMI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: EDTMMI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN EDTMMI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN EDTMMI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'End Date - Month can NOT be empty...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTMML OF CORPT0AI",
+          "reason": "unresolved mutate operand: EDTMML"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTMML OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTMML OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN EDTDDI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: EDTDDI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN EDTDDI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN EDTDDI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'End Date - Day can NOT be empty...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTDDL OF CORPT0AI",
+          "reason": "unresolved mutate operand: EDTDDL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTDDL OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTDDL OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN EDTYYYYI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: EDTYYYYI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN EDTYYYYI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 210,
+          "raw_text": "WHEN EDTYYYYI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'End Date - Year can NOT be empty...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTYYYYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: EDTYYYYL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTYYYYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTYYYYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (SDTMMI OF CORPT0AI)",
+          "reason": "unresolved mutate operand: WS-NUM-99"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (SDTMMI OF CORPT0AI)",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (SDTMMI OF CORPT0AI)",
+          "reason": "unresolved read operand: NUMVAL-C"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (SDTMMI OF CORPT0AI)",
+          "reason": "unresolved read operand: (SDTMMI"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (SDTMMI OF CORPT0AI)",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (SDTMMI OF CORPT0AI)",
+          "reason": "unresolved read operand: CORPT0AI)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-99      TO SDTMMI OF CORPT0AI",
+          "reason": "unresolved read operand: WS-NUM-99"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-99      TO SDTMMI OF CORPT0AI",
+          "reason": "unresolved mutate operand: SDTMMI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-99      TO SDTMMI OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-99      TO SDTMMI OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (SDTDDI OF CORPT0AI)",
+          "reason": "unresolved mutate operand: WS-NUM-99"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (SDTDDI OF CORPT0AI)",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (SDTDDI OF CORPT0AI)",
+          "reason": "unresolved read operand: NUMVAL-C"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (SDTDDI OF CORPT0AI)",
+          "reason": "unresolved read operand: (SDTDDI"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (SDTDDI OF CORPT0AI)",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (SDTDDI OF CORPT0AI)",
+          "reason": "unresolved read operand: CORPT0AI)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-99      TO SDTDDI OF CORPT0AI",
+          "reason": "unresolved read operand: WS-NUM-99"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-99      TO SDTDDI OF CORPT0AI",
+          "reason": "unresolved mutate operand: SDTDDI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-99      TO SDTDDI OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-99      TO SDTDDI OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-9999 = FUNCTION NUMVAL-C (SDTYYYYI OF CORPT0AI)",
+          "reason": "unresolved mutate operand: WS-NUM-9999"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-9999 = FUNCTION NUMVAL-C (SDTYYYYI OF CORPT0AI)",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-9999 = FUNCTION NUMVAL-C (SDTYYYYI OF CORPT0AI)",
+          "reason": "unresolved read operand: NUMVAL-C"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-9999 = FUNCTION NUMVAL-C (SDTYYYYI OF CORPT0AI)",
+          "reason": "unresolved read operand: (SDTYYYYI"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-9999 = FUNCTION NUMVAL-C (SDTYYYYI OF CORPT0AI)",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-9999 = FUNCTION NUMVAL-C (SDTYYYYI OF CORPT0AI)",
+          "reason": "unresolved read operand: CORPT0AI)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-9999      TO SDTYYYYI OF CORPT0AI",
+          "reason": "unresolved read operand: WS-NUM-9999"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-9999      TO SDTYYYYI OF CORPT0AI",
+          "reason": "unresolved mutate operand: SDTYYYYI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-9999      TO SDTYYYYI OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-9999      TO SDTYYYYI OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (EDTMMI OF CORPT0AI)",
+          "reason": "unresolved mutate operand: WS-NUM-99"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (EDTMMI OF CORPT0AI)",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (EDTMMI OF CORPT0AI)",
+          "reason": "unresolved read operand: NUMVAL-C"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (EDTMMI OF CORPT0AI)",
+          "reason": "unresolved read operand: (EDTMMI"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (EDTMMI OF CORPT0AI)",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (EDTMMI OF CORPT0AI)",
+          "reason": "unresolved read operand: CORPT0AI)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-99      TO EDTMMI OF CORPT0AI",
+          "reason": "unresolved read operand: WS-NUM-99"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-99      TO EDTMMI OF CORPT0AI",
+          "reason": "unresolved mutate operand: EDTMMI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-99      TO EDTMMI OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-99      TO EDTMMI OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (EDTDDI OF CORPT0AI)",
+          "reason": "unresolved mutate operand: WS-NUM-99"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (EDTDDI OF CORPT0AI)",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (EDTDDI OF CORPT0AI)",
+          "reason": "unresolved read operand: NUMVAL-C"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (EDTDDI OF CORPT0AI)",
+          "reason": "unresolved read operand: (EDTDDI"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (EDTDDI OF CORPT0AI)",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C (EDTDDI OF CORPT0AI)",
+          "reason": "unresolved read operand: CORPT0AI)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-99      TO EDTDDI OF CORPT0AI",
+          "reason": "unresolved read operand: WS-NUM-99"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-99      TO EDTDDI OF CORPT0AI",
+          "reason": "unresolved mutate operand: EDTDDI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-99      TO EDTDDI OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-99      TO EDTDDI OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-9999 = FUNCTION NUMVAL-C (EDTYYYYI OF CORPT0AI)",
+          "reason": "unresolved mutate operand: WS-NUM-9999"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-9999 = FUNCTION NUMVAL-C (EDTYYYYI OF CORPT0AI)",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-9999 = FUNCTION NUMVAL-C (EDTYYYYI OF CORPT0AI)",
+          "reason": "unresolved read operand: NUMVAL-C"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-9999 = FUNCTION NUMVAL-C (EDTYYYYI OF CORPT0AI)",
+          "reason": "unresolved read operand: (EDTYYYYI"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-9999 = FUNCTION NUMVAL-C (EDTYYYYI OF CORPT0AI)",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "COMPUTE",
+          "line_no": 210,
+          "raw_text": "COMPUTE WS-NUM-9999 = FUNCTION NUMVAL-C (EDTYYYYI OF CORPT0AI)",
+          "reason": "unresolved read operand: CORPT0AI)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-9999      TO EDTYYYYI OF CORPT0AI",
+          "reason": "unresolved read operand: WS-NUM-9999"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-9999      TO EDTYYYYI OF CORPT0AI",
+          "reason": "unresolved mutate operand: EDTYYYYI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-9999      TO EDTYYYYI OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-NUM-9999      TO EDTYYYYI OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTMMI OF CORPT0AI IS NOT NUMERIC OR SDTMMI OF CORPT0AI > '12'",
+          "reason": "unresolved read operand: SDTMMI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTMMI OF CORPT0AI IS NOT NUMERIC OR SDTMMI OF CORPT0AI > '12'",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTMMI OF CORPT0AI IS NOT NUMERIC OR SDTMMI OF CORPT0AI > '12'",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTMMI OF CORPT0AI IS NOT NUMERIC OR SDTMMI OF CORPT0AI > '12'",
+          "reason": "unresolved read operand: IS"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTMMI OF CORPT0AI IS NOT NUMERIC OR SDTMMI OF CORPT0AI > '12'",
+          "reason": "unresolved read operand: NUMERIC"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTMMI OF CORPT0AI IS NOT NUMERIC OR SDTMMI OF CORPT0AI > '12'",
+          "reason": "unresolved read operand: SDTMMI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTMMI OF CORPT0AI IS NOT NUMERIC OR SDTMMI OF CORPT0AI > '12'",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTMMI OF CORPT0AI IS NOT NUMERIC OR SDTMMI OF CORPT0AI > '12'",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Start Date - Not a valid Month...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTMML OF CORPT0AI",
+          "reason": "unresolved mutate operand: SDTMML"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTMML OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTMML OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTDDI OF CORPT0AI IS NOT NUMERIC OR SDTDDI OF CORPT0AI > '31'",
+          "reason": "unresolved read operand: SDTDDI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTDDI OF CORPT0AI IS NOT NUMERIC OR SDTDDI OF CORPT0AI > '31'",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTDDI OF CORPT0AI IS NOT NUMERIC OR SDTDDI OF CORPT0AI > '31'",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTDDI OF CORPT0AI IS NOT NUMERIC OR SDTDDI OF CORPT0AI > '31'",
+          "reason": "unresolved read operand: IS"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTDDI OF CORPT0AI IS NOT NUMERIC OR SDTDDI OF CORPT0AI > '31'",
+          "reason": "unresolved read operand: NUMERIC"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTDDI OF CORPT0AI IS NOT NUMERIC OR SDTDDI OF CORPT0AI > '31'",
+          "reason": "unresolved read operand: SDTDDI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTDDI OF CORPT0AI IS NOT NUMERIC OR SDTDDI OF CORPT0AI > '31'",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTDDI OF CORPT0AI IS NOT NUMERIC OR SDTDDI OF CORPT0AI > '31'",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Start Date - Not a valid Day...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTDDL OF CORPT0AI",
+          "reason": "unresolved mutate operand: SDTDDL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTDDL OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTDDL OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+          "reason": "unresolved read operand: SDTYYYYI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+          "reason": "unresolved read operand: IS"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF SDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+          "reason": "unresolved read operand: NUMERIC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Start Date - Not a valid Year...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTYYYYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: SDTYYYYL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTYYYYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTYYYYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTMMI OF CORPT0AI IS NOT NUMERIC OR EDTMMI OF CORPT0AI > '12'",
+          "reason": "unresolved read operand: EDTMMI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTMMI OF CORPT0AI IS NOT NUMERIC OR EDTMMI OF CORPT0AI > '12'",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTMMI OF CORPT0AI IS NOT NUMERIC OR EDTMMI OF CORPT0AI > '12'",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTMMI OF CORPT0AI IS NOT NUMERIC OR EDTMMI OF CORPT0AI > '12'",
+          "reason": "unresolved read operand: IS"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTMMI OF CORPT0AI IS NOT NUMERIC OR EDTMMI OF CORPT0AI > '12'",
+          "reason": "unresolved read operand: NUMERIC"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTMMI OF CORPT0AI IS NOT NUMERIC OR EDTMMI OF CORPT0AI > '12'",
+          "reason": "unresolved read operand: EDTMMI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTMMI OF CORPT0AI IS NOT NUMERIC OR EDTMMI OF CORPT0AI > '12'",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTMMI OF CORPT0AI IS NOT NUMERIC OR EDTMMI OF CORPT0AI > '12'",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'End Date - Not a valid Month...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTMML OF CORPT0AI",
+          "reason": "unresolved mutate operand: EDTMML"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTMML OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTMML OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTDDI OF CORPT0AI IS NOT NUMERIC OR EDTDDI OF CORPT0AI > '31'",
+          "reason": "unresolved read operand: EDTDDI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTDDI OF CORPT0AI IS NOT NUMERIC OR EDTDDI OF CORPT0AI > '31'",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTDDI OF CORPT0AI IS NOT NUMERIC OR EDTDDI OF CORPT0AI > '31'",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTDDI OF CORPT0AI IS NOT NUMERIC OR EDTDDI OF CORPT0AI > '31'",
+          "reason": "unresolved read operand: IS"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTDDI OF CORPT0AI IS NOT NUMERIC OR EDTDDI OF CORPT0AI > '31'",
+          "reason": "unresolved read operand: NUMERIC"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTDDI OF CORPT0AI IS NOT NUMERIC OR EDTDDI OF CORPT0AI > '31'",
+          "reason": "unresolved read operand: EDTDDI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTDDI OF CORPT0AI IS NOT NUMERIC OR EDTDDI OF CORPT0AI > '31'",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTDDI OF CORPT0AI IS NOT NUMERIC OR EDTDDI OF CORPT0AI > '31'",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'End Date - Not a valid Day...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTDDL OF CORPT0AI",
+          "reason": "unresolved mutate operand: EDTDDL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTDDL OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTDDL OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+          "reason": "unresolved read operand: EDTYYYYI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+          "reason": "unresolved read operand: IS"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF EDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+          "reason": "unresolved read operand: NUMERIC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'End Date - Not a valid Year...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTYYYYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: EDTYYYYL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTYYYYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTYYYYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE SDTYYYYI OF CORPT0AI TO WS-START-DATE-YYYY",
+          "reason": "unresolved read operand: SDTYYYYI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE SDTYYYYI OF CORPT0AI TO WS-START-DATE-YYYY",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE SDTYYYYI OF CORPT0AI TO WS-START-DATE-YYYY",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE SDTYYYYI OF CORPT0AI TO WS-START-DATE-YYYY",
+          "reason": "unresolved mutate operand: WS-START-DATE-YYYY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE SDTMMI   OF CORPT0AI TO WS-START-DATE-MM",
+          "reason": "unresolved read operand: SDTMMI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE SDTMMI   OF CORPT0AI TO WS-START-DATE-MM",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE SDTMMI   OF CORPT0AI TO WS-START-DATE-MM",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE SDTMMI   OF CORPT0AI TO WS-START-DATE-MM",
+          "reason": "unresolved mutate operand: WS-START-DATE-MM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE SDTDDI   OF CORPT0AI TO WS-START-DATE-DD",
+          "reason": "unresolved read operand: SDTDDI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE SDTDDI   OF CORPT0AI TO WS-START-DATE-DD",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE SDTDDI   OF CORPT0AI TO WS-START-DATE-DD",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE SDTDDI   OF CORPT0AI TO WS-START-DATE-DD",
+          "reason": "unresolved mutate operand: WS-START-DATE-DD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE EDTYYYYI OF CORPT0AI TO WS-END-DATE-YYYY",
+          "reason": "unresolved read operand: EDTYYYYI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE EDTYYYYI OF CORPT0AI TO WS-END-DATE-YYYY",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE EDTYYYYI OF CORPT0AI TO WS-END-DATE-YYYY",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE EDTYYYYI OF CORPT0AI TO WS-END-DATE-YYYY",
+          "reason": "unresolved mutate operand: WS-END-DATE-YYYY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE EDTMMI   OF CORPT0AI TO WS-END-DATE-MM",
+          "reason": "unresolved read operand: EDTMMI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE EDTMMI   OF CORPT0AI TO WS-END-DATE-MM",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE EDTMMI   OF CORPT0AI TO WS-END-DATE-MM",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE EDTMMI   OF CORPT0AI TO WS-END-DATE-MM",
+          "reason": "unresolved mutate operand: WS-END-DATE-MM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE EDTDDI   OF CORPT0AI TO WS-END-DATE-DD",
+          "reason": "unresolved read operand: EDTDDI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE EDTDDI   OF CORPT0AI TO WS-END-DATE-DD",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE EDTDDI   OF CORPT0AI TO WS-END-DATE-DD",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE EDTDDI   OF CORPT0AI TO WS-END-DATE-DD",
+          "reason": "unresolved mutate operand: WS-END-DATE-DD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-START-DATE        TO CSUTLDTC-DATE",
+          "reason": "unresolved read operand: WS-START-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-START-DATE        TO CSUTLDTC-DATE",
+          "reason": "unresolved mutate operand: CSUTLDTC-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-DATE-FORMAT       TO CSUTLDTC-DATE-FORMAT",
+          "reason": "unresolved read operand: WS-DATE-FORMAT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-DATE-FORMAT       TO CSUTLDTC-DATE-FORMAT",
+          "reason": "unresolved mutate operand: CSUTLDTC-DATE-FORMAT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE SPACES               TO CSUTLDTC-RESULT",
+          "reason": "unresolved mutate operand: CSUTLDTC-RESULT"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 210,
+          "raw_text": "CALL 'CSUTLDTC' USING   CSUTLDTC-DATE CSUTLDTC-DATE-FORMAT CSUTLDTC-RESULT",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF CSUTLDTC-RESULT-SEV-CD = '0000'",
+          "reason": "unresolved read operand: CSUTLDTC-RESULT-SEV-CD"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF CSUTLDTC-RESULT-MSG-NUM NOT = '2513'",
+          "reason": "unresolved read operand: CSUTLDTC-RESULT-MSG-NUM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Start Date - Not a valid date...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTMML OF CORPT0AI",
+          "reason": "unresolved mutate operand: SDTMML"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTMML OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO SDTMML OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-END-DATE          TO CSUTLDTC-DATE",
+          "reason": "unresolved read operand: WS-END-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-END-DATE          TO CSUTLDTC-DATE",
+          "reason": "unresolved mutate operand: CSUTLDTC-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-DATE-FORMAT       TO CSUTLDTC-DATE-FORMAT",
+          "reason": "unresolved read operand: WS-DATE-FORMAT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-DATE-FORMAT       TO CSUTLDTC-DATE-FORMAT",
+          "reason": "unresolved mutate operand: CSUTLDTC-DATE-FORMAT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE SPACES               TO CSUTLDTC-RESULT",
+          "reason": "unresolved mutate operand: CSUTLDTC-RESULT"
+        },
+        {
+          "verb": "CALL",
+          "line_no": 210,
+          "raw_text": "CALL 'CSUTLDTC' USING   CSUTLDTC-DATE CSUTLDTC-DATE-FORMAT CSUTLDTC-RESULT",
+          "reason": "CALL USING not yet classified (TODO Section 3)"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF CSUTLDTC-RESULT-SEV-CD = '0000'",
+          "reason": "unresolved read operand: CSUTLDTC-RESULT-SEV-CD"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF CSUTLDTC-RESULT-MSG-NUM NOT = '2513'",
+          "reason": "unresolved read operand: CSUTLDTC-RESULT-MSG-NUM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'End Date - Not a valid date...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTMML OF CORPT0AI",
+          "reason": "unresolved mutate operand: EDTMML"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTMML OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO EDTMML OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-START-DATE       TO PARM-START-DATE-1 PARM-START-DATE-2",
+          "reason": "unresolved read operand: WS-START-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-START-DATE       TO PARM-START-DATE-1 PARM-START-DATE-2",
+          "reason": "unresolved mutate operand: PARM-START-DATE-1"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-START-DATE       TO PARM-START-DATE-1 PARM-START-DATE-2",
+          "reason": "unresolved mutate operand: PARM-START-DATE-2"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-END-DATE         TO PARM-END-DATE-1 PARM-END-DATE-2",
+          "reason": "unresolved read operand: WS-END-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-END-DATE         TO PARM-END-DATE-1 PARM-END-DATE-2",
+          "reason": "unresolved mutate operand: PARM-END-DATE-1"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE WS-END-DATE         TO PARM-END-DATE-1 PARM-END-DATE-2",
+          "reason": "unresolved mutate operand: PARM-END-DATE-2"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Custom'   TO WS-REPORT-NAME",
+          "reason": "unresolved mutate operand: WS-REPORT-NAME"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF NOT ERR-FLG-ON",
+          "reason": "unresolved read operand: ERR-FLG-ON"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Select a report type to print report...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: MONTHLYL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 210,
+          "raw_text": "IF NOT ERR-FLG-ON",
+          "reason": "unresolved read operand: ERR-FLG-ON"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF CORPT0AO",
+          "reason": "unresolved read operand: DFHGREEN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF CORPT0AO",
+          "reason": "unresolved mutate operand: ERRMSGC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF CORPT0AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF CORPT0AO",
+          "reason": "unresolved mutate operand: CORPT0AO"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 210,
+          "raw_text": "STRING WS-REPORT-NAME   DELIMITED BY SPACE ' report submitted for printing ...' DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved read operand: WS-REPORT-NAME"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 210,
+          "raw_text": "STRING WS-REPORT-NAME   DELIMITED BY SPACE ' report submitted for printing ...' DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: MONTHLYL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 210,
+          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 464,
+          "raw_text": "IF CONFIRMI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: CONFIRMI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 464,
+          "raw_text": "IF CONFIRMI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "IF",
+          "line_no": 464,
+          "raw_text": "IF CONFIRMI OF CORPT0AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 464,
+          "raw_text": "STRING 'Please confirm to print the ' DELIMITED BY SIZE WS-REPORT-NAME    DELIMITED BY SPACE ' report...'      DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved read operand: WS-REPORT-NAME"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 464,
+          "raw_text": "STRING 'Please confirm to print the ' DELIMITED BY SIZE WS-REPORT-NAME    DELIMITED BY SPACE ' report...'      DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 464,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 464,
+          "raw_text": "MOVE -1       TO CONFIRML OF CORPT0AI",
+          "reason": "unresolved mutate operand: CONFIRML"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 464,
+          "raw_text": "MOVE -1       TO CONFIRML OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 464,
+          "raw_text": "MOVE -1       TO CONFIRML OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 464,
+          "raw_text": "IF NOT ERR-FLG-ON",
+          "reason": "unresolved read operand: ERR-FLG-ON"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 464,
+          "raw_text": "WHEN CONFIRMI OF CORPT0AI = 'Y' OR 'y'",
+          "reason": "unresolved read operand: CONFIRMI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 464,
+          "raw_text": "WHEN CONFIRMI OF CORPT0AI = 'Y' OR 'y'",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 464,
+          "raw_text": "WHEN CONFIRMI OF CORPT0AI = 'Y' OR 'y'",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 464,
+          "raw_text": "WHEN CONFIRMI OF CORPT0AI = 'N' OR 'n'",
+          "reason": "unresolved read operand: CONFIRMI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 464,
+          "raw_text": "WHEN CONFIRMI OF CORPT0AI = 'N' OR 'n'",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 464,
+          "raw_text": "WHEN CONFIRMI OF CORPT0AI = 'N' OR 'n'",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 464,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 464,
+          "raw_text": "STRING '\"'               DELIMITED BY SIZE CONFIRMI OF CORPT0AI    DELIMITED BY SPACE '\" is not a valid value to confirm...' DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved read operand: CONFIRMI"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 464,
+          "raw_text": "STRING '\"'               DELIMITED BY SIZE CONFIRMI OF CORPT0AI    DELIMITED BY SPACE '\" is not a valid value to confirm...' DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 464,
+          "raw_text": "STRING '\"'               DELIMITED BY SIZE CONFIRMI OF CORPT0AI    DELIMITED BY SPACE '\" is not a valid value to confirm...' DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved read operand: CORPT0AI"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 464,
+          "raw_text": "STRING '\"'               DELIMITED BY SIZE CONFIRMI OF CORPT0AI    DELIMITED BY SPACE '\" is not a valid value to confirm...' DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 464,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 464,
+          "raw_text": "MOVE -1       TO CONFIRML OF CORPT0AI",
+          "reason": "unresolved mutate operand: CONFIRML"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 464,
+          "raw_text": "MOVE -1       TO CONFIRML OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 464,
+          "raw_text": "MOVE -1       TO CONFIRML OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "SET",
+          "line_no": 464,
+          "raw_text": "SET END-LOOP-NO TO TRUE",
+          "reason": "unresolved mutate operand: END-LOOP-NO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 464,
+          "raw_text": "MOVE JOB-LINES(WS-IDX) TO JCL-RECORD",
+          "reason": "unresolved read operand: JOB-LINES(WS-IDX)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 464,
+          "raw_text": "MOVE JOB-LINES(WS-IDX) TO JCL-RECORD",
+          "reason": "unresolved mutate operand: JCL-RECORD"
+        },
+        {
+          "verb": "IF",
+          "line_no": 464,
+          "raw_text": "IF JCL-RECORD = '/*EOF' OR JCL-RECORD = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: JCL-RECORD"
+        },
+        {
+          "verb": "IF",
+          "line_no": 464,
+          "raw_text": "IF JCL-RECORD = '/*EOF' OR JCL-RECORD = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: JCL-RECORD"
+        },
+        {
+          "verb": "SET",
+          "line_no": 464,
+          "raw_text": "SET END-LOOP-YES TO TRUE",
+          "reason": "unresolved mutate operand: END-LOOP-YES"
+        },
+        {
+          "verb": "EXEC",
+          "line_no": 517,
+          "raw_text": "EXEC CICS WRITEQ TD QUEUE ('JOBS') FROM (JCL-RECORD) LENGTH (LENGTH OF JCL-RECORD) RESP(WS-RESP-CD) RESP2(WS-REAS-CD)",
+          "reason": "unresolved read operand: (JCL-RECORD)"
+        },
+        {
+          "verb": "EXEC",
+          "line_no": 517,
+          "raw_text": "EXEC CICS WRITEQ TD QUEUE ('JOBS') FROM (JCL-RECORD) LENGTH (LENGTH OF JCL-RECORD) RESP(WS-RESP-CD) RESP2(WS-REAS-CD)",
+          "reason": "unresolved read operand: (LENGTH"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 525,
+          "raw_text": "EVALUATE WS-RESP-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 525,
+          "raw_text": "WHEN DFHRESP(NORMAL)",
+          "reason": "unresolved read operand: DFHRESP(NORMAL)"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 525,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 525,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-REAS-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 525,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 525,
+          "raw_text": "MOVE 'Unable to Write TDQ (JOBS)...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 525,
+          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: MONTHLYL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 525,
+          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 525,
+          "raw_text": "MOVE -1       TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 542,
+          "raw_text": "IF CDEMO-TO-PROGRAM = LOW-VALUES OR SPACES",
+          "reason": "unresolved read operand: CDEMO-TO-PROGRAM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 542,
+          "raw_text": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
+          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 542,
+          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
+          "reason": "unresolved read operand: WS-TRANID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 542,
+          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
+          "reason": "unresolved mutate operand: CDEMO-FROM-TRANID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 542,
+          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
+          "reason": "unresolved read operand: WS-PGMNAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 542,
+          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
+          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 542,
+          "raw_text": "MOVE ZEROS        TO CDEMO-PGM-CONTEXT",
+          "reason": "unresolved mutate operand: CDEMO-PGM-CONTEXT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 558,
+          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF CORPT0AO",
+          "reason": "unresolved read operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 558,
+          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF CORPT0AO",
+          "reason": "unresolved mutate operand: ERRMSGO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 558,
+          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF CORPT0AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 558,
+          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF CORPT0AO",
+          "reason": "unresolved mutate operand: CORPT0AO"
+        },
+        {
+          "verb": "IF",
+          "line_no": 558,
+          "raw_text": "IF SEND-ERASE-YES",
+          "reason": "unresolved read operand: SEND-ERASE-YES"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
+          "reason": "unresolved read operand: CURRENT-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
+          "reason": "unresolved mutate operand: WS-CURDATE-DATA"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF CORPT0AO",
+          "reason": "unresolved read operand: CCDA-TITLE01"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF CORPT0AO",
+          "reason": "unresolved mutate operand: TITLE01O"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF CORPT0AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF CORPT0AO",
+          "reason": "unresolved mutate operand: CORPT0AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF CORPT0AO",
+          "reason": "unresolved read operand: CCDA-TITLE02"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF CORPT0AO",
+          "reason": "unresolved mutate operand: TITLE02O"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF CORPT0AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF CORPT0AO",
+          "reason": "unresolved mutate operand: CORPT0AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF CORPT0AO",
+          "reason": "unresolved read operand: WS-TRANID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF CORPT0AO",
+          "reason": "unresolved mutate operand: TRNNAMEO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF CORPT0AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF CORPT0AO",
+          "reason": "unresolved mutate operand: CORPT0AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF CORPT0AO",
+          "reason": "unresolved read operand: WS-PGMNAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF CORPT0AO",
+          "reason": "unresolved mutate operand: PGMNAMEO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF CORPT0AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF CORPT0AO",
+          "reason": "unresolved mutate operand: CORPT0AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURDATE-MONTH       TO WS-CURDATE-MM",
+          "reason": "unresolved read operand: WS-CURDATE-MONTH"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURDATE-MONTH       TO WS-CURDATE-MM",
+          "reason": "unresolved mutate operand: WS-CURDATE-MM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURDATE-DAY         TO WS-CURDATE-DD",
+          "reason": "unresolved read operand: WS-CURDATE-DAY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURDATE-DAY         TO WS-CURDATE-DD",
+          "reason": "unresolved mutate operand: WS-CURDATE-DD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURDATE-YEAR(3:2)   TO WS-CURDATE-YY",
+          "reason": "unresolved read operand: WS-CURDATE-YEAR(3:2)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURDATE-YEAR(3:2)   TO WS-CURDATE-YY",
+          "reason": "unresolved mutate operand: WS-CURDATE-YY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF CORPT0AO",
+          "reason": "unresolved read operand: WS-CURDATE-MM-DD-YY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF CORPT0AO",
+          "reason": "unresolved mutate operand: CURDATEO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF CORPT0AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF CORPT0AO",
+          "reason": "unresolved mutate operand: CORPT0AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURTIME-HOURS       TO WS-CURTIME-HH",
+          "reason": "unresolved read operand: WS-CURTIME-HOURS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURTIME-HOURS       TO WS-CURTIME-HH",
+          "reason": "unresolved mutate operand: WS-CURTIME-HH"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURTIME-MINUTE      TO WS-CURTIME-MM",
+          "reason": "unresolved read operand: WS-CURTIME-MINUTE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURTIME-MINUTE      TO WS-CURTIME-MM",
+          "reason": "unresolved mutate operand: WS-CURTIME-MM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURTIME-SECOND      TO WS-CURTIME-SS",
+          "reason": "unresolved read operand: WS-CURTIME-SECOND"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURTIME-SECOND      TO WS-CURTIME-SS",
+          "reason": "unresolved mutate operand: WS-CURTIME-SS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF CORPT0AO",
+          "reason": "unresolved read operand: WS-CURTIME-HH-MM-SS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF CORPT0AO",
+          "reason": "unresolved mutate operand: CURTIMEO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF CORPT0AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 611,
+          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF CORPT0AO",
+          "reason": "unresolved mutate operand: CORPT0AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 635,
+          "raw_text": "MOVE -1              TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: MONTHLYL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 635,
+          "raw_text": "MOVE -1              TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 635,
+          "raw_text": "MOVE -1              TO MONTHLYL OF CORPT0AI",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: MONTHLYI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: YEARLYI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: CUSTOMI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: SDTMMI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: SDTDDI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: SDTYYYYI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: EDTMMI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: EDTDDI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: EDTYYYYI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: CONFIRMI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: CORPT0AI"
+        },
+        {
+          "verb": "INITIALIZE",
+          "line_no": 635,
+          "raw_text": "INITIALIZE              MONTHLYI OF CORPT0AI YEARLYI  OF CORPT0AI CUSTOMI  OF CORPT0AI SDTMMI   OF CORPT0AI SDTDDI   OF CORPT0AI SDTYYYYI OF CORPT0AI EDTMMI   OF CORPT0AI EDTDDI   OF CORPT0AI EDTYYYYI OF CORPT0AI CONFIRMI OF CORPT0AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        }
+      ]
+    }
+  },
+  "program_unresolved": [
+    {
+      "issue": "paragraph count mismatch: local=1 facts=10"
+    }
+  ]
+}

@@ -1,0 +1,1757 @@
+{
+  "program": "COUSR02C",
+  "schema_version": "1.2",
+  "paragraph_data_flow": {
+    "MAIN-PARA": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "SET",
+          "line_no": 84,
+          "raw_text": "SET ERR-FLG-OFF     TO TRUE",
+          "reason": "unresolved mutate operand: ERR-FLG-OFF"
+        },
+        {
+          "verb": "SET",
+          "line_no": 84,
+          "raw_text": "SET USR-MODIFIED-NO TO TRUE",
+          "reason": "unresolved mutate operand: USR-MODIFIED-NO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COUSR2AO",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COUSR2AO",
+          "reason": "unresolved mutate operand: ERRMSGO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COUSR2AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COUSR2AO",
+          "reason": "unresolved mutate operand: COUSR2AO"
+        },
+        {
+          "verb": "IF",
+          "line_no": 84,
+          "raw_text": "IF EIBCALEN = 0",
+          "reason": "unresolved read operand: EIBCALEN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
+          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE DFHCOMMAREA(1:EIBCALEN) TO CARDDEMO-COMMAREA",
+          "reason": "unresolved read operand: DFHCOMMAREA(1:EIBCALEN)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE DFHCOMMAREA(1:EIBCALEN) TO CARDDEMO-COMMAREA",
+          "reason": "unresolved mutate operand: CARDDEMO-COMMAREA"
+        },
+        {
+          "verb": "IF",
+          "line_no": 84,
+          "raw_text": "IF NOT CDEMO-PGM-REENTER",
+          "reason": "unresolved read operand: CDEMO-PGM-REENTER"
+        },
+        {
+          "verb": "SET",
+          "line_no": 84,
+          "raw_text": "SET CDEMO-PGM-REENTER    TO TRUE",
+          "reason": "unresolved mutate operand: CDEMO-PGM-REENTER"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE LOW-VALUES          TO COUSR2AO",
+          "reason": "unresolved mutate operand: COUSR2AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: USRIDINL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 84,
+          "raw_text": "IF CDEMO-CU02-USR-SELECTED NOT = SPACES AND LOW-VALUES",
+          "reason": "unresolved read operand: CDEMO-CU02-USR-SELECTED"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE CDEMO-CU02-USR-SELECTED TO USRIDINI OF COUSR2AI",
+          "reason": "unresolved read operand: CDEMO-CU02-USR-SELECTED"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE CDEMO-CU02-USR-SELECTED TO USRIDINI OF COUSR2AI",
+          "reason": "unresolved mutate operand: USRIDINI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE CDEMO-CU02-USR-SELECTED TO USRIDINI OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE CDEMO-CU02-USR-SELECTED TO USRIDINI OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 84,
+          "raw_text": "EVALUATE EIBAID",
+          "reason": "unresolved read operand: EIBAID"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 84,
+          "raw_text": "WHEN DFHENTER",
+          "reason": "unresolved read operand: DFHENTER"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 84,
+          "raw_text": "WHEN DFHPF3",
+          "reason": "unresolved read operand: DFHPF3"
+        },
+        {
+          "verb": "IF",
+          "line_no": 84,
+          "raw_text": "IF CDEMO-FROM-PROGRAM = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: CDEMO-FROM-PROGRAM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE 'COADM01C' TO CDEMO-TO-PROGRAM ELSE",
+          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE 'COADM01C' TO CDEMO-TO-PROGRAM ELSE",
+          "reason": "unresolved mutate operand: ELSE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE CDEMO-FROM-PROGRAM TO CDEMO-TO-PROGRAM",
+          "reason": "unresolved read operand: CDEMO-FROM-PROGRAM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE CDEMO-FROM-PROGRAM TO CDEMO-TO-PROGRAM",
+          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 84,
+          "raw_text": "WHEN DFHPF4",
+          "reason": "unresolved read operand: DFHPF4"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 84,
+          "raw_text": "WHEN DFHPF5",
+          "reason": "unresolved read operand: DFHPF5"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 84,
+          "raw_text": "WHEN DFHPF12",
+          "reason": "unresolved read operand: DFHPF12"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE 'COADM01C' TO CDEMO-TO-PROGRAM",
+          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE 'Y'                       TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
+          "reason": "unresolved read operand: CCDA-MSG-INVALID-KEY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 84,
+          "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 145,
+          "raw_text": "WHEN USRIDINI OF COUSR2AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: USRIDINI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 145,
+          "raw_text": "WHEN USRIDINI OF COUSR2AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 145,
+          "raw_text": "WHEN USRIDINI OF COUSR2AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE 'User ID can NOT be empty...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: USRIDINL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: USRIDINL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 145,
+          "raw_text": "IF NOT ERR-FLG-ON",
+          "reason": "unresolved read operand: ERR-FLG-ON"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE SPACES      TO FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI",
+          "reason": "unresolved mutate operand: FNAMEI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE SPACES      TO FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE SPACES      TO FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE SPACES      TO FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI",
+          "reason": "unresolved mutate operand: LNAMEI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE SPACES      TO FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE SPACES      TO FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE SPACES      TO FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI",
+          "reason": "unresolved mutate operand: PASSWDI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE SPACES      TO FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE SPACES      TO FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE SPACES      TO FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI",
+          "reason": "unresolved mutate operand: USRTYPEI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE SPACES      TO FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE SPACES      TO FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE USRIDINI  OF COUSR2AI TO SEC-USR-ID",
+          "reason": "unresolved read operand: USRIDINI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE USRIDINI  OF COUSR2AI TO SEC-USR-ID",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE USRIDINI  OF COUSR2AI TO SEC-USR-ID",
+          "reason": "unresolved read operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 145,
+          "raw_text": "MOVE USRIDINI  OF COUSR2AI TO SEC-USR-ID",
+          "reason": "unresolved mutate operand: SEC-USR-ID"
+        },
+        {
+          "verb": "IF",
+          "line_no": 166,
+          "raw_text": "IF NOT ERR-FLG-ON",
+          "reason": "unresolved read operand: ERR-FLG-ON"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 166,
+          "raw_text": "MOVE SEC-USR-FNAME      TO FNAMEI    OF COUSR2AI",
+          "reason": "unresolved read operand: SEC-USR-FNAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 166,
+          "raw_text": "MOVE SEC-USR-FNAME      TO FNAMEI    OF COUSR2AI",
+          "reason": "unresolved mutate operand: FNAMEI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 166,
+          "raw_text": "MOVE SEC-USR-FNAME      TO FNAMEI    OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 166,
+          "raw_text": "MOVE SEC-USR-FNAME      TO FNAMEI    OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 166,
+          "raw_text": "MOVE SEC-USR-LNAME      TO LNAMEI    OF COUSR2AI",
+          "reason": "unresolved read operand: SEC-USR-LNAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 166,
+          "raw_text": "MOVE SEC-USR-LNAME      TO LNAMEI    OF COUSR2AI",
+          "reason": "unresolved mutate operand: LNAMEI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 166,
+          "raw_text": "MOVE SEC-USR-LNAME      TO LNAMEI    OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 166,
+          "raw_text": "MOVE SEC-USR-LNAME      TO LNAMEI    OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 166,
+          "raw_text": "MOVE SEC-USR-PWD        TO PASSWDI   OF COUSR2AI",
+          "reason": "unresolved read operand: SEC-USR-PWD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 166,
+          "raw_text": "MOVE SEC-USR-PWD        TO PASSWDI   OF COUSR2AI",
+          "reason": "unresolved mutate operand: PASSWDI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 166,
+          "raw_text": "MOVE SEC-USR-PWD        TO PASSWDI   OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 166,
+          "raw_text": "MOVE SEC-USR-PWD        TO PASSWDI   OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 166,
+          "raw_text": "MOVE SEC-USR-TYPE       TO USRTYPEI  OF COUSR2AI",
+          "reason": "unresolved read operand: SEC-USR-TYPE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 166,
+          "raw_text": "MOVE SEC-USR-TYPE       TO USRTYPEI  OF COUSR2AI",
+          "reason": "unresolved mutate operand: USRTYPEI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 166,
+          "raw_text": "MOVE SEC-USR-TYPE       TO USRTYPEI  OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 166,
+          "raw_text": "MOVE SEC-USR-TYPE       TO USRTYPEI  OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 179,
+          "raw_text": "WHEN USRIDINI OF COUSR2AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: USRIDINI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 179,
+          "raw_text": "WHEN USRIDINI OF COUSR2AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 179,
+          "raw_text": "WHEN USRIDINI OF COUSR2AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE 'User ID can NOT be empty...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: USRIDINL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 179,
+          "raw_text": "WHEN FNAMEI OF COUSR2AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: FNAMEI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 179,
+          "raw_text": "WHEN FNAMEI OF COUSR2AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 179,
+          "raw_text": "WHEN FNAMEI OF COUSR2AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE 'First Name can NOT be empty...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE -1       TO FNAMEL OF COUSR2AI",
+          "reason": "unresolved mutate operand: FNAMEL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE -1       TO FNAMEL OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE -1       TO FNAMEL OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 179,
+          "raw_text": "WHEN LNAMEI OF COUSR2AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: LNAMEI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 179,
+          "raw_text": "WHEN LNAMEI OF COUSR2AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 179,
+          "raw_text": "WHEN LNAMEI OF COUSR2AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE 'Last Name can NOT be empty...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE -1       TO LNAMEL OF COUSR2AI",
+          "reason": "unresolved mutate operand: LNAMEL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE -1       TO LNAMEL OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE -1       TO LNAMEL OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 179,
+          "raw_text": "WHEN PASSWDI OF COUSR2AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: PASSWDI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 179,
+          "raw_text": "WHEN PASSWDI OF COUSR2AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 179,
+          "raw_text": "WHEN PASSWDI OF COUSR2AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE 'Password can NOT be empty...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE -1       TO PASSWDL OF COUSR2AI",
+          "reason": "unresolved mutate operand: PASSWDL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE -1       TO PASSWDL OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE -1       TO PASSWDL OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 179,
+          "raw_text": "WHEN USRTYPEI OF COUSR2AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: USRTYPEI"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 179,
+          "raw_text": "WHEN USRTYPEI OF COUSR2AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 179,
+          "raw_text": "WHEN USRTYPEI OF COUSR2AI = SPACES OR LOW-VALUES",
+          "reason": "unresolved read operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE 'User Type can NOT be empty...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE -1       TO USRTYPEL OF COUSR2AI",
+          "reason": "unresolved mutate operand: USRTYPEL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE -1       TO USRTYPEL OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE -1       TO USRTYPEL OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE -1       TO FNAMEL OF COUSR2AI",
+          "reason": "unresolved mutate operand: FNAMEL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE -1       TO FNAMEL OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE -1       TO FNAMEL OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 179,
+          "raw_text": "IF NOT ERR-FLG-ON",
+          "reason": "unresolved read operand: ERR-FLG-ON"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE USRIDINI  OF COUSR2AI TO SEC-USR-ID",
+          "reason": "unresolved read operand: USRIDINI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE USRIDINI  OF COUSR2AI TO SEC-USR-ID",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE USRIDINI  OF COUSR2AI TO SEC-USR-ID",
+          "reason": "unresolved read operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE USRIDINI  OF COUSR2AI TO SEC-USR-ID",
+          "reason": "unresolved mutate operand: SEC-USR-ID"
+        },
+        {
+          "verb": "IF",
+          "line_no": 179,
+          "raw_text": "IF FNAMEI  OF COUSR2AI NOT = SEC-USR-FNAME",
+          "reason": "unresolved read operand: FNAMEI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 179,
+          "raw_text": "IF FNAMEI  OF COUSR2AI NOT = SEC-USR-FNAME",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "IF",
+          "line_no": 179,
+          "raw_text": "IF FNAMEI  OF COUSR2AI NOT = SEC-USR-FNAME",
+          "reason": "unresolved read operand: COUSR2AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 179,
+          "raw_text": "IF FNAMEI  OF COUSR2AI NOT = SEC-USR-FNAME",
+          "reason": "unresolved read operand: SEC-USR-FNAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE FNAMEI   OF COUSR2AI TO SEC-USR-FNAME",
+          "reason": "unresolved read operand: FNAMEI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE FNAMEI   OF COUSR2AI TO SEC-USR-FNAME",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE FNAMEI   OF COUSR2AI TO SEC-USR-FNAME",
+          "reason": "unresolved read operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE FNAMEI   OF COUSR2AI TO SEC-USR-FNAME",
+          "reason": "unresolved mutate operand: SEC-USR-FNAME"
+        },
+        {
+          "verb": "SET",
+          "line_no": 179,
+          "raw_text": "SET USR-MODIFIED-YES TO TRUE",
+          "reason": "unresolved mutate operand: USR-MODIFIED-YES"
+        },
+        {
+          "verb": "IF",
+          "line_no": 179,
+          "raw_text": "IF LNAMEI  OF COUSR2AI NOT = SEC-USR-LNAME",
+          "reason": "unresolved read operand: LNAMEI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 179,
+          "raw_text": "IF LNAMEI  OF COUSR2AI NOT = SEC-USR-LNAME",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "IF",
+          "line_no": 179,
+          "raw_text": "IF LNAMEI  OF COUSR2AI NOT = SEC-USR-LNAME",
+          "reason": "unresolved read operand: COUSR2AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 179,
+          "raw_text": "IF LNAMEI  OF COUSR2AI NOT = SEC-USR-LNAME",
+          "reason": "unresolved read operand: SEC-USR-LNAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE LNAMEI   OF COUSR2AI TO SEC-USR-LNAME",
+          "reason": "unresolved read operand: LNAMEI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE LNAMEI   OF COUSR2AI TO SEC-USR-LNAME",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE LNAMEI   OF COUSR2AI TO SEC-USR-LNAME",
+          "reason": "unresolved read operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE LNAMEI   OF COUSR2AI TO SEC-USR-LNAME",
+          "reason": "unresolved mutate operand: SEC-USR-LNAME"
+        },
+        {
+          "verb": "SET",
+          "line_no": 179,
+          "raw_text": "SET USR-MODIFIED-YES TO TRUE",
+          "reason": "unresolved mutate operand: USR-MODIFIED-YES"
+        },
+        {
+          "verb": "IF",
+          "line_no": 179,
+          "raw_text": "IF PASSWDI  OF COUSR2AI NOT = SEC-USR-PWD",
+          "reason": "unresolved read operand: PASSWDI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 179,
+          "raw_text": "IF PASSWDI  OF COUSR2AI NOT = SEC-USR-PWD",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "IF",
+          "line_no": 179,
+          "raw_text": "IF PASSWDI  OF COUSR2AI NOT = SEC-USR-PWD",
+          "reason": "unresolved read operand: COUSR2AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 179,
+          "raw_text": "IF PASSWDI  OF COUSR2AI NOT = SEC-USR-PWD",
+          "reason": "unresolved read operand: SEC-USR-PWD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE PASSWDI  OF COUSR2AI TO SEC-USR-PWD",
+          "reason": "unresolved read operand: PASSWDI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE PASSWDI  OF COUSR2AI TO SEC-USR-PWD",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE PASSWDI  OF COUSR2AI TO SEC-USR-PWD",
+          "reason": "unresolved read operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE PASSWDI  OF COUSR2AI TO SEC-USR-PWD",
+          "reason": "unresolved mutate operand: SEC-USR-PWD"
+        },
+        {
+          "verb": "SET",
+          "line_no": 179,
+          "raw_text": "SET USR-MODIFIED-YES TO TRUE",
+          "reason": "unresolved mutate operand: USR-MODIFIED-YES"
+        },
+        {
+          "verb": "IF",
+          "line_no": 179,
+          "raw_text": "IF USRTYPEI  OF COUSR2AI NOT = SEC-USR-TYPE",
+          "reason": "unresolved read operand: USRTYPEI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 179,
+          "raw_text": "IF USRTYPEI  OF COUSR2AI NOT = SEC-USR-TYPE",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "IF",
+          "line_no": 179,
+          "raw_text": "IF USRTYPEI  OF COUSR2AI NOT = SEC-USR-TYPE",
+          "reason": "unresolved read operand: COUSR2AI"
+        },
+        {
+          "verb": "IF",
+          "line_no": 179,
+          "raw_text": "IF USRTYPEI  OF COUSR2AI NOT = SEC-USR-TYPE",
+          "reason": "unresolved read operand: SEC-USR-TYPE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE USRTYPEI OF COUSR2AI TO SEC-USR-TYPE",
+          "reason": "unresolved read operand: USRTYPEI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE USRTYPEI OF COUSR2AI TO SEC-USR-TYPE",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE USRTYPEI OF COUSR2AI TO SEC-USR-TYPE",
+          "reason": "unresolved read operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE USRTYPEI OF COUSR2AI TO SEC-USR-TYPE",
+          "reason": "unresolved mutate operand: SEC-USR-TYPE"
+        },
+        {
+          "verb": "SET",
+          "line_no": 179,
+          "raw_text": "SET USR-MODIFIED-YES TO TRUE",
+          "reason": "unresolved mutate operand: USR-MODIFIED-YES"
+        },
+        {
+          "verb": "IF",
+          "line_no": 179,
+          "raw_text": "IF USR-MODIFIED-YES",
+          "reason": "unresolved read operand: USR-MODIFIED-YES"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE 'Please modify to update ...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE DFHRED       TO ERRMSGC  OF COUSR2AO",
+          "reason": "unresolved read operand: DFHRED"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE DFHRED       TO ERRMSGC  OF COUSR2AO",
+          "reason": "unresolved mutate operand: ERRMSGC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE DFHRED       TO ERRMSGC  OF COUSR2AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 179,
+          "raw_text": "MOVE DFHRED       TO ERRMSGC  OF COUSR2AO",
+          "reason": "unresolved mutate operand: COUSR2AO"
+        },
+        {
+          "verb": "IF",
+          "line_no": 252,
+          "raw_text": "IF CDEMO-TO-PROGRAM = LOW-VALUES OR SPACES",
+          "reason": "unresolved read operand: CDEMO-TO-PROGRAM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 252,
+          "raw_text": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
+          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 252,
+          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
+          "reason": "unresolved read operand: WS-TRANID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 252,
+          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
+          "reason": "unresolved mutate operand: CDEMO-FROM-TRANID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 252,
+          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
+          "reason": "unresolved read operand: WS-PGMNAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 252,
+          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
+          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 252,
+          "raw_text": "MOVE ZEROS        TO CDEMO-PGM-CONTEXT",
+          "reason": "unresolved mutate operand: CDEMO-PGM-CONTEXT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 268,
+          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COUSR2AO",
+          "reason": "unresolved read operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 268,
+          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COUSR2AO",
+          "reason": "unresolved mutate operand: ERRMSGO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 268,
+          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COUSR2AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 268,
+          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COUSR2AO",
+          "reason": "unresolved mutate operand: COUSR2AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
+          "reason": "unresolved read operand: CURRENT-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
+          "reason": "unresolved mutate operand: WS-CURDATE-DATA"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COUSR2AO",
+          "reason": "unresolved read operand: CCDA-TITLE01"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COUSR2AO",
+          "reason": "unresolved mutate operand: TITLE01O"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COUSR2AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COUSR2AO",
+          "reason": "unresolved mutate operand: COUSR2AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COUSR2AO",
+          "reason": "unresolved read operand: CCDA-TITLE02"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COUSR2AO",
+          "reason": "unresolved mutate operand: TITLE02O"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COUSR2AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COUSR2AO",
+          "reason": "unresolved mutate operand: COUSR2AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COUSR2AO",
+          "reason": "unresolved read operand: WS-TRANID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COUSR2AO",
+          "reason": "unresolved mutate operand: TRNNAMEO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COUSR2AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COUSR2AO",
+          "reason": "unresolved mutate operand: COUSR2AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COUSR2AO",
+          "reason": "unresolved read operand: WS-PGMNAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COUSR2AO",
+          "reason": "unresolved mutate operand: PGMNAMEO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COUSR2AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COUSR2AO",
+          "reason": "unresolved mutate operand: COUSR2AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURDATE-MONTH       TO WS-CURDATE-MM",
+          "reason": "unresolved read operand: WS-CURDATE-MONTH"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURDATE-MONTH       TO WS-CURDATE-MM",
+          "reason": "unresolved mutate operand: WS-CURDATE-MM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURDATE-DAY         TO WS-CURDATE-DD",
+          "reason": "unresolved read operand: WS-CURDATE-DAY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURDATE-DAY         TO WS-CURDATE-DD",
+          "reason": "unresolved mutate operand: WS-CURDATE-DD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURDATE-YEAR(3:2)   TO WS-CURDATE-YY",
+          "reason": "unresolved read operand: WS-CURDATE-YEAR(3:2)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURDATE-YEAR(3:2)   TO WS-CURDATE-YY",
+          "reason": "unresolved mutate operand: WS-CURDATE-YY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COUSR2AO",
+          "reason": "unresolved read operand: WS-CURDATE-MM-DD-YY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COUSR2AO",
+          "reason": "unresolved mutate operand: CURDATEO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COUSR2AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COUSR2AO",
+          "reason": "unresolved mutate operand: COUSR2AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURTIME-HOURS       TO WS-CURTIME-HH",
+          "reason": "unresolved read operand: WS-CURTIME-HOURS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURTIME-HOURS       TO WS-CURTIME-HH",
+          "reason": "unresolved mutate operand: WS-CURTIME-HH"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURTIME-MINUTE      TO WS-CURTIME-MM",
+          "reason": "unresolved read operand: WS-CURTIME-MINUTE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURTIME-MINUTE      TO WS-CURTIME-MM",
+          "reason": "unresolved mutate operand: WS-CURTIME-MM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURTIME-SECOND      TO WS-CURTIME-SS",
+          "reason": "unresolved read operand: WS-CURTIME-SECOND"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURTIME-SECOND      TO WS-CURTIME-SS",
+          "reason": "unresolved mutate operand: WS-CURTIME-SS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COUSR2AO",
+          "reason": "unresolved read operand: WS-CURTIME-HH-MM-SS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COUSR2AO",
+          "reason": "unresolved mutate operand: CURTIMEO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COUSR2AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 298,
+          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COUSR2AO",
+          "reason": "unresolved mutate operand: COUSR2AO"
+        },
+        {
+          "verb": "READ",
+          "line_no": 322,
+          "raw_text": "READ DATASET   (WS-USRSEC-FILE) INTO      (SEC-USER-DATA) LENGTH    (LENGTH OF SEC-USER-DATA) RIDFLD    (SEC-USR-ID) KEYLENGTH (LENGTH OF SEC-USR-ID) UPDATE RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
+          "reason": "unresolved mutate operand: DATASET"
+        },
+        {
+          "verb": "READ",
+          "line_no": 322,
+          "raw_text": "READ DATASET   (WS-USRSEC-FILE) INTO      (SEC-USER-DATA) LENGTH    (LENGTH OF SEC-USER-DATA) RIDFLD    (SEC-USR-ID) KEYLENGTH (LENGTH OF SEC-USR-ID) UPDATE RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
+          "reason": "unresolved mutate operand: (SEC-USER-DATA)"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 333,
+          "raw_text": "EVALUATE WS-RESP-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 333,
+          "raw_text": "WHEN DFHRESP(NORMAL)",
+          "reason": "unresolved read operand: DFHRESP(NORMAL)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 333,
+          "raw_text": "MOVE 'Press PF5 key to save your updates ...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 333,
+          "raw_text": "MOVE DFHNEUTR       TO ERRMSGC  OF COUSR2AO",
+          "reason": "unresolved read operand: DFHNEUTR"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 333,
+          "raw_text": "MOVE DFHNEUTR       TO ERRMSGC  OF COUSR2AO",
+          "reason": "unresolved mutate operand: ERRMSGC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 333,
+          "raw_text": "MOVE DFHNEUTR       TO ERRMSGC  OF COUSR2AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 333,
+          "raw_text": "MOVE DFHNEUTR       TO ERRMSGC  OF COUSR2AO",
+          "reason": "unresolved mutate operand: COUSR2AO"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 333,
+          "raw_text": "WHEN DFHRESP(NOTFND)",
+          "reason": "unresolved read operand: DFHRESP(NOTFND)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 333,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 333,
+          "raw_text": "MOVE 'User ID NOT found...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 333,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: USRIDINL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 333,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 333,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 333,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 333,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-REAS-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 333,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 333,
+          "raw_text": "MOVE 'Unable to lookup User...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 333,
+          "raw_text": "MOVE -1       TO FNAMEL OF COUSR2AI",
+          "reason": "unresolved mutate operand: FNAMEL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 333,
+          "raw_text": "MOVE -1       TO FNAMEL OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 333,
+          "raw_text": "MOVE -1       TO FNAMEL OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "EXEC",
+          "line_no": 360,
+          "raw_text": "EXEC CICS REWRITE DATASET   (WS-USRSEC-FILE) FROM      (SEC-USER-DATA) LENGTH    (LENGTH OF SEC-USER-DATA) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
+          "reason": "unresolved read operand: (SEC-USER-DATA)"
+        },
+        {
+          "verb": "EXEC",
+          "line_no": 360,
+          "raw_text": "EXEC CICS REWRITE DATASET   (WS-USRSEC-FILE) FROM      (SEC-USER-DATA) LENGTH    (LENGTH OF SEC-USER-DATA) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
+          "reason": "unresolved read operand: (LENGTH"
+        },
+        {
+          "verb": "EXEC",
+          "line_no": 360,
+          "raw_text": "EXEC CICS REWRITE DATASET   (WS-USRSEC-FILE) FROM      (SEC-USER-DATA) LENGTH    (LENGTH OF SEC-USER-DATA) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
+          "reason": "unresolved read operand: (WS-RESP-CD)"
+        },
+        {
+          "verb": "EXEC",
+          "line_no": 360,
+          "raw_text": "EXEC CICS REWRITE DATASET   (WS-USRSEC-FILE) FROM      (SEC-USER-DATA) LENGTH    (LENGTH OF SEC-USER-DATA) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
+          "reason": "unresolved mutate operand: (WS-RESP-CD)"
+        },
+        {
+          "verb": "EXEC",
+          "line_no": 360,
+          "raw_text": "EXEC CICS REWRITE DATASET   (WS-USRSEC-FILE) FROM      (SEC-USER-DATA) LENGTH    (LENGTH OF SEC-USER-DATA) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
+          "reason": "unresolved read operand: (WS-REAS-CD)"
+        },
+        {
+          "verb": "EXEC",
+          "line_no": 360,
+          "raw_text": "EXEC CICS REWRITE DATASET   (WS-USRSEC-FILE) FROM      (SEC-USER-DATA) LENGTH    (LENGTH OF SEC-USER-DATA) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
+          "reason": "unresolved mutate operand: (WS-REAS-CD)"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 368,
+          "raw_text": "EVALUATE WS-RESP-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 368,
+          "raw_text": "WHEN DFHRESP(NORMAL)",
+          "reason": "unresolved read operand: DFHRESP(NORMAL)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 368,
+          "raw_text": "MOVE SPACES             TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 368,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COUSR2AO",
+          "reason": "unresolved read operand: DFHGREEN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 368,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COUSR2AO",
+          "reason": "unresolved mutate operand: ERRMSGC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 368,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COUSR2AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 368,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COUSR2AO",
+          "reason": "unresolved mutate operand: COUSR2AO"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 368,
+          "raw_text": "STRING 'User '     DELIMITED BY SIZE SEC-USR-ID  DELIMITED BY SPACE ' has been updated ...' DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved read operand: SEC-USR-ID"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 368,
+          "raw_text": "STRING 'User '     DELIMITED BY SIZE SEC-USR-ID  DELIMITED BY SPACE ' has been updated ...' DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 368,
+          "raw_text": "WHEN DFHRESP(NOTFND)",
+          "reason": "unresolved read operand: DFHRESP(NOTFND)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 368,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 368,
+          "raw_text": "MOVE 'User ID NOT found...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 368,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: USRIDINL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 368,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 368,
+          "raw_text": "MOVE -1       TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 368,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-RESP-CD"
+        },
+        {
+          "verb": "DISPLAY",
+          "line_no": 368,
+          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
+          "reason": "unresolved read operand: WS-REAS-CD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 368,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 368,
+          "raw_text": "MOVE 'Unable to Update User...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 368,
+          "raw_text": "MOVE -1       TO FNAMEL OF COUSR2AI",
+          "reason": "unresolved mutate operand: FNAMEL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 368,
+          "raw_text": "MOVE -1       TO FNAMEL OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 368,
+          "raw_text": "MOVE -1       TO FNAMEL OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 405,
+          "raw_text": "MOVE -1              TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: USRIDINL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 405,
+          "raw_text": "MOVE -1              TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 405,
+          "raw_text": "MOVE -1              TO USRIDINL OF COUSR2AI",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 405,
+          "raw_text": "MOVE SPACES          TO USRIDINI OF COUSR2AI FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: USRIDINI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 405,
+          "raw_text": "MOVE SPACES          TO USRIDINI OF COUSR2AI FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 405,
+          "raw_text": "MOVE SPACES          TO USRIDINI OF COUSR2AI FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 405,
+          "raw_text": "MOVE SPACES          TO USRIDINI OF COUSR2AI FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: FNAMEI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 405,
+          "raw_text": "MOVE SPACES          TO USRIDINI OF COUSR2AI FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 405,
+          "raw_text": "MOVE SPACES          TO USRIDINI OF COUSR2AI FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 405,
+          "raw_text": "MOVE SPACES          TO USRIDINI OF COUSR2AI FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: LNAMEI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 405,
+          "raw_text": "MOVE SPACES          TO USRIDINI OF COUSR2AI FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 405,
+          "raw_text": "MOVE SPACES          TO USRIDINI OF COUSR2AI FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 405,
+          "raw_text": "MOVE SPACES          TO USRIDINI OF COUSR2AI FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: PASSWDI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 405,
+          "raw_text": "MOVE SPACES          TO USRIDINI OF COUSR2AI FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 405,
+          "raw_text": "MOVE SPACES          TO USRIDINI OF COUSR2AI FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 405,
+          "raw_text": "MOVE SPACES          TO USRIDINI OF COUSR2AI FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: USRTYPEI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 405,
+          "raw_text": "MOVE SPACES          TO USRIDINI OF COUSR2AI FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 405,
+          "raw_text": "MOVE SPACES          TO USRIDINI OF COUSR2AI FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: COUSR2AI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 405,
+          "raw_text": "MOVE SPACES          TO USRIDINI OF COUSR2AI FNAMEI   OF COUSR2AI LNAMEI   OF COUSR2AI PASSWDI  OF COUSR2AI USRTYPEI OF COUSR2AI WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        }
+      ]
+    }
+  },
+  "program_unresolved": [
+    {
+      "issue": "paragraph count mismatch: local=1 facts=11"
+    }
+  ]
+}

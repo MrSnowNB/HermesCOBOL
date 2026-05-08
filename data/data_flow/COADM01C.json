@@ -1,0 +1,851 @@
+{
+  "program": "COADM01C",
+  "schema_version": "1.2",
+  "paragraph_data_flow": {
+    "MAIN-PARA": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "SET",
+          "line_no": 77,
+          "raw_text": "SET ERR-FLG-OFF TO TRUE",
+          "reason": "unresolved mutate operand: ERR-FLG-OFF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 77,
+          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COADM1AO",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 77,
+          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COADM1AO",
+          "reason": "unresolved mutate operand: ERRMSGO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 77,
+          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COADM1AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 77,
+          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COADM1AO",
+          "reason": "unresolved mutate operand: COADM1AO"
+        },
+        {
+          "verb": "IF",
+          "line_no": 77,
+          "raw_text": "IF EIBCALEN = 0",
+          "reason": "unresolved read operand: EIBCALEN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 77,
+          "raw_text": "MOVE 'COSGN00C' TO CDEMO-FROM-PROGRAM",
+          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 77,
+          "raw_text": "MOVE DFHCOMMAREA(1:EIBCALEN) TO CARDDEMO-COMMAREA",
+          "reason": "unresolved read operand: DFHCOMMAREA(1:EIBCALEN)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 77,
+          "raw_text": "MOVE DFHCOMMAREA(1:EIBCALEN) TO CARDDEMO-COMMAREA",
+          "reason": "unresolved mutate operand: CARDDEMO-COMMAREA"
+        },
+        {
+          "verb": "IF",
+          "line_no": 77,
+          "raw_text": "IF NOT CDEMO-PGM-REENTER",
+          "reason": "unresolved read operand: CDEMO-PGM-REENTER"
+        },
+        {
+          "verb": "SET",
+          "line_no": 77,
+          "raw_text": "SET CDEMO-PGM-REENTER    TO TRUE",
+          "reason": "unresolved mutate operand: CDEMO-PGM-REENTER"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 77,
+          "raw_text": "MOVE LOW-VALUES          TO COADM1AO",
+          "reason": "unresolved mutate operand: COADM1AO"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 77,
+          "raw_text": "EVALUATE EIBAID",
+          "reason": "unresolved read operand: EIBAID"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 77,
+          "raw_text": "WHEN DFHENTER",
+          "reason": "unresolved read operand: DFHENTER"
+        },
+        {
+          "verb": "WHEN",
+          "line_no": 77,
+          "raw_text": "WHEN DFHPF3",
+          "reason": "unresolved read operand: DFHPF3"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 77,
+          "raw_text": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
+          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 77,
+          "raw_text": "MOVE 'Y'                       TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 77,
+          "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
+          "reason": "unresolved read operand: CCDA-MSG-INVALID-KEY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 77,
+          "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
+          "reason": "unresolved read operand: OPTIONI"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
+          "reason": "unresolved read operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
+          "reason": "unresolved read operand: COADM1AI(1:WS-IDX)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
+          "reason": "unresolved mutate operand: WS-OPTION-X"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
+          "reason": "unresolved mutate operand: INSPECT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
+          "reason": "unresolved mutate operand: WS-OPTION-X"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
+          "reason": "unresolved mutate operand: REPLACING"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
+          "reason": "unresolved mutate operand: ALL"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
+          "reason": "literal as mutate target (ignored): __LIT__"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
+          "reason": "unresolved mutate operand: BY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
+          "reason": "literal as mutate target (ignored): __LIT__"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE WS-OPTION-X              TO WS-OPTION",
+          "reason": "unresolved read operand: WS-OPTION-X"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE WS-OPTION-X              TO WS-OPTION",
+          "reason": "unresolved mutate operand: WS-OPTION"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE WS-OPTION                TO OPTIONO OF COADM1AO",
+          "reason": "unresolved read operand: WS-OPTION"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE WS-OPTION                TO OPTIONO OF COADM1AO",
+          "reason": "unresolved mutate operand: OPTIONO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE WS-OPTION                TO OPTIONO OF COADM1AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE WS-OPTION                TO OPTIONO OF COADM1AO",
+          "reason": "unresolved mutate operand: COADM1AO"
+        },
+        {
+          "verb": "IF",
+          "line_no": 121,
+          "raw_text": "IF WS-OPTION IS NOT NUMERIC OR WS-OPTION > CDEMO-ADMIN-OPT-COUNT OR WS-OPTION = ZEROS",
+          "reason": "unresolved read operand: WS-OPTION"
+        },
+        {
+          "verb": "IF",
+          "line_no": 121,
+          "raw_text": "IF WS-OPTION IS NOT NUMERIC OR WS-OPTION > CDEMO-ADMIN-OPT-COUNT OR WS-OPTION = ZEROS",
+          "reason": "unresolved read operand: IS"
+        },
+        {
+          "verb": "IF",
+          "line_no": 121,
+          "raw_text": "IF WS-OPTION IS NOT NUMERIC OR WS-OPTION > CDEMO-ADMIN-OPT-COUNT OR WS-OPTION = ZEROS",
+          "reason": "unresolved read operand: NUMERIC"
+        },
+        {
+          "verb": "IF",
+          "line_no": 121,
+          "raw_text": "IF WS-OPTION IS NOT NUMERIC OR WS-OPTION > CDEMO-ADMIN-OPT-COUNT OR WS-OPTION = ZEROS",
+          "reason": "unresolved read operand: WS-OPTION"
+        },
+        {
+          "verb": "IF",
+          "line_no": 121,
+          "raw_text": "IF WS-OPTION IS NOT NUMERIC OR WS-OPTION > CDEMO-ADMIN-OPT-COUNT OR WS-OPTION = ZEROS",
+          "reason": "unresolved read operand: CDEMO-ADMIN-OPT-COUNT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 121,
+          "raw_text": "IF WS-OPTION IS NOT NUMERIC OR WS-OPTION > CDEMO-ADMIN-OPT-COUNT OR WS-OPTION = ZEROS",
+          "reason": "unresolved read operand: WS-OPTION"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
+          "reason": "unresolved mutate operand: WS-ERR-FLG"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE 'Please enter a valid option number...' TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "IF",
+          "line_no": 121,
+          "raw_text": "IF NOT ERR-FLG-ON",
+          "reason": "unresolved read operand: ERR-FLG-ON"
+        },
+        {
+          "verb": "IF",
+          "line_no": 121,
+          "raw_text": "IF CDEMO-ADMIN-OPT-PGMNAME(WS-OPTION)(1:5) NOT = 'DUMMY'",
+          "reason": "unresolved read operand: CDEMO-ADMIN-OPT-PGMNAME(WS-OPTION)(1:5)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
+          "reason": "unresolved read operand: WS-TRANID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
+          "reason": "unresolved mutate operand: CDEMO-FROM-TRANID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
+          "reason": "unresolved read operand: WS-PGMNAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
+          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE ZEROS        TO CDEMO-PGM-CONTEXT",
+          "reason": "unresolved mutate operand: CDEMO-PGM-CONTEXT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE SPACES             TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COADM1AO",
+          "reason": "unresolved read operand: DFHGREEN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COADM1AO",
+          "reason": "unresolved mutate operand: ERRMSGC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COADM1AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 121,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COADM1AO",
+          "reason": "unresolved mutate operand: COADM1AO"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 121,
+          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved read operand: *"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 121,
+          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved read operand: CDEMO-ADMIN-OPT-NAME(WS-OPTION)"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 121,
+          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved read operand: *"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 121,
+          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "IF",
+          "line_no": 165,
+          "raw_text": "IF CDEMO-TO-PROGRAM = LOW-VALUES OR SPACES",
+          "reason": "unresolved read operand: CDEMO-TO-PROGRAM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 165,
+          "raw_text": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
+          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 177,
+          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COADM1AO",
+          "reason": "unresolved read operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 177,
+          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COADM1AO",
+          "reason": "unresolved mutate operand: ERRMSGO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 177,
+          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COADM1AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 177,
+          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COADM1AO",
+          "reason": "unresolved mutate operand: COADM1AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
+          "reason": "unresolved read operand: FUNCTION"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
+          "reason": "unresolved read operand: CURRENT-DATE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
+          "reason": "unresolved mutate operand: WS-CURDATE-DATA"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COADM1AO",
+          "reason": "unresolved read operand: CCDA-TITLE01"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COADM1AO",
+          "reason": "unresolved mutate operand: TITLE01O"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COADM1AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COADM1AO",
+          "reason": "unresolved mutate operand: COADM1AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COADM1AO",
+          "reason": "unresolved read operand: CCDA-TITLE02"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COADM1AO",
+          "reason": "unresolved mutate operand: TITLE02O"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COADM1AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COADM1AO",
+          "reason": "unresolved mutate operand: COADM1AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COADM1AO",
+          "reason": "unresolved read operand: WS-TRANID"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COADM1AO",
+          "reason": "unresolved mutate operand: TRNNAMEO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COADM1AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COADM1AO",
+          "reason": "unresolved mutate operand: COADM1AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COADM1AO",
+          "reason": "unresolved read operand: WS-PGMNAME"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COADM1AO",
+          "reason": "unresolved mutate operand: PGMNAMEO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COADM1AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COADM1AO",
+          "reason": "unresolved mutate operand: COADM1AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURDATE-MONTH       TO WS-CURDATE-MM",
+          "reason": "unresolved read operand: WS-CURDATE-MONTH"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURDATE-MONTH       TO WS-CURDATE-MM",
+          "reason": "unresolved mutate operand: WS-CURDATE-MM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURDATE-DAY         TO WS-CURDATE-DD",
+          "reason": "unresolved read operand: WS-CURDATE-DAY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURDATE-DAY         TO WS-CURDATE-DD",
+          "reason": "unresolved mutate operand: WS-CURDATE-DD"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURDATE-YEAR(3:2)   TO WS-CURDATE-YY",
+          "reason": "unresolved read operand: WS-CURDATE-YEAR(3:2)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURDATE-YEAR(3:2)   TO WS-CURDATE-YY",
+          "reason": "unresolved mutate operand: WS-CURDATE-YY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COADM1AO",
+          "reason": "unresolved read operand: WS-CURDATE-MM-DD-YY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COADM1AO",
+          "reason": "unresolved mutate operand: CURDATEO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COADM1AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COADM1AO",
+          "reason": "unresolved mutate operand: COADM1AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURTIME-HOURS       TO WS-CURTIME-HH",
+          "reason": "unresolved read operand: WS-CURTIME-HOURS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURTIME-HOURS       TO WS-CURTIME-HH",
+          "reason": "unresolved mutate operand: WS-CURTIME-HH"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURTIME-MINUTE      TO WS-CURTIME-MM",
+          "reason": "unresolved read operand: WS-CURTIME-MINUTE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURTIME-MINUTE      TO WS-CURTIME-MM",
+          "reason": "unresolved mutate operand: WS-CURTIME-MM"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURTIME-SECOND      TO WS-CURTIME-SS",
+          "reason": "unresolved read operand: WS-CURTIME-SECOND"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURTIME-SECOND      TO WS-CURTIME-SS",
+          "reason": "unresolved mutate operand: WS-CURTIME-SS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COADM1AO",
+          "reason": "unresolved read operand: WS-CURTIME-HH-MM-SS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COADM1AO",
+          "reason": "unresolved mutate operand: CURTIMEO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COADM1AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 207,
+          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COADM1AO",
+          "reason": "unresolved mutate operand: COADM1AO"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE SPACES             TO WS-ADMIN-OPT-TXT",
+          "reason": "unresolved mutate operand: WS-ADMIN-OPT-TXT"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 231,
+          "raw_text": "STRING CDEMO-ADMIN-OPT-NUM(WS-IDX)  DELIMITED BY SIZE '. '                         DELIMITED BY SIZE CDEMO-ADMIN-OPT-NAME(WS-IDX) DELIMITED BY SIZE INTO WS-ADMIN-OPT-TXT",
+          "reason": "unresolved read operand: CDEMO-ADMIN-OPT-NUM(WS-IDX)"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 231,
+          "raw_text": "STRING CDEMO-ADMIN-OPT-NUM(WS-IDX)  DELIMITED BY SIZE '. '                         DELIMITED BY SIZE CDEMO-ADMIN-OPT-NAME(WS-IDX) DELIMITED BY SIZE INTO WS-ADMIN-OPT-TXT",
+          "reason": "unresolved read operand: CDEMO-ADMIN-OPT-NAME(WS-IDX)"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 231,
+          "raw_text": "STRING CDEMO-ADMIN-OPT-NUM(WS-IDX)  DELIMITED BY SIZE '. '                         DELIMITED BY SIZE CDEMO-ADMIN-OPT-NAME(WS-IDX) DELIMITED BY SIZE INTO WS-ADMIN-OPT-TXT",
+          "reason": "unresolved mutate operand: WS-ADMIN-OPT-TXT"
+        },
+        {
+          "verb": "EVALUATE",
+          "line_no": 231,
+          "raw_text": "EVALUATE WS-IDX",
+          "reason": "unresolved read operand: WS-IDX"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN001O",
+          "reason": "unresolved read operand: WS-ADMIN-OPT-TXT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN001O",
+          "reason": "unresolved mutate operand: OPTN001O"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN002O",
+          "reason": "unresolved read operand: WS-ADMIN-OPT-TXT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN002O",
+          "reason": "unresolved mutate operand: OPTN002O"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN003O",
+          "reason": "unresolved read operand: WS-ADMIN-OPT-TXT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN003O",
+          "reason": "unresolved mutate operand: OPTN003O"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN004O",
+          "reason": "unresolved read operand: WS-ADMIN-OPT-TXT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN004O",
+          "reason": "unresolved mutate operand: OPTN004O"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN005O",
+          "reason": "unresolved read operand: WS-ADMIN-OPT-TXT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN005O",
+          "reason": "unresolved mutate operand: OPTN005O"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN006O",
+          "reason": "unresolved read operand: WS-ADMIN-OPT-TXT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN006O",
+          "reason": "unresolved mutate operand: OPTN006O"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN007O",
+          "reason": "unresolved read operand: WS-ADMIN-OPT-TXT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN007O",
+          "reason": "unresolved mutate operand: OPTN007O"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN008O",
+          "reason": "unresolved read operand: WS-ADMIN-OPT-TXT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN008O",
+          "reason": "unresolved mutate operand: OPTN008O"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN009O",
+          "reason": "unresolved read operand: WS-ADMIN-OPT-TXT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN009O",
+          "reason": "unresolved mutate operand: OPTN009O"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN010O",
+          "reason": "unresolved read operand: WS-ADMIN-OPT-TXT"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 231,
+          "raw_text": "MOVE WS-ADMIN-OPT-TXT TO OPTN010O",
+          "reason": "unresolved mutate operand: OPTN010O"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 271,
+          "raw_text": "MOVE SPACES             TO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 271,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COADM1AO",
+          "reason": "unresolved read operand: DFHGREEN"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 271,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COADM1AO",
+          "reason": "unresolved mutate operand: ERRMSGC"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 271,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COADM1AO",
+          "reason": "unresolved mutate operand: OF"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 271,
+          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COADM1AO",
+          "reason": "unresolved mutate operand: COADM1AO"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 271,
+          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved read operand: *"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 271,
+          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved read operand: CDEMO-ADMIN-OPT-NAME(WS-OPTION)"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 271,
+          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved read operand: *"
+        },
+        {
+          "verb": "STRING",
+          "line_no": 271,
+          "raw_text": "STRING 'This option '       DELIMITED BY SIZE *                CDEMO-ADMIN-OPT-NAME(WS-OPTION) *                                DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
+          "reason": "unresolved mutate operand: WS-MESSAGE"
+        }
+      ]
+    }
+  },
+  "program_unresolved": [
+    {
+      "issue": "paragraph count mismatch: local=1 facts=8"
+    }
+  ]
+}

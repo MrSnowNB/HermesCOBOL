@@ -1,0 +1,296 @@
+{
+  "program": "CBSTM03B",
+  "schema_version": "1.2",
+  "paragraph_data_flow": {
+    "0000-START": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "EVALUATE",
+          "line_no": 118,
+          "raw_text": "EVALUATE LK-M03B-DD",
+          "reason": "unresolved read operand: LK-M03B-DD"
+        }
+      ]
+    },
+    "9999-GOBACK": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "1000-TRNXFILE-PROC": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "IF",
+          "line_no": 135,
+          "raw_text": "IF M03B-OPEN",
+          "reason": "unresolved read operand: M03B-OPEN"
+        },
+        {
+          "verb": "IF",
+          "line_no": 140,
+          "raw_text": "IF M03B-READ",
+          "reason": "unresolved read operand: M03B-READ"
+        },
+        {
+          "verb": "READ",
+          "line_no": 140,
+          "raw_text": "READ TRNX-FILE INTO LK-M03B-FLDT",
+          "reason": "unresolved mutate operand: TRNX-FILE"
+        },
+        {
+          "verb": "READ",
+          "line_no": 140,
+          "raw_text": "READ TRNX-FILE INTO LK-M03B-FLDT",
+          "reason": "unresolved mutate operand: LK-M03B-FLDT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 146,
+          "raw_text": "IF M03B-CLOSE",
+          "reason": "unresolved read operand: M03B-CLOSE"
+        }
+      ]
+    },
+    "1900-EXIT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 152,
+          "raw_text": "MOVE TRNXFILE-STATUS TO LK-M03B-RC",
+          "reason": "unresolved read operand: TRNXFILE-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 152,
+          "raw_text": "MOVE TRNXFILE-STATUS TO LK-M03B-RC",
+          "reason": "unresolved mutate operand: LK-M03B-RC"
+        }
+      ]
+    },
+    "1999-EXIT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "2000-XREFFILE-PROC": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "IF",
+          "line_no": 159,
+          "raw_text": "IF M03B-OPEN",
+          "reason": "unresolved read operand: M03B-OPEN"
+        },
+        {
+          "verb": "IF",
+          "line_no": 164,
+          "raw_text": "IF M03B-READ",
+          "reason": "unresolved read operand: M03B-READ"
+        },
+        {
+          "verb": "READ",
+          "line_no": 164,
+          "raw_text": "READ XREF-FILE INTO LK-M03B-FLDT",
+          "reason": "unresolved mutate operand: XREF-FILE"
+        },
+        {
+          "verb": "READ",
+          "line_no": 164,
+          "raw_text": "READ XREF-FILE INTO LK-M03B-FLDT",
+          "reason": "unresolved mutate operand: LK-M03B-FLDT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 170,
+          "raw_text": "IF M03B-CLOSE",
+          "reason": "unresolved read operand: M03B-CLOSE"
+        }
+      ]
+    },
+    "2900-EXIT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 176,
+          "raw_text": "MOVE XREFFILE-STATUS TO LK-M03B-RC",
+          "reason": "unresolved read operand: XREFFILE-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 176,
+          "raw_text": "MOVE XREFFILE-STATUS TO LK-M03B-RC",
+          "reason": "unresolved mutate operand: LK-M03B-RC"
+        }
+      ]
+    },
+    "2999-EXIT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "3000-CUSTFILE-PROC": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "IF",
+          "line_no": 183,
+          "raw_text": "IF M03B-OPEN",
+          "reason": "unresolved read operand: M03B-OPEN"
+        },
+        {
+          "verb": "IF",
+          "line_no": 188,
+          "raw_text": "IF M03B-READ-K",
+          "reason": "unresolved read operand: M03B-READ-K"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 188,
+          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-CUST-ID",
+          "reason": "unresolved read operand: LK-M03B-KEY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 188,
+          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-CUST-ID",
+          "reason": "unresolved read operand: (1:LK-M03B-KEY-LN)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 188,
+          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-CUST-ID",
+          "reason": "unresolved mutate operand: FD-CUST-ID"
+        },
+        {
+          "verb": "READ",
+          "line_no": 188,
+          "raw_text": "READ CUST-FILE INTO LK-M03B-FLDT",
+          "reason": "unresolved mutate operand: CUST-FILE"
+        },
+        {
+          "verb": "READ",
+          "line_no": 188,
+          "raw_text": "READ CUST-FILE INTO LK-M03B-FLDT",
+          "reason": "unresolved mutate operand: LK-M03B-FLDT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 195,
+          "raw_text": "IF M03B-CLOSE",
+          "reason": "unresolved read operand: M03B-CLOSE"
+        }
+      ]
+    },
+    "3900-EXIT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 201,
+          "raw_text": "MOVE CUSTFILE-STATUS TO LK-M03B-RC",
+          "reason": "unresolved read operand: CUSTFILE-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 201,
+          "raw_text": "MOVE CUSTFILE-STATUS TO LK-M03B-RC",
+          "reason": "unresolved mutate operand: LK-M03B-RC"
+        }
+      ]
+    },
+    "3999-EXIT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    },
+    "4000-ACCTFILE-PROC": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "IF",
+          "line_no": 208,
+          "raw_text": "IF M03B-OPEN",
+          "reason": "unresolved read operand: M03B-OPEN"
+        },
+        {
+          "verb": "IF",
+          "line_no": 213,
+          "raw_text": "IF M03B-READ-K",
+          "reason": "unresolved read operand: M03B-READ-K"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 213,
+          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-ACCT-ID",
+          "reason": "unresolved read operand: LK-M03B-KEY"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 213,
+          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-ACCT-ID",
+          "reason": "unresolved read operand: (1:LK-M03B-KEY-LN)"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 213,
+          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-ACCT-ID",
+          "reason": "unresolved mutate operand: FD-ACCT-ID"
+        },
+        {
+          "verb": "READ",
+          "line_no": 213,
+          "raw_text": "READ ACCT-FILE INTO LK-M03B-FLDT",
+          "reason": "unresolved mutate operand: ACCT-FILE"
+        },
+        {
+          "verb": "READ",
+          "line_no": 213,
+          "raw_text": "READ ACCT-FILE INTO LK-M03B-FLDT",
+          "reason": "unresolved mutate operand: LK-M03B-FLDT"
+        },
+        {
+          "verb": "IF",
+          "line_no": 220,
+          "raw_text": "IF M03B-CLOSE",
+          "reason": "unresolved read operand: M03B-CLOSE"
+        }
+      ]
+    },
+    "4900-EXIT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": [
+        {
+          "verb": "MOVE",
+          "line_no": 226,
+          "raw_text": "MOVE ACCTFILE-STATUS TO LK-M03B-RC",
+          "reason": "unresolved read operand: ACCTFILE-STATUS"
+        },
+        {
+          "verb": "MOVE",
+          "line_no": 226,
+          "raw_text": "MOVE ACCTFILE-STATUS TO LK-M03B-RC",
+          "reason": "unresolved mutate operand: LK-M03B-RC"
+        }
+      ]
+    },
+    "4999-EXIT": {
+      "reads": [],
+      "mutates": [],
+      "unresolved": []
+    }
+  },
+  "program_unresolved": []
+}
