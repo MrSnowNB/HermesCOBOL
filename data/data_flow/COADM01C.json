@@ -119,6 +119,12 @@
           "line_no": 77,
           "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "RETURN",
+          "line_no": 77,
+          "raw_text": "RETURN TRANSID (WS-TRANID) COMMAREA (CARDDEMO-COMMAREA)",
+          "reason": "unresolved mutate operand: TRANSID"
         }
       ]
     },
@@ -129,68 +135,32 @@
         {
           "verb": "MOVE",
           "line_no": 121,
-          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
+          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X",
           "reason": "unresolved read operand: OPTIONI"
         },
         {
           "verb": "MOVE",
           "line_no": 121,
-          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
+          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X",
           "reason": "unresolved read operand: OF"
         },
         {
           "verb": "MOVE",
           "line_no": 121,
-          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
+          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X",
           "reason": "unresolved read operand: COADM1AI(1:WS-IDX)"
         },
         {
           "verb": "MOVE",
           "line_no": 121,
-          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
+          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X",
           "reason": "unresolved mutate operand: WS-OPTION-X"
         },
         {
-          "verb": "MOVE",
+          "verb": "INSPECT",
           "line_no": 121,
-          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
-          "reason": "unresolved mutate operand: INSPECT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 121,
-          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
-          "reason": "unresolved mutate operand: WS-OPTION-X"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 121,
-          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
-          "reason": "unresolved mutate operand: REPLACING"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 121,
-          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
-          "reason": "unresolved mutate operand: ALL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 121,
-          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
-          "reason": "literal as mutate target (ignored): __LIT__"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 121,
-          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
-          "reason": "unresolved mutate operand: BY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 121,
-          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
-          "reason": "literal as mutate target (ignored): __LIT__"
+          "raw_text": "INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
+          "reason": "unresolved read operand: WS-OPTION-X"
         },
         {
           "verb": "MOVE",
@@ -844,6 +814,12 @@
           "line_no": 271,
           "raw_text": "STRING 'This option '       DELIMITED BY SIZE 'is not installed ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "RETURN",
+          "line_no": 271,
+          "raw_text": "RETURN TRANSID (WS-TRANID) COMMAREA (CARDDEMO-COMMAREA)",
+          "reason": "unresolved mutate operand: TRANSID"
         }
       ]
     }

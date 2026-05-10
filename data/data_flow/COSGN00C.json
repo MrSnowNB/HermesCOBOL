@@ -113,6 +113,12 @@
           "line_no": 75,
           "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "RETURN",
+          "line_no": 98,
+          "raw_text": "RETURN TRANSID (WS-TRANID) COMMAREA (CARDDEMO-COMMAREA) LENGTH(LENGTH OF CARDDEMO-COMMAREA)",
+          "reason": "unresolved mutate operand: TRANSID"
         }
       ]
     },

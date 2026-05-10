@@ -521,6 +521,12 @@
           "line_no": 395,
           "raw_text": "MOVE  WS-THIS-PROGCOMMAREA TO WS-COMMAREA(LENGTH OF CARDDEMO-COMMAREA + 1: LENGTH OF WS-THIS-PROGCOMMAREA )",
           "reason": "unresolved mutate operand: )"
+        },
+        {
+          "verb": "RETURN",
+          "line_no": 395,
+          "raw_text": "RETURN TRANSID (LIT-THISTRANID) COMMAREA (WS-COMMAREA) LENGTH(LENGTH OF WS-COMMAREA)",
+          "reason": "unresolved mutate operand: TRANSID"
         }
       ]
     },

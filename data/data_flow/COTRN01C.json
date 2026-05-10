@@ -215,6 +215,12 @@
           "line_no": 88,
           "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
           "reason": "unresolved mutate operand: WS-MESSAGE"
+        },
+        {
+          "verb": "RETURN",
+          "line_no": 88,
+          "raw_text": "RETURN TRANSID (WS-TRANID) COMMAREA (CARDDEMO-COMMAREA)",
+          "reason": "unresolved mutate operand: TRANSID"
         }
       ]
     },

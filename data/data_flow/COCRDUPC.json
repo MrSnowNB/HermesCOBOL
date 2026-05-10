@@ -515,6 +515,12 @@
           "line_no": 276,
           "raw_text": "MOVE WS-THIS-PROGCOMMAREA TO DFHCOMMAREA (1:LENGTH OF WS-THIS-PROGCOMMAREA)",
           "reason": "unresolved mutate operand: WS-THIS-PROGCOMMAREA)"
+        },
+        {
+          "verb": "RETURN",
+          "line_no": 276,
+          "raw_text": "RETURN TRANSID (LIT-THISTRANID) COMMAREA(CARDDEMO-COMMAREA)",
+          "reason": "unresolved mutate operand: TRANSID"
         }
       ]
     },

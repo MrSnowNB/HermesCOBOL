@@ -1313,6 +1313,12 @@
           "line_no": 615,
           "raw_text": "MOVE  WS-THIS-PROGCOMMAREA TO WS-COMMAREA(LENGTH OF CARDDEMO-COMMAREA + 1: LENGTH OF WS-THIS-PROGCOMMAREA )",
           "reason": "unresolved mutate operand: )"
+        },
+        {
+          "verb": "RETURN",
+          "line_no": 615,
+          "raw_text": "RETURN TRANSID (LIT-THISTRANID) COMMAREA (WS-COMMAREA) LENGTH(LENGTH OF WS-COMMAREA)",
+          "reason": "unresolved mutate operand: TRANSID"
         }
       ]
     },
@@ -4365,6 +4371,18 @@
           "reason": "unresolved read operand: INPUT-ERROR"
         },
         {
+          "verb": "INSPECT",
+          "line_no": 1085,
+          "raw_text": "INSPECT  WS-EDIT-SELECT-FLAGS TALLYING I FOR ALL 'S' ALL 'U'",
+          "reason": "unresolved read operand: WS-EDIT-SELECT-FLAGS"
+        },
+        {
+          "verb": "INSPECT",
+          "line_no": 1085,
+          "raw_text": "INSPECT  WS-EDIT-SELECT-FLAGS TALLYING I FOR ALL 'S' ALL 'U'",
+          "reason": "unresolved mutate operand: I"
+        },
+        {
           "verb": "IF",
           "line_no": 1085,
           "raw_text": "IF I > +1",
@@ -4385,98 +4403,20 @@
         {
           "verb": "MOVE",
           "line_no": 1085,
-          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
+          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS",
           "reason": "unresolved read operand: WS-EDIT-SELECT-FLAGS"
         },
         {
           "verb": "MOVE",
           "line_no": 1085,
-          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
+          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS",
           "reason": "unresolved mutate operand: WS-EDIT-SELECT-ERROR-FLAGS"
         },
         {
-          "verb": "MOVE",
+          "verb": "INSPECT",
           "line_no": 1085,
-          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "unresolved mutate operand: INSPECT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "unresolved mutate operand: WS-EDIT-SELECT-ERROR-FLAGS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "unresolved mutate operand: REPLACING"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "unresolved mutate operand: ALL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "literal as mutate target (ignored): __LIT__"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "unresolved mutate operand: BY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "literal as mutate target (ignored): __LIT__"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "unresolved mutate operand: ALL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "literal as mutate target (ignored): __LIT__"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "unresolved mutate operand: BY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "literal as mutate target (ignored): __LIT__"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "unresolved mutate operand: CHARACTERS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "unresolved mutate operand: BY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "literal as mutate target (ignored): __LIT__"
+          "raw_text": "INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
+          "reason": "unresolved read operand: WS-EDIT-SELECT-ERROR-FLAGS"
         },
         {
           "verb": "MOVE",

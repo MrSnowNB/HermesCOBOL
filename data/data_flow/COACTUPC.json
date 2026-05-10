@@ -593,6 +593,12 @@
           "line_no": 1008,
           "raw_text": "MOVE  WS-THIS-PROGCOMMAREA TO WS-COMMAREA(LENGTH OF CARDDEMO-COMMAREA + 1: LENGTH OF WS-THIS-PROGCOMMAREA )",
           "reason": "unresolved mutate operand: )"
+        },
+        {
+          "verb": "RETURN",
+          "line_no": 1008,
+          "raw_text": "RETURN TRANSID (LIT-THISTRANID) COMMAREA (WS-COMMAREA) LENGTH(LENGTH OF WS-COMMAREA)",
+          "reason": "unresolved mutate operand: TRANSID"
         }
       ]
     },
@@ -6619,50 +6625,20 @@
         {
           "verb": "MOVE",
           "line_no": 1900,
-          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X   TO LIT-ALL-ALPHA-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHA-FROM TO LIT-ALPHA-SPACES-TO",
+          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X   TO LIT-ALL-ALPHA-FROM",
           "reason": "unresolved read operand: LIT-ALL-ALPHA-FROM-X"
         },
         {
           "verb": "MOVE",
           "line_no": 1900,
-          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X   TO LIT-ALL-ALPHA-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHA-FROM TO LIT-ALPHA-SPACES-TO",
+          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X   TO LIT-ALL-ALPHA-FROM",
           "reason": "unresolved mutate operand: LIT-ALL-ALPHA-FROM"
         },
         {
-          "verb": "MOVE",
+          "verb": "INSPECT",
           "line_no": 1900,
-          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X   TO LIT-ALL-ALPHA-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHA-FROM TO LIT-ALPHA-SPACES-TO",
-          "reason": "unresolved mutate operand: INSPECT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1900,
-          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X   TO LIT-ALL-ALPHA-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHA-FROM TO LIT-ALPHA-SPACES-TO",
-          "reason": "unresolved mutate operand: WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1900,
-          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X   TO LIT-ALL-ALPHA-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHA-FROM TO LIT-ALPHA-SPACES-TO",
-          "reason": "unresolved mutate operand: CONVERTING"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1900,
-          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X   TO LIT-ALL-ALPHA-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHA-FROM TO LIT-ALPHA-SPACES-TO",
-          "reason": "unresolved mutate operand: LIT-ALL-ALPHA-FROM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1900,
-          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X   TO LIT-ALL-ALPHA-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHA-FROM TO LIT-ALPHA-SPACES-TO",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1900,
-          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X   TO LIT-ALL-ALPHA-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHA-FROM TO LIT-ALPHA-SPACES-TO",
-          "reason": "unresolved mutate operand: LIT-ALPHA-SPACES-TO"
+          "raw_text": "INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHA-FROM TO LIT-ALPHA-SPACES-TO",
+          "reason": "unresolved read operand: WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH)"
         },
         {
           "verb": "IF",
@@ -6834,50 +6810,20 @@
         {
           "verb": "MOVE",
           "line_no": 1957,
-          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHANUM-FROM TO LIT-ALPHANUM-SPACES-TO",
+          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM",
           "reason": "unresolved read operand: LIT-ALL-ALPHANUM-FROM-X"
         },
         {
           "verb": "MOVE",
           "line_no": 1957,
-          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHANUM-FROM TO LIT-ALPHANUM-SPACES-TO",
+          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM",
           "reason": "unresolved mutate operand: LIT-ALL-ALPHANUM-FROM"
         },
         {
-          "verb": "MOVE",
+          "verb": "INSPECT",
           "line_no": 1957,
-          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHANUM-FROM TO LIT-ALPHANUM-SPACES-TO",
-          "reason": "unresolved mutate operand: INSPECT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1957,
-          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHANUM-FROM TO LIT-ALPHANUM-SPACES-TO",
-          "reason": "unresolved mutate operand: WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1957,
-          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHANUM-FROM TO LIT-ALPHANUM-SPACES-TO",
-          "reason": "unresolved mutate operand: CONVERTING"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1957,
-          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHANUM-FROM TO LIT-ALPHANUM-SPACES-TO",
-          "reason": "unresolved mutate operand: LIT-ALL-ALPHANUM-FROM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1957,
-          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHANUM-FROM TO LIT-ALPHANUM-SPACES-TO",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1957,
-          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHANUM-FROM TO LIT-ALPHANUM-SPACES-TO",
-          "reason": "unresolved mutate operand: LIT-ALPHANUM-SPACES-TO"
+          "raw_text": "INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHANUM-FROM TO LIT-ALPHANUM-SPACES-TO",
+          "reason": "unresolved read operand: WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH)"
         },
         {
           "verb": "IF",
@@ -7019,50 +6965,20 @@
         {
           "verb": "MOVE",
           "line_no": 2014,
-          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X    TO LIT-ALL-ALPHA-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHA-FROM TO LIT-ALPHA-SPACES-TO",
+          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X    TO LIT-ALL-ALPHA-FROM",
           "reason": "unresolved read operand: LIT-ALL-ALPHA-FROM-X"
         },
         {
           "verb": "MOVE",
           "line_no": 2014,
-          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X    TO LIT-ALL-ALPHA-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHA-FROM TO LIT-ALPHA-SPACES-TO",
+          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X    TO LIT-ALL-ALPHA-FROM",
           "reason": "unresolved mutate operand: LIT-ALL-ALPHA-FROM"
         },
         {
-          "verb": "MOVE",
+          "verb": "INSPECT",
           "line_no": 2014,
-          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X    TO LIT-ALL-ALPHA-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHA-FROM TO LIT-ALPHA-SPACES-TO",
-          "reason": "unresolved mutate operand: INSPECT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2014,
-          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X    TO LIT-ALL-ALPHA-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHA-FROM TO LIT-ALPHA-SPACES-TO",
-          "reason": "unresolved mutate operand: WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2014,
-          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X    TO LIT-ALL-ALPHA-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHA-FROM TO LIT-ALPHA-SPACES-TO",
-          "reason": "unresolved mutate operand: CONVERTING"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2014,
-          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X    TO LIT-ALL-ALPHA-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHA-FROM TO LIT-ALPHA-SPACES-TO",
-          "reason": "unresolved mutate operand: LIT-ALL-ALPHA-FROM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2014,
-          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X    TO LIT-ALL-ALPHA-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHA-FROM TO LIT-ALPHA-SPACES-TO",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2014,
-          "raw_text": "MOVE LIT-ALL-ALPHA-FROM-X    TO LIT-ALL-ALPHA-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHA-FROM TO LIT-ALPHA-SPACES-TO",
-          "reason": "unresolved mutate operand: LIT-ALPHA-SPACES-TO"
+          "raw_text": "INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHA-FROM TO LIT-ALPHA-SPACES-TO",
+          "reason": "unresolved read operand: WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH)"
         },
         {
           "verb": "IF",
@@ -7204,50 +7120,20 @@
         {
           "verb": "MOVE",
           "line_no": 2063,
-          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHANUM-FROM TO LIT-ALPHANUM-SPACES-TO",
+          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM",
           "reason": "unresolved read operand: LIT-ALL-ALPHANUM-FROM-X"
         },
         {
           "verb": "MOVE",
           "line_no": 2063,
-          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHANUM-FROM TO LIT-ALPHANUM-SPACES-TO",
+          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM",
           "reason": "unresolved mutate operand: LIT-ALL-ALPHANUM-FROM"
         },
         {
-          "verb": "MOVE",
+          "verb": "INSPECT",
           "line_no": 2063,
-          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHANUM-FROM TO LIT-ALPHANUM-SPACES-TO",
-          "reason": "unresolved mutate operand: INSPECT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2063,
-          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHANUM-FROM TO LIT-ALPHANUM-SPACES-TO",
-          "reason": "unresolved mutate operand: WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2063,
-          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHANUM-FROM TO LIT-ALPHANUM-SPACES-TO",
-          "reason": "unresolved mutate operand: CONVERTING"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2063,
-          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHANUM-FROM TO LIT-ALPHANUM-SPACES-TO",
-          "reason": "unresolved mutate operand: LIT-ALL-ALPHANUM-FROM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2063,
-          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHANUM-FROM TO LIT-ALPHANUM-SPACES-TO",
-          "reason": "unresolved mutate operand: TO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 2063,
-          "raw_text": "MOVE LIT-ALL-ALPHANUM-FROM-X TO LIT-ALL-ALPHANUM-FROM INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHANUM-FROM TO LIT-ALPHANUM-SPACES-TO",
-          "reason": "unresolved mutate operand: LIT-ALPHANUM-SPACES-TO"
+          "raw_text": "INSPECT WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH) CONVERTING LIT-ALL-ALPHANUM-FROM TO LIT-ALPHANUM-SPACES-TO",
+          "reason": "unresolved read operand: WS-EDIT-ALPHANUM-ONLY(1:WS-EDIT-ALPHANUM-LENGTH)"
         },
         {
           "verb": "IF",
