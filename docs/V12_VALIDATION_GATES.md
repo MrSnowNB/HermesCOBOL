@@ -206,6 +206,14 @@ python scripts\data_flow.py --all
 
 All contracts locked in 3.1 and 3.2, plus `_parse_call()`.
 
+3.3 gate test inventory:
+- TestInspect: 2
+- TestSort: 1
+- TestMerge: 1
+- TestRelease: 2
+- TestReturn: 2
+Total new: 8. Inherited from 3.2: 47. Grand total: 55.
+
 ---
 
 ## Section 3.4 Gate — Schema v1.3 + `section_name` (planned)
