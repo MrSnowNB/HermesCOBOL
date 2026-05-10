@@ -370,7 +370,6 @@ def _join_lines(lines: list) -> list:
 # CALL USING parser  (Section 3.2)
 # ---------------------------------------------------------------------------
 
-# Keywords that signal the end of the USING/RETURNING argument list.
 _CALL_STOP_KEYWORDS = frozenset({
     'ON', 'NOT', 'EXCEPTION', 'END-CALL', 'OVERFLOW', 'ERROR',
 })
@@ -429,13 +428,12 @@ def _parse_call(
         call_targets.append(target)
 
     # --- single-pass cursor from token 2 ---
-    # mode only matters while in_using == True
-    in_using   = False
-    mode       = 'REFERENCE'   # default USING mode
-    returning_next = False     # True: very next identifier -> mutate only then stop
+    in_using       = False
+    mode           = 'REFERENCE'
+    returning_next = False
 
     ut = [t.upper() for t in tokens]
-    i  = 2   # skip CALL + target
+    i  = 2
 
     while i < len(ut):
         tok = ut[i]
@@ -450,7 +448,6 @@ def _parse_call(
             continue
 
         if tok == 'RETURNING':
-            # RETURNING is valid with or without a preceding USING
             returning_next = True
             in_using = False
             i += 1
@@ -469,14 +466,12 @@ def _parse_call(
             i += 1
             continue
 
-        # --- operand token ---
         operand = tokens[i]
         if operand == '__LIT__' or is_literal(operand):
             i += 1
             continue
 
         if returning_next:
-            # RETURNING identifier -> mutate only, then we are done
             hits = resolve(operand, qmap, context_records)
             if not hits:
                 unresolved.append({
@@ -488,7 +483,7 @@ def _parse_call(
                     if h not in mutates:
                         mutates.append(h)
                         context_records.add(h['record'])
-            break   # nothing after RETURNING identifier is relevant
+            break
 
         if in_using:
             if mode in ('REFERENCE',):
