@@ -627,6 +627,293 @@ class TestReturn(unittest.TestCase):
         self.assertEqual(u, [])
 
 
+# ---------------------------------------------------------------------------
+# Section 3.4 tests -- section_name threading and SCHEMA_VERSION 1.3
+# ---------------------------------------------------------------------------
+
+def _extract_synthetic(source: str) -> dict:
+    """
+    Run extract_data_flow on an in-memory synthetic COBOL source string.
+    Uses a temporary file so extract_data_flow's Path-based API is satisfied.
+    No byte_layouts file is provided (empty qmap path); all fields will be
+    unresolved, which is fine -- these tests only inspect structural metadata.
+    """
+    import importlib
+    import tempfile
+    import sys as _sys
+    from pathlib import Path as P
+
+    sys_path_backup = _sys.path[:]
+    _sys.path.insert(0, str(P(__file__).parent.parent / 'scripts'))
+    df = importlib.import_module('data_flow')
+    _sys.path[:] = sys_path_backup
+
+    with tempfile.NamedTemporaryFile(
+        mode='w', suffix='.cbl', delete=False, encoding='utf-8'
+    ) as fh:
+        fh.write(source)
+        tmp_path = P(fh.name)
+
+    try:
+        # Pass a non-existent layout path so build_qmap returns empty dicts
+        result = df.extract_data_flow(tmp_path, P('/nonexistent/layout.json'))
+    finally:
+        tmp_path.unlink(missing_ok=True)
+
+    return result
+
+
+class TestSectionNameSchema(unittest.TestCase):
+    """
+    Section 3.4: section_name threading and SCHEMA_VERSION bump to "1.3".
+
+    All fixtures use blank-sequence-area inline source format (Section 3.1 lock):
+      cols 1-6  : spaces (sequence area)
+      col  7    : space  (indicator)
+      cols 8-72 : code area (Area A at col 8, Area B at col 12+)
+    """
+
+    # ------------------------------------------------------------------
+    # Shared synthetic sources
+    # ------------------------------------------------------------------
+
+    # One paragraph before any SECTION header
+    _SRC_NO_SECTION = (
+        "       IDENTIFICATION DIVISION.\n"
+        "       PROGRAM-ID. TESTSECT.\n"
+        "       PROCEDURE DIVISION.\n"
+        "       FIRST-PARA.\n"
+        "           CONTINUE.\n"
+    )
+
+    # One SECTION containing one paragraph
+    _SRC_ONE_SECTION = (
+        "       IDENTIFICATION DIVISION.\n"
+        "       PROGRAM-ID. TESTSECT.\n"
+        "       PROCEDURE DIVISION.\n"
+        "       ALPHA SECTION.\n"
+        "       ALPHA-PARA.\n"
+        "           CONTINUE.\n"
+    )
+
+    # Two SECTIONs each with one paragraph
+    _SRC_TWO_SECTIONS = (
+        "       IDENTIFICATION DIVISION.\n"
+        "       PROGRAM-ID. TESTSECT.\n"
+        "       PROCEDURE DIVISION.\n"
+        "       ALPHA SECTION.\n"
+        "       P1.\n"
+        "           CONTINUE.\n"
+        "       BETA SECTION.\n"
+        "       P2.\n"
+        "           CONTINUE.\n"
+    )
+
+    # Duplicate paragraph name across two sections
+    _SRC_DUPLICATE_PARA = (
+        "       IDENTIFICATION DIVISION.\n"
+        "       PROGRAM-ID. TESTSECT.\n"
+        "       PROCEDURE DIVISION.\n"
+        "       ALPHA SECTION.\n"
+        "       READ-RECORD.\n"
+        "           CONTINUE.\n"
+        "       BETA SECTION.\n"
+        "       READ-RECORD.\n"
+        "           CONTINUE.\n"
+    )
+
+    # Back-to-back SECTIONs: A has no paragraphs, B has one
+    _SRC_BACK_TO_BACK = (
+        "       IDENTIFICATION DIVISION.\n"
+        "       PROGRAM-ID. TESTSECT.\n"
+        "       PROCEDURE DIVISION.\n"
+        "       ALPHA SECTION.\n"
+        "       BETA SECTION.\n"
+        "       BETA-PARA.\n"
+        "           CONTINUE.\n"
+    )
+
+    # ------------------------------------------------------------------
+    # Test 1: paragraph before any SECTION has section_name == None
+    # ------------------------------------------------------------------
+
+    def test_paragraph_before_any_section_has_null_section_name(self):
+        """
+        A paragraph appearing before any SECTION header in PROCEDURE DIVISION
+        must have section_name == None (JSON null sentinel).
+        Step 2 must add section_name threading to extract_paragraphs / extract_data_flow.
+        """
+        result = _extract_synthetic(self._SRC_NO_SECTION)
+        pdf = result.get('paragraph_data_flow', {})
+        self.assertIn(
+            'FIRST-PARA', pdf,
+            f'Expected FIRST-PARA in paragraph_data_flow, got keys: {list(pdf.keys())}'
+        )
+        entry = pdf['FIRST-PARA']
+        self.assertIn(
+            'section_name', entry,
+            'paragraph_data_flow entry must contain section_name key (Step 2 adds this)'
+        )
+        self.assertIsNone(
+            entry['section_name'],
+            f'Paragraph before any SECTION must have section_name=None, got: {entry["section_name"]}'
+        )
+
+    # ------------------------------------------------------------------
+    # Test 2: paragraph under a SECTION has its section's name
+    # ------------------------------------------------------------------
+
+    def test_paragraph_under_section_has_section_name(self):
+        """
+        A paragraph appearing after a SECTION header must have section_name
+        equal to the section name (without the trailing SECTION keyword,
+        without the trailing period).
+        """
+        result = _extract_synthetic(self._SRC_ONE_SECTION)
+        pdf = result.get('paragraph_data_flow', {})
+        self.assertIn(
+            'ALPHA-PARA', pdf,
+            f'Expected ALPHA-PARA in paragraph_data_flow, got: {list(pdf.keys())}'
+        )
+        entry = pdf['ALPHA-PARA']
+        self.assertIn(
+            'section_name', entry,
+            'paragraph_data_flow entry must contain section_name key'
+        )
+        self.assertEqual(
+            entry['section_name'], 'ALPHA',
+            f'Expected section_name="ALPHA", got: {entry.get("section_name")}'
+        )
+
+    # ------------------------------------------------------------------
+    # Test 3: paragraphs under two different sections have distinct names
+    # ------------------------------------------------------------------
+
+    def test_paragraphs_under_two_different_sections_have_distinct_section_names(self):
+        """
+        P1 under ALPHA SECTION -> section_name='ALPHA'
+        P2 under BETA SECTION  -> section_name='BETA'
+        """
+        result = _extract_synthetic(self._SRC_TWO_SECTIONS)
+        pdf = result.get('paragraph_data_flow', {})
+
+        self.assertIn('P1', pdf, f'Expected P1 in pdf, got: {list(pdf.keys())}')
+        self.assertIn('P2', pdf, f'Expected P2 in pdf, got: {list(pdf.keys())}')
+
+        self.assertIn('section_name', pdf['P1'], 'P1 entry must have section_name')
+        self.assertIn('section_name', pdf['P2'], 'P2 entry must have section_name')
+
+        self.assertEqual(
+            pdf['P1']['section_name'], 'ALPHA',
+            f'P1 must have section_name="ALPHA", got: {pdf["P1"].get("section_name")}'
+        )
+        self.assertEqual(
+            pdf['P2']['section_name'], 'BETA',
+            f'P2 must have section_name="BETA", got: {pdf["P2"].get("section_name")}'
+        )
+        self.assertNotEqual(
+            pdf['P1']['section_name'], pdf['P2']['section_name'],
+            'P1 and P2 must have different section_name values'
+        )
+
+    # ------------------------------------------------------------------
+    # Test 4: duplicate paragraph name across sections is disambiguated
+    # ------------------------------------------------------------------
+
+    def test_duplicate_paragraph_name_across_sections_is_disambiguated_by_section(self):
+        """
+        ALPHA SECTION has READ-RECORD; BETA SECTION also has READ-RECORD.
+        The output must carry evidence of both occurrences with different section_name.
+
+        TODO (Step 2): Choose disambiguation key representation.
+        Options:
+          a) paragraph_data_flow keyed as "ALPHA.READ-RECORD" / "BETA.READ-RECORD"
+          b) paragraph_data_flow values include a list-of-entries form
+        The test below is intentionally a placeholder that forces Step 2 to
+        define the representation before this can pass.
+        """
+        # Placeholder: Step 2 must define the disambiguation representation.
+        # Once Step 2 is implemented, replace this self.fail() with the real
+        # assertion against the chosen key format:
+        #
+        #   entries = [
+        #       {'name': k.split('.')[-1], 'section_name': v.get('section_name')}
+        #       for k, v in result['paragraph_data_flow'].items()
+        #   ]
+        #   self.assertEqual(
+        #       len([e for e in entries
+        #            if e['section_name'] == 'ALPHA' and e['name'] == 'READ-RECORD']), 1
+        #   )
+        #   self.assertEqual(
+        #       len([e for e in entries
+        #            if e['section_name'] == 'BETA' and e['name'] == 'READ-RECORD']), 1
+        #   )
+        self.fail(
+            "Step 2 must define disambiguation representation for duplicate "
+            "paragraph names across sections before this test can pass."
+        )
+
+    # ------------------------------------------------------------------
+    # Test 5: back-to-back SECTION headers, empty first section
+    # ------------------------------------------------------------------
+
+    def test_back_to_back_section_headers_with_no_paragraphs_in_between(self):
+        """
+        ALPHA SECTION immediately followed by BETA SECTION (no paragraphs under ALPHA).
+        BETA-PARA appears under BETA SECTION.
+        Assert: no paragraph has section_name == 'ALPHA';
+                BETA-PARA has section_name == 'BETA';
+                no parse errors.
+        """
+        result = _extract_synthetic(self._SRC_BACK_TO_BACK)
+        pdf = result.get('paragraph_data_flow', {})
+
+        # No paragraph should claim section_name == 'ALPHA'
+        alpha_paras = [
+            k for k, v in pdf.items()
+            if isinstance(v, dict) and v.get('section_name') == 'ALPHA'
+        ]
+        self.assertEqual(
+            alpha_paras, [],
+            f'No paragraph should be under empty ALPHA section, got: {alpha_paras}'
+        )
+
+        # BETA-PARA must exist and be under BETA
+        self.assertIn(
+            'BETA-PARA', pdf,
+            f'Expected BETA-PARA in paragraph_data_flow, got: {list(pdf.keys())}'
+        )
+        entry = pdf['BETA-PARA']
+        self.assertIn('section_name', entry, 'BETA-PARA must have section_name key')
+        self.assertEqual(
+            entry['section_name'], 'BETA',
+            f'BETA-PARA must have section_name="BETA", got: {entry.get("section_name")}'
+        )
+
+        # No program-level errors
+        self.assertEqual(
+            result.get('program_unresolved', []), [],
+            f'Unexpected program_unresolved errors: {result.get("program_unresolved")}'
+        )
+
+    # ------------------------------------------------------------------
+    # Test 6: SCHEMA_VERSION must be "1.3" once section_name is present
+    # ------------------------------------------------------------------
+
+    def test_schema_version_field_is_1_3_when_section_name_present(self):
+        """
+        After Step 2 bumps SCHEMA_VERSION, extract_data_flow output must
+        return schema_version == "1.3". This test will fail in Step 1
+        because the production code has not been modified yet (still "1.2").
+        """
+        result = _extract_synthetic(self._SRC_ONE_SECTION)
+        schema_ver = result.get('schema_version')
+        self.assertEqual(
+            schema_ver, '1.3',
+            f'Expected schema_version="1.3" (Step 2 bumps this), got: "{schema_ver}"'
+        )
+
+
 if __name__ == '__main__':
     loader = unittest.TestLoader()
     suite  = loader.loadTestsFromModule(__import__('__main__'))
