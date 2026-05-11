@@ -233,8 +233,97 @@ python scripts\data_flow.py --all          # -> 31 files, 0 ERROR
 
 ---
 
-## Section 3.4 Gate — Schema v1.3 + `section_name` (planned)
+## Section 3.4 Gate — Schema v1.3 + `section_name` (SPEC LOCKED, not yet gated)
 
-- `SCHEMA_VERSION` bumped to `"1.3"`
-- `section_name` field added to each paragraph entry
-- Close-mismatch WARNINGs resolved: COACTUPC, COACTVWC, COCRDLIC, COCRDSLC, COCRDUPC
+**Spec locked against baseline:** audit `audit/3_4_warning_baseline.json`, `main` SHA `77a5ca5`
+**Branch (planned):** `feature/schema-v1.3-section4-schema-bump`
+**Prerequisite:** 3.3 merged to `main`; baseline audit committed under `audit/`.
+
+### Objective
+
+1. Bump `SCHEMA_VERSION` from `"1.2"` to `"1.3"`.
+2. Add `section_name` field to each paragraph entry in `paragraph_data_flow`.
+3. Resolve all `close-mismatch` WARNINGs across the `--all` corpus, including
+   defensive coverage of files that are clean today but share the same
+   structural pattern.
+
+### Target files (locked)
+
+| File | Status today (`77a5ca5`) | Required after 3.4 |
+|---|---|---|
+| COACTUPC | close-mismatch local=85 facts=87 delta=-2 | local=87 facts=87 delta=0; no WARNING |
+| COACTVWC | close-mismatch local=34 facts=36 delta=-2 | local=36 facts=36 delta=0; no WARNING |
+| COCRDLIC | close-mismatch local=39 facts=41 delta=-2 | local=41 facts=41 delta=0; no WARNING |
+| COCRDSLC | no WARNING (defensive scope) | no WARNING (regression guard) |
+| COCRDUPC | no WARNING (defensive scope) | no WARNING (regression guard) |
+
+### Implementation note (mechanism hint)
+
+All three currently-warning files exhibit `local = facts - 2`. The −2 delta is
+uniform across files, strongly suggesting a single shared structural cause:
+implicit paragraph closure at SECTION boundaries that the current
+paragraph-only counter does not see. The 3.4 fix should re-key
+close-mismatch detection on the tuple `(section_name, paragraph_name)`
+rather than `paragraph_name` alone. The introduction of `section_name`
+in the schema and the resolution of these WARNINGs are therefore one
+mechanism, not three.
+
+### Frozen contract re-gating (REQUIRED)
+
+`extract_paragraphs` is currently frozen by the 3.1, 3.2, and 3.3 gates.
+Section 3.4 re-gates this contract to add section-aware annotation:
+the walker MUST thread the most recently seen SECTION header through
+the procedure division and stamp it onto every subsequent paragraph
+entry until a new SECTION header is encountered. The previous contract
+is superseded by 3.4. Document the new contract in the 3.4 FROZEN
+block once gated; do not silently change it.
+
+### Locked spec answers
+
+1. **Paragraphs before any SECTION header.** `section_name` is the
+   JSON value `null`. Not `""`, not a sentinel string. Tests must
+   include at least one such fixture and assert `null`.
+2. **SECTION-header detection regex.** Reuse `_SECTION_HEADER_RE`
+   as locked in Section 3.1. No new regex. `_SECTION_HEADER_RE` is
+   added to the frozen-contract enumeration as part of 3.4's lock.
+3. **Backwards compatibility for v1.2 consumers.** No downgrade path.
+   The `SCHEMA_VERSION` bump is the explicit signal; consumers MUST
+   upgrade to v1.3 to read v1.3 output. No silent dual-version support.
+4. **Frozen-contract update language.** The 3.4 FROZEN block (added
+   when the gate closes) will state: "3.4 re-gates `extract_paragraphs`
+   to add section-aware annotation; the previous contract is
+   superseded." Do not leave the prior freeze in place without that
+   supersession line.
+5. **Section-aware deduplication.** Any logic in `data_flow_summary`
+   that currently merges or dedups paragraph entries by name alone
+   MUST become section-aware in 3.4. If no such logic exists today,
+   document that explicitly in the 3.4 FROZEN block.
+
+### 3.4 Gate criteria (to be marked FROZEN on the gating commit)
+
+```powershell
+python tests\test_data_flow.py
+# -> NN/NN PASS (current 55 + new section-aware tests; count locked at gate close)
+# Must include: paragraph-before-section (null), duplicate-paragraph-name-across-sections,
+# section-header-immediately-followed-by-section-header, multi-paragraph-section.
+
+python scripts\data_flow.py --all
+# -> 31 files, 0 ERROR
+# -> 0 close-mismatch WARNINGs
+# -> 0 local=0, 0 local=1
+# -> No deferral clause; the 3.1/3.2/3.3 "allowed COACTUPC/COACTVWC/COCRDLIC" exception
+#    is REMOVED at 3.4 close.
+
+python -c "import json; d=json.load(open(r'data\data_flow\COACTUPC.json')); \
+           assert d['SCHEMA_VERSION']=='1.3'; \
+           p=next(iter(d['paragraph_data_flow'].values())); \
+           assert 'section_name' in p"
+# -> all corpus JSON has SCHEMA_VERSION == '1.3' and section_name on every paragraph entry.
+```
+
+### Recovery anchors (planned)
+
+- Before starting 3.4 implementation, tag `main` as `recovery-3.4-baseline` for
+  rollback. Do not delete this tag until 3.4 is gated and merged.
+- The 3.4 implementation branch MUST be cut from the tagged commit, not from
+  a moving `main`.
