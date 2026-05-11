@@ -832,25 +832,39 @@ class TestSectionNameSchema(unittest.TestCase):
         The test below is intentionally a placeholder that forces Step 2 to
         define the representation before this can pass.
         """
-        # Placeholder: Step 2 must define the disambiguation representation.
-        # Once Step 2 is implemented, replace this self.fail() with the real
-        # assertion against the chosen key format:
-        #
-        #   entries = [
-        #       {'name': k.split('.')[-1], 'section_name': v.get('section_name')}
-        #       for k, v in result['paragraph_data_flow'].items()
-        #   ]
-        #   self.assertEqual(
-        #       len([e for e in entries
-        #            if e['section_name'] == 'ALPHA' and e['name'] == 'READ-RECORD']), 1
-        #   )
-        #   self.assertEqual(
-        #       len([e for e in entries
-        #            if e['section_name'] == 'BETA' and e['name'] == 'READ-RECORD']), 1
-        #   )
-        self.fail(
-            "Step 2 must define disambiguation representation for duplicate "
-            "paragraph names across sections before this test can pass."
+        src = (
+            "       IDENTIFICATION DIVISION.\n"
+            "       PROGRAM-ID. TESTPROG.\n"
+            "       PROCEDURE DIVISION.\n"
+            "       ALPHA SECTION.\n"
+            "       READ-RECORD.\n"
+            "           MOVE 1 TO WS-VAR.\n"
+            "       BETA SECTION.\n"
+            "       READ-RECORD.\n"
+            "           MOVE 1 TO WS-VAR.\n"
+        )
+        result = _extract_synthetic(src)
+        pdf = result.get('paragraph_data_flow', {})
+
+        self.assertIn(
+            'ALPHA::READ-RECORD', pdf,
+            f'Expected compound key "ALPHA::READ-RECORD" in paragraph_data_flow, got: {list(pdf.keys())}'
+        )
+        self.assertIn(
+            'BETA::READ-RECORD', pdf,
+            f'Expected compound key "BETA::READ-RECORD" in paragraph_data_flow, got: {list(pdf.keys())}'
+        )
+        self.assertNotIn(
+            'READ-RECORD', pdf,
+            f'Plain key "READ-RECORD" must be absent when cross-section collision exists, got: {list(pdf.keys())}'
+        )
+        self.assertEqual(
+            pdf['ALPHA::READ-RECORD']['section_name'], 'ALPHA',
+            f'ALPHA::READ-RECORD must have section_name="ALPHA", got: {pdf.get("ALPHA::READ-RECORD", {}).get("section_name")}'
+        )
+        self.assertEqual(
+            pdf['BETA::READ-RECORD']['section_name'], 'BETA',
+            f'BETA::READ-RECORD must have section_name="BETA", got: {pdf.get("BETA::READ-RECORD", {}).get("section_name")}'
         )
 
     # ------------------------------------------------------------------
