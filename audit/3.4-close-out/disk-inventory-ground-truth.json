@@ -1,0 +1,397 @@
+[
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\CBACT01C.cbl",
+    "Length": 17880,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\CBACT02C.cbl",
+    "Length": 14274,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\CBACT03C.cbl",
+    "Length": 14279,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\CBACT04C.cbl",
+    "Length": 53131,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\CBCUS01C.cbl",
+    "Length": 7092,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\CBEXPORT.cbl",
+    "Length": 24779,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\CBIMPORT.cbl",
+    "Length": 20726,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\CBSTM03A.CBL",
+    "Length": 36498,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\CBSTM03B.CBL",
+    "Length": 7213,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\CBTRN01C.cbl",
+    "Length": 18461,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\CBTRN02C.cbl",
+    "Length": 59621,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\CBTRN03C.cbl",
+    "Length": 52888,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\COACTUPC.cbl",
+    "Length": 186699,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\COACTVWC.cbl",
+    "Length": 75705,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\COADM01C.cbl",
+    "Length": 23024,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\COBIL00C.cbl",
+    "Length": 23998,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\COBSWAIT.cbl",
+    "Length": 2020,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\COCRDLIC.cbl",
+    "Length": 118186,
+    "LastWriteTime": "2026-05-02T15:59:50.6518824-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\COCRDSLC.cbl",
+    "Length": 26436,
+    "LastWriteTime": "2026-05-02T18:52:05.4049223-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\COCRDUPC.cbl",
+    "Length": 32704,
+    "LastWriteTime": "2026-05-02T18:52:05.4049223-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\COMEN01C.cbl",
+    "Length": 12769,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\CORPT00C.cbl",
+    "Length": 28951,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\COSGN00C.cbl",
+    "Length": 10548,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\COTRN00C.cbl",
+    "Length": 29969,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\COTRN01C.cbl",
+    "Length": 14574,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\COTRN02C.cbl",
+    "Length": 34448,
+    "LastWriteTime": "2026-04-24T15:38:16.8256601-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\COUSR00C.cbl",
+    "Length": 29981,
+    "LastWriteTime": "2026-05-07T11:03:10.8375525-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\COUSR01C.cbl",
+    "Length": 12870,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\COUSR02C.cbl",
+    "Length": 18025,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\COUSR03C.cbl",
+    "Length": 15397,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cbl\\CSUTLDTC.cbl",
+    "Length": 11765,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy-bms\\COACTUP.CPY",
+    "Length": 26716,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy-bms\\COACTVW.CPY",
+    "Length": 18863,
+    "LastWriteTime": "2026-05-07T13:04:17.5493069-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy-bms\\COADM01.CPY",
+    "Length": 10766,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy-bms\\COBIL00.CPY",
+    "Length": 6026,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy-bms\\COCRDLI.CPY",
+    "Length": 22576,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy-bms\\COCRDSL.CPY",
+    "Length": 8372,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy-bms\\COCRDUP.CPY",
+    "Length": 9298,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy-bms\\COMEN01.CPY",
+    "Length": 10766,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy-bms\\CORPT00.CPY",
+    "Length": 9236,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy-bms\\COSGN00.CPY",
+    "Length": 6454,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy-bms\\COTRN00.CPY",
+    "Length": 29222,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy-bms\\COTRN01.CPY",
+    "Length": 11056,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy-bms\\COTRN02.CPY",
+    "Length": 11074,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy-bms\\COUSR00.CPY",
+    "Length": 29200,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy-bms\\COUSR01.CPY",
+    "Length": 6920,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy-bms\\COUSR02.CPY",
+    "Length": 6930,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy-bms\\COUSR03.CPY",
+    "Length": 6468,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\COADM02Y.cpy",
+    "Length": 5076,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\COCOM01Y.cpy",
+    "Length": 2761,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CODATECN.cpy",
+    "Length": 2723,
+    "LastWriteTime": "2026-05-08T11:06:06.6083121-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\COMEN01.cpy",
+    "Length": 1250,
+    "LastWriteTime": "2026-05-02T12:25:07.8293366-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\COMEN02Y.cpy",
+    "Length": 5425,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\COSTM01.CPY",
+    "Length": 2037,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\COTTL01Y.cpy",
+    "Length": 1669,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CSDAT01Y.cpy",
+    "Length": 3292,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CSLKPCDY.cpy",
+    "Length": 52717,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CSMSG01Y.cpy",
+    "Length": 1557,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CSMSG02Y.cpy",
+    "Length": 1956,
+    "LastWriteTime": "2026-04-24T15:38:16.8401339-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CSSETATY.cpy",
+    "Length": 1915,
+    "LastWriteTime": "2026-04-24T15:38:16.8513665-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CSSTRPFY.cpy",
+    "Length": 6688,
+    "LastWriteTime": "2026-04-24T15:38:16.8513665-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CSUSR01Y.cpy",
+    "Length": 1608,
+    "LastWriteTime": "2026-04-24T15:38:16.8513665-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CSUTLDPY.cpy",
+    "Length": 13436,
+    "LastWriteTime": "2026-04-24T15:38:16.8513665-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CSUTLDWY.cpy",
+    "Length": 5352,
+    "LastWriteTime": "2026-04-24T15:38:16.8513665-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CUSTREC.cpy",
+    "Length": 1544,
+    "LastWriteTime": "2026-04-24T15:38:16.8513665-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CVACT01Y.cpy",
+    "Length": 1145,
+    "LastWriteTime": "2026-04-24T15:38:16.8513665-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CVACT02Y.cpy",
+    "Length": 744,
+    "LastWriteTime": "2026-04-24T15:38:16.8513665-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CVACT03Y.cpy",
+    "Length": 747,
+    "LastWriteTime": "2026-04-24T15:38:16.8513665-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CVCRD01Y.cpy",
+    "Length": 3482,
+    "LastWriteTime": "2026-04-24T15:38:16.8513665-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CVCUS01Y.cpy",
+    "Length": 1614,
+    "LastWriteTime": "2026-04-24T15:38:16.8513665-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CVEXPORT.cpy",
+    "Length": 6271,
+    "LastWriteTime": "2026-04-24T15:38:16.8513665-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CVTRA01Y.cpy",
+    "Length": 911,
+    "LastWriteTime": "2026-04-24T15:38:16.8513665-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CVTRA02Y.cpy",
+    "Length": 911,
+    "LastWriteTime": "2026-04-24T15:38:16.8513665-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CVTRA03Y.cpy",
+    "Length": 665,
+    "LastWriteTime": "2026-04-24T15:38:16.8513665-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CVTRA04Y.cpy",
+    "Length": 829,
+    "LastWriteTime": "2026-04-24T15:38:16.8513665-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CVTRA05Y.cpy",
+    "Length": 1567,
+    "LastWriteTime": "2026-04-24T15:38:16.8513665-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CVTRA06Y.cpy",
+    "Length": 1559,
+    "LastWriteTime": "2026-04-24T15:38:16.8513665-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\CVTRA07Y.cpy",
+    "Length": 5831,
+    "LastWriteTime": "2026-04-24T15:38:16.8558994-04:00"
+  },
+  {
+    "FullName": "C:\\work\\HermesCOBOL\\HermesCOBOL\\data\\raw\\cpy\\UNUSED1Y.cpy",
+    "Length": 416,
+    "LastWriteTime": "2026-04-24T15:38:16.8558994-04:00"
+  }
+]
