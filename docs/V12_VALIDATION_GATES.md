@@ -99,7 +99,7 @@ python tests\test_data_flow.py        # 37/37 PASS
 
 ---
 
-## Section 3.2 Gate (FROZEN — commit `e9f68d3`, merged to `main` 2026-05-08)
+## Section 3.2 Gate (FROZEN — commit `e9f68d3` on `feature/schema-v1.3-section3-call-using`; cherry-picked to `main` as `490443f`, 2026-05-10)
 
 **Branch:** `feature/schema-v1.3-section3-call-using` → merged to `main`
 
@@ -189,30 +189,47 @@ python scripts\data_flow.py --all
 
 ---
 
-## Section 3.3 Gate — Missing Verb Handlers
+## Section 3.3 Gate (FROZEN — commit `165e9e8` on `feature/schema-v1.3-section3-verbs-rebased`; merged to `main` 2026-05-11)
 
-**Branch:** `feature/schema-v1.3-section3-verbs`  
-**Prerequisite:** 3.2 merged to main; branch rebased onto post-3.2 main.
+**Branch (gated):** `feature/schema-v1.3-section3-verbs-rebased` at `165e9e8`
+**Recovery anchor:** `feature/schema-v1.3-section3-verbs` at `0a69c0b` (preserved, do not delete)
+**Prerequisite met:** 3.2 on `main` as `490443f`; rebase landed cleanly on top.
 
 ### Specification
 
-- Add handlers for: `INSPECT`, `SORT`, `MERGE`, `RELEASE`, `RETURN`
-- After each handler: zero corpus lines for that verb may produce an
-  unresolved entry with reason `UNKNOWN_VERB`
-- Currently these verbs emit a `TODO` unresolved entry; the handler
-  replaces that with proper read/mutate classification.
+- Handlers added for: `INSPECT`, `SORT`, `MERGE`, `RELEASE`, `RETURN`
+- After each handler, zero corpus lines for that verb produce an unresolved
+  entry with reason `UNKNOWN_VERB`.
+- Previous TODO unresolved entries for these verbs are replaced with proper
+  read/mutate classification.
 
-### Frozen contracts (must NOT touch in 3.3)
+### Frozen contracts (must NOT touch in 3.3 or later without re-gating)
 
-All contracts locked in 3.1 and 3.2, plus `_parse_call()`.
+- `_normalise_source`
+- `_join_source_lines`
+- `extract_paragraphs`
+- `_is_area_a_paragraph`
+- `_mask_literals`
+- `_dispatch_inline`
+- `_parse_call`
 
-3.3 gate test inventory:
-- TestInspect: 2
-- TestSort: 1
-- TestMerge: 1
-- TestRelease: 2
-- TestReturn: 2
-Total new: 8. Inherited from 3.2: 47. Grand total: 55.
+### 3.3 Gate criteria (FROZEN — 55/55 PASS on `165e9e8`)
+
+```powershell
+python tests\test_data_flow.py             # -> 55/55 PASS
+python scripts\data_flow.py --all          # -> 31 files, 0 ERROR
+                                           # -> ZERO local=0, ZERO local=1 WARNINGs
+                                           # -> Allowed: COACTUPC/COACTVWC/COCRDLIC close-mismatch (3.4 bucket)
+```
+
+### 3.3 test inventory (locked)
+
+- TestInspect: 2 (`test_inspect_replacing`, `test_inspect_tallying`)
+- TestSort: 1 (`test_sort_using_giving`)
+- TestMerge: 1 (`test_merge_using_giving`)
+- TestRelease: 2 (`test_release_from`, `test_release_no_from`)
+- TestReturn: 2 (`test_return_into`, `test_return_no_into`)
+- New total: 8. Inherited from 3.2: 47. Grand total: **55**.
 
 ---
 
