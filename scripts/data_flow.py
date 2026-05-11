@@ -15,7 +15,7 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-SCHEMA_VERSION = "1.2"
+SCHEMA_VERSION = "1.3"
 BYTE_LAYOUTS_DIR = Path("data/byte_layouts")
 CBL_DIR          = Path("data/raw/cbl")
 OUT_DIR          = Path("data/data_flow")
@@ -53,7 +53,7 @@ _PARA_HEADER_RE = re.compile(
 )
 
 _SECTION_HEADER_RE = re.compile(
-    r'^[A-Z0-9][A-Z0-9\-]*\s+SECTION\b',
+    r'^([A-Z0-9][A-Z0-9\-]*)\s+SECTION\b',
     re.IGNORECASE
 )
 
@@ -319,13 +319,30 @@ def _split_on_period(text: str) -> list:
 
 
 # ---------------------------------------------------------------------------
-# Paragraph extractor
+# Paragraph extractor  (Section 3.4: section-aware)
 # ---------------------------------------------------------------------------
 
 def extract_paragraphs(lines: list) -> dict:
+    """
+    Return a dict mapping paragraph names to their body-line lists.
+    Special key '__MAIN__' holds lines before the first named paragraph.
+
+    Section 3.4 change: each real paragraph entry is now a dict:
+        {'lines': [(lineno, text), ...], 'section_name': str | None}
+    '__MAIN__' retains a plain list for backward compatibility with callers
+    that skip it unconditionally.
+
+    Section-name canonicalization:
+      - Full identifier before the SECTION keyword
+      - Trailing period stripped
+      - Whitespace collapsed
+      - Digit prefix and hyphen preserved verbatim
+      - Uppercased
+    """
     paragraphs = {}
     current = '__MAIN__'
-    paragraphs[current] = []
+    paragraphs[current] = []          # plain list; callers skip __MAIN__
+    current_section = None            # None = no SECTION header seen yet
 
     proc_lines_raw = []
     in_procedure = False
@@ -341,13 +358,28 @@ def extract_paragraphs(lines: list) -> dict:
     proc_lines = _join_source_lines(proc_lines_raw)
 
     for lineno, text in proc_lines:
+        stripped = text.strip()
+        # --- SECTION header? ---
+        sm = _SECTION_HEADER_RE.match(stripped)
+        if sm and not text[0:1] == ' ':   # must be Area A (no leading space)
+            # canonicalize: group 1 is the identifier before SECTION
+            current_section = sm.group(1).rstrip('.').strip().upper()
+            # do NOT emit a paragraph entry for the section header
+            continue
+
         if _is_area_a_paragraph(text):
-            candidate = _PARA_HEADER_RE.match(text.strip()).group(1).upper()
+            candidate = _PARA_HEADER_RE.match(stripped).group(1).upper()
             current = candidate
             if current not in paragraphs:
-                paragraphs[current] = []
+                paragraphs[current] = {'lines': [], 'section_name': current_section}
         else:
-            paragraphs[current].append((lineno, text))
+            entry_val = paragraphs[current]
+            if isinstance(entry_val, list):
+                # __MAIN__ path
+                entry_val.append((lineno, text))
+            else:
+                entry_val['lines'].append((lineno, text))
+
     return paragraphs
 
 
@@ -944,11 +976,35 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
             print(f"WARNING [{program_name}]: could not read facts: {exc}", file=sys.stderr)
 
     call_graph_set = []
+
+    # --- Pass 1: collect raw (section_name, para_name) tuples to detect collisions ---
+    # Count how many distinct section_name values each para_name appears under
+    para_section_counts = defaultdict(set)  # para_name -> set of section_name values
+    for pkey, pval in paragraphs.items():
+        if pkey == '__MAIN__':
+            continue
+        sname = pval['section_name'] if isinstance(pval, dict) else None
+        para_section_counts[pkey].add(sname)
+
+    # A collision exists when a para_name maps to 2+ distinct section values
+    colliding_names = {
+        pname for pname, snames in para_section_counts.items() if len(snames) > 1
+    }
+
+    # --- Pass 2: emit paragraph_data_flow with section_name and collision keys ---
     paragraph_data_flow = {}
 
-    for para_name, para_lines in paragraphs.items():
+    for para_name, para_entry in paragraphs.items():
         if para_name == '__MAIN__':
             continue
+
+        if isinstance(para_entry, dict):
+            para_lines = para_entry['lines']
+            section_name = para_entry['section_name']
+        else:
+            para_lines = para_entry
+            section_name = None
+
         reads = []; mutates = []; unresolved_list = []
         para_call_targets = []
         context_records: set = set()
@@ -964,11 +1020,20 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
             if t not in call_graph_set:
                 call_graph_set.append(t)
 
-        paragraph_data_flow[para_name] = {
-            'reads':      reads,
-            'mutates':    mutates,
-            'unresolved': unresolved_list,
+        entry_data = {
+            'section_name': section_name,
+            'reads':        reads,
+            'mutates':      mutates,
+            'unresolved':   unresolved_list,
         }
+
+        # Apply compound key if this para_name collides across sections
+        if para_name in colliding_names:
+            emit_key = f"{section_name}::{para_name}"
+        else:
+            emit_key = para_name
+
+        paragraph_data_flow[emit_key] = entry_data
 
     return {
         'program':             program_name,
