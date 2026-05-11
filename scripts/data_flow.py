@@ -319,18 +319,32 @@ def _split_on_period(text: str) -> list:
 
 
 # ---------------------------------------------------------------------------
-# Paragraph extractor  (Section 3.4: section-aware)
+# Paragraph extractor  (Section 3.4: per-name occurrences list)
 # ---------------------------------------------------------------------------
 
 def extract_paragraphs(lines: list) -> dict:
     """
-    Return a dict mapping paragraph names to their body-line lists.
-    Special key '__MAIN__' holds lines before the first named paragraph.
+    Return a dict mapping paragraph names to their occurrence data.
+    Public signature: dict[str, entry]  --  FROZEN (Sections 3.1-3.3).
 
-    Section 3.4 change: each real paragraph entry is now a dict:
-        {'lines': [(lineno, text), ...], 'section_name': str | None}
-    '__MAIN__' retains a plain list for backward compatibility with callers
-    that skip it unconditionally.
+    Special key '__MAIN__' maps to a plain list[(lineno, text)] for lines
+    that appear before the first named paragraph.
+
+    For every real paragraph name the value is:
+        {
+            'name': str,           # paragraph name (uppercased)
+            'occurrences': [       # one entry per encounter, never merged
+                {
+                    'section_name': str | None,
+                    'lines': [(lineno, text), ...]
+                },
+                ...
+            ]
+        }
+
+    When the same paragraph name appears under two different SECTION headers
+    a second occurrence is appended rather than merging into the first.
+    len(occurrences) == 1 for unique names; 2+ for cross-section duplicates.
 
     Section-name canonicalization:
       - Full identifier before the SECTION keyword
@@ -371,14 +385,20 @@ def extract_paragraphs(lines: list) -> dict:
             candidate = _PARA_HEADER_RE.match(stripped).group(1).upper()
             current = candidate
             if current not in paragraphs:
-                paragraphs[current] = {'lines': [], 'section_name': current_section}
+                # First encounter: create the per-name entry
+                paragraphs[current] = {'name': current, 'occurrences': []}
+            # Always append a fresh occurrence for this encounter
+            paragraphs[current]['occurrences'].append(
+                {'section_name': current_section, 'lines': []}
+            )
         else:
             entry_val = paragraphs[current]
             if isinstance(entry_val, list):
-                # __MAIN__ path
+                # __MAIN__ path: plain list
                 entry_val.append((lineno, text))
             else:
-                entry_val['lines'].append((lineno, text))
+                # Real paragraph: append to the most recent occurrence
+                entry_val['occurrences'][-1]['lines'].append((lineno, text))
 
     return paragraphs
 
@@ -954,6 +974,16 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
 
     program_unresolved = []
     facts_path = FACTS_DIR / f"{program_name}.json"
+
+    # Build flat occurrence list: (name, section_name, lines) per occurrence
+    # Used for: actual_para count, collision detection, and per-occurrence emit.
+    all_occurrences = [
+        (name, occ['section_name'], occ['lines'])
+        for name, entry in paragraphs.items()
+        if name != '__MAIN__'
+        for occ in entry['occurrences']
+    ]
+
     if facts_path.exists():
         try:
             with open(facts_path, encoding='utf-8') as fh:
@@ -966,7 +996,8 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
             else:
                 expected_para = None
 
-            actual_para = len([k for k in paragraphs if k != '__MAIN__'])
+            # actual_para = total occurrence count (not unique name count)
+            actual_para = len(all_occurrences)
             if expected_para is not None and abs(actual_para - expected_para) > 1:
                 msg = (f"paragraph count mismatch: local={actual_para} "
                        f"facts={expected_para}")
@@ -977,34 +1008,18 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
 
     call_graph_set = []
 
-    # --- Pass 1: collect raw (section_name, para_name) tuples to detect collisions ---
-    # Count how many distinct section_name values each para_name appears under
-    para_section_counts = defaultdict(set)  # para_name -> set of section_name values
-    for pkey, pval in paragraphs.items():
-        if pkey == '__MAIN__':
-            continue
-        sname = pval['section_name'] if isinstance(pval, dict) else None
-        para_section_counts[pkey].add(sname)
-
-    # A collision exists when a para_name maps to 2+ distinct section values
+    # --- Collision detection: names that appear under 2+ distinct section values ---
+    name_section_sets = defaultdict(set)
+    for name, sname, _ in all_occurrences:
+        name_section_sets[name].add(sname)
     colliding_names = {
-        pname for pname, snames in para_section_counts.items() if len(snames) > 1
+        name for name, snames in name_section_sets.items() if len(snames) > 1
     }
 
-    # --- Pass 2: emit paragraph_data_flow with section_name and collision keys ---
+    # --- Emit paragraph_data_flow: one entry per occurrence ---
     paragraph_data_flow = {}
 
-    for para_name, para_entry in paragraphs.items():
-        if para_name == '__MAIN__':
-            continue
-
-        if isinstance(para_entry, dict):
-            para_lines = para_entry['lines']
-            section_name = para_entry['section_name']
-        else:
-            para_lines = para_entry
-            section_name = None
-
+    for para_name, section_name, para_lines in all_occurrences:
         reads = []; mutates = []; unresolved_list = []
         para_call_targets = []
         context_records: set = set()
@@ -1027,7 +1042,7 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
             'unresolved':   unresolved_list,
         }
 
-        # Apply compound key if this para_name collides across sections
+        # Apply compound key only for cross-section name collisions
         if para_name in colliding_names:
             emit_key = f"{section_name}::{para_name}"
         else:
