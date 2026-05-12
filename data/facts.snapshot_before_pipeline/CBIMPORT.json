@@ -1,0 +1,627 @@
+{
+  "schema_version": "1.1",
+  "program": "CBIMPORT",
+  "source_file": "data/raw/cbl/CBIMPORT.cbl",
+  "extracted_at": "2026-05-12T16:52:22.122506+00:00",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 0,
+  "gate_status": "PASS",
+  "gate_reasons": [],
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [
+    "0000-MAIN-PROCESSING",
+    "1000-INITIALIZE",
+    "1100-OPEN-FILES",
+    "2000-PROCESS-EXPORT-FILE",
+    "2100-READ-EXPORT-RECORD",
+    "2200-PROCESS-RECORD-BY-TYPE",
+    "2300-PROCESS-CUSTOMER-RECORD",
+    "2400-PROCESS-ACCOUNT-RECORD",
+    "2500-PROCESS-XREF-RECORD",
+    "2600-PROCESS-TRAN-RECORD",
+    "2650-PROCESS-CARD-RECORD",
+    "2700-PROCESS-UNKNOWN-RECORD",
+    "2750-WRITE-ERROR",
+    "3000-VALIDATE-IMPORT",
+    "4000-FINALIZE",
+    "9999-ABEND-PROGRAM"
+  ],
+  "data_items": [
+    "ERROR-OUTPUT-RECORD",
+    "EXPORT-INPUT-RECORD",
+    "WS-ERROR-RECORD",
+    "WS-FILE-STATUS-AREA",
+    "WS-IMPORT-CONTROL",
+    "WS-IMPORT-STATISTICS"
+  ],
+  "external_calls": [],
+  "internal_performs": [
+    "1000-INITIALIZE",
+    "1100-OPEN-FILES",
+    "2000-PROCESS-EXPORT-FILE",
+    "2100-READ-EXPORT-RECORD",
+    "2200-PROCESS-RECORD-BY-TYPE",
+    "2300-PROCESS-CUSTOMER-RECORD",
+    "2400-PROCESS-ACCOUNT-RECORD",
+    "2500-PROCESS-XREF-RECORD",
+    "2600-PROCESS-TRAN-RECORD",
+    "2650-PROCESS-CARD-RECORD",
+    "2700-PROCESS-UNKNOWN-RECORD",
+    "2750-WRITE-ERROR",
+    "3000-VALIDATE-IMPORT",
+    "4000-FINALIZE",
+    "9999-ABEND-PROGRAM"
+  ],
+  "data_files": [
+    {
+      "name": "EXPORT-INPUT",
+      "ddname": "EXPFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "CUSTOMER-OUTPUT",
+      "ddname": "CUSTOUT",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "ACCOUNT-OUTPUT",
+      "ddname": "ACCTOUT",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "XREF-OUTPUT",
+      "ddname": "XREFOUT",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "TRANSACTION-OUTPUT",
+      "ddname": "TRNXOUT",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "CARD-OUTPUT",
+      "ddname": "CARDOUT",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "ERROR-OUTPUT",
+      "ddname": "ERROUT",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    }
+  ],
+  "copybooks_referenced": [
+    "CVACT01Y",
+    "CVACT02Y",
+    "CVACT03Y",
+    "CVCUS01Y",
+    "CVEXPORT",
+    "CVTRA05Y"
+  ],
+  "cfg": {
+    "source": null,
+    "edges": null,
+    "unresolved": null
+  },
+  "paragraphs_defined": [
+    {
+      "name": "0000-MAIN-PROCESSING",
+      "source_line": 128,
+      "area_a": false
+    },
+    {
+      "name": "1000-INITIALIZE",
+      "source_line": 131,
+      "area_a": false
+    },
+    {
+      "name": "1100-OPEN-FILES",
+      "source_line": 147,
+      "area_a": false
+    },
+    {
+      "name": "2000-PROCESS-EXPORT-FILE",
+      "source_line": 187,
+      "area_a": false
+    },
+    {
+      "name": "2100-READ-EXPORT-RECORD",
+      "source_line": 195,
+      "area_a": false
+    },
+    {
+      "name": "2200-PROCESS-RECORD-BY-TYPE",
+      "source_line": 202,
+      "area_a": false
+    },
+    {
+      "name": "2300-PROCESS-CUSTOMER-RECORD",
+      "source_line": 218,
+      "area_a": false
+    },
+    {
+      "name": "2400-PROCESS-ACCOUNT-RECORD",
+      "source_line": 258,
+      "area_a": false
+    },
+    {
+      "name": "2500-PROCESS-XREF-RECORD",
+      "source_line": 284,
+      "area_a": false
+    },
+    {
+      "name": "2600-PROCESS-TRAN-RECORD",
+      "source_line": 297,
+      "area_a": false
+    },
+    {
+      "name": "2650-PROCESS-CARD-RECORD",
+      "source_line": 317,
+      "area_a": false
+    },
+    {
+      "name": "2700-PROCESS-UNKNOWN-RECORD",
+      "source_line": 333,
+      "area_a": false
+    },
+    {
+      "name": "2750-WRITE-ERROR",
+      "source_line": 341,
+      "area_a": false
+    },
+    {
+      "name": "3000-VALIDATE-IMPORT",
+      "source_line": 351,
+      "area_a": false
+    },
+    {
+      "name": "4000-FINALIZE",
+      "source_line": 353,
+      "area_a": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "source_line": 380,
+      "area_a": false
+    }
+  ],
+  "paragraphs_referenced": [
+    "1000-INITIALIZE",
+    "1100-OPEN-FILES",
+    "2000-PROCESS-EXPORT-FILE",
+    "2100-READ-EXPORT-RECORD",
+    "2200-PROCESS-RECORD-BY-TYPE",
+    "2300-PROCESS-CUSTOMER-RECORD",
+    "2400-PROCESS-ACCOUNT-RECORD",
+    "2500-PROCESS-XREF-RECORD",
+    "2600-PROCESS-TRAN-RECORD",
+    "2650-PROCESS-CARD-RECORD",
+    "2700-PROCESS-UNKNOWN-RECORD",
+    "2750-WRITE-ERROR",
+    "3000-VALIDATE-IMPORT",
+    "4000-FINALIZE",
+    "9999-ABEND-PROGRAM"
+  ],
+  "paragraph_actions": {
+    "0000-MAIN-PROCESSING": [
+      "program_exit"
+    ],
+    "1000-INITIALIZE": [
+      "display_output",
+      "transform_data"
+    ],
+    "1100-OPEN-FILES": [
+      "branch_logic",
+      "display_output",
+      "open_file"
+    ],
+    "2000-PROCESS-EXPORT-FILE": [
+      "no_action_detected"
+    ],
+    "2100-READ-EXPORT-RECORD": [
+      "branch_logic",
+      "display_output",
+      "read_file"
+    ],
+    "2200-PROCESS-RECORD-BY-TYPE": [
+      "branch_logic"
+    ],
+    "2300-PROCESS-CUSTOMER-RECORD": [
+      "branch_logic",
+      "display_output",
+      "write_file"
+    ],
+    "2400-PROCESS-ACCOUNT-RECORD": [
+      "branch_logic",
+      "display_output",
+      "write_file"
+    ],
+    "2500-PROCESS-XREF-RECORD": [
+      "branch_logic",
+      "display_output",
+      "write_file"
+    ],
+    "2600-PROCESS-TRAN-RECORD": [
+      "branch_logic",
+      "display_output",
+      "write_file"
+    ],
+    "2650-PROCESS-CARD-RECORD": [
+      "branch_logic",
+      "display_output",
+      "write_file"
+    ],
+    "2700-PROCESS-UNKNOWN-RECORD": [
+      "transform_data"
+    ],
+    "2750-WRITE-ERROR": [
+      "branch_logic",
+      "display_error",
+      "write_file"
+    ],
+    "3000-VALIDATE-IMPORT": [
+      "display_output"
+    ],
+    "4000-FINALIZE": [
+      "close_file",
+      "display_output"
+    ],
+    "9999-ABEND-PROGRAM": [
+      "abend",
+      "display_output"
+    ]
+  },
+  "file_lineage": [
+    {
+      "name": "EXPORT-INPUT",
+      "ddname": "EXPFILE",
+      "fd_record": "EXPORT-INPUT"
+    },
+    {
+      "name": "CUSTOMER-OUTPUT",
+      "ddname": "CUSTOUT",
+      "fd_record": "CUSTOMER-OUTPUT"
+    },
+    {
+      "name": "ACCOUNT-OUTPUT",
+      "ddname": "ACCTOUT",
+      "fd_record": "ACCOUNT-OUTPUT"
+    },
+    {
+      "name": "XREF-OUTPUT",
+      "ddname": "XREFOUT",
+      "fd_record": "XREF-OUTPUT"
+    },
+    {
+      "name": "TRANSACTION-OUTPUT",
+      "ddname": "TRNXOUT",
+      "fd_record": "TRANSACTION-OUTPUT"
+    },
+    {
+      "name": "CARD-OUTPUT",
+      "ddname": "CARDOUT",
+      "fd_record": "CARD-OUTPUT"
+    },
+    {
+      "name": "ERROR-OUTPUT",
+      "ddname": "ERROUT",
+      "fd_record": "ERROR-OUTPUT"
+    }
+  ],
+  "file_operations": {
+    "EXPORT-INPUT": [
+      {
+        "paragraph": "1100-OPEN-FILES",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "2100-READ-EXPORT-RECORD",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "4000-FINALIZE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "CUSTOMER-OUTPUT": [
+      {
+        "paragraph": "1100-OPEN-FILES",
+        "operation": "open_output",
+        "source_line": null
+      },
+      {
+        "paragraph": "4000-FINALIZE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "ACCOUNT-OUTPUT": [
+      {
+        "paragraph": "1100-OPEN-FILES",
+        "operation": "open_output",
+        "source_line": null
+      },
+      {
+        "paragraph": "4000-FINALIZE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "XREF-OUTPUT": [
+      {
+        "paragraph": "1100-OPEN-FILES",
+        "operation": "open_output",
+        "source_line": null
+      },
+      {
+        "paragraph": "4000-FINALIZE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "TRANSACTION-OUTPUT": [
+      {
+        "paragraph": "1100-OPEN-FILES",
+        "operation": "open_output",
+        "source_line": null
+      },
+      {
+        "paragraph": "4000-FINALIZE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "CARD-OUTPUT": [
+      {
+        "paragraph": "1100-OPEN-FILES",
+        "operation": "open_output",
+        "source_line": null
+      },
+      {
+        "paragraph": "4000-FINALIZE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "ERROR-OUTPUT": [
+      {
+        "paragraph": "1100-OPEN-FILES",
+        "operation": "open_output",
+        "source_line": null
+      },
+      {
+        "paragraph": "4000-FINALIZE",
+        "operation": "close",
+        "source_line": null
+      }
+    ]
+  },
+  "control_flow": {
+    "cfg_source": "text_scan",
+    "entry_points": [
+      "0000-MAIN-PROCESSING"
+    ],
+    "exit_points": [
+      "0000-MAIN-PROCESSING",
+      "9999-ABEND-PROGRAM"
+    ],
+    "edges": [
+      {
+        "from": "0000-MAIN-PROCESSING",
+        "to": "1000-INITIALIZE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-MAIN-PROCESSING",
+        "to": "2000-PROCESS-EXPORT-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-MAIN-PROCESSING",
+        "to": "3000-VALIDATE-IMPORT",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-MAIN-PROCESSING",
+        "to": "4000-FINALIZE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-INITIALIZE",
+        "to": "1100-OPEN-FILES",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-INITIALIZE",
+        "to": "1100-OPEN-FILES",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1100-OPEN-FILES",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1100-OPEN-FILES",
+        "to": "2000-PROCESS-EXPORT-FILE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2000-PROCESS-EXPORT-FILE",
+        "to": "2100-READ-EXPORT-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2000-PROCESS-EXPORT-FILE",
+        "to": "2200-PROCESS-RECORD-BY-TYPE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2000-PROCESS-EXPORT-FILE",
+        "to": "2100-READ-EXPORT-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2100-READ-EXPORT-RECORD",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2100-READ-EXPORT-RECORD",
+        "to": "2200-PROCESS-RECORD-BY-TYPE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2200-PROCESS-RECORD-BY-TYPE",
+        "to": "2300-PROCESS-CUSTOMER-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2200-PROCESS-RECORD-BY-TYPE",
+        "to": "2400-PROCESS-ACCOUNT-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2200-PROCESS-RECORD-BY-TYPE",
+        "to": "2500-PROCESS-XREF-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2200-PROCESS-RECORD-BY-TYPE",
+        "to": "2600-PROCESS-TRAN-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2200-PROCESS-RECORD-BY-TYPE",
+        "to": "2650-PROCESS-CARD-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2200-PROCESS-RECORD-BY-TYPE",
+        "to": "2700-PROCESS-UNKNOWN-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2200-PROCESS-RECORD-BY-TYPE",
+        "to": "2300-PROCESS-CUSTOMER-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2300-PROCESS-CUSTOMER-RECORD",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2300-PROCESS-CUSTOMER-RECORD",
+        "to": "2400-PROCESS-ACCOUNT-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2400-PROCESS-ACCOUNT-RECORD",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2400-PROCESS-ACCOUNT-RECORD",
+        "to": "2500-PROCESS-XREF-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2500-PROCESS-XREF-RECORD",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2500-PROCESS-XREF-RECORD",
+        "to": "2600-PROCESS-TRAN-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2600-PROCESS-TRAN-RECORD",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2600-PROCESS-TRAN-RECORD",
+        "to": "2650-PROCESS-CARD-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2650-PROCESS-CARD-RECORD",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2650-PROCESS-CARD-RECORD",
+        "to": "2700-PROCESS-UNKNOWN-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2700-PROCESS-UNKNOWN-RECORD",
+        "to": "2750-WRITE-ERROR",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2750-WRITE-ERROR",
+        "to": "3000-VALIDATE-IMPORT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "3000-VALIDATE-IMPORT",
+        "to": "4000-FINALIZE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "4000-FINALIZE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "fallthrough",
+        "source_lines": null
+      }
+    ],
+    "unresolved": []
+  },
+  "cics": null
+}

@@ -1,0 +1,850 @@
+{
+  "schema_version": "1.1",
+  "program": "CBACT04C",
+  "source_file": "data/raw/cbl/CBACT04C.cbl",
+  "extracted_at": "2026-05-12T16:52:22.093645+00:00",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 0,
+  "gate_status": "PASS",
+  "gate_reasons": [],
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [
+    "0000-TCATBALF-OPEN",
+    "0100-XREFFILE-OPEN",
+    "0200-DISCGRP-OPEN",
+    "0300-ACCTFILE-OPEN",
+    "0400-TRANFILE-OPEN",
+    "1000-TCATBALF-GET-NEXT",
+    "1050-UPDATE-ACCOUNT",
+    "1100-GET-ACCT-DATA",
+    "1110-GET-XREF-DATA",
+    "1200-A-GET-DEFAULT-INT-RATE",
+    "1200-GET-INTEREST-RATE",
+    "1300-B-WRITE-TX",
+    "1300-COMPUTE-INTEREST",
+    "1400-COMPUTE-FEES",
+    "9000-TCATBALF-CLOSE",
+    "9100-XREFFILE-CLOSE",
+    "9200-DISCGRP-CLOSE",
+    "9300-ACCTFILE-CLOSE",
+    "9400-TRANFILE-CLOSE",
+    "9910-DISPLAY-IO-STATUS",
+    "9999-ABEND-PROGRAM",
+    "Z-GET-DB2-FORMAT-TIMESTAMP"
+  ],
+  "data_items": [
+    "ABCODE",
+    "ACCTFILE-STATUS",
+    "APPL-RESULT",
+    "COBOL-TS",
+    "DB2-FORMAT-TS",
+    "DISCGRP-STATUS",
+    "END-OF-FILE",
+    "EXTERNAL-PARMS",
+    "FD-ACCTFILE-REC",
+    "FD-DISCGRP-REC",
+    "FD-TRAN-CAT-BAL-RECORD",
+    "FD-TRANFILE-REC",
+    "FD-XREFFILE-REC",
+    "IO-STATUS",
+    "IO-STATUS-04",
+    "TCATBALF-STATUS",
+    "TIMING",
+    "TRANFILE-STATUS",
+    "TWO-BYTES-ALPHA",
+    "TWO-BYTES-BINARY",
+    "WS-COUNTERS",
+    "WS-MISC-VARS",
+    "XREFFILE-STATUS"
+  ],
+  "external_calls": [
+    "CEE3ABD"
+  ],
+  "internal_performs": [
+    "0000-TCATBALF-OPEN",
+    "0100-XREFFILE-OPEN",
+    "0200-DISCGRP-OPEN",
+    "0300-ACCTFILE-OPEN",
+    "0400-TRANFILE-OPEN",
+    "1000-TCATBALF-GET-NEXT",
+    "1050-UPDATE-ACCOUNT",
+    "1100-GET-ACCT-DATA",
+    "1110-GET-XREF-DATA",
+    "1200-A-GET-DEFAULT-INT-RATE",
+    "1200-GET-INTEREST-RATE",
+    "1300-B-WRITE-TX",
+    "1300-COMPUTE-INTEREST",
+    "1400-COMPUTE-FEES",
+    "9000-TCATBALF-CLOSE",
+    "9100-XREFFILE-CLOSE",
+    "9200-DISCGRP-CLOSE",
+    "9300-ACCTFILE-CLOSE",
+    "9400-TRANFILE-CLOSE",
+    "9910-DISPLAY-IO-STATUS",
+    "9999-ABEND-PROGRAM",
+    "Z-GET-DB2-FORMAT-TIMESTAMP"
+  ],
+  "data_files": [
+    {
+      "name": "TCATBAL-FILE",
+      "ddname": "TCATBALF",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "XREF-FILE",
+      "ddname": "XREFFILE",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    },
+    {
+      "name": "ACCOUNT-FILE",
+      "ddname": "ACCTFILE",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    },
+    {
+      "name": "DISCGRP-FILE",
+      "ddname": "DISCGRP",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    },
+    {
+      "name": "TRANSACT-FILE",
+      "ddname": "TRANSACT",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    }
+  ],
+  "copybooks_referenced": [
+    "CVACT01Y",
+    "CVACT03Y",
+    "CVTRA01Y",
+    "CVTRA02Y",
+    "CVTRA05Y"
+  ],
+  "cfg": {
+    "source": null,
+    "edges": null,
+    "unresolved": null
+  },
+  "paragraphs_defined": [
+    {
+      "name": "0000-TCATBALF-OPEN",
+      "source_line": 207,
+      "area_a": false
+    },
+    {
+      "name": "0100-XREFFILE-OPEN",
+      "source_line": 224,
+      "area_a": false
+    },
+    {
+      "name": "0200-DISCGRP-OPEN",
+      "source_line": 241,
+      "area_a": false
+    },
+    {
+      "name": "0300-ACCTFILE-OPEN",
+      "source_line": 259,
+      "area_a": false
+    },
+    {
+      "name": "0400-TRANFILE-OPEN",
+      "source_line": 276,
+      "area_a": false
+    },
+    {
+      "name": "1000-TCATBALF-GET-NEXT",
+      "source_line": 293,
+      "area_a": false
+    },
+    {
+      "name": "1050-UPDATE-ACCOUNT",
+      "source_line": 317,
+      "area_a": false
+    },
+    {
+      "name": "1100-GET-ACCT-DATA",
+      "source_line": 337,
+      "area_a": false
+    },
+    {
+      "name": "1110-GET-XREF-DATA",
+      "source_line": 357,
+      "area_a": false
+    },
+    {
+      "name": "1200-GET-INTEREST-RATE",
+      "source_line": 378,
+      "area_a": false
+    },
+    {
+      "name": "1200-A-GET-DEFAULT-INT-RATE",
+      "source_line": 405,
+      "area_a": false
+    },
+    {
+      "name": "1300-COMPUTE-INTEREST",
+      "source_line": 423,
+      "area_a": false
+    },
+    {
+      "name": "1300-B-WRITE-TX",
+      "source_line": 433,
+      "area_a": false
+    },
+    {
+      "name": "1400-COMPUTE-FEES",
+      "source_line": 477,
+      "area_a": false
+    },
+    {
+      "name": "9000-TCATBALF-CLOSE",
+      "source_line": 479,
+      "area_a": false
+    },
+    {
+      "name": "9100-XREFFILE-CLOSE",
+      "source_line": 497,
+      "area_a": false
+    },
+    {
+      "name": "9200-DISCGRP-CLOSE",
+      "source_line": 514,
+      "area_a": false
+    },
+    {
+      "name": "9300-ACCTFILE-CLOSE",
+      "source_line": 531,
+      "area_a": false
+    },
+    {
+      "name": "9400-TRANFILE-CLOSE",
+      "source_line": 549,
+      "area_a": false
+    },
+    {
+      "name": "Z-GET-DB2-FORMAT-TIMESTAMP",
+      "source_line": 567,
+      "area_a": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "source_line": 581,
+      "area_a": false
+    },
+    {
+      "name": "9910-DISPLAY-IO-STATUS",
+      "source_line": 587,
+      "area_a": false
+    }
+  ],
+  "paragraphs_referenced": [
+    "0000-TCATBALF-OPEN",
+    "0100-XREFFILE-OPEN",
+    "0200-DISCGRP-OPEN",
+    "0300-ACCTFILE-OPEN",
+    "0400-TRANFILE-OPEN",
+    "1000-TCATBALF-GET-NEXT",
+    "1050-UPDATE-ACCOUNT",
+    "1100-GET-ACCT-DATA",
+    "1110-GET-XREF-DATA",
+    "1200-A-GET-DEFAULT-INT-RATE",
+    "1200-GET-INTEREST-RATE",
+    "1300-B-WRITE-TX",
+    "1300-COMPUTE-INTEREST",
+    "1400-COMPUTE-FEES",
+    "9000-TCATBALF-CLOSE",
+    "9100-XREFFILE-CLOSE",
+    "9200-DISCGRP-CLOSE",
+    "9300-ACCTFILE-CLOSE",
+    "9400-TRANFILE-CLOSE",
+    "9910-DISPLAY-IO-STATUS",
+    "9999-ABEND-PROGRAM",
+    "Z-GET-DB2-FORMAT-TIMESTAMP"
+  ],
+  "paragraph_actions": {
+    "0000-TCATBALF-OPEN": [
+      "branch_logic",
+      "display_output",
+      "open_file"
+    ],
+    "0100-XREFFILE-OPEN": [
+      "branch_logic",
+      "display_output",
+      "open_file"
+    ],
+    "0200-DISCGRP-OPEN": [
+      "branch_logic",
+      "display_output",
+      "open_file"
+    ],
+    "0300-ACCTFILE-OPEN": [
+      "branch_logic",
+      "display_output",
+      "open_file"
+    ],
+    "0400-TRANFILE-OPEN": [
+      "branch_logic",
+      "display_output",
+      "open_file"
+    ],
+    "1000-TCATBALF-GET-NEXT": [
+      "branch_logic",
+      "display_output",
+      "read_file"
+    ],
+    "1050-UPDATE-ACCOUNT": [
+      "branch_logic",
+      "display_output",
+      "rewrite_file"
+    ],
+    "1100-GET-ACCT-DATA": [
+      "branch_logic",
+      "display_output",
+      "read_file"
+    ],
+    "1110-GET-XREF-DATA": [
+      "branch_logic",
+      "display_output",
+      "read_file"
+    ],
+    "1200-GET-INTEREST-RATE": [
+      "branch_logic",
+      "display_output",
+      "read_file"
+    ],
+    "1200-A-GET-DEFAULT-INT-RATE": [
+      "branch_logic",
+      "display_output",
+      "read_file"
+    ],
+    "1300-COMPUTE-INTEREST": [
+      "no_action_detected"
+    ],
+    "1300-B-WRITE-TX": [
+      "branch_logic",
+      "display_output",
+      "write_file"
+    ],
+    "1400-COMPUTE-FEES": [
+      "no_action_detected"
+    ],
+    "9000-TCATBALF-CLOSE": [
+      "branch_logic",
+      "close_file",
+      "display_output"
+    ],
+    "9100-XREFFILE-CLOSE": [
+      "branch_logic",
+      "close_file",
+      "display_output"
+    ],
+    "9200-DISCGRP-CLOSE": [
+      "branch_logic",
+      "close_file",
+      "display_output"
+    ],
+    "9300-ACCTFILE-CLOSE": [
+      "branch_logic",
+      "close_file",
+      "display_output"
+    ],
+    "9400-TRANFILE-CLOSE": [
+      "branch_logic",
+      "close_file",
+      "display_output"
+    ],
+    "Z-GET-DB2-FORMAT-TIMESTAMP": [
+      "transform_data"
+    ],
+    "9999-ABEND-PROGRAM": [
+      "abend",
+      "call_program",
+      "display_output"
+    ],
+    "9910-DISPLAY-IO-STATUS": [
+      "branch_logic",
+      "display_error",
+      "transform_data"
+    ]
+  },
+  "file_lineage": [
+    {
+      "name": "TCATBAL-FILE",
+      "ddname": "TCATBALF",
+      "fd_record": "TCATBAL-FILE"
+    },
+    {
+      "name": "XREF-FILE",
+      "ddname": "XREFFILE",
+      "fd_record": "XREF-FILE"
+    },
+    {
+      "name": "ACCOUNT-FILE",
+      "ddname": "ACCTFILE",
+      "fd_record": "ACCOUNT-FILE"
+    },
+    {
+      "name": "DISCGRP-FILE",
+      "ddname": "DISCGRP",
+      "fd_record": "DISCGRP-FILE"
+    },
+    {
+      "name": "TRANSACT-FILE",
+      "ddname": "TRANSACT",
+      "fd_record": "TRANSACT-FILE"
+    }
+  ],
+  "file_operations": {
+    "TCATBAL-FILE": [
+      {
+        "paragraph": "0000-TCATBALF-OPEN",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "1000-TCATBALF-GET-NEXT",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "9000-TCATBALF-CLOSE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "XREF-FILE": [
+      {
+        "paragraph": "0100-XREFFILE-OPEN",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "1110-GET-XREF-DATA",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "9100-XREFFILE-CLOSE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "DISCGRP-FILE": [
+      {
+        "paragraph": "0200-DISCGRP-OPEN",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "1200-GET-INTEREST-RATE",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "1200-A-GET-DEFAULT-INT-RATE",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "9200-DISCGRP-CLOSE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "ACCOUNT-FILE": [
+      {
+        "paragraph": "0300-ACCTFILE-OPEN",
+        "operation": "open_i_o",
+        "source_line": null
+      },
+      {
+        "paragraph": "1100-GET-ACCT-DATA",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "9300-ACCTFILE-CLOSE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "TRANSACT-FILE": [
+      {
+        "paragraph": "0400-TRANFILE-OPEN",
+        "operation": "open_output",
+        "source_line": null
+      },
+      {
+        "paragraph": "9400-TRANFILE-CLOSE",
+        "operation": "close",
+        "source_line": null
+      }
+    ]
+  },
+  "control_flow": {
+    "cfg_source": "text_scan",
+    "entry_points": [
+      "0000-TCATBALF-OPEN"
+    ],
+    "exit_points": [
+      "9910-DISPLAY-IO-STATUS",
+      "9999-ABEND-PROGRAM"
+    ],
+    "edges": [
+      {
+        "from": "0000-TCATBALF-OPEN",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-TCATBALF-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-TCATBALF-OPEN",
+        "to": "0100-XREFFILE-OPEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "0100-XREFFILE-OPEN",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0100-XREFFILE-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0100-XREFFILE-OPEN",
+        "to": "0200-DISCGRP-OPEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "0200-DISCGRP-OPEN",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0200-DISCGRP-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0200-DISCGRP-OPEN",
+        "to": "0300-ACCTFILE-OPEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "0300-ACCTFILE-OPEN",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0300-ACCTFILE-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0300-ACCTFILE-OPEN",
+        "to": "0400-TRANFILE-OPEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "0400-TRANFILE-OPEN",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0400-TRANFILE-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0400-TRANFILE-OPEN",
+        "to": "1000-TCATBALF-GET-NEXT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1000-TCATBALF-GET-NEXT",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-TCATBALF-GET-NEXT",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-TCATBALF-GET-NEXT",
+        "to": "1050-UPDATE-ACCOUNT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1050-UPDATE-ACCOUNT",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1050-UPDATE-ACCOUNT",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1050-UPDATE-ACCOUNT",
+        "to": "1100-GET-ACCT-DATA",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1100-GET-ACCT-DATA",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1100-GET-ACCT-DATA",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1100-GET-ACCT-DATA",
+        "to": "1110-GET-XREF-DATA",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1110-GET-XREF-DATA",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1110-GET-XREF-DATA",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1110-GET-XREF-DATA",
+        "to": "1200-GET-INTEREST-RATE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1200-GET-INTEREST-RATE",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1200-GET-INTEREST-RATE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1200-GET-INTEREST-RATE",
+        "to": "1200-A-GET-DEFAULT-INT-RATE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1200-GET-INTEREST-RATE",
+        "to": "1200-A-GET-DEFAULT-INT-RATE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1200-A-GET-DEFAULT-INT-RATE",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1200-A-GET-DEFAULT-INT-RATE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1200-A-GET-DEFAULT-INT-RATE",
+        "to": "1300-COMPUTE-INTEREST",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1300-COMPUTE-INTEREST",
+        "to": "1300-B-WRITE-TX",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1300-B-WRITE-TX",
+        "to": "Z-GET-DB2-FORMAT-TIMESTAMP",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1300-B-WRITE-TX",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1300-B-WRITE-TX",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1300-B-WRITE-TX",
+        "to": "1400-COMPUTE-FEES",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1400-COMPUTE-FEES",
+        "to": "9000-TCATBALF-CLOSE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9000-TCATBALF-CLOSE",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9000-TCATBALF-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9000-TCATBALF-CLOSE",
+        "to": "9100-XREFFILE-CLOSE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9100-XREFFILE-CLOSE",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9100-XREFFILE-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9100-XREFFILE-CLOSE",
+        "to": "9200-DISCGRP-CLOSE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9200-DISCGRP-CLOSE",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9200-DISCGRP-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9200-DISCGRP-CLOSE",
+        "to": "9300-ACCTFILE-CLOSE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9300-ACCTFILE-CLOSE",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9300-ACCTFILE-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9300-ACCTFILE-CLOSE",
+        "to": "9400-TRANFILE-CLOSE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9400-TRANFILE-CLOSE",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9400-TRANFILE-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9400-TRANFILE-CLOSE",
+        "to": "Z-GET-DB2-FORMAT-TIMESTAMP",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "Z-GET-DB2-FORMAT-TIMESTAMP",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9999-ABEND-PROGRAM",
+        "to": "CEE3ABD",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "9999-ABEND-PROGRAM",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "fallthrough",
+        "source_lines": null
+      }
+    ],
+    "unresolved": []
+  },
+  "cics": null
+}

@@ -1,0 +1,988 @@
+{
+  "schema_version": "1.1",
+  "program": "CBTRN03C",
+  "source_file": "data/raw/cbl/CBTRN03C.cbl",
+  "extracted_at": "2026-05-12T16:52:22.233988+00:00",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 0,
+  "gate_status": "PASS",
+  "gate_reasons": [],
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [
+    "0000-TRANFILE-OPEN",
+    "0100-REPTFILE-OPEN",
+    "0200-CARDXREF-OPEN",
+    "0300-TRANTYPE-OPEN",
+    "0400-TRANCATG-OPEN",
+    "0500-DATEPARM-OPEN",
+    "0550-DATEPARM-READ",
+    "1000-TRANFILE-GET-NEXT",
+    "1100-WRITE-TRANSACTION-REPORT",
+    "1110-WRITE-GRAND-TOTALS",
+    "1110-WRITE-PAGE-TOTALS",
+    "1111-WRITE-REPORT-REC",
+    "1120-WRITE-ACCOUNT-TOTALS",
+    "1120-WRITE-DETAIL",
+    "1120-WRITE-HEADERS",
+    "1500-A-LOOKUP-XREF",
+    "1500-B-LOOKUP-TRANTYPE",
+    "1500-C-LOOKUP-TRANCATG",
+    "9000-TRANFILE-CLOSE",
+    "9100-REPTFILE-CLOSE",
+    "9200-CARDXREF-CLOSE",
+    "9300-TRANTYPE-CLOSE",
+    "9400-TRANCATG-CLOSE",
+    "9500-DATEPARM-CLOSE",
+    "9910-DISPLAY-IO-STATUS",
+    "9999-ABEND-PROGRAM"
+  ],
+  "data_items": [
+    "ABCODE",
+    "APPL-RESULT",
+    "CARDXREF-STATUS",
+    "DATEPARM-STATUS",
+    "END-OF-FILE",
+    "FD-CARDXREF-REC",
+    "FD-DATEPARM-REC",
+    "FD-REPTFILE-REC",
+    "FD-TRAN-CAT-RECORD",
+    "FD-TRANFILE-REC",
+    "FD-TRANTYPE-REC",
+    "IO-STATUS",
+    "IO-STATUS-04",
+    "TIMING",
+    "TRANCATG-STATUS",
+    "TRANFILE-STATUS",
+    "TRANREPT-STATUS",
+    "TRANTYPE-STATUS",
+    "TWO-BYTES-ALPHA",
+    "TWO-BYTES-BINARY",
+    "WS-DATEPARM-RECORD",
+    "WS-REPORT-VARS"
+  ],
+  "external_calls": [
+    "CEE3ABD"
+  ],
+  "internal_performs": [
+    "0000-TRANFILE-OPEN",
+    "0100-REPTFILE-OPEN",
+    "0200-CARDXREF-OPEN",
+    "0300-TRANTYPE-OPEN",
+    "0400-TRANCATG-OPEN",
+    "0500-DATEPARM-OPEN",
+    "0550-DATEPARM-READ",
+    "1000-TRANFILE-GET-NEXT",
+    "1100-WRITE-TRANSACTION-REPORT",
+    "1110-WRITE-GRAND-TOTALS",
+    "1110-WRITE-PAGE-TOTALS",
+    "1111-WRITE-REPORT-REC",
+    "1120-WRITE-ACCOUNT-TOTALS",
+    "1120-WRITE-DETAIL",
+    "1120-WRITE-HEADERS",
+    "1500-A-LOOKUP-XREF",
+    "1500-B-LOOKUP-TRANTYPE",
+    "1500-C-LOOKUP-TRANCATG",
+    "9000-TRANFILE-CLOSE",
+    "9100-REPTFILE-CLOSE",
+    "9200-CARDXREF-CLOSE",
+    "9300-TRANTYPE-CLOSE",
+    "9400-TRANCATG-CLOSE",
+    "9500-DATEPARM-CLOSE",
+    "9910-DISPLAY-IO-STATUS",
+    "9999-ABEND-PROGRAM"
+  ],
+  "data_files": [
+    {
+      "name": "TRANSACT-FILE",
+      "ddname": "TRANFILE",
+      "organization": "SEQUENTIAL",
+      "access": null
+    },
+    {
+      "name": "XREF-FILE",
+      "ddname": "CARDXREF",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    },
+    {
+      "name": "TRANTYPE-FILE",
+      "ddname": "TRANTYPE",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    },
+    {
+      "name": "TRANCATG-FILE",
+      "ddname": "TRANCATG",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    },
+    {
+      "name": "REPORT-FILE",
+      "ddname": "TRANREPT",
+      "organization": "SEQUENTIAL",
+      "access": null
+    },
+    {
+      "name": "DATE-PARMS-FILE",
+      "ddname": "DATEPARM",
+      "organization": "SEQUENTIAL",
+      "access": null
+    }
+  ],
+  "copybooks_referenced": [
+    "CVACT03Y",
+    "CVTRA03Y",
+    "CVTRA04Y",
+    "CVTRA05Y",
+    "CVTRA07Y"
+  ],
+  "cfg": {
+    "source": null,
+    "edges": null,
+    "unresolved": null
+  },
+  "paragraphs_defined": [
+    {
+      "name": "0550-DATEPARM-READ",
+      "source_line": 197,
+      "area_a": false
+    },
+    {
+      "name": "1000-TRANFILE-GET-NEXT",
+      "source_line": 222,
+      "area_a": false
+    },
+    {
+      "name": "1100-WRITE-TRANSACTION-REPORT",
+      "source_line": 247,
+      "area_a": false
+    },
+    {
+      "name": "1110-WRITE-PAGE-TOTALS",
+      "source_line": 265,
+      "area_a": false
+    },
+    {
+      "name": "1120-WRITE-ACCOUNT-TOTALS",
+      "source_line": 277,
+      "area_a": false
+    },
+    {
+      "name": "1110-WRITE-GRAND-TOTALS",
+      "source_line": 288,
+      "area_a": false
+    },
+    {
+      "name": "1120-WRITE-HEADERS",
+      "source_line": 293,
+      "area_a": false
+    },
+    {
+      "name": "1111-WRITE-REPORT-REC",
+      "source_line": 311,
+      "area_a": false
+    },
+    {
+      "name": "1120-WRITE-DETAIL",
+      "source_line": 329,
+      "area_a": false
+    },
+    {
+      "name": "0000-TRANFILE-OPEN",
+      "source_line": 343,
+      "area_a": false
+    },
+    {
+      "name": "0100-REPTFILE-OPEN",
+      "source_line": 360,
+      "area_a": false
+    },
+    {
+      "name": "0200-CARDXREF-OPEN",
+      "source_line": 377,
+      "area_a": false
+    },
+    {
+      "name": "0300-TRANTYPE-OPEN",
+      "source_line": 394,
+      "area_a": false
+    },
+    {
+      "name": "0400-TRANCATG-OPEN",
+      "source_line": 411,
+      "area_a": false
+    },
+    {
+      "name": "0500-DATEPARM-OPEN",
+      "source_line": 428,
+      "area_a": false
+    },
+    {
+      "name": "1500-A-LOOKUP-XREF",
+      "source_line": 445,
+      "area_a": false
+    },
+    {
+      "name": "1500-B-LOOKUP-TRANTYPE",
+      "source_line": 454,
+      "area_a": false
+    },
+    {
+      "name": "1500-C-LOOKUP-TRANCATG",
+      "source_line": 463,
+      "area_a": false
+    },
+    {
+      "name": "9000-TRANFILE-CLOSE",
+      "source_line": 472,
+      "area_a": false
+    },
+    {
+      "name": "9100-REPTFILE-CLOSE",
+      "source_line": 489,
+      "area_a": false
+    },
+    {
+      "name": "9200-CARDXREF-CLOSE",
+      "source_line": 507,
+      "area_a": false
+    },
+    {
+      "name": "9300-TRANTYPE-CLOSE",
+      "source_line": 524,
+      "area_a": false
+    },
+    {
+      "name": "9400-TRANCATG-CLOSE",
+      "source_line": 541,
+      "area_a": false
+    },
+    {
+      "name": "9500-DATEPARM-CLOSE",
+      "source_line": 558,
+      "area_a": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "source_line": 579,
+      "area_a": false
+    },
+    {
+      "name": "9910-DISPLAY-IO-STATUS",
+      "source_line": 585,
+      "area_a": false
+    }
+  ],
+  "paragraphs_referenced": [
+    "0000-TRANFILE-OPEN",
+    "0100-REPTFILE-OPEN",
+    "0200-CARDXREF-OPEN",
+    "0300-TRANTYPE-OPEN",
+    "0400-TRANCATG-OPEN",
+    "0500-DATEPARM-OPEN",
+    "0550-DATEPARM-READ",
+    "1000-TRANFILE-GET-NEXT",
+    "1100-WRITE-TRANSACTION-REPORT",
+    "1110-WRITE-GRAND-TOTALS",
+    "1110-WRITE-PAGE-TOTALS",
+    "1111-WRITE-REPORT-REC",
+    "1120-WRITE-ACCOUNT-TOTALS",
+    "1120-WRITE-DETAIL",
+    "1120-WRITE-HEADERS",
+    "1500-A-LOOKUP-XREF",
+    "1500-B-LOOKUP-TRANTYPE",
+    "1500-C-LOOKUP-TRANCATG",
+    "9000-TRANFILE-CLOSE",
+    "9100-REPTFILE-CLOSE",
+    "9200-CARDXREF-CLOSE",
+    "9300-TRANTYPE-CLOSE",
+    "9400-TRANCATG-CLOSE",
+    "9500-DATEPARM-CLOSE",
+    "9910-DISPLAY-IO-STATUS",
+    "9999-ABEND-PROGRAM"
+  ],
+  "paragraph_actions": {
+    "0550-DATEPARM-READ": [
+      "branch_logic",
+      "display_output",
+      "read_file"
+    ],
+    "1000-TRANFILE-GET-NEXT": [
+      "branch_logic",
+      "display_output",
+      "read_file"
+    ],
+    "1100-WRITE-TRANSACTION-REPORT": [
+      "branch_logic",
+      "transform_data"
+    ],
+    "1110-WRITE-PAGE-TOTALS": [
+      "transform_data"
+    ],
+    "1120-WRITE-ACCOUNT-TOTALS": [
+      "transform_data"
+    ],
+    "1110-WRITE-GRAND-TOTALS": [
+      "transform_data"
+    ],
+    "1120-WRITE-HEADERS": [
+      "transform_data"
+    ],
+    "1111-WRITE-REPORT-REC": [
+      "branch_logic",
+      "display_output",
+      "write_file"
+    ],
+    "1120-WRITE-DETAIL": [
+      "transform_data"
+    ],
+    "0000-TRANFILE-OPEN": [
+      "branch_logic",
+      "display_output",
+      "open_file"
+    ],
+    "0100-REPTFILE-OPEN": [
+      "branch_logic",
+      "display_output",
+      "open_file"
+    ],
+    "0200-CARDXREF-OPEN": [
+      "branch_logic",
+      "display_output",
+      "open_file"
+    ],
+    "0300-TRANTYPE-OPEN": [
+      "branch_logic",
+      "display_output",
+      "open_file"
+    ],
+    "0400-TRANCATG-OPEN": [
+      "branch_logic",
+      "display_output",
+      "open_file"
+    ],
+    "0500-DATEPARM-OPEN": [
+      "branch_logic",
+      "display_output",
+      "open_file"
+    ],
+    "1500-A-LOOKUP-XREF": [
+      "display_output",
+      "read_file"
+    ],
+    "1500-B-LOOKUP-TRANTYPE": [
+      "display_output",
+      "read_file"
+    ],
+    "1500-C-LOOKUP-TRANCATG": [
+      "display_output",
+      "read_file"
+    ],
+    "9000-TRANFILE-CLOSE": [
+      "branch_logic",
+      "close_file",
+      "display_output"
+    ],
+    "9100-REPTFILE-CLOSE": [
+      "branch_logic",
+      "close_file",
+      "display_output"
+    ],
+    "9200-CARDXREF-CLOSE": [
+      "branch_logic",
+      "close_file",
+      "display_output"
+    ],
+    "9300-TRANTYPE-CLOSE": [
+      "branch_logic",
+      "close_file",
+      "display_output"
+    ],
+    "9400-TRANCATG-CLOSE": [
+      "branch_logic",
+      "close_file",
+      "display_output"
+    ],
+    "9500-DATEPARM-CLOSE": [
+      "branch_logic",
+      "close_file",
+      "display_output"
+    ],
+    "9999-ABEND-PROGRAM": [
+      "abend",
+      "call_program",
+      "display_output"
+    ],
+    "9910-DISPLAY-IO-STATUS": [
+      "branch_logic",
+      "display_error",
+      "transform_data"
+    ]
+  },
+  "file_lineage": [
+    {
+      "name": "TRANSACT-FILE",
+      "ddname": "TRANFILE",
+      "fd_record": "TRANSACT-FILE"
+    },
+    {
+      "name": "XREF-FILE",
+      "ddname": "CARDXREF",
+      "fd_record": "XREF-FILE"
+    },
+    {
+      "name": "TRANTYPE-FILE",
+      "ddname": "TRANTYPE",
+      "fd_record": "TRANSACT-FILE"
+    },
+    {
+      "name": "TRANCATG-FILE",
+      "ddname": "TRANCATG",
+      "fd_record": "TRANSACT-FILE"
+    },
+    {
+      "name": "REPORT-FILE",
+      "ddname": "TRANREPT",
+      "fd_record": "REPORT-FILE"
+    },
+    {
+      "name": "DATE-PARMS-FILE",
+      "ddname": "DATEPARM",
+      "fd_record": "DATE-PARMS-FILE"
+    }
+  ],
+  "file_operations": {
+    "DATE-PARMS-FILE": [
+      {
+        "paragraph": "0550-DATEPARM-READ",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "0500-DATEPARM-OPEN",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "9500-DATEPARM-CLOSE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "TRANSACT-FILE": [
+      {
+        "paragraph": "1000-TRANFILE-GET-NEXT",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "0000-TRANFILE-OPEN",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "9000-TRANFILE-CLOSE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "REPORT-FILE": [
+      {
+        "paragraph": "0100-REPTFILE-OPEN",
+        "operation": "open_output",
+        "source_line": null
+      },
+      {
+        "paragraph": "9100-REPTFILE-CLOSE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "XREF-FILE": [
+      {
+        "paragraph": "0200-CARDXREF-OPEN",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "1500-A-LOOKUP-XREF",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "9200-CARDXREF-CLOSE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "TRANTYPE-FILE": [
+      {
+        "paragraph": "0300-TRANTYPE-OPEN",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "1500-B-LOOKUP-TRANTYPE",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "9300-TRANTYPE-CLOSE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "TRANCATG-FILE": [
+      {
+        "paragraph": "0400-TRANCATG-OPEN",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "1500-C-LOOKUP-TRANCATG",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "9400-TRANCATG-CLOSE",
+        "operation": "close",
+        "source_line": null
+      }
+    ]
+  },
+  "control_flow": {
+    "cfg_source": "text_scan",
+    "entry_points": [
+      "0550-DATEPARM-READ"
+    ],
+    "exit_points": [
+      "9910-DISPLAY-IO-STATUS",
+      "9999-ABEND-PROGRAM"
+    ],
+    "edges": [
+      {
+        "from": "0550-DATEPARM-READ",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0550-DATEPARM-READ",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0550-DATEPARM-READ",
+        "to": "1000-TRANFILE-GET-NEXT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1000-TRANFILE-GET-NEXT",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-TRANFILE-GET-NEXT",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-TRANFILE-GET-NEXT",
+        "to": "1100-WRITE-TRANSACTION-REPORT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1100-WRITE-TRANSACTION-REPORT",
+        "to": "1120-WRITE-HEADERS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1100-WRITE-TRANSACTION-REPORT",
+        "to": "1110-WRITE-PAGE-TOTALS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1100-WRITE-TRANSACTION-REPORT",
+        "to": "1120-WRITE-DETAIL",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1100-WRITE-TRANSACTION-REPORT",
+        "to": "1110-WRITE-PAGE-TOTALS",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1110-WRITE-PAGE-TOTALS",
+        "to": "1111-WRITE-REPORT-REC",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1110-WRITE-PAGE-TOTALS",
+        "to": "1120-WRITE-ACCOUNT-TOTALS",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1120-WRITE-ACCOUNT-TOTALS",
+        "to": "1111-WRITE-REPORT-REC",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1120-WRITE-ACCOUNT-TOTALS",
+        "to": "1110-WRITE-GRAND-TOTALS",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1110-WRITE-GRAND-TOTALS",
+        "to": "1111-WRITE-REPORT-REC",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1110-WRITE-GRAND-TOTALS",
+        "to": "1120-WRITE-HEADERS",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1120-WRITE-HEADERS",
+        "to": "1111-WRITE-REPORT-REC",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1120-WRITE-HEADERS",
+        "to": "1111-WRITE-REPORT-REC",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1111-WRITE-REPORT-REC",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1111-WRITE-REPORT-REC",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1111-WRITE-REPORT-REC",
+        "to": "1120-WRITE-DETAIL",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1120-WRITE-DETAIL",
+        "to": "1111-WRITE-REPORT-REC",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1120-WRITE-DETAIL",
+        "to": "0000-TRANFILE-OPEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "0000-TRANFILE-OPEN",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-TRANFILE-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-TRANFILE-OPEN",
+        "to": "0100-REPTFILE-OPEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "0100-REPTFILE-OPEN",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0100-REPTFILE-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0100-REPTFILE-OPEN",
+        "to": "0200-CARDXREF-OPEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "0200-CARDXREF-OPEN",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0200-CARDXREF-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0200-CARDXREF-OPEN",
+        "to": "0300-TRANTYPE-OPEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "0300-TRANTYPE-OPEN",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0300-TRANTYPE-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0300-TRANTYPE-OPEN",
+        "to": "0400-TRANCATG-OPEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "0400-TRANCATG-OPEN",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0400-TRANCATG-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0400-TRANCATG-OPEN",
+        "to": "0500-DATEPARM-OPEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "0500-DATEPARM-OPEN",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0500-DATEPARM-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0500-DATEPARM-OPEN",
+        "to": "1500-A-LOOKUP-XREF",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1500-A-LOOKUP-XREF",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1500-A-LOOKUP-XREF",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1500-A-LOOKUP-XREF",
+        "to": "1500-B-LOOKUP-TRANTYPE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1500-B-LOOKUP-TRANTYPE",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1500-B-LOOKUP-TRANTYPE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1500-B-LOOKUP-TRANTYPE",
+        "to": "1500-C-LOOKUP-TRANCATG",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1500-C-LOOKUP-TRANCATG",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1500-C-LOOKUP-TRANCATG",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1500-C-LOOKUP-TRANCATG",
+        "to": "9000-TRANFILE-CLOSE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9000-TRANFILE-CLOSE",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9000-TRANFILE-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9000-TRANFILE-CLOSE",
+        "to": "9100-REPTFILE-CLOSE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9100-REPTFILE-CLOSE",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9100-REPTFILE-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9100-REPTFILE-CLOSE",
+        "to": "9200-CARDXREF-CLOSE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9200-CARDXREF-CLOSE",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9200-CARDXREF-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9200-CARDXREF-CLOSE",
+        "to": "9300-TRANTYPE-CLOSE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9300-TRANTYPE-CLOSE",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9300-TRANTYPE-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9300-TRANTYPE-CLOSE",
+        "to": "9400-TRANCATG-CLOSE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9400-TRANCATG-CLOSE",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9400-TRANCATG-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9400-TRANCATG-CLOSE",
+        "to": "9500-DATEPARM-CLOSE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9500-DATEPARM-CLOSE",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9500-DATEPARM-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9500-DATEPARM-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9999-ABEND-PROGRAM",
+        "to": "CEE3ABD",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "9999-ABEND-PROGRAM",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "fallthrough",
+        "source_lines": null
+      }
+    ],
+    "unresolved": []
+  },
+  "cics": null
+}

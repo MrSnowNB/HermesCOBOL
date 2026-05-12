@@ -1,0 +1,392 @@
+{
+  "schema_version": "1.1",
+  "program": "CORPT00C",
+  "source_file": "data/raw/cbl/CORPT00C.cbl",
+  "extracted_at": "2026-05-12T16:52:22.526085+00:00",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 0,
+  "gate_status": "PASS",
+  "gate_reasons": [],
+  "cics_present": true,
+  "sql_present": false,
+  "paragraphs": [
+    "INITIALIZE-ALL-FIELDS",
+    "MAIN-PARA",
+    "POPULATE-HEADER-INFO",
+    "PROCESS-ENTER-KEY",
+    "RECEIVE-TRNRPT-SCREEN",
+    "RETURN-TO-CICS",
+    "RETURN-TO-PREV-SCREEN",
+    "SEND-TRNRPT-SCREEN",
+    "SUBMIT-JOB-TO-INTRDR",
+    "WIRTE-JOBSUB-TDQ"
+  ],
+  "data_items": [
+    "CSUTLDTC-PARM",
+    "DFHCOMMAREA",
+    "JOB-DATA",
+    "WS-VARIABLES"
+  ],
+  "external_calls": [
+    "CSUTLDTC"
+  ],
+  "internal_performs": [
+    "END-IF",
+    "INITIALIZE-ALL-FIELDS",
+    "POPULATE-HEADER-INFO",
+    "PROCESS-ENTER-KEY",
+    "RECEIVE-TRNRPT-SCREEN",
+    "RETURN-TO-PREV-SCREEN",
+    "SEND-TRNRPT-SCREEN",
+    "SUBMIT-JOB-TO-INTRDR",
+    "WIRTE-JOBSUB-TDQ"
+  ],
+  "data_files": [],
+  "copybooks_referenced": [
+    "COCOM01Y",
+    "CORPT00",
+    "COTTL01Y",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CVTRA05Y",
+    "DFHAID",
+    "DFHBMSCA"
+  ],
+  "cfg": {
+    "source": null,
+    "edges": null,
+    "unresolved": null
+  },
+  "paragraphs_defined": [
+    {
+      "name": "MAIN-PARA",
+      "source_line": 108,
+      "area_a": false
+    },
+    {
+      "name": "PROCESS-ENTER-KEY",
+      "source_line": 152,
+      "area_a": false
+    },
+    {
+      "name": "SUBMIT-JOB-TO-INTRDR",
+      "source_line": 403,
+      "area_a": false
+    },
+    {
+      "name": "WIRTE-JOBSUB-TDQ",
+      "source_line": 449,
+      "area_a": false
+    },
+    {
+      "name": "RETURN-TO-PREV-SCREEN",
+      "source_line": 467,
+      "area_a": false
+    },
+    {
+      "name": "SEND-TRNRPT-SCREEN",
+      "source_line": 479,
+      "area_a": false
+    },
+    {
+      "name": "RETURN-TO-CICS",
+      "source_line": 492,
+      "area_a": false
+    },
+    {
+      "name": "RECEIVE-TRNRPT-SCREEN",
+      "source_line": 498,
+      "area_a": false
+    },
+    {
+      "name": "POPULATE-HEADER-INFO",
+      "source_line": 504,
+      "area_a": false
+    },
+    {
+      "name": "INITIALIZE-ALL-FIELDS",
+      "source_line": 530,
+      "area_a": false
+    }
+  ],
+  "paragraphs_referenced": [
+    "INITIALIZE-ALL-FIELDS",
+    "POPULATE-HEADER-INFO",
+    "PROCESS-ENTER-KEY",
+    "RECEIVE-TRNRPT-SCREEN",
+    "RETURN-TO-CICS",
+    "RETURN-TO-PREV-SCREEN",
+    "SEND-TRNRPT-SCREEN",
+    "SUBMIT-JOB-TO-INTRDR",
+    "WIRTE-JOBSUB-TDQ"
+  ],
+  "paragraph_actions": {
+    "MAIN-PARA": [
+      "aid_branch",
+      "branch_logic",
+      "cics_command"
+    ],
+    "PROCESS-ENTER-KEY": [
+      "branch_logic",
+      "call_program",
+      "display_output",
+      "start_browse"
+    ],
+    "SUBMIT-JOB-TO-INTRDR": [
+      "branch_logic",
+      "transform_data"
+    ],
+    "WIRTE-JOBSUB-TDQ": [
+      "branch_logic",
+      "cics_command",
+      "display_output",
+      "write_file"
+    ],
+    "RETURN-TO-PREV-SCREEN": [
+      "branch_logic",
+      "cics_command"
+    ],
+    "SEND-TRNRPT-SCREEN": [
+      "branch_logic",
+      "cics_command",
+      "send_map"
+    ],
+    "RETURN-TO-CICS": [
+      "cics_command"
+    ],
+    "RECEIVE-TRNRPT-SCREEN": [
+      "cics_command",
+      "receive_map"
+    ],
+    "POPULATE-HEADER-INFO": [
+      "transform_data"
+    ],
+    "INITIALIZE-ALL-FIELDS": [
+      "transform_data"
+    ]
+  },
+  "file_lineage": [],
+  "file_operations": {
+    "DATE": [
+      {
+        "paragraph": "PROCESS-ENTER-KEY",
+        "operation": "start",
+        "source_line": null
+      },
+      {
+        "paragraph": "PROCESS-ENTER-KEY",
+        "operation": "start",
+        "source_line": null
+      },
+      {
+        "paragraph": "PROCESS-ENTER-KEY",
+        "operation": "start",
+        "source_line": null
+      },
+      {
+        "paragraph": "PROCESS-ENTER-KEY",
+        "operation": "start",
+        "source_line": null
+      },
+      {
+        "paragraph": "PROCESS-ENTER-KEY",
+        "operation": "start",
+        "source_line": null
+      },
+      {
+        "paragraph": "PROCESS-ENTER-KEY",
+        "operation": "start",
+        "source_line": null
+      },
+      {
+        "paragraph": "PROCESS-ENTER-KEY",
+        "operation": "start",
+        "source_line": null
+      }
+    ],
+    "TDQ": [
+      {
+        "paragraph": "WIRTE-JOBSUB-TDQ",
+        "operation": "write",
+        "source_line": null
+      }
+    ]
+  },
+  "control_flow": {
+    "cfg_source": "text_scan",
+    "entry_points": [
+      "MAIN-PARA"
+    ],
+    "exit_points": [
+      "INITIALIZE-ALL-FIELDS",
+      "MAIN-PARA",
+      "RETURN-TO-CICS",
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "edges": [
+      {
+        "from": "MAIN-PARA",
+        "to": "RETURN-TO-PREV-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "SEND-TRNRPT-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "RECEIVE-TRNRPT-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "PROCESS-ENTER-KEY",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "SUBMIT-JOB-TO-INTRDR",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "SEND-TRNRPT-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "INITIALIZE-ALL-FIELDS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "CSUTLDTC",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "SUBMIT-JOB-TO-INTRDR",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "SUBMIT-JOB-TO-INTRDR",
+        "to": "SEND-TRNRPT-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "SUBMIT-JOB-TO-INTRDR",
+        "to": "INITIALIZE-ALL-FIELDS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "SUBMIT-JOB-TO-INTRDR",
+        "to": "WIRTE-JOBSUB-TDQ",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "SUBMIT-JOB-TO-INTRDR",
+        "to": "WIRTE-JOBSUB-TDQ",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "WIRTE-JOBSUB-TDQ",
+        "to": "SEND-TRNRPT-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "WIRTE-JOBSUB-TDQ",
+        "to": "RETURN-TO-PREV-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "RETURN-TO-PREV-SCREEN",
+        "to": "SEND-TRNRPT-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "SEND-TRNRPT-SCREEN",
+        "to": "POPULATE-HEADER-INFO",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "SEND-TRNRPT-SCREEN",
+        "to": "RETURN-TO-CICS",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "RECEIVE-TRNRPT-SCREEN",
+        "to": "POPULATE-HEADER-INFO",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "POPULATE-HEADER-INFO",
+        "to": "INITIALIZE-ALL-FIELDS",
+        "type": "fallthrough",
+        "source_lines": null
+      }
+    ],
+    "unresolved": [],
+    "cfg_note": "CICS program: text_scan CFG; conditional branches not resolved without a CICS translator.  Maps, commands, and AID keys are captured separately in the 'cics' subtree."
+  },
+  "cics": {
+    "commarea_used": true,
+    "commands": [
+      "RECEIVE",
+      "RETURN",
+      "SEND",
+      "WRITEQ",
+      "XCTL"
+    ],
+    "maps_used": [
+      "CORPT0A"
+    ],
+    "mapsets_used": [
+      "CORPT00"
+    ],
+    "aid_keys": [
+      "DFHENTER",
+      "DFHPF3"
+    ],
+    "screen_flow": [
+      {
+        "paragraph": "MAIN-PARA",
+        "action": "aid_dispatch",
+        "aid_keys": [
+          "DFHENTER",
+          "DFHPF3"
+        ],
+        "maps": null
+      },
+      {
+        "paragraph": "SEND-TRNRPT-SCREEN",
+        "action": "send_map",
+        "map": "CORPT0A"
+      },
+      {
+        "paragraph": "RECEIVE-TRNRPT-SCREEN",
+        "action": "receive_map",
+        "map": "CORPT0A"
+      }
+    ]
+  }
+}

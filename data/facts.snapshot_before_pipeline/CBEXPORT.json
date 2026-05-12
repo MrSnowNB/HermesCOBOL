@@ -1,0 +1,774 @@
+{
+  "schema_version": "1.1",
+  "program": "CBEXPORT",
+  "source_file": "data/raw/cbl/CBEXPORT.cbl",
+  "extracted_at": "2026-05-12T16:52:22.107337+00:00",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 0,
+  "gate_status": "PASS",
+  "gate_reasons": [],
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [
+    "0000-MAIN-PROCESSING",
+    "1000-INITIALIZE",
+    "1050-GENERATE-TIMESTAMP",
+    "1100-OPEN-FILES",
+    "2000-EXPORT-CUSTOMERS",
+    "2100-READ-CUSTOMER-RECORD",
+    "2200-CREATE-CUSTOMER-EXP-REC",
+    "3000-EXPORT-ACCOUNTS",
+    "3100-READ-ACCOUNT-RECORD",
+    "3200-CREATE-ACCOUNT-EXP-REC",
+    "4000-EXPORT-XREFS",
+    "4100-READ-XREF-RECORD",
+    "4200-CREATE-XREF-EXPORT-RECORD",
+    "5000-EXPORT-TRANSACTIONS",
+    "5100-READ-TRANSACTION-RECORD",
+    "5200-CREATE-TRAN-EXP-REC",
+    "5500-EXPORT-CARDS",
+    "5600-READ-CARD-RECORD",
+    "5700-CREATE-CARD-EXPORT-RECORD",
+    "6000-FINALIZE",
+    "9999-ABEND-PROGRAM"
+  ],
+  "data_items": [
+    "EXPORT-OUTPUT-RECORD",
+    "WS-EXPORT-CONTROL",
+    "WS-EXPORT-STATISTICS",
+    "WS-FILE-STATUS-AREA",
+    "WS-TIMESTAMP-FIELDS"
+  ],
+  "external_calls": [],
+  "internal_performs": [
+    "1000-INITIALIZE",
+    "1050-GENERATE-TIMESTAMP",
+    "1100-OPEN-FILES",
+    "2000-EXPORT-CUSTOMERS",
+    "2100-READ-CUSTOMER-RECORD",
+    "2200-CREATE-CUSTOMER-EXP-REC",
+    "3000-EXPORT-ACCOUNTS",
+    "3100-READ-ACCOUNT-RECORD",
+    "3200-CREATE-ACCOUNT-EXP-REC",
+    "4000-EXPORT-XREFS",
+    "4100-READ-XREF-RECORD",
+    "4200-CREATE-XREF-EXPORT-RECORD",
+    "5000-EXPORT-TRANSACTIONS",
+    "5100-READ-TRANSACTION-RECORD",
+    "5200-CREATE-TRAN-EXP-REC",
+    "5500-EXPORT-CARDS",
+    "5600-READ-CARD-RECORD",
+    "5700-CREATE-CARD-EXPORT-RECORD",
+    "6000-FINALIZE",
+    "9999-ABEND-PROGRAM",
+    "DISPLAY"
+  ],
+  "data_files": [
+    {
+      "name": "CUSTOMER-INPUT",
+      "ddname": "CUSTFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "ACCOUNT-INPUT",
+      "ddname": "ACCTFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "XREF-INPUT",
+      "ddname": "XREFFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "TRANSACTION-INPUT",
+      "ddname": "TRANSACT",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "CARD-INPUT",
+      "ddname": "CARDFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "EXPORT-OUTPUT",
+      "ddname": "EXPFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    }
+  ],
+  "copybooks_referenced": [
+    "CVACT01Y",
+    "CVACT02Y",
+    "CVACT03Y",
+    "CVCUS01Y",
+    "CVEXPORT",
+    "CVTRA05Y"
+  ],
+  "cfg": {
+    "source": null,
+    "edges": null,
+    "unresolved": null
+  },
+  "paragraphs_defined": [
+    {
+      "name": "0000-MAIN-PROCESSING",
+      "source_line": 114,
+      "area_a": false
+    },
+    {
+      "name": "1000-INITIALIZE",
+      "source_line": 121,
+      "area_a": false
+    },
+    {
+      "name": "1050-GENERATE-TIMESTAMP",
+      "source_line": 128,
+      "area_a": false
+    },
+    {
+      "name": "1100-OPEN-FILES",
+      "source_line": 140,
+      "area_a": false
+    },
+    {
+      "name": "2000-EXPORT-CUSTOMERS",
+      "source_line": 175,
+      "area_a": false
+    },
+    {
+      "name": "2100-READ-CUSTOMER-RECORD",
+      "source_line": 188,
+      "area_a": false
+    },
+    {
+      "name": "2200-CREATE-CUSTOMER-EXP-REC",
+      "source_line": 197,
+      "area_a": false
+    },
+    {
+      "name": "3000-EXPORT-ACCOUNTS",
+      "source_line": 245,
+      "area_a": false
+    },
+    {
+      "name": "3100-READ-ACCOUNT-RECORD",
+      "source_line": 258,
+      "area_a": false
+    },
+    {
+      "name": "3200-CREATE-ACCOUNT-EXP-REC",
+      "source_line": 264,
+      "area_a": false
+    },
+    {
+      "name": "4000-EXPORT-XREFS",
+      "source_line": 295,
+      "area_a": false
+    },
+    {
+      "name": "4100-READ-XREF-RECORD",
+      "source_line": 304,
+      "area_a": false
+    },
+    {
+      "name": "4200-CREATE-XREF-EXPORT-RECORD",
+      "source_line": 311,
+      "area_a": false
+    },
+    {
+      "name": "5000-EXPORT-TRANSACTIONS",
+      "source_line": 333,
+      "area_a": false
+    },
+    {
+      "name": "5100-READ-TRANSACTION-RECORD",
+      "source_line": 346,
+      "area_a": false
+    },
+    {
+      "name": "5200-CREATE-TRAN-EXP-REC",
+      "source_line": 353,
+      "area_a": false
+    },
+    {
+      "name": "5500-EXPORT-CARDS",
+      "source_line": 388,
+      "area_a": false
+    },
+    {
+      "name": "5600-READ-CARD-RECORD",
+      "source_line": 398,
+      "area_a": false
+    },
+    {
+      "name": "5700-CREATE-CARD-EXPORT-RECORD",
+      "source_line": 406,
+      "area_a": false
+    },
+    {
+      "name": "6000-FINALIZE",
+      "source_line": 433,
+      "area_a": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "source_line": 452,
+      "area_a": false
+    }
+  ],
+  "paragraphs_referenced": [
+    "1000-INITIALIZE",
+    "1050-GENERATE-TIMESTAMP",
+    "1100-OPEN-FILES",
+    "2000-EXPORT-CUSTOMERS",
+    "2100-READ-CUSTOMER-RECORD",
+    "2200-CREATE-CUSTOMER-EXP-REC",
+    "3000-EXPORT-ACCOUNTS",
+    "3100-READ-ACCOUNT-RECORD",
+    "3200-CREATE-ACCOUNT-EXP-REC",
+    "4000-EXPORT-XREFS",
+    "4100-READ-XREF-RECORD",
+    "4200-CREATE-XREF-EXPORT-RECORD",
+    "5000-EXPORT-TRANSACTIONS",
+    "5100-READ-TRANSACTION-RECORD",
+    "5200-CREATE-TRAN-EXP-REC",
+    "5500-EXPORT-CARDS",
+    "5600-READ-CARD-RECORD",
+    "5700-CREATE-CARD-EXPORT-RECORD",
+    "6000-FINALIZE",
+    "9999-ABEND-PROGRAM"
+  ],
+  "paragraph_actions": {
+    "0000-MAIN-PROCESSING": [
+      "program_exit"
+    ],
+    "1000-INITIALIZE": [
+      "display_output"
+    ],
+    "1050-GENERATE-TIMESTAMP": [
+      "no_action_detected"
+    ],
+    "1100-OPEN-FILES": [
+      "branch_logic",
+      "display_output",
+      "open_file"
+    ],
+    "2000-EXPORT-CUSTOMERS": [
+      "display_output"
+    ],
+    "2100-READ-CUSTOMER-RECORD": [
+      "branch_logic",
+      "display_output",
+      "read_file"
+    ],
+    "2200-CREATE-CUSTOMER-EXP-REC": [
+      "branch_logic",
+      "display_output",
+      "write_file"
+    ],
+    "3000-EXPORT-ACCOUNTS": [
+      "display_output"
+    ],
+    "3100-READ-ACCOUNT-RECORD": [
+      "branch_logic",
+      "display_output",
+      "read_file"
+    ],
+    "3200-CREATE-ACCOUNT-EXP-REC": [
+      "branch_logic",
+      "display_output",
+      "write_file"
+    ],
+    "4000-EXPORT-XREFS": [
+      "display_output"
+    ],
+    "4100-READ-XREF-RECORD": [
+      "branch_logic",
+      "display_output",
+      "read_file"
+    ],
+    "4200-CREATE-XREF-EXPORT-RECORD": [
+      "branch_logic",
+      "display_output",
+      "write_file"
+    ],
+    "5000-EXPORT-TRANSACTIONS": [
+      "display_output"
+    ],
+    "5100-READ-TRANSACTION-RECORD": [
+      "branch_logic",
+      "display_output",
+      "read_file"
+    ],
+    "5200-CREATE-TRAN-EXP-REC": [
+      "branch_logic",
+      "display_output",
+      "write_file"
+    ],
+    "5500-EXPORT-CARDS": [
+      "display_output"
+    ],
+    "5600-READ-CARD-RECORD": [
+      "branch_logic",
+      "display_output",
+      "read_file"
+    ],
+    "5700-CREATE-CARD-EXPORT-RECORD": [
+      "branch_logic",
+      "display_output",
+      "write_file"
+    ],
+    "6000-FINALIZE": [
+      "close_file",
+      "display_output"
+    ],
+    "9999-ABEND-PROGRAM": [
+      "abend",
+      "display_output"
+    ]
+  },
+  "file_lineage": [
+    {
+      "name": "CUSTOMER-INPUT",
+      "ddname": "CUSTFILE",
+      "fd_record": "CUSTOMER-INPUT"
+    },
+    {
+      "name": "ACCOUNT-INPUT",
+      "ddname": "ACCTFILE",
+      "fd_record": "ACCOUNT-INPUT"
+    },
+    {
+      "name": "XREF-INPUT",
+      "ddname": "XREFFILE",
+      "fd_record": "XREF-INPUT"
+    },
+    {
+      "name": "TRANSACTION-INPUT",
+      "ddname": "TRANSACT",
+      "fd_record": "TRANSACTION-INPUT"
+    },
+    {
+      "name": "CARD-INPUT",
+      "ddname": "CARDFILE",
+      "fd_record": "CARD-INPUT"
+    },
+    {
+      "name": "EXPORT-OUTPUT",
+      "ddname": "EXPFILE",
+      "fd_record": "EXPORT-OUTPUT"
+    }
+  ],
+  "file_operations": {
+    "CUSTOMER-INPUT": [
+      {
+        "paragraph": "1100-OPEN-FILES",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "2100-READ-CUSTOMER-RECORD",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "6000-FINALIZE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "ACCOUNT-INPUT": [
+      {
+        "paragraph": "1100-OPEN-FILES",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "3100-READ-ACCOUNT-RECORD",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "6000-FINALIZE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "XREF-INPUT": [
+      {
+        "paragraph": "1100-OPEN-FILES",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "4100-READ-XREF-RECORD",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "6000-FINALIZE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "TRANSACTION-INPUT": [
+      {
+        "paragraph": "1100-OPEN-FILES",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "5100-READ-TRANSACTION-RECORD",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "6000-FINALIZE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "CARD-INPUT": [
+      {
+        "paragraph": "1100-OPEN-FILES",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "5600-READ-CARD-RECORD",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "6000-FINALIZE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "EXPORT-OUTPUT": [
+      {
+        "paragraph": "1100-OPEN-FILES",
+        "operation": "open_output",
+        "source_line": null
+      },
+      {
+        "paragraph": "6000-FINALIZE",
+        "operation": "close",
+        "source_line": null
+      }
+    ]
+  },
+  "control_flow": {
+    "cfg_source": "text_scan",
+    "entry_points": [
+      "0000-MAIN-PROCESSING"
+    ],
+    "exit_points": [
+      "0000-MAIN-PROCESSING",
+      "9999-ABEND-PROGRAM"
+    ],
+    "edges": [
+      {
+        "from": "0000-MAIN-PROCESSING",
+        "to": "1000-INITIALIZE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-MAIN-PROCESSING",
+        "to": "2000-EXPORT-CUSTOMERS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-MAIN-PROCESSING",
+        "to": "3000-EXPORT-ACCOUNTS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-MAIN-PROCESSING",
+        "to": "4000-EXPORT-XREFS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-MAIN-PROCESSING",
+        "to": "5000-EXPORT-TRANSACTIONS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-MAIN-PROCESSING",
+        "to": "5500-EXPORT-CARDS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-MAIN-PROCESSING",
+        "to": "6000-FINALIZE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-INITIALIZE",
+        "to": "1050-GENERATE-TIMESTAMP",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-INITIALIZE",
+        "to": "1100-OPEN-FILES",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-INITIALIZE",
+        "to": "1050-GENERATE-TIMESTAMP",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1050-GENERATE-TIMESTAMP",
+        "to": "1100-OPEN-FILES",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1100-OPEN-FILES",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1100-OPEN-FILES",
+        "to": "2000-EXPORT-CUSTOMERS",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2000-EXPORT-CUSTOMERS",
+        "to": "2100-READ-CUSTOMER-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2000-EXPORT-CUSTOMERS",
+        "to": "2200-CREATE-CUSTOMER-EXP-REC",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2000-EXPORT-CUSTOMERS",
+        "to": "2100-READ-CUSTOMER-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2100-READ-CUSTOMER-RECORD",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2100-READ-CUSTOMER-RECORD",
+        "to": "2200-CREATE-CUSTOMER-EXP-REC",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2200-CREATE-CUSTOMER-EXP-REC",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2200-CREATE-CUSTOMER-EXP-REC",
+        "to": "3000-EXPORT-ACCOUNTS",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "3000-EXPORT-ACCOUNTS",
+        "to": "3100-READ-ACCOUNT-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "3000-EXPORT-ACCOUNTS",
+        "to": "3200-CREATE-ACCOUNT-EXP-REC",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "3000-EXPORT-ACCOUNTS",
+        "to": "3100-READ-ACCOUNT-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "3100-READ-ACCOUNT-RECORD",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "3100-READ-ACCOUNT-RECORD",
+        "to": "3200-CREATE-ACCOUNT-EXP-REC",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "3200-CREATE-ACCOUNT-EXP-REC",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "3200-CREATE-ACCOUNT-EXP-REC",
+        "to": "4000-EXPORT-XREFS",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "4000-EXPORT-XREFS",
+        "to": "4100-READ-XREF-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "4000-EXPORT-XREFS",
+        "to": "4200-CREATE-XREF-EXPORT-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "4000-EXPORT-XREFS",
+        "to": "4100-READ-XREF-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "4100-READ-XREF-RECORD",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "4100-READ-XREF-RECORD",
+        "to": "4200-CREATE-XREF-EXPORT-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "4200-CREATE-XREF-EXPORT-RECORD",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "4200-CREATE-XREF-EXPORT-RECORD",
+        "to": "5000-EXPORT-TRANSACTIONS",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "5000-EXPORT-TRANSACTIONS",
+        "to": "5100-READ-TRANSACTION-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "5000-EXPORT-TRANSACTIONS",
+        "to": "5200-CREATE-TRAN-EXP-REC",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "5000-EXPORT-TRANSACTIONS",
+        "to": "5100-READ-TRANSACTION-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "5100-READ-TRANSACTION-RECORD",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "5100-READ-TRANSACTION-RECORD",
+        "to": "5200-CREATE-TRAN-EXP-REC",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "5200-CREATE-TRAN-EXP-REC",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "5200-CREATE-TRAN-EXP-REC",
+        "to": "5500-EXPORT-CARDS",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "5500-EXPORT-CARDS",
+        "to": "5600-READ-CARD-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "5500-EXPORT-CARDS",
+        "to": "5700-CREATE-CARD-EXPORT-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "5500-EXPORT-CARDS",
+        "to": "5600-READ-CARD-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "5600-READ-CARD-RECORD",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "5600-READ-CARD-RECORD",
+        "to": "5700-CREATE-CARD-EXPORT-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "5700-CREATE-CARD-EXPORT-RECORD",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "5700-CREATE-CARD-EXPORT-RECORD",
+        "to": "6000-FINALIZE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "6000-FINALIZE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "fallthrough",
+        "source_lines": null
+      }
+    ],
+    "unresolved": []
+  },
+  "cics": null
+}

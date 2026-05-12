@@ -1,0 +1,241 @@
+{
+  "schema_version": "1.1",
+  "program": "COSGN00C",
+  "source_file": "data/raw/cbl/COSGN00C.cbl",
+  "extracted_at": "2026-05-12T16:52:22.526085+00:00",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 0,
+  "gate_status": "PASS",
+  "gate_reasons": [],
+  "cics_present": true,
+  "sql_present": false,
+  "paragraphs": [
+    "MAIN-PARA",
+    "POPULATE-HEADER-INFO",
+    "PROCESS-ENTER-KEY",
+    "READ-USER-SEC-FILE",
+    "SEND-PLAIN-TEXT",
+    "SEND-SIGNON-SCREEN"
+  ],
+  "data_items": [
+    "DFHCOMMAREA",
+    "WS-VARIABLES"
+  ],
+  "external_calls": [],
+  "internal_performs": [
+    "POPULATE-HEADER-INFO",
+    "PROCESS-ENTER-KEY",
+    "READ-USER-SEC-FILE",
+    "SEND-PLAIN-TEXT",
+    "SEND-SIGNON-SCREEN"
+  ],
+  "data_files": [],
+  "copybooks_referenced": [
+    "COCOM01Y",
+    "COSGN00",
+    "COTTL01Y",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CSUSR01Y",
+    "DFHAID",
+    "DFHBMSCA"
+  ],
+  "cfg": {
+    "source": null,
+    "edges": null,
+    "unresolved": null
+  },
+  "paragraphs_defined": [
+    {
+      "name": "MAIN-PARA",
+      "source_line": 20,
+      "area_a": false
+    },
+    {
+      "name": "PROCESS-ENTER-KEY",
+      "source_line": 43,
+      "area_a": false
+    },
+    {
+      "name": "SEND-SIGNON-SCREEN",
+      "source_line": 83,
+      "area_a": false
+    },
+    {
+      "name": "SEND-PLAIN-TEXT",
+      "source_line": 91,
+      "area_a": false
+    },
+    {
+      "name": "POPULATE-HEADER-INFO",
+      "source_line": 99,
+      "area_a": false
+    },
+    {
+      "name": "READ-USER-SEC-FILE",
+      "source_line": 124,
+      "area_a": false
+    }
+  ],
+  "paragraphs_referenced": [
+    "POPULATE-HEADER-INFO",
+    "PROCESS-ENTER-KEY",
+    "READ-USER-SEC-FILE",
+    "SEND-PLAIN-TEXT",
+    "SEND-SIGNON-SCREEN"
+  ],
+  "paragraph_actions": {
+    "MAIN-PARA": [
+      "aid_branch",
+      "branch_logic",
+      "cics_command"
+    ],
+    "PROCESS-ENTER-KEY": [
+      "branch_logic",
+      "cics_command",
+      "receive_map"
+    ],
+    "SEND-SIGNON-SCREEN": [
+      "cics_command",
+      "send_map"
+    ],
+    "SEND-PLAIN-TEXT": [
+      "cics_command"
+    ],
+    "POPULATE-HEADER-INFO": [
+      "cics_command"
+    ],
+    "READ-USER-SEC-FILE": [
+      "branch_logic",
+      "cics_command",
+      "read_file"
+    ]
+  },
+  "file_lineage": [],
+  "file_operations": {
+    "DATASET": [
+      {
+        "paragraph": "READ-USER-SEC-FILE",
+        "operation": "read",
+        "source_line": null
+      }
+    ]
+  },
+  "control_flow": {
+    "cfg_source": "text_scan",
+    "entry_points": [
+      "MAIN-PARA"
+    ],
+    "exit_points": [
+      "MAIN-PARA",
+      "READ-USER-SEC-FILE",
+      "SEND-PLAIN-TEXT"
+    ],
+    "edges": [
+      {
+        "from": "MAIN-PARA",
+        "to": "SEND-SIGNON-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "PROCESS-ENTER-KEY",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "SEND-PLAIN-TEXT",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "SEND-SIGNON-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "READ-USER-SEC-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "SEND-SIGNON-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "SEND-SIGNON-SCREEN",
+        "to": "POPULATE-HEADER-INFO",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "SEND-SIGNON-SCREEN",
+        "to": "SEND-PLAIN-TEXT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "POPULATE-HEADER-INFO",
+        "to": "READ-USER-SEC-FILE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "READ-USER-SEC-FILE",
+        "to": "SEND-SIGNON-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      }
+    ],
+    "unresolved": [],
+    "cfg_note": "CICS program: text_scan CFG; conditional branches not resolved without a CICS translator.  Maps, commands, and AID keys are captured separately in the 'cics' subtree."
+  },
+  "cics": {
+    "commarea_used": true,
+    "commands": [
+      "ASSIGN",
+      "READ",
+      "RECEIVE",
+      "RETURN",
+      "SEND",
+      "XCTL"
+    ],
+    "maps_used": [
+      "COSGN0A"
+    ],
+    "mapsets_used": [
+      "COSGN00"
+    ],
+    "aid_keys": [
+      "DFHENTER",
+      "DFHPF3"
+    ],
+    "screen_flow": [
+      {
+        "paragraph": "MAIN-PARA",
+        "action": "aid_dispatch",
+        "aid_keys": [
+          "DFHENTER",
+          "DFHPF3"
+        ],
+        "maps": null
+      },
+      {
+        "paragraph": "PROCESS-ENTER-KEY",
+        "action": "receive_map",
+        "map": "COSGN0A"
+      },
+      {
+        "paragraph": "SEND-SIGNON-SCREEN",
+        "action": "send_map",
+        "map": "COSGN0A"
+      }
+    ]
+  }
+}
