@@ -29,7 +29,9 @@ def regenerate_facts():
         capture_output=True,
         text=True,
     )
-    assert result.returncode == 0, (
+    # returncode 0 = all PASS, 1 = completed with WARN gates (e.g. COBSWAIT
+    # has no paragraphs — expected), 2 = actual failure (missing dirs, etc.)
+    assert result.returncode in (0, 1), (
         f"extract_facts.py failed to regenerate facts:\n"
         f"stdout:\n{result.stdout}\nstderr:\n{result.stderr}"
     )
