@@ -49,7 +49,7 @@
 - **Inputs:** data\raw\cbl\*.cbl
 - **Outputs:** data\facts\<PROG>.json per program
 - **Gate dependency:** Sections 3.1, 3.4
-- **Notes:** Currently produces same undercount as data_flow.py for COACTUPC (85 vs 87), COACTVWC (34 vs 36), COCRDLIC (39 vs 41). Both extractors must be fixed together in 3.4. Pre-fix snapshot saved to data\facts.snapshot_before_pipeline\ .
+- **Notes:** Currently produces same undercount as data_flow.py for COACTUPC (85 vs 87), COACTVWC (34 vs 36), COCRDLIC (39 vs 41). Both extractors must be fixed together in 3.4. Pre-fix snapshot saved to data\facts.snapshot_before_pipeline\.
 
 ### byte_layout.py
 - **Location:** scripts\
@@ -72,7 +72,7 @@
 - **Notes:** data\facts\ was deleted in May 7 cleanup and restored 2026-05-12. Three known close-mismatch warnings (COACTUPC, COACTVWC, COCRDLIC) deferred to 3.4.
 
 ### generate_report.py
-- **Location:** .\
+- **Location:** (repo root)
 - **Origin:** HermesCOBOL
 - **Status:** ACTIVE
 - **Purpose:** Parses data_flow.py --all output and generates structured JSON + Markdown audit reports. Produced audit\3_4_warning_baseline.json and .md.
@@ -80,6 +80,66 @@
 - **Outputs:** audit\3_4_warning_baseline.json, audit\3_4_warning_baseline.md
 - **Gate dependency:** Section 3.4
 - **Notes:** audit\3_4_warning_baseline.json is the locked spec anchor for 3.4 — do not overwrite until 3.4 gate closes.
+
+### config.py
+- **Location:** scripts\
+- **Origin:** HermesCOBOL
+- **Status:** ACTIVE
+- **Purpose:** Shared configuration module — paths, constants, and schema versioning used by all native scripts.
+- **Inputs:** — (imported by other scripts)
+- **Outputs:** — (module only)
+- **Gate dependency:** All (shared dependency)
+- **Notes:** Import target for data_flow.py, byte_layout.py, extract_facts.py, para_diff.py.
+
+### schema.py
+- **Location:** scripts\
+- **Origin:** HermesCOBOL
+- **Status:** ACTIVE
+- **Purpose:** JSON schema definitions for all extractor outputs — data_flow, byte_layout, facts, annotations, canonical IR.
+- **Inputs:** — (imported by other scripts)
+- **Outputs:** — (module only)
+- **Gate dependency:** All (shared dependency)
+- **Notes:** SCHEMA_VERSION bump at Section 3.4 gate close will be managed here.
+
+### hermes_v11_combined_extractor.py
+- **Location:** scripts\
+- **Origin:** HermesCOBOL
+- **Status:** REFERENCE
+- **Purpose:** Legacy combined extractor from HermesCOBOL v1.1 — superseded by modular extractors (data_flow.py, byte_layout.py, extract_facts.py).
+- **Inputs:** data\raw\cbl\*.cbl
+- **Outputs:** N/A (superseded)
+- **Gate dependency:** None
+- **Notes:** Kept for historical reference. Do not use in new pipeline work.
+
+### fix_fm2.py
+- **Location:** scripts\
+- **Origin:** HermesCOBOL
+- **Status:** UNKNOWN
+- **Purpose:** Fixes FM2-related issues in extracted data. Purpose needs review.
+- **Inputs:** Unknown
+- **Outputs:** Unknown
+- **Gate dependency:** Unknown
+- **Notes:** Not yet reviewed. Purpose and gate dependency TBD.
+
+### validate_roundtrip.py
+- **Location:** scripts\
+- **Origin:** HermesCOBOL
+- **Status:** UNKNOWN
+- **Purpose:** Validates roundtrip fidelity — compares original COBOL source against re-constructed output from extracted IR.
+- **Inputs:** data\raw\cbl\*.cbl, data\data_flow\<PROG>.json
+- **Outputs:** Console PASS/FAIL
+- **Gate dependency:** None (post-IR validation)
+- **Notes:** Purpose inferred from name. Needs review.
+
+### semantic_extract.py
+- **Location:** scripts\
+- **Origin:** HermesCOBOL
+- **Status:** UNKNOWN
+- **Purpose:** Semantic extraction — purpose needs review.
+- **Inputs:** Unknown
+- **Outputs:** Unknown
+- **Gate dependency:** Unknown
+- **Notes:** Not yet reviewed. Purpose and gate dependency TBD.
 
 ---
 
@@ -114,7 +174,7 @@
 - **Location:** scripts\scripts\
 - **Origin:** CarDemo
 - **Status:** REFERENCE
-- **Purpose:** Validates extract_fallthrough.py output — checks for non-circular fallthrough chains, valid falls_through_to targets, correct implicit-end-of-program placement.
+- **Purpose:** Validates extract_fallthrough.py output — checks for non-circular fallthrough chains, valid falls_through_to targets, correct implicit end-of-program placement.
 - **Inputs:** validation\pass1\fallthrough\<PROG>.json
 - **Outputs:** Console PASS/FAIL per program
 - **Gate dependency:** Section 3.4
@@ -210,9 +270,22 @@
 - **Gate dependency:** Section 3.4
 - **Notes:** Maps directly to a HermesCOBOL pre-3.4 gate check. TARGET LOCATION when promoted: scripts\validate_pass1.py.
 
+### extract_byte_layout.py
+- **Location:** scripts\scripts\
+- **Origin:** CarDemo
+- **Status:** REFERENCE
+- **Purpose:** Byte layout extractor from CarDemo — produces working storage byte layout JSON per program. Duplicate functionality of HermesCOBOL native byte_layout.py.
+- **Inputs:** data\raw\cbl\*.cbl
+- **Outputs:** validation\byte_layouts\<PROG>.json (path needs adaptation)
+- **Gate dependency:** None (post-IR validation)
+- **Notes:** Functionality overlaps with scripts\byte_layout.py. When promoting, decide which implementation is preferred. TARGET LOCATION when promoted: scripts\extract_byte_layout.py (or merge into byte_layout.py).
+
 ---
 
 ## Section 3 — Files Present in scripts\scripts\ but NOT for HermesCOBOL use
+
+List these files with a one-line reason why they are not applicable.
+Do NOT write full entries for these — just a table.
 
 | Filename | Reason Not Applicable |
 |---|---|
@@ -221,13 +294,11 @@
 | pass2_template.py | Markdown skeleton generation — carddemo output format only |
 | pass3_run.py | Final document assembly — carddemo-specific |
 | pass3_synthesize.py | Final document assembly — carddemo-specific |
-| pass3_run.bak.20260506_055459 | Historical backup — delete candidate |
-| pass3_run.bak.20260506_055615 | Historical backup — delete candidate |
-| compile_batch.jcl.template | JCL mainframe job template — AWS infrastructure |
+| compile_batch.jcl.template | Not present on disk — may have been removed or renamed |
 | local_compile.sh | Shell script — mainframe compile, not applicable on Windows |
 | remote_compile.sh | Shell script — remote mainframe compile |
 | remote_refresh.sh | Shell script — remote environment refresh |
-| remote_submit.sh | Shell script — mainframe job submission |
+| remote_submit.sh | Shell script — remote job submission |
 | run_full_batch.sh | Shell script — carddemo batch execution |
 | run_interest_calc.sh | Shell script — carddemo interest calculation job |
 | run_posting.sh | Shell script — carddemo posting job |
@@ -255,7 +326,7 @@
 >   scripts\scripts\            ← TEMPORARY — CarDemo reference copies
 >
 > Resolution plan (do not execute — document only):
-> 1. Promote the 12 REFERENCE scripts to scripts\ (flat, no subdirectory)
+> 1. Promote the 13 REFERENCE scripts to scripts\ (flat, no subdirectory)
 > 2. Delete the inapplicable files from scripts\scripts\
 > 3. Rename scripts\scripts\ to scripts\carddemo_archive\
 > 4. Add a README.md inside carddemo_archive\ explaining origin
@@ -272,3 +343,64 @@
 | generate_canonical.py | scripts\ | Orchestrator — runs all extractors in correct dependency order for all 31 programs. |
 | L001_codepage.py | validation\lint_cobol\rules\ | Lint rule ported from validate_codepage.py — pre-pipeline source encoding check. |
 | para_diff_v2.py | scripts\ | Upgraded para_diff using (section_name, paragraph_name) tuples instead of flat names. Required after 3.4 lands. |
+
+---
+
+## Appendix A — Actual Folder Structure Observed
+
+> Output of: Get-ChildItem C:\work\HermesCOBOL\scripts\ -Recurse -Depth 2 | Select-Object FullName
+
+```
+C:\work\HermesCOBOL\scripts\scripts
+C:\work\HermesCOBOL\scripts\__pycache__
+C:\work\HermesCOBOL\scripts\byte_layout.py
+C:\work\HermesCOBOL\scripts\config.py
+C:\work\HermesCOBOL\scripts\data_flow.py
+C:\work\HermesCOBOL\scripts\extract_facts.py
+C:\work\HermesCOBOL\scripts\fix_fm2.py
+C:\work\HermesCOBOL\scripts\hermes_v11_combined_extractor.py
+C:\work\HermesCOBOL\scripts\para_diff.py
+C:\work\HermesCOBOL\scripts\schema.py
+C:\work\HermesCOBOL\scripts\SCRIPTS_INVENTORY.md
+C:\work\HermesCOBOL\scripts\semantic_extract.py
+C:\work\HermesCOBOL\scripts\validate_roundtrip.py
+C:\work\HermesCOBOL\scripts\__init__.py
+C:\work\HermesCOBOL\scripts\scripts\assemble_v1_2.py
+C:\work\HermesCOBOL\scripts\scripts\extract_byte_layout.py
+C:\work\HermesCOBOL\scripts\scripts\extract_cfg_local.py
+C:\work\HermesCOBOL\scripts\scripts\extract_cfg_summary.py
+C:\work\HermesCOBOL\scripts\scripts\extract_fallthrough.py
+C:\work\HermesCOBOL\scripts\scripts\extract_file_control.py
+C:\work\HermesCOBOL\scripts\scripts\extract_paragraph_io.py
+C:\work\HermesCOBOL\scripts\scripts\git-addSrcVersionInfo.sh
+C:\work\HermesCOBOL\scripts\scripts\local_compile.sh
+C:\work\HermesCOBOL\scripts\scripts\pad.awk
+C:\work\HermesCOBOL\scripts\scripts\pass1_annotate.py
+C:\work\HermesCOBOL\scripts\scripts\pass2_llm.py
+C:\work\HermesCOBOL\scripts\scripts\pass2_override.py
+C:\work\HermesCOBOL\scripts\scripts\pass2_template.py
+C:\work\HermesCOBOL\scripts\scripts\pass3_run.py
+C:\work\HermesCOBOL\scripts\scripts\pass3_synthesize.py
+C:\work\HermesCOBOL\scripts\scripts\remote_compile.sh
+C:\work\HermesCOBOL\scripts\scripts\remote_refresh.sh
+C:\work\HermesCOBOL\scripts\scripts\remote_submit.sh
+C:\work\HermesCOBOL\scripts\scripts\run_full_batch.sh
+C:\work\HermesCOBOL\scripts\scripts\run_interest_calc.sh
+C:\work\HermesCOBOL\scripts\scripts\run_posting.sh
+C:\work\HermesCOBOL\scripts\scripts\run_sweBench.sh
+C:\work\HermesCOBOL\scripts\scripts\score_t04.py
+C:\work\HermesCOBOL\scripts\scripts\upld_module.sh
+C:\work\HermesCOBOL\scripts\scripts\validate_byte_layout.py
+C:\work\HermesCOBOL\scripts\scripts\validate_codepage.py
+C:\work\HermesCOBOL\scripts\scripts\validate_fallthrough.py
+C:\work\HermesCOBOL\scripts\scripts\validate_mutations.py
+C:\work\HermesCOBOL\scripts\scripts\validate_pass1.py
+C:\work\HermesCOBOL\scripts\scripts\validate_pass2.py
+C:\work\HermesCOBOL\scripts\scripts\validate_pass3.py
+C:\work\HermesCOBOL\scripts\scripts\validate_t01.py
+C:\work\HermesCOBOL\scripts\scripts\validate_t02.py
+C:\work\HermesCOBOL\scripts\scripts\validate_t02r.py
+C:\work\HermesCOBOL\scripts\scripts\validate_t03.py
+C:\work\HermesCOBOL\scripts\__pycache__\byte_layout.cpython-310.pyc
+C:\work\HermesCOBOL\scripts\__pycache__\data_flow.cpython-310.pyc
+C:\work\HermesCOBOL\scripts\__pycache__\hermes_v11_combined_extractor.cpython-310.pyc
