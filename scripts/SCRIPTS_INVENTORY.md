@@ -1,6 +1,6 @@
 # HermesCOBOL — Scripts Inventory (Living Document)
 
-**Last updated:** 2026-05-12
+**Last updated:** 2026-05-12 (rev 2 — UNKNOWN scripts classified, __init__.py added)
 **Branch:** audit/3.4-local-second-opinion
 **Repo root:** C:\work\HermesCOBOL
 **Maintainer:** Update this file whenever a script is added, removed, or changes status.
@@ -114,32 +114,42 @@
 ### fix_fm2.py
 - **Location:** scripts\
 - **Origin:** HermesCOBOL
-- **Status:** UNKNOWN
-- **Purpose:** Fixes FM2-related issues in extracted data. Purpose needs review.
-- **Inputs:** Unknown
-- **Outputs:** Unknown
-- **Gate dependency:** Unknown
-- **Notes:** Not yet reviewed. Purpose and gate dependency TBD.
+- **Status:** SUPERSEDED
+- **Purpose:** One-shot patch script — rewrites the Failure Mode 2 section heading and body in audit\3.4-close-out\postmortems\local-run-2026-05-11.md. Not a pipeline extractor. Already executed.
+- **Inputs:** audit\3.4-close-out\postmortems\local-run-2026-05-11.md (hardcoded absolute path)
+- **Outputs:** Overwrites the same post-mortem file in-place
+- **Gate dependency:** None (one-shot maintenance script)
+- **Notes:** Already ran. Post-mortem file is already patched. Safe to move to scripts\archive\ or delete. Does NOT import data_flow, config, or schema.
 
 ### validate_roundtrip.py
 - **Location:** scripts\
 - **Origin:** HermesCOBOL
-- **Status:** UNKNOWN
-- **Purpose:** Validates roundtrip fidelity — compares original COBOL source against re-constructed output from extracted IR.
-- **Inputs:** data\raw\cbl\*.cbl, data\data_flow\<PROG>.json
-- **Outputs:** Console PASS/FAIL
+- **Status:** ACTIVE
+- **Purpose:** Deterministic round-trip validator — runs GnuCOBOL preprocessing on non-CICS programs and performs structural coverage checks comparing raw COBOL source against extract_facts.py ground truth.
+- **Inputs:** data\raw\cbl\*.cbl, data\facts\<PROG>.json
+- **Outputs:** validation\reconstructed\cbl\<PROG>.pre.cbl, validation\reports\<PROG>.validation.json, validation\reports\summary.json
 - **Gate dependency:** None (post-IR validation)
-- **Notes:** Purpose inferred from name. Needs review.
+- **Notes:** Imports scripts.config for paths only. Does NOT import data_flow, schema, or any other scripts module. Read-only against data/raw/ and data/facts/. Writes only under validation/. Safe to leave in scripts\.
 
 ### semantic_extract.py
 - **Location:** scripts\
 - **Origin:** HermesCOBOL
-- **Status:** UNKNOWN
-- **Purpose:** Semantic extraction — purpose needs review.
-- **Inputs:** Unknown
-- **Outputs:** Unknown
-- **Gate dependency:** Unknown
-- **Notes:** Not yet reviewed. Purpose and gate dependency TBD.
+- **Status:** SUPERSEDED
+- **Purpose:** Thin re-export shim that delegates to hermes_v11_combined_extractor.py for backward compatibility with external scripts importing from semantic_extract.
+- **Inputs:** — (no direct inputs, re-exports functions from hermes_v11_combined_extractor.py)
+- **Outputs:** — (module only, re-exports symbols)
+- **Gate dependency:** None (superseded by hermes_v11_combined_extractor.py)
+- **Notes:** Superseded by hermes_v11_combined_extractor.py. DO NOT add logic here. Imports scripts.hermes_v11_combined_extractor. Safe to archive but kept for backward compatibility with external imports.
+
+### __init__.py
+- **Location:** scripts\
+- **Origin:** HermesCOBOL
+- **Status:** ACTIVE
+- **Purpose:** Makes scripts\ a Python package — enables cross-script imports such as `from scripts.config import ...` and `from scripts.schema import ...`.
+- **Inputs:** — (package marker, no inputs)
+- **Outputs:** — (no outputs)
+- **Gate dependency:** All (shared dependency)
+- **Notes:** Must NOT be deleted. Removing this file breaks all intra-package imports across data_flow.py, byte_layout.py, extract_facts.py, para_diff.py, and any future scripts that import config or schema.
 
 ---
 
