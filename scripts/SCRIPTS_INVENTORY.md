@@ -1,13 +1,13 @@
 # HermesCOBOL — Scripts Inventory (Living Document)
 
-**Last updated:** 2026-05-12 (rev 2 — UNKNOWN scripts classified, __init__.py added)
+**Last updated:** 2026-05-12 (rev 3 — Batch 1 promoted, scripts\scripts\ renamed to carddemo_imported\)
 **Branch:** audit/3.4-local-second-opinion
 **Repo root:** C:\work\HermesCOBOL
 **Maintainer:** Update this file whenever a script is added, removed, or changes status.
 
-> NOTE: The CarDemo scripts were copied into scripts\scripts\ (nested folder).
-> This is a known structural issue to be resolved. This inventory reflects
-> the actual disk layout as of 2026-05-12.
+> NOTE: CarDemo scripts live in scripts\carddemo_imported\ (renamed from scripts\scripts\).
+> Batch 1 independent scripts have been promoted to scripts\. Batch 2 dependency-chain
+> scripts are pending promotion. See carddemo_imported\README.md for details.
 
 ## Status Key
 | Status | Meaning |
@@ -153,15 +153,15 @@
 
 ---
 
-## Section 2 — scripts\scripts\ (CarDemo Port — Nested, Needs Restructuring)
+## Section 2 — scripts\carddemo_imported\ (CarDemo Reference Archive)
 
 > These files were copied directly from aws-mainframe-modernization-carddemo\scripts\.
-> The folder is currently nested at scripts\scripts\ which is a structural issue.
-> They are REFERENCE copies only — not yet wired into the HermesCOBOL pipeline.
-> All paths below reflect the current nested location.
+> The folder was renamed from scripts\scripts\ to scripts\carddemo_imported\ on 2026-05-12.
+> It is a reference archive — 8 Batch 1 scripts have been promoted to scripts\.
+> The remaining 13 scripts (Batch 2 dependency chain + inapplicable) stay here.
 
 ### extract_fallthrough.py
-- **Location:** scripts\scripts\
+- **Location:** scripts\carddemo_imported\ (Batch 2 — pending promotion)
 - **Origin:** CarDemo
 - **Status:** REFERENCE
 - **Purpose:** Derives paragraph-level fallthrough classification — whether each paragraph terminates explicitly (GO TO, STOP RUN, GOBACK, EXEC CICS RETURN/XCTL) or implicitly falls through to the next paragraph in source order. The implicit fallthrough case is the root cause of the -2 delta in COACTUPC, COACTVWC, COCRDLIC.
@@ -171,7 +171,7 @@
 - **Notes:** Contains C-5 source-order assertion — halts with BLOCKED if paragraph line numbers are non-monotonic. LLM-FREE and deterministic. Requires pass1_annotate.py output as prerequisite. TARGET LOCATION when promoted: scripts\extract_fallthrough.py.
 
 ### pass1_annotate.py
-- **Location:** scripts\scripts\
+- **Location:** scripts\carddemo_imported\ (Batch 2 — pending promotion)
 - **Origin:** CarDemo
 - **Status:** REFERENCE
 - **Purpose:** Full deterministic verb-level annotator. Produces per-statement annotation records with verb, operands, operand types, CFG branch context, CICS branch detection, scope depth tracking, and call-graph edge resolution. Prerequisite for extract_fallthrough.py.
@@ -181,7 +181,7 @@
 - **Notes:** Already tracks current_section internally — this is the section-awareness logic needed for the 3.4 fix. Requires cobc -E (GNU COBOL) in PATH. TARGET LOCATION when promoted: scripts\pass1_annotate.py.
 
 ### validate_fallthrough.py
-- **Location:** scripts\scripts\
+- **Location:** scripts\carddemo_imported\ (Batch 2 — pending promotion)
 - **Origin:** CarDemo
 - **Status:** REFERENCE
 - **Purpose:** Validates extract_fallthrough.py output — checks for non-circular fallthrough chains, valid falls_through_to targets, correct implicit end-of-program placement.
@@ -191,77 +191,77 @@
 - **Notes:** Will become the basis for TestSectionAwareFallthrough test class required by 3.4 gate spec. TARGET LOCATION when promoted: scripts\validate_fallthrough.py.
 
 ### validate_byte_layout.py
-- **Location:** scripts\scripts\
+- **Location:** scripts\carddemo_imported\ (copy promoted to scripts\)
 - **Origin:** CarDemo
 - **Status:** REFERENCE
 - **Purpose:** Validates byte layout JSON for structural integrity — contiguous offsets, correct REDEFINES sizing, OCCURS multiplier totals, no overlapping ranges.
 - **Inputs:** data\byte_layouts\<PROG>.json (path needs adaptation)
 - **Outputs:** Console PASS/FAIL per program
 - **Gate dependency:** None (post-IR validation)
-- **Notes:** Paths reference carddemo's validation\ tree — adapt to data\byte_layouts\ for HermesCOBOL use. TARGET LOCATION when promoted: scripts\validate_byte_layout.py.
+- **Notes:** Paths reference carddemo's validation\ tree — adapt to data\byte_layouts\ for HermesCOBOL use. Promoted to scripts\ on 2026-05-12 (Batch 1).
 
 ### validate_mutations.py
-- **Location:** scripts\scripts\
+- **Location:** scripts\carddemo_imported\ (copy promoted to scripts\)
 - **Origin:** CarDemo
 - **Status:** REFERENCE
 - **Purpose:** Validates that every field listed as mutated in the IR has a reachable write path from the paragraph that claims the mutation. Deterministic complement to the unresolved_count metric.
 - **Inputs:** pass1 annotation JSON + data_flow JSON (paths need adaptation)
 - **Outputs:** Console PASS/FAIL per program
 - **Gate dependency:** None (post-IR validation)
-- **Notes:** TARGET LOCATION when promoted: scripts\validate_mutations.py.
+- **Notes:** Promoted to scripts\ on 2026-05-12 (Batch 1).
 
 ### validate_codepage.py
-- **Location:** scripts\scripts\
+- **Location:** scripts\carddemo_imported\ (copy promoted to scripts\)
 - **Origin:** CarDemo
 - **Status:** REFERENCE
 - **Purpose:** Checks COBOL source files for consistent encoding in sequence/indicator/code areas. Catches CRLF + mixed encoding issues that could silently break _normalise_source.
 - **Inputs:** data\raw\cbl\*.cbl
 - **Outputs:** Console PASS/FAIL per program
 - **Gate dependency:** None (pre-pipeline lint)
-- **Notes:** Should run before data_flow.py --all as a pre-condition check. Candidate for validation\lint_cobol\rules\L001_codepage.py. TARGET LOCATION when promoted: scripts\validate_codepage.py.
+- **Notes:** Should run before data_flow.py --all as a pre-condition check. Candidate for validation\lint_cobol\rules\L001_codepage.py. Promoted to scripts\ on 2026-05-12 (Batch 1).
 
 ### extract_cfg_local.py
-- **Location:** scripts\scripts\
+- **Location:** scripts\carddemo_imported\ (copy promoted to scripts\)
 - **Origin:** CarDemo
 - **Status:** REFERENCE
 - **Purpose:** Lightweight CFG extractor using cobc -E for copybook expansion. Produces paragraph list, PERFORM/GO TO edges, data items, CICS commands, dead-code detection. Prerequisite CFG JSON input for pass1_annotate.py.
 - **Inputs:** --source (COBOL .cbl), --output (JSON path)
 - **Outputs:** validation\structure\<PROG>_cfg.json
 - **Gate dependency:** None (prerequisite tool)
-- **Notes:** WARNING — extract_paragraphs() uses loose regex (\s{0,3}), NOT the fixed-column Area-A rule locked in Section 3.1. Do NOT use as a replacement for data_flow.py paragraph detection. analyze_flow() and extract_data_items() functions are safe to port selectively. Requires cobc -E in PATH. TARGET LOCATION when promoted: scripts\extract_cfg_local.py.
+- **Notes:** WARNING — extract_paragraphs() uses loose regex (\s{0,3}), NOT the fixed-column Area-A rule locked in Section 3.1. Do NOT use as a replacement for data_flow.py paragraph detection. analyze_flow() and extract_data_items() functions are safe to port selectively. Requires cobc -E in PATH. Promoted to scripts\ on 2026-05-12 (Batch 1).
 
 ### extract_cfg_summary.py
-- **Location:** scripts\scripts\
+- **Location:** scripts\carddemo_imported\ (copy promoted to scripts\)
 - **Origin:** CarDemo
 - **Status:** REFERENCE
 - **Purpose:** Rolls up per-program CFG data into a cross-program summary — call graph, dead paragraph inventory, CICS command list, reachability stats.
 - **Inputs:** validation\structure\*_cfg.json (path needs adaptation to data\data_flow\)
 - **Outputs:** Cross-program summary JSON
 - **Gate dependency:** None (reporting)
-- **Notes:** Upgrade candidate for generate_report.py. TARGET LOCATION when promoted: scripts\extract_cfg_summary.py.
+- **Notes:** Upgrade candidate for generate_report.py. Promoted to scripts\ on 2026-05-12 (Batch 1).
 
 ### extract_file_control.py
-- **Location:** scripts\scripts\
+- **Location:** scripts\carddemo_imported\ (copy promoted to scripts\)
 - **Origin:** CarDemo
 - **Status:** REFERENCE
 - **Purpose:** Extracts FD (File Description) entries — SELECT/ASSIGN pairs, ORGANIZATION, ACCESS MODE, RECORD KEY, file status variables — per program.
 - **Inputs:** data\raw\cbl\*.cbl (path needs adaptation)
 - **Outputs:** Per-program file control JSON
 - **Gate dependency:** None (Phase 2 IR enrichment)
-- **Notes:** Not needed for Section 3.4. Planned output: data\file_control\<PROG>.json. TARGET LOCATION when promoted: scripts\extract_file_control.py.
+- **Notes:** Not needed for Section 3.4. Planned output: data\file_control\<PROG>.json. Promoted to scripts\ on 2026-05-12 (Batch 1).
 
 ### extract_paragraph_io.py
-- **Location:** scripts\scripts\
+- **Location:** scripts\carddemo_imported\ (copy promoted to scripts\)
 - **Origin:** CarDemo
 - **Status:** REFERENCE
 - **Purpose:** Per-paragraph READ/WRITE/REWRITE/DELETE/START file I/O summary — which files each paragraph accesses and in what mode.
 - **Inputs:** pass1 annotation JSON (path needs adaptation)
 - **Outputs:** Per-program paragraph I/O JSON
 - **Gate dependency:** None (Phase 2 IR enrichment)
-- **Notes:** Overlaps with data_flow.py reads/mutates for file I/O verbs. Use as cross-check validator rather than primary extractor. TARGET LOCATION when promoted: scripts\extract_paragraph_io.py.
+- **Notes:** Overlaps with data_flow.py reads/mutates for file I/O verbs. Use as cross-check validator rather than primary extractor. Promoted to scripts\ on 2026-05-12 (Batch 1).
 
 ### assemble_v1_2.py
-- **Location:** scripts\scripts\
+- **Location:** scripts\carddemo_imported\ (Batch 2 — pending promotion)
 - **Origin:** CarDemo
 - **Status:** REFERENCE
 - **Purpose:** Merges all extractor outputs — pass1 annotations, fallthrough data, byte layouts, file control, CFG summaries — into a single canonical IR record per program. This is the Phase 2 merge step that produces data\canonical\<PROG>.json.
@@ -271,7 +271,7 @@
 - **Notes:** Will be renamed assemble_canonical.py when promoted. This is the final assembly script for the 100% faithful IR. TARGET LOCATION when promoted: scripts\assemble_canonical.py.
 
 ### validate_pass1.py
-- **Location:** scripts\scripts\
+- **Location:** scripts\carddemo_imported\ (Batch 2 — pending promotion)
 - **Origin:** CarDemo
 - **Status:** REFERENCE
 - **Purpose:** Validates pass1_annotate.py output completeness — every paragraph has at least one verb annotation, no orphaned annotations outside a known paragraph.
@@ -281,14 +281,14 @@
 - **Notes:** Maps directly to a HermesCOBOL pre-3.4 gate check. TARGET LOCATION when promoted: scripts\validate_pass1.py.
 
 ### extract_byte_layout.py
-- **Location:** scripts\scripts\
+- **Location:** scripts\carddemo_imported\ (copy promoted to scripts\)
 - **Origin:** CarDemo
 - **Status:** REFERENCE
 - **Purpose:** Byte layout extractor from CarDemo — produces working storage byte layout JSON per program. Duplicate functionality of HermesCOBOL native byte_layout.py.
 - **Inputs:** data\raw\cbl\*.cbl
 - **Outputs:** validation\byte_layouts\<PROG>.json (path needs adaptation)
 - **Gate dependency:** None (post-IR validation)
-- **Notes:** Functionality overlaps with scripts\byte_layout.py. When promoting, decide which implementation is preferred. TARGET LOCATION when promoted: scripts\extract_byte_layout.py (or merge into byte_layout.py).
+- **Notes:** Functionality overlaps with scripts\byte_layout.py. Decided to keep both — byte_layout.py (HermesCOBOL native) is preferred. Promoted to scripts\ on 2026-05-12 (Batch 1).
 
 ---
 
@@ -327,21 +327,16 @@ Do NOT write full entries for these — just a table.
 
 ---
 
-## Section 4 — Structural Issue: Nested scripts\scripts\ Folder
+## Section 4 — CarDemo Import Progress
 
-> The CarDemo scripts were pasted into scripts\scripts\ creating a nested
-> structure. The intended final layout is:
->
->   scripts\                    ← HermesCOBOL native scripts only
->   scripts\scripts\            ← TEMPORARY — CarDemo reference copies
->
-> Resolution plan (do not execute — document only):
-> 1. Promote the 13 REFERENCE scripts to scripts\ (flat, no subdirectory)
-> 2. Delete the inapplicable files from scripts\scripts\
-> 3. Rename scripts\scripts\ to scripts\carddemo_archive\
-> 4. Add a README.md inside carddemo_archive\ explaining origin
-> This restructuring is deferred until after SCRIPTS_INVENTORY.md is
-> reviewed and approved on GitHub.
+| Batch | Status | Scripts |
+|---|---|---|
+| Batch 1 — Independent | ✅ COMPLETE | validate_byte_layout, validate_codepage, validate_mutations, extract_cfg_local, extract_cfg_summary, extract_file_control, extract_paragraph_io, extract_byte_layout |
+| Batch 2 — Dependency chain | ⏳ PENDING | pass1_annotate, extract_fallthrough, validate_fallthrough, validate_pass1, assemble_v1_2 |
+| Cleanup — Not applicable | ⏳ PENDING | 23 inapplicable files (shell scripts, pass2/3, carddemo validators) |
+
+  > Folder renamed: scripts\scripts\ → scripts\carddemo_imported\ (2026-05-12)
+  > See scripts\carddemo_imported\README.md for full batch tracking.
 
 ---
 
