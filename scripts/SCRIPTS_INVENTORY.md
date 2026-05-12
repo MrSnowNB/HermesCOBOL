@@ -1,6 +1,6 @@
 # HermesCOBOL — Scripts Inventory (Living Document)
 
-**Last updated:** 2026-05-12 (rev 4 — all scripts\scripts\ path references corrected)
+**Last updated:** 2026-05-12 (rev 5 — Appendix A superseded, Appendix B added with current post-Batch-1 structure)
 **Branch:** audit/3.4-local-second-opinion
 **Repo root:** C:\work\HermesCOBOL
 **Maintainer:** Update this file whenever a script is added, removed, or changes status.
@@ -351,12 +351,14 @@ Do NOT write full entries for these — just a table.
 
 ---
 
-## Appendix A — Actual Folder Structure Observed
+## Appendix A — Actual Folder Structure Observed (PRE-RENAME SNAPSHOT)
 
-> Output of: Get-ChildItem C:\work\HermesCOBOL\scripts\ -Recurse -Depth 2 | Select-Object FullName
+> Snapshot taken: 2026-05-12 (pre-Batch-1 promotion, pre-rename)
+> **SUPERSEDED** — scripts\scripts\ has since been renamed to scripts\carddemo_imported\
+> and 8 Batch 1 scripts promoted to scripts\. See Appendix B for current structure.
 
 ```
-C:\work\HermesCOBOL\scripts\scripts
+C:\work\HermesCOBOL\scripts\scripts                          ← RENAMED to carddemo_imported\
 C:\work\HermesCOBOL\scripts\__pycache__
 C:\work\HermesCOBOL\scripts\byte_layout.py
 C:\work\HermesCOBOL\scripts\config.py
@@ -370,42 +372,60 @@ C:\work\HermesCOBOL\scripts\SCRIPTS_INVENTORY.md
 C:\work\HermesCOBOL\scripts\semantic_extract.py
 C:\work\HermesCOBOL\scripts\validate_roundtrip.py
 C:\work\HermesCOBOL\scripts\__init__.py
-C:\work\HermesCOBOL\scripts\scripts\assemble_v1_2.py
-C:\work\HermesCOBOL\scripts\scripts\extract_byte_layout.py
-C:\work\HermesCOBOL\scripts\scripts\extract_cfg_local.py
-C:\work\HermesCOBOL\scripts\scripts\extract_cfg_summary.py
-C:\work\HermesCOBOL\scripts\scripts\extract_fallthrough.py
-C:\work\HermesCOBOL\scripts\scripts\extract_file_control.py
-C:\work\HermesCOBOL\scripts\scripts\extract_paragraph_io.py
-C:\work\HermesCOBOL\scripts\scripts\git-addSrcVersionInfo.sh
-C:\work\HermesCOBOL\scripts\scripts\local_compile.sh
-C:\work\HermesCOBOL\scripts\scripts\pad.awk
-C:\work\HermesCOBOL\scripts\scripts\pass1_annotate.py
-C:\work\HermesCOBOL\scripts\scripts\pass2_llm.py
-C:\work\HermesCOBOL\scripts\scripts\pass2_override.py
-C:\work\HermesCOBOL\scripts\scripts\pass2_template.py
-C:\work\HermesCOBOL\scripts\scripts\pass3_run.py
-C:\work\HermesCOBOL\scripts\scripts\pass3_synthesize.py
-C:\work\HermesCOBOL\scripts\scripts\remote_compile.sh
-C:\work\HermesCOBOL\scripts\scripts\remote_refresh.sh
-C:\work\HermesCOBOL\scripts\scripts\remote_submit.sh
-C:\work\HermesCOBOL\scripts\scripts\run_full_batch.sh
-C:\work\HermesCOBOL\scripts\scripts\run_interest_calc.sh
-C:\work\HermesCOBOL\scripts\scripts\run_posting.sh
-C:\work\HermesCOBOL\scripts\scripts\run_sweBench.sh
-C:\work\HermesCOBOL\scripts\scripts\score_t04.py
-C:\work\HermesCOBOL\scripts\scripts\upld_module.sh
-C:\work\HermesCOBOL\scripts\scripts\validate_byte_layout.py
-C:\work\HermesCOBOL\scripts\scripts\validate_codepage.py
-C:\work\HermesCOBOL\scripts\scripts\validate_fallthrough.py
-C:\work\HermesCOBOL\scripts\scripts\validate_mutations.py
-C:\work\HermesCOBOL\scripts\scripts\validate_pass1.py
-C:\work\HermesCOBOL\scripts\scripts\validate_pass2.py
-C:\work\HermesCOBOL\scripts\scripts\validate_pass3.py
-C:\work\HermesCOBOL\scripts\scripts\validate_t01.py
-C:\work\HermesCOBOL\scripts\scripts\validate_t02.py
-C:\work\HermesCOBOL\scripts\scripts\validate_t02r.py
-C:\work\HermesCOBOL\scripts\scripts\validate_t03.py
-C:\work\HermesCOBOL\scripts\__pycache__\byte_layout.cpython-310.pyc
-C:\work\HermesCOBOL\scripts\__pycache__\data_flow.cpython-310.pyc
-C:\work\HermesCOBOL\scripts\__pycache__\hermes_v11_combined_extractor.cpython-310.pyc
+C:\work\HermesCOBOL\scripts\scripts\assemble_v1_2.py         ← now carddemo_imported\
+C:\work\HermesCOBOL\scripts\scripts\extract_byte_layout.py   ← now carddemo_imported\
+C:\work\HermesCOBOL\scripts\scripts\extract_cfg_local.py     ← now carddemo_imported\
+C:\work\HermesCOBOL\scripts\scripts\extract_cfg_summary.py   ← now carddemo_imported\
+C:\work\HermesCOBOL\scripts\scripts\extract_fallthrough.py   ← now carddemo_imported\
+C:\work\HermesCOBOL\scripts\scripts\extract_file_control.py  ← now carddemo_imported\
+C:\work\HermesCOBOL\scripts\scripts\extract_paragraph_io.py  ← now carddemo_imported\
+C:\work\HermesCOBOL\scripts\scripts\pass1_annotate.py        ← now carddemo_imported\
+[... remaining files unchanged, all under carddemo_imported\ now]
+```
+
+---
+
+## Appendix B — Current Folder Structure (post-Batch-1)
+
+> Run this to refresh: Get-ChildItem C:\work\HermesCOBOL\scripts\ -Recurse -Depth 2 | Select-Object FullName
+> Last manually updated: 2026-05-12 (rev 5)
+
+```
+C:\work\HermesCOBOL\scripts\carddemo_imported\       ← renamed from scripts\scripts\
+C:\work\HermesCOBOL\scripts\__pycache__\
+C:\work\HermesCOBOL\scripts\__init__.py
+C:\work\HermesCOBOL\scripts\byte_layout.py
+C:\work\HermesCOBOL\scripts\config.py
+C:\work\HermesCOBOL\scripts\data_flow.py
+C:\work\HermesCOBOL\scripts\extract_byte_layout.py   ← Batch 1 promoted
+C:\work\HermesCOBOL\scripts\extract_cfg_local.py     ← Batch 1 promoted
+C:\work\HermesCOBOL\scripts\extract_cfg_summary.py   ← Batch 1 promoted
+C:\work\HermesCOBOL\scripts\extract_facts.py
+C:\work\HermesCOBOL\scripts\extract_file_control.py  ← Batch 1 promoted
+C:\work\HermesCOBOL\scripts\extract_paragraph_io.py  ← Batch 1 promoted
+C:\work\HermesCOBOL\scripts\fix_fm2.py
+C:\work\HermesCOBOL\scripts\hermes_v11_combined_extractor.py
+C:\work\HermesCOBOL\scripts\para_diff.py
+C:\work\HermesCOBOL\scripts\schema.py
+C:\work\HermesCOBOL\scripts\SCRIPTS_INVENTORY.md
+C:\work\HermesCOBOL\scripts\semantic_extract.py
+C:\work\HermesCOBOL\scripts\validate_byte_layout.py  ← Batch 1 promoted
+C:\work\HermesCOBOL\scripts\validate_codepage.py     ← Batch 1 promoted
+C:\work\HermesCOBOL\scripts\validate_mutations.py    ← Batch 1 promoted
+C:\work\HermesCOBOL\scripts\validate_roundtrip.py
+C:\work\HermesCOBOL\scripts\carddemo_imported\assemble_v1_2.py
+C:\work\HermesCOBOL\scripts\carddemo_imported\extract_byte_layout.py
+C:\work\HermesCOBOL\scripts\carddemo_imported\extract_cfg_local.py
+C:\work\HermesCOBOL\scripts\carddemo_imported\extract_cfg_summary.py
+C:\work\HermesCOBOL\scripts\carddemo_imported\extract_fallthrough.py
+C:\work\HermesCOBOL\scripts\carddemo_imported\extract_file_control.py
+C:\work\HermesCOBOL\scripts\carddemo_imported\extract_paragraph_io.py
+C:\work\HermesCOBOL\scripts\carddemo_imported\pass1_annotate.py
+C:\work\HermesCOBOL\scripts\carddemo_imported\validate_byte_layout.py
+C:\work\HermesCOBOL\scripts\carddemo_imported\validate_codepage.py
+C:\work\HermesCOBOL\scripts\carddemo_imported\validate_fallthrough.py
+C:\work\HermesCOBOL\scripts\carddemo_imported\validate_mutations.py
+C:\work\HermesCOBOL\scripts\carddemo_imported\validate_pass1.py
+C:\work\HermesCOBOL\scripts\carddemo_imported\[...inapplicable shell scripts and py files]
+C:\work\HermesCOBOL\scripts\carddemo_imported\README.md
+```
