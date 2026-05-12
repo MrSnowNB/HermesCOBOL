@@ -1,11 +1,11 @@
 # HermesCOBOL — Scripts Inventory (Living Document)
 
-**Last updated:** 2026-05-12 (rev 3 — Batch 1 promoted, scripts\scripts\ renamed to carddemo_imported\)
+**Last updated:** 2026-05-12 (rev 4 — all scripts\scripts\ path references corrected)
 **Branch:** audit/3.4-local-second-opinion
 **Repo root:** C:\work\HermesCOBOL
 **Maintainer:** Update this file whenever a script is added, removed, or changes status.
 
-> NOTE: CarDemo scripts live in scripts\carddemo_imported\ (renamed from scripts\scripts\).
+> NOTE: CarDemo scripts live in scripts\carddemo_imported\ (previously scripts\scripts\).
 > Batch 1 independent scripts have been promoted to scripts\. Batch 2 dependency-chain
 > scripts are pending promotion. See carddemo_imported\README.md for details.
 
@@ -292,7 +292,7 @@
 
 ---
 
-## Section 3 — Files Present in scripts\scripts\ but NOT for HermesCOBOL use
+## Section 3 — Files Present in scripts\carddemo_imported\ but NOT for HermesCOBOL use
 
 List these files with a one-line reason why they are not applicable.
 Do NOT write full entries for these — just a table.
