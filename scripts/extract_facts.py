@@ -136,6 +136,18 @@ def strip_cobol_comments(text: str) -> str:
     return "\n".join(out)
 
 
+def _slice_procedure_division(text: str) -> str:
+    """Return text from PROCEDURE DIVISION onward. Empty string if absent.
+    Mirrors data_flow.py's walker scoping so paragraph detection ignores
+    IDENTIFICATION DIVISION metadata paragraphs (PROGRAM-ID continuation,
+    DATE-WRITTEN value, DATE-COMPILED value) which were previously
+    miscounted as PROCEDURE DIVISION paragraphs."""
+    m = re.search(r"^\s{0,11}PROCEDURE\s+DIVISION", text, re.MULTILINE | re.IGNORECASE)
+    if m:
+        return text[m.start():]
+    return ""
+
+
 # ---------------------------------------------------------------------------
 # v1.0 baseline extraction (preserved, noise filter applied)
 # ---------------------------------------------------------------------------
@@ -147,7 +159,7 @@ def extract_structure_v10(cbl_path: Path) -> dict:
     program_id = m.group(1).upper() if m else cbl_path.stem.upper()
 
     paragraphs: set[str] = set()
-    for m in RE_PARAGRAPH.finditer(text):
+    for m in RE_PARAGRAPH.finditer(_slice_procedure_division(text)):
         name = m.group(1).upper()
         if name in RESERVED_WORDS:  continue
         if name in PARAGRAPH_NOISE: continue
@@ -255,6 +267,16 @@ def extract_program(cbl_path: Path, gcv: str) -> dict:
         base_facts=struct,
         rekt_dir=REKT_DIR if REKT_DIR.exists() else None,
     )
+
+    # Reconcile paragraphs_defined against the authoritative simple list.
+    # enrich() in hermes_v11_combined_extractor.py has its own paragraph
+    # detector that includes IDENTIFICATION DIVISION metadata; filter to
+    # match _slice_procedure_division(text)'s scoping.
+    _auth_paras = set(struct["paragraphs"])
+    sem["paragraphs_defined"] = [
+        p for p in sem["paragraphs_defined"]
+        if p.get("name", "").upper() in _auth_paras
+    ]
 
     return {
         "schema_version":       SCHEMA_VERSION,
