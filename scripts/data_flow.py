@@ -62,6 +62,106 @@ _CALL_TARGET_RE = re.compile(
     re.IGNORECASE
 )
 
+# ---------------------------------------------------------------------------
+# Intrinsic and connective skip sets (STEP 2: Patch 2)
+# ---------------------------------------------------------------------------
+
+_INTRINSICS = frozenset({
+    "FUNCTION",
+    "UPPER-CASE",
+    "LOWER-CASE",
+    "TRIM",
+    "LENGTH",
+    "NUMVAL",
+    "NUMVAL-C",
+    "CURRENT-DATE",
+    "INTEGER",
+    "INTEGER-OF-DATE",
+    "DATE-OF-INTEGER",
+    "WHEN-COMPILED",
+    "RANDOM",
+    "MOD",
+})
+
+_CONNECTIVES = frozenset({
+    "TO",
+    "FROM",
+    "BY",
+    "INTO",
+    "USING",
+    "GIVING",
+    "UPON",
+    "THRU",
+    "THROUGH",
+    "TIMES",
+    "UNTIL",
+    "VARYING",
+    "IS",
+    "ARE",
+    "NOT",
+    "AND",
+    "OR",
+    "OF",
+    "IN",
+    "THEN",
+    "ELSE",
+    "WHEN",
+    "ON",
+    "SIZE",
+    "ERROR",
+    "AT",
+    "END",
+    "KEY",
+    "EQUAL",
+    "GREATER",
+    "LESS",
+    "THAN",
+    "ZERO",
+    "ZEROS",
+    "ZEROES",
+    "SPACE",
+    "SPACES",
+    "HIGH-VALUE",
+    "HIGH-VALUES",
+    "LOW-VALUE",
+    "LOW-VALUES",
+    "ALL",
+    "FIRST",
+    "LAST",
+    "ANY",
+    "EACH",
+    "WITH",
+    "BEFORE",
+    "AFTER",
+    "INPUT",
+    "OUTPUT",
+    "I-O",
+    "EXTEND",
+    "REVERSED",
+    "NO",
+    "REWIND",
+    "RECORD",
+    "CORRESPONDING",
+    "CORR",
+})
+
+
+def _should_skip_operand(tok: str) -> bool:
+    """Return True if *tok* is a COBOL keyword/syntax token that should never
+    be resolved as a data-field operand."""
+    if not tok:
+        return True
+    u = tok.upper()
+    if u in _INTRINSICS or u in _CONNECTIVES:
+        return True
+    if u in {"(", ")", ",", ".", ":", ";"}:
+        return True
+    if u.startswith("'") or u.startswith('"'):
+        return True
+    if u.isdigit():
+        return True
+    return False
+
 
 # ---------------------------------------------------------------------------
 # Source normalisation  --  FIXED COLUMN POSITIONS (COBOL fixed format)
@@ -594,6 +694,8 @@ def classify_statement(
     verb = tokens[0].upper()
 
     def _add_read(name):
+        if _should_skip_operand(name):
+            return
         if name == '__LIT__' or is_literal(name):
             return
         hits = resolve(name, qmap, context_records)
@@ -607,6 +709,8 @@ def classify_statement(
                     context_records.add(h['record'])
 
     def _add_mutate(name):
+        if _should_skip_operand(name):
+            return
         if name == '__LIT__' or is_literal(name):
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                                'reason': f'literal as mutate target (ignored): {name}'})

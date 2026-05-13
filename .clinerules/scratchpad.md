@@ -207,7 +207,7 @@ PY
 
 ---
 
-### STEP 2 [PENDING]
+### STEP 2 [DONE]
 
 **Goal:**
 Add global intrinsic and connective skip filters to `scripts/data_flow.py` so parser syntax tokens stop being classified as unresolved data fields.
@@ -388,7 +388,15 @@ PY
 **Pass condition:**
 All four targeted parser-noise tokens are absent from `COACTUPC` unresolved output.
 
-**On failure:**
+**RESULT:**
+- `python scripts/data_flow.py data/raw/cbl/COACTUPC.cbl` completed ✓
+- Histogram verification:
+  - `FUNCTION=0` ✓
+  - `UPPER-CASE=0` ✓
+  - `TRIM=0` ✓
+  - `ELSE=0` ✓
+- All four targeted parser-noise tokens are absent from COACTUPC unresolved output.
+- Remaining unresolved items are expected: IBM Data Communication copybooks (`DFHBMFSE`, `DFHBMASB`, `DFHBMSCA`, `DFHAID`), external fields (`INPUT-ERROR`, `WS-RETURN-MSG-OFF`, etc.), and partial tokenizer artifacts (`TRIM(`, `LENGTH(FUNCTION`) — all out of scope for this patch.
 - If tokens remain, inspect whether unresolveds are added somewhere other than `_add_read()` / `_add_mutate()`:
   ```powershell
   Select-String -Path scripts\data_flow.py -Pattern "unresolved.append|unresolved.add|reads.append|mutates.append" -Context 2,4
