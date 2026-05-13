@@ -1,8 +1,9 @@
 {
   "program": "CBCUS01C",
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "paragraph_data_flow": {
     "1000-CUSTFILE-GET-NEXT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -105,6 +106,7 @@
       ]
     },
     "0000-CUSTFILE-OPEN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -159,6 +161,7 @@
       ]
     },
     "9000-CUSTFILE-CLOSE": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -231,6 +234,7 @@
       ]
     },
     "Z-ABEND-PROGRAM": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -261,6 +265,7 @@
       ]
     },
     "Z-DISPLAY-IO-STATUS": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [

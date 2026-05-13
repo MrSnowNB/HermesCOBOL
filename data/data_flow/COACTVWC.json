@@ -1,8 +1,9 @@
 {
   "program": "COACTVWC",
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "paragraph_data_flow": {
     "0000-MAIN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -435,6 +436,7 @@
       ]
     },
     "COMMON-RETURN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -531,21 +533,25 @@
       ]
     },
     "0000-MAIN-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "1000-SEND-MAP": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "1000-SEND-MAP-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "1100-SCREEN-INIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -810,11 +816,13 @@
       ]
     },
     "1100-SCREEN-INIT-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "1200-SETUP-SCREEN-VARS": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -1643,11 +1651,13 @@
       ]
     },
     "1200-SETUP-SCREEN-VARS-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "1300-SETUP-SCREEN-ATTRS": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -1894,11 +1904,13 @@
       ]
     },
     "1300-SETUP-SCREEN-ATTRS-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "1400-SEND-SCREEN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -1935,11 +1947,13 @@
       ]
     },
     "1400-SEND-SCREEN-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "2000-PROCESS-INPUTS": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -1994,21 +2008,25 @@
       ]
     },
     "2000-PROCESS-INPUTS-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "2100-RECEIVE-MAP": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "2100-RECEIVE-MAP-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "2200-EDIT-MAP-INPUTS": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -2111,11 +2129,13 @@
       ]
     },
     "2200-EDIT-MAP-INPUTS-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "2210-EDIT-ACCOUNT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -2242,11 +2262,13 @@
       ]
     },
     "2210-EDIT-ACCOUNT-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "9000-READ-ACCT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -2301,11 +2323,13 @@
       ]
     },
     "9000-READ-ACCT-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "9200-GETCARDXREF-BYACCT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -2498,11 +2522,13 @@
       ]
     },
     "9200-GETCARDXREF-BYACCT-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "9300-GETACCTDATA-BYACCT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -2677,11 +2703,13 @@
       ]
     },
     "9300-GETACCTDATA-BYACCT-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "9400-GETCUSTDATA-BYCUST": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -2856,31 +2884,37 @@
       ]
     },
     "9400-GETCUSTDATA-BYCUST-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "SEND-PLAIN-TEXT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "SEND-PLAIN-TEXT-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "SEND-LONG-TEXT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "SEND-LONG-TEXT-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "ABEND-ROUTINE": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -2920,9 +2954,5 @@
   "call_graph": {
     "COACTVWC": []
   },
-  "program_unresolved": [
-    {
-      "issue": "paragraph count mismatch: local=34 facts=36"
-    }
-  ]
+  "program_unresolved": []
 }

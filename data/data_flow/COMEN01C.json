@@ -1,8 +1,9 @@
 {
   "program": "COMEN01C",
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "paragraph_data_flow": {
     "MAIN-PARA": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -129,6 +130,7 @@
       ]
     },
     "PROCESS-ENTER-KEY": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -465,6 +467,7 @@
       ]
     },
     "RETURN-TO-SIGNON-SCREEN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -483,6 +486,7 @@
       ]
     },
     "SEND-MENU-SCREEN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -513,11 +517,13 @@
       ]
     },
     "RECEIVE-MENU-SCREEN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "POPULATE-HEADER-INFO": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -758,6 +764,7 @@
       ]
     },
     "BUILD-MENU-OPTIONS": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [

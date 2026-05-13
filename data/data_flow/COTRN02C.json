@@ -1,8 +1,9 @@
 {
   "program": "COTRN02C",
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "paragraph_data_flow": {
     "MAIN-PARA": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -219,6 +220,7 @@
       ]
     },
     "PROCESS-ENTER-KEY": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -303,6 +305,7 @@
       ]
     },
     "VALIDATE-INPUT-KEY-FIELDS": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -663,6 +666,7 @@
       ]
     },
     "VALIDATE-INPUT-DATA-FIELDS": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -2247,6 +2251,7 @@
       ]
     },
     "ADD-TRANSACTION": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -2607,6 +2612,7 @@
       ]
     },
     "COPY-LAST-TRAN-DATA": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -2901,6 +2907,7 @@
       ]
     },
     "RETURN-TO-PREV-SCREEN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -2949,6 +2956,7 @@
       ]
     },
     "SEND-TRNADD-SCREEN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -2985,11 +2993,13 @@
       ]
     },
     "RECEIVE-TRNADD-SCREEN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "POPULATE-HEADER-INFO": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -3230,6 +3240,7 @@
       ]
     },
     "READ-CXACAIX-FILE": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -3338,6 +3349,7 @@
       ]
     },
     "READ-CCXREF-FILE": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -3446,6 +3458,7 @@
       ]
     },
     "STARTBR-TRANSACT-FILE": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -3566,6 +3579,7 @@
       ]
     },
     "READPREV-TRANSACT-FILE": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -3674,11 +3688,13 @@
       ]
     },
     "ENDBR-TRANSACT-FILE": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "WRITE-TRANSACT-FILE": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -3835,11 +3851,13 @@
       ]
     },
     "CLEAR-CURRENT-SCREEN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "INITIALIZE-ALL-FIELDS": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [

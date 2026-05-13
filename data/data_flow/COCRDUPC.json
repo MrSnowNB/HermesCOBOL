@@ -1,8 +1,9 @@
 {
   "program": "COCRDUPC",
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "paragraph_data_flow": {
     "MAIN-PARA": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -483,6 +484,7 @@
       ]
     },
     "COMMON-RETURN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -525,6 +527,7 @@
       ]
     },
     "3000-SEND-MAP": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -723,11 +726,13 @@
       ]
     },
     "3000-SEND-MAP-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "3001-INIT-AND-SHOW-MAP": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -752,11 +757,13 @@
       ]
     },
     "3001-INIT-AND-SHOW-MAP-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "2000-PROCESS-INPUTS": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -805,11 +812,13 @@
       ]
     },
     "2000-PROCESS-INPUTS-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "9000-READ-DATA": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -840,11 +849,13 @@
       ]
     },
     "9000-READ-DATA-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "5000-UPDATE-RECORD": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -863,11 +874,13 @@
       ]
     },
     "5000-UPDATE-RECORD-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "9999-RETURN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [

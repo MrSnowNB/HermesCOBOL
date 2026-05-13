@@ -1,8 +1,9 @@
 {
   "program": "COTRN01C",
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "paragraph_data_flow": {
     "MAIN-PARA": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -225,6 +226,7 @@
       ]
     },
     "PROCESS-ENTER-KEY": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -891,6 +893,7 @@
       ]
     },
     "RETURN-TO-PREV-SCREEN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -939,6 +942,7 @@
       ]
     },
     "SEND-TRNVIEW-SCREEN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -969,11 +973,13 @@
       ]
     },
     "RECEIVE-TRNVIEW-SCREEN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "POPULATE-HEADER-INFO": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -1214,6 +1220,7 @@
       ]
     },
     "READ-TRANSACT-FILE": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [
@@ -1322,11 +1329,13 @@
       ]
     },
     "CLEAR-CURRENT-SCREEN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "INITIALIZE-ALL-FIELDS": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": [

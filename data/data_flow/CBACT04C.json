@@ -1,8 +1,9 @@
 {
   "program": "CBACT04C",
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "paragraph_data_flow": {
     "0000-TCATBALF-OPEN": {
+      "section_name": null,
       "reads": [
         {
           "field": "TCATBALF-STATUS",
@@ -44,6 +45,7 @@
       ]
     },
     "0100-XREFFILE-OPEN": {
+      "section_name": null,
       "reads": [
         {
           "field": "XREFFILE-STATUS",
@@ -85,6 +87,7 @@
       ]
     },
     "0200-DISCGRP-OPEN": {
+      "section_name": null,
       "reads": [
         {
           "field": "DISCGRP-STATUS",
@@ -126,6 +129,7 @@
       ]
     },
     "0300-ACCTFILE-OPEN": {
+      "section_name": null,
       "reads": [
         {
           "field": "ACCTFILE-STATUS",
@@ -167,6 +171,7 @@
       ]
     },
     "0400-TRANFILE-OPEN": {
+      "section_name": null,
       "reads": [
         {
           "field": "TRANFILE-STATUS",
@@ -208,6 +213,7 @@
       ]
     },
     "1000-TCATBALF-GET-NEXT": {
+      "section_name": null,
       "reads": [
         {
           "field": "TCATBALF-STATUS",
@@ -287,6 +293,7 @@
       ]
     },
     "1050-UPDATE-ACCOUNT": {
+      "section_name": null,
       "reads": [
         {
           "field": "WS-MISC-VARS.WS-TOTAL-INT",
@@ -389,6 +396,7 @@
       ]
     },
     "1100-GET-ACCT-DATA": {
+      "section_name": null,
       "reads": [
         {
           "field": "FD-ACCTFILE-REC.FD-ACCT-ID",
@@ -450,6 +458,7 @@
       ]
     },
     "1110-GET-XREF-DATA": {
+      "section_name": null,
       "reads": [
         {
           "field": "FD-XREFFILE-REC.FD-XREF-ACCT-ID",
@@ -511,6 +520,7 @@
       ]
     },
     "1200-GET-INTEREST-RATE": {
+      "section_name": null,
       "reads": [
         {
           "field": "DISCGRP-STATUS",
@@ -572,6 +582,7 @@
       ]
     },
     "1200-A-GET-DEFAULT-INT-RATE": {
+      "section_name": null,
       "reads": [
         {
           "field": "DISCGRP-STATUS",
@@ -626,6 +637,7 @@
       ]
     },
     "1300-COMPUTE-INTEREST": {
+      "section_name": null,
       "reads": [
         {
           "field": "TRAN-CAT-BAL-RECORD.TRAN-CAT-BAL",
@@ -675,6 +687,7 @@
       ]
     },
     "1300-B-WRITE-TX": {
+      "section_name": null,
       "reads": [
         {
           "field": "WS-COUNTERS.WS-TRANID-SUFFIX",
@@ -875,11 +888,13 @@
       ]
     },
     "1400-COMPUTE-FEES": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "9000-TCATBALF-CLOSE": {
+      "section_name": null,
       "reads": [
         {
           "field": "TCATBALF-STATUS",
@@ -921,6 +936,7 @@
       ]
     },
     "9100-XREFFILE-CLOSE": {
+      "section_name": null,
       "reads": [
         {
           "field": "XREFFILE-STATUS",
@@ -962,6 +978,7 @@
       ]
     },
     "9200-DISCGRP-CLOSE": {
+      "section_name": null,
       "reads": [
         {
           "field": "DISCGRP-STATUS",
@@ -1003,6 +1020,7 @@
       ]
     },
     "9300-ACCTFILE-CLOSE": {
+      "section_name": null,
       "reads": [
         {
           "field": "ACCTFILE-STATUS",
@@ -1044,6 +1062,7 @@
       ]
     },
     "9400-TRANFILE-CLOSE": {
+      "section_name": null,
       "reads": [
         {
           "field": "TRANFILE-STATUS",
@@ -1085,6 +1104,7 @@
       ]
     },
     "Z-GET-DB2-FORMAT-TIMESTAMP": {
+      "section_name": null,
       "reads": [
         {
           "field": "COBOL-TS.COB-YYYY",
@@ -1259,6 +1279,7 @@
       ]
     },
     "9999-ABEND-PROGRAM": {
+      "section_name": null,
       "reads": [
         {
           "field": "TIMING",
@@ -1294,6 +1315,7 @@
       ]
     },
     "9910-DISPLAY-IO-STATUS": {
+      "section_name": null,
       "reads": [
         {
           "field": "IO-STATUS",
