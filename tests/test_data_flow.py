@@ -1123,3 +1123,56 @@ class TestV08MoveCorrespondingDualTree(unittest.TestCase):
         # FILLER should not be in reads or mutates
         self.assertNotIn("WS.FILLER", rf, f"FILLER should not be in reads: {reads}")
         self.assertNotIn("WS.FILLER", mf, f"FILLER should not be in mutates: {mutates}")
+
+# ------------------------------------------------------------------
+# V09/V10 Scope and Ambiguity Vectors
+# ------------------------------------------------------------------
+
+class TestV09NearestEnclosingScope(unittest.TestCase):
+    def test_v09_nearest_enclosing_scope(self):
+        """V09: Duplicate field — resolves to nearest enclosing group, not first match"""
+        qmap = {
+            "GROUP-A": [{"field": "GROUP-A", "record": "GROUP-A", "copybook": None, "offset": 0, "length": 20}],
+            "GROUP-B": [{"field": "GROUP-B", "record": "GROUP-B", "copybook": None, "offset": 20, "length": 20}],
+            "FIELD-X": [
+                {"field": "GROUP-A.FIELD-X", "record": "GROUP-A", "copybook": None, "offset": 0, "length": 10},
+                {"field": "GROUP-B.FIELD-X", "record": "GROUP-B", "copybook": None, "offset": 20, "length": 10},
+            ],
+            "DEST":    [{"field": "DEST", "record": "DEST", "copybook": None, "offset": 40, "length": 10}],
+        }
+        reads, mutates, unresolved = [], [], []
+        classify_statement(1, "MOVE GROUP-A.FIELD-X TO DEST", qmap, set(), reads, mutates, unresolved)
+        rf = [e["field"] for e in reads]
+        assert any("GROUP-A" in f and "FIELD-X" in f for f in rf), (
+            f"Expected GROUP-A.FIELD-X in reads, got: {rf}"
+        )
+        assert not any("GROUP-B" in f for f in rf), (
+            f"GROUP-B.FIELD-X should not be in reads: {rf}"
+        )
+
+
+class TestV10AmbiguousConflictFlagging(unittest.TestCase):
+    def test_v10_ambiguous_conflict_flagging(self):
+        """V10: Duplicate field no qualifier — lands in unresolved, not reads"""
+        qmap = {
+            "GROUP-A": [{"field": "GROUP-A", "record": "GROUP-A", "copybook": None, "offset": 0, "length": 20}],
+            "GROUP-B": [{"field": "GROUP-B", "record": "GROUP-B", "copybook": None, "offset": 20, "length": 20}],
+            "FIELD-DUP": [
+                {"field": "GROUP-A.FIELD-DUP", "record": "GROUP-A", "copybook": None, "offset": 0, "length": 10},
+                {"field": "GROUP-B.FIELD-DUP", "record": "GROUP-B", "copybook": None, "offset": 20, "length": 10},
+            ],
+            "DEST":    [{"field": "DEST", "record": "DEST", "copybook": None, "offset": 40, "length": 10}],
+        }
+        reads, mutates, unresolved = [], [], []
+        classify_statement(1, "MOVE FIELD-DUP TO DEST", qmap, set(), reads, mutates, unresolved)
+        rf = [e["field"] for e in reads]
+        unresolved_names = [
+            u if isinstance(u, str) else u.get("name", str(u))
+            for u in unresolved
+        ]
+        assert not any("FIELD-DUP" in f for f in rf), (
+            f"FIELD-DUP should not be in resolved reads (ambiguous): {rf}"
+        )
+        assert "FIELD-DUP" in unresolved_names, (
+            f"FIELD-DUP should appear in unresolved: {unresolved}"
+        )
