@@ -951,14 +951,72 @@ def classify_statement(
                                'reason': 'SET missing TO'})
 
     elif verb == 'EXEC':
-        cics_r = {'FROM','LENGTH','RESP','RESP2'}
-        cics_m = {'INTO','RESP','RESP2'}
-        for i, t in enumerate(tokens):
+        # EXEC CICS block: extract INTO/RESP/RESP2 → mutates, FROM/RIDFLD → reads
+        # Discard: command verb, string literals, DATASET/QUEUE/FILE/PROGRAM keywords
+        cics_r = {'FROM', 'LENGTH', 'RESP', 'RESP2'}
+        cics_m = {'INTO', 'RESP', 'RESP2'}
+        skip_keywords = {'DATASET', 'QUEUE', 'FILE', 'PROGRAM', 'READ', 'WRITE',
+                        'LINK', 'RETURN', 'SEND', 'RECEIVE', 'START', 'READNEXT',
+                        'READPREV', 'STARTBR', 'READBR', 'RESTART', 'DELETE', 'REWRITE',
+                        'MERGE', 'UPDATE', 'LOCK', 'UNLOCK', 'INQUIRE', 'SET', 'TERM',
+                        'TRACE', 'SYNCPOINT', 'ABEND', 'CANCEL', 'RELEASE', 'WAIT',
+                        'TIME', 'COMMINFO', 'EIB', 'REQID', 'USERID'}
+        
+        def _extract_arg(token):
+            """Extract argument from token like 'INTO(arg)' or return token if it's a standalone arg."""
+            if '(' in token and token.endswith(')'):
+                # Token is like 'INTO(arg)' - extract the argument part
+                inner = token[token.index('(')+1:-1]
+                return inner
+            return None
+        
+        i = 0
+        while i < len(tokens):
+            t = tokens[i]
             tu = t.upper()
-            if tu in cics_r and i + 1 < len(tokens) and tokens[i+1] != '__LIT__':
-                _add_read(tokens[i + 1])
-            if tu in cics_m and i + 1 < len(tokens) and tokens[i+1] != '__LIT__':
-                _add_mutate(tokens[i + 1])
+            
+            # Skip END-EXEC and stop processing
+            if tu == 'END-EXEC':
+                break
+            
+            # Skip command verb (first token after EXEC CICS) and known skip keywords
+            if tu in skip_keywords:
+                i += 1
+                continue
+            
+            # Check if this token contains a keyword like INTO(...), RESP(...), etc.
+            matched_keyword = None
+            arg = None
+            
+            for kw in cics_r | cics_m:
+                if tu.startswith(kw + '(') and tu.endswith(')'):
+                    # Token is like 'INTO(arg)' - extract keyword and argument
+                    matched_keyword = kw
+                    arg = tu[len(kw)+1:-1]  # Extract from '(...)'
+                    break
+            
+            if matched_keyword:
+                if matched_keyword in cics_r:
+                    _add_read(arg)
+                if matched_keyword in cics_m:
+                    _add_mutate(arg)
+                i += 1
+                continue
+            
+            # Handle standalone keyword + argument pattern
+            if tu in cics_r | cics_m:
+                # Keyword followed by argument
+                if i + 1 < len(tokens):
+                    next_t = tokens[i + 1]
+                    if next_t != '__LIT__' and not is_literal(next_t):
+                        if tu in cics_r:
+                            _add_read(next_t)
+                        if tu in cics_m:
+                            _add_mutate(next_t)
+                i += 2
+                continue
+            
+            i += 1
 
     elif verb == 'CALL':
         _parse_call(lineno, raw_text, tokens, qmap, context_records,
