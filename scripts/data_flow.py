@@ -845,8 +845,10 @@ def classify_statement(
             ei = ut.index('=')
             for l in tokens[1:ei]: _add_mutate(l)
             for r in tokens[ei + 1:]:
+                # Strip parentheses from token before checking
+                rt = r.strip('()')
                 if r != '__LIT__' and not is_literal(r) and r not in ('+','-','*','/','**','(',')'):  
-                    _add_read(r)
+                    _add_read(rt)
         else:
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                                'reason': 'COMPUTE missing = sign'})
@@ -894,6 +896,12 @@ def classify_statement(
         ut = [t.upper() for t in tokens]
         src = tokens[1] if len(tokens) > 1 else None
         if src: _add_read(src)
+        # Capture delimiter if DELIMITED BY is present
+        di = ut.index('DELIMITED') if 'DELIMITED' in ut else None
+        if di is not None and di + 2 < len(tokens) and ut[di + 1] == 'BY':
+            delim = tokens[di + 2]
+            if delim != '__LIT__' and not is_literal(delim):
+                _add_read(delim)
         ii = ut.index('INTO')     if 'INTO'     in ut else None
         pi = ut.index('POINTER')  if 'POINTER'  in ut else None
         ti = ut.index('TALLYING') if 'TALLYING' in ut else None
@@ -907,7 +915,7 @@ def classify_statement(
             if ptr: _add_read(ptr); _add_mutate(ptr)
         if ti is not None:
             tv = tokens[ti + 2] if ti + 2 < len(tokens) else None
-            if tv: _add_mutate(tv)
+            if tv: _add_read(tv); _add_mutate(tv)
 
     elif verb == 'ACCEPT':
         dst = tokens[1] if len(tokens) > 1 else None

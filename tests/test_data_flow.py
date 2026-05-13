@@ -60,8 +60,61 @@ _QMAP = {
                         'copybook': None, 'offset': 0, 'length': 20}],
     'RETURN-FILE':    [{'field': 'RETURN-FILE',        'record': 'RETURN-FILE',
                         'copybook': None, 'offset': 0, 'length': 100}],
-    'WS-INTO':        [{'field': 'WS.WS-INTO',         'record': 'WS',
-                        'copybook': None, 'offset': 0, 'length': 20}],
+     'WS-INTO':        [{'field': 'WS.WS-INTO',         'record': 'WS',
+                         'copybook': None, 'offset': 0,  'length': 20}],
+     # 3.4 V01-V04 verb test fixtures
+     'VAR-A':          [{'field': 'WS.VAR-A',           'record': 'WS',
+                         'copybook': None, 'offset': 0,  'length': 10}],
+     'VAR-B':          [{'field': 'WS.VAR-B',           'record': 'WS',
+                         'copybook': None, 'offset': 10, 'length': 10}],
+     'VAR-C':          [{'field': 'WS.VAR-C',           'record': 'WS',
+                         'copybook': None, 'offset': 20, 'length': 10}],
+     'VAR-X':          [{'field': 'WS.VAR-X',           'record': 'WS',
+                         'copybook': None, 'offset': 30, 'length': 10}],
+     'COUNTER-VAR':    [{'field': 'WS.COUNTER-VAR',     'record': 'WS',
+                         'copybook': None, 'offset': 40, 'length': 4}],
+     # 3.4 V05-V06 STRING/UNSTRING test fixtures
+     'SRC-A':          [{'field': 'WS.SRC-A',           'record': 'WS',
+                         'copybook': None, 'offset': 50, 'length': 10}],
+     'SRC-VAR':        [{'field': 'WS.SRC-VAR',         'record': 'WS',
+                         'copybook': None, 'offset': 50, 'length': 20}],
+     'DEST-VAR':       [{'field': 'WS.DEST-VAR',        'record': 'WS',
+                         'copybook': None, 'offset': 70, 'length': 20}],
+     'PTR-VAR':        [{'field': 'WS.PTR-VAR',         'record': 'WS',
+                         'copybook': None, 'offset': 90, 'length': 4}],
+     'DELIM-VAR':      [{'field': 'WS.DELIM-VAR',       'record': 'WS',
+                         'copybook': None, 'offset': 94, 'length': 5}],
+     'DEST-A':         [{'field': 'WS.DEST-A',          'record': 'WS',
+                         'copybook': None, 'offset': 100, 'length': 10}],
+     'CNT-A':          [{'field': 'WS.CNT-A',           'record': 'WS',
+                         'copybook': None, 'offset': 110, 'length': 4}],
+     'DEST-B':         [{'field': 'WS.DEST-B',          'record': 'WS',
+                         'copybook': None, 'offset': 114, 'length': 10}],
+     'CNT-B':          [{'field': 'WS.CNT-B',           'record': 'WS',
+                         'copybook': None, 'offset': 124, 'length': 4}],
+     'TALLY-VAR':      [{'field': 'WS.TALLY-VAR',       'record': 'WS',
+                         'copybook': None, 'offset': 128, 'length': 4}],
+     # 3.4 V07-V08 CICS/MOVE CORR test fixtures
+     'LOCAL-VAR':      [{'field': 'WS.LOCAL-VAR',       'record': 'WS',
+                         'copybook': None, 'offset': 122, 'length': 10}],
+     'CODE-VAR':       [{'field': 'WS.CODE-VAR',        'record': 'WS',
+                         'copybook': None, 'offset': 132, 'length': 4}],
+     'ROOT-A':         [{'field': 'WS.ROOT-A',          'record': 'WS',
+                         'copybook': None, 'offset': 136, 'length': 30}],
+     'ROOT-B':         [{'field': 'WS.ROOT-B',          'record': 'WS',
+                         'copybook': None, 'offset': 166, 'length': 30}],
+     'CHILD-X':        [{'field': 'WS.CHILD-X',         'record': 'WS',
+                         'copybook': None, 'offset': 136, 'length': 10}],
+     'CHILD-Y':        [{'field': 'WS.CHILD-Y',         'record': 'WS',
+                         'copybook': None, 'offset': 146, 'length': 10}],
+     'CHILD-Z':        [{'field': 'WS.CHILD-Z',         'record': 'WS',
+                         'copybook': None, 'offset': 176, 'length': 10}],
+     'FILLER':         [{'field': 'WS.FILLER',          'record': 'WS',
+                         'copybook': None, 'offset': 156, 'length': 10}],
+     'FIELD-X':        [{'field': 'GROUP1.FIELD-X',     'record': 'GROUP1',
+                         'copybook': None, 'offset': 0,  'length': 10}],
+     'FIELD-DUP':      [{'field': 'GROUP1.FIELD-DUP',   'record': 'GROUP1',
+                         'copybook': None, 'offset': 0,  'length': 10}],
 }
 
 
@@ -945,9 +998,9 @@ class TestV01DirectAssignment(unittest.TestCase):
         r, m, u = _run('MOVE VAR-A TO VAR-B')
         rf = [e['field'] for e in r]
         mf = [e['field'] for e in m]
-        self.assertIn('VAR-A', rf, f"VAR-A not in reads: {r}")
-        self.assertIn('VAR-B', mf, f"VAR-B not in mutates: {m}")
-        self.assertNotIn('VAR-B', rf, f"VAR-B should not be in reads: {r}")
+        self.assertIn('WS.VAR-A', rf, f"WS.VAR-A not in reads: {r}")
+        self.assertIn('WS.VAR-B', mf, f"WS.VAR-B not in mutates: {m}")
+        self.assertNotIn('WS.VAR-B', rf, f"WS.VAR-B should not be in reads: {r}")
 
 
 class TestV02LiteralRejection(unittest.TestCase):
@@ -958,7 +1011,7 @@ class TestV02LiteralRejection(unittest.TestCase):
         rf = [e['field'] for e in r]
         mf = [e['field'] for e in m]
         self.assertEqual(rf, [], f"reads should be empty for literal: {r}")
-        self.assertIn('VAR-B', mf, f"VAR-B not in mutates: {m}")
+        self.assertIn('WS.VAR-B', mf, f"WS.VAR-B not in mutates: {m}")
 
 
 class TestV03ComputeDecomposition(unittest.TestCase):
@@ -968,10 +1021,10 @@ class TestV03ComputeDecomposition(unittest.TestCase):
         r, m, u = _run('COMPUTE VAR-X = (VAR-A * VAR-B) - VAR-C')
         rf = [e['field'] for e in r]
         mf = [e['field'] for e in m]
-        for var in ["VAR-A", "VAR-B", "VAR-C"]:
+        for var in ["WS.VAR-A", "WS.VAR-B", "WS.VAR-C"]:
             self.assertIn(var, rf, f"{var} not in reads: {r}")
-        self.assertIn('VAR-X', mf, f"VAR-X not in mutates: {m}")
-        self.assertNotIn('VAR-X', rf, f"VAR-X should not be in reads: {r}")
+        self.assertIn('WS.VAR-X', mf, f"WS.VAR-X not in mutates: {m}")
+        self.assertNotIn('WS.VAR-X', rf, f"WS.VAR-X should not be in reads: {r}")
 
 
 class TestV04ImplicitMutationAdd(unittest.TestCase):
@@ -981,5 +1034,39 @@ class TestV04ImplicitMutationAdd(unittest.TestCase):
         r, m, u = _run('ADD 1 TO COUNTER-VAR')
         rf = [e['field'] for e in r]
         mf = [e['field'] for e in m]
-        self.assertIn('COUNTER-VAR', rf, f"COUNTER-VAR not in reads: {r}")
-        self.assertIn('COUNTER-VAR', mf, f"COUNTER-VAR not in mutates: {m}")
+        self.assertIn('WS.COUNTER-VAR', rf, f"WS.COUNTER-VAR not in reads: {r}")
+        self.assertIn('WS.COUNTER-VAR', mf, f"WS.COUNTER-VAR not in mutates: {m}")
+
+
+class TestV05StringPointerBidirectional(unittest.TestCase):
+    """V05: STRING — PTR-VAR in both reads and mutates, DEST-VAR in mutates, SRC-A in reads"""
+
+    def test_v05_string_pointer_bidirectional(self):
+        r, m, u = _run(
+            "STRING SRC-A DELIMITED BY SIZE INTO DEST-VAR WITH POINTER PTR-VAR"
+        )
+        rf = [e['field'] for e in r]
+        mf = [e['field'] for e in m]
+        self.assertIn('WS.SRC-A', rf, f"WS.SRC-A not in reads: {r}")
+        self.assertIn('WS.DEST-VAR', mf, f"WS.DEST-VAR not in mutates: {m}")
+        self.assertIn('WS.PTR-VAR', rf, f"WS.PTR-VAR not in reads: {r}")
+        self.assertIn('WS.PTR-VAR', mf, f"WS.PTR-VAR not in mutates: {m}")
+
+
+class TestV06UnstringGlobalTally(unittest.TestCase):
+    """V06: UNSTRING — reads include src/delim/ptr/tally; mutates include dests/counts/tally/ptr"""
+
+    def test_v06_unstring_global_tally(self):
+        r, m, u = _run(
+            "UNSTRING SRC-VAR DELIMITED BY DELIM-VAR "
+            "INTO DEST-A COUNT IN CNT-A "
+            "INTO DEST-B COUNT IN CNT-B "
+            "TALLYING IN TALLY-VAR "
+            "WITH POINTER PTR-VAR"
+        )
+        rf = [e['field'] for e in r]
+        mf = [e['field'] for e in m]
+        for var in ["WS.SRC-VAR", "WS.DELIM-VAR", "WS.PTR-VAR", "WS.TALLY-VAR"]:
+            self.assertIn(var, rf, f"{var} not in reads: {r}")
+        for var in ["WS.DEST-A", "WS.CNT-A", "WS.DEST-B", "WS.CNT-B", "WS.TALLY-VAR", "WS.PTR-VAR"]:
+            self.assertIn(var, mf, f"{var} not in mutates: {m}")
