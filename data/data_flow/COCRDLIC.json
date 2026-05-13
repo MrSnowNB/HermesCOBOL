@@ -319,22 +319,10 @@
           "reason": "unresolved mutate operand: CA-LAST-PAGE-NOT-SHOWN"
         },
         {
-          "verb": "SET",
-          "line_no": 300,
-          "raw_text": "SET CA-LAST-PAGE-NOT-SHOWN TO TRUE ELSE",
-          "reason": "unresolved read operand: ELSE"
-        },
-        {
           "verb": "MOVE",
           "line_no": 300,
           "raw_text": "MOVE DFHCOMMAREA (1:LENGTH OF CARDDEMO-COMMAREA) TO CARDDEMO-COMMAREA",
-          "reason": "unresolved read operand: (1:LENGTH"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE DFHCOMMAREA (1:LENGTH OF CARDDEMO-COMMAREA) TO CARDDEMO-COMMAREA",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: CARDDEMO-COMMAREA).(1:LENGTH"
         },
         {
           "verb": "MOVE",
@@ -764,13 +752,7 @@
           "verb": "MOVE",
           "line_no": 615,
           "raw_text": "MOVE  WS-THIS-PROGCOMMAREA TO WS-COMMAREA(LENGTH OF CARDDEMO-COMMAREA + 1: LENGTH OF WS-THIS-PROGCOMMAREA )",
-          "reason": "unresolved mutate operand: WS-COMMAREA(LENGTH"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 615,
-          "raw_text": "MOVE  WS-THIS-PROGCOMMAREA TO WS-COMMAREA(LENGTH OF CARDDEMO-COMMAREA + 1: LENGTH OF WS-THIS-PROGCOMMAREA )",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CARDDEMO-COMMAREA.WS-COMMAREA(LENGTH"
         },
         {
           "verb": "MOVE",
@@ -783,24 +765,6 @@
           "line_no": 615,
           "raw_text": "MOVE  WS-THIS-PROGCOMMAREA TO WS-COMMAREA(LENGTH OF CARDDEMO-COMMAREA + 1: LENGTH OF WS-THIS-PROGCOMMAREA )",
           "reason": "unresolved mutate operand: 1:"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 615,
-          "raw_text": "MOVE  WS-THIS-PROGCOMMAREA TO WS-COMMAREA(LENGTH OF CARDDEMO-COMMAREA + 1: LENGTH OF WS-THIS-PROGCOMMAREA )",
-          "reason": "unresolved mutate operand: LENGTH"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 615,
-          "raw_text": "MOVE  WS-THIS-PROGCOMMAREA TO WS-COMMAREA(LENGTH OF CARDDEMO-COMMAREA + 1: LENGTH OF WS-THIS-PROGCOMMAREA )",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 615,
-          "raw_text": "MOVE  WS-THIS-PROGCOMMAREA TO WS-COMMAREA(LENGTH OF CARDDEMO-COMMAREA + 1: LENGTH OF WS-THIS-PROGCOMMAREA )",
-          "reason": "unresolved mutate operand: )"
         },
         {
           "verb": "RETURN",
@@ -991,26 +955,8 @@
         {
           "verb": "MOVE",
           "line_no": 653,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved read operand: FUNCTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved read operand: CURRENT-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
           "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: TITLE01O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.TITLE01O"
         },
         {
           "verb": "MOVE",
@@ -1022,13 +968,7 @@
           "verb": "MOVE",
           "line_no": 653,
           "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: TITLE02O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.TITLE02O"
         },
         {
           "verb": "MOVE",
@@ -1040,13 +980,7 @@
           "verb": "MOVE",
           "line_no": 653,
           "raw_text": "MOVE LIT-THISTRANID         TO TRNNAMEO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: TRNNAMEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE LIT-THISTRANID         TO TRNNAMEO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.TRNNAMEO"
         },
         {
           "verb": "MOVE",
@@ -1058,43 +992,19 @@
           "verb": "MOVE",
           "line_no": 653,
           "raw_text": "MOVE LIT-THISPGM            TO PGMNAMEO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: PGMNAMEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE LIT-THISPGM            TO PGMNAMEO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.PGMNAMEO"
         },
         {
           "verb": "MOVE",
           "line_no": 653,
           "raw_text": "MOVE LIT-THISPGM            TO PGMNAMEO OF CCRDLIAO",
           "reason": "unresolved mutate operand: CCRDLIAO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved read operand: FUNCTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved read operand: CURRENT-DATE"
         },
         {
           "verb": "MOVE",
           "line_no": 653,
           "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CURDATEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CURDATEO"
         },
         {
           "verb": "MOVE",
@@ -1106,13 +1016,7 @@
           "verb": "MOVE",
           "line_no": 653,
           "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CURTIMEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CURTIMEO"
         },
         {
           "verb": "MOVE",
@@ -1124,13 +1028,7 @@
           "verb": "MOVE",
           "line_no": 653,
           "raw_text": "MOVE WS-CA-SCREEN-NUM       TO PAGENOO  OF CCRDLIAO",
-          "reason": "unresolved mutate operand: PAGENOO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE WS-CA-SCREEN-NUM       TO PAGENOO  OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.PAGENOO"
         },
         {
           "verb": "MOVE",
@@ -1148,13 +1046,7 @@
           "verb": "MOVE",
           "line_no": 653,
           "raw_text": "MOVE WS-INFO-MSG            TO INFOMSGO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: INFOMSGO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE WS-INFO-MSG            TO INFOMSGO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.INFOMSGO"
         },
         {
           "verb": "MOVE",
@@ -1172,13 +1064,7 @@
           "verb": "MOVE",
           "line_no": 653,
           "raw_text": "MOVE DFHBMDAR               TO INFOMSGC OF CCRDLIAO",
-          "reason": "unresolved mutate operand: INFOMSGC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE DFHBMDAR               TO INFOMSGC OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.INFOMSGC"
         },
         {
           "verb": "MOVE",
@@ -1239,13 +1125,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-EDIT-SELECT(1)       TO CRDSEL1O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSEL1O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-EDIT-SELECT(1)       TO CRDSEL1O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSEL1O"
         },
         {
           "verb": "MOVE",
@@ -1257,13 +1137,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-ACCTNO(1)        TO ACCTNO1O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: ACCTNO1O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-ACCTNO(1)        TO ACCTNO1O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.ACCTNO1O"
         },
         {
           "verb": "MOVE",
@@ -1275,13 +1149,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-NUM(1)      TO CRDNUM1O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDNUM1O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-NUM(1)      TO CRDNUM1O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDNUM1O"
         },
         {
           "verb": "MOVE",
@@ -1293,13 +1161,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-STATUS(1)   TO CRDSTS1O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSTS1O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-STATUS(1)   TO CRDSTS1O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSTS1O"
         },
         {
           "verb": "MOVE",
@@ -1311,13 +1173,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-EDIT-SELECT(2)       TO CRDSEL2O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSEL2O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-EDIT-SELECT(2)       TO CRDSEL2O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSEL2O"
         },
         {
           "verb": "MOVE",
@@ -1329,13 +1185,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-ACCTNO(2)        TO ACCTNO2O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: ACCTNO2O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-ACCTNO(2)        TO ACCTNO2O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.ACCTNO2O"
         },
         {
           "verb": "MOVE",
@@ -1347,13 +1197,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-NUM(2)      TO CRDNUM2O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDNUM2O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-NUM(2)      TO CRDNUM2O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDNUM2O"
         },
         {
           "verb": "MOVE",
@@ -1365,13 +1209,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-STATUS(2)   TO CRDSTS2O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSTS2O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-STATUS(2)   TO CRDSTS2O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSTS2O"
         },
         {
           "verb": "MOVE",
@@ -1383,13 +1221,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-EDIT-SELECT(3)       TO CRDSEL3O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSEL3O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-EDIT-SELECT(3)       TO CRDSEL3O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSEL3O"
         },
         {
           "verb": "MOVE",
@@ -1401,13 +1233,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-ACCTNO(3)        TO ACCTNO3O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: ACCTNO3O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-ACCTNO(3)        TO ACCTNO3O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.ACCTNO3O"
         },
         {
           "verb": "MOVE",
@@ -1419,13 +1245,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-NUM(3)      TO CRDNUM3O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDNUM3O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-NUM(3)      TO CRDNUM3O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDNUM3O"
         },
         {
           "verb": "MOVE",
@@ -1437,13 +1257,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-STATUS(3)   TO CRDSTS3O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSTS3O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-STATUS(3)   TO CRDSTS3O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSTS3O"
         },
         {
           "verb": "MOVE",
@@ -1455,13 +1269,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-EDIT-SELECT(4)       TO CRDSEL4O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSEL4O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-EDIT-SELECT(4)       TO CRDSEL4O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSEL4O"
         },
         {
           "verb": "MOVE",
@@ -1473,13 +1281,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-ACCTNO(4)        TO ACCTNO4O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: ACCTNO4O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-ACCTNO(4)        TO ACCTNO4O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.ACCTNO4O"
         },
         {
           "verb": "MOVE",
@@ -1491,13 +1293,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-NUM(4)      TO CRDNUM4O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDNUM4O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-NUM(4)      TO CRDNUM4O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDNUM4O"
         },
         {
           "verb": "MOVE",
@@ -1509,13 +1305,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-STATUS(4)   TO CRDSTS4O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSTS4O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-STATUS(4)   TO CRDSTS4O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSTS4O"
         },
         {
           "verb": "MOVE",
@@ -1527,13 +1317,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-EDIT-SELECT(5)       TO CRDSEL5O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSEL5O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-EDIT-SELECT(5)       TO CRDSEL5O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSEL5O"
         },
         {
           "verb": "MOVE",
@@ -1545,13 +1329,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-ACCTNO(5)        TO ACCTNO5O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: ACCTNO5O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-ACCTNO(5)        TO ACCTNO5O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.ACCTNO5O"
         },
         {
           "verb": "MOVE",
@@ -1563,13 +1341,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-NUM(5)      TO CRDNUM5O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDNUM5O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-NUM(5)      TO CRDNUM5O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDNUM5O"
         },
         {
           "verb": "MOVE",
@@ -1581,13 +1353,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-STATUS(5)   TO CRDSTS5O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSTS5O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-STATUS(5)   TO CRDSTS5O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSTS5O"
         },
         {
           "verb": "MOVE",
@@ -1599,13 +1365,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-EDIT-SELECT(6)       TO CRDSEL6O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSEL6O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-EDIT-SELECT(6)       TO CRDSEL6O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSEL6O"
         },
         {
           "verb": "MOVE",
@@ -1617,13 +1377,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-ACCTNO(6)        TO ACCTNO6O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: ACCTNO6O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-ACCTNO(6)        TO ACCTNO6O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.ACCTNO6O"
         },
         {
           "verb": "MOVE",
@@ -1635,13 +1389,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-NUM(6)      TO CRDNUM6O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDNUM6O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-NUM(6)      TO CRDNUM6O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDNUM6O"
         },
         {
           "verb": "MOVE",
@@ -1653,13 +1401,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-STATUS(6)   TO CRDSTS6O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSTS6O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-STATUS(6)   TO CRDSTS6O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSTS6O"
         },
         {
           "verb": "MOVE",
@@ -1671,13 +1413,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-EDIT-SELECT(7)       TO CRDSEL7O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSEL7O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-EDIT-SELECT(7)       TO CRDSEL7O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSEL7O"
         },
         {
           "verb": "MOVE",
@@ -1689,13 +1425,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-ACCTNO(7)        TO ACCTNO7O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: ACCTNO7O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-ACCTNO(7)        TO ACCTNO7O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.ACCTNO7O"
         },
         {
           "verb": "MOVE",
@@ -1707,13 +1437,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-NUM(7)      TO CRDNUM7O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDNUM7O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-NUM(7)      TO CRDNUM7O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDNUM7O"
         },
         {
           "verb": "MOVE",
@@ -1725,13 +1449,7 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-STATUS(7)   TO CRDSTS7O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSTS7O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-STATUS(7)   TO CRDSTS7O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSTS7O"
         },
         {
           "verb": "MOVE",
@@ -1798,25 +1516,13 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRF                TO CRDSEL1A OF CCRDLIAI ELSE",
-          "reason": "unresolved mutate operand: CRDSEL1A"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMPRF                TO CRDSEL1A OF CCRDLIAI ELSE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL1A"
         },
         {
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRF                TO CRDSEL1A OF CCRDLIAI ELSE",
           "reason": "unresolved mutate operand: CCRDLIAI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMPRF                TO CRDSEL1A OF CCRDLIAI ELSE",
-          "reason": "unresolved mutate operand: ELSE"
         },
         {
           "verb": "MOVE",
@@ -1828,13 +1534,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHRED               TO CRDSEL1C OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSEL1C"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHRED               TO CRDSEL1C OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSEL1C"
         },
         {
           "verb": "MOVE",
@@ -1846,13 +1546,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE '*'               TO CRDSEL1O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSEL1O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE '*'               TO CRDSEL1O OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSEL1O"
         },
         {
           "verb": "MOVE",
@@ -1870,13 +1564,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMFSE                TO CRDSEL1A OF CCRDLIAI",
-          "reason": "unresolved mutate operand: CRDSEL1A"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMFSE                TO CRDSEL1A OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL1A"
         },
         {
           "verb": "MOVE",
@@ -1900,25 +1588,13 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRO                TO CRDSEL2A OF CCRDLIAI ELSE",
-          "reason": "unresolved mutate operand: CRDSEL2A"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMPRO                TO CRDSEL2A OF CCRDLIAI ELSE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL2A"
         },
         {
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRO                TO CRDSEL2A OF CCRDLIAI ELSE",
           "reason": "unresolved mutate operand: CCRDLIAI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMPRO                TO CRDSEL2A OF CCRDLIAI ELSE",
-          "reason": "unresolved mutate operand: ELSE"
         },
         {
           "verb": "MOVE",
@@ -1930,13 +1606,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHRED               TO CRDSEL2C OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSEL2C"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHRED               TO CRDSEL2C OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSEL2C"
         },
         {
           "verb": "MOVE",
@@ -1948,13 +1618,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE -1                   TO CRDSEL2L OF CCRDLIAI",
-          "reason": "unresolved mutate operand: CRDSEL2L"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE -1                   TO CRDSEL2L OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL2L"
         },
         {
           "verb": "MOVE",
@@ -1972,13 +1636,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMFSE                TO CRDSEL2A OF CCRDLIAI",
-          "reason": "unresolved mutate operand: CRDSEL2A"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMFSE                TO CRDSEL2A OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL2A"
         },
         {
           "verb": "MOVE",
@@ -2002,25 +1660,13 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRO                TO CRDSEL3A OF CCRDLIAI ELSE",
-          "reason": "unresolved mutate operand: CRDSEL3A"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMPRO                TO CRDSEL3A OF CCRDLIAI ELSE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL3A"
         },
         {
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRO                TO CRDSEL3A OF CCRDLIAI ELSE",
           "reason": "unresolved mutate operand: CCRDLIAI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMPRO                TO CRDSEL3A OF CCRDLIAI ELSE",
-          "reason": "unresolved mutate operand: ELSE"
         },
         {
           "verb": "MOVE",
@@ -2032,13 +1678,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHRED               TO CRDSEL3C OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSEL3C"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHRED               TO CRDSEL3C OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSEL3C"
         },
         {
           "verb": "MOVE",
@@ -2050,13 +1690,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE -1                   TO CRDSEL3L OF CCRDLIAI",
-          "reason": "unresolved mutate operand: CRDSEL3L"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE -1                   TO CRDSEL3L OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL3L"
         },
         {
           "verb": "MOVE",
@@ -2074,13 +1708,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMFSE                TO CRDSEL3A OF CCRDLIAI",
-          "reason": "unresolved mutate operand: CRDSEL3A"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMFSE                TO CRDSEL3A OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL3A"
         },
         {
           "verb": "MOVE",
@@ -2104,25 +1732,13 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRO                TO CRDSEL4A OF CCRDLIAI I ELSE",
-          "reason": "unresolved mutate operand: CRDSEL4A"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMPRO                TO CRDSEL4A OF CCRDLIAI I ELSE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL4A"
         },
         {
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRO                TO CRDSEL4A OF CCRDLIAI I ELSE",
           "reason": "unresolved mutate operand: CCRDLIAI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMPRO                TO CRDSEL4A OF CCRDLIAI I ELSE",
-          "reason": "unresolved mutate operand: ELSE"
         },
         {
           "verb": "MOVE",
@@ -2134,13 +1750,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHRED               TO CRDSEL4C OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSEL4C"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHRED               TO CRDSEL4C OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSEL4C"
         },
         {
           "verb": "MOVE",
@@ -2152,13 +1762,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE -1                   TO CRDSEL4L OF CCRDLIAI",
-          "reason": "unresolved mutate operand: CRDSEL4L"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE -1                   TO CRDSEL4L OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL4L"
         },
         {
           "verb": "MOVE",
@@ -2176,13 +1780,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMFSE                TO CRDSEL4A OF CCRDLIAI",
-          "reason": "unresolved mutate operand: CRDSEL4A"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMFSE                TO CRDSEL4A OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL4A"
         },
         {
           "verb": "MOVE",
@@ -2206,25 +1804,13 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRO                TO CRDSEL5A OF CCRDLIAI ELSE",
-          "reason": "unresolved mutate operand: CRDSEL5A"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMPRO                TO CRDSEL5A OF CCRDLIAI ELSE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL5A"
         },
         {
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRO                TO CRDSEL5A OF CCRDLIAI ELSE",
           "reason": "unresolved mutate operand: CCRDLIAI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMPRO                TO CRDSEL5A OF CCRDLIAI ELSE",
-          "reason": "unresolved mutate operand: ELSE"
         },
         {
           "verb": "MOVE",
@@ -2236,13 +1822,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHRED               TO CRDSEL5C OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSEL5C"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHRED               TO CRDSEL5C OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSEL5C"
         },
         {
           "verb": "MOVE",
@@ -2254,13 +1834,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE -1                   TO CRDSEL5L OF CCRDLIAI",
-          "reason": "unresolved mutate operand: CRDSEL5L"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE -1                   TO CRDSEL5L OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL5L"
         },
         {
           "verb": "MOVE",
@@ -2278,13 +1852,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMFSE                TO CRDSEL5A OF CCRDLIAI",
-          "reason": "unresolved mutate operand: CRDSEL5A"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMFSE                TO CRDSEL5A OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL5A"
         },
         {
           "verb": "MOVE",
@@ -2308,25 +1876,13 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRO                TO CRDSEL6A OF CCRDLIAI ELSE",
-          "reason": "unresolved mutate operand: CRDSEL6A"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMPRO                TO CRDSEL6A OF CCRDLIAI ELSE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL6A"
         },
         {
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRO                TO CRDSEL6A OF CCRDLIAI ELSE",
           "reason": "unresolved mutate operand: CCRDLIAI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMPRO                TO CRDSEL6A OF CCRDLIAI ELSE",
-          "reason": "unresolved mutate operand: ELSE"
         },
         {
           "verb": "MOVE",
@@ -2338,13 +1894,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHRED               TO CRDSEL6C OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSEL6C"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHRED               TO CRDSEL6C OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSEL6C"
         },
         {
           "verb": "MOVE",
@@ -2356,13 +1906,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE -1                   TO CRDSEL6L OF CCRDLIAI",
-          "reason": "unresolved mutate operand: CRDSEL6L"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE -1                   TO CRDSEL6L OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL6L"
         },
         {
           "verb": "MOVE",
@@ -2380,13 +1924,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMFSE                TO CRDSEL6A OF CCRDLIAI",
-          "reason": "unresolved mutate operand: CRDSEL6A"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMFSE                TO CRDSEL6A OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL6A"
         },
         {
           "verb": "MOVE",
@@ -2410,25 +1948,13 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRO                TO CRDSEL7A OF CCRDLIAI ELSE",
-          "reason": "unresolved mutate operand: CRDSEL7A"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMPRO                TO CRDSEL7A OF CCRDLIAI ELSE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL7A"
         },
         {
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRO                TO CRDSEL7A OF CCRDLIAI ELSE",
           "reason": "unresolved mutate operand: CCRDLIAI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMPRO                TO CRDSEL7A OF CCRDLIAI ELSE",
-          "reason": "unresolved mutate operand: ELSE"
         },
         {
           "verb": "MOVE",
@@ -2440,13 +1966,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHRED               TO CRDSEL7C OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CRDSEL7C"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHRED               TO CRDSEL7C OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CRDSEL7C"
         },
         {
           "verb": "MOVE",
@@ -2458,13 +1978,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE -1                   TO CRDSEL7L OF CCRDLIAI",
-          "reason": "unresolved mutate operand: CRDSEL7L"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE -1                   TO CRDSEL7L OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL7L"
         },
         {
           "verb": "MOVE",
@@ -2482,13 +1996,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMFSE                TO CRDSEL7A OF CCRDLIAI",
-          "reason": "unresolved mutate operand: CRDSEL7A"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMFSE                TO CRDSEL7A OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CRDSEL7A"
         },
         {
           "verb": "MOVE",
@@ -2579,13 +2087,7 @@
           "verb": "MOVE",
           "line_no": 849,
           "raw_text": "MOVE CC-ACCT-ID   TO ACCTSIDO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: ACCTSIDO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 849,
-          "raw_text": "MOVE CC-ACCT-ID   TO ACCTSIDO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.ACCTSIDO"
         },
         {
           "verb": "MOVE",
@@ -2603,13 +2105,7 @@
           "verb": "MOVE",
           "line_no": 849,
           "raw_text": "MOVE DFHBMFSE     TO ACCTSIDA OF CCRDLIAI",
-          "reason": "unresolved mutate operand: ACCTSIDA"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 849,
-          "raw_text": "MOVE DFHBMFSE     TO ACCTSIDA OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.ACCTSIDA"
         },
         {
           "verb": "MOVE",
@@ -2621,13 +2117,7 @@
           "verb": "MOVE",
           "line_no": 849,
           "raw_text": "MOVE LOW-VALUES   TO ACCTSIDO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: ACCTSIDO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 849,
-          "raw_text": "MOVE LOW-VALUES   TO ACCTSIDO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.ACCTSIDO"
         },
         {
           "verb": "MOVE",
@@ -2639,13 +2129,7 @@
           "verb": "MOVE",
           "line_no": 849,
           "raw_text": "MOVE CDEMO-ACCT-ID TO ACCTSIDO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: ACCTSIDO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 849,
-          "raw_text": "MOVE CDEMO-ACCT-ID TO ACCTSIDO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.ACCTSIDO"
         },
         {
           "verb": "MOVE",
@@ -2663,13 +2147,7 @@
           "verb": "MOVE",
           "line_no": 849,
           "raw_text": "MOVE DFHBMFSE      TO ACCTSIDA OF CCRDLIAI",
-          "reason": "unresolved mutate operand: ACCTSIDA"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 849,
-          "raw_text": "MOVE DFHBMFSE      TO ACCTSIDA OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.ACCTSIDA"
         },
         {
           "verb": "MOVE",
@@ -2693,13 +2171,7 @@
           "verb": "MOVE",
           "line_no": 849,
           "raw_text": "MOVE CC-CARD-NUM  TO CARDSIDO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CARDSIDO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 849,
-          "raw_text": "MOVE CC-CARD-NUM  TO CARDSIDO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CARDSIDO"
         },
         {
           "verb": "MOVE",
@@ -2717,13 +2189,7 @@
           "verb": "MOVE",
           "line_no": 849,
           "raw_text": "MOVE DFHBMFSE     TO CARDSIDA OF CCRDLIAI",
-          "reason": "unresolved mutate operand: CARDSIDA"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 849,
-          "raw_text": "MOVE DFHBMFSE     TO CARDSIDA OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CARDSIDA"
         },
         {
           "verb": "MOVE",
@@ -2735,13 +2201,7 @@
           "verb": "MOVE",
           "line_no": 849,
           "raw_text": "MOVE LOW-VALUES   TO CARDSIDO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CARDSIDO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 849,
-          "raw_text": "MOVE LOW-VALUES   TO CARDSIDO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CARDSIDO"
         },
         {
           "verb": "MOVE",
@@ -2753,13 +2213,7 @@
           "verb": "MOVE",
           "line_no": 849,
           "raw_text": "MOVE CDEMO-CARD-NUM TO CARDSIDO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CARDSIDO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 849,
-          "raw_text": "MOVE CDEMO-CARD-NUM TO CARDSIDO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CARDSIDO"
         },
         {
           "verb": "MOVE",
@@ -2777,13 +2231,7 @@
           "verb": "MOVE",
           "line_no": 849,
           "raw_text": "MOVE DFHBMFSE      TO CARDSIDA OF CCRDLIAI",
-          "reason": "unresolved mutate operand: CARDSIDA"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 849,
-          "raw_text": "MOVE DFHBMFSE      TO CARDSIDA OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CARDSIDA"
         },
         {
           "verb": "MOVE",
@@ -2807,13 +2255,7 @@
           "verb": "MOVE",
           "line_no": 849,
           "raw_text": "MOVE  DFHRED             TO ACCTSIDC OF CCRDLIAO",
-          "reason": "unresolved mutate operand: ACCTSIDC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 849,
-          "raw_text": "MOVE  DFHRED             TO ACCTSIDC OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.ACCTSIDC"
         },
         {
           "verb": "MOVE",
@@ -2825,13 +2267,7 @@
           "verb": "MOVE",
           "line_no": 849,
           "raw_text": "MOVE  -1                 TO ACCTSIDL OF CCRDLIAI",
-          "reason": "unresolved mutate operand: ACCTSIDL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 849,
-          "raw_text": "MOVE  -1                 TO ACCTSIDL OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.ACCTSIDL"
         },
         {
           "verb": "MOVE",
@@ -2855,13 +2291,7 @@
           "verb": "MOVE",
           "line_no": 849,
           "raw_text": "MOVE  DFHRED             TO CARDSIDC OF CCRDLIAO",
-          "reason": "unresolved mutate operand: CARDSIDC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 849,
-          "raw_text": "MOVE  DFHRED             TO CARDSIDC OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.CARDSIDC"
         },
         {
           "verb": "MOVE",
@@ -2873,13 +2303,7 @@
           "verb": "MOVE",
           "line_no": 849,
           "raw_text": "MOVE  -1                 TO CARDSIDL OF CCRDLIAI",
-          "reason": "unresolved mutate operand: CARDSIDL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 849,
-          "raw_text": "MOVE  -1                 TO CARDSIDL OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.CARDSIDL"
         },
         {
           "verb": "MOVE",
@@ -2897,13 +2321,7 @@
           "verb": "MOVE",
           "line_no": 849,
           "raw_text": "MOVE   -1                 TO ACCTSIDL OF CCRDLIAI",
-          "reason": "unresolved mutate operand: ACCTSIDL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 849,
-          "raw_text": "MOVE   -1                 TO ACCTSIDL OF CCRDLIAI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAI.ACCTSIDL"
         },
         {
           "verb": "MOVE",
@@ -3053,13 +2471,7 @@
           "verb": "MOVE",
           "line_no": 907,
           "raw_text": "MOVE WS-ERROR-MSG          TO ERRMSGO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: ERRMSGO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 907,
-          "raw_text": "MOVE WS-ERROR-MSG          TO ERRMSGO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.ERRMSGO"
         },
         {
           "verb": "MOVE",
@@ -3083,13 +2495,7 @@
           "verb": "MOVE",
           "line_no": 907,
           "raw_text": "MOVE WS-INFO-MSG        TO INFOMSGO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: INFOMSGO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 907,
-          "raw_text": "MOVE WS-INFO-MSG        TO INFOMSGO OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.INFOMSGO"
         },
         {
           "verb": "MOVE",
@@ -3107,13 +2513,7 @@
           "verb": "MOVE",
           "line_no": 907,
           "raw_text": "MOVE DFHNEUTR           TO INFOMSGC OF CCRDLIAO",
-          "reason": "unresolved mutate operand: INFOMSGC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 907,
-          "raw_text": "MOVE DFHNEUTR           TO INFOMSGC OF CCRDLIAO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: CCRDLIAO.INFOMSGC"
         },
         {
           "verb": "MOVE",
@@ -3184,13 +2584,7 @@
           "verb": "MOVE",
           "line_no": 973,
           "raw_text": "MOVE ACCTSIDI OF CCRDLIAI  TO CC-ACCT-ID",
-          "reason": "unresolved read operand: ACCTSIDI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 973,
-          "raw_text": "MOVE ACCTSIDI OF CCRDLIAI  TO CC-ACCT-ID",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: CCRDLIAI.ACCTSIDI"
         },
         {
           "verb": "MOVE",
@@ -3202,13 +2596,7 @@
           "verb": "MOVE",
           "line_no": 973,
           "raw_text": "MOVE CARDSIDI OF CCRDLIAI  TO CC-CARD-NUM",
-          "reason": "unresolved read operand: CARDSIDI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 973,
-          "raw_text": "MOVE CARDSIDI OF CCRDLIAI  TO CC-CARD-NUM",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: CCRDLIAI.CARDSIDI"
         },
         {
           "verb": "MOVE",
@@ -3220,13 +2608,7 @@
           "verb": "MOVE",
           "line_no": 973,
           "raw_text": "MOVE CRDSEL1I OF CCRDLIAI  TO WS-EDIT-SELECT(1)",
-          "reason": "unresolved read operand: CRDSEL1I"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 973,
-          "raw_text": "MOVE CRDSEL1I OF CCRDLIAI  TO WS-EDIT-SELECT(1)",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: CCRDLIAI.CRDSEL1I"
         },
         {
           "verb": "MOVE",
@@ -3238,13 +2620,7 @@
           "verb": "MOVE",
           "line_no": 973,
           "raw_text": "MOVE CRDSEL2I OF CCRDLIAI  TO WS-EDIT-SELECT(2)",
-          "reason": "unresolved read operand: CRDSEL2I"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 973,
-          "raw_text": "MOVE CRDSEL2I OF CCRDLIAI  TO WS-EDIT-SELECT(2)",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: CCRDLIAI.CRDSEL2I"
         },
         {
           "verb": "MOVE",
@@ -3256,13 +2632,7 @@
           "verb": "MOVE",
           "line_no": 973,
           "raw_text": "MOVE CRDSEL3I OF CCRDLIAI  TO WS-EDIT-SELECT(3)",
-          "reason": "unresolved read operand: CRDSEL3I"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 973,
-          "raw_text": "MOVE CRDSEL3I OF CCRDLIAI  TO WS-EDIT-SELECT(3)",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: CCRDLIAI.CRDSEL3I"
         },
         {
           "verb": "MOVE",
@@ -3274,13 +2644,7 @@
           "verb": "MOVE",
           "line_no": 973,
           "raw_text": "MOVE CRDSEL4I OF CCRDLIAI  TO WS-EDIT-SELECT(4)",
-          "reason": "unresolved read operand: CRDSEL4I"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 973,
-          "raw_text": "MOVE CRDSEL4I OF CCRDLIAI  TO WS-EDIT-SELECT(4)",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: CCRDLIAI.CRDSEL4I"
         },
         {
           "verb": "MOVE",
@@ -3292,13 +2656,7 @@
           "verb": "MOVE",
           "line_no": 973,
           "raw_text": "MOVE CRDSEL5I OF CCRDLIAI  TO WS-EDIT-SELECT(5)",
-          "reason": "unresolved read operand: CRDSEL5I"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 973,
-          "raw_text": "MOVE CRDSEL5I OF CCRDLIAI  TO WS-EDIT-SELECT(5)",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: CCRDLIAI.CRDSEL5I"
         },
         {
           "verb": "MOVE",
@@ -3310,13 +2668,7 @@
           "verb": "MOVE",
           "line_no": 973,
           "raw_text": "MOVE CRDSEL6I OF CCRDLIAI  TO WS-EDIT-SELECT(6)",
-          "reason": "unresolved read operand: CRDSEL6I"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 973,
-          "raw_text": "MOVE CRDSEL6I OF CCRDLIAI  TO WS-EDIT-SELECT(6)",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: CCRDLIAI.CRDSEL6I"
         },
         {
           "verb": "MOVE",
@@ -3328,13 +2680,7 @@
           "verb": "MOVE",
           "line_no": 973,
           "raw_text": "MOVE CRDSEL7I OF CCRDLIAI  TO WS-EDIT-SELECT(7)",
-          "reason": "unresolved read operand: CRDSEL7I"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 973,
-          "raw_text": "MOVE CRDSEL7I OF CCRDLIAI  TO WS-EDIT-SELECT(7)",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: CCRDLIAI.CRDSEL7I"
         },
         {
           "verb": "MOVE",
@@ -3426,12 +2772,6 @@
           "verb": "IF",
           "line_no": 1014,
           "raw_text": "IF CC-ACCT-ID  IS NOT NUMERIC",
-          "reason": "unresolved read operand: IS"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1014,
-          "raw_text": "IF CC-ACCT-ID  IS NOT NUMERIC",
           "reason": "unresolved read operand: NUMERIC"
         },
         {
@@ -3512,12 +2852,6 @@
           "line_no": 1049,
           "raw_text": "SET FLG-CARDFILTER-BLANK  TO TRUE",
           "reason": "unresolved mutate operand: FLG-CARDFILTER-BLANK"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1049,
-          "raw_text": "IF CC-CARD-NUM  IS NOT NUMERIC",
-          "reason": "unresolved read operand: IS"
         },
         {
           "verb": "IF",
@@ -3910,18 +3244,6 @@
           "reason": "unresolved mutate operand: WS-SCRN-COUNTER)"
         },
         {
-          "verb": "ADD",
-          "line_no": 1134,
-          "raw_text": "ADD   +1     TO WS-CA-SCREEN-NUM ELSE",
-          "reason": "unresolved read operand: ELSE"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 1134,
-          "raw_text": "ADD   +1     TO WS-CA-SCREEN-NUM ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "SET",
           "line_no": 1134,
           "raw_text": "SET READ-LOOP-EXIT  TO TRUE",
@@ -4252,12 +3574,6 @@
           "line_no": 1276,
           "raw_text": "SET READ-LOOP-EXIT  TO TRUE",
           "reason": "unresolved mutate operand: READ-LOOP-EXIT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE CARD-NUM TO WS-CA-FIRST-CARD-NUM ELSE",
-          "reason": "unresolved mutate operand: ELSE"
         },
         {
           "verb": "SET",

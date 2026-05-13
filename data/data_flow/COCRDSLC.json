@@ -296,13 +296,7 @@
           "verb": "MOVE",
           "line_no": 220,
           "raw_text": "MOVE WS-THIS-PROGCOMMAREA TO DFHCOMMAREA (1:LENGTH OF WS-THIS-PROGCOMMAREA)",
-          "reason": "unresolved mutate operand: (1:LENGTH"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 220,
-          "raw_text": "MOVE WS-THIS-PROGCOMMAREA TO DFHCOMMAREA (1:LENGTH OF WS-THIS-PROGCOMMAREA)",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: WS-THIS-PROGCOMMAREA).(1:LENGTH"
         },
         {
           "verb": "MOVE",
@@ -395,18 +389,6 @@
         }
       ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 235,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE     TO WS-CURDATE-DATA",
-          "reason": "unresolved read operand: FUNCTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 235,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE     TO WS-CURDATE-DATA",
-          "reason": "unresolved read operand: CURRENT-DATE"
-        },
         {
           "verb": "MOVE",
           "line_no": 235,
@@ -585,12 +567,6 @@
           "reason": "unresolved read operand: CCRDSLAI-ACCT-ID-D"
         },
         {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CCRDSLAI-ACCT-ID-D     TO CC-ACCT-ID-N ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 271,
           "raw_text": "IF CCRDSLAI-CARD-NUM-L > 0",
@@ -601,12 +577,6 @@
           "line_no": 271,
           "raw_text": "MOVE CCRDSLAI-CARD-NUM-D    TO CC-CARD-NUM-N ELSE",
           "reason": "unresolved read operand: CCRDSLAI-CARD-NUM-D"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CCRDSLAI-CARD-NUM-D    TO CC-CARD-NUM-N ELSE",
-          "reason": "unresolved mutate operand: ELSE"
         },
         {
           "verb": "SET",

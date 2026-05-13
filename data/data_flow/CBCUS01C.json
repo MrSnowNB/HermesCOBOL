@@ -58,18 +58,6 @@
           "reason": "unresolved mutate operand: CUSTFILE-FILE"
         },
         {
-          "verb": "DISPLAY",
-          "line_no": 94,
-          "raw_text": "DISPLAY CUSTOMER-RECORD ELSE",
-          "reason": "unresolved read operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 94,
-          "raw_text": "MOVE 16 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 94,
           "raw_text": "IF  APPL-AOK",
@@ -80,12 +68,6 @@
           "line_no": 94,
           "raw_text": "IF  APPL-EOF",
           "reason": "unresolved read operand: APPL-EOF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 94,
-          "raw_text": "MOVE 'Y' TO END-OF-FILE ELSE",
-          "reason": "unresolved mutate operand: ELSE"
         }
       ]
     },
@@ -117,12 +99,6 @@
         }
       ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 120,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
         {
           "verb": "IF",
           "line_no": 120,
@@ -166,18 +142,6 @@
         }
       ],
       "unresolved": [
-        {
-          "verb": "SUBTRACT",
-          "line_no": 138,
-          "raw_text": "SUBTRACT APPL-RESULT FROM APPL-RESULT ELSE",
-          "reason": "unresolved read operand: ELSE"
-        },
-        {
-          "verb": "SUBTRACT",
-          "line_no": 138,
-          "raw_text": "SUBTRACT APPL-RESULT FROM APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
         {
           "verb": "IF",
           "line_no": 138,
@@ -297,12 +261,6 @@
           "line_no": 162,
           "raw_text": "IF  IO-STATUS NOT NUMERIC OR  IO-STAT1 = '9'",
           "reason": "unresolved read operand: NUMERIC"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 162,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
-          "reason": "unresolved read operand: ELSE"
         }
       ]
     }

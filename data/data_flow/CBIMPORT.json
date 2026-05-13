@@ -47,19 +47,7 @@
           "verb": "MOVE",
           "line_no": 176,
           "raw_text": "MOVE FUNCTION CURRENT-DATE(1:4) TO WS-IMPORT-DATE(1:4)",
-          "reason": "unresolved read operand: FUNCTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 176,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE(1:4) TO WS-IMPORT-DATE(1:4)",
           "reason": "unresolved read operand: CURRENT-DATE(1:4)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 176,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE(5:2) TO WS-IMPORT-DATE(6:2)",
-          "reason": "unresolved read operand: FUNCTION"
         },
         {
           "verb": "MOVE",
@@ -71,19 +59,7 @@
           "verb": "MOVE",
           "line_no": 176,
           "raw_text": "MOVE FUNCTION CURRENT-DATE(7:2) TO WS-IMPORT-DATE(9:2)",
-          "reason": "unresolved read operand: FUNCTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 176,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE(7:2) TO WS-IMPORT-DATE(9:2)",
           "reason": "unresolved read operand: CURRENT-DATE(7:2)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 176,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE(9:2) TO WS-IMPORT-TIME(1:2)",
-          "reason": "unresolved read operand: FUNCTION"
         },
         {
           "verb": "MOVE",
@@ -95,19 +71,7 @@
           "verb": "MOVE",
           "line_no": 176,
           "raw_text": "MOVE FUNCTION CURRENT-DATE(11:2) TO WS-IMPORT-TIME(4:2)",
-          "reason": "unresolved read operand: FUNCTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 176,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE(11:2) TO WS-IMPORT-TIME(4:2)",
           "reason": "unresolved read operand: CURRENT-DATE(11:2)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 176,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE(13:2) TO WS-IMPORT-TIME(7:2)",
-          "reason": "unresolved read operand: FUNCTION"
         },
         {
           "verb": "MOVE",
@@ -1277,20 +1241,7 @@
           "length": 50
         }
       ],
-      "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 427,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE TO ERR-TIMESTAMP",
-          "reason": "unresolved read operand: FUNCTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 427,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE TO ERR-TIMESTAMP",
-          "reason": "unresolved read operand: CURRENT-DATE"
-        }
-      ]
+      "unresolved": []
     },
     "2750-WRITE-ERROR": {
       "section_name": null,

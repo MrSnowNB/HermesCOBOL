@@ -143,18 +143,6 @@
           "reason": "unresolved mutate operand: DALYTRAN-FILE"
         },
         {
-          "verb": "MOVE",
-          "line_no": 204,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 204,
-          "raw_text": "MOVE 16 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 204,
           "raw_text": "IF  APPL-AOK",
@@ -165,12 +153,6 @@
           "line_no": 204,
           "raw_text": "IF  APPL-EOF",
           "reason": "unresolved read operand: APPL-EOF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 204,
-          "raw_text": "MOVE 'Y' TO END-OF-DAILY-TRANS-FILE ELSE",
-          "reason": "unresolved mutate operand: ELSE"
         }
       ]
     },
@@ -233,19 +215,7 @@
           "verb": "MOVE",
           "line_no": 228,
           "raw_text": "MOVE 4 TO WS-XREF-READ-STATUS NOT INVALID KEY",
-          "reason": "unresolved mutate operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 228,
-          "raw_text": "MOVE 4 TO WS-XREF-READ-STATUS NOT INVALID KEY",
           "reason": "unresolved mutate operand: INVALID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 228,
-          "raw_text": "MOVE 4 TO WS-XREF-READ-STATUS NOT INVALID KEY",
-          "reason": "unresolved mutate operand: KEY"
         }
       ]
     },
@@ -294,19 +264,7 @@
           "verb": "MOVE",
           "line_no": 242,
           "raw_text": "MOVE 4 TO WS-ACCT-READ-STATUS NOT INVALID KEY",
-          "reason": "unresolved mutate operand: NOT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 242,
-          "raw_text": "MOVE 4 TO WS-ACCT-READ-STATUS NOT INVALID KEY",
           "reason": "unresolved mutate operand: INVALID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 242,
-          "raw_text": "MOVE 4 TO WS-ACCT-READ-STATUS NOT INVALID KEY",
-          "reason": "unresolved mutate operand: KEY"
         }
       ]
     },
@@ -338,12 +296,6 @@
         }
       ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 254,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
         {
           "verb": "IF",
           "line_no": 254,
@@ -381,12 +333,6 @@
       ],
       "unresolved": [
         {
-          "verb": "MOVE",
-          "line_no": 273,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 273,
           "raw_text": "IF  APPL-AOK",
@@ -422,12 +368,6 @@
         }
       ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 291,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
         {
           "verb": "IF",
           "line_no": 291,
@@ -465,12 +405,6 @@
       ],
       "unresolved": [
         {
-          "verb": "MOVE",
-          "line_no": 309,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 309,
           "raw_text": "IF  APPL-AOK",
@@ -507,12 +441,6 @@
       ],
       "unresolved": [
         {
-          "verb": "MOVE",
-          "line_no": 327,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 327,
           "raw_text": "IF  APPL-AOK",
@@ -548,12 +476,6 @@
         }
       ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
         {
           "verb": "IF",
           "line_no": 345,
@@ -598,12 +520,6 @@
       ],
       "unresolved": [
         {
-          "verb": "MOVE",
-          "line_no": 363,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 363,
           "raw_text": "IF  APPL-AOK",
@@ -639,12 +555,6 @@
         }
       ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 381,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
         {
           "verb": "IF",
           "line_no": 381,
@@ -682,12 +592,6 @@
       ],
       "unresolved": [
         {
-          "verb": "MOVE",
-          "line_no": 399,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 399,
           "raw_text": "IF  APPL-AOK",
@@ -723,12 +627,6 @@
         }
       ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 417,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
         {
           "verb": "IF",
           "line_no": 417,
@@ -766,12 +664,6 @@
       ],
       "unresolved": [
         {
-          "verb": "MOVE",
-          "line_no": 435,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 435,
           "raw_text": "IF  APPL-AOK",
@@ -807,12 +699,6 @@
         }
       ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 453,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
         {
           "verb": "IF",
           "line_no": 453,
@@ -932,12 +818,6 @@
           "line_no": 477,
           "raw_text": "IF  IO-STATUS NOT NUMERIC OR  IO-STAT1 = '9'",
           "reason": "unresolved read operand: NUMERIC"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 477,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
-          "reason": "unresolved read operand: ELSE"
         }
       ]
     }

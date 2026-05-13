@@ -31,12 +31,6 @@
       ],
       "unresolved": [
         {
-          "verb": "MOVE",
-          "line_no": 236,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 236,
           "raw_text": "IF  APPL-AOK",
@@ -72,12 +66,6 @@
         }
       ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 254,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
         {
           "verb": "IF",
           "line_no": 254,
@@ -115,12 +103,6 @@
       ],
       "unresolved": [
         {
-          "verb": "MOVE",
-          "line_no": 272,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 272,
           "raw_text": "IF  APPL-AOK",
@@ -157,12 +139,6 @@
       ],
       "unresolved": [
         {
-          "verb": "MOVE",
-          "line_no": 291,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 291,
           "raw_text": "IF  APPL-AOK",
@@ -198,12 +174,6 @@
         }
       ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 309,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
         {
           "verb": "IF",
           "line_no": 309,
@@ -261,18 +231,6 @@
           "reason": "unresolved mutate operand: TCATBAL-FILE"
         },
         {
-          "verb": "MOVE",
-          "line_no": 327,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 327,
-          "raw_text": "MOVE 16 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 327,
           "raw_text": "IF  APPL-AOK",
@@ -283,12 +241,6 @@
           "line_no": 327,
           "raw_text": "IF  APPL-EOF",
           "reason": "unresolved read operand: APPL-EOF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 327,
-          "raw_text": "MOVE 'Y' TO END-OF-FILE ELSE",
-          "reason": "unresolved mutate operand: ELSE"
         }
       ]
     },
@@ -376,18 +328,6 @@
           "reason": "unresolved mutate operand: REWRITE"
         },
         {
-          "verb": "MOVE",
-          "line_no": 352,
-          "raw_text": "MOVE 0 TO ACCT-CURR-CYC-DEBIT REWRITE FD-ACCTFILE-REC FROM  ACCOUNT-RECORD",
-          "reason": "unresolved mutate operand: FROM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 352,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 352,
           "raw_text": "IF  APPL-AOK",
@@ -442,12 +382,6 @@
           "line_no": 373,
           "raw_text": "READ ACCOUNT-FILE INTO ACCOUNT-RECORD INVALID KEY",
           "reason": "unresolved mutate operand: ACCOUNT-FILE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 373,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
         },
         {
           "verb": "IF",
@@ -506,12 +440,6 @@
           "reason": "unresolved mutate operand: XREF-FILE"
         },
         {
-          "verb": "MOVE",
-          "line_no": 394,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 394,
           "raw_text": "IF  APPL-AOK",
@@ -568,12 +496,6 @@
           "reason": "unresolved mutate operand: DISCGRP-FILE"
         },
         {
-          "verb": "MOVE",
-          "line_no": 422,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 422,
           "raw_text": "IF  APPL-AOK",
@@ -621,12 +543,6 @@
           "line_no": 444,
           "raw_text": "READ DISCGRP-FILE INTO DIS-GROUP-RECORD",
           "reason": "unresolved mutate operand: DISCGRP-FILE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
         },
         {
           "verb": "IF",
@@ -868,18 +784,6 @@
           "reason": "unresolved read operand: PARM-DATE,"
         },
         {
-          "verb": "STRING",
-          "line_no": 482,
-          "raw_text": "STRING 'Int. for a/c ' , ACCT-ID DELIMITED BY SIZE INTO TRAN-DESC",
-          "reason": "unresolved read operand: ,"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 482,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 482,
           "raw_text": "IF  APPL-AOK",
@@ -922,12 +826,6 @@
       ],
       "unresolved": [
         {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE 0 TO  APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 524,
           "raw_text": "IF  APPL-AOK",
@@ -963,12 +861,6 @@
         }
       ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 543,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
         {
           "verb": "IF",
           "line_no": 543,
@@ -1006,12 +898,6 @@
       ],
       "unresolved": [
         {
-          "verb": "MOVE",
-          "line_no": 561,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 561,
           "raw_text": "IF  APPL-AOK",
@@ -1048,12 +934,6 @@
       ],
       "unresolved": [
         {
-          "verb": "MOVE",
-          "line_no": 579,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
           "verb": "IF",
           "line_no": 579,
           "raw_text": "IF  APPL-AOK",
@@ -1089,12 +969,6 @@
         }
       ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 597,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
         {
           "verb": "IF",
           "line_no": 597,
@@ -1263,20 +1137,7 @@
           "length": 1
         }
       ],
-      "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 614,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE TO COBOL-TS",
-          "reason": "unresolved read operand: FUNCTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 614,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE TO COBOL-TS",
-          "reason": "unresolved read operand: CURRENT-DATE"
-        }
-      ]
+      "unresolved": []
     },
     "9999-ABEND-PROGRAM": {
       "section_name": null,
@@ -1389,12 +1250,6 @@
           "line_no": 636,
           "raw_text": "IF  IO-STATUS NOT NUMERIC OR  IO-STAT1 = '9'",
           "reason": "unresolved read operand: NUMERIC"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 636,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
-          "reason": "unresolved read operand: ELSE"
         }
       ]
     }

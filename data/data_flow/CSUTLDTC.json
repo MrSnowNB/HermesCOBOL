@@ -32,33 +32,12 @@
           "copybook": null,
           "offset": 0,
           "length": 3
-        },
-        {
-          "field": "FEEDBACK-CODE.FEEDBACK-TOKEN-VALUE.CASE-1-CONDITION-ID.SEVERITY",
-          "record": "FEEDBACK-CODE",
-          "copybook": null,
-          "offset": 0,
-          "length": 2
-        },
-        {
-          "field": "FEEDBACK-CODE.FEEDBACK-TOKEN-VALUE.CASE-1-CONDITION-ID.MSG-NO",
-          "record": "FEEDBACK-CODE",
-          "copybook": null,
-          "offset": 2,
-          "length": 2
         }
       ],
       "mutates": [
         {
           "field": "WS-DATE-TO-TEST.VSTRING-LENGTH",
           "record": "WS-DATE-TO-TEST",
-          "copybook": null,
-          "offset": 0,
-          "length": 2
-        },
-        {
-          "field": "WS-DATE-FORMAT.VSTRING-LENGTH",
-          "record": "WS-DATE-FORMAT",
           "copybook": null,
           "offset": 0,
           "length": 2
@@ -78,13 +57,6 @@
           "length": 1
         },
         {
-          "field": "WS-DATE-FORMAT.VSTRING-TEXT",
-          "record": "WS-DATE-FORMAT",
-          "copybook": null,
-          "offset": 2,
-          "length": 1
-        },
-        {
           "field": "WS-MESSAGE.WS-DATE",
           "record": "WS-MESSAGE",
           "copybook": null,
@@ -92,11 +64,25 @@
           "length": 10
         },
         {
+          "field": "WS-DATE-FORMAT.VSTRING-LENGTH",
+          "record": "WS-DATE-FORMAT",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        },
+        {
           "field": "WS-DATE-FORMAT",
           "record": "WS-DATE-FORMAT",
           "copybook": null,
           "offset": 0,
           "length": 3
+        },
+        {
+          "field": "WS-DATE-FORMAT.VSTRING-TEXT",
+          "record": "WS-DATE-FORMAT",
+          "copybook": null,
+          "offset": 2,
+          "length": 1
         },
         {
           "field": "WS-MESSAGE.WS-DATE-FMT",
@@ -143,54 +129,6 @@
       ],
       "unresolved": [
         {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE LENGTH OF LS-DATE TO VSTRING-LENGTH  OF WS-DATE-TO-TEST",
-          "reason": "unresolved read operand: LENGTH"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE LENGTH OF LS-DATE TO VSTRING-LENGTH  OF WS-DATE-TO-TEST",
-          "reason": "unresolved read operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE LENGTH OF LS-DATE TO VSTRING-LENGTH  OF WS-DATE-TO-TEST",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE LS-DATE TO VSTRING-TEXT    OF WS-DATE-TO-TEST WS-DATE",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE LENGTH OF LS-DATE-FORMAT TO VSTRING-LENGTH OF WS-DATE-FORMAT",
-          "reason": "unresolved read operand: LENGTH"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE LENGTH OF LS-DATE-FORMAT TO VSTRING-LENGTH OF WS-DATE-FORMAT",
-          "reason": "unresolved read operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE LENGTH OF LS-DATE-FORMAT TO VSTRING-LENGTH OF WS-DATE-FORMAT",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 105,
-          "raw_text": "MOVE LS-DATE-FORMAT TO VSTRING-TEXT   OF WS-DATE-FORMAT WS-DATE-FMT",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
           "verb": "CALL",
           "line_no": 105,
           "raw_text": "CALL \"CEEDAYS\" USING WS-DATE-TO-TEST, WS-DATE-FORMAT, OUTPUT-LILLIAN, FEEDBACK-CODE",
@@ -212,13 +150,13 @@
           "verb": "MOVE",
           "line_no": 105,
           "raw_text": "MOVE SEVERITY OF FEEDBACK-CODE  TO WS-SEVERITY-N",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: FEEDBACK-CODE.SEVERITY"
         },
         {
           "verb": "MOVE",
           "line_no": 105,
           "raw_text": "MOVE MSG-NO OF FEEDBACK-CODE    TO WS-MSG-NO-N",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: FEEDBACK-CODE.MSG-NO"
         },
         {
           "verb": "WHEN",

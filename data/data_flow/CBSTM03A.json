@@ -315,18 +315,6 @@
           "line_no": 371,
           "raw_text": "SET M03B-READ-K TO TRUE",
           "reason": "unresolved mutate operand: M03B-READ-K"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 374,
-          "raw_text": "COMPUTE WS-M03B-KEY-LN = LENGTH OF XREF-CUST-ID",
-          "reason": "unresolved read operand: LENGTH"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 374,
-          "raw_text": "COMPUTE WS-M03B-KEY-LN = LENGTH OF XREF-CUST-ID",
-          "reason": "unresolved read operand: OF"
         }
       ]
     },
@@ -419,18 +407,6 @@
           "line_no": 395,
           "raw_text": "SET M03B-READ-K TO TRUE",
           "reason": "unresolved mutate operand: M03B-READ-K"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 398,
-          "raw_text": "COMPUTE WS-M03B-KEY-LN = LENGTH OF XREF-ACCT-ID",
-          "reason": "unresolved read operand: LENGTH"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 398,
-          "raw_text": "COMPUTE WS-M03B-KEY-LN = LENGTH OF XREF-ACCT-ID",
-          "reason": "unresolved read operand: OF"
         }
       ]
     },
@@ -1962,18 +1938,6 @@
         }
       ],
       "unresolved": [
-        {
-          "verb": "ADD",
-          "line_no": 819,
-          "raw_text": "ADD 1 TO TR-CNT ELSE",
-          "reason": "unresolved read operand: ELSE"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 819,
-          "raw_text": "ADD 1 TO TR-CNT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
         {
           "verb": "MOVE",
           "line_no": 819,

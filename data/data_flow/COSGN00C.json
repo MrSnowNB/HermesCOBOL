@@ -47,13 +47,7 @@
           "verb": "MOVE",
           "line_no": 75,
           "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COSGN0AO",
-          "reason": "unresolved mutate operand: ERRMSGO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 75,
-          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COSGN0AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COSGN0AO.ERRMSGO"
         },
         {
           "verb": "MOVE",
@@ -77,13 +71,7 @@
           "verb": "MOVE",
           "line_no": 75,
           "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: USERIDL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 75,
-          "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COSGN0AI.USERIDL"
         },
         {
           "verb": "MOVE",
@@ -162,13 +150,7 @@
           "verb": "WHEN",
           "line_no": 117,
           "raw_text": "WHEN USERIDI OF COSGN0AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: USERIDI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 117,
-          "raw_text": "WHEN USERIDI OF COSGN0AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COSGN0AI.USERIDI"
         },
         {
           "verb": "WHEN",
@@ -180,13 +162,7 @@
           "verb": "MOVE",
           "line_no": 117,
           "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: USERIDL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COSGN0AI.USERIDL"
         },
         {
           "verb": "MOVE",
@@ -198,13 +174,7 @@
           "verb": "WHEN",
           "line_no": 117,
           "raw_text": "WHEN PASSWDI OF COSGN0AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: PASSWDI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 117,
-          "raw_text": "WHEN PASSWDI OF COSGN0AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COSGN0AI.PASSWDI"
         },
         {
           "verb": "WHEN",
@@ -216,13 +186,7 @@
           "verb": "MOVE",
           "line_no": 117,
           "raw_text": "MOVE -1       TO PASSWDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: PASSWDL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE -1       TO PASSWDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COSGN0AI.PASSWDL"
         },
         {
           "verb": "MOVE",
@@ -234,19 +198,7 @@
           "verb": "MOVE",
           "line_no": 132,
           "raw_text": "MOVE FUNCTION UPPER-CASE(USERIDI OF COSGN0AI) TO WS-USER-ID CDEMO-USER-ID",
-          "reason": "unresolved read operand: FUNCTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 132,
-          "raw_text": "MOVE FUNCTION UPPER-CASE(USERIDI OF COSGN0AI) TO WS-USER-ID CDEMO-USER-ID",
-          "reason": "unresolved read operand: UPPER-CASE(USERIDI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 132,
-          "raw_text": "MOVE FUNCTION UPPER-CASE(USERIDI OF COSGN0AI) TO WS-USER-ID CDEMO-USER-ID",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COSGN0AI).UPPER-CASE(USERIDI"
         },
         {
           "verb": "MOVE",
@@ -258,19 +210,7 @@
           "verb": "MOVE",
           "line_no": 132,
           "raw_text": "MOVE FUNCTION UPPER-CASE(PASSWDI OF COSGN0AI) TO WS-USER-PWD",
-          "reason": "unresolved read operand: FUNCTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 132,
-          "raw_text": "MOVE FUNCTION UPPER-CASE(PASSWDI OF COSGN0AI) TO WS-USER-PWD",
-          "reason": "unresolved read operand: UPPER-CASE(PASSWDI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 132,
-          "raw_text": "MOVE FUNCTION UPPER-CASE(PASSWDI OF COSGN0AI) TO WS-USER-PWD",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COSGN0AI).UPPER-CASE(PASSWDI"
         },
         {
           "verb": "MOVE",
@@ -303,13 +243,7 @@
           "verb": "MOVE",
           "line_no": 147,
           "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COSGN0AO",
-          "reason": "unresolved mutate operand: ERRMSGO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 147,
-          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COSGN0AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COSGN0AO.ERRMSGO"
         },
         {
           "verb": "MOVE",
@@ -468,26 +402,8 @@
         {
           "verb": "MOVE",
           "line_no": 179,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved read operand: FUNCTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 179,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved read operand: CURRENT-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 179,
           "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COSGN0AO",
-          "reason": "unresolved mutate operand: TITLE01O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 179,
-          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COSGN0AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COSGN0AO.TITLE01O"
         },
         {
           "verb": "MOVE",
@@ -499,13 +415,7 @@
           "verb": "MOVE",
           "line_no": 179,
           "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COSGN0AO",
-          "reason": "unresolved mutate operand: TITLE02O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 179,
-          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COSGN0AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COSGN0AO.TITLE02O"
         },
         {
           "verb": "MOVE",
@@ -517,13 +427,7 @@
           "verb": "MOVE",
           "line_no": 179,
           "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COSGN0AO",
-          "reason": "unresolved mutate operand: TRNNAMEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 179,
-          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COSGN0AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COSGN0AO.TRNNAMEO"
         },
         {
           "verb": "MOVE",
@@ -535,13 +439,7 @@
           "verb": "MOVE",
           "line_no": 179,
           "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COSGN0AO",
-          "reason": "unresolved mutate operand: PGMNAMEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 179,
-          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COSGN0AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COSGN0AO.PGMNAMEO"
         },
         {
           "verb": "MOVE",
@@ -553,13 +451,7 @@
           "verb": "MOVE",
           "line_no": 179,
           "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COSGN0AO",
-          "reason": "unresolved mutate operand: CURDATEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 179,
-          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COSGN0AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COSGN0AO.CURDATEO"
         },
         {
           "verb": "MOVE",
@@ -571,13 +463,7 @@
           "verb": "MOVE",
           "line_no": 179,
           "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COSGN0AO",
-          "reason": "unresolved mutate operand: CURTIMEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 179,
-          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COSGN0AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COSGN0AO.CURTIMEO"
         },
         {
           "verb": "MOVE",
@@ -714,13 +600,7 @@
           "verb": "MOVE",
           "line_no": 221,
           "raw_text": "MOVE -1       TO PASSWDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: PASSWDL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 221,
-          "raw_text": "MOVE -1       TO PASSWDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COSGN0AI.PASSWDL"
         },
         {
           "verb": "MOVE",
@@ -732,13 +612,7 @@
           "verb": "MOVE",
           "line_no": 221,
           "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: USERIDL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 221,
-          "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COSGN0AI.USERIDL"
         },
         {
           "verb": "MOVE",
@@ -750,13 +624,7 @@
           "verb": "MOVE",
           "line_no": 221,
           "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: USERIDL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 221,
-          "raw_text": "MOVE -1       TO USERIDL OF COSGN0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COSGN0AI.USERIDL"
         },
         {
           "verb": "MOVE",

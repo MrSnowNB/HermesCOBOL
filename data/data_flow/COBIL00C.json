@@ -81,13 +81,7 @@
           "verb": "MOVE",
           "line_no": 101,
           "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COBIL0AO",
-          "reason": "unresolved mutate operand: ERRMSGO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 101,
-          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COBIL0AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AO.ERRMSGO"
         },
         {
           "verb": "MOVE",
@@ -123,13 +117,7 @@
           "verb": "MOVE",
           "line_no": 101,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 101,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -141,13 +129,7 @@
           "verb": "MOVE",
           "line_no": 101,
           "raw_text": "MOVE CDEMO-CB00-TRN-SELECTED TO ACTIDINI OF COBIL0AI",
-          "reason": "unresolved mutate operand: ACTIDINI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 101,
-          "raw_text": "MOVE CDEMO-CB00-TRN-SELECTED TO ACTIDINI OF COBIL0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.ACTIDINI"
         },
         {
           "verb": "MOVE",
@@ -172,12 +154,6 @@
           "line_no": 101,
           "raw_text": "WHEN DFHPF3",
           "reason": "unresolved read operand: DFHPF3"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 101,
-          "raw_text": "MOVE 'COMEN01C' TO CDEMO-TO-PROGRAM ELSE",
-          "reason": "unresolved mutate operand: ELSE"
         },
         {
           "verb": "WHEN",
@@ -406,13 +382,7 @@
           "verb": "WHEN",
           "line_no": 156,
           "raw_text": "WHEN ACTIDINI OF COBIL0AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: ACTIDINI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 156,
-          "raw_text": "WHEN ACTIDINI OF COBIL0AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COBIL0AI.ACTIDINI"
         },
         {
           "verb": "WHEN",
@@ -424,13 +394,7 @@
           "verb": "MOVE",
           "line_no": 156,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -448,13 +412,7 @@
           "verb": "MOVE",
           "line_no": 156,
           "raw_text": "MOVE ACTIDINI  OF COBIL0AI TO ACCT-ID XREF-ACCT-ID",
-          "reason": "unresolved read operand: ACTIDINI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE ACTIDINI  OF COBIL0AI TO ACCT-ID XREF-ACCT-ID",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COBIL0AI.ACTIDINI"
         },
         {
           "verb": "MOVE",
@@ -466,13 +424,7 @@
           "verb": "EVALUATE",
           "line_no": 156,
           "raw_text": "EVALUATE CONFIRMI OF COBIL0AI",
-          "reason": "unresolved read operand: CONFIRMI"
-        },
-        {
-          "verb": "EVALUATE",
-          "line_no": 156,
-          "raw_text": "EVALUATE CONFIRMI OF COBIL0AI",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COBIL0AI.CONFIRMI"
         },
         {
           "verb": "EVALUATE",
@@ -490,13 +442,7 @@
           "verb": "MOVE",
           "line_no": 156,
           "raw_text": "MOVE -1      TO CONFIRML OF COBIL0AI",
-          "reason": "unresolved mutate operand: CONFIRML"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE -1      TO CONFIRML OF COBIL0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.CONFIRML"
         },
         {
           "verb": "MOVE",
@@ -508,13 +454,7 @@
           "verb": "MOVE",
           "line_no": 156,
           "raw_text": "MOVE WS-CURR-BAL   TO CURBALI    OF COBIL0AI",
-          "reason": "unresolved mutate operand: CURBALI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE WS-CURR-BAL   TO CURBALI    OF COBIL0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.CURBALI"
         },
         {
           "verb": "MOVE",
@@ -532,13 +472,7 @@
           "verb": "IF",
           "line_no": 156,
           "raw_text": "IF ACCT-CURR-BAL <= ZEROS AND ACTIDINI OF COBIL0AI NOT = SPACES AND LOW-VALUES",
-          "reason": "unresolved read operand: ACTIDINI"
-        },
-        {
-          "verb": "IF",
-          "line_no": 156,
-          "raw_text": "IF ACCT-CURR-BAL <= ZEROS AND ACTIDINI OF COBIL0AI NOT = SPACES AND LOW-VALUES",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COBIL0AI.ACTIDINI"
         },
         {
           "verb": "IF",
@@ -550,13 +484,7 @@
           "verb": "MOVE",
           "line_no": 156,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -580,13 +508,7 @@
           "verb": "MOVE",
           "line_no": 156,
           "raw_text": "MOVE -1       TO CONFIRML OF COBIL0AI",
-          "reason": "unresolved mutate operand: CONFIRML"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 156,
-          "raw_text": "MOVE -1       TO CONFIRML OF COBIL0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.CONFIRML"
         },
         {
           "verb": "MOVE",
@@ -706,13 +628,7 @@
           "verb": "MOVE",
           "line_no": 291,
           "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COBIL0AO",
-          "reason": "unresolved mutate operand: ERRMSGO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 291,
-          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COBIL0AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AO.ERRMSGO"
         },
         {
           "verb": "MOVE",
@@ -871,26 +787,8 @@
         {
           "verb": "MOVE",
           "line_no": 321,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved read operand: FUNCTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 321,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved read operand: CURRENT-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 321,
           "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COBIL0AO",
-          "reason": "unresolved mutate operand: TITLE01O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 321,
-          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COBIL0AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AO.TITLE01O"
         },
         {
           "verb": "MOVE",
@@ -902,13 +800,7 @@
           "verb": "MOVE",
           "line_no": 321,
           "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COBIL0AO",
-          "reason": "unresolved mutate operand: TITLE02O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 321,
-          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COBIL0AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AO.TITLE02O"
         },
         {
           "verb": "MOVE",
@@ -920,13 +812,7 @@
           "verb": "MOVE",
           "line_no": 321,
           "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COBIL0AO",
-          "reason": "unresolved mutate operand: TRNNAMEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 321,
-          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COBIL0AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AO.TRNNAMEO"
         },
         {
           "verb": "MOVE",
@@ -938,13 +824,7 @@
           "verb": "MOVE",
           "line_no": 321,
           "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COBIL0AO",
-          "reason": "unresolved mutate operand: PGMNAMEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 321,
-          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COBIL0AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AO.PGMNAMEO"
         },
         {
           "verb": "MOVE",
@@ -956,13 +836,7 @@
           "verb": "MOVE",
           "line_no": 321,
           "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COBIL0AO",
-          "reason": "unresolved mutate operand: CURDATEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 321,
-          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COBIL0AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AO.CURDATEO"
         },
         {
           "verb": "MOVE",
@@ -974,13 +848,7 @@
           "verb": "MOVE",
           "line_no": 321,
           "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COBIL0AO",
-          "reason": "unresolved mutate operand: CURTIMEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 321,
-          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COBIL0AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AO.CURTIMEO"
         },
         {
           "verb": "MOVE",
@@ -1053,13 +921,7 @@
           "verb": "MOVE",
           "line_no": 345,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -1071,13 +933,7 @@
           "verb": "MOVE",
           "line_no": 345,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -1132,7 +988,7 @@
           "verb": "EXEC",
           "line_no": 379,
           "raw_text": "EXEC CICS REWRITE DATASET   (WS-ACCTDAT-FILE) FROM      (ACCOUNT-RECORD) LENGTH    (LENGTH OF ACCOUNT-RECORD) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
-          "reason": "unresolved read operand: (LENGTH"
+          "reason": "unresolved read operand: ACCOUNT-RECORD).(LENGTH"
         },
         {
           "verb": "EXEC",
@@ -1174,13 +1030,7 @@
           "verb": "MOVE",
           "line_no": 379,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 379,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -1192,13 +1042,7 @@
           "verb": "MOVE",
           "line_no": 379,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 379,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -1271,13 +1115,7 @@
           "verb": "MOVE",
           "line_no": 410,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 410,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -1289,13 +1127,7 @@
           "verb": "MOVE",
           "line_no": 410,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 410,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -1380,13 +1212,7 @@
           "verb": "MOVE",
           "line_no": 443,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 443,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -1398,13 +1224,7 @@
           "verb": "MOVE",
           "line_no": 443,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 443,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -1466,7 +1286,7 @@
           "verb": "EXEC",
           "line_no": 474,
           "raw_text": "EXEC CICS READPREV DATASET   (WS-TRANSACT-FILE) INTO      (TRAN-RECORD) LENGTH    (LENGTH OF TRAN-RECORD) RIDFLD    (TRAN-ID) KEYLENGTH (LENGTH OF TRAN-ID) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
-          "reason": "unresolved read operand: (LENGTH"
+          "reason": "unresolved read operand: TRAN-RECORD).(LENGTH"
         },
         {
           "verb": "EXEC",
@@ -1508,13 +1328,7 @@
           "verb": "MOVE",
           "line_no": 474,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 474,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -1600,13 +1414,7 @@
           "verb": "MOVE",
           "line_no": 512,
           "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COBIL0AO",
-          "reason": "unresolved mutate operand: ERRMSGC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 512,
-          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COBIL0AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AO.ERRMSGC"
         },
         {
           "verb": "MOVE",
@@ -1630,13 +1438,7 @@
           "verb": "MOVE",
           "line_no": 512,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 512,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -1648,13 +1450,7 @@
           "verb": "MOVE",
           "line_no": 512,
           "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 512,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -1687,13 +1483,7 @@
           "verb": "MOVE",
           "line_no": 562,
           "raw_text": "MOVE -1              TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 562,
-          "raw_text": "MOVE -1              TO ACTIDINL OF COBIL0AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -1705,13 +1495,7 @@
           "verb": "MOVE",
           "line_no": 562,
           "raw_text": "MOVE SPACES          TO ACTIDINI OF COBIL0AI CURBALI  OF COBIL0AI CONFIRMI OF COBIL0AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: ACTIDINI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 562,
-          "raw_text": "MOVE SPACES          TO ACTIDINI OF COBIL0AI CURBALI  OF COBIL0AI CONFIRMI OF COBIL0AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.ACTIDINI"
         },
         {
           "verb": "MOVE",
@@ -1723,13 +1507,7 @@
           "verb": "MOVE",
           "line_no": 562,
           "raw_text": "MOVE SPACES          TO ACTIDINI OF COBIL0AI CURBALI  OF COBIL0AI CONFIRMI OF COBIL0AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: CURBALI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 562,
-          "raw_text": "MOVE SPACES          TO ACTIDINI OF COBIL0AI CURBALI  OF COBIL0AI CONFIRMI OF COBIL0AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.CURBALI"
         },
         {
           "verb": "MOVE",
@@ -1741,13 +1519,7 @@
           "verb": "MOVE",
           "line_no": 562,
           "raw_text": "MOVE SPACES          TO ACTIDINI OF COBIL0AI CURBALI  OF COBIL0AI CONFIRMI OF COBIL0AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: CONFIRMI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 562,
-          "raw_text": "MOVE SPACES          TO ACTIDINI OF COBIL0AI CURBALI  OF COBIL0AI CONFIRMI OF COBIL0AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COBIL0AI.CONFIRMI"
         },
         {
           "verb": "MOVE",

@@ -79,12 +79,6 @@
           "reason": "unresolved mutate operand: ERR-FLG-OFF"
         },
         {
-          "verb": "MOVE",
-          "line_no": 77,
-          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
           "verb": "IF",
           "line_no": 77,
           "raw_text": "IF EIBCALEN = 0",
@@ -276,24 +270,6 @@
       ],
       "unresolved": [
         {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE OPTIONI OF COMEN1AI(1:WS-IDX) TO WS-OPTION-X",
-          "reason": "unresolved read operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-OPTION                TO OPTIONO OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "IF",
-          "line_no": 117,
-          "raw_text": "IF WS-OPTION IS NOT NUMERIC OR WS-OPTION > CDEMO-MENU-OPT-COUNT OR WS-OPTION = ZEROS",
-          "reason": "unresolved read operand: IS"
-        },
-        {
           "verb": "IF",
           "line_no": 117,
           "raw_text": "IF WS-OPTION IS NOT NUMERIC OR WS-OPTION > CDEMO-MENU-OPT-COUNT OR WS-OPTION = ZEROS",
@@ -338,20 +314,8 @@
         {
           "verb": "MOVE",
           "line_no": 117,
-          "raw_text": "MOVE DFHRED             TO ERRMSGC  OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
           "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COMEN1AO",
           "reason": "unresolved read operand: DFHGREEN"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
         }
       ]
     },
@@ -404,14 +368,7 @@
           "length": 659
         }
       ],
-      "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
-        }
-      ]
+      "unresolved": []
     },
     "RECEIVE-MENU-SCREEN": {
       "section_name": null,
@@ -607,56 +564,7 @@
           "length": 8
         }
       ],
-      "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved read operand: FUNCTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved read operand: CURRENT-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
-        }
-      ]
+      "unresolved": []
     },
     "BUILD-MENU-OPTIONS": {
       "section_name": null,

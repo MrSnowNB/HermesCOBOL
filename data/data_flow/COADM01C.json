@@ -68,13 +68,7 @@
           "verb": "MOVE",
           "line_no": 77,
           "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COADM1AO",
-          "reason": "unresolved mutate operand: ERRMSGO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 77,
-          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COADM1AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COADM1AO.ERRMSGO"
         },
         {
           "verb": "MOVE",
@@ -234,13 +228,7 @@
           "verb": "MOVE",
           "line_no": 121,
           "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X",
-          "reason": "unresolved read operand: OPTIONI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 121,
-          "raw_text": "MOVE OPTIONI OF COADM1AI(1:WS-IDX) TO WS-OPTION-X",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COADM1AI(1:WS-IDX).OPTIONI"
         },
         {
           "verb": "MOVE",
@@ -252,25 +240,13 @@
           "verb": "MOVE",
           "line_no": 121,
           "raw_text": "MOVE WS-OPTION                TO OPTIONO OF COADM1AO",
-          "reason": "unresolved mutate operand: OPTIONO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 121,
-          "raw_text": "MOVE WS-OPTION                TO OPTIONO OF COADM1AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COADM1AO.OPTIONO"
         },
         {
           "verb": "MOVE",
           "line_no": 121,
           "raw_text": "MOVE WS-OPTION                TO OPTIONO OF COADM1AO",
           "reason": "unresolved mutate operand: COADM1AO"
-        },
-        {
-          "verb": "IF",
-          "line_no": 121,
-          "raw_text": "IF WS-OPTION IS NOT NUMERIC OR WS-OPTION > CDEMO-ADMIN-OPT-COUNT OR WS-OPTION = ZEROS",
-          "reason": "unresolved read operand: IS"
         },
         {
           "verb": "IF",
@@ -294,13 +270,7 @@
           "verb": "MOVE",
           "line_no": 121,
           "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COADM1AO",
-          "reason": "unresolved mutate operand: ERRMSGC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 121,
-          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COADM1AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COADM1AO.ERRMSGC"
         },
         {
           "verb": "MOVE",
@@ -349,13 +319,7 @@
           "verb": "MOVE",
           "line_no": 177,
           "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COADM1AO",
-          "reason": "unresolved mutate operand: ERRMSGO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 177,
-          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COADM1AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COADM1AO.ERRMSGO"
         },
         {
           "verb": "MOVE",
@@ -514,26 +478,8 @@
         {
           "verb": "MOVE",
           "line_no": 207,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved read operand: FUNCTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 207,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved read operand: CURRENT-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 207,
           "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COADM1AO",
-          "reason": "unresolved mutate operand: TITLE01O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 207,
-          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COADM1AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COADM1AO.TITLE01O"
         },
         {
           "verb": "MOVE",
@@ -545,13 +491,7 @@
           "verb": "MOVE",
           "line_no": 207,
           "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COADM1AO",
-          "reason": "unresolved mutate operand: TITLE02O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 207,
-          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COADM1AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COADM1AO.TITLE02O"
         },
         {
           "verb": "MOVE",
@@ -563,13 +503,7 @@
           "verb": "MOVE",
           "line_no": 207,
           "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COADM1AO",
-          "reason": "unresolved mutate operand: TRNNAMEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 207,
-          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COADM1AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COADM1AO.TRNNAMEO"
         },
         {
           "verb": "MOVE",
@@ -581,13 +515,7 @@
           "verb": "MOVE",
           "line_no": 207,
           "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COADM1AO",
-          "reason": "unresolved mutate operand: PGMNAMEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 207,
-          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COADM1AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COADM1AO.PGMNAMEO"
         },
         {
           "verb": "MOVE",
@@ -599,13 +527,7 @@
           "verb": "MOVE",
           "line_no": 207,
           "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COADM1AO",
-          "reason": "unresolved mutate operand: CURDATEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 207,
-          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COADM1AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COADM1AO.CURDATEO"
         },
         {
           "verb": "MOVE",
@@ -617,13 +539,7 @@
           "verb": "MOVE",
           "line_no": 207,
           "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COADM1AO",
-          "reason": "unresolved mutate operand: CURTIMEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 207,
-          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COADM1AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COADM1AO.CURTIMEO"
         },
         {
           "verb": "MOVE",
@@ -760,13 +676,7 @@
           "verb": "MOVE",
           "line_no": 271,
           "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COADM1AO",
-          "reason": "unresolved mutate operand: ERRMSGC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COADM1AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COADM1AO.ERRMSGC"
         },
         {
           "verb": "MOVE",
