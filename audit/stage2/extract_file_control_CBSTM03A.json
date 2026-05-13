@@ -1,0 +1,39 @@
+{
+  "program": "CBSTM03A",
+  "source_path": "data\\raw\\cbl\\CBSTM03A.CBL",
+  "source_sha256": "54210164f798c7b38609400d846d4b03f46da2c67cdf69e968951cfc3e8caf3e",
+  "byte_layouts_path": "data\\byte_layouts\\CBSTM03A.json",
+  "byte_layouts_sha256": "4cf5e4b65f6ec4dcd519e50e01ed504cea853d9b0df7e033a7530e916826e5e5",
+  "file_control": [
+    {
+      "logical_name": "STMT-FILE",
+      "ddname": "STMTFILE",
+      "organization": "SEQUENTIAL",
+      "access_mode": "SEQUENTIAL",
+      "record_key": null,
+      "alternate_keys": [],
+      "file_status": null,
+      "record_format": "FB",
+      "record_length": 0,
+      "input_codepage": "IBM-1047",
+      "codepage_default_applied": true,
+      "sign_convention": "none",
+      "endianness": "big"
+    },
+    {
+      "logical_name": "HTML-FILE",
+      "ddname": "HTMLFILE",
+      "organization": "SEQUENTIAL",
+      "access_mode": "SEQUENTIAL",
+      "record_key": null,
+      "alternate_keys": [],
+      "file_status": null,
+      "record_format": "FB",
+      "record_length": 0,
+      "input_codepage": "IBM-1047",
+      "codepage_default_applied": true,
+      "sign_convention": "none",
+      "endianness": "big"
+    }
+  ]
+}
