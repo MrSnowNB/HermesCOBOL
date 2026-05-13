@@ -322,11 +322,11 @@ def main(argv: list[str] | None = None) -> int:
 
     prog = report["program"]
     if report["pass"]:
-        print(f"PASS T-PASS1-BYTES {prog} → {args.out}")
+        print(f"PASS T-PASS1-BYTES {prog} -> {args.out}")
         return 0
     else:
         print(f"FAIL T-PASS1-BYTES {prog} "
-              f"({len(report['failures'])} failure(s)) → {args.out}",
+              f"({len(report['failures'])} failure(s)) -> {args.out}",
               file=sys.stderr)
         for fail in report["failures"][:10]:
             print(f"  - [{fail['rule']}] {fail['item']}: {fail['detail']}",

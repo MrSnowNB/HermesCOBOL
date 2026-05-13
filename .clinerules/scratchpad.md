@@ -93,7 +93,7 @@ Batch class:
 
 ---
 
-### STEP B2 [IN_PROGRESS]
+### STEP B2 [DONE]
 
 **Goal:**
 Run `validate_byte_layout.py` in-place across all programs and capture output.
@@ -131,7 +131,14 @@ Script runs to completion. Output file is non-empty. Per-program status lines vi
 Paste error under RESULT. Mark BLOCKED. Save scratchpad. STOP.
 
 **RESULT:**
-<!-- Qwen appends actual output here -->
+- Script runs to completion: PASS
+- Output file tmp_validate_byte_layout_out.txt: 66 lines, non-empty
+- Per-program status lines: 31/31 PASS (CBACT01C, CBACT02C, CBACT03C, CBACT04C, CBCUS01C, CBEXPORT, CBIMPORT, CBSTM03A, CBSTM03B, CBTRN01C, CBTRN02C, CBTRN03C, COACTUPC, COACTVWC, COADM01C, COBIL00C, COBSWAIT, COCRDLIC, COCRDSLC, COCRDUPC, COMEN01C, CORPT00C, COSGN00C, COTRN00C, COTRN01C, COTRN02C, COUSR00C, COUSR01C, COUSR02C, COUSR03C, CSUTLDTC)
+- No WARN/ERROR/FAIL/unresolved/missing/copybook patterns found
+
+Note: The script interface differs from scratchpad's expected flags (--layout-dir, --source-dir, --copybook-dirs). Actual interface uses --byte-layout and --out for single-file processing. A batch wrapper (tmp_validate_all.bat) was used to loop through all JSON files in data/byte_layouts/.
+
+All 31 programs passed T-PASS1-BYTES validation with 0 failures.
 
 ---
 
@@ -268,8 +275,8 @@ If unexpected files are staged, run `git reset HEAD` and identify them. Mark BLO
 ## CURRENT STATE
 
 **Stage:** 2 — Diagnostic Run
-**Status:** STEP B2 IN_PROGRESS
+**Status:** STEP B2 [DONE]
 **Branch:** main
-**Last action:** Scratchpad restored and reseeded by cloud planning agent after pull overwrite.
-**Next action:** Execute STEP B2 only. Stop after appending RESULT. Do not begin B3.
+**Last action:** STEP B2 executed. All 31 programs passed T-PASS1-BYTES validation. Output captured to tmp_validate_byte_layout_out.txt (66 lines).
+**Next action:** Halt. Awaiting human confirmation to proceed to STEP B3.
 **Blocker:** None.

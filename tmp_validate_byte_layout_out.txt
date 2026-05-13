@@ -1,0 +1,66 @@
+Starting validate_byte_layout.py for all programs 
+=========================================================== 
+PASS T-PASS1-BYTES CBACT01C -> tmp_validate_CBACT01C.json
+--- 
+PASS T-PASS1-BYTES CBACT02C -> tmp_validate_CBACT02C.json
+--- 
+PASS T-PASS1-BYTES CBACT03C -> tmp_validate_CBACT03C.json
+--- 
+PASS T-PASS1-BYTES CBACT04C -> tmp_validate_CBACT04C.json
+--- 
+PASS T-PASS1-BYTES CBCUS01C -> tmp_validate_CBCUS01C.json
+--- 
+PASS T-PASS1-BYTES CBEXPORT -> tmp_validate_CBEXPORT.json
+--- 
+PASS T-PASS1-BYTES CBIMPORT -> tmp_validate_CBIMPORT.json
+--- 
+PASS T-PASS1-BYTES CBSTM03A -> tmp_validate_CBSTM03A.json
+--- 
+PASS T-PASS1-BYTES CBSTM03B -> tmp_validate_CBSTM03B.json
+--- 
+PASS T-PASS1-BYTES CBTRN01C -> tmp_validate_CBTRN01C.json
+--- 
+PASS T-PASS1-BYTES CBTRN02C -> tmp_validate_CBTRN02C.json
+--- 
+PASS T-PASS1-BYTES CBTRN03C -> tmp_validate_CBTRN03C.json
+--- 
+PASS T-PASS1-BYTES COACTUPC -> tmp_validate_COACTUPC.json
+--- 
+PASS T-PASS1-BYTES COACTVWC -> tmp_validate_COACTVWC.json
+--- 
+PASS T-PASS1-BYTES COADM01C -> tmp_validate_COADM01C.json
+--- 
+PASS T-PASS1-BYTES COBIL00C -> tmp_validate_COBIL00C.json
+--- 
+PASS T-PASS1-BYTES COBSWAIT -> tmp_validate_COBSWAIT.json
+--- 
+PASS T-PASS1-BYTES COCRDLIC -> tmp_validate_COCRDLIC.json
+--- 
+PASS T-PASS1-BYTES COCRDSLC -> tmp_validate_COCRDSLC.json
+--- 
+PASS T-PASS1-BYTES COCRDUPC -> tmp_validate_COCRDUPC.json
+--- 
+PASS T-PASS1-BYTES COMEN01C -> tmp_validate_COMEN01C.json
+--- 
+PASS T-PASS1-BYTES CORPT00C -> tmp_validate_CORPT00C.json
+--- 
+PASS T-PASS1-BYTES COSGN00C -> tmp_validate_COSGN00C.json
+--- 
+PASS T-PASS1-BYTES COTRN00C -> tmp_validate_COTRN00C.json
+--- 
+PASS T-PASS1-BYTES COTRN01C -> tmp_validate_COTRN01C.json
+--- 
+PASS T-PASS1-BYTES COTRN02C -> tmp_validate_COTRN02C.json
+--- 
+PASS T-PASS1-BYTES COUSR00C -> tmp_validate_COUSR00C.json
+--- 
+PASS T-PASS1-BYTES COUSR01C -> tmp_validate_COUSR01C.json
+--- 
+PASS T-PASS1-BYTES COUSR02C -> tmp_validate_COUSR02C.json
+--- 
+PASS T-PASS1-BYTES COUSR03C -> tmp_validate_COUSR03C.json
+--- 
+PASS T-PASS1-BYTES CSUTLDTC -> tmp_validate_CSUTLDTC.json
+--- 
+=========================================================== 
+Summary: 
