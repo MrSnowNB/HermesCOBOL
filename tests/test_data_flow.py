@@ -933,3 +933,53 @@ if __name__ == '__main__':
     suite  = loader.loadTestsFromModule(__import__('__main__'))
     result = unittest.TextTestRunner(verbosity=2).run(suite)
     sys.exit(0 if result.wasSuccessful() else 1)
+
+
+# ── Stage 3 vectors ────────────────────────────────────────────────────────
+
+
+class TestV01DirectAssignment(unittest.TestCase):
+    """V01: MOVE VAR-A TO VAR-B — reads=[VAR-A], mutates=[VAR-B]"""
+
+    def test_v01_direct_assignment(self):
+        r, m, u = _run('MOVE VAR-A TO VAR-B')
+        rf = [e['field'] for e in r]
+        mf = [e['field'] for e in m]
+        self.assertIn('VAR-A', rf, f"VAR-A not in reads: {r}")
+        self.assertIn('VAR-B', mf, f"VAR-B not in mutates: {m}")
+        self.assertNotIn('VAR-B', rf, f"VAR-B should not be in reads: {r}")
+
+
+class TestV02LiteralRejection(unittest.TestCase):
+    """V02: MOVE literal TO VAR-B — reads=[], mutates=[VAR-B]"""
+
+    def test_v02_literal_rejection(self):
+        r, m, u = _run("MOVE 'HARDCODED-LITERAL' TO VAR-B")
+        rf = [e['field'] for e in r]
+        mf = [e['field'] for e in m]
+        self.assertEqual(rf, [], f"reads should be empty for literal: {r}")
+        self.assertIn('VAR-B', mf, f"VAR-B not in mutates: {m}")
+
+
+class TestV03ComputeDecomposition(unittest.TestCase):
+    """V03: COMPUTE VAR-X = (VAR-A * VAR-B) - VAR-C — reads has all RHS operands"""
+
+    def test_v03_compute_decomposition(self):
+        r, m, u = _run('COMPUTE VAR-X = (VAR-A * VAR-B) - VAR-C')
+        rf = [e['field'] for e in r]
+        mf = [e['field'] for e in m]
+        for var in ["VAR-A", "VAR-B", "VAR-C"]:
+            self.assertIn(var, rf, f"{var} not in reads: {r}")
+        self.assertIn('VAR-X', mf, f"VAR-X not in mutates: {m}")
+        self.assertNotIn('VAR-X', rf, f"VAR-X should not be in reads: {r}")
+
+
+class TestV04ImplicitMutationAdd(unittest.TestCase):
+    """V04: ADD 1 TO COUNTER-VAR — COUNTER-VAR in both reads and mutates"""
+
+    def test_v04_implicit_mutation_add(self):
+        r, m, u = _run('ADD 1 TO COUNTER-VAR')
+        rf = [e['field'] for e in r]
+        mf = [e['field'] for e in m]
+        self.assertIn('COUNTER-VAR', rf, f"COUNTER-VAR not in reads: {r}")
+        self.assertIn('COUNTER-VAR', mf, f"COUNTER-VAR not in mutates: {m}")
