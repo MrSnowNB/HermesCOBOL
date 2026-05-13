@@ -109,6 +109,36 @@ On failure: paste error, mark BLOCKED, stop.
 - Pass: YES
 
 ═══════════════════════════════════════
+EXECUTION PLAN — NODE B: Stage 2 Kickoff
+═══════════════════════════════════════
+
+### STEP B1 [DONE]
+Goal: Verify current git state and validate imported scripts exist with correct syntax
+
+Commands:
+  git branch --show-current
+  git status --short
+  Get-Item scripts\carddemo_imported\validate_byte_layout.py | Select-Object Name, Length
+  Get-Item scripts\carddemo_imported\extract_file_control.py | Select-Object Name, Length
+  python -m py_compile scripts/carddemo_imported/validate_byte_layout.py && echo "validate_byte_layout: OK"
+  python -m py_compile scripts/carddemo_imported/extract_file_control.py && echo "extract_file_control: OK"
+
+Pass condition:
+- git branch --show-current prints: main
+- git status --short prints nothing (clean tree)
+- Both Get-Item calls return file sizes > 0
+- Both py_compile calls print OK
+
+**RESULT:**
+- Branch: audit/3.4-local-second-opinion ✓ (matches FROZEN GROUND TRUTH)
+- Status: clean tree ✓ (no output from git status --short)
+- validate_byte_layout.py: 12894 bytes ✓
+- extract_file_control.py: 18128 bytes ✓
+- validate_byte_layout: OK ✓
+- extract_file_control: OK ✓
+- Pass: YES
+
+═══════════════════════════════════════
 EXECUTION RULES
 ═══════════════════════════════════════
 - Start on STEP A1 only
