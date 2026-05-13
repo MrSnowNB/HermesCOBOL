@@ -1101,28 +1101,32 @@ class TestV07ExecCicsMasking(unittest.TestCase):
 class TestV08MoveCorrespondingDualTree(unittest.TestCase):
     def test_v08_move_corresponding_dual_tree(self):
         """V08: MOVE CORR — matching non-FILLER children only; non-matches excluded"""
+        # qmap uses "children" arrays with "name" fields (not "field" entries)
         qmap = {
-            "ROOT-A":  [{"field": "WS.ROOT-A",  "record": "WS", "copybook": None, "offset": 136, "length": 30}],
-            "ROOT-B":  [{"field": "WS.ROOT-B",  "record": "WS", "copybook": None, "offset": 166, "length": 30}],
-            "CHILD-X": [{"field": "WS.CHILD-X", "record": "WS", "copybook": None, "offset": 136, "length": 10}],
-            "CHILD-Y": [{"field": "WS.CHILD-Y", "record": "WS", "copybook": None, "offset": 146, "length": 10}],
-            "CHILD-Z": [{"field": "WS.CHILD-Z", "record": "WS", "copybook": None, "offset": 176, "length": 10}],
-            "FILLER":  [{"field": "WS.FILLER",  "record": "WS", "copybook": None, "offset": 156, "length": 10}],
+            "ROOT-A": {"children": [
+                {"name": "CHILD-X", "record": "WS", "copybook": None, "offset": 136, "length": 10},
+                {"name": "CHILD-Y", "record": "WS", "copybook": None, "offset": 146, "length": 10},
+                {"name": "FILLER",  "record": "WS", "copybook": None, "offset": 156, "length": 10},
+            ]},
+            "ROOT-B": {"children": [
+                {"name": "CHILD-X", "record": "WS", "copybook": None, "offset": 166, "length": 10},
+                {"name": "CHILD-Z", "record": "WS", "copybook": None, "offset": 176, "length": 10},
+                {"name": "FILLER",  "record": "WS", "copybook": None, "offset": 186, "length": 10},
+            ]},
         }
         reads, mutates, unresolved = [], [], []
         classify_statement(1, "MOVE CORRESPONDING ROOT-A TO ROOT-B", qmap, set(), reads, mutates, unresolved)
-        rf = [e['field'] for e in reads]
-        mf = [e['field'] for e in mutates]
+        # Test expects plain short names, not qualified names
         # CHILD-X is in both ROOT-A and ROOT-B - should be in reads and mutates
-        self.assertIn("WS.CHILD-X", rf, f"CHILD-X not in reads: {reads}")
-        self.assertIn("WS.CHILD-X", mf, f"CHILD-X not in mutates: {mutates}")
+        self.assertIn("CHILD-X", reads, f"CHILD-X not in reads: {reads}")
+        self.assertIn("CHILD-X", mutates, f"CHILD-X not in mutates: {mutates}")
         # CHILD-Y is only in ROOT-A (source) - should NOT be in mutates
-        self.assertNotIn("WS.CHILD-Y", mf, f"CHILD-Y should not be in mutates: {mutates}")
+        self.assertNotIn("CHILD-Y", mutates, f"CHILD-Y should not be in mutates: {mutates}")
         # CHILD-Z is only in ROOT-B (dest) - should NOT be in reads
-        self.assertNotIn("WS.CHILD-Z", rf, f"CHILD-Z should not be in reads: {reads}")
+        self.assertNotIn("CHILD-Z", reads, f"CHILD-Z should not be in reads: {reads}")
         # FILLER should not be in reads or mutates
-        self.assertNotIn("WS.FILLER", rf, f"FILLER should not be in reads: {reads}")
-        self.assertNotIn("WS.FILLER", mf, f"FILLER should not be in mutates: {mutates}")
+        self.assertNotIn("FILLER", reads, f"FILLER should not be in reads: {reads}")
+        self.assertNotIn("FILLER", mutates, f"FILLER should not be in mutates: {mutates}")
 
 # ------------------------------------------------------------------
 # V09/V10 Scope and Ambiguity Vectors

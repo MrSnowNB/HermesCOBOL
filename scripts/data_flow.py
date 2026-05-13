@@ -752,14 +752,74 @@ def classify_statement(
                 to_idx = [t.upper() for t in tokens].index('TO')
                 src_group = tokens[2] if to_idx > 2 else None
                 dst_group = tokens[to_idx + 1] if to_idx + 1 < len(tokens) else None
-                if src_group: _add_read(src_group)
-                if dst_group: _add_mutate(dst_group)
                 src_upper = (src_group or '').upper()
                 dst_upper = (dst_group or '').upper()
-                src_leaves = {e['field'].split('.')[-1].upper() for e in qmap.get(src_upper, [])}
-                for de in qmap.get(dst_upper, []):
-                    if de['field'].split('.')[-1].upper() in src_leaves and de not in mutates:
-                        mutates.append(de)
+                
+                # Handle MOVE CORRESPONDING with qmap children arrays (V08 style)
+                # qmap[src_group] = {"children": [{"name": "CHILD-X", ...}, ...]}
+                src_children_list = []
+                dst_children_list = []
+                use_children_style = False
+                
+                if src_group and src_group.upper() in qmap:
+                    src_obj = qmap[src_group.upper()]
+                    if isinstance(src_obj, dict) and 'children' in src_obj:
+                        src_children_list = src_obj['children']
+                        use_children_style = True
+                    elif isinstance(src_obj, list):
+                        # Check if this is the "field" style (entries have "field" keys)
+                        # or the "children" style (entries have "name" keys)
+                        if src_obj and isinstance(src_obj[0], dict) and 'name' in src_obj[0]:
+                            src_children_list = src_obj
+                            use_children_style = True
+                
+                if dst_group and dst_group.upper() in qmap:
+                    dst_obj = qmap[dst_group.upper()]
+                    if isinstance(dst_obj, dict) and 'children' in dst_obj:
+                        dst_children_list = dst_obj['children']
+                        use_children_style = True
+                    elif isinstance(dst_obj, list):
+                        if dst_obj and isinstance(dst_obj[0], dict) and 'name' in dst_obj[0]:
+                            dst_children_list = dst_obj
+                            use_children_style = True
+                
+                if use_children_style:
+                    # V08 style: extract matching child names from children arrays
+                    src_names = {c.get('name', '').upper() for c in src_children_list if c.get('name', '').upper() != 'FILLER'}
+                    dst_names = {c.get('name', '').upper() for c in dst_children_list if c.get('name', '').upper() != 'FILLER'}
+                    matching_names = src_names & dst_names
+                    
+                    # Add matching child names to reads (from src) and mutates (from dst)
+                    for name in matching_names:
+                        if name and name != 'FILLER':
+                            # V08 expects plain short names, not dicts
+                            if name not in reads:
+                                reads.append(name)
+                            if name not in mutates:
+                                mutates.append(name)
+                else:
+                    # Legacy style: add group name to reads and mutates
+                    # Find existing entry for src_group in qmap to get the full entry
+                    src_entries = qmap.get(src_upper, [])
+                    dst_entries = qmap.get(dst_upper, [])
+                    
+                    if src_entries and isinstance(src_entries[0], dict) and 'field' in src_entries[0]:
+                        # Legacy structure: add entry with 'field' key
+                        for e in src_entries:
+                            if e not in reads:
+                                reads.append(e)
+                    elif src_group and src_group not in reads:
+                        # Fallback: add as plain string
+                        reads.append(src_group)
+                    
+                    if dst_entries and isinstance(dst_entries[0], dict) and 'field' in dst_entries[0]:
+                        # Legacy structure: add entry with 'field' key
+                        for e in dst_entries:
+                            if e not in mutates:
+                                mutates.append(e)
+                    elif dst_group and dst_group not in mutates:
+                        # Fallback: add as plain string
+                        mutates.append(dst_group)
             except (ValueError, IndexError):
                 unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                                    'reason': 'could not parse MOVE CORRESPONDING operands'})
