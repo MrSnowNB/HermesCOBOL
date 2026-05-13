@@ -1,0 +1,1567 @@
+{
+  "program": "CBTRN03C",
+  "schema_version": "1.2",
+  "records": [
+    {
+      "name": "FD-TRANFILE-REC",
+      "copybook": null,
+      "total_bytes": 350,
+      "fields": [
+        {
+          "qualified_name": "FD-TRANFILE-REC.FD-TRANS-DATA",
+          "level": 5,
+          "offset": 0,
+          "length": 304,
+          "pic": "X(304)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FD-TRANFILE-REC.FD-TRAN-PROC-TS",
+          "level": 5,
+          "offset": 304,
+          "length": 26,
+          "pic": "X(26)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FD-TRANFILE-REC.FD-FILLER",
+          "level": 5,
+          "offset": 330,
+          "length": 20,
+          "pic": "X(20)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "FD-CARDXREF-REC",
+      "copybook": null,
+      "total_bytes": 50,
+      "fields": [
+        {
+          "qualified_name": "FD-CARDXREF-REC.FD-XREF-CARD-NUM",
+          "level": 5,
+          "offset": 0,
+          "length": 16,
+          "pic": "X(16)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FD-CARDXREF-REC.FD-XREF-DATA",
+          "level": 5,
+          "offset": 16,
+          "length": 34,
+          "pic": "X(34)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "FD-TRANTYPE-REC",
+      "copybook": null,
+      "total_bytes": 60,
+      "fields": [
+        {
+          "qualified_name": "FD-TRANTYPE-REC.FD-TRAN-TYPE",
+          "level": 5,
+          "offset": 0,
+          "length": 2,
+          "pic": "X(02)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FD-TRANTYPE-REC.FD-TRAN-DATA",
+          "level": 5,
+          "offset": 2,
+          "length": 58,
+          "pic": "X(58)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "FD-TRAN-CAT-RECORD",
+      "copybook": null,
+      "total_bytes": 60,
+      "fields": [
+        {
+          "qualified_name": "FD-TRAN-CAT-RECORD.FD-TRAN-CAT-KEY",
+          "level": 5,
+          "offset": 0,
+          "length": 6,
+          "pic": null,
+          "storage": "GROUP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FD-TRAN-CAT-RECORD.FD-TRAN-CAT-KEY.FD-TRAN-TYPE-CD",
+          "level": 10,
+          "offset": 0,
+          "length": 2,
+          "pic": "X(02)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FD-TRAN-CAT-RECORD.FD-TRAN-CAT-KEY.FD-TRAN-CAT-CD",
+          "level": 10,
+          "offset": 2,
+          "length": 4,
+          "pic": "9(04)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FD-TRAN-CAT-RECORD.FD-TRAN-CAT-DATA",
+          "level": 5,
+          "offset": 6,
+          "length": 54,
+          "pic": "X(54)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "FD-REPTFILE-REC",
+      "copybook": null,
+      "total_bytes": 133,
+      "fields": [
+        {
+          "qualified_name": "FD-REPTFILE-REC",
+          "level": 1,
+          "offset": 0,
+          "length": 133,
+          "pic": "X(133)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "FD-DATEPARM-REC",
+      "copybook": null,
+      "total_bytes": 80,
+      "fields": [
+        {
+          "qualified_name": "FD-DATEPARM-REC",
+          "level": 1,
+          "offset": 0,
+          "length": 80,
+          "pic": "X(80)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TRAN-RECORD",
+      "copybook": "CVTRA05Y",
+      "total_bytes": 350,
+      "fields": [
+        {
+          "qualified_name": "TRAN-RECORD.TRAN-ID",
+          "level": 5,
+          "offset": 0,
+          "length": 16,
+          "pic": "X(16)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA05Y"
+        },
+        {
+          "qualified_name": "TRAN-RECORD.TRAN-TYPE-CD",
+          "level": 5,
+          "offset": 16,
+          "length": 2,
+          "pic": "X(02)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA05Y"
+        },
+        {
+          "qualified_name": "TRAN-RECORD.TRAN-CAT-CD",
+          "level": 5,
+          "offset": 18,
+          "length": 4,
+          "pic": "9(04)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA05Y"
+        },
+        {
+          "qualified_name": "TRAN-RECORD.TRAN-SOURCE",
+          "level": 5,
+          "offset": 22,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA05Y"
+        },
+        {
+          "qualified_name": "TRAN-RECORD.TRAN-DESC",
+          "level": 5,
+          "offset": 32,
+          "length": 100,
+          "pic": "X(100)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA05Y"
+        },
+        {
+          "qualified_name": "TRAN-RECORD.TRAN-AMT",
+          "level": 5,
+          "offset": 132,
+          "length": 11,
+          "pic": "S9(09)V99",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA05Y"
+        },
+        {
+          "qualified_name": "TRAN-RECORD.TRAN-MERCHANT-ID",
+          "level": 5,
+          "offset": 143,
+          "length": 9,
+          "pic": "9(09)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA05Y"
+        },
+        {
+          "qualified_name": "TRAN-RECORD.TRAN-MERCHANT-NAME",
+          "level": 5,
+          "offset": 152,
+          "length": 50,
+          "pic": "X(50)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA05Y"
+        },
+        {
+          "qualified_name": "TRAN-RECORD.TRAN-MERCHANT-CITY",
+          "level": 5,
+          "offset": 202,
+          "length": 50,
+          "pic": "X(50)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA05Y"
+        },
+        {
+          "qualified_name": "TRAN-RECORD.TRAN-MERCHANT-ZIP",
+          "level": 5,
+          "offset": 252,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA05Y"
+        },
+        {
+          "qualified_name": "TRAN-RECORD.TRAN-CARD-NUM",
+          "level": 5,
+          "offset": 262,
+          "length": 16,
+          "pic": "X(16)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA05Y"
+        },
+        {
+          "qualified_name": "TRAN-RECORD.TRAN-ORIG-TS",
+          "level": 5,
+          "offset": 278,
+          "length": 26,
+          "pic": "X(26)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA05Y"
+        },
+        {
+          "qualified_name": "TRAN-RECORD.TRAN-PROC-TS",
+          "level": 5,
+          "offset": 304,
+          "length": 26,
+          "pic": "X(26)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA05Y"
+        },
+        {
+          "qualified_name": "TRAN-RECORD.FILLER",
+          "level": 5,
+          "offset": 330,
+          "length": 20,
+          "pic": "X(20)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA05Y"
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TRANFILE-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "TRANFILE-STATUS.TRANFILE-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "TRANFILE-STATUS.TRANFILE-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "CARD-XREF-RECORD",
+      "copybook": "CVACT03Y",
+      "total_bytes": 50,
+      "fields": [
+        {
+          "qualified_name": "CARD-XREF-RECORD.XREF-CARD-NUM",
+          "level": 5,
+          "offset": 0,
+          "length": 16,
+          "pic": "X(16)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT03Y"
+        },
+        {
+          "qualified_name": "CARD-XREF-RECORD.XREF-CUST-ID",
+          "level": 5,
+          "offset": 16,
+          "length": 9,
+          "pic": "9(09)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT03Y"
+        },
+        {
+          "qualified_name": "CARD-XREF-RECORD.XREF-ACCT-ID",
+          "level": 5,
+          "offset": 25,
+          "length": 11,
+          "pic": "9(11)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT03Y"
+        },
+        {
+          "qualified_name": "CARD-XREF-RECORD.FILLER",
+          "level": 5,
+          "offset": 36,
+          "length": 14,
+          "pic": "X(14)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT03Y"
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "CARDXREF-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "CARDXREF-STATUS.CARDXREF-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "CARDXREF-STATUS.CARDXREF-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TRAN-TYPE-RECORD",
+      "copybook": "CVTRA03Y",
+      "total_bytes": 60,
+      "fields": [
+        {
+          "qualified_name": "TRAN-TYPE-RECORD.TRAN-TYPE",
+          "level": 5,
+          "offset": 0,
+          "length": 2,
+          "pic": "X(02)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA03Y"
+        },
+        {
+          "qualified_name": "TRAN-TYPE-RECORD.TRAN-TYPE-DESC",
+          "level": 5,
+          "offset": 2,
+          "length": 50,
+          "pic": "X(50)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA03Y"
+        },
+        {
+          "qualified_name": "TRAN-TYPE-RECORD.FILLER",
+          "level": 5,
+          "offset": 52,
+          "length": 8,
+          "pic": "X(08)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA03Y"
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TRANTYPE-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "TRANTYPE-STATUS.TRANTYPE-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "TRANTYPE-STATUS.TRANTYPE-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TRAN-CAT-RECORD",
+      "copybook": "CVTRA04Y",
+      "total_bytes": 60,
+      "fields": [
+        {
+          "qualified_name": "TRAN-CAT-RECORD.TRAN-CAT-KEY",
+          "level": 5,
+          "offset": 0,
+          "length": 6,
+          "pic": null,
+          "storage": "GROUP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA04Y"
+        },
+        {
+          "qualified_name": "TRAN-CAT-RECORD.TRAN-CAT-KEY.TRAN-TYPE-CD",
+          "level": 10,
+          "offset": 0,
+          "length": 2,
+          "pic": "X(02)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA04Y"
+        },
+        {
+          "qualified_name": "TRAN-CAT-RECORD.TRAN-CAT-KEY.TRAN-CAT-CD",
+          "level": 10,
+          "offset": 2,
+          "length": 4,
+          "pic": "9(04)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA04Y"
+        },
+        {
+          "qualified_name": "TRAN-CAT-RECORD.TRAN-CAT-TYPE-DESC",
+          "level": 5,
+          "offset": 6,
+          "length": 50,
+          "pic": "X(50)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA04Y"
+        },
+        {
+          "qualified_name": "TRAN-CAT-RECORD.FILLER",
+          "level": 5,
+          "offset": 56,
+          "length": 4,
+          "pic": "X(04)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA04Y"
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TRANCATG-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "TRANCATG-STATUS.TRANCATG-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "TRANCATG-STATUS.TRANCATG-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "REPORT-NAME-HEADER",
+      "copybook": "CVTRA07Y",
+      "total_bytes": 115,
+      "fields": [
+        {
+          "qualified_name": "REPORT-NAME-HEADER.REPT-SHORT-NAME",
+          "level": 5,
+          "offset": 0,
+          "length": 38,
+          "pic": "X(38)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "REPORT-NAME-HEADER.REPT-LONG-NAME",
+          "level": 5,
+          "offset": 38,
+          "length": 41,
+          "pic": "X(41)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "REPORT-NAME-HEADER.REPT-DATE-HEADER",
+          "level": 5,
+          "offset": 79,
+          "length": 12,
+          "pic": "X(12)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "REPORT-NAME-HEADER.REPT-START-DATE",
+          "level": 5,
+          "offset": 91,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "REPORT-NAME-HEADER.FILLER",
+          "level": 5,
+          "offset": 101,
+          "length": 4,
+          "pic": "X(04)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "REPORT-NAME-HEADER.REPT-END-DATE",
+          "level": 5,
+          "offset": 105,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TRANSACTION-DETAIL-REPORT",
+      "copybook": "CVTRA07Y",
+      "total_bytes": 108,
+      "fields": [
+        {
+          "qualified_name": "TRANSACTION-DETAIL-REPORT.TRAN-REPORT-TRANS-ID",
+          "level": 5,
+          "offset": 0,
+          "length": 16,
+          "pic": "X(16)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-DETAIL-REPORT.FILLER",
+          "level": 5,
+          "offset": 16,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-DETAIL-REPORT.TRAN-REPORT-ACCOUNT-ID",
+          "level": 5,
+          "offset": 17,
+          "length": 11,
+          "pic": "X(11)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-DETAIL-REPORT.FILLER",
+          "level": 5,
+          "offset": 28,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-DETAIL-REPORT.TRAN-REPORT-TYPE-CD",
+          "level": 5,
+          "offset": 29,
+          "length": 2,
+          "pic": "X(02)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-DETAIL-REPORT.FILLER",
+          "level": 5,
+          "offset": 31,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-DETAIL-REPORT.TRAN-REPORT-TYPE-DESC",
+          "level": 5,
+          "offset": 32,
+          "length": 15,
+          "pic": "X(15)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-DETAIL-REPORT.FILLER",
+          "level": 5,
+          "offset": 47,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-DETAIL-REPORT.TRAN-REPORT-CAT-CD",
+          "level": 5,
+          "offset": 48,
+          "length": 4,
+          "pic": "9(04)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-DETAIL-REPORT.FILLER",
+          "level": 5,
+          "offset": 52,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-DETAIL-REPORT.TRAN-REPORT-CAT-DESC",
+          "level": 5,
+          "offset": 53,
+          "length": 29,
+          "pic": "X(29)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-DETAIL-REPORT.FILLER",
+          "level": 5,
+          "offset": 82,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-DETAIL-REPORT.TRAN-REPORT-SOURCE",
+          "level": 5,
+          "offset": 83,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-DETAIL-REPORT.FILLER",
+          "level": 5,
+          "offset": 93,
+          "length": 4,
+          "pic": "X(04)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-DETAIL-REPORT.TRAN-REPORT-AMT",
+          "level": 5,
+          "offset": 97,
+          "length": 9,
+          "pic": "-ZZZ,ZZZ,ZZZ",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-DETAIL-REPORT.FILLER",
+          "level": 5,
+          "offset": 106,
+          "length": 2,
+          "pic": "X(02)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TRANSACTION-HEADER-1",
+      "copybook": "CVTRA07Y",
+      "total_bytes": 114,
+      "fields": [
+        {
+          "qualified_name": "TRANSACTION-HEADER-1.FILLER",
+          "level": 5,
+          "offset": 0,
+          "length": 17,
+          "pic": "X(17)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-HEADER-1.FILLER",
+          "level": 5,
+          "offset": 17,
+          "length": 12,
+          "pic": "X(12)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-HEADER-1.FILLER",
+          "level": 5,
+          "offset": 29,
+          "length": 19,
+          "pic": "X(19)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-HEADER-1.FILLER",
+          "level": 5,
+          "offset": 48,
+          "length": 35,
+          "pic": "X(35)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-HEADER-1.FILLER",
+          "level": 5,
+          "offset": 83,
+          "length": 14,
+          "pic": "X(14)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-HEADER-1.FILLER",
+          "level": 5,
+          "offset": 97,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "TRANSACTION-HEADER-1.FILLER",
+          "level": 5,
+          "offset": 98,
+          "length": 16,
+          "pic": "X(16)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TRANSACTION-HEADER-2",
+      "copybook": "CVTRA07Y",
+      "total_bytes": 133,
+      "fields": [
+        {
+          "qualified_name": "TRANSACTION-HEADER-2",
+          "level": 1,
+          "offset": 0,
+          "length": 133,
+          "pic": "X(133)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "REPORT-PAGE-TOTALS",
+      "copybook": "CVTRA07Y",
+      "total_bytes": 106,
+      "fields": [
+        {
+          "qualified_name": "REPORT-PAGE-TOTALS.FILLER",
+          "level": 5,
+          "offset": 0,
+          "length": 11,
+          "pic": "X(11)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "REPORT-PAGE-TOTALS.FILLER",
+          "level": 5,
+          "offset": 11,
+          "length": 86,
+          "pic": "X(86)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "REPORT-PAGE-TOTALS.REPT-PAGE-TOTAL",
+          "level": 5,
+          "offset": 97,
+          "length": 9,
+          "pic": "+ZZZ,ZZZ,ZZZ",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "REPORT-ACCOUNT-TOTALS",
+      "copybook": "CVTRA07Y",
+      "total_bytes": 106,
+      "fields": [
+        {
+          "qualified_name": "REPORT-ACCOUNT-TOTALS.FILLER",
+          "level": 5,
+          "offset": 0,
+          "length": 13,
+          "pic": "X(13)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "REPORT-ACCOUNT-TOTALS.FILLER",
+          "level": 5,
+          "offset": 13,
+          "length": 84,
+          "pic": "X(84)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "REPORT-ACCOUNT-TOTALS.REPT-ACCOUNT-TOTAL",
+          "level": 5,
+          "offset": 97,
+          "length": 9,
+          "pic": "+ZZZ,ZZZ,ZZZ",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "REPORT-GRAND-TOTALS",
+      "copybook": "CVTRA07Y",
+      "total_bytes": 106,
+      "fields": [
+        {
+          "qualified_name": "REPORT-GRAND-TOTALS.FILLER",
+          "level": 5,
+          "offset": 0,
+          "length": 11,
+          "pic": "X(11)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "REPORT-GRAND-TOTALS.FILLER",
+          "level": 5,
+          "offset": 11,
+          "length": 86,
+          "pic": "X(86)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        },
+        {
+          "qualified_name": "REPORT-GRAND-TOTALS.REPT-GRAND-TOTAL",
+          "level": 5,
+          "offset": 97,
+          "length": 9,
+          "pic": "+ZZZ,ZZZ,ZZZ",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVTRA07Y"
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TRANREPT-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "TRANREPT-STATUS.REPTFILE-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "TRANREPT-STATUS.REPTFILE-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "DATEPARM-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "DATEPARM-STATUS.DATEPARM-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "DATEPARM-STATUS.DATEPARM-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "WS-DATEPARM-RECORD",
+      "copybook": null,
+      "total_bytes": 21,
+      "fields": [
+        {
+          "qualified_name": "WS-DATEPARM-RECORD.WS-START-DATE",
+          "level": 5,
+          "offset": 0,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-DATEPARM-RECORD.FILLER",
+          "level": 5,
+          "offset": 10,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-DATEPARM-RECORD.WS-END-DATE",
+          "level": 5,
+          "offset": 11,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "WS-REPORT-VARS",
+      "copybook": null,
+      "total_bytes": 190,
+      "fields": [
+        {
+          "qualified_name": "WS-REPORT-VARS.WS-FIRST-TIME",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-REPORT-VARS.WS-LINE-COUNTER",
+          "level": 5,
+          "offset": 1,
+          "length": 5,
+          "pic": "9(09)",
+          "storage": "COMP-3",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-REPORT-VARS.WS-PAGE-SIZE",
+          "level": 5,
+          "offset": 6,
+          "length": 2,
+          "pic": "9(03)",
+          "storage": "COMP-3",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-REPORT-VARS.WS-BLANK-LINE",
+          "level": 5,
+          "offset": 8,
+          "length": 133,
+          "pic": "X(133)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-REPORT-VARS.WS-PAGE-TOTAL",
+          "level": 5,
+          "offset": 141,
+          "length": 11,
+          "pic": "S9(09)V99",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-REPORT-VARS.WS-ACCOUNT-TOTAL",
+          "level": 5,
+          "offset": 152,
+          "length": 11,
+          "pic": "S9(09)V99",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-REPORT-VARS.WS-GRAND-TOTAL",
+          "level": 5,
+          "offset": 163,
+          "length": 11,
+          "pic": "S9(09)V99",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-REPORT-VARS.WS-CURR-CARD-NUM",
+          "level": 5,
+          "offset": 174,
+          "length": 16,
+          "pic": "X(16)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "IO-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "IO-STATUS.IO-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "IO-STATUS.IO-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TWO-BYTES-BINARY",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "TWO-BYTES-BINARY",
+          "level": 1,
+          "offset": 0,
+          "length": 2,
+          "pic": "9(4)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TWO-BYTES-ALPHA",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "TWO-BYTES-ALPHA.TWO-BYTES-LEFT",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "TWO-BYTES-ALPHA.TWO-BYTES-RIGHT",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "IO-STATUS-04",
+      "copybook": null,
+      "total_bytes": 4,
+      "fields": [
+        {
+          "qualified_name": "IO-STATUS-04.IO-STATUS-0401",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "9",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "IO-STATUS-04.IO-STATUS-0403",
+          "level": 5,
+          "offset": 1,
+          "length": 3,
+          "pic": "999",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "APPL-RESULT",
+      "copybook": null,
+      "total_bytes": 4,
+      "fields": [
+        {
+          "qualified_name": "APPL-RESULT",
+          "level": 1,
+          "offset": 0,
+          "length": 4,
+          "pic": "S9(9)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "END-OF-FILE",
+      "copybook": null,
+      "total_bytes": 1,
+      "fields": [
+        {
+          "qualified_name": "END-OF-FILE",
+          "level": 1,
+          "offset": 0,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "ABCODE",
+      "copybook": null,
+      "total_bytes": 4,
+      "fields": [
+        {
+          "qualified_name": "ABCODE",
+          "level": 1,
+          "offset": 0,
+          "length": 4,
+          "pic": "S9(9)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TIMING",
+      "copybook": null,
+      "total_bytes": 4,
+      "fields": [
+        {
+          "qualified_name": "TIMING",
+          "level": 1,
+          "offset": 0,
+          "length": 4,
+          "pic": "S9(9)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    }
+  ],
+  "unresolved": []
+}

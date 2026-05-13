@@ -1,0 +1,343 @@
+{
+  "program": "CBSTM03B",
+  "schema_version": "1.2",
+  "records": [
+    {
+      "name": "FD-TRNXFILE-REC",
+      "copybook": null,
+      "total_bytes": 350,
+      "fields": [
+        {
+          "qualified_name": "FD-TRNXFILE-REC.FD-TRNXS-ID",
+          "level": 5,
+          "offset": 0,
+          "length": 32,
+          "pic": null,
+          "storage": "GROUP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FD-TRNXFILE-REC.FD-TRNXS-ID.FD-TRNX-CARD",
+          "level": 10,
+          "offset": 0,
+          "length": 16,
+          "pic": "X(16)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FD-TRNXFILE-REC.FD-TRNXS-ID.FD-TRNX-ID",
+          "level": 10,
+          "offset": 16,
+          "length": 16,
+          "pic": "X(16)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FD-TRNXFILE-REC.FD-ACCT-DATA",
+          "level": 5,
+          "offset": 32,
+          "length": 318,
+          "pic": "X(318)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "FD-XREFFILE-REC",
+      "copybook": null,
+      "total_bytes": 50,
+      "fields": [
+        {
+          "qualified_name": "FD-XREFFILE-REC.FD-XREF-CARD-NUM",
+          "level": 5,
+          "offset": 0,
+          "length": 16,
+          "pic": "X(16)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FD-XREFFILE-REC.FD-XREF-DATA",
+          "level": 5,
+          "offset": 16,
+          "length": 34,
+          "pic": "X(34)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "FD-CUSTFILE-REC",
+      "copybook": null,
+      "total_bytes": 500,
+      "fields": [
+        {
+          "qualified_name": "FD-CUSTFILE-REC.FD-CUST-ID",
+          "level": 5,
+          "offset": 0,
+          "length": 9,
+          "pic": "X(09)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FD-CUSTFILE-REC.FD-CUST-DATA",
+          "level": 5,
+          "offset": 9,
+          "length": 491,
+          "pic": "X(491)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "FD-ACCTFILE-REC",
+      "copybook": null,
+      "total_bytes": 300,
+      "fields": [
+        {
+          "qualified_name": "FD-ACCTFILE-REC.FD-ACCT-ID",
+          "level": 5,
+          "offset": 0,
+          "length": 11,
+          "pic": "9(11)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FD-ACCTFILE-REC.FD-ACCT-DATA",
+          "level": 5,
+          "offset": 11,
+          "length": 289,
+          "pic": "X(289)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TRNXFILE-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "TRNXFILE-STATUS.TRNXFILE-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "TRNXFILE-STATUS.TRNXFILE-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "XREFFILE-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "XREFFILE-STATUS.XREFFILE-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "XREFFILE-STATUS.XREFFILE-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "CUSTFILE-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "CUSTFILE-STATUS.CUSTFILE-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "CUSTFILE-STATUS.CUSTFILE-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "ACCTFILE-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "ACCTFILE-STATUS.ACCTFILE-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "ACCTFILE-STATUS.ACCTFILE-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "LK-M03B-AREA",
+      "copybook": null,
+      "total_bytes": 1040,
+      "fields": [
+        {
+          "qualified_name": "LK-M03B-AREA.LK-M03B-DD",
+          "level": 5,
+          "offset": 0,
+          "length": 8,
+          "pic": "X(08)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "LK-M03B-AREA.LK-M03B-OPER",
+          "level": 5,
+          "offset": 8,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "LK-M03B-AREA.LK-M03B-RC",
+          "level": 5,
+          "offset": 9,
+          "length": 2,
+          "pic": "X(02)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "LK-M03B-AREA.LK-M03B-KEY",
+          "level": 5,
+          "offset": 11,
+          "length": 25,
+          "pic": "X(25)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "LK-M03B-AREA.LK-M03B-KEY-LN",
+          "level": 5,
+          "offset": 36,
+          "length": 4,
+          "pic": "S9(4)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "LK-M03B-AREA.LK-M03B-FLDT",
+          "level": 5,
+          "offset": 40,
+          "length": 1000,
+          "pic": "X(1000)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    }
+  ],
+  "unresolved": []
+}

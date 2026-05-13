@@ -4,8 +4,59 @@
   "paragraph_data_flow": {
     "0550-DATEPARM-READ": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "DATEPARM-STATUS",
+          "record": "DATEPARM-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        },
+        {
+          "field": "WS-DATEPARM-RECORD.WS-START-DATE",
+          "record": "WS-DATEPARM-RECORD",
+          "copybook": null,
+          "offset": 0,
+          "length": 10
+        },
+        {
+          "field": "WS-DATEPARM-RECORD.WS-END-DATE",
+          "record": "WS-DATEPARM-RECORD",
+          "copybook": null,
+          "offset": 11,
+          "length": 10
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-DATEPARM-RECORD",
+          "record": "WS-DATEPARM-RECORD",
+          "copybook": null,
+          "offset": 0,
+          "length": 21
+        },
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "END-OF-FILE",
+          "record": "END-OF-FILE",
+          "copybook": null,
+          "offset": 0,
+          "length": 1
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
         {
           "verb": "READ",
@@ -14,52 +65,10 @@
           "reason": "unresolved mutate operand: DATE-PARMS-FILE"
         },
         {
-          "verb": "READ",
-          "line_no": 221,
-          "raw_text": "READ DATE-PARMS-FILE INTO WS-DATEPARM-RECORD",
-          "reason": "unresolved mutate operand: WS-DATEPARM-RECORD"
-        },
-        {
-          "verb": "EVALUATE",
-          "line_no": 221,
-          "raw_text": "EVALUATE DATEPARM-STATUS",
-          "reason": "unresolved read operand: DATEPARM-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 221,
-          "raw_text": "MOVE 0 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 221,
-          "raw_text": "MOVE 16 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 221,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
           "verb": "IF",
           "line_no": 221,
           "raw_text": "IF APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 221,
-          "raw_text": "DISPLAY 'Reporting from ' WS-START-DATE ' to ' WS-END-DATE ELSE",
-          "reason": "unresolved read operand: WS-START-DATE"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 221,
-          "raw_text": "DISPLAY 'Reporting from ' WS-START-DATE ' to ' WS-END-DATE ELSE",
-          "reason": "unresolved read operand: WS-END-DATE"
         },
         {
           "verb": "DISPLAY",
@@ -77,68 +86,57 @@
           "verb": "MOVE",
           "line_no": 221,
           "raw_text": "MOVE 'Y' TO END-OF-FILE ELSE",
-          "reason": "unresolved mutate operand: END-OF-FILE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 221,
-          "raw_text": "MOVE 'Y' TO END-OF-FILE ELSE",
           "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 221,
-          "raw_text": "MOVE DATEPARM-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: DATEPARM-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 221,
-          "raw_text": "MOVE DATEPARM-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "1000-TRANFILE-GET-NEXT": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "TRANFILE-STATUS",
+          "record": "TRANFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "TRAN-RECORD",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 0,
+          "length": 350
+        },
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "END-OF-FILE",
+          "record": "END-OF-FILE",
+          "copybook": null,
+          "offset": 0,
+          "length": 1
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
         {
           "verb": "READ",
           "line_no": 249,
           "raw_text": "READ TRANSACT-FILE INTO TRAN-RECORD",
           "reason": "unresolved mutate operand: TRANSACT-FILE"
-        },
-        {
-          "verb": "READ",
-          "line_no": 249,
-          "raw_text": "READ TRANSACT-FILE INTO TRAN-RECORD",
-          "reason": "unresolved mutate operand: TRAN-RECORD"
-        },
-        {
-          "verb": "EVALUATE",
-          "line_no": 251,
-          "raw_text": "EVALUATE TRANFILE-STATUS",
-          "reason": "unresolved read operand: TRANFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE 0 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE 16 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
         },
         {
           "verb": "IF",
@@ -156,69 +154,94 @@
           "verb": "MOVE",
           "line_no": 251,
           "raw_text": "MOVE 'Y' TO END-OF-FILE ELSE",
-          "reason": "unresolved mutate operand: END-OF-FILE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE 'Y' TO END-OF-FILE ELSE",
           "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: TRANFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "1100-WRITE-TRANSACTION-REPORT": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "WS-REPORT-VARS.WS-FIRST-TIME",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 0,
+          "length": 1
+        },
+        {
+          "field": "WS-DATEPARM-RECORD.WS-START-DATE",
+          "record": "WS-DATEPARM-RECORD",
+          "copybook": null,
+          "offset": 0,
+          "length": 10
+        },
+        {
+          "field": "WS-DATEPARM-RECORD.WS-END-DATE",
+          "record": "WS-DATEPARM-RECORD",
+          "copybook": null,
+          "offset": 11,
+          "length": 10
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-AMT",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 132,
+          "length": 11
+        },
+        {
+          "field": "WS-REPORT-VARS.WS-PAGE-TOTAL",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 141,
+          "length": 11
+        },
+        {
+          "field": "WS-REPORT-VARS.WS-ACCOUNT-TOTAL",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 152,
+          "length": 11
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-REPORT-VARS.WS-FIRST-TIME",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 0,
+          "length": 1
+        },
+        {
+          "field": "REPORT-NAME-HEADER.REPT-START-DATE",
+          "record": "REPORT-NAME-HEADER",
+          "copybook": "CVTRA07Y",
+          "offset": 91,
+          "length": 10
+        },
+        {
+          "field": "REPORT-NAME-HEADER.REPT-END-DATE",
+          "record": "REPORT-NAME-HEADER",
+          "copybook": "CVTRA07Y",
+          "offset": 105,
+          "length": 10
+        },
+        {
+          "field": "WS-REPORT-VARS.WS-PAGE-TOTAL",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 141,
+          "length": 11
+        },
+        {
+          "field": "WS-REPORT-VARS.WS-ACCOUNT-TOTAL",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 152,
+          "length": 11
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "IF",
-          "line_no": 275,
-          "raw_text": "IF WS-FIRST-TIME = 'Y'",
-          "reason": "unresolved read operand: WS-FIRST-TIME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 275,
-          "raw_text": "MOVE 'N' TO WS-FIRST-TIME",
-          "reason": "unresolved mutate operand: WS-FIRST-TIME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 275,
-          "raw_text": "MOVE WS-START-DATE TO REPT-START-DATE",
-          "reason": "unresolved read operand: WS-START-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 275,
-          "raw_text": "MOVE WS-START-DATE TO REPT-START-DATE",
-          "reason": "unresolved mutate operand: REPT-START-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 275,
-          "raw_text": "MOVE WS-END-DATE TO REPT-END-DATE",
-          "reason": "unresolved read operand: WS-END-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 275,
-          "raw_text": "MOVE WS-END-DATE TO REPT-END-DATE",
-          "reason": "unresolved mutate operand: REPT-END-DATE"
-        },
         {
           "verb": "IF",
           "line_no": 275,
@@ -236,360 +259,279 @@
           "line_no": 275,
           "raw_text": "IF FUNCTION MOD(WS-LINE-COUNTER, WS-PAGE-SIZE) = 0",
           "reason": "unresolved read operand: WS-PAGE-SIZE)"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 275,
-          "raw_text": "ADD TRAN-AMT TO WS-PAGE-TOTAL WS-ACCOUNT-TOTAL",
-          "reason": "unresolved read operand: TRAN-AMT"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 275,
-          "raw_text": "ADD TRAN-AMT TO WS-PAGE-TOTAL WS-ACCOUNT-TOTAL",
-          "reason": "unresolved read operand: WS-PAGE-TOTAL"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 275,
-          "raw_text": "ADD TRAN-AMT TO WS-PAGE-TOTAL WS-ACCOUNT-TOTAL",
-          "reason": "unresolved mutate operand: WS-PAGE-TOTAL"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 275,
-          "raw_text": "ADD TRAN-AMT TO WS-PAGE-TOTAL WS-ACCOUNT-TOTAL",
-          "reason": "unresolved read operand: WS-ACCOUNT-TOTAL"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 275,
-          "raw_text": "ADD TRAN-AMT TO WS-PAGE-TOTAL WS-ACCOUNT-TOTAL",
-          "reason": "unresolved mutate operand: WS-ACCOUNT-TOTAL"
         }
       ]
     },
     "1110-WRITE-PAGE-TOTALS": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "reads": [
         {
-          "verb": "MOVE",
-          "line_no": 294,
-          "raw_text": "MOVE WS-PAGE-TOTAL TO REPT-PAGE-TOTAL",
-          "reason": "unresolved read operand: WS-PAGE-TOTAL"
+          "field": "WS-REPORT-VARS.WS-PAGE-TOTAL",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 141,
+          "length": 11
         },
         {
-          "verb": "MOVE",
-          "line_no": 294,
-          "raw_text": "MOVE WS-PAGE-TOTAL TO REPT-PAGE-TOTAL",
-          "reason": "unresolved mutate operand: REPT-PAGE-TOTAL"
+          "field": "REPORT-PAGE-TOTALS",
+          "record": "REPORT-PAGE-TOTALS",
+          "copybook": "CVTRA07Y",
+          "offset": 0,
+          "length": 106
         },
         {
-          "verb": "MOVE",
-          "line_no": 294,
-          "raw_text": "MOVE REPORT-PAGE-TOTALS TO FD-REPTFILE-REC",
-          "reason": "unresolved read operand: REPORT-PAGE-TOTALS"
+          "field": "WS-REPORT-VARS.WS-GRAND-TOTAL",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 163,
+          "length": 11
         },
         {
-          "verb": "MOVE",
-          "line_no": 294,
-          "raw_text": "MOVE REPORT-PAGE-TOTALS TO FD-REPTFILE-REC",
-          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
+          "field": "WS-REPORT-VARS.WS-LINE-COUNTER",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 1,
+          "length": 5
         },
         {
-          "verb": "ADD",
-          "line_no": 294,
-          "raw_text": "ADD WS-PAGE-TOTAL TO WS-GRAND-TOTAL",
-          "reason": "unresolved read operand: WS-PAGE-TOTAL"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 294,
-          "raw_text": "ADD WS-PAGE-TOTAL TO WS-GRAND-TOTAL",
-          "reason": "unresolved read operand: WS-GRAND-TOTAL"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 294,
-          "raw_text": "ADD WS-PAGE-TOTAL TO WS-GRAND-TOTAL",
-          "reason": "unresolved mutate operand: WS-GRAND-TOTAL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 294,
-          "raw_text": "MOVE 0 TO WS-PAGE-TOTAL",
-          "reason": "unresolved mutate operand: WS-PAGE-TOTAL"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 294,
-          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
-          "reason": "unresolved read operand: WS-LINE-COUNTER"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 294,
-          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
-          "reason": "unresolved mutate operand: WS-LINE-COUNTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 294,
-          "raw_text": "MOVE TRANSACTION-HEADER-2 TO FD-REPTFILE-REC",
-          "reason": "unresolved read operand: TRANSACTION-HEADER-2"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 294,
-          "raw_text": "MOVE TRANSACTION-HEADER-2 TO FD-REPTFILE-REC",
-          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 294,
-          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
-          "reason": "unresolved read operand: WS-LINE-COUNTER"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 294,
-          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
-          "reason": "unresolved mutate operand: WS-LINE-COUNTER"
+          "field": "TRANSACTION-HEADER-2",
+          "record": "TRANSACTION-HEADER-2",
+          "copybook": "CVTRA07Y",
+          "offset": 0,
+          "length": 133
         }
-      ]
+      ],
+      "mutates": [
+        {
+          "field": "REPORT-PAGE-TOTALS.REPT-PAGE-TOTAL",
+          "record": "REPORT-PAGE-TOTALS",
+          "copybook": "CVTRA07Y",
+          "offset": 97,
+          "length": 9
+        },
+        {
+          "field": "FD-REPTFILE-REC",
+          "record": "FD-REPTFILE-REC",
+          "copybook": null,
+          "offset": 0,
+          "length": 133
+        },
+        {
+          "field": "WS-REPORT-VARS.WS-GRAND-TOTAL",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 163,
+          "length": 11
+        },
+        {
+          "field": "WS-REPORT-VARS.WS-PAGE-TOTAL",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 141,
+          "length": 11
+        },
+        {
+          "field": "WS-REPORT-VARS.WS-LINE-COUNTER",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 1,
+          "length": 5
+        }
+      ],
+      "unresolved": []
     },
     "1120-WRITE-ACCOUNT-TOTALS": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "reads": [
         {
-          "verb": "MOVE",
-          "line_no": 307,
-          "raw_text": "MOVE WS-ACCOUNT-TOTAL   TO REPT-ACCOUNT-TOTAL",
-          "reason": "unresolved read operand: WS-ACCOUNT-TOTAL"
+          "field": "WS-REPORT-VARS.WS-ACCOUNT-TOTAL",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 152,
+          "length": 11
         },
         {
-          "verb": "MOVE",
-          "line_no": 307,
-          "raw_text": "MOVE WS-ACCOUNT-TOTAL   TO REPT-ACCOUNT-TOTAL",
-          "reason": "unresolved mutate operand: REPT-ACCOUNT-TOTAL"
+          "field": "REPORT-ACCOUNT-TOTALS",
+          "record": "REPORT-ACCOUNT-TOTALS",
+          "copybook": "CVTRA07Y",
+          "offset": 0,
+          "length": 106
         },
         {
-          "verb": "MOVE",
-          "line_no": 307,
-          "raw_text": "MOVE REPORT-ACCOUNT-TOTALS TO FD-REPTFILE-REC",
-          "reason": "unresolved read operand: REPORT-ACCOUNT-TOTALS"
+          "field": "WS-REPORT-VARS.WS-LINE-COUNTER",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 1,
+          "length": 5
         },
         {
-          "verb": "MOVE",
-          "line_no": 307,
-          "raw_text": "MOVE REPORT-ACCOUNT-TOTALS TO FD-REPTFILE-REC",
-          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 307,
-          "raw_text": "MOVE 0 TO WS-ACCOUNT-TOTAL",
-          "reason": "unresolved mutate operand: WS-ACCOUNT-TOTAL"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 307,
-          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
-          "reason": "unresolved read operand: WS-LINE-COUNTER"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 307,
-          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
-          "reason": "unresolved mutate operand: WS-LINE-COUNTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 307,
-          "raw_text": "MOVE TRANSACTION-HEADER-2 TO FD-REPTFILE-REC",
-          "reason": "unresolved read operand: TRANSACTION-HEADER-2"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 307,
-          "raw_text": "MOVE TRANSACTION-HEADER-2 TO FD-REPTFILE-REC",
-          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 307,
-          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
-          "reason": "unresolved read operand: WS-LINE-COUNTER"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 307,
-          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
-          "reason": "unresolved mutate operand: WS-LINE-COUNTER"
+          "field": "TRANSACTION-HEADER-2",
+          "record": "TRANSACTION-HEADER-2",
+          "copybook": "CVTRA07Y",
+          "offset": 0,
+          "length": 133
         }
-      ]
+      ],
+      "mutates": [
+        {
+          "field": "REPORT-ACCOUNT-TOTALS.REPT-ACCOUNT-TOTAL",
+          "record": "REPORT-ACCOUNT-TOTALS",
+          "copybook": "CVTRA07Y",
+          "offset": 97,
+          "length": 9
+        },
+        {
+          "field": "FD-REPTFILE-REC",
+          "record": "FD-REPTFILE-REC",
+          "copybook": null,
+          "offset": 0,
+          "length": 133
+        },
+        {
+          "field": "WS-REPORT-VARS.WS-ACCOUNT-TOTAL",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 152,
+          "length": 11
+        },
+        {
+          "field": "WS-REPORT-VARS.WS-LINE-COUNTER",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 1,
+          "length": 5
+        }
+      ],
+      "unresolved": []
     },
     "1110-WRITE-GRAND-TOTALS": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "reads": [
         {
-          "verb": "MOVE",
-          "line_no": 319,
-          "raw_text": "MOVE WS-GRAND-TOTAL TO REPT-GRAND-TOTAL",
-          "reason": "unresolved read operand: WS-GRAND-TOTAL"
+          "field": "WS-REPORT-VARS.WS-GRAND-TOTAL",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 163,
+          "length": 11
         },
         {
-          "verb": "MOVE",
-          "line_no": 319,
-          "raw_text": "MOVE WS-GRAND-TOTAL TO REPT-GRAND-TOTAL",
-          "reason": "unresolved mutate operand: REPT-GRAND-TOTAL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 319,
-          "raw_text": "MOVE REPORT-GRAND-TOTALS TO FD-REPTFILE-REC",
-          "reason": "unresolved read operand: REPORT-GRAND-TOTALS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 319,
-          "raw_text": "MOVE REPORT-GRAND-TOTALS TO FD-REPTFILE-REC",
-          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
+          "field": "REPORT-GRAND-TOTALS",
+          "record": "REPORT-GRAND-TOTALS",
+          "copybook": "CVTRA07Y",
+          "offset": 0,
+          "length": 106
         }
-      ]
+      ],
+      "mutates": [
+        {
+          "field": "REPORT-GRAND-TOTALS.REPT-GRAND-TOTAL",
+          "record": "REPORT-GRAND-TOTALS",
+          "copybook": "CVTRA07Y",
+          "offset": 97,
+          "length": 9
+        },
+        {
+          "field": "FD-REPTFILE-REC",
+          "record": "FD-REPTFILE-REC",
+          "copybook": null,
+          "offset": 0,
+          "length": 133
+        }
+      ],
+      "unresolved": []
     },
     "1120-WRITE-HEADERS": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "reads": [
         {
-          "verb": "MOVE",
-          "line_no": 325,
-          "raw_text": "MOVE REPORT-NAME-HEADER TO FD-REPTFILE-REC",
-          "reason": "unresolved read operand: REPORT-NAME-HEADER"
+          "field": "REPORT-NAME-HEADER",
+          "record": "REPORT-NAME-HEADER",
+          "copybook": "CVTRA07Y",
+          "offset": 0,
+          "length": 115
         },
         {
-          "verb": "MOVE",
-          "line_no": 325,
-          "raw_text": "MOVE REPORT-NAME-HEADER TO FD-REPTFILE-REC",
-          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
+          "field": "WS-REPORT-VARS.WS-LINE-COUNTER",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 1,
+          "length": 5
         },
         {
-          "verb": "ADD",
-          "line_no": 325,
-          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
-          "reason": "unresolved read operand: WS-LINE-COUNTER"
+          "field": "WS-REPORT-VARS.WS-BLANK-LINE",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 8,
+          "length": 133
         },
         {
-          "verb": "ADD",
-          "line_no": 325,
-          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
-          "reason": "unresolved mutate operand: WS-LINE-COUNTER"
+          "field": "TRANSACTION-HEADER-1",
+          "record": "TRANSACTION-HEADER-1",
+          "copybook": "CVTRA07Y",
+          "offset": 0,
+          "length": 114
         },
         {
-          "verb": "MOVE",
-          "line_no": 325,
-          "raw_text": "MOVE WS-BLANK-LINE TO FD-REPTFILE-REC",
-          "reason": "unresolved read operand: WS-BLANK-LINE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 325,
-          "raw_text": "MOVE WS-BLANK-LINE TO FD-REPTFILE-REC",
-          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 325,
-          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
-          "reason": "unresolved read operand: WS-LINE-COUNTER"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 325,
-          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
-          "reason": "unresolved mutate operand: WS-LINE-COUNTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 325,
-          "raw_text": "MOVE TRANSACTION-HEADER-1 TO FD-REPTFILE-REC",
-          "reason": "unresolved read operand: TRANSACTION-HEADER-1"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 325,
-          "raw_text": "MOVE TRANSACTION-HEADER-1 TO FD-REPTFILE-REC",
-          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 325,
-          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
-          "reason": "unresolved read operand: WS-LINE-COUNTER"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 325,
-          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
-          "reason": "unresolved mutate operand: WS-LINE-COUNTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 325,
-          "raw_text": "MOVE TRANSACTION-HEADER-2 TO FD-REPTFILE-REC",
-          "reason": "unresolved read operand: TRANSACTION-HEADER-2"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 325,
-          "raw_text": "MOVE TRANSACTION-HEADER-2 TO FD-REPTFILE-REC",
-          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 325,
-          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
-          "reason": "unresolved read operand: WS-LINE-COUNTER"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 325,
-          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
-          "reason": "unresolved mutate operand: WS-LINE-COUNTER"
+          "field": "TRANSACTION-HEADER-2",
+          "record": "TRANSACTION-HEADER-2",
+          "copybook": "CVTRA07Y",
+          "offset": 0,
+          "length": 133
         }
-      ]
+      ],
+      "mutates": [
+        {
+          "field": "FD-REPTFILE-REC",
+          "record": "FD-REPTFILE-REC",
+          "copybook": null,
+          "offset": 0,
+          "length": 133
+        },
+        {
+          "field": "WS-REPORT-VARS.WS-LINE-COUNTER",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 1,
+          "length": 5
+        }
+      ],
+      "unresolved": []
     },
     "1111-WRITE-REPORT-REC": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "TRANREPT-STATUS",
+          "record": "TRANREPT-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "FD-REPTFILE-REC",
+          "record": "FD-REPTFILE-REC",
+          "copybook": null,
+          "offset": 0,
+          "length": 133
+        },
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "WRITE",
-          "line_no": 345,
-          "raw_text": "WRITE FD-REPTFILE-REC",
-          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
-        },
-        {
-          "verb": "IF",
-          "line_no": 345,
-          "raw_text": "IF TRANREPT-STATUS = '00'",
-          "reason": "unresolved read operand: TRANREPT-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "MOVE",
           "line_no": 345,
@@ -597,73 +539,175 @@
           "reason": "unresolved mutate operand: ELSE"
         },
         {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
           "verb": "IF",
           "line_no": 345,
           "raw_text": "IF APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE TRANREPT-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: TRANREPT-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE TRANREPT-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "1120-WRITE-DETAIL": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "TRAN-RECORD.TRAN-ID",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "CARD-XREF-RECORD.XREF-ACCT-ID",
+          "record": "CARD-XREF-RECORD",
+          "copybook": "CVACT03Y",
+          "offset": 25,
+          "length": 11
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-TYPE-CD",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 16,
+          "length": 2
+        },
+        {
+          "field": "TRAN-RECORD",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 0,
+          "length": 350
+        },
+        {
+          "field": "TRAN-TYPE-RECORD.TRAN-TYPE-DESC",
+          "record": "TRAN-TYPE-RECORD",
+          "copybook": "CVTRA03Y",
+          "offset": 2,
+          "length": 50
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-CAT-CD",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 18,
+          "length": 4
+        },
+        {
+          "field": "TRAN-CAT-RECORD.TRAN-CAT-TYPE-DESC",
+          "record": "TRAN-CAT-RECORD",
+          "copybook": "CVTRA04Y",
+          "offset": 6,
+          "length": 50
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-SOURCE",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 22,
+          "length": 10
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-AMT",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 132,
+          "length": 11
+        },
+        {
+          "field": "TRANSACTION-DETAIL-REPORT",
+          "record": "TRANSACTION-DETAIL-REPORT",
+          "copybook": "CVTRA07Y",
+          "offset": 0,
+          "length": 108
+        },
+        {
+          "field": "WS-REPORT-VARS.WS-LINE-COUNTER",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 1,
+          "length": 5
+        }
+      ],
+      "mutates": [
+        {
+          "field": "TRANSACTION-DETAIL-REPORT",
+          "record": "TRANSACTION-DETAIL-REPORT",
+          "copybook": "CVTRA07Y",
+          "offset": 0,
+          "length": 108
+        },
+        {
+          "field": "TRANSACTION-DETAIL-REPORT.TRAN-REPORT-TRANS-ID",
+          "record": "TRANSACTION-DETAIL-REPORT",
+          "copybook": "CVTRA07Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "TRANSACTION-DETAIL-REPORT.TRAN-REPORT-ACCOUNT-ID",
+          "record": "TRANSACTION-DETAIL-REPORT",
+          "copybook": "CVTRA07Y",
+          "offset": 17,
+          "length": 11
+        },
+        {
+          "field": "TRANSACTION-DETAIL-REPORT.TRAN-REPORT-TYPE-CD",
+          "record": "TRANSACTION-DETAIL-REPORT",
+          "copybook": "CVTRA07Y",
+          "offset": 29,
+          "length": 2
+        },
+        {
+          "field": "TRANSACTION-DETAIL-REPORT.TRAN-REPORT-TYPE-DESC",
+          "record": "TRANSACTION-DETAIL-REPORT",
+          "copybook": "CVTRA07Y",
+          "offset": 32,
+          "length": 15
+        },
+        {
+          "field": "TRANSACTION-DETAIL-REPORT.TRAN-REPORT-CAT-CD",
+          "record": "TRANSACTION-DETAIL-REPORT",
+          "copybook": "CVTRA07Y",
+          "offset": 48,
+          "length": 4
+        },
+        {
+          "field": "TRANSACTION-DETAIL-REPORT.TRAN-REPORT-CAT-DESC",
+          "record": "TRANSACTION-DETAIL-REPORT",
+          "copybook": "CVTRA07Y",
+          "offset": 53,
+          "length": 29
+        },
+        {
+          "field": "TRANSACTION-DETAIL-REPORT.TRAN-REPORT-SOURCE",
+          "record": "TRANSACTION-DETAIL-REPORT",
+          "copybook": "CVTRA07Y",
+          "offset": 83,
+          "length": 10
+        },
+        {
+          "field": "TRANSACTION-DETAIL-REPORT.TRAN-REPORT-AMT",
+          "record": "TRANSACTION-DETAIL-REPORT",
+          "copybook": "CVTRA07Y",
+          "offset": 97,
+          "length": 9
+        },
+        {
+          "field": "FD-REPTFILE-REC",
+          "record": "FD-REPTFILE-REC",
+          "copybook": null,
+          "offset": 0,
+          "length": 133
+        },
+        {
+          "field": "WS-REPORT-VARS.WS-LINE-COUNTER",
+          "record": "WS-REPORT-VARS",
+          "copybook": null,
+          "offset": 1,
+          "length": 5
+        }
+      ],
       "unresolved": [
         {
-          "verb": "INITIALIZE",
-          "line_no": 362,
-          "raw_text": "INITIALIZE TRANSACTION-DETAIL-REPORT",
-          "reason": "unresolved mutate operand: TRANSACTION-DETAIL-REPORT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
-          "raw_text": "MOVE TRAN-ID TO TRAN-REPORT-TRANS-ID",
-          "reason": "unresolved read operand: TRAN-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
-          "raw_text": "MOVE TRAN-ID TO TRAN-REPORT-TRANS-ID",
-          "reason": "unresolved mutate operand: TRAN-REPORT-TRANS-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
-          "raw_text": "MOVE XREF-ACCT-ID TO TRAN-REPORT-ACCOUNT-ID",
-          "reason": "unresolved read operand: XREF-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
-          "raw_text": "MOVE XREF-ACCT-ID TO TRAN-REPORT-ACCOUNT-ID",
-          "reason": "unresolved mutate operand: TRAN-REPORT-ACCOUNT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
-          "raw_text": "MOVE TRAN-TYPE-CD OF TRAN-RECORD TO TRAN-REPORT-TYPE-CD",
-          "reason": "unresolved read operand: TRAN-TYPE-CD"
-        },
-        {
           "verb": "MOVE",
           "line_no": 362,
           "raw_text": "MOVE TRAN-TYPE-CD OF TRAN-RECORD TO TRAN-REPORT-TYPE-CD",
@@ -672,136 +716,39 @@
         {
           "verb": "MOVE",
           "line_no": 362,
-          "raw_text": "MOVE TRAN-TYPE-CD OF TRAN-RECORD TO TRAN-REPORT-TYPE-CD",
-          "reason": "unresolved read operand: TRAN-RECORD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
-          "raw_text": "MOVE TRAN-TYPE-CD OF TRAN-RECORD TO TRAN-REPORT-TYPE-CD",
-          "reason": "unresolved mutate operand: TRAN-REPORT-TYPE-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
-          "raw_text": "MOVE TRAN-TYPE-DESC TO TRAN-REPORT-TYPE-DESC",
-          "reason": "unresolved read operand: TRAN-TYPE-DESC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
-          "raw_text": "MOVE TRAN-TYPE-DESC TO TRAN-REPORT-TYPE-DESC",
-          "reason": "unresolved mutate operand: TRAN-REPORT-TYPE-DESC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
-          "raw_text": "MOVE TRAN-CAT-CD OF TRAN-RECORD  TO TRAN-REPORT-CAT-CD",
-          "reason": "unresolved read operand: TRAN-CAT-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
           "raw_text": "MOVE TRAN-CAT-CD OF TRAN-RECORD  TO TRAN-REPORT-CAT-CD",
           "reason": "unresolved read operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
-          "raw_text": "MOVE TRAN-CAT-CD OF TRAN-RECORD  TO TRAN-REPORT-CAT-CD",
-          "reason": "unresolved read operand: TRAN-RECORD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
-          "raw_text": "MOVE TRAN-CAT-CD OF TRAN-RECORD  TO TRAN-REPORT-CAT-CD",
-          "reason": "unresolved mutate operand: TRAN-REPORT-CAT-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
-          "raw_text": "MOVE TRAN-CAT-TYPE-DESC TO TRAN-REPORT-CAT-DESC",
-          "reason": "unresolved read operand: TRAN-CAT-TYPE-DESC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
-          "raw_text": "MOVE TRAN-CAT-TYPE-DESC TO TRAN-REPORT-CAT-DESC",
-          "reason": "unresolved mutate operand: TRAN-REPORT-CAT-DESC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
-          "raw_text": "MOVE TRAN-SOURCE TO TRAN-REPORT-SOURCE",
-          "reason": "unresolved read operand: TRAN-SOURCE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
-          "raw_text": "MOVE TRAN-SOURCE TO TRAN-REPORT-SOURCE",
-          "reason": "unresolved mutate operand: TRAN-REPORT-SOURCE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
-          "raw_text": "MOVE TRAN-AMT TO TRAN-REPORT-AMT",
-          "reason": "unresolved read operand: TRAN-AMT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
-          "raw_text": "MOVE TRAN-AMT TO TRAN-REPORT-AMT",
-          "reason": "unresolved mutate operand: TRAN-REPORT-AMT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
-          "raw_text": "MOVE TRANSACTION-DETAIL-REPORT TO FD-REPTFILE-REC",
-          "reason": "unresolved read operand: TRANSACTION-DETAIL-REPORT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 362,
-          "raw_text": "MOVE TRANSACTION-DETAIL-REPORT TO FD-REPTFILE-REC",
-          "reason": "unresolved mutate operand: FD-REPTFILE-REC"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 362,
-          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
-          "reason": "unresolved read operand: WS-LINE-COUNTER"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 362,
-          "raw_text": "ADD 1 TO WS-LINE-COUNTER",
-          "reason": "unresolved mutate operand: WS-LINE-COUNTER"
         }
       ]
     },
     "0000-TRANFILE-OPEN": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "TRANFILE-STATUS",
+          "record": "TRANFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 377,
-          "raw_text": "MOVE 8 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 378,
-          "raw_text": "IF TRANFILE-STATUS = '00'",
-          "reason": "unresolved read operand: TRANFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 378,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "MOVE",
           "line_no": 378,
@@ -809,109 +756,83 @@
           "reason": "unresolved mutate operand: ELSE"
         },
         {
-          "verb": "MOVE",
-          "line_no": 378,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
           "verb": "IF",
           "line_no": 378,
           "raw_text": "IF APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 378,
-          "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: TRANFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 378,
-          "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "0100-REPTFILE-OPEN": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "TRANREPT-STATUS",
+          "record": "TRANREPT-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 395,
-          "raw_text": "MOVE 8 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 396,
-          "raw_text": "IF TRANREPT-STATUS = '00'",
-          "reason": "unresolved read operand: TRANREPT-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 396,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "MOVE",
           "line_no": 396,
           "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
           "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 396,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
         },
         {
           "verb": "IF",
           "line_no": 396,
           "raw_text": "IF APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 396,
-          "raw_text": "MOVE TRANREPT-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: TRANREPT-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 396,
-          "raw_text": "MOVE TRANREPT-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "0200-CARDXREF-OPEN": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "CARDXREF-STATUS",
+          "record": "CARDXREF-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 413,
-          "raw_text": "MOVE 8 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 414,
-          "raw_text": "IF  CARDXREF-STATUS = '00'",
-          "reason": "unresolved read operand: CARDXREF-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 414,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "MOVE",
           "line_no": 414,
@@ -919,54 +840,41 @@
           "reason": "unresolved mutate operand: ELSE"
         },
         {
-          "verb": "MOVE",
-          "line_no": 414,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
           "verb": "IF",
           "line_no": 414,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 414,
-          "raw_text": "MOVE CARDXREF-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: CARDXREF-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 414,
-          "raw_text": "MOVE CARDXREF-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "0300-TRANTYPE-OPEN": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "TRANTYPE-STATUS",
+          "record": "TRANTYPE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 431,
-          "raw_text": "MOVE 8 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 432,
-          "raw_text": "IF  TRANTYPE-STATUS = '00'",
-          "reason": "unresolved read operand: TRANTYPE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 432,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "MOVE",
           "line_no": 432,
@@ -974,54 +882,41 @@
           "reason": "unresolved mutate operand: ELSE"
         },
         {
-          "verb": "MOVE",
-          "line_no": 432,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
           "verb": "IF",
           "line_no": 432,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 432,
-          "raw_text": "MOVE TRANTYPE-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: TRANTYPE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 432,
-          "raw_text": "MOVE TRANTYPE-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "0400-TRANCATG-OPEN": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "TRANCATG-STATUS",
+          "record": "TRANCATG-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 449,
-          "raw_text": "MOVE 8 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 450,
-          "raw_text": "IF  TRANCATG-STATUS = '00'",
-          "reason": "unresolved read operand: TRANCATG-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 450,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "MOVE",
           "line_no": 450,
@@ -1029,54 +924,41 @@
           "reason": "unresolved mutate operand: ELSE"
         },
         {
-          "verb": "MOVE",
-          "line_no": 450,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
           "verb": "IF",
           "line_no": 450,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 450,
-          "raw_text": "MOVE TRANCATG-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: TRANCATG-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 450,
-          "raw_text": "MOVE TRANCATG-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "0500-DATEPARM-OPEN": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "DATEPARM-STATUS",
+          "record": "DATEPARM-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 467,
-          "raw_text": "MOVE 8 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 468,
-          "raw_text": "IF  DATEPARM-STATUS = '00'",
-          "reason": "unresolved read operand: DATEPARM-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 468,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "MOVE",
           "line_no": 468,
@@ -1084,159 +966,156 @@
           "reason": "unresolved mutate operand: ELSE"
         },
         {
-          "verb": "MOVE",
-          "line_no": 468,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
           "verb": "IF",
           "line_no": 468,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 468,
-          "raw_text": "MOVE DATEPARM-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: DATEPARM-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 468,
-          "raw_text": "MOVE DATEPARM-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "1500-A-LOOKUP-XREF": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "FD-CARDXREF-REC.FD-XREF-CARD-NUM",
+          "record": "FD-CARDXREF-REC",
+          "copybook": null,
+          "offset": 0,
+          "length": 16
+        }
+      ],
+      "mutates": [
+        {
+          "field": "CARD-XREF-RECORD",
+          "record": "CARD-XREF-RECORD",
+          "copybook": "CVACT03Y",
+          "offset": 0,
+          "length": 50
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
         {
           "verb": "READ",
           "line_no": 485,
           "raw_text": "READ XREF-FILE INTO CARD-XREF-RECORD INVALID KEY",
           "reason": "unresolved mutate operand: XREF-FILE"
-        },
-        {
-          "verb": "READ",
-          "line_no": 485,
-          "raw_text": "READ XREF-FILE INTO CARD-XREF-RECORD INVALID KEY",
-          "reason": "unresolved mutate operand: CARD-XREF-RECORD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 485,
-          "raw_text": "DISPLAY 'INVALID CARD NUMBER : '  FD-XREF-CARD-NUM",
-          "reason": "unresolved read operand: FD-XREF-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 485,
-          "raw_text": "MOVE 23 TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "1500-B-LOOKUP-TRANTYPE": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "FD-TRANTYPE-REC.FD-TRAN-TYPE",
+          "record": "FD-TRANTYPE-REC",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "TRAN-TYPE-RECORD",
+          "record": "TRAN-TYPE-RECORD",
+          "copybook": "CVTRA03Y",
+          "offset": 0,
+          "length": 60
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
         {
           "verb": "READ",
           "line_no": 495,
           "raw_text": "READ TRANTYPE-FILE INTO TRAN-TYPE-RECORD INVALID KEY",
           "reason": "unresolved mutate operand: TRANTYPE-FILE"
-        },
-        {
-          "verb": "READ",
-          "line_no": 495,
-          "raw_text": "READ TRANTYPE-FILE INTO TRAN-TYPE-RECORD INVALID KEY",
-          "reason": "unresolved mutate operand: TRAN-TYPE-RECORD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 495,
-          "raw_text": "DISPLAY 'INVALID TRANSACTION TYPE : '  FD-TRAN-TYPE",
-          "reason": "unresolved read operand: FD-TRAN-TYPE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 495,
-          "raw_text": "MOVE 23 TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "1500-C-LOOKUP-TRANCATG": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "FD-TRAN-CAT-RECORD.FD-TRAN-CAT-KEY",
+          "record": "FD-TRAN-CAT-RECORD",
+          "copybook": null,
+          "offset": 0,
+          "length": 6
+        }
+      ],
+      "mutates": [
+        {
+          "field": "TRAN-CAT-RECORD",
+          "record": "TRAN-CAT-RECORD",
+          "copybook": "CVTRA04Y",
+          "offset": 0,
+          "length": 60
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
         {
           "verb": "READ",
           "line_no": 505,
           "raw_text": "READ TRANCATG-FILE INTO TRAN-CAT-RECORD INVALID KEY",
           "reason": "unresolved mutate operand: TRANCATG-FILE"
-        },
-        {
-          "verb": "READ",
-          "line_no": 505,
-          "raw_text": "READ TRANCATG-FILE INTO TRAN-CAT-RECORD INVALID KEY",
-          "reason": "unresolved mutate operand: TRAN-CAT-RECORD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 505,
-          "raw_text": "DISPLAY 'INVALID TRAN CATG KEY : '  FD-TRAN-CAT-KEY",
-          "reason": "unresolved read operand: FD-TRAN-CAT-KEY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 505,
-          "raw_text": "MOVE 23 TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "9000-TRANFILE-CLOSE": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "TRANFILE-STATUS",
+          "record": "TRANFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        },
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "ADD",
-          "line_no": 515,
-          "raw_text": "ADD 8 TO ZERO GIVING APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 516,
-          "raw_text": "IF TRANFILE-STATUS = '00'",
-          "reason": "unresolved read operand: TRANFILE-STATUS"
-        },
-        {
-          "verb": "SUBTRACT",
-          "line_no": 516,
-          "raw_text": "SUBTRACT APPL-RESULT FROM APPL-RESULT ELSE",
-          "reason": "unresolved read operand: APPL-RESULT"
-        },
-        {
-          "verb": "SUBTRACT",
-          "line_no": 516,
-          "raw_text": "SUBTRACT APPL-RESULT FROM APPL-RESULT ELSE",
-          "reason": "unresolved read operand: APPL-RESULT"
-        },
-        {
-          "verb": "SUBTRACT",
-          "line_no": 516,
-          "raw_text": "SUBTRACT APPL-RESULT FROM APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "SUBTRACT",
           "line_no": 516,
@@ -1250,66 +1129,48 @@
           "reason": "unresolved mutate operand: ELSE"
         },
         {
-          "verb": "ADD",
-          "line_no": 516,
-          "raw_text": "ADD 12 TO ZERO GIVING APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
           "verb": "IF",
           "line_no": 516,
           "raw_text": "IF APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 516,
-          "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: TRANFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 516,
-          "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "9100-REPTFILE-CLOSE": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "TRANREPT-STATUS",
+          "record": "TRANREPT-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        },
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "ADD",
-          "line_no": 533,
-          "raw_text": "ADD 8 TO ZERO GIVING APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 534,
-          "raw_text": "IF TRANREPT-STATUS = '00'",
-          "reason": "unresolved read operand: TRANREPT-STATUS"
-        },
-        {
-          "verb": "SUBTRACT",
-          "line_no": 534,
-          "raw_text": "SUBTRACT APPL-RESULT FROM APPL-RESULT ELSE",
-          "reason": "unresolved read operand: APPL-RESULT"
-        },
-        {
-          "verb": "SUBTRACT",
-          "line_no": 534,
-          "raw_text": "SUBTRACT APPL-RESULT FROM APPL-RESULT ELSE",
-          "reason": "unresolved read operand: APPL-RESULT"
-        },
-        {
-          "verb": "SUBTRACT",
-          "line_no": 534,
-          "raw_text": "SUBTRACT APPL-RESULT FROM APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "SUBTRACT",
           "line_no": 534,
@@ -1323,54 +1184,41 @@
           "reason": "unresolved mutate operand: ELSE"
         },
         {
-          "verb": "ADD",
-          "line_no": 534,
-          "raw_text": "ADD 12 TO ZERO GIVING APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
           "verb": "IF",
           "line_no": 534,
           "raw_text": "IF APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 534,
-          "raw_text": "MOVE TRANREPT-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: TRANREPT-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 534,
-          "raw_text": "MOVE TRANREPT-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "9200-CARDXREF-CLOSE": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "CARDXREF-STATUS",
+          "record": "CARDXREF-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 552,
-          "raw_text": "MOVE 8 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 553,
-          "raw_text": "IF  CARDXREF-STATUS = '00'",
-          "reason": "unresolved read operand: CARDXREF-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 553,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "MOVE",
           "line_no": 553,
@@ -1378,54 +1226,41 @@
           "reason": "unresolved mutate operand: ELSE"
         },
         {
-          "verb": "MOVE",
-          "line_no": 553,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
           "verb": "IF",
           "line_no": 553,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 553,
-          "raw_text": "MOVE CARDXREF-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: CARDXREF-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 553,
-          "raw_text": "MOVE CARDXREF-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "9300-TRANTYPE-CLOSE": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "TRANTYPE-STATUS",
+          "record": "TRANTYPE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 570,
-          "raw_text": "MOVE 8 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 571,
-          "raw_text": "IF  TRANTYPE-STATUS = '00'",
-          "reason": "unresolved read operand: TRANTYPE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 571,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "MOVE",
           "line_no": 571,
@@ -1433,54 +1268,41 @@
           "reason": "unresolved mutate operand: ELSE"
         },
         {
-          "verb": "MOVE",
-          "line_no": 571,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
           "verb": "IF",
           "line_no": 571,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 571,
-          "raw_text": "MOVE TRANTYPE-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: TRANTYPE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 571,
-          "raw_text": "MOVE TRANTYPE-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "9400-TRANCATG-CLOSE": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "TRANCATG-STATUS",
+          "record": "TRANCATG-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 588,
-          "raw_text": "MOVE 8 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 589,
-          "raw_text": "IF  TRANCATG-STATUS = '00'",
-          "reason": "unresolved read operand: TRANCATG-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 589,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "MOVE",
           "line_no": 589,
@@ -1488,54 +1310,41 @@
           "reason": "unresolved mutate operand: ELSE"
         },
         {
-          "verb": "MOVE",
-          "line_no": 589,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
           "verb": "IF",
           "line_no": 589,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 589,
-          "raw_text": "MOVE TRANCATG-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: TRANCATG-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 589,
-          "raw_text": "MOVE TRANCATG-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "9500-DATEPARM-CLOSE": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "DATEPARM-STATUS",
+          "record": "DATEPARM-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 606,
-          "raw_text": "MOVE 8 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 607,
-          "raw_text": "IF  DATEPARM-STATUS = '00'",
-          "reason": "unresolved read operand: DATEPARM-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 607,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "MOVE",
           "line_no": 607,
@@ -1543,73 +1352,119 @@
           "reason": "unresolved mutate operand: ELSE"
         },
         {
-          "verb": "MOVE",
-          "line_no": 607,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
           "verb": "IF",
           "line_no": 607,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 607,
-          "raw_text": "MOVE DATEPARM-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: DATEPARM-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 607,
-          "raw_text": "MOVE DATEPARM-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "9999-ABEND-PROGRAM": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "TIMING",
+          "record": "TIMING",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        }
+      ],
+      "mutates": [
+        {
+          "field": "TIMING",
+          "record": "TIMING",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "ABCODE",
+          "record": "ABCODE",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 627,
-          "raw_text": "MOVE 0 TO TIMING",
-          "reason": "unresolved mutate operand: TIMING"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 627,
-          "raw_text": "MOVE 999 TO ABCODE",
-          "reason": "unresolved mutate operand: ABCODE"
-        },
         {
           "verb": "CALL",
           "line_no": 627,
           "raw_text": "CALL 'CEE3ABD' USING ABCODE, TIMING",
           "reason": "unresolved CALL USING operand: ABCODE,"
-        },
-        {
-          "verb": "CALL",
-          "line_no": 627,
-          "raw_text": "CALL 'CEE3ABD' USING ABCODE, TIMING",
-          "reason": "unresolved CALL USING operand: TIMING"
         }
       ]
     },
     "9910-DISPLAY-IO-STATUS": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "reads": [
         {
-          "verb": "IF",
-          "line_no": 634,
-          "raw_text": "IF IO-STATUS NOT NUMERIC OR IO-STAT1 = '9'",
-          "reason": "unresolved read operand: IO-STATUS"
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
         },
+        {
+          "field": "IO-STATUS.IO-STAT1",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 1
+        },
+        {
+          "field": "IO-STATUS.IO-STAT2",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 1,
+          "length": 1
+        },
+        {
+          "field": "TWO-BYTES-BINARY",
+          "record": "TWO-BYTES-BINARY",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        },
+        {
+          "field": "IO-STATUS-04",
+          "record": "IO-STATUS-04",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        }
+      ],
+      "mutates": [
+        {
+          "field": "IO-STATUS-04",
+          "record": "IO-STATUS-04",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "TWO-BYTES-BINARY",
+          "record": "TWO-BYTES-BINARY",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        },
+        {
+          "field": "TWO-BYTES-ALPHA.TWO-BYTES-RIGHT",
+          "record": "TWO-BYTES-ALPHA",
+          "copybook": null,
+          "offset": 1,
+          "length": 1
+        },
+        {
+          "field": "IO-STATUS-04.IO-STATUS-0403",
+          "record": "IO-STATUS-04",
+          "copybook": null,
+          "offset": 1,
+          "length": 3
+        }
+      ],
+      "unresolved": [
         {
           "verb": "IF",
           "line_no": 634,
@@ -1617,88 +1472,10 @@
           "reason": "unresolved read operand: NUMERIC"
         },
         {
-          "verb": "IF",
-          "line_no": 634,
-          "raw_text": "IF IO-STATUS NOT NUMERIC OR IO-STAT1 = '9'",
-          "reason": "unresolved read operand: IO-STAT1"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 634,
-          "raw_text": "MOVE IO-STAT1 TO IO-STATUS-04(1:1)",
-          "reason": "unresolved read operand: IO-STAT1"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 634,
-          "raw_text": "MOVE IO-STAT1 TO IO-STATUS-04(1:1)",
-          "reason": "unresolved mutate operand: IO-STATUS-04(1:1)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 634,
-          "raw_text": "MOVE 0 TO TWO-BYTES-BINARY",
-          "reason": "unresolved mutate operand: TWO-BYTES-BINARY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 634,
-          "raw_text": "MOVE IO-STAT2 TO TWO-BYTES-RIGHT",
-          "reason": "unresolved read operand: IO-STAT2"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 634,
-          "raw_text": "MOVE IO-STAT2 TO TWO-BYTES-RIGHT",
-          "reason": "unresolved mutate operand: TWO-BYTES-RIGHT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 634,
-          "raw_text": "MOVE TWO-BYTES-BINARY TO IO-STATUS-0403",
-          "reason": "unresolved read operand: TWO-BYTES-BINARY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 634,
-          "raw_text": "MOVE TWO-BYTES-BINARY TO IO-STATUS-0403",
-          "reason": "unresolved mutate operand: IO-STATUS-0403"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 634,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
-          "reason": "unresolved read operand: IO-STATUS-04"
-        },
-        {
           "verb": "DISPLAY",
           "line_no": 634,
           "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
           "reason": "unresolved read operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 634,
-          "raw_text": "MOVE '0000' TO IO-STATUS-04",
-          "reason": "unresolved mutate operand: IO-STATUS-04"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 634,
-          "raw_text": "MOVE IO-STATUS TO IO-STATUS-04(3:2)",
-          "reason": "unresolved read operand: IO-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 634,
-          "raw_text": "MOVE IO-STATUS TO IO-STATUS-04(3:2)",
-          "reason": "unresolved mutate operand: IO-STATUS-04(3:2)"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 634,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
-          "reason": "unresolved read operand: IO-STATUS-04"
         }
       ]
     }

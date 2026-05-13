@@ -1,0 +1,344 @@
+{
+  "program": "CBACT02C",
+  "schema_version": "1.2",
+  "records": [
+    {
+      "name": "FD-CARDFILE-REC",
+      "copybook": null,
+      "total_bytes": 150,
+      "fields": [
+        {
+          "qualified_name": "FD-CARDFILE-REC.FD-CARD-NUM",
+          "level": 5,
+          "offset": 0,
+          "length": 16,
+          "pic": "X(16)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FD-CARDFILE-REC.FD-CARD-DATA",
+          "level": 5,
+          "offset": 16,
+          "length": 134,
+          "pic": "X(134)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "CARD-RECORD",
+      "copybook": "CVACT02Y",
+      "total_bytes": 150,
+      "fields": [
+        {
+          "qualified_name": "CARD-RECORD.CARD-NUM",
+          "level": 5,
+          "offset": 0,
+          "length": 16,
+          "pic": "X(16)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT02Y"
+        },
+        {
+          "qualified_name": "CARD-RECORD.CARD-ACCT-ID",
+          "level": 5,
+          "offset": 16,
+          "length": 11,
+          "pic": "9(11)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT02Y"
+        },
+        {
+          "qualified_name": "CARD-RECORD.CARD-CVV-CD",
+          "level": 5,
+          "offset": 27,
+          "length": 3,
+          "pic": "9(03)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT02Y"
+        },
+        {
+          "qualified_name": "CARD-RECORD.CARD-EMBOSSED-NAME",
+          "level": 5,
+          "offset": 30,
+          "length": 50,
+          "pic": "X(50)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT02Y"
+        },
+        {
+          "qualified_name": "CARD-RECORD.CARD-EXPIRAION-DATE",
+          "level": 5,
+          "offset": 80,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT02Y"
+        },
+        {
+          "qualified_name": "CARD-RECORD.CARD-ACTIVE-STATUS",
+          "level": 5,
+          "offset": 90,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT02Y"
+        },
+        {
+          "qualified_name": "CARD-RECORD.FILLER",
+          "level": 5,
+          "offset": 91,
+          "length": 59,
+          "pic": "X(59)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT02Y"
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "CARDFILE-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "CARDFILE-STATUS.CARDFILE-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "CARDFILE-STATUS.CARDFILE-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "IO-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "IO-STATUS.IO-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "IO-STATUS.IO-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TWO-BYTES-BINARY",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "TWO-BYTES-BINARY",
+          "level": 1,
+          "offset": 0,
+          "length": 2,
+          "pic": "9(4)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TWO-BYTES-ALPHA",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "TWO-BYTES-ALPHA.TWO-BYTES-LEFT",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "TWO-BYTES-ALPHA.TWO-BYTES-RIGHT",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "IO-STATUS-04",
+      "copybook": null,
+      "total_bytes": 4,
+      "fields": [
+        {
+          "qualified_name": "IO-STATUS-04.IO-STATUS-0401",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "9",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "IO-STATUS-04.IO-STATUS-0403",
+          "level": 5,
+          "offset": 1,
+          "length": 3,
+          "pic": "999",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "APPL-RESULT",
+      "copybook": null,
+      "total_bytes": 4,
+      "fields": [
+        {
+          "qualified_name": "APPL-RESULT",
+          "level": 1,
+          "offset": 0,
+          "length": 4,
+          "pic": "S9(9)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "END-OF-FILE",
+      "copybook": null,
+      "total_bytes": 1,
+      "fields": [
+        {
+          "qualified_name": "END-OF-FILE",
+          "level": 1,
+          "offset": 0,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "ABCODE",
+      "copybook": null,
+      "total_bytes": 4,
+      "fields": [
+        {
+          "qualified_name": "ABCODE",
+          "level": 1,
+          "offset": 0,
+          "length": 4,
+          "pic": "S9(9)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TIMING",
+      "copybook": null,
+      "total_bytes": 4,
+      "fields": [
+        {
+          "qualified_name": "TIMING",
+          "level": 1,
+          "offset": 0,
+          "length": 4,
+          "pic": "S9(9)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    }
+  ],
+  "unresolved": []
+}

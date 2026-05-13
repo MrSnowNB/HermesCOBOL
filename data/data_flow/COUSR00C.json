@@ -4,8 +4,52 @@
   "paragraph_data_flow": {
     "MAIN-PARA": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "DFHCOMMAREA",
+          "record": "DFHCOMMAREA",
+          "copybook": null,
+          "offset": 0,
+          "length": 1
+        },
+        {
+          "field": "CCDA-COMMON-MESSAGES.CCDA-MSG-INVALID-KEY",
+          "record": "CCDA-COMMON-MESSAGES",
+          "copybook": "CSMSG01Y",
+          "offset": 50,
+          "length": 50
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-TO-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 16,
+          "length": 8
+        },
+        {
+          "field": "CARDDEMO-COMMAREA",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 0,
+          "length": 194
+        },
+        {
+          "field": "WS-VARIABLES.WS-ERR-FLG",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 100,
+          "length": 1
+        }
+      ],
       "unresolved": [
         {
           "verb": "SET",
@@ -30,12 +74,6 @@
           "line_no": 100,
           "raw_text": "SET SEND-ERASE-YES TO TRUE",
           "reason": "unresolved mutate operand: SEND-ERASE-YES"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 100,
-          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COUSR0AO",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
           "verb": "MOVE",
@@ -80,24 +118,6 @@
           "reason": "unresolved read operand: EIBCALEN"
         },
         {
-          "verb": "MOVE",
-          "line_no": 100,
-          "raw_text": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 100,
-          "raw_text": "MOVE DFHCOMMAREA(1:EIBCALEN) TO CARDDEMO-COMMAREA",
-          "reason": "unresolved read operand: DFHCOMMAREA(1:EIBCALEN)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 100,
-          "raw_text": "MOVE DFHCOMMAREA(1:EIBCALEN) TO CARDDEMO-COMMAREA",
-          "reason": "unresolved mutate operand: CARDDEMO-COMMAREA"
-        },
-        {
           "verb": "IF",
           "line_no": 100,
           "raw_text": "IF NOT CDEMO-PGM-REENTER",
@@ -134,12 +154,6 @@
           "reason": "unresolved read operand: DFHPF3"
         },
         {
-          "verb": "MOVE",
-          "line_no": 100,
-          "raw_text": "MOVE 'COADM01C' TO CDEMO-TO-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
-        },
-        {
           "verb": "WHEN",
           "line_no": 100,
           "raw_text": "WHEN DFHPF7",
@@ -150,12 +164,6 @@
           "line_no": 100,
           "raw_text": "WHEN DFHPF8",
           "reason": "unresolved read operand: DFHPF8"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 100,
-          "raw_text": "MOVE 'Y'                       TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
         },
         {
           "verb": "MOVE",
@@ -176,18 +184,6 @@
           "reason": "unresolved mutate operand: COUSR0AI"
         },
         {
-          "verb": "MOVE",
-          "line_no": 100,
-          "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
-          "reason": "unresolved read operand: CCDA-MSG-INVALID-KEY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 100,
-          "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
           "verb": "RETURN",
           "line_no": 100,
           "raw_text": "RETURN TRANSID (WS-TRANID) COMMAREA (CARDDEMO-COMMAREA)",
@@ -197,8 +193,94 @@
     },
     "PROCESS-ENTER-KEY": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-CU00-INFO.CDEMO-CU00-USR-SEL-FLG",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 185,
+          "length": 1
+        },
+        {
+          "field": "WS-VARIABLES.WS-TRANID",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 8,
+          "length": 4
+        },
+        {
+          "field": "WS-VARIABLES.WS-PGMNAME",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 0,
+          "length": 8
+        }
+      ],
+      "mutates": [
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-CU00-INFO.CDEMO-CU00-USR-SEL-FLG",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 185,
+          "length": 1
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-CU00-INFO.CDEMO-CU00-USR-SELECTED",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 186,
+          "length": 8
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-TO-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 16,
+          "length": 8
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-FROM-TRANID",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-FROM-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 4,
+          "length": 8
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-PGM-CONTEXT",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 33,
+          "length": 1
+        },
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        },
+        {
+          "field": "SEC-USER-DATA.SEC-USR-ID",
+          "record": "SEC-USER-DATA",
+          "copybook": "CSUSR01Y",
+          "offset": 0,
+          "length": 8
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-CU00-INFO.CDEMO-CU00-PAGE-NUM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 176,
+          "length": 8
+        }
+      ],
       "unresolved": [
         {
           "verb": "WHEN",
@@ -239,12 +321,6 @@
         {
           "verb": "MOVE",
           "line_no": 151,
-          "raw_text": "MOVE SEL0001I OF COUSR0AI TO CDEMO-CU00-USR-SEL-FLG",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SEL-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
           "raw_text": "MOVE USRID01I OF COUSR0AI TO CDEMO-CU00-USR-SELECTED",
           "reason": "unresolved read operand: USRID01I"
         },
@@ -261,12 +337,6 @@
           "reason": "unresolved read operand: COUSR0AI"
         },
         {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE USRID01I OF COUSR0AI TO CDEMO-CU00-USR-SELECTED",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SELECTED"
-        },
-        {
           "verb": "WHEN",
           "line_no": 151,
           "raw_text": "WHEN SEL0002I OF COUSR0AI NOT = SPACES AND LOW-VALUES",
@@ -301,12 +371,6 @@
           "line_no": 151,
           "raw_text": "MOVE SEL0002I OF COUSR0AI TO CDEMO-CU00-USR-SEL-FLG",
           "reason": "unresolved read operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE SEL0002I OF COUSR0AI TO CDEMO-CU00-USR-SEL-FLG",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SEL-FLG"
         },
         {
           "verb": "MOVE",
@@ -327,12 +391,6 @@
           "reason": "unresolved read operand: COUSR0AI"
         },
         {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE USRID02I OF COUSR0AI TO CDEMO-CU00-USR-SELECTED",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SELECTED"
-        },
-        {
           "verb": "WHEN",
           "line_no": 151,
           "raw_text": "WHEN SEL0003I OF COUSR0AI NOT = SPACES AND LOW-VALUES",
@@ -367,12 +425,6 @@
           "line_no": 151,
           "raw_text": "MOVE SEL0003I OF COUSR0AI TO CDEMO-CU00-USR-SEL-FLG",
           "reason": "unresolved read operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE SEL0003I OF COUSR0AI TO CDEMO-CU00-USR-SEL-FLG",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SEL-FLG"
         },
         {
           "verb": "MOVE",
@@ -393,12 +445,6 @@
           "reason": "unresolved read operand: COUSR0AI"
         },
         {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE USRID03I OF COUSR0AI TO CDEMO-CU00-USR-SELECTED",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SELECTED"
-        },
-        {
           "verb": "WHEN",
           "line_no": 151,
           "raw_text": "WHEN SEL0004I OF COUSR0AI NOT = SPACES AND LOW-VALUES",
@@ -433,12 +479,6 @@
           "line_no": 151,
           "raw_text": "MOVE SEL0004I OF COUSR0AI TO CDEMO-CU00-USR-SEL-FLG",
           "reason": "unresolved read operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE SEL0004I OF COUSR0AI TO CDEMO-CU00-USR-SEL-FLG",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SEL-FLG"
         },
         {
           "verb": "MOVE",
@@ -459,12 +499,6 @@
           "reason": "unresolved read operand: COUSR0AI"
         },
         {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE USRID04I OF COUSR0AI TO CDEMO-CU00-USR-SELECTED",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SELECTED"
-        },
-        {
           "verb": "WHEN",
           "line_no": 151,
           "raw_text": "WHEN SEL0005I OF COUSR0AI NOT = SPACES AND LOW-VALUES",
@@ -499,12 +533,6 @@
           "line_no": 151,
           "raw_text": "MOVE SEL0005I OF COUSR0AI TO CDEMO-CU00-USR-SEL-FLG",
           "reason": "unresolved read operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE SEL0005I OF COUSR0AI TO CDEMO-CU00-USR-SEL-FLG",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SEL-FLG"
         },
         {
           "verb": "MOVE",
@@ -525,12 +553,6 @@
           "reason": "unresolved read operand: COUSR0AI"
         },
         {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE USRID05I OF COUSR0AI TO CDEMO-CU00-USR-SELECTED",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SELECTED"
-        },
-        {
           "verb": "WHEN",
           "line_no": 151,
           "raw_text": "WHEN SEL0006I OF COUSR0AI NOT = SPACES AND LOW-VALUES",
@@ -565,12 +587,6 @@
           "line_no": 151,
           "raw_text": "MOVE SEL0006I OF COUSR0AI TO CDEMO-CU00-USR-SEL-FLG",
           "reason": "unresolved read operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE SEL0006I OF COUSR0AI TO CDEMO-CU00-USR-SEL-FLG",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SEL-FLG"
         },
         {
           "verb": "MOVE",
@@ -591,12 +607,6 @@
           "reason": "unresolved read operand: COUSR0AI"
         },
         {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE USRID06I OF COUSR0AI TO CDEMO-CU00-USR-SELECTED",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SELECTED"
-        },
-        {
           "verb": "WHEN",
           "line_no": 151,
           "raw_text": "WHEN SEL0007I OF COUSR0AI NOT = SPACES AND LOW-VALUES",
@@ -631,12 +641,6 @@
           "line_no": 151,
           "raw_text": "MOVE SEL0007I OF COUSR0AI TO CDEMO-CU00-USR-SEL-FLG",
           "reason": "unresolved read operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE SEL0007I OF COUSR0AI TO CDEMO-CU00-USR-SEL-FLG",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SEL-FLG"
         },
         {
           "verb": "MOVE",
@@ -657,12 +661,6 @@
           "reason": "unresolved read operand: COUSR0AI"
         },
         {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE USRID07I OF COUSR0AI TO CDEMO-CU00-USR-SELECTED",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SELECTED"
-        },
-        {
           "verb": "WHEN",
           "line_no": 151,
           "raw_text": "WHEN SEL0008I OF COUSR0AI NOT = SPACES AND LOW-VALUES",
@@ -697,12 +695,6 @@
           "line_no": 151,
           "raw_text": "MOVE SEL0008I OF COUSR0AI TO CDEMO-CU00-USR-SEL-FLG",
           "reason": "unresolved read operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE SEL0008I OF COUSR0AI TO CDEMO-CU00-USR-SEL-FLG",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SEL-FLG"
         },
         {
           "verb": "MOVE",
@@ -723,12 +715,6 @@
           "reason": "unresolved read operand: COUSR0AI"
         },
         {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE USRID08I OF COUSR0AI TO CDEMO-CU00-USR-SELECTED",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SELECTED"
-        },
-        {
           "verb": "WHEN",
           "line_no": 151,
           "raw_text": "WHEN SEL0009I OF COUSR0AI NOT = SPACES AND LOW-VALUES",
@@ -763,12 +749,6 @@
           "line_no": 151,
           "raw_text": "MOVE SEL0009I OF COUSR0AI TO CDEMO-CU00-USR-SEL-FLG",
           "reason": "unresolved read operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE SEL0009I OF COUSR0AI TO CDEMO-CU00-USR-SEL-FLG",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SEL-FLG"
         },
         {
           "verb": "MOVE",
@@ -789,12 +769,6 @@
           "reason": "unresolved read operand: COUSR0AI"
         },
         {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE USRID09I OF COUSR0AI TO CDEMO-CU00-USR-SELECTED",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SELECTED"
-        },
-        {
           "verb": "WHEN",
           "line_no": 151,
           "raw_text": "WHEN SEL0010I OF COUSR0AI NOT = SPACES AND LOW-VALUES",
@@ -829,12 +803,6 @@
           "line_no": 151,
           "raw_text": "MOVE SEL0010I OF COUSR0AI TO CDEMO-CU00-USR-SEL-FLG",
           "reason": "unresolved read operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE SEL0010I OF COUSR0AI TO CDEMO-CU00-USR-SEL-FLG",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SEL-FLG"
         },
         {
           "verb": "MOVE",
@@ -853,24 +821,6 @@
           "line_no": 151,
           "raw_text": "MOVE USRID10I OF COUSR0AI TO CDEMO-CU00-USR-SELECTED",
           "reason": "unresolved read operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE USRID10I OF COUSR0AI TO CDEMO-CU00-USR-SELECTED",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SELECTED"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE SPACES   TO CDEMO-CU00-USR-SEL-FLG",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SEL-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE SPACES   TO CDEMO-CU00-USR-SELECTED",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USR-SELECTED"
         },
         {
           "verb": "IF",
@@ -895,90 +845,6 @@
           "line_no": 151,
           "raw_text": "IF (CDEMO-CU00-USR-SEL-FLG NOT = SPACES AND LOW-VALUES) AND (CDEMO-CU00-USR-SELECTED NOT = SPACES AND LOW-VALUES)",
           "reason": "unresolved read operand: LOW-VALUES)"
-        },
-        {
-          "verb": "EVALUATE",
-          "line_no": 151,
-          "raw_text": "EVALUATE CDEMO-CU00-USR-SEL-FLG",
-          "reason": "unresolved read operand: CDEMO-CU00-USR-SEL-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE 'COUSR02C'   TO CDEMO-TO-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
-          "reason": "unresolved read operand: WS-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
-          "reason": "unresolved mutate operand: CDEMO-FROM-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved read operand: WS-PGMNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE 0        TO CDEMO-PGM-CONTEXT",
-          "reason": "unresolved mutate operand: CDEMO-PGM-CONTEXT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE 'COUSR03C'   TO CDEMO-TO-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
-          "reason": "unresolved read operand: WS-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
-          "reason": "unresolved mutate operand: CDEMO-FROM-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved read operand: WS-PGMNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE 0        TO CDEMO-PGM-CONTEXT",
-          "reason": "unresolved mutate operand: CDEMO-PGM-CONTEXT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE 'Invalid selection. Valid values are U and D' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
           "verb": "MOVE",
@@ -1015,12 +881,6 @@
           "line_no": 151,
           "raw_text": "IF USRIDINI OF COUSR0AI = SPACES OR LOW-VALUES",
           "reason": "unresolved read operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE LOW-VALUES TO SEC-USR-ID ELSE",
-          "reason": "unresolved mutate operand: SEC-USR-ID"
         },
         {
           "verb": "MOVE",
@@ -1049,12 +909,6 @@
         {
           "verb": "MOVE",
           "line_no": 151,
-          "raw_text": "MOVE USRIDINI  OF COUSR0AI TO SEC-USR-ID",
-          "reason": "unresolved mutate operand: SEC-USR-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
           "raw_text": "MOVE -1       TO USRIDINL OF COUSR0AI",
           "reason": "unresolved mutate operand: USRIDINL"
         },
@@ -1069,12 +923,6 @@
           "line_no": 151,
           "raw_text": "MOVE -1       TO USRIDINL OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 151,
-          "raw_text": "MOVE 0       TO CDEMO-CU00-PAGE-NUM",
-          "reason": "unresolved mutate operand: CDEMO-CU00-PAGE-NUM"
         },
         {
           "verb": "IF",
@@ -1104,38 +952,44 @@
     },
     "PROCESS-PF7-KEY": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-CU00-INFO.CDEMO-CU00-USRID-FIRST",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 160,
+          "length": 8
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-CU00-INFO.CDEMO-CU00-PAGE-NUM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 176,
+          "length": 8
+        }
+      ],
+      "mutates": [
+        {
+          "field": "SEC-USER-DATA.SEC-USR-ID",
+          "record": "SEC-USER-DATA",
+          "copybook": "CSUSR01Y",
+          "offset": 0,
+          "length": 8
+        },
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "IF",
-          "line_no": 239,
-          "raw_text": "IF CDEMO-CU00-USRID-FIRST = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: CDEMO-CU00-USRID-FIRST"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 239,
-          "raw_text": "MOVE LOW-VALUES TO SEC-USR-ID ELSE",
-          "reason": "unresolved mutate operand: SEC-USR-ID"
-        },
         {
           "verb": "MOVE",
           "line_no": 239,
           "raw_text": "MOVE LOW-VALUES TO SEC-USR-ID ELSE",
           "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 239,
-          "raw_text": "MOVE CDEMO-CU00-USRID-FIRST TO SEC-USR-ID",
-          "reason": "unresolved read operand: CDEMO-CU00-USRID-FIRST"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 239,
-          "raw_text": "MOVE CDEMO-CU00-USRID-FIRST TO SEC-USR-ID",
-          "reason": "unresolved mutate operand: SEC-USR-ID"
         },
         {
           "verb": "SET",
@@ -1162,18 +1016,6 @@
           "reason": "unresolved mutate operand: COUSR0AI"
         },
         {
-          "verb": "IF",
-          "line_no": 239,
-          "raw_text": "IF CDEMO-CU00-PAGE-NUM > 1",
-          "reason": "unresolved read operand: CDEMO-CU00-PAGE-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 239,
-          "raw_text": "MOVE 'You are already at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
           "verb": "SET",
           "line_no": 239,
           "raw_text": "SET SEND-ERASE-NO TO TRUE",
@@ -1183,38 +1025,37 @@
     },
     "PROCESS-PF8-KEY": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-CU00-INFO.CDEMO-CU00-USRID-LAST",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 168,
+          "length": 8
+        }
+      ],
+      "mutates": [
+        {
+          "field": "SEC-USER-DATA.SEC-USR-ID",
+          "record": "SEC-USER-DATA",
+          "copybook": "CSUSR01Y",
+          "offset": 0,
+          "length": 8
+        },
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "IF",
-          "line_no": 262,
-          "raw_text": "IF CDEMO-CU00-USRID-LAST = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: CDEMO-CU00-USRID-LAST"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 262,
-          "raw_text": "MOVE HIGH-VALUES TO SEC-USR-ID ELSE",
-          "reason": "unresolved mutate operand: SEC-USR-ID"
-        },
         {
           "verb": "MOVE",
           "line_no": 262,
           "raw_text": "MOVE HIGH-VALUES TO SEC-USR-ID ELSE",
           "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 262,
-          "raw_text": "MOVE CDEMO-CU00-USRID-LAST TO SEC-USR-ID",
-          "reason": "unresolved read operand: CDEMO-CU00-USRID-LAST"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 262,
-          "raw_text": "MOVE CDEMO-CU00-USRID-LAST TO SEC-USR-ID",
-          "reason": "unresolved mutate operand: SEC-USR-ID"
         },
         {
           "verb": "MOVE",
@@ -1241,12 +1082,6 @@
           "reason": "unresolved read operand: NEXT-PAGE-YES"
         },
         {
-          "verb": "MOVE",
-          "line_no": 262,
-          "raw_text": "MOVE 'You are already at the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
           "verb": "SET",
           "line_no": 262,
           "raw_text": "SET SEND-ERASE-NO TO TRUE",
@@ -1256,8 +1091,38 @@
     },
     "PROCESS-PAGE-FORWARD": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "WS-VARIABLES.WS-IDX",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 113,
+          "length": 2
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-CU00-INFO.CDEMO-CU00-PAGE-NUM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 176,
+          "length": 8
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-VARIABLES.WS-IDX",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 113,
+          "length": 2
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-CU00-INFO.CDEMO-CU00-PAGE-NUM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 176,
+          "length": 8
+        }
+      ],
       "unresolved": [
         {
           "verb": "IF",
@@ -1302,12 +1167,6 @@
           "reason": "unresolved read operand: ERR-FLG-OFF"
         },
         {
-          "verb": "MOVE",
-          "line_no": 284,
-          "raw_text": "MOVE 1             TO  WS-IDX",
-          "reason": "unresolved mutate operand: WS-IDX"
-        },
-        {
           "verb": "IF",
           "line_no": 284,
           "raw_text": "IF USER-SEC-NOT-EOF AND ERR-FLG-OFF",
@@ -1320,18 +1179,6 @@
           "reason": "unresolved read operand: ERR-FLG-OFF"
         },
         {
-          "verb": "COMPUTE",
-          "line_no": 284,
-          "raw_text": "COMPUTE WS-IDX = WS-IDX + 1",
-          "reason": "unresolved mutate operand: WS-IDX"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 284,
-          "raw_text": "COMPUTE WS-IDX = WS-IDX + 1",
-          "reason": "unresolved read operand: WS-IDX"
-        },
-        {
           "verb": "IF",
           "line_no": 284,
           "raw_text": "IF USER-SEC-NOT-EOF AND ERR-FLG-OFF",
@@ -1342,18 +1189,6 @@
           "line_no": 284,
           "raw_text": "IF USER-SEC-NOT-EOF AND ERR-FLG-OFF",
           "reason": "unresolved read operand: ERR-FLG-OFF"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 284,
-          "raw_text": "COMPUTE CDEMO-CU00-PAGE-NUM = CDEMO-CU00-PAGE-NUM + 1",
-          "reason": "unresolved mutate operand: CDEMO-CU00-PAGE-NUM"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 284,
-          "raw_text": "COMPUTE CDEMO-CU00-PAGE-NUM = CDEMO-CU00-PAGE-NUM + 1",
-          "reason": "unresolved read operand: CDEMO-CU00-PAGE-NUM"
         },
         {
           "verb": "IF",
@@ -1390,30 +1225,6 @@
           "line_no": 284,
           "raw_text": "SET NEXT-PAGE-NO TO TRUE",
           "reason": "unresolved mutate operand: NEXT-PAGE-NO"
-        },
-        {
-          "verb": "IF",
-          "line_no": 284,
-          "raw_text": "IF WS-IDX > 1",
-          "reason": "unresolved read operand: WS-IDX"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 284,
-          "raw_text": "COMPUTE CDEMO-CU00-PAGE-NUM = CDEMO-CU00-PAGE-NUM + 1",
-          "reason": "unresolved mutate operand: CDEMO-CU00-PAGE-NUM"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 284,
-          "raw_text": "COMPUTE CDEMO-CU00-PAGE-NUM = CDEMO-CU00-PAGE-NUM + 1",
-          "reason": "unresolved read operand: CDEMO-CU00-PAGE-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 284,
-          "raw_text": "MOVE CDEMO-CU00-PAGE-NUM TO PAGENUMI  OF COUSR0AI",
-          "reason": "unresolved read operand: CDEMO-CU00-PAGE-NUM"
         },
         {
           "verb": "MOVE",
@@ -1455,8 +1266,38 @@
     },
     "PROCESS-PAGE-BACKWARD": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "WS-VARIABLES.WS-IDX",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 113,
+          "length": 2
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-CU00-INFO.CDEMO-CU00-PAGE-NUM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 176,
+          "length": 8
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-VARIABLES.WS-IDX",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 113,
+          "length": 2
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-CU00-INFO.CDEMO-CU00-PAGE-NUM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 176,
+          "length": 8
+        }
+      ],
       "unresolved": [
         {
           "verb": "IF",
@@ -1495,12 +1336,6 @@
           "reason": "unresolved read operand: ERR-FLG-OFF"
         },
         {
-          "verb": "MOVE",
-          "line_no": 338,
-          "raw_text": "MOVE 10          TO  WS-IDX",
-          "reason": "unresolved mutate operand: WS-IDX"
-        },
-        {
           "verb": "IF",
           "line_no": 338,
           "raw_text": "IF USER-SEC-NOT-EOF AND ERR-FLG-OFF",
@@ -1511,18 +1346,6 @@
           "line_no": 338,
           "raw_text": "IF USER-SEC-NOT-EOF AND ERR-FLG-OFF",
           "reason": "unresolved read operand: ERR-FLG-OFF"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 338,
-          "raw_text": "COMPUTE WS-IDX = WS-IDX - 1",
-          "reason": "unresolved mutate operand: WS-IDX"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 338,
-          "raw_text": "COMPUTE WS-IDX = WS-IDX - 1",
-          "reason": "unresolved read operand: WS-IDX"
         },
         {
           "verb": "IF",
@@ -1555,24 +1378,6 @@
           "reason": "unresolved read operand: ERR-FLG-OFF"
         },
         {
-          "verb": "IF",
-          "line_no": 338,
-          "raw_text": "IF USER-SEC-NOT-EOF AND ERR-FLG-OFF AND CDEMO-CU00-PAGE-NUM > 1",
-          "reason": "unresolved read operand: CDEMO-CU00-PAGE-NUM"
-        },
-        {
-          "verb": "SUBTRACT",
-          "line_no": 338,
-          "raw_text": "SUBTRACT 1 FROM CDEMO-CU00-PAGE-NUM ELSE",
-          "reason": "unresolved read operand: CDEMO-CU00-PAGE-NUM"
-        },
-        {
-          "verb": "SUBTRACT",
-          "line_no": 338,
-          "raw_text": "SUBTRACT 1 FROM CDEMO-CU00-PAGE-NUM ELSE",
-          "reason": "unresolved mutate operand: CDEMO-CU00-PAGE-NUM"
-        },
-        {
           "verb": "SUBTRACT",
           "line_no": 338,
           "raw_text": "SUBTRACT 1 FROM CDEMO-CU00-PAGE-NUM ELSE",
@@ -1583,18 +1388,6 @@
           "line_no": 338,
           "raw_text": "SUBTRACT 1 FROM CDEMO-CU00-PAGE-NUM ELSE",
           "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 338,
-          "raw_text": "MOVE 1 TO CDEMO-CU00-PAGE-NUM",
-          "reason": "unresolved mutate operand: CDEMO-CU00-PAGE-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 338,
-          "raw_text": "MOVE CDEMO-CU00-PAGE-NUM TO PAGENUMI  OF COUSR0AI",
-          "reason": "unresolved read operand: CDEMO-CU00-PAGE-NUM"
         },
         {
           "verb": "MOVE",
@@ -1618,21 +1411,60 @@
     },
     "POPULATE-USER-DATA": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "WS-VARIABLES.WS-IDX",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 113,
+          "length": 2
+        },
+        {
+          "field": "SEC-USER-DATA.SEC-USR-ID",
+          "record": "SEC-USER-DATA",
+          "copybook": "CSUSR01Y",
+          "offset": 0,
+          "length": 8
+        },
+        {
+          "field": "SEC-USER-DATA.SEC-USR-FNAME",
+          "record": "SEC-USER-DATA",
+          "copybook": "CSUSR01Y",
+          "offset": 8,
+          "length": 20
+        },
+        {
+          "field": "SEC-USER-DATA.SEC-USR-LNAME",
+          "record": "SEC-USER-DATA",
+          "copybook": "CSUSR01Y",
+          "offset": 28,
+          "length": 20
+        },
+        {
+          "field": "SEC-USER-DATA.SEC-USR-TYPE",
+          "record": "SEC-USER-DATA",
+          "copybook": "CSUSR01Y",
+          "offset": 56,
+          "length": 1
+        }
+      ],
+      "mutates": [
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-CU00-INFO.CDEMO-CU00-USRID-FIRST",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 160,
+          "length": 8
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-CU00-INFO.CDEMO-CU00-USRID-LAST",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 168,
+          "length": 8
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "EVALUATE",
-          "line_no": 386,
-          "raw_text": "EVALUATE WS-IDX",
-          "reason": "unresolved read operand: WS-IDX"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-ID    TO USRID01I OF COUSR0AI CDEMO-CU00-USRID-FIRST",
-          "reason": "unresolved read operand: SEC-USR-ID"
-        },
         {
           "verb": "MOVE",
           "line_no": 386,
@@ -1650,18 +1482,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-ID    TO USRID01I OF COUSR0AI CDEMO-CU00-USRID-FIRST",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-ID    TO USRID01I OF COUSR0AI CDEMO-CU00-USRID-FIRST",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USRID-FIRST"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-FNAME TO FNAME01I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-FNAME"
         },
         {
           "verb": "MOVE",
@@ -1685,12 +1505,6 @@
           "verb": "MOVE",
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME01I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-LNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-LNAME TO LNAME01I OF COUSR0AI",
           "reason": "unresolved mutate operand: LNAME01I"
         },
         {
@@ -1704,12 +1518,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME01I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-TYPE  TO UTYPE01I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-TYPE"
         },
         {
           "verb": "MOVE",
@@ -1733,12 +1541,6 @@
           "verb": "MOVE",
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-ID    TO USRID02I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-ID    TO USRID02I OF COUSR0AI",
           "reason": "unresolved mutate operand: USRID02I"
         },
         {
@@ -1752,12 +1554,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-ID    TO USRID02I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-FNAME TO FNAME02I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-FNAME"
         },
         {
           "verb": "MOVE",
@@ -1781,12 +1577,6 @@
           "verb": "MOVE",
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME02I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-LNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-LNAME TO LNAME02I OF COUSR0AI",
           "reason": "unresolved mutate operand: LNAME02I"
         },
         {
@@ -1800,12 +1590,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME02I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-TYPE  TO UTYPE02I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-TYPE"
         },
         {
           "verb": "MOVE",
@@ -1829,12 +1613,6 @@
           "verb": "MOVE",
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-ID    TO USRID03I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-ID    TO USRID03I OF COUSR0AI",
           "reason": "unresolved mutate operand: USRID03I"
         },
         {
@@ -1848,12 +1626,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-ID    TO USRID03I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-FNAME TO FNAME03I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-FNAME"
         },
         {
           "verb": "MOVE",
@@ -1877,12 +1649,6 @@
           "verb": "MOVE",
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME03I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-LNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-LNAME TO LNAME03I OF COUSR0AI",
           "reason": "unresolved mutate operand: LNAME03I"
         },
         {
@@ -1896,12 +1662,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME03I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-TYPE  TO UTYPE03I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-TYPE"
         },
         {
           "verb": "MOVE",
@@ -1925,12 +1685,6 @@
           "verb": "MOVE",
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-ID    TO USRID04I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-ID    TO USRID04I OF COUSR0AI",
           "reason": "unresolved mutate operand: USRID04I"
         },
         {
@@ -1944,12 +1698,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-ID    TO USRID04I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-FNAME TO FNAME04I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-FNAME"
         },
         {
           "verb": "MOVE",
@@ -1973,12 +1721,6 @@
           "verb": "MOVE",
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME04I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-LNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-LNAME TO LNAME04I OF COUSR0AI",
           "reason": "unresolved mutate operand: LNAME04I"
         },
         {
@@ -1992,12 +1734,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME04I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-TYPE  TO UTYPE04I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-TYPE"
         },
         {
           "verb": "MOVE",
@@ -2021,12 +1757,6 @@
           "verb": "MOVE",
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-ID    TO USRID05I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-ID    TO USRID05I OF COUSR0AI",
           "reason": "unresolved mutate operand: USRID05I"
         },
         {
@@ -2040,12 +1770,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-ID    TO USRID05I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-FNAME TO FNAME05I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-FNAME"
         },
         {
           "verb": "MOVE",
@@ -2069,12 +1793,6 @@
           "verb": "MOVE",
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME05I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-LNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-LNAME TO LNAME05I OF COUSR0AI",
           "reason": "unresolved mutate operand: LNAME05I"
         },
         {
@@ -2088,12 +1806,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME05I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-TYPE  TO UTYPE05I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-TYPE"
         },
         {
           "verb": "MOVE",
@@ -2117,12 +1829,6 @@
           "verb": "MOVE",
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-ID    TO USRID06I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-ID    TO USRID06I OF COUSR0AI",
           "reason": "unresolved mutate operand: USRID06I"
         },
         {
@@ -2136,12 +1842,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-ID    TO USRID06I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-FNAME TO FNAME06I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-FNAME"
         },
         {
           "verb": "MOVE",
@@ -2165,12 +1865,6 @@
           "verb": "MOVE",
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME06I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-LNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-LNAME TO LNAME06I OF COUSR0AI",
           "reason": "unresolved mutate operand: LNAME06I"
         },
         {
@@ -2184,12 +1878,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME06I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-TYPE  TO UTYPE06I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-TYPE"
         },
         {
           "verb": "MOVE",
@@ -2213,12 +1901,6 @@
           "verb": "MOVE",
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-ID    TO USRID07I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-ID    TO USRID07I OF COUSR0AI",
           "reason": "unresolved mutate operand: USRID07I"
         },
         {
@@ -2232,12 +1914,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-ID    TO USRID07I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-FNAME TO FNAME07I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-FNAME"
         },
         {
           "verb": "MOVE",
@@ -2261,12 +1937,6 @@
           "verb": "MOVE",
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME07I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-LNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-LNAME TO LNAME07I OF COUSR0AI",
           "reason": "unresolved mutate operand: LNAME07I"
         },
         {
@@ -2280,12 +1950,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME07I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-TYPE  TO UTYPE07I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-TYPE"
         },
         {
           "verb": "MOVE",
@@ -2309,12 +1973,6 @@
           "verb": "MOVE",
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-ID    TO USRID08I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-ID    TO USRID08I OF COUSR0AI",
           "reason": "unresolved mutate operand: USRID08I"
         },
         {
@@ -2328,12 +1986,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-ID    TO USRID08I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-FNAME TO FNAME08I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-FNAME"
         },
         {
           "verb": "MOVE",
@@ -2357,12 +2009,6 @@
           "verb": "MOVE",
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME08I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-LNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-LNAME TO LNAME08I OF COUSR0AI",
           "reason": "unresolved mutate operand: LNAME08I"
         },
         {
@@ -2376,12 +2022,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME08I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-TYPE  TO UTYPE08I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-TYPE"
         },
         {
           "verb": "MOVE",
@@ -2405,12 +2045,6 @@
           "verb": "MOVE",
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-ID    TO USRID09I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-ID    TO USRID09I OF COUSR0AI",
           "reason": "unresolved mutate operand: USRID09I"
         },
         {
@@ -2424,12 +2058,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-ID    TO USRID09I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-FNAME TO FNAME09I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-FNAME"
         },
         {
           "verb": "MOVE",
@@ -2453,12 +2081,6 @@
           "verb": "MOVE",
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME09I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-LNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-LNAME TO LNAME09I OF COUSR0AI",
           "reason": "unresolved mutate operand: LNAME09I"
         },
         {
@@ -2472,12 +2094,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME09I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-TYPE  TO UTYPE09I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-TYPE"
         },
         {
           "verb": "MOVE",
@@ -2501,12 +2117,6 @@
           "verb": "MOVE",
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-ID    TO USRID10I OF COUSR0AI CDEMO-CU00-USRID-LAST",
-          "reason": "unresolved read operand: SEC-USR-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-ID    TO USRID10I OF COUSR0AI CDEMO-CU00-USRID-LAST",
           "reason": "unresolved mutate operand: USRID10I"
         },
         {
@@ -2520,18 +2130,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-ID    TO USRID10I OF COUSR0AI CDEMO-CU00-USRID-LAST",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-ID    TO USRID10I OF COUSR0AI CDEMO-CU00-USRID-LAST",
-          "reason": "unresolved mutate operand: CDEMO-CU00-USRID-LAST"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-FNAME TO FNAME10I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-FNAME"
         },
         {
           "verb": "MOVE",
@@ -2555,12 +2153,6 @@
           "verb": "MOVE",
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME10I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-LNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-LNAME TO LNAME10I OF COUSR0AI",
           "reason": "unresolved mutate operand: LNAME10I"
         },
         {
@@ -2574,12 +2166,6 @@
           "line_no": 386,
           "raw_text": "MOVE SEC-USR-LNAME TO LNAME10I OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 386,
-          "raw_text": "MOVE SEC-USR-TYPE  TO UTYPE10I OF COUSR0AI",
-          "reason": "unresolved read operand: SEC-USR-TYPE"
         },
         {
           "verb": "MOVE",
@@ -2603,15 +2189,17 @@
     },
     "INITIALIZE-USER-DATA": {
       "section_name": null,
-      "reads": [],
+      "reads": [
+        {
+          "field": "WS-VARIABLES.WS-IDX",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 113,
+          "length": 2
+        }
+      ],
       "mutates": [],
       "unresolved": [
-        {
-          "verb": "EVALUATE",
-          "line_no": 448,
-          "raw_text": "EVALUATE WS-IDX",
-          "reason": "unresolved read operand: WS-IDX"
-        },
         {
           "verb": "MOVE",
           "line_no": 448,
@@ -3336,64 +2924,74 @@
     },
     "RETURN-TO-PREV-SCREEN": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "reads": [
         {
-          "verb": "IF",
-          "line_no": 508,
-          "raw_text": "IF CDEMO-TO-PROGRAM = LOW-VALUES OR SPACES",
-          "reason": "unresolved read operand: CDEMO-TO-PROGRAM"
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-TO-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 16,
+          "length": 8
         },
         {
-          "verb": "MOVE",
-          "line_no": 508,
-          "raw_text": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
+          "field": "WS-VARIABLES.WS-TRANID",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 8,
+          "length": 4
         },
         {
-          "verb": "MOVE",
-          "line_no": 508,
-          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
-          "reason": "unresolved read operand: WS-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 508,
-          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
-          "reason": "unresolved mutate operand: CDEMO-FROM-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 508,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved read operand: WS-PGMNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 508,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 508,
-          "raw_text": "MOVE ZEROS        TO CDEMO-PGM-CONTEXT",
-          "reason": "unresolved mutate operand: CDEMO-PGM-CONTEXT"
+          "field": "WS-VARIABLES.WS-PGMNAME",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 0,
+          "length": 8
         }
-      ]
+      ],
+      "mutates": [
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-TO-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 16,
+          "length": 8
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-FROM-TRANID",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-FROM-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 4,
+          "length": 8
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-PGM-CONTEXT",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 33,
+          "length": 1
+        }
+      ],
+      "unresolved": []
     },
     "SEND-USRLST-SCREEN": {
       "section_name": null,
-      "reads": [],
+      "reads": [
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        }
+      ],
       "mutates": [],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COUSR0AO",
-          "reason": "unresolved read operand: WS-MESSAGE"
-        },
         {
           "verb": "MOVE",
           "line_no": 524,
@@ -3428,8 +3026,143 @@
     },
     "POPULATE-HEADER-INFO": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "CCDA-SCREEN-TITLE.CCDA-TITLE01",
+          "record": "CCDA-SCREEN-TITLE",
+          "copybook": "COTTL01Y",
+          "offset": 0,
+          "length": 40
+        },
+        {
+          "field": "CCDA-SCREEN-TITLE.CCDA-TITLE02",
+          "record": "CCDA-SCREEN-TITLE",
+          "copybook": "COTTL01Y",
+          "offset": 40,
+          "length": 40
+        },
+        {
+          "field": "WS-VARIABLES.WS-TRANID",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 8,
+          "length": 4
+        },
+        {
+          "field": "WS-VARIABLES.WS-PGMNAME",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 0,
+          "length": 8
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURDATE.WS-CURDATE-MONTH",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 4,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURDATE.WS-CURDATE-DAY",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 6,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURDATE.WS-CURDATE-YEAR",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-MM-DD-YY",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 16,
+          "length": 8
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURTIME.WS-CURTIME-HOURS",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 8,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURTIME.WS-CURTIME-MINUTE",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 10,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURTIME.WS-CURTIME-SECOND",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 12,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURTIME-HH-MM-SS",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 24,
+          "length": 8
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-MM-DD-YY.WS-CURDATE-MM",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 16,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-MM-DD-YY.WS-CURDATE-DD",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 19,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-MM-DD-YY.WS-CURDATE-YY",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 22,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURTIME-HH-MM-SS.WS-CURTIME-HH",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 24,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURTIME-HH-MM-SS.WS-CURTIME-MM",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 27,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURTIME-HH-MM-SS.WS-CURTIME-SS",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 30,
+          "length": 2
+        }
+      ],
       "unresolved": [
         {
           "verb": "MOVE",
@@ -3442,18 +3175,6 @@
           "line_no": 564,
           "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
           "reason": "unresolved read operand: CURRENT-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 564,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved mutate operand: WS-CURDATE-DATA"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 564,
-          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COUSR0AO",
-          "reason": "unresolved read operand: CCDA-TITLE01"
         },
         {
           "verb": "MOVE",
@@ -3477,12 +3198,6 @@
           "verb": "MOVE",
           "line_no": 564,
           "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COUSR0AO",
-          "reason": "unresolved read operand: CCDA-TITLE02"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 564,
-          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COUSR0AO",
           "reason": "unresolved mutate operand: TITLE02O"
         },
         {
@@ -3496,12 +3211,6 @@
           "line_no": 564,
           "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COUSR0AO",
           "reason": "unresolved mutate operand: COUSR0AO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 564,
-          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COUSR0AO",
-          "reason": "unresolved read operand: WS-TRANID"
         },
         {
           "verb": "MOVE",
@@ -3525,12 +3234,6 @@
           "verb": "MOVE",
           "line_no": 564,
           "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COUSR0AO",
-          "reason": "unresolved read operand: WS-PGMNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 564,
-          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COUSR0AO",
           "reason": "unresolved mutate operand: PGMNAMEO"
         },
         {
@@ -3544,48 +3247,6 @@
           "line_no": 564,
           "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COUSR0AO",
           "reason": "unresolved mutate operand: COUSR0AO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 564,
-          "raw_text": "MOVE WS-CURDATE-MONTH       TO WS-CURDATE-MM",
-          "reason": "unresolved read operand: WS-CURDATE-MONTH"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 564,
-          "raw_text": "MOVE WS-CURDATE-MONTH       TO WS-CURDATE-MM",
-          "reason": "unresolved mutate operand: WS-CURDATE-MM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 564,
-          "raw_text": "MOVE WS-CURDATE-DAY         TO WS-CURDATE-DD",
-          "reason": "unresolved read operand: WS-CURDATE-DAY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 564,
-          "raw_text": "MOVE WS-CURDATE-DAY         TO WS-CURDATE-DD",
-          "reason": "unresolved mutate operand: WS-CURDATE-DD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 564,
-          "raw_text": "MOVE WS-CURDATE-YEAR(3:2)   TO WS-CURDATE-YY",
-          "reason": "unresolved read operand: WS-CURDATE-YEAR(3:2)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 564,
-          "raw_text": "MOVE WS-CURDATE-YEAR(3:2)   TO WS-CURDATE-YY",
-          "reason": "unresolved mutate operand: WS-CURDATE-YY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 564,
-          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COUSR0AO",
-          "reason": "unresolved read operand: WS-CURDATE-MM-DD-YY"
         },
         {
           "verb": "MOVE",
@@ -3604,48 +3265,6 @@
           "line_no": 564,
           "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COUSR0AO",
           "reason": "unresolved mutate operand: COUSR0AO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 564,
-          "raw_text": "MOVE WS-CURTIME-HOURS       TO WS-CURTIME-HH",
-          "reason": "unresolved read operand: WS-CURTIME-HOURS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 564,
-          "raw_text": "MOVE WS-CURTIME-HOURS       TO WS-CURTIME-HH",
-          "reason": "unresolved mutate operand: WS-CURTIME-HH"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 564,
-          "raw_text": "MOVE WS-CURTIME-MINUTE      TO WS-CURTIME-MM",
-          "reason": "unresolved read operand: WS-CURTIME-MINUTE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 564,
-          "raw_text": "MOVE WS-CURTIME-MINUTE      TO WS-CURTIME-MM",
-          "reason": "unresolved mutate operand: WS-CURTIME-MM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 564,
-          "raw_text": "MOVE WS-CURTIME-SECOND      TO WS-CURTIME-SS",
-          "reason": "unresolved read operand: WS-CURTIME-SECOND"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 564,
-          "raw_text": "MOVE WS-CURTIME-SECOND      TO WS-CURTIME-SS",
-          "reason": "unresolved mutate operand: WS-CURTIME-SS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 564,
-          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COUSR0AO",
-          "reason": "unresolved read operand: WS-CURTIME-HH-MM-SS"
         },
         {
           "verb": "MOVE",
@@ -3669,8 +3288,38 @@
     },
     "STARTBR-USER-SEC-FILE": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "WS-VARIABLES.WS-RESP-CD",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 103,
+          "length": 4
+        },
+        {
+          "field": "WS-VARIABLES.WS-REAS-CD",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 107,
+          "length": 4
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        },
+        {
+          "field": "WS-VARIABLES.WS-ERR-FLG",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 100,
+          "length": 1
+        }
+      ],
       "unresolved": [
         {
           "verb": "EXEC",
@@ -3697,12 +3346,6 @@
           "reason": "unresolved mutate operand: (WS-REAS-CD)"
         },
         {
-          "verb": "EVALUATE",
-          "line_no": 597,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
           "verb": "WHEN",
           "line_no": 597,
           "raw_text": "WHEN DFHRESP(NORMAL)",
@@ -3723,12 +3366,6 @@
         {
           "verb": "MOVE",
           "line_no": 597,
-          "raw_text": "MOVE 'You are at the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 597,
           "raw_text": "MOVE -1       TO USRIDINL OF COUSR0AI",
           "reason": "unresolved mutate operand: USRIDINL"
         },
@@ -3743,30 +3380,6 @@
           "line_no": 597,
           "raw_text": "MOVE -1       TO USRIDINL OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 597,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 597,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 597,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 597,
-          "raw_text": "MOVE 'Unable to lookup User...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
           "verb": "MOVE",
@@ -3790,8 +3403,38 @@
     },
     "READNEXT-USER-SEC-FILE": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "WS-VARIABLES.WS-RESP-CD",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 103,
+          "length": 4
+        },
+        {
+          "field": "WS-VARIABLES.WS-REAS-CD",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 107,
+          "length": 4
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        },
+        {
+          "field": "WS-VARIABLES.WS-ERR-FLG",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 100,
+          "length": 1
+        }
+      ],
       "unresolved": [
         {
           "verb": "EXEC",
@@ -3830,12 +3473,6 @@
           "reason": "unresolved mutate operand: (WS-REAS-CD)"
         },
         {
-          "verb": "EVALUATE",
-          "line_no": 631,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
           "verb": "WHEN",
           "line_no": 631,
           "raw_text": "WHEN DFHRESP(NORMAL)",
@@ -3856,12 +3493,6 @@
         {
           "verb": "MOVE",
           "line_no": 631,
-          "raw_text": "MOVE 'You have reached the bottom of the page...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 631,
           "raw_text": "MOVE -1       TO USRIDINL OF COUSR0AI",
           "reason": "unresolved mutate operand: USRIDINL"
         },
@@ -3876,30 +3507,6 @@
           "line_no": 631,
           "raw_text": "MOVE -1       TO USRIDINL OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 631,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 631,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 631,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 631,
-          "raw_text": "MOVE 'Unable to lookup User...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
           "verb": "MOVE",
@@ -3923,8 +3530,38 @@
     },
     "READPREV-USER-SEC-FILE": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "WS-VARIABLES.WS-RESP-CD",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 103,
+          "length": 4
+        },
+        {
+          "field": "WS-VARIABLES.WS-REAS-CD",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 107,
+          "length": 4
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        },
+        {
+          "field": "WS-VARIABLES.WS-ERR-FLG",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 100,
+          "length": 1
+        }
+      ],
       "unresolved": [
         {
           "verb": "EXEC",
@@ -3963,12 +3600,6 @@
           "reason": "unresolved mutate operand: (WS-REAS-CD)"
         },
         {
-          "verb": "EVALUATE",
-          "line_no": 665,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
           "verb": "WHEN",
           "line_no": 665,
           "raw_text": "WHEN DFHRESP(NORMAL)",
@@ -3989,12 +3620,6 @@
         {
           "verb": "MOVE",
           "line_no": 665,
-          "raw_text": "MOVE 'You have reached the top of the page...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 665,
           "raw_text": "MOVE -1       TO USRIDINL OF COUSR0AI",
           "reason": "unresolved mutate operand: USRIDINL"
         },
@@ -4009,30 +3634,6 @@
           "line_no": 665,
           "raw_text": "MOVE -1       TO USRIDINL OF COUSR0AI",
           "reason": "unresolved mutate operand: COUSR0AI"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 665,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 665,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 665,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 665,
-          "raw_text": "MOVE 'Unable to lookup User...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
           "verb": "MOVE",

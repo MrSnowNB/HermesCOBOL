@@ -4,39 +4,284 @@
   "paragraph_data_flow": {
     "0000-MAIN": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "WS-CONSTANTS.LIT-THISTRANID",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 10,
+          "length": 4
+        },
+        {
+          "field": "WS-CONSTANTS.LIT-THISPGM",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 2,
+          "length": 8
+        },
+        {
+          "field": "WS-CONSTANTS.LIT-THISMAP",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 21,
+          "length": 7
+        },
+        {
+          "field": "WS-CONSTANTS.LIT-THISMAPSET",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 14,
+          "length": 7
+        },
+        {
+          "field": "DFHCOMMAREA",
+          "record": "DFHCOMMAREA",
+          "copybook": null,
+          "offset": 0,
+          "length": 1
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-FROM-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 4,
+          "length": 8
+        },
+        {
+          "field": "WS-CONSTANTS.LIT-MENUPGM",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 28,
+          "length": 8
+        },
+        {
+          "field": "WS-CONSTANTS.LIT-MENUMAPSET",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 40,
+          "length": 7
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-ERROR-MSG",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 584,
+          "length": 75
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-CA-FIRST-CARDKEY.WS-CA-FIRST-CARD-NUM",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 27,
+          "length": 16
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-CA-LAST-CARDKEY.WS-CA-LAST-CARD-NUM",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-CA-SCREEN-NUM",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 54,
+          "length": 1
+        },
+        {
+          "field": "WS-CONSTANTS.LIT-CARDDTLPGM",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 54,
+          "length": 8
+        },
+        {
+          "field": "WS-CONSTANTS.LIT-CARDDTLMAPSET",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 66,
+          "length": 7
+        },
+        {
+          "field": "WS-CONSTANTS.LIT-CARDDTLMAP",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 73,
+          "length": 7
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-SCREEN-DATA.FILLER.WS-SCREEN-ROWS.WS-EACH-ROW.WS-EACH-CARD.WS-ROW-ACCTNO",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 58,
+          "length": 11
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-SCREEN-DATA.FILLER.WS-SCREEN-ROWS.WS-EACH-ROW.WS-EACH-CARD.WS-ROW-CARD-NUM",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 69,
+          "length": 16
+        },
+        {
+          "field": "WS-CONSTANTS.LIT-CARDUPDPGM",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 80,
+          "length": 8
+        },
+        {
+          "field": "WS-CONSTANTS.LIT-CARDUPDMAPSET",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 92,
+          "length": 7
+        },
+        {
+          "field": "WS-CONSTANTS.LIT-CARDUPDMAP",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 99,
+          "length": 7
+        }
+      ],
+      "mutates": [
+        {
+          "field": "CC-WORK-AREAS.CC-WORK-AREA",
+          "record": "CC-WORK-AREAS",
+          "copybook": "CVCRD01Y",
+          "offset": 0,
+          "length": 213
+        },
+        {
+          "field": "WS-MISC-STORAGE",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 0,
+          "length": 772
+        },
+        {
+          "field": "WS-COMMAREA",
+          "record": "WS-COMMAREA",
+          "copybook": null,
+          "offset": 0,
+          "length": 2000
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-CICS-PROCESSNG-VARS.WS-TRANID",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 8,
+          "length": 4
+        },
+        {
+          "field": "CARDDEMO-COMMAREA",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 0,
+          "length": 160
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 0,
+          "length": 254
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-FROM-TRANID",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-FROM-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 4,
+          "length": 8
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-MORE-INFO.CDEMO-LAST-MAP",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 146,
+          "length": 7
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-MORE-INFO.CDEMO-LAST-MAPSET",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 153,
+          "length": 7
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-TO-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 16,
+          "length": 8
+        },
+        {
+          "field": "CC-WORK-AREAS.CC-WORK-AREA.CCARD-NEXT-MAPSET",
+          "record": "CC-WORK-AREAS",
+          "copybook": "CVCRD01Y",
+          "offset": 13,
+          "length": 7
+        },
+        {
+          "field": "CC-WORK-AREAS.CC-WORK-AREA.CCARD-NEXT-MAP",
+          "record": "CC-WORK-AREAS",
+          "copybook": "CVCRD01Y",
+          "offset": 20,
+          "length": 7
+        },
+        {
+          "field": "CC-WORK-AREAS.CC-WORK-AREA.CCARD-ERROR-MSG",
+          "record": "CC-WORK-AREAS",
+          "copybook": "CVCRD01Y",
+          "offset": 27,
+          "length": 75
+        },
+        {
+          "field": "CC-WORK-AREAS.CC-WORK-AREA.CCARD-NEXT-PROG",
+          "record": "CC-WORK-AREAS",
+          "copybook": "CVCRD01Y",
+          "offset": 5,
+          "length": 8
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-FILE-HANDLING-VARS.WS-CARD-RID.WS-CARD-RID-CARDNUM",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 661,
+          "length": 16
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-CA-SCREEN-NUM",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 54,
+          "length": 1
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-ACCOUNT-INFO.CDEMO-ACCT-ID",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 118,
+          "length": 11
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-CARD-INFO.CDEMO-CARD-NUM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 130,
+          "length": 16
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "INITIALIZE",
-          "line_no": 300,
-          "raw_text": "INITIALIZE CC-WORK-AREA WS-MISC-STORAGE WS-COMMAREA",
-          "reason": "unresolved mutate operand: CC-WORK-AREA"
-        },
-        {
-          "verb": "INITIALIZE",
-          "line_no": 300,
-          "raw_text": "INITIALIZE CC-WORK-AREA WS-MISC-STORAGE WS-COMMAREA",
-          "reason": "unresolved mutate operand: WS-MISC-STORAGE"
-        },
-        {
-          "verb": "INITIALIZE",
-          "line_no": 300,
-          "raw_text": "INITIALIZE CC-WORK-AREA WS-MISC-STORAGE WS-COMMAREA",
-          "reason": "unresolved mutate operand: WS-COMMAREA"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISTRANID       TO WS-TRANID",
-          "reason": "unresolved read operand: LIT-THISTRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISTRANID       TO WS-TRANID",
-          "reason": "unresolved mutate operand: WS-TRANID"
-        },
         {
           "verb": "SET",
           "line_no": 300,
@@ -50,42 +295,6 @@
           "reason": "unresolved read operand: EIBCALEN"
         },
         {
-          "verb": "INITIALIZE",
-          "line_no": 300,
-          "raw_text": "INITIALIZE CARDDEMO-COMMAREA WS-THIS-PROGCOMMAREA",
-          "reason": "unresolved mutate operand: CARDDEMO-COMMAREA"
-        },
-        {
-          "verb": "INITIALIZE",
-          "line_no": 300,
-          "raw_text": "INITIALIZE CARDDEMO-COMMAREA WS-THIS-PROGCOMMAREA",
-          "reason": "unresolved mutate operand: WS-THIS-PROGCOMMAREA"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISTRANID        TO CDEMO-FROM-TRANID",
-          "reason": "unresolved read operand: LIT-THISTRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISTRANID        TO CDEMO-FROM-TRANID",
-          "reason": "unresolved mutate operand: CDEMO-FROM-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM           TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved read operand: LIT-THISPGM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM           TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
-        },
-        {
           "verb": "SET",
           "line_no": 300,
           "raw_text": "SET CDEMO-USRTYP-USER      TO TRUE",
@@ -96,30 +305,6 @@
           "line_no": 300,
           "raw_text": "SET CDEMO-PGM-ENTER        TO TRUE",
           "reason": "unresolved mutate operand: CDEMO-PGM-ENTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP           TO CDEMO-LAST-MAP",
-          "reason": "unresolved read operand: LIT-THISMAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP           TO CDEMO-LAST-MAP",
-          "reason": "unresolved mutate operand: CDEMO-LAST-MAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAPSET        TO CDEMO-LAST-MAPSET",
-          "reason": "unresolved read operand: LIT-THISMAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAPSET        TO CDEMO-LAST-MAPSET",
-          "reason": "unresolved mutate operand: CDEMO-LAST-MAPSET"
         },
         {
           "verb": "SET",
@@ -143,12 +328,6 @@
           "verb": "MOVE",
           "line_no": 300,
           "raw_text": "MOVE DFHCOMMAREA (1:LENGTH OF CARDDEMO-COMMAREA) TO CARDDEMO-COMMAREA",
-          "reason": "unresolved read operand: DFHCOMMAREA"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE DFHCOMMAREA (1:LENGTH OF CARDDEMO-COMMAREA) TO CARDDEMO-COMMAREA",
           "reason": "unresolved read operand: (1:LENGTH"
         },
         {
@@ -166,12 +345,6 @@
         {
           "verb": "MOVE",
           "line_no": 300,
-          "raw_text": "MOVE DFHCOMMAREA (1:LENGTH OF CARDDEMO-COMMAREA) TO CARDDEMO-COMMAREA",
-          "reason": "unresolved mutate operand: CARDDEMO-COMMAREA"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
           "raw_text": "MOVE DFHCOMMAREA(LENGTH OF CARDDEMO-COMMAREA + 1: LENGTH OF WS-THIS-PROGCOMMAREA )TO WS-THIS-PROGCOMMAREA",
           "reason": "MOVE missing TO keyword"
         },
@@ -185,37 +358,13 @@
           "verb": "IF",
           "line_no": 300,
           "raw_text": "IF (CDEMO-PGM-ENTER AND CDEMO-FROM-PROGRAM NOT EQUAL LIT-THISPGM)",
-          "reason": "unresolved read operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "IF",
-          "line_no": 300,
-          "raw_text": "IF (CDEMO-PGM-ENTER AND CDEMO-FROM-PROGRAM NOT EQUAL LIT-THISPGM)",
           "reason": "unresolved read operand: LIT-THISPGM)"
-        },
-        {
-          "verb": "INITIALIZE",
-          "line_no": 300,
-          "raw_text": "INITIALIZE WS-THIS-PROGCOMMAREA",
-          "reason": "unresolved mutate operand: WS-THIS-PROGCOMMAREA"
         },
         {
           "verb": "SET",
           "line_no": 300,
           "raw_text": "SET CDEMO-PGM-ENTER      TO TRUE",
           "reason": "unresolved mutate operand: CDEMO-PGM-ENTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP         TO CDEMO-LAST-MAP",
-          "reason": "unresolved read operand: LIT-THISMAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP         TO CDEMO-LAST-MAP",
-          "reason": "unresolved mutate operand: CDEMO-LAST-MAP"
         },
         {
           "verb": "SET",
@@ -234,18 +383,6 @@
           "line_no": 300,
           "raw_text": "IF  EIBCALEN > 0 AND CDEMO-FROM-PROGRAM  EQUAL LIT-THISPGM",
           "reason": "unresolved read operand: EIBCALEN"
-        },
-        {
-          "verb": "IF",
-          "line_no": 300,
-          "raw_text": "IF  EIBCALEN > 0 AND CDEMO-FROM-PROGRAM  EQUAL LIT-THISPGM",
-          "reason": "unresolved read operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "IF",
-          "line_no": 300,
-          "raw_text": "IF  EIBCALEN > 0 AND CDEMO-FROM-PROGRAM  EQUAL LIT-THISPGM",
-          "reason": "unresolved read operand: LIT-THISPGM"
         },
         {
           "verb": "SET",
@@ -305,37 +442,7 @@
           "verb": "IF",
           "line_no": 300,
           "raw_text": "IF  (CCARD-AID-PFK03 AND CDEMO-FROM-PROGRAM  EQUAL LIT-THISPGM)",
-          "reason": "unresolved read operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "IF",
-          "line_no": 300,
-          "raw_text": "IF  (CCARD-AID-PFK03 AND CDEMO-FROM-PROGRAM  EQUAL LIT-THISPGM)",
           "reason": "unresolved read operand: LIT-THISPGM)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISTRANID   TO CDEMO-FROM-TRANID",
-          "reason": "unresolved read operand: LIT-THISTRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISTRANID   TO CDEMO-FROM-TRANID",
-          "reason": "unresolved mutate operand: CDEMO-FROM-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM      TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved read operand: LIT-THISPGM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM      TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
         },
         {
           "verb": "SET",
@@ -348,66 +455,6 @@
           "line_no": 300,
           "raw_text": "SET  CDEMO-PGM-ENTER  TO TRUE",
           "reason": "unresolved mutate operand: CDEMO-PGM-ENTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAPSET   TO CDEMO-LAST-MAPSET",
-          "reason": "unresolved read operand: LIT-THISMAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAPSET   TO CDEMO-LAST-MAPSET",
-          "reason": "unresolved mutate operand: CDEMO-LAST-MAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP      TO CDEMO-LAST-MAP",
-          "reason": "unresolved read operand: LIT-THISMAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP      TO CDEMO-LAST-MAP",
-          "reason": "unresolved mutate operand: CDEMO-LAST-MAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-MENUPGM      TO CDEMO-TO-PROGRAM",
-          "reason": "unresolved read operand: LIT-MENUPGM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-MENUPGM      TO CDEMO-TO-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-MENUMAPSET   TO CCARD-NEXT-MAPSET",
-          "reason": "unresolved read operand: LIT-MENUMAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-MENUMAPSET   TO CCARD-NEXT-MAPSET",
-          "reason": "unresolved mutate operand: CCARD-NEXT-MAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP      TO CCARD-NEXT-MAP",
-          "reason": "unresolved read operand: LIT-THISMAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP      TO CCARD-NEXT-MAP",
-          "reason": "unresolved mutate operand: CCARD-NEXT-MAP"
         },
         {
           "verb": "SET",
@@ -438,90 +485,6 @@
           "line_no": 300,
           "raw_text": "WHEN INPUT-ERROR",
           "reason": "unresolved read operand: INPUT-ERROR"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-ERROR-MSG    TO CCARD-ERROR-MSG",
-          "reason": "unresolved read operand: WS-ERROR-MSG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-ERROR-MSG    TO CCARD-ERROR-MSG",
-          "reason": "unresolved mutate operand: CCARD-ERROR-MSG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM     TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved read operand: LIT-THISPGM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM     TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAPSET  TO CDEMO-LAST-MAPSET",
-          "reason": "unresolved read operand: LIT-THISMAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAPSET  TO CDEMO-LAST-MAPSET",
-          "reason": "unresolved mutate operand: CDEMO-LAST-MAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP     TO CDEMO-LAST-MAP",
-          "reason": "unresolved read operand: LIT-THISMAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP     TO CDEMO-LAST-MAP",
-          "reason": "unresolved mutate operand: CDEMO-LAST-MAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM     TO CCARD-NEXT-PROG",
-          "reason": "unresolved read operand: LIT-THISPGM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM     TO CCARD-NEXT-PROG",
-          "reason": "unresolved mutate operand: CCARD-NEXT-PROG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAPSET  TO CCARD-NEXT-MAPSET",
-          "reason": "unresolved read operand: LIT-THISMAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAPSET  TO CCARD-NEXT-MAPSET",
-          "reason": "unresolved mutate operand: CCARD-NEXT-MAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP     TO CCARD-NEXT-MAP",
-          "reason": "unresolved read operand: LIT-THISMAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP     TO CCARD-NEXT-MAP",
-          "reason": "unresolved mutate operand: CCARD-NEXT-MAP"
         },
         {
           "verb": "IF",
@@ -560,18 +523,6 @@
           "reason": "unresolved read operand: CA-FIRST-PAGE"
         },
         {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-CA-FIRST-CARD-NUM TO WS-CARD-RID-CARDNUM",
-          "reason": "unresolved read operand: WS-CA-FIRST-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-CA-FIRST-CARD-NUM TO WS-CARD-RID-CARDNUM",
-          "reason": "unresolved mutate operand: WS-CARD-RID-CARDNUM"
-        },
-        {
           "verb": "WHEN",
           "line_no": 300,
           "raw_text": "WHEN CCARD-AID-PFK03",
@@ -582,54 +533,6 @@
           "line_no": 300,
           "raw_text": "WHEN CDEMO-PGM-REENTER AND CDEMO-FROM-PROGRAM NOT EQUAL LIT-THISPGM",
           "reason": "unresolved read operand: CDEMO-PGM-REENTER"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 300,
-          "raw_text": "WHEN CDEMO-PGM-REENTER AND CDEMO-FROM-PROGRAM NOT EQUAL LIT-THISPGM",
-          "reason": "unresolved read operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 300,
-          "raw_text": "WHEN CDEMO-PGM-REENTER AND CDEMO-FROM-PROGRAM NOT EQUAL LIT-THISPGM",
-          "reason": "unresolved read operand: LIT-THISPGM"
-        },
-        {
-          "verb": "INITIALIZE",
-          "line_no": 300,
-          "raw_text": "INITIALIZE CARDDEMO-COMMAREA WS-THIS-PROGCOMMAREA",
-          "reason": "unresolved mutate operand: CARDDEMO-COMMAREA"
-        },
-        {
-          "verb": "INITIALIZE",
-          "line_no": 300,
-          "raw_text": "INITIALIZE CARDDEMO-COMMAREA WS-THIS-PROGCOMMAREA",
-          "reason": "unresolved mutate operand: WS-THIS-PROGCOMMAREA"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISTRANID      TO CDEMO-FROM-TRANID",
-          "reason": "unresolved read operand: LIT-THISTRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISTRANID      TO CDEMO-FROM-TRANID",
-          "reason": "unresolved mutate operand: CDEMO-FROM-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM         TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved read operand: LIT-THISPGM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM         TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
         },
         {
           "verb": "SET",
@@ -644,30 +547,6 @@
           "reason": "unresolved mutate operand: CDEMO-PGM-ENTER"
         },
         {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP         TO CDEMO-LAST-MAP",
-          "reason": "unresolved read operand: LIT-THISMAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP         TO CDEMO-LAST-MAP",
-          "reason": "unresolved mutate operand: CDEMO-LAST-MAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAPSET      TO CDEMO-LAST-MAPSET",
-          "reason": "unresolved read operand: LIT-THISMAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAPSET      TO CDEMO-LAST-MAPSET",
-          "reason": "unresolved mutate operand: CDEMO-LAST-MAPSET"
-        },
-        {
           "verb": "SET",
           "line_no": 300,
           "raw_text": "SET CA-FIRST-PAGE        TO TRUE",
@@ -678,18 +557,6 @@
           "line_no": 300,
           "raw_text": "SET CA-LAST-PAGE-NOT-SHOWN TO TRUE",
           "reason": "unresolved mutate operand: CA-LAST-PAGE-NOT-SHOWN"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-CA-FIRST-CARD-NUM TO WS-CARD-RID-CARDNUM",
-          "reason": "unresolved read operand: WS-CA-FIRST-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-CA-FIRST-CARD-NUM TO WS-CARD-RID-CARDNUM",
-          "reason": "unresolved mutate operand: WS-CARD-RID-CARDNUM"
         },
         {
           "verb": "WHEN",
@@ -704,30 +571,6 @@
           "reason": "unresolved read operand: CA-NEXT-PAGE-EXISTS"
         },
         {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-CA-LAST-CARD-NUM TO WS-CARD-RID-CARDNUM",
-          "reason": "unresolved read operand: WS-CA-LAST-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-CA-LAST-CARD-NUM TO WS-CARD-RID-CARDNUM",
-          "reason": "unresolved mutate operand: WS-CARD-RID-CARDNUM"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 300,
-          "raw_text": "ADD   +1       TO WS-CA-SCREEN-NUM",
-          "reason": "unresolved read operand: WS-CA-SCREEN-NUM"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 300,
-          "raw_text": "ADD   +1       TO WS-CA-SCREEN-NUM",
-          "reason": "unresolved mutate operand: WS-CA-SCREEN-NUM"
-        },
-        {
           "verb": "WHEN",
           "line_no": 300,
           "raw_text": "WHEN CCARD-AID-PFK07 AND NOT CA-FIRST-PAGE",
@@ -738,30 +581,6 @@
           "line_no": 300,
           "raw_text": "WHEN CCARD-AID-PFK07 AND NOT CA-FIRST-PAGE",
           "reason": "unresolved read operand: CA-FIRST-PAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-CA-FIRST-CARD-NUM TO WS-CARD-RID-CARDNUM",
-          "reason": "unresolved read operand: WS-CA-FIRST-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-CA-FIRST-CARD-NUM TO WS-CARD-RID-CARDNUM",
-          "reason": "unresolved mutate operand: WS-CARD-RID-CARDNUM"
-        },
-        {
-          "verb": "SUBTRACT",
-          "line_no": 300,
-          "raw_text": "SUBTRACT 1    FROM WS-CA-SCREEN-NUM",
-          "reason": "unresolved read operand: WS-CA-SCREEN-NUM"
-        },
-        {
-          "verb": "SUBTRACT",
-          "line_no": 300,
-          "raw_text": "SUBTRACT 1    FROM WS-CA-SCREEN-NUM",
-          "reason": "unresolved mutate operand: WS-CA-SCREEN-NUM"
         },
         {
           "verb": "WHEN",
@@ -776,42 +595,6 @@
           "reason": "unresolved read operand: VIEW-REQUESTED-ON(I-SELECTED)"
         },
         {
-          "verb": "IF",
-          "line_no": 300,
-          "raw_text": "IF CDEMO-FROM-PROGRAM EQUAL LIT-THISPGM",
-          "reason": "unresolved read operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "IF",
-          "line_no": 300,
-          "raw_text": "IF CDEMO-FROM-PROGRAM EQUAL LIT-THISPGM",
-          "reason": "unresolved read operand: LIT-THISPGM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISTRANID    TO CDEMO-FROM-TRANID",
-          "reason": "unresolved read operand: LIT-THISTRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISTRANID    TO CDEMO-FROM-TRANID",
-          "reason": "unresolved mutate operand: CDEMO-FROM-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM       TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved read operand: LIT-THISPGM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM       TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
-        },
-        {
           "verb": "SET",
           "line_no": 300,
           "raw_text": "SET  CDEMO-USRTYP-USER TO TRUE",
@@ -826,98 +609,14 @@
         {
           "verb": "MOVE",
           "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAPSET    TO CDEMO-LAST-MAPSET",
-          "reason": "unresolved read operand: LIT-THISMAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAPSET    TO CDEMO-LAST-MAPSET",
-          "reason": "unresolved mutate operand: CDEMO-LAST-MAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP       TO CDEMO-LAST-MAP",
-          "reason": "unresolved read operand: LIT-THISMAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP       TO CDEMO-LAST-MAP",
-          "reason": "unresolved mutate operand: CDEMO-LAST-MAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-CARDDTLPGM    TO CCARD-NEXT-PROG",
-          "reason": "unresolved read operand: LIT-CARDDTLPGM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-CARDDTLPGM    TO CCARD-NEXT-PROG",
-          "reason": "unresolved mutate operand: CCARD-NEXT-PROG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-CARDDTLMAPSET TO CCARD-NEXT-MAPSET",
-          "reason": "unresolved read operand: LIT-CARDDTLMAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-CARDDTLMAPSET TO CCARD-NEXT-MAPSET",
-          "reason": "unresolved mutate operand: CCARD-NEXT-MAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-CARDDTLMAP    TO CCARD-NEXT-MAP",
-          "reason": "unresolved read operand: LIT-CARDDTLMAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-CARDDTLMAP    TO CCARD-NEXT-MAP",
-          "reason": "unresolved mutate operand: CCARD-NEXT-MAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-ROW-ACCTNO (I-SELECTED) TO CDEMO-ACCT-ID",
-          "reason": "unresolved read operand: WS-ROW-ACCTNO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
           "raw_text": "MOVE WS-ROW-ACCTNO (I-SELECTED) TO CDEMO-ACCT-ID",
           "reason": "unresolved read operand: (I-SELECTED)"
         },
         {
           "verb": "MOVE",
           "line_no": 300,
-          "raw_text": "MOVE WS-ROW-ACCTNO (I-SELECTED) TO CDEMO-ACCT-ID",
-          "reason": "unresolved mutate operand: CDEMO-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-ROW-CARD-NUM (I-SELECTED) TO CDEMO-CARD-NUM",
-          "reason": "unresolved read operand: WS-ROW-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
           "raw_text": "MOVE WS-ROW-CARD-NUM (I-SELECTED) TO CDEMO-CARD-NUM",
           "reason": "unresolved read operand: (I-SELECTED)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-ROW-CARD-NUM (I-SELECTED) TO CDEMO-CARD-NUM",
-          "reason": "unresolved mutate operand: CDEMO-CARD-NUM"
         },
         {
           "verb": "WHEN",
@@ -932,42 +631,6 @@
           "reason": "unresolved read operand: UPDATE-REQUESTED-ON(I-SELECTED)"
         },
         {
-          "verb": "IF",
-          "line_no": 300,
-          "raw_text": "IF CDEMO-FROM-PROGRAM EQUAL LIT-THISPGM",
-          "reason": "unresolved read operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "IF",
-          "line_no": 300,
-          "raw_text": "IF CDEMO-FROM-PROGRAM EQUAL LIT-THISPGM",
-          "reason": "unresolved read operand: LIT-THISPGM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISTRANID    TO CDEMO-FROM-TRANID",
-          "reason": "unresolved read operand: LIT-THISTRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISTRANID    TO CDEMO-FROM-TRANID",
-          "reason": "unresolved mutate operand: CDEMO-FROM-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM       TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved read operand: LIT-THISPGM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM       TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
-        },
-        {
           "verb": "SET",
           "line_no": 300,
           "raw_text": "SET  CDEMO-USRTYP-USER TO TRUE",
@@ -982,286 +645,121 @@
         {
           "verb": "MOVE",
           "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAPSET    TO CDEMO-LAST-MAPSET",
-          "reason": "unresolved read operand: LIT-THISMAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAPSET    TO CDEMO-LAST-MAPSET",
-          "reason": "unresolved mutate operand: CDEMO-LAST-MAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP       TO CDEMO-LAST-MAP",
-          "reason": "unresolved read operand: LIT-THISMAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP       TO CDEMO-LAST-MAP",
-          "reason": "unresolved mutate operand: CDEMO-LAST-MAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-CARDUPDPGM    TO CCARD-NEXT-PROG",
-          "reason": "unresolved read operand: LIT-CARDUPDPGM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-CARDUPDPGM    TO CCARD-NEXT-PROG",
-          "reason": "unresolved mutate operand: CCARD-NEXT-PROG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-CARDUPDMAPSET TO CCARD-NEXT-MAPSET",
-          "reason": "unresolved read operand: LIT-CARDUPDMAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-CARDUPDMAPSET TO CCARD-NEXT-MAPSET",
-          "reason": "unresolved mutate operand: CCARD-NEXT-MAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-CARDUPDMAP    TO CCARD-NEXT-MAP",
-          "reason": "unresolved read operand: LIT-CARDUPDMAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-CARDUPDMAP    TO CCARD-NEXT-MAP",
-          "reason": "unresolved mutate operand: CCARD-NEXT-MAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-ROW-ACCTNO (I-SELECTED) TO CDEMO-ACCT-ID",
-          "reason": "unresolved read operand: WS-ROW-ACCTNO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
           "raw_text": "MOVE WS-ROW-ACCTNO (I-SELECTED) TO CDEMO-ACCT-ID",
           "reason": "unresolved read operand: (I-SELECTED)"
         },
         {
           "verb": "MOVE",
           "line_no": 300,
-          "raw_text": "MOVE WS-ROW-ACCTNO (I-SELECTED) TO CDEMO-ACCT-ID",
-          "reason": "unresolved mutate operand: CDEMO-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-ROW-CARD-NUM (I-SELECTED) TO CDEMO-CARD-NUM",
-          "reason": "unresolved read operand: WS-ROW-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
           "raw_text": "MOVE WS-ROW-CARD-NUM (I-SELECTED) TO CDEMO-CARD-NUM",
           "reason": "unresolved read operand: (I-SELECTED)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-ROW-CARD-NUM (I-SELECTED) TO CDEMO-CARD-NUM",
-          "reason": "unresolved mutate operand: CDEMO-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-CA-FIRST-CARD-NUM TO WS-CARD-RID-CARDNUM",
-          "reason": "unresolved read operand: WS-CA-FIRST-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-CA-FIRST-CARD-NUM TO WS-CARD-RID-CARDNUM",
-          "reason": "unresolved mutate operand: WS-CARD-RID-CARDNUM"
         },
         {
           "verb": "IF",
           "line_no": 300,
           "raw_text": "IF INPUT-ERROR",
           "reason": "unresolved read operand: INPUT-ERROR"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-ERROR-MSG   TO CCARD-ERROR-MSG",
-          "reason": "unresolved read operand: WS-ERROR-MSG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE WS-ERROR-MSG   TO CCARD-ERROR-MSG",
-          "reason": "unresolved mutate operand: CCARD-ERROR-MSG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM     TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved read operand: LIT-THISPGM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM     TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAPSET  TO CDEMO-LAST-MAPSET",
-          "reason": "unresolved read operand: LIT-THISMAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAPSET  TO CDEMO-LAST-MAPSET",
-          "reason": "unresolved mutate operand: CDEMO-LAST-MAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP     TO CDEMO-LAST-MAP",
-          "reason": "unresolved read operand: LIT-THISMAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP     TO CDEMO-LAST-MAP",
-          "reason": "unresolved mutate operand: CDEMO-LAST-MAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM     TO CCARD-NEXT-PROG",
-          "reason": "unresolved read operand: LIT-THISPGM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM     TO CCARD-NEXT-PROG",
-          "reason": "unresolved mutate operand: CCARD-NEXT-PROG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAPSET  TO CCARD-NEXT-MAPSET",
-          "reason": "unresolved read operand: LIT-THISMAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAPSET  TO CCARD-NEXT-MAPSET",
-          "reason": "unresolved mutate operand: CCARD-NEXT-MAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP     TO CCARD-NEXT-MAP",
-          "reason": "unresolved read operand: LIT-THISMAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISMAP     TO CCARD-NEXT-MAP",
-          "reason": "unresolved mutate operand: CCARD-NEXT-MAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM        TO CCARD-NEXT-PROG",
-          "reason": "unresolved read operand: LIT-THISPGM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 300,
-          "raw_text": "MOVE LIT-THISPGM        TO CCARD-NEXT-PROG",
-          "reason": "unresolved mutate operand: CCARD-NEXT-PROG"
         }
       ]
     },
     "COMMON-RETURN": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "WS-CONSTANTS.LIT-THISTRANID",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 10,
+          "length": 4
+        },
+        {
+          "field": "WS-CONSTANTS.LIT-THISPGM",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 2,
+          "length": 8
+        },
+        {
+          "field": "WS-CONSTANTS.LIT-THISMAPSET",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 14,
+          "length": 7
+        },
+        {
+          "field": "WS-CONSTANTS.LIT-THISMAP",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 21,
+          "length": 7
+        },
+        {
+          "field": "CARDDEMO-COMMAREA",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 0,
+          "length": 160
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 0,
+          "length": 254
+        }
+      ],
+      "mutates": [
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-FROM-TRANID",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-FROM-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 4,
+          "length": 8
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-MORE-INFO.CDEMO-LAST-MAPSET",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 153,
+          "length": 7
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-MORE-INFO.CDEMO-LAST-MAP",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 146,
+          "length": 7
+        },
+        {
+          "field": "WS-COMMAREA",
+          "record": "WS-COMMAREA",
+          "copybook": null,
+          "offset": 0,
+          "length": 2000
+        },
+        {
+          "field": "CARDDEMO-COMMAREA",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 0,
+          "length": 160
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 0,
+          "length": 254
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 615,
-          "raw_text": "MOVE  LIT-THISTRANID TO CDEMO-FROM-TRANID",
-          "reason": "unresolved read operand: LIT-THISTRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 615,
-          "raw_text": "MOVE  LIT-THISTRANID TO CDEMO-FROM-TRANID",
-          "reason": "unresolved mutate operand: CDEMO-FROM-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 615,
-          "raw_text": "MOVE  LIT-THISPGM     TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved read operand: LIT-THISPGM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 615,
-          "raw_text": "MOVE  LIT-THISPGM     TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 615,
-          "raw_text": "MOVE  LIT-THISMAPSET  TO CDEMO-LAST-MAPSET",
-          "reason": "unresolved read operand: LIT-THISMAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 615,
-          "raw_text": "MOVE  LIT-THISMAPSET  TO CDEMO-LAST-MAPSET",
-          "reason": "unresolved mutate operand: CDEMO-LAST-MAPSET"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 615,
-          "raw_text": "MOVE  LIT-THISMAP     TO CDEMO-LAST-MAP",
-          "reason": "unresolved read operand: LIT-THISMAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 615,
-          "raw_text": "MOVE  LIT-THISMAP     TO CDEMO-LAST-MAP",
-          "reason": "unresolved mutate operand: CDEMO-LAST-MAP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 615,
-          "raw_text": "MOVE  CARDDEMO-COMMAREA    TO WS-COMMAREA",
-          "reason": "unresolved read operand: CARDDEMO-COMMAREA"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 615,
-          "raw_text": "MOVE  CARDDEMO-COMMAREA    TO WS-COMMAREA",
-          "reason": "unresolved mutate operand: WS-COMMAREA"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 615,
-          "raw_text": "MOVE  WS-THIS-PROGCOMMAREA TO WS-COMMAREA(LENGTH OF CARDDEMO-COMMAREA + 1: LENGTH OF WS-THIS-PROGCOMMAREA )",
-          "reason": "unresolved read operand: WS-THIS-PROGCOMMAREA"
-        },
         {
           "verb": "MOVE",
           "line_no": 615,
@@ -1273,12 +771,6 @@
           "line_no": 615,
           "raw_text": "MOVE  WS-THIS-PROGCOMMAREA TO WS-COMMAREA(LENGTH OF CARDDEMO-COMMAREA + 1: LENGTH OF WS-THIS-PROGCOMMAREA )",
           "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 615,
-          "raw_text": "MOVE  WS-THIS-PROGCOMMAREA TO WS-COMMAREA(LENGTH OF CARDDEMO-COMMAREA + 1: LENGTH OF WS-THIS-PROGCOMMAREA )",
-          "reason": "unresolved mutate operand: CARDDEMO-COMMAREA"
         },
         {
           "verb": "MOVE",
@@ -1303,12 +795,6 @@
           "line_no": 615,
           "raw_text": "MOVE  WS-THIS-PROGCOMMAREA TO WS-COMMAREA(LENGTH OF CARDDEMO-COMMAREA + 1: LENGTH OF WS-THIS-PROGCOMMAREA )",
           "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 615,
-          "raw_text": "MOVE  WS-THIS-PROGCOMMAREA TO WS-COMMAREA(LENGTH OF CARDDEMO-COMMAREA + 1: LENGTH OF WS-THIS-PROGCOMMAREA )",
-          "reason": "unresolved mutate operand: WS-THIS-PROGCOMMAREA"
         },
         {
           "verb": "MOVE",
@@ -1344,8 +830,157 @@
     },
     "1100-SCREEN-INIT": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "CCDA-SCREEN-TITLE.CCDA-TITLE01",
+          "record": "CCDA-SCREEN-TITLE",
+          "copybook": "COTTL01Y",
+          "offset": 0,
+          "length": 40
+        },
+        {
+          "field": "CCDA-SCREEN-TITLE.CCDA-TITLE02",
+          "record": "CCDA-SCREEN-TITLE",
+          "copybook": "COTTL01Y",
+          "offset": 40,
+          "length": 40
+        },
+        {
+          "field": "WS-CONSTANTS.LIT-THISTRANID",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 10,
+          "length": 4
+        },
+        {
+          "field": "WS-CONSTANTS.LIT-THISPGM",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 2,
+          "length": 8
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURDATE.WS-CURDATE-MONTH",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 4,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURDATE.WS-CURDATE-DAY",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 6,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURDATE.WS-CURDATE-YEAR",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-MM-DD-YY",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 16,
+          "length": 8
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURTIME.WS-CURTIME-HOURS",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 8,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURTIME.WS-CURTIME-MINUTE",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 10,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURTIME.WS-CURTIME-SECOND",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 12,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURTIME-HH-MM-SS",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 24,
+          "length": 8
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-CA-SCREEN-NUM",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 54,
+          "length": 1
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-INFO-MSG",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 539,
+          "length": 45
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-MM-DD-YY.WS-CURDATE-MM",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 16,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-MM-DD-YY.WS-CURDATE-DD",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 19,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-MM-DD-YY.WS-CURDATE-YY",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 22,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURTIME-HH-MM-SS.WS-CURTIME-HH",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 24,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURTIME-HH-MM-SS.WS-CURTIME-MM",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 27,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURTIME-HH-MM-SS.WS-CURTIME-SS",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 30,
+          "length": 2
+        }
+      ],
       "unresolved": [
         {
           "verb": "MOVE",
@@ -1364,18 +999,6 @@
           "line_no": 653,
           "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
           "reason": "unresolved read operand: CURRENT-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved mutate operand: WS-CURDATE-DATA"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF CCRDLIAO",
-          "reason": "unresolved read operand: CCDA-TITLE01"
         },
         {
           "verb": "MOVE",
@@ -1399,12 +1022,6 @@
           "verb": "MOVE",
           "line_no": 653,
           "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF CCRDLIAO",
-          "reason": "unresolved read operand: CCDA-TITLE02"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF CCRDLIAO",
           "reason": "unresolved mutate operand: TITLE02O"
         },
         {
@@ -1423,12 +1040,6 @@
           "verb": "MOVE",
           "line_no": 653,
           "raw_text": "MOVE LIT-THISTRANID         TO TRNNAMEO OF CCRDLIAO",
-          "reason": "unresolved read operand: LIT-THISTRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE LIT-THISTRANID         TO TRNNAMEO OF CCRDLIAO",
           "reason": "unresolved mutate operand: TRNNAMEO"
         },
         {
@@ -1442,12 +1053,6 @@
           "line_no": 653,
           "raw_text": "MOVE LIT-THISTRANID         TO TRNNAMEO OF CCRDLIAO",
           "reason": "unresolved mutate operand: CCRDLIAO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE LIT-THISPGM            TO PGMNAMEO OF CCRDLIAO",
-          "reason": "unresolved read operand: LIT-THISPGM"
         },
         {
           "verb": "MOVE",
@@ -1482,54 +1087,6 @@
         {
           "verb": "MOVE",
           "line_no": 653,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved mutate operand: WS-CURDATE-DATA"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE WS-CURDATE-MONTH       TO WS-CURDATE-MM",
-          "reason": "unresolved read operand: WS-CURDATE-MONTH"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE WS-CURDATE-MONTH       TO WS-CURDATE-MM",
-          "reason": "unresolved mutate operand: WS-CURDATE-MM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE WS-CURDATE-DAY         TO WS-CURDATE-DD",
-          "reason": "unresolved read operand: WS-CURDATE-DAY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE WS-CURDATE-DAY         TO WS-CURDATE-DD",
-          "reason": "unresolved mutate operand: WS-CURDATE-DD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE WS-CURDATE-YEAR(3:2)   TO WS-CURDATE-YY",
-          "reason": "unresolved read operand: WS-CURDATE-YEAR(3:2)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE WS-CURDATE-YEAR(3:2)   TO WS-CURDATE-YY",
-          "reason": "unresolved mutate operand: WS-CURDATE-YY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-CURDATE-MM-DD-YY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
           "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF CCRDLIAO",
           "reason": "unresolved mutate operand: CURDATEO"
         },
@@ -1548,48 +1105,6 @@
         {
           "verb": "MOVE",
           "line_no": 653,
-          "raw_text": "MOVE WS-CURTIME-HOURS       TO WS-CURTIME-HH",
-          "reason": "unresolved read operand: WS-CURTIME-HOURS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE WS-CURTIME-HOURS       TO WS-CURTIME-HH",
-          "reason": "unresolved mutate operand: WS-CURTIME-HH"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE WS-CURTIME-MINUTE      TO WS-CURTIME-MM",
-          "reason": "unresolved read operand: WS-CURTIME-MINUTE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE WS-CURTIME-MINUTE      TO WS-CURTIME-MM",
-          "reason": "unresolved mutate operand: WS-CURTIME-MM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE WS-CURTIME-SECOND      TO WS-CURTIME-SS",
-          "reason": "unresolved read operand: WS-CURTIME-SECOND"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE WS-CURTIME-SECOND      TO WS-CURTIME-SS",
-          "reason": "unresolved mutate operand: WS-CURTIME-SS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-CURTIME-HH-MM-SS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
           "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF CCRDLIAO",
           "reason": "unresolved mutate operand: CURTIMEO"
         },
@@ -1604,12 +1119,6 @@
           "line_no": 653,
           "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF CCRDLIAO",
           "reason": "unresolved mutate operand: CCRDLIAO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE WS-CA-SCREEN-NUM       TO PAGENOO  OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-CA-SCREEN-NUM"
         },
         {
           "verb": "MOVE",
@@ -1634,12 +1143,6 @@
           "line_no": 653,
           "raw_text": "SET WS-NO-INFO-MESSAGE      TO TRUE",
           "reason": "unresolved mutate operand: WS-NO-INFO-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 653,
-          "raw_text": "MOVE WS-INFO-MSG            TO INFOMSGO OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-INFO-MSG"
         },
         {
           "verb": "MOVE",
@@ -1693,21 +1196,45 @@
     },
     "1200-SCREEN-ARRAY-INIT": {
       "section_name": null,
-      "reads": [],
+      "reads": [
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-SCREEN-DATA.FILLER.WS-SCREEN-ROWS.WS-EACH-ROW.WS-EACH-CARD",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 58,
+          "length": 28
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-EDIT-SELECT-ARRAY.WS-EDIT-SELECT",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 19,
+          "length": 1
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-SCREEN-DATA.FILLER.WS-SCREEN-ROWS.WS-EACH-ROW.WS-EACH-CARD.WS-ROW-ACCTNO",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 58,
+          "length": 11
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-SCREEN-DATA.FILLER.WS-SCREEN-ROWS.WS-EACH-ROW.WS-EACH-CARD.WS-ROW-CARD-NUM",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 69,
+          "length": 16
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-SCREEN-DATA.FILLER.WS-SCREEN-ROWS.WS-EACH-ROW.WS-EACH-CARD.WS-ROW-CARD-STATUS",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 85,
+          "length": 1
+        }
+      ],
       "mutates": [],
       "unresolved": [
-        {
-          "verb": "IF",
-          "line_no": 690,
-          "raw_text": "IF   WS-EACH-CARD(1)            EQUAL LOW-VALUES",
-          "reason": "unresolved read operand: WS-EACH-CARD(1)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-EDIT-SELECT(1)       TO CRDSEL1O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-EDIT-SELECT(1)"
-        },
         {
           "verb": "MOVE",
           "line_no": 690,
@@ -1725,12 +1252,6 @@
           "line_no": 690,
           "raw_text": "MOVE WS-EDIT-SELECT(1)       TO CRDSEL1O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CCRDLIAO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-ACCTNO(1)        TO ACCTNO1O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-ACCTNO(1)"
         },
         {
           "verb": "MOVE",
@@ -1754,12 +1275,6 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-NUM(1)      TO CRDNUM1O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-CARD-NUM(1)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-NUM(1)      TO CRDNUM1O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CRDNUM1O"
         },
         {
@@ -1778,12 +1293,6 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-STATUS(1)   TO CRDSTS1O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-CARD-STATUS(1)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-STATUS(1)   TO CRDSTS1O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CRDSTS1O"
         },
         {
@@ -1797,18 +1306,6 @@
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-STATUS(1)   TO CRDSTS1O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CCRDLIAO"
-        },
-        {
-          "verb": "IF",
-          "line_no": 690,
-          "raw_text": "IF   WS-EACH-CARD(2)        EQUAL LOW-VALUES",
-          "reason": "unresolved read operand: WS-EACH-CARD(2)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-EDIT-SELECT(2)       TO CRDSEL2O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-EDIT-SELECT(2)"
         },
         {
           "verb": "MOVE",
@@ -1832,12 +1329,6 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-ACCTNO(2)        TO ACCTNO2O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-ACCTNO(2)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-ACCTNO(2)        TO ACCTNO2O OF CCRDLIAO",
           "reason": "unresolved mutate operand: ACCTNO2O"
         },
         {
@@ -1851,12 +1342,6 @@
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-ACCTNO(2)        TO ACCTNO2O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CCRDLIAO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-NUM(2)      TO CRDNUM2O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-CARD-NUM(2)"
         },
         {
           "verb": "MOVE",
@@ -1880,12 +1365,6 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-STATUS(2)   TO CRDSTS2O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-CARD-STATUS(2)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-STATUS(2)   TO CRDSTS2O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CRDSTS2O"
         },
         {
@@ -1899,18 +1378,6 @@
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-STATUS(2)   TO CRDSTS2O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CCRDLIAO"
-        },
-        {
-          "verb": "IF",
-          "line_no": 690,
-          "raw_text": "IF   WS-EACH-CARD(3)        EQUAL LOW-VALUES",
-          "reason": "unresolved read operand: WS-EACH-CARD(3)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-EDIT-SELECT(3)       TO CRDSEL3O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-EDIT-SELECT(3)"
         },
         {
           "verb": "MOVE",
@@ -1934,12 +1401,6 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-ACCTNO(3)        TO ACCTNO3O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-ACCTNO(3)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-ACCTNO(3)        TO ACCTNO3O OF CCRDLIAO",
           "reason": "unresolved mutate operand: ACCTNO3O"
         },
         {
@@ -1953,12 +1414,6 @@
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-ACCTNO(3)        TO ACCTNO3O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CCRDLIAO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-NUM(3)      TO CRDNUM3O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-CARD-NUM(3)"
         },
         {
           "verb": "MOVE",
@@ -1982,12 +1437,6 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-STATUS(3)   TO CRDSTS3O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-CARD-STATUS(3)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-STATUS(3)   TO CRDSTS3O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CRDSTS3O"
         },
         {
@@ -2001,18 +1450,6 @@
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-STATUS(3)   TO CRDSTS3O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CCRDLIAO"
-        },
-        {
-          "verb": "IF",
-          "line_no": 690,
-          "raw_text": "IF   WS-EACH-CARD(4)        EQUAL LOW-VALUES",
-          "reason": "unresolved read operand: WS-EACH-CARD(4)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-EDIT-SELECT(4)       TO CRDSEL4O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-EDIT-SELECT(4)"
         },
         {
           "verb": "MOVE",
@@ -2036,12 +1473,6 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-ACCTNO(4)        TO ACCTNO4O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-ACCTNO(4)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-ACCTNO(4)        TO ACCTNO4O OF CCRDLIAO",
           "reason": "unresolved mutate operand: ACCTNO4O"
         },
         {
@@ -2055,12 +1486,6 @@
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-ACCTNO(4)        TO ACCTNO4O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CCRDLIAO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-NUM(4)      TO CRDNUM4O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-CARD-NUM(4)"
         },
         {
           "verb": "MOVE",
@@ -2084,12 +1509,6 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-STATUS(4)   TO CRDSTS4O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-CARD-STATUS(4)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-STATUS(4)   TO CRDSTS4O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CRDSTS4O"
         },
         {
@@ -2103,18 +1522,6 @@
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-STATUS(4)   TO CRDSTS4O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CCRDLIAO"
-        },
-        {
-          "verb": "IF",
-          "line_no": 690,
-          "raw_text": "IF   WS-EACH-CARD(5)        EQUAL LOW-VALUES",
-          "reason": "unresolved read operand: WS-EACH-CARD(5)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-EDIT-SELECT(5)       TO CRDSEL5O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-EDIT-SELECT(5)"
         },
         {
           "verb": "MOVE",
@@ -2138,12 +1545,6 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-ACCTNO(5)        TO ACCTNO5O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-ACCTNO(5)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-ACCTNO(5)        TO ACCTNO5O OF CCRDLIAO",
           "reason": "unresolved mutate operand: ACCTNO5O"
         },
         {
@@ -2157,12 +1558,6 @@
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-ACCTNO(5)        TO ACCTNO5O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CCRDLIAO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-NUM(5)      TO CRDNUM5O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-CARD-NUM(5)"
         },
         {
           "verb": "MOVE",
@@ -2186,12 +1581,6 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-STATUS(5)   TO CRDSTS5O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-CARD-STATUS(5)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-STATUS(5)   TO CRDSTS5O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CRDSTS5O"
         },
         {
@@ -2205,18 +1594,6 @@
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-STATUS(5)   TO CRDSTS5O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CCRDLIAO"
-        },
-        {
-          "verb": "IF",
-          "line_no": 690,
-          "raw_text": "IF   WS-EACH-CARD(6)        EQUAL LOW-VALUES",
-          "reason": "unresolved read operand: WS-EACH-CARD(6)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-EDIT-SELECT(6)       TO CRDSEL6O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-EDIT-SELECT(6)"
         },
         {
           "verb": "MOVE",
@@ -2240,12 +1617,6 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-ACCTNO(6)        TO ACCTNO6O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-ACCTNO(6)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-ACCTNO(6)        TO ACCTNO6O OF CCRDLIAO",
           "reason": "unresolved mutate operand: ACCTNO6O"
         },
         {
@@ -2259,12 +1630,6 @@
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-ACCTNO(6)        TO ACCTNO6O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CCRDLIAO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-NUM(6)      TO CRDNUM6O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-CARD-NUM(6)"
         },
         {
           "verb": "MOVE",
@@ -2288,12 +1653,6 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-STATUS(6)   TO CRDSTS6O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-CARD-STATUS(6)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-STATUS(6)   TO CRDSTS6O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CRDSTS6O"
         },
         {
@@ -2307,18 +1666,6 @@
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-STATUS(6)   TO CRDSTS6O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CCRDLIAO"
-        },
-        {
-          "verb": "IF",
-          "line_no": 690,
-          "raw_text": "IF   WS-EACH-CARD(7)        EQUAL LOW-VALUES",
-          "reason": "unresolved read operand: WS-EACH-CARD(7)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-EDIT-SELECT(7)       TO CRDSEL7O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-EDIT-SELECT(7)"
         },
         {
           "verb": "MOVE",
@@ -2342,12 +1689,6 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-ACCTNO(7)        TO ACCTNO7O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-ACCTNO(7)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-ACCTNO(7)        TO ACCTNO7O OF CCRDLIAO",
           "reason": "unresolved mutate operand: ACCTNO7O"
         },
         {
@@ -2366,12 +1707,6 @@
           "verb": "MOVE",
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-NUM(7)      TO CRDNUM7O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-CARD-NUM(7)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-NUM(7)      TO CRDNUM7O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CRDNUM7O"
         },
         {
@@ -2385,12 +1720,6 @@
           "line_no": 690,
           "raw_text": "MOVE WS-ROW-CARD-NUM(7)      TO CRDNUM7O OF CCRDLIAO",
           "reason": "unresolved mutate operand: CCRDLIAO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 690,
-          "raw_text": "MOVE WS-ROW-CARD-STATUS(7)   TO CRDSTS7O OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ROW-CARD-STATUS(7)"
         },
         {
           "verb": "MOVE",
@@ -2420,15 +1749,39 @@
     },
     "1250-SETUP-ARRAY-ATTRIBS": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "reads": [
         {
-          "verb": "IF",
-          "line_no": 761,
-          "raw_text": "IF   WS-EACH-CARD(1)            EQUAL LOW-VALUES OR   FLG-PROTECT-SELECT-ROWS-YES",
-          "reason": "unresolved read operand: WS-EACH-CARD(1)"
+          "field": "WS-THIS-PROGCOMMAREA.WS-SCREEN-DATA.FILLER.WS-SCREEN-ROWS.WS-EACH-ROW.WS-EACH-CARD",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 58,
+          "length": 28
         },
+        {
+          "field": "WS-MISC-STORAGE.WS-EDIT-SELECT-ERROR-FLAGX.WS-EDIT-SELECT-ERRORS.WS-ROW-CRDSELECT-ERROR",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 27,
+          "length": 1
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-EDIT-SELECT-ARRAY.WS-EDIT-SELECT",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 19,
+          "length": 1
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-MISC-STORAGE.WS-SUBSCRIPT-VARS.I",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 34,
+          "length": 2
+        }
+      ],
+      "unresolved": [
         {
           "verb": "IF",
           "line_no": 761,
@@ -2466,12 +1819,6 @@
           "reason": "unresolved mutate operand: ELSE"
         },
         {
-          "verb": "IF",
-          "line_no": 761,
-          "raw_text": "IF WS-ROW-CRDSELECT-ERROR(1) = '1'",
-          "reason": "unresolved read operand: WS-ROW-CRDSELECT-ERROR(1)"
-        },
-        {
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHRED               TO CRDSEL1C OF CCRDLIAO",
@@ -2494,12 +1841,6 @@
           "line_no": 761,
           "raw_text": "MOVE DFHRED               TO CRDSEL1C OF CCRDLIAO",
           "reason": "unresolved mutate operand: CCRDLIAO"
-        },
-        {
-          "verb": "IF",
-          "line_no": 761,
-          "raw_text": "IF WS-EDIT-SELECT(1) = SPACE OR LOW-VALUES",
-          "reason": "unresolved read operand: WS-EDIT-SELECT(1)"
         },
         {
           "verb": "MOVE",
@@ -2547,12 +1888,6 @@
           "verb": "IF",
           "line_no": 761,
           "raw_text": "IF   WS-EACH-CARD(2)            EQUAL LOW-VALUES OR   FLG-PROTECT-SELECT-ROWS-YES",
-          "reason": "unresolved read operand: WS-EACH-CARD(2)"
-        },
-        {
-          "verb": "IF",
-          "line_no": 761,
-          "raw_text": "IF   WS-EACH-CARD(2)            EQUAL LOW-VALUES OR   FLG-PROTECT-SELECT-ROWS-YES",
           "reason": "unresolved read operand: FLG-PROTECT-SELECT-ROWS-YES"
         },
         {
@@ -2584,12 +1919,6 @@
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRO                TO CRDSEL2A OF CCRDLIAI ELSE",
           "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "IF",
-          "line_no": 761,
-          "raw_text": "IF WS-ROW-CRDSELECT-ERROR(2) = '1'",
-          "reason": "unresolved read operand: WS-ROW-CRDSELECT-ERROR(2)"
         },
         {
           "verb": "MOVE",
@@ -2661,12 +1990,6 @@
           "verb": "IF",
           "line_no": 761,
           "raw_text": "IF   WS-EACH-CARD(3)            EQUAL LOW-VALUES OR   FLG-PROTECT-SELECT-ROWS-YES",
-          "reason": "unresolved read operand: WS-EACH-CARD(3)"
-        },
-        {
-          "verb": "IF",
-          "line_no": 761,
-          "raw_text": "IF   WS-EACH-CARD(3)            EQUAL LOW-VALUES OR   FLG-PROTECT-SELECT-ROWS-YES",
           "reason": "unresolved read operand: FLG-PROTECT-SELECT-ROWS-YES"
         },
         {
@@ -2698,12 +2021,6 @@
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRO                TO CRDSEL3A OF CCRDLIAI ELSE",
           "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "IF",
-          "line_no": 761,
-          "raw_text": "IF WS-ROW-CRDSELECT-ERROR(3) = '1'",
-          "reason": "unresolved read operand: WS-ROW-CRDSELECT-ERROR(3)"
         },
         {
           "verb": "MOVE",
@@ -2775,12 +2092,6 @@
           "verb": "IF",
           "line_no": 761,
           "raw_text": "IF   WS-EACH-CARD(4)            EQUAL LOW-VALUES OR   FLG-PROTECT-SELECT-ROWS-YES",
-          "reason": "unresolved read operand: WS-EACH-CARD(4)"
-        },
-        {
-          "verb": "IF",
-          "line_no": 761,
-          "raw_text": "IF   WS-EACH-CARD(4)            EQUAL LOW-VALUES OR   FLG-PROTECT-SELECT-ROWS-YES",
           "reason": "unresolved read operand: FLG-PROTECT-SELECT-ROWS-YES"
         },
         {
@@ -2811,19 +2122,7 @@
           "verb": "MOVE",
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRO                TO CRDSEL4A OF CCRDLIAI I ELSE",
-          "reason": "unresolved mutate operand: I"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 761,
-          "raw_text": "MOVE DFHBMPRO                TO CRDSEL4A OF CCRDLIAI I ELSE",
           "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "IF",
-          "line_no": 761,
-          "raw_text": "IF WS-ROW-CRDSELECT-ERROR(4) = '1'",
-          "reason": "unresolved read operand: WS-ROW-CRDSELECT-ERROR(4)"
         },
         {
           "verb": "MOVE",
@@ -2895,12 +2194,6 @@
           "verb": "IF",
           "line_no": 761,
           "raw_text": "IF   WS-EACH-CARD(5)            EQUAL LOW-VALUES OR   FLG-PROTECT-SELECT-ROWS-YES",
-          "reason": "unresolved read operand: WS-EACH-CARD(5)"
-        },
-        {
-          "verb": "IF",
-          "line_no": 761,
-          "raw_text": "IF   WS-EACH-CARD(5)            EQUAL LOW-VALUES OR   FLG-PROTECT-SELECT-ROWS-YES",
           "reason": "unresolved read operand: FLG-PROTECT-SELECT-ROWS-YES"
         },
         {
@@ -2932,12 +2225,6 @@
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRO                TO CRDSEL5A OF CCRDLIAI ELSE",
           "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "IF",
-          "line_no": 761,
-          "raw_text": "IF WS-ROW-CRDSELECT-ERROR(5) = '1'",
-          "reason": "unresolved read operand: WS-ROW-CRDSELECT-ERROR(5)"
         },
         {
           "verb": "MOVE",
@@ -3009,12 +2296,6 @@
           "verb": "IF",
           "line_no": 761,
           "raw_text": "IF   WS-EACH-CARD(6)            EQUAL LOW-VALUES OR   FLG-PROTECT-SELECT-ROWS-YES",
-          "reason": "unresolved read operand: WS-EACH-CARD(6)"
-        },
-        {
-          "verb": "IF",
-          "line_no": 761,
-          "raw_text": "IF   WS-EACH-CARD(6)            EQUAL LOW-VALUES OR   FLG-PROTECT-SELECT-ROWS-YES",
           "reason": "unresolved read operand: FLG-PROTECT-SELECT-ROWS-YES"
         },
         {
@@ -3046,12 +2327,6 @@
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRO                TO CRDSEL6A OF CCRDLIAI ELSE",
           "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "IF",
-          "line_no": 761,
-          "raw_text": "IF WS-ROW-CRDSELECT-ERROR(6) = '1'",
-          "reason": "unresolved read operand: WS-ROW-CRDSELECT-ERROR(6)"
         },
         {
           "verb": "MOVE",
@@ -3123,12 +2398,6 @@
           "verb": "IF",
           "line_no": 761,
           "raw_text": "IF   WS-EACH-CARD(7)            EQUAL LOW-VALUES OR   FLG-PROTECT-SELECT-ROWS-YES",
-          "reason": "unresolved read operand: WS-EACH-CARD(7)"
-        },
-        {
-          "verb": "IF",
-          "line_no": 761,
-          "raw_text": "IF   WS-EACH-CARD(7)            EQUAL LOW-VALUES OR   FLG-PROTECT-SELECT-ROWS-YES",
           "reason": "unresolved read operand: FLG-PROTECT-SELECT-ROWS-YES"
         },
         {
@@ -3160,12 +2429,6 @@
           "line_no": 761,
           "raw_text": "MOVE DFHBMPRO                TO CRDSEL7A OF CCRDLIAI ELSE",
           "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "IF",
-          "line_no": 761,
-          "raw_text": "IF WS-ROW-CRDSELECT-ERROR(7) = '1'",
-          "reason": "unresolved read operand: WS-ROW-CRDSELECT-ERROR(7)"
         },
         {
           "verb": "MOVE",
@@ -3243,7 +2506,43 @@
     },
     "1300-SETUP-SCREEN-ATTRS": {
       "section_name": null,
-      "reads": [],
+      "reads": [
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-FROM-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 4,
+          "length": 8
+        },
+        {
+          "field": "CC-WORK-AREAS.CC-WORK-AREA.CC-ACCT-ID",
+          "record": "CC-WORK-AREAS",
+          "copybook": "CVCRD01Y",
+          "offset": 177,
+          "length": 11
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-ACCOUNT-INFO.CDEMO-ACCT-ID",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 118,
+          "length": 11
+        },
+        {
+          "field": "CC-WORK-AREAS.CC-WORK-AREA.CC-CARD-NUM",
+          "record": "CC-WORK-AREAS",
+          "copybook": "CVCRD01Y",
+          "offset": 188,
+          "length": 16
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-CARD-INFO.CDEMO-CARD-NUM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 130,
+          "length": 16
+        }
+      ],
       "mutates": [],
       "unresolved": [
         {
@@ -3262,12 +2561,6 @@
           "verb": "IF",
           "line_no": 849,
           "raw_text": "IF EIBCALEN = 0 OR (CDEMO-PGM-ENTER AND CDEMO-FROM-PROGRAM = LIT-MENUPGM)",
-          "reason": "unresolved read operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "IF",
-          "line_no": 849,
-          "raw_text": "IF EIBCALEN = 0 OR (CDEMO-PGM-ENTER AND CDEMO-FROM-PROGRAM = LIT-MENUPGM)",
           "reason": "unresolved read operand: LIT-MENUPGM)"
         },
         {
@@ -3281,12 +2574,6 @@
           "line_no": 849,
           "raw_text": "WHEN FLG-ACCTFILTER-NOT-OK",
           "reason": "unresolved read operand: FLG-ACCTFILTER-NOT-OK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 849,
-          "raw_text": "MOVE CC-ACCT-ID   TO ACCTSIDO OF CCRDLIAO",
-          "reason": "unresolved read operand: CC-ACCT-ID"
         },
         {
           "verb": "MOVE",
@@ -3331,12 +2618,6 @@
           "reason": "unresolved mutate operand: CCRDLIAI"
         },
         {
-          "verb": "WHEN",
-          "line_no": 849,
-          "raw_text": "WHEN CDEMO-ACCT-ID = 0",
-          "reason": "unresolved read operand: CDEMO-ACCT-ID"
-        },
-        {
           "verb": "MOVE",
           "line_no": 849,
           "raw_text": "MOVE LOW-VALUES   TO ACCTSIDO OF CCRDLIAO",
@@ -3353,12 +2634,6 @@
           "line_no": 849,
           "raw_text": "MOVE LOW-VALUES   TO ACCTSIDO OF CCRDLIAO",
           "reason": "unresolved mutate operand: CCRDLIAO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 849,
-          "raw_text": "MOVE CDEMO-ACCT-ID TO ACCTSIDO OF CCRDLIAO",
-          "reason": "unresolved read operand: CDEMO-ACCT-ID"
         },
         {
           "verb": "MOVE",
@@ -3418,12 +2693,6 @@
           "verb": "MOVE",
           "line_no": 849,
           "raw_text": "MOVE CC-CARD-NUM  TO CARDSIDO OF CCRDLIAO",
-          "reason": "unresolved read operand: CC-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 849,
-          "raw_text": "MOVE CC-CARD-NUM  TO CARDSIDO OF CCRDLIAO",
           "reason": "unresolved mutate operand: CARDSIDO"
         },
         {
@@ -3463,12 +2732,6 @@
           "reason": "unresolved mutate operand: CCRDLIAI"
         },
         {
-          "verb": "WHEN",
-          "line_no": 849,
-          "raw_text": "WHEN CDEMO-CARD-NUM = 0",
-          "reason": "unresolved read operand: CDEMO-CARD-NUM"
-        },
-        {
           "verb": "MOVE",
           "line_no": 849,
           "raw_text": "MOVE LOW-VALUES   TO CARDSIDO OF CCRDLIAO",
@@ -3485,12 +2748,6 @@
           "line_no": 849,
           "raw_text": "MOVE LOW-VALUES   TO CARDSIDO OF CCRDLIAO",
           "reason": "unresolved mutate operand: CCRDLIAO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 849,
-          "raw_text": "MOVE CDEMO-CARD-NUM TO CARDSIDO OF CCRDLIAO",
-          "reason": "unresolved read operand: CDEMO-CARD-NUM"
         },
         {
           "verb": "MOVE",
@@ -3664,8 +2921,31 @@
     },
     "1400-SETUP-MESSAGE": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "WS-MISC-STORAGE.WS-ERROR-MSG",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 584,
+          "length": 75
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-INFO-MSG",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 539,
+          "length": 45
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-MISC-STORAGE.WS-ERROR-MSG",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 584,
+          "length": 75
+        }
+      ],
       "unresolved": [
         {
           "verb": "WHEN",
@@ -3692,12 +2972,6 @@
           "reason": "unresolved read operand: CA-FIRST-PAGE"
         },
         {
-          "verb": "MOVE",
-          "line_no": 907,
-          "raw_text": "MOVE 'NO PREVIOUS PAGES TO DISPLAY' TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: WS-ERROR-MSG"
-        },
-        {
           "verb": "WHEN",
           "line_no": 907,
           "raw_text": "WHEN CCARD-AID-PFK08 AND CA-NEXT-PAGE-NOT-EXISTS AND CA-LAST-PAGE-SHOWN",
@@ -3714,12 +2988,6 @@
           "line_no": 907,
           "raw_text": "WHEN CCARD-AID-PFK08 AND CA-NEXT-PAGE-NOT-EXISTS AND CA-LAST-PAGE-SHOWN",
           "reason": "unresolved read operand: CA-LAST-PAGE-SHOWN"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 907,
-          "raw_text": "MOVE 'NO MORE PAGES TO DISPLAY' TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: WS-ERROR-MSG"
         },
         {
           "verb": "WHEN",
@@ -3785,12 +3053,6 @@
           "verb": "MOVE",
           "line_no": 907,
           "raw_text": "MOVE WS-ERROR-MSG          TO ERRMSGO OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-ERROR-MSG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 907,
-          "raw_text": "MOVE WS-ERROR-MSG          TO ERRMSGO OF CCRDLIAO",
           "reason": "unresolved mutate operand: ERRMSGO"
         },
         {
@@ -3816,12 +3078,6 @@
           "line_no": 907,
           "raw_text": "IF  NOT WS-NO-INFO-MESSAGE AND NOT WS-NO-RECORDS-FOUND",
           "reason": "unresolved read operand: WS-NO-RECORDS-FOUND"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 907,
-          "raw_text": "MOVE WS-INFO-MSG        TO INFOMSGO OF CCRDLIAO",
-          "reason": "unresolved read operand: WS-INFO-MSG"
         },
         {
           "verb": "MOVE",
@@ -3900,7 +3156,29 @@
     "2100-RECEIVE-SCREEN": {
       "section_name": null,
       "reads": [],
-      "mutates": [],
+      "mutates": [
+        {
+          "field": "CC-WORK-AREAS.CC-WORK-AREA.CC-ACCT-ID",
+          "record": "CC-WORK-AREAS",
+          "copybook": "CVCRD01Y",
+          "offset": 177,
+          "length": 11
+        },
+        {
+          "field": "CC-WORK-AREAS.CC-WORK-AREA.CC-CARD-NUM",
+          "record": "CC-WORK-AREAS",
+          "copybook": "CVCRD01Y",
+          "offset": 188,
+          "length": 16
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-EDIT-SELECT-ARRAY.WS-EDIT-SELECT",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 19,
+          "length": 1
+        }
+      ],
       "unresolved": [
         {
           "verb": "MOVE",
@@ -3923,12 +3201,6 @@
         {
           "verb": "MOVE",
           "line_no": 973,
-          "raw_text": "MOVE ACCTSIDI OF CCRDLIAI  TO CC-ACCT-ID",
-          "reason": "unresolved mutate operand: CC-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 973,
           "raw_text": "MOVE CARDSIDI OF CCRDLIAI  TO CC-CARD-NUM",
           "reason": "unresolved read operand: CARDSIDI"
         },
@@ -3943,12 +3215,6 @@
           "line_no": 973,
           "raw_text": "MOVE CARDSIDI OF CCRDLIAI  TO CC-CARD-NUM",
           "reason": "unresolved read operand: CCRDLIAI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 973,
-          "raw_text": "MOVE CARDSIDI OF CCRDLIAI  TO CC-CARD-NUM",
-          "reason": "unresolved mutate operand: CC-CARD-NUM"
         },
         {
           "verb": "MOVE",
@@ -3971,12 +3237,6 @@
         {
           "verb": "MOVE",
           "line_no": 973,
-          "raw_text": "MOVE CRDSEL1I OF CCRDLIAI  TO WS-EDIT-SELECT(1)",
-          "reason": "unresolved mutate operand: WS-EDIT-SELECT(1)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 973,
           "raw_text": "MOVE CRDSEL2I OF CCRDLIAI  TO WS-EDIT-SELECT(2)",
           "reason": "unresolved read operand: CRDSEL2I"
         },
@@ -3991,12 +3251,6 @@
           "line_no": 973,
           "raw_text": "MOVE CRDSEL2I OF CCRDLIAI  TO WS-EDIT-SELECT(2)",
           "reason": "unresolved read operand: CCRDLIAI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 973,
-          "raw_text": "MOVE CRDSEL2I OF CCRDLIAI  TO WS-EDIT-SELECT(2)",
-          "reason": "unresolved mutate operand: WS-EDIT-SELECT(2)"
         },
         {
           "verb": "MOVE",
@@ -4019,12 +3273,6 @@
         {
           "verb": "MOVE",
           "line_no": 973,
-          "raw_text": "MOVE CRDSEL3I OF CCRDLIAI  TO WS-EDIT-SELECT(3)",
-          "reason": "unresolved mutate operand: WS-EDIT-SELECT(3)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 973,
           "raw_text": "MOVE CRDSEL4I OF CCRDLIAI  TO WS-EDIT-SELECT(4)",
           "reason": "unresolved read operand: CRDSEL4I"
         },
@@ -4039,12 +3287,6 @@
           "line_no": 973,
           "raw_text": "MOVE CRDSEL4I OF CCRDLIAI  TO WS-EDIT-SELECT(4)",
           "reason": "unresolved read operand: CCRDLIAI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 973,
-          "raw_text": "MOVE CRDSEL4I OF CCRDLIAI  TO WS-EDIT-SELECT(4)",
-          "reason": "unresolved mutate operand: WS-EDIT-SELECT(4)"
         },
         {
           "verb": "MOVE",
@@ -4067,12 +3309,6 @@
         {
           "verb": "MOVE",
           "line_no": 973,
-          "raw_text": "MOVE CRDSEL5I OF CCRDLIAI  TO WS-EDIT-SELECT(5)",
-          "reason": "unresolved mutate operand: WS-EDIT-SELECT(5)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 973,
           "raw_text": "MOVE CRDSEL6I OF CCRDLIAI  TO WS-EDIT-SELECT(6)",
           "reason": "unresolved read operand: CRDSEL6I"
         },
@@ -4091,12 +3327,6 @@
         {
           "verb": "MOVE",
           "line_no": 973,
-          "raw_text": "MOVE CRDSEL6I OF CCRDLIAI  TO WS-EDIT-SELECT(6)",
-          "reason": "unresolved mutate operand: WS-EDIT-SELECT(6)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 973,
           "raw_text": "MOVE CRDSEL7I OF CCRDLIAI  TO WS-EDIT-SELECT(7)",
           "reason": "unresolved read operand: CRDSEL7I"
         },
@@ -4111,12 +3341,6 @@
           "line_no": 973,
           "raw_text": "MOVE CRDSEL7I OF CCRDLIAI  TO WS-EDIT-SELECT(7)",
           "reason": "unresolved read operand: CCRDLIAI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 973,
-          "raw_text": "MOVE CRDSEL7I OF CCRDLIAI  TO WS-EDIT-SELECT(7)",
-          "reason": "unresolved mutate operand: WS-EDIT-SELECT(7)"
         }
       ]
     },
@@ -4153,8 +3377,38 @@
     },
     "2210-EDIT-ACCOUNT": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "CC-WORK-AREAS.CC-WORK-AREA.CC-ACCT-ID",
+          "record": "CC-WORK-AREAS",
+          "copybook": "CVCRD01Y",
+          "offset": 177,
+          "length": 11
+        },
+        {
+          "field": "CC-WORK-AREAS.CC-WORK-AREA.CC-ACCT-ID-N",
+          "record": "CC-WORK-AREAS",
+          "copybook": "CVCRD01Y",
+          "offset": 177,
+          "length": 11
+        }
+      ],
+      "mutates": [
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-ACCOUNT-INFO.CDEMO-ACCT-ID",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 118,
+          "length": 11
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-ERROR-MSG",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 584,
+          "length": 75
+        }
+      ],
       "unresolved": [
         {
           "verb": "SET",
@@ -4163,40 +3417,10 @@
           "reason": "unresolved mutate operand: FLG-ACCTFILTER-BLANK"
         },
         {
-          "verb": "IF",
-          "line_no": 1014,
-          "raw_text": "IF CC-ACCT-ID   EQUAL LOW-VALUES OR CC-ACCT-ID   EQUAL SPACES OR CC-ACCT-ID-N EQUAL ZEROS",
-          "reason": "unresolved read operand: CC-ACCT-ID"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1014,
-          "raw_text": "IF CC-ACCT-ID   EQUAL LOW-VALUES OR CC-ACCT-ID   EQUAL SPACES OR CC-ACCT-ID-N EQUAL ZEROS",
-          "reason": "unresolved read operand: CC-ACCT-ID"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1014,
-          "raw_text": "IF CC-ACCT-ID   EQUAL LOW-VALUES OR CC-ACCT-ID   EQUAL SPACES OR CC-ACCT-ID-N EQUAL ZEROS",
-          "reason": "unresolved read operand: CC-ACCT-ID-N"
-        },
-        {
           "verb": "SET",
           "line_no": 1014,
           "raw_text": "SET FLG-ACCTFILTER-BLANK  TO TRUE",
           "reason": "unresolved mutate operand: FLG-ACCTFILTER-BLANK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1014,
-          "raw_text": "MOVE ZEROES       TO CDEMO-ACCT-ID",
-          "reason": "unresolved mutate operand: CDEMO-ACCT-ID"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1014,
-          "raw_text": "IF CC-ACCT-ID  IS NOT NUMERIC",
-          "reason": "unresolved read operand: CC-ACCT-ID"
         },
         {
           "verb": "IF",
@@ -4229,30 +3453,6 @@
           "reason": "unresolved mutate operand: FLG-PROTECT-SELECT-ROWS-YES"
         },
         {
-          "verb": "MOVE",
-          "line_no": 1014,
-          "raw_text": "MOVE 'ACCOUNT FILTER,IF SUPPLIED MUST BE A 11 DIGIT NUMBER' TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: WS-ERROR-MSG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1014,
-          "raw_text": "MOVE ZERO       TO CDEMO-ACCT-ID",
-          "reason": "unresolved mutate operand: CDEMO-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1014,
-          "raw_text": "MOVE CC-ACCT-ID TO CDEMO-ACCT-ID",
-          "reason": "unresolved read operand: CC-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1014,
-          "raw_text": "MOVE CC-ACCT-ID TO CDEMO-ACCT-ID",
-          "reason": "unresolved mutate operand: CDEMO-ACCT-ID"
-        },
-        {
           "verb": "SET",
           "line_no": 1014,
           "raw_text": "SET FLG-ACCTFILTER-ISVALID TO TRUE",
@@ -4268,8 +3468,38 @@
     },
     "2220-EDIT-CARD": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "CC-WORK-AREAS.CC-WORK-AREA.CC-CARD-NUM",
+          "record": "CC-WORK-AREAS",
+          "copybook": "CVCRD01Y",
+          "offset": 188,
+          "length": 16
+        },
+        {
+          "field": "CC-WORK-AREAS.CC-WORK-AREA.CC-CARD-NUM-N",
+          "record": "CC-WORK-AREAS",
+          "copybook": "CVCRD01Y",
+          "offset": 188,
+          "length": 16
+        }
+      ],
+      "mutates": [
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-CARD-INFO.CDEMO-CARD-NUM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 130,
+          "length": 16
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-ERROR-MSG",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 584,
+          "length": 75
+        }
+      ],
       "unresolved": [
         {
           "verb": "SET",
@@ -4278,40 +3508,10 @@
           "reason": "unresolved mutate operand: FLG-CARDFILTER-BLANK"
         },
         {
-          "verb": "IF",
-          "line_no": 1049,
-          "raw_text": "IF CC-CARD-NUM   EQUAL LOW-VALUES OR CC-CARD-NUM   EQUAL SPACES OR CC-CARD-NUM-N EQUAL ZEROS",
-          "reason": "unresolved read operand: CC-CARD-NUM"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1049,
-          "raw_text": "IF CC-CARD-NUM   EQUAL LOW-VALUES OR CC-CARD-NUM   EQUAL SPACES OR CC-CARD-NUM-N EQUAL ZEROS",
-          "reason": "unresolved read operand: CC-CARD-NUM"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1049,
-          "raw_text": "IF CC-CARD-NUM   EQUAL LOW-VALUES OR CC-CARD-NUM   EQUAL SPACES OR CC-CARD-NUM-N EQUAL ZEROS",
-          "reason": "unresolved read operand: CC-CARD-NUM-N"
-        },
-        {
           "verb": "SET",
           "line_no": 1049,
           "raw_text": "SET FLG-CARDFILTER-BLANK  TO TRUE",
           "reason": "unresolved mutate operand: FLG-CARDFILTER-BLANK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1049,
-          "raw_text": "MOVE ZEROES       TO CDEMO-CARD-NUM",
-          "reason": "unresolved mutate operand: CDEMO-CARD-NUM"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1049,
-          "raw_text": "IF CC-CARD-NUM  IS NOT NUMERIC",
-          "reason": "unresolved read operand: CC-CARD-NUM"
         },
         {
           "verb": "IF",
@@ -4350,30 +3550,6 @@
           "reason": "unresolved read operand: WS-ERROR-MSG-OFF"
         },
         {
-          "verb": "MOVE",
-          "line_no": 1049,
-          "raw_text": "MOVE 'CARD ID FILTER,IF SUPPLIED MUST BE A 16 DIGIT NUMBER' TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: WS-ERROR-MSG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1049,
-          "raw_text": "MOVE ZERO       TO CDEMO-CARD-NUM",
-          "reason": "unresolved mutate operand: CDEMO-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1049,
-          "raw_text": "MOVE CC-CARD-NUM-N TO CDEMO-CARD-NUM",
-          "reason": "unresolved read operand: CC-CARD-NUM-N"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1049,
-          "raw_text": "MOVE CC-CARD-NUM-N TO CDEMO-CARD-NUM",
-          "reason": "unresolved mutate operand: CDEMO-CARD-NUM"
-        },
-        {
           "verb": "SET",
           "line_no": 1049,
           "raw_text": "SET FLG-CARDFILTER-ISVALID TO TRUE",
@@ -4389,32 +3565,65 @@
     },
     "2250-EDIT-ARRAY": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "WS-MISC-STORAGE.WS-EDIT-SELECT-FLAGS",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 19,
+          "length": 7
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-SUBSCRIPT-VARS.I",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 34,
+          "length": 2
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-EDIT-SELECT-ERROR-FLAGS",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 20,
+          "length": 7
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-MISC-STORAGE.WS-SUBSCRIPT-VARS.I",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 34,
+          "length": 2
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-EDIT-SELECT-ERROR-FLAGS",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 20,
+          "length": 7
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-SUBSCRIPT-VARS.I-SELECTED",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 36,
+          "length": 2
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-EDIT-SELECT-ERROR-FLAGX.WS-EDIT-SELECT-ERRORS.WS-ROW-CRDSELECT-ERROR",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 27,
+          "length": 1
+        }
+      ],
       "unresolved": [
         {
           "verb": "IF",
           "line_no": 1085,
           "raw_text": "IF INPUT-ERROR",
           "reason": "unresolved read operand: INPUT-ERROR"
-        },
-        {
-          "verb": "INSPECT",
-          "line_no": 1085,
-          "raw_text": "INSPECT  WS-EDIT-SELECT-FLAGS TALLYING I FOR ALL 'S' ALL 'U'",
-          "reason": "unresolved read operand: WS-EDIT-SELECT-FLAGS"
-        },
-        {
-          "verb": "INSPECT",
-          "line_no": 1085,
-          "raw_text": "INSPECT  WS-EDIT-SELECT-FLAGS TALLYING I FOR ALL 'S' ALL 'U'",
-          "reason": "unresolved mutate operand: I"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1085,
-          "raw_text": "IF I > +1",
-          "reason": "unresolved read operand: I"
         },
         {
           "verb": "SET",
@@ -4429,58 +3638,16 @@
           "reason": "unresolved mutate operand: WS-MORE-THAN-1-ACTION"
         },
         {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS",
-          "reason": "unresolved read operand: WS-EDIT-SELECT-FLAGS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE WS-EDIT-SELECT-FLAGS TO WS-EDIT-SELECT-ERROR-FLAGS",
-          "reason": "unresolved mutate operand: WS-EDIT-SELECT-ERROR-FLAGS"
-        },
-        {
-          "verb": "INSPECT",
-          "line_no": 1085,
-          "raw_text": "INSPECT WS-EDIT-SELECT-ERROR-FLAGS REPLACING ALL 'S' BY '1' ALL 'U' BY '1' CHARACTERS        BY '0'",
-          "reason": "unresolved read operand: WS-EDIT-SELECT-ERROR-FLAGS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE ZERO TO I-SELECTED",
-          "reason": "unresolved mutate operand: I-SELECTED"
-        },
-        {
           "verb": "WHEN",
           "line_no": 1085,
           "raw_text": "WHEN SELECT-OK(I)",
           "reason": "unresolved read operand: SELECT-OK(I)"
         },
         {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE I TO I-SELECTED",
-          "reason": "unresolved read operand: I"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE I TO I-SELECTED",
-          "reason": "unresolved mutate operand: I-SELECTED"
-        },
-        {
           "verb": "IF",
           "line_no": 1085,
           "raw_text": "IF WS-MORE-THAN-1-ACTION",
           "reason": "unresolved read operand: WS-MORE-THAN-1-ACTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE '1' TO WS-ROW-CRDSELECT-ERROR(I)",
-          "reason": "unresolved mutate operand: WS-ROW-CRDSELECT-ERROR(I)"
         },
         {
           "verb": "WHEN",
@@ -4493,12 +3660,6 @@
           "line_no": 1085,
           "raw_text": "SET INPUT-ERROR TO TRUE",
           "reason": "unresolved mutate operand: INPUT-ERROR"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1085,
-          "raw_text": "MOVE '1' TO WS-ROW-CRDSELECT-ERROR(I)",
-          "reason": "unresolved mutate operand: WS-ROW-CRDSELECT-ERROR(I)"
         },
         {
           "verb": "IF",
@@ -4522,21 +3683,172 @@
     },
     "9000-READ-FORWARD": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "WS-MISC-STORAGE.WS-CICS-PROCESSNG-VARS.WS-RESP-CD",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-SCRN-COUNTER",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 688,
+          "length": 2
+        },
+        {
+          "field": "CARD-RECORD.CARD-NUM",
+          "record": "CARD-RECORD",
+          "copybook": "CVACT02Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "CARD-RECORD.CARD-ACCT-ID",
+          "record": "CARD-RECORD",
+          "copybook": "CVACT02Y",
+          "offset": 16,
+          "length": 11
+        },
+        {
+          "field": "CARD-RECORD.CARD-ACTIVE-STATUS",
+          "record": "CARD-RECORD",
+          "copybook": "CVACT02Y",
+          "offset": 90,
+          "length": 1
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-CA-SCREEN-NUM",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 54,
+          "length": 1
+        },
+        {
+          "field": "WS-CONSTANTS.WS-MAX-SCREEN-LINES",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        },
+        {
+          "field": "WS-CONSTANTS.LIT-CARD-FILE",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 106,
+          "length": 8
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-CICS-PROCESSNG-VARS.WS-REAS-CD",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 4,
+          "length": 4
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 692,
+          "length": 80
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-SCREEN-DATA.WS-ALL-ROWS",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 58,
+          "length": 196
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-SCRN-COUNTER",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 688,
+          "length": 2
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-SCREEN-DATA.FILLER.WS-SCREEN-ROWS.WS-EACH-ROW.WS-EACH-CARD.WS-ROW-ACCTNO",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 58,
+          "length": 11
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-CA-FIRST-CARDKEY.WS-CA-FIRST-CARD-ACCT-ID",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 43,
+          "length": 11
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-CA-FIRST-CARDKEY.WS-CA-FIRST-CARD-NUM",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 27,
+          "length": 16
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-CA-SCREEN-NUM",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 54,
+          "length": 1
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-CA-LAST-CARDKEY.WS-CA-LAST-CARD-ACCT-ID",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 16,
+          "length": 11
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-CA-LAST-CARDKEY.WS-CA-LAST-CARD-NUM",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-ERROR-MSG",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 584,
+          "length": 75
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-OPNAME",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 704,
+          "length": 8
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-FILE",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 716,
+          "length": 9
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-RESP",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 740,
+          "length": 10
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-RESP2",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 757,
+          "length": 10
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE LOW-VALUES           TO WS-ALL-ROWS",
-          "reason": "unresolved mutate operand: WS-ALL-ROWS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE ZEROES TO WS-SCRN-COUNTER",
-          "reason": "unresolved mutate operand: WS-SCRN-COUNTER"
-        },
         {
           "verb": "SET",
           "line_no": 1134,
@@ -4554,12 +3866,6 @@
           "line_no": 1134,
           "raw_text": "EXEC CICS READNEXT DATASET(LIT-CARD-FILE) INTO (CARD-RECORD) LENGTH(LENGTH OF CARD-RECORD) RIDFLD(WS-CARD-RID-CARDNUM) KEYLENGTH(LENGTH OF WS-CARD-RID-CARDNUM) RESP(WS-RESP-CD) RESP2(WS-REAS-CD)",
           "reason": "unresolved mutate operand: (CARD-RECORD)"
-        },
-        {
-          "verb": "EVALUATE",
-          "line_no": 1134,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
         },
         {
           "verb": "WHEN",
@@ -4580,24 +3886,6 @@
           "reason": "unresolved read operand: WS-DONOT-EXCLUDE-THIS-RECORD"
         },
         {
-          "verb": "ADD",
-          "line_no": 1134,
-          "raw_text": "ADD 1             TO WS-SCRN-COUNTER",
-          "reason": "unresolved read operand: WS-SCRN-COUNTER"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 1134,
-          "raw_text": "ADD 1             TO WS-SCRN-COUNTER",
-          "reason": "unresolved mutate operand: WS-SCRN-COUNTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE CARD-NUM     TO WS-ROW-CARD-NUM( WS-SCRN-COUNTER)",
-          "reason": "unresolved read operand: CARD-NUM"
-        },
-        {
           "verb": "MOVE",
           "line_no": 1134,
           "raw_text": "MOVE CARD-NUM     TO WS-ROW-CARD-NUM( WS-SCRN-COUNTER)",
@@ -4612,24 +3900,6 @@
         {
           "verb": "MOVE",
           "line_no": 1134,
-          "raw_text": "MOVE CARD-ACCT-ID TO WS-ROW-ACCTNO(WS-SCRN-COUNTER)",
-          "reason": "unresolved read operand: CARD-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE CARD-ACCT-ID TO WS-ROW-ACCTNO(WS-SCRN-COUNTER)",
-          "reason": "unresolved mutate operand: WS-ROW-ACCTNO(WS-SCRN-COUNTER)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE CARD-ACTIVE-STATUS TO WS-ROW-CARD-STATUS( WS-SCRN-COUNTER)",
-          "reason": "unresolved read operand: CARD-ACTIVE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
           "raw_text": "MOVE CARD-ACTIVE-STATUS TO WS-ROW-CARD-STATUS( WS-SCRN-COUNTER)",
           "reason": "unresolved mutate operand: WS-ROW-CARD-STATUS("
         },
@@ -4638,54 +3908,6 @@
           "line_no": 1134,
           "raw_text": "MOVE CARD-ACTIVE-STATUS TO WS-ROW-CARD-STATUS( WS-SCRN-COUNTER)",
           "reason": "unresolved mutate operand: WS-SCRN-COUNTER)"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1134,
-          "raw_text": "IF WS-SCRN-COUNTER = 1",
-          "reason": "unresolved read operand: WS-SCRN-COUNTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE CARD-ACCT-ID TO WS-CA-FIRST-CARD-ACCT-ID",
-          "reason": "unresolved read operand: CARD-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE CARD-ACCT-ID TO WS-CA-FIRST-CARD-ACCT-ID",
-          "reason": "unresolved mutate operand: WS-CA-FIRST-CARD-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE CARD-NUM  TO WS-CA-FIRST-CARD-NUM",
-          "reason": "unresolved read operand: CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE CARD-NUM  TO WS-CA-FIRST-CARD-NUM",
-          "reason": "unresolved mutate operand: WS-CA-FIRST-CARD-NUM"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1134,
-          "raw_text": "IF   WS-CA-SCREEN-NUM = 0",
-          "reason": "unresolved read operand: WS-CA-SCREEN-NUM"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 1134,
-          "raw_text": "ADD   +1     TO WS-CA-SCREEN-NUM ELSE",
-          "reason": "unresolved read operand: WS-CA-SCREEN-NUM"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 1134,
-          "raw_text": "ADD   +1     TO WS-CA-SCREEN-NUM ELSE",
-          "reason": "unresolved mutate operand: WS-CA-SCREEN-NUM"
         },
         {
           "verb": "ADD",
@@ -4700,58 +3922,16 @@
           "reason": "unresolved mutate operand: ELSE"
         },
         {
-          "verb": "IF",
-          "line_no": 1134,
-          "raw_text": "IF WS-SCRN-COUNTER = WS-MAX-SCREEN-LINES",
-          "reason": "unresolved read operand: WS-SCRN-COUNTER"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1134,
-          "raw_text": "IF WS-SCRN-COUNTER = WS-MAX-SCREEN-LINES",
-          "reason": "unresolved read operand: WS-MAX-SCREEN-LINES"
-        },
-        {
           "verb": "SET",
           "line_no": 1134,
           "raw_text": "SET READ-LOOP-EXIT  TO TRUE",
           "reason": "unresolved mutate operand: READ-LOOP-EXIT"
         },
         {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE CARD-ACCT-ID     TO WS-CA-LAST-CARD-ACCT-ID",
-          "reason": "unresolved read operand: CARD-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE CARD-ACCT-ID     TO WS-CA-LAST-CARD-ACCT-ID",
-          "reason": "unresolved mutate operand: WS-CA-LAST-CARD-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE CARD-NUM         TO WS-CA-LAST-CARD-NUM",
-          "reason": "unresolved read operand: CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE CARD-NUM         TO WS-CA-LAST-CARD-NUM",
-          "reason": "unresolved mutate operand: WS-CA-LAST-CARD-NUM"
-        },
-        {
           "verb": "EXEC",
           "line_no": 1134,
           "raw_text": "EXEC CICS READNEXT DATASET(LIT-CARD-FILE) INTO (CARD-RECORD) LENGTH(LENGTH OF CARD-RECORD) RIDFLD(WS-CARD-RID-CARDNUM) KEYLENGTH(LENGTH OF WS-CARD-RID-CARDNUM) RESP(WS-RESP-CD) RESP2(WS-REAS-CD)",
           "reason": "unresolved mutate operand: (CARD-RECORD)"
-        },
-        {
-          "verb": "EVALUATE",
-          "line_no": 1134,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
         },
         {
           "verb": "WHEN",
@@ -4772,30 +3952,6 @@
           "reason": "unresolved mutate operand: CA-NEXT-PAGE-EXISTS"
         },
         {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE CARD-ACCT-ID TO WS-CA-LAST-CARD-ACCT-ID",
-          "reason": "unresolved read operand: CARD-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE CARD-ACCT-ID TO WS-CA-LAST-CARD-ACCT-ID",
-          "reason": "unresolved mutate operand: WS-CA-LAST-CARD-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE CARD-NUM     TO WS-CA-LAST-CARD-NUM",
-          "reason": "unresolved read operand: CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE CARD-NUM     TO WS-CA-LAST-CARD-NUM",
-          "reason": "unresolved mutate operand: WS-CA-LAST-CARD-NUM"
-        },
-        {
           "verb": "WHEN",
           "line_no": 1134,
           "raw_text": "WHEN DFHRESP(ENDFILE)",
@@ -4814,70 +3970,10 @@
           "reason": "unresolved read operand: WS-ERROR-MSG-OFF"
         },
         {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE 'NO MORE RECORDS TO SHOW' TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: WS-ERROR-MSG"
-        },
-        {
           "verb": "SET",
           "line_no": 1134,
           "raw_text": "SET READ-LOOP-EXIT      TO TRUE",
           "reason": "unresolved mutate operand: READ-LOOP-EXIT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE 'READ'              TO ERROR-OPNAME",
-          "reason": "unresolved mutate operand: ERROR-OPNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE LIT-CARD-FILE       TO ERROR-FILE",
-          "reason": "unresolved read operand: LIT-CARD-FILE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE LIT-CARD-FILE       TO ERROR-FILE",
-          "reason": "unresolved mutate operand: ERROR-FILE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE WS-RESP-CD          TO ERROR-RESP",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE WS-RESP-CD          TO ERROR-RESP",
-          "reason": "unresolved mutate operand: ERROR-RESP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE WS-REAS-CD          TO ERROR-RESP2",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE WS-REAS-CD          TO ERROR-RESP2",
-          "reason": "unresolved mutate operand: ERROR-RESP2"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE WS-FILE-ERROR-MESSAGE TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: WS-FILE-ERROR-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE WS-FILE-ERROR-MESSAGE TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: WS-ERROR-MSG"
         },
         {
           "verb": "WHEN",
@@ -4898,52 +3994,10 @@
           "reason": "unresolved mutate operand: CA-NEXT-PAGE-NOT-EXISTS"
         },
         {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE CARD-ACCT-ID     TO WS-CA-LAST-CARD-ACCT-ID",
-          "reason": "unresolved read operand: CARD-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE CARD-ACCT-ID     TO WS-CA-LAST-CARD-ACCT-ID",
-          "reason": "unresolved mutate operand: WS-CA-LAST-CARD-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE CARD-NUM         TO WS-CA-LAST-CARD-NUM",
-          "reason": "unresolved read operand: CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE CARD-NUM         TO WS-CA-LAST-CARD-NUM",
-          "reason": "unresolved mutate operand: WS-CA-LAST-CARD-NUM"
-        },
-        {
           "verb": "IF",
           "line_no": 1134,
           "raw_text": "IF WS-ERROR-MSG-OFF",
           "reason": "unresolved read operand: WS-ERROR-MSG-OFF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE 'NO MORE RECORDS TO SHOW'  TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: WS-ERROR-MSG"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1134,
-          "raw_text": "IF WS-CA-SCREEN-NUM = 1 AND WS-SCRN-COUNTER = 0",
-          "reason": "unresolved read operand: WS-CA-SCREEN-NUM"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1134,
-          "raw_text": "IF WS-CA-SCREEN-NUM = 1 AND WS-SCRN-COUNTER = 0",
-          "reason": "unresolved read operand: WS-SCRN-COUNTER"
         },
         {
           "verb": "SET",
@@ -4956,60 +4010,6 @@
           "line_no": 1134,
           "raw_text": "SET READ-LOOP-EXIT             TO TRUE",
           "reason": "unresolved mutate operand: READ-LOOP-EXIT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE 'READ'                     TO ERROR-OPNAME",
-          "reason": "unresolved mutate operand: ERROR-OPNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE LIT-CARD-FILE              TO ERROR-FILE",
-          "reason": "unresolved read operand: LIT-CARD-FILE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE LIT-CARD-FILE              TO ERROR-FILE",
-          "reason": "unresolved mutate operand: ERROR-FILE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE WS-RESP-CD                 TO ERROR-RESP",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE WS-RESP-CD                 TO ERROR-RESP",
-          "reason": "unresolved mutate operand: ERROR-RESP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE WS-REAS-CD                 TO ERROR-RESP2",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE WS-REAS-CD                 TO ERROR-RESP2",
-          "reason": "unresolved mutate operand: ERROR-RESP2"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE WS-FILE-ERROR-MESSAGE      TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: WS-FILE-ERROR-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1134,
-          "raw_text": "MOVE WS-FILE-ERROR-MESSAGE      TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: WS-ERROR-MSG"
         }
       ]
     },
@@ -5021,39 +4021,172 @@
     },
     "9100-READ-BACKWARDS": {
       "section_name": null,
-      "reads": [],
-      "mutates": [],
+      "reads": [
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-CA-FIRST-CARDKEY",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 27,
+          "length": 27
+        },
+        {
+          "field": "WS-CONSTANTS.WS-MAX-SCREEN-LINES",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-CICS-PROCESSNG-VARS.WS-RESP-CD",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-SCRN-COUNTER",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 688,
+          "length": 2
+        },
+        {
+          "field": "WS-CONSTANTS.LIT-CARD-FILE",
+          "record": "WS-CONSTANTS",
+          "copybook": null,
+          "offset": 106,
+          "length": 8
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-CICS-PROCESSNG-VARS.WS-REAS-CD",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 4,
+          "length": 4
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 692,
+          "length": 80
+        },
+        {
+          "field": "CARD-RECORD.CARD-NUM",
+          "record": "CARD-RECORD",
+          "copybook": "CVACT02Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "CARD-RECORD.CARD-ACCT-ID",
+          "record": "CARD-RECORD",
+          "copybook": "CVACT02Y",
+          "offset": 16,
+          "length": 11
+        },
+        {
+          "field": "CARD-RECORD.CARD-ACTIVE-STATUS",
+          "record": "CARD-RECORD",
+          "copybook": "CVACT02Y",
+          "offset": 90,
+          "length": 1
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-SCREEN-DATA.WS-ALL-ROWS",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 58,
+          "length": 196
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-CA-LAST-CARDKEY",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 0,
+          "length": 27
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-SCRN-COUNTER",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 688,
+          "length": 2
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-OPNAME",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 704,
+          "length": 8
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-FILE",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 716,
+          "length": 9
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-RESP",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 740,
+          "length": 10
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-RESP2",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 757,
+          "length": 10
+        },
+        {
+          "field": "WS-MISC-STORAGE.WS-ERROR-MSG",
+          "record": "WS-MISC-STORAGE",
+          "copybook": null,
+          "offset": 584,
+          "length": 75
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-SCREEN-DATA.FILLER.WS-SCREEN-ROWS.WS-EACH-ROW.WS-EACH-CARD.WS-ROW-CARD-NUM",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 69,
+          "length": 16
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-SCREEN-DATA.FILLER.WS-SCREEN-ROWS.WS-EACH-ROW.WS-EACH-CARD.WS-ROW-ACCTNO",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 58,
+          "length": 11
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-SCREEN-DATA.FILLER.WS-SCREEN-ROWS.WS-EACH-ROW.WS-EACH-CARD.WS-ROW-CARD-STATUS",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 85,
+          "length": 1
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-CA-FIRST-CARDKEY.WS-CA-FIRST-CARD-ACCT-ID",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 43,
+          "length": 11
+        },
+        {
+          "field": "WS-THIS-PROGCOMMAREA.WS-CA-FIRST-CARDKEY.WS-CA-FIRST-CARD-NUM",
+          "record": "WS-THIS-PROGCOMMAREA",
+          "copybook": null,
+          "offset": 27,
+          "length": 16
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE LOW-VALUES           TO WS-ALL-ROWS",
-          "reason": "unresolved mutate operand: WS-ALL-ROWS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE WS-CA-FIRST-CARDKEY  TO WS-CA-LAST-CARDKEY",
-          "reason": "unresolved read operand: WS-CA-FIRST-CARDKEY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE WS-CA-FIRST-CARDKEY  TO WS-CA-LAST-CARDKEY",
-          "reason": "unresolved mutate operand: WS-CA-LAST-CARDKEY"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 1276,
-          "raw_text": "COMPUTE WS-SCRN-COUNTER = WS-MAX-SCREEN-LINES + 1",
-          "reason": "unresolved mutate operand: WS-SCRN-COUNTER"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 1276,
-          "raw_text": "COMPUTE WS-SCRN-COUNTER = WS-MAX-SCREEN-LINES + 1",
-          "reason": "unresolved read operand: WS-MAX-SCREEN-LINES"
-        },
         {
           "verb": "SET",
           "line_no": 1276,
@@ -5073,12 +4206,6 @@
           "reason": "unresolved mutate operand: (CARD-RECORD)"
         },
         {
-          "verb": "EVALUATE",
-          "line_no": 1276,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
           "verb": "WHEN",
           "line_no": 1276,
           "raw_text": "WHEN DFHRESP(NORMAL)",
@@ -5091,88 +4218,16 @@
           "reason": "unresolved read operand: DFHRESP(DUPREC)"
         },
         {
-          "verb": "SUBTRACT",
-          "line_no": 1276,
-          "raw_text": "SUBTRACT 1          FROM WS-SCRN-COUNTER",
-          "reason": "unresolved read operand: WS-SCRN-COUNTER"
-        },
-        {
-          "verb": "SUBTRACT",
-          "line_no": 1276,
-          "raw_text": "SUBTRACT 1          FROM WS-SCRN-COUNTER",
-          "reason": "unresolved mutate operand: WS-SCRN-COUNTER"
-        },
-        {
           "verb": "SET",
           "line_no": 1276,
           "raw_text": "SET READ-LOOP-EXIT             TO TRUE",
           "reason": "unresolved mutate operand: READ-LOOP-EXIT"
         },
         {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE 'READ'                     TO ERROR-OPNAME",
-          "reason": "unresolved mutate operand: ERROR-OPNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE LIT-CARD-FILE              TO ERROR-FILE",
-          "reason": "unresolved read operand: LIT-CARD-FILE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE LIT-CARD-FILE              TO ERROR-FILE",
-          "reason": "unresolved mutate operand: ERROR-FILE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE WS-RESP-CD                 TO ERROR-RESP",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE WS-RESP-CD                 TO ERROR-RESP",
-          "reason": "unresolved mutate operand: ERROR-RESP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE WS-REAS-CD                 TO ERROR-RESP2",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE WS-REAS-CD                 TO ERROR-RESP2",
-          "reason": "unresolved mutate operand: ERROR-RESP2"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE WS-FILE-ERROR-MESSAGE      TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: WS-FILE-ERROR-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE WS-FILE-ERROR-MESSAGE      TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: WS-ERROR-MSG"
-        },
-        {
           "verb": "EXEC",
           "line_no": 1276,
           "raw_text": "EXEC CICS READPREV DATASET(LIT-CARD-FILE) INTO (CARD-RECORD) LENGTH(LENGTH OF CARD-RECORD) RIDFLD(WS-CARD-RID-CARDNUM) KEYLENGTH(LENGTH OF WS-CARD-RID-CARDNUM) RESP(WS-RESP-CD) RESP2(WS-REAS-CD)",
           "reason": "unresolved mutate operand: (CARD-RECORD)"
-        },
-        {
-          "verb": "EVALUATE",
-          "line_no": 1276,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
         },
         {
           "verb": "WHEN",
@@ -5193,88 +4248,10 @@
           "reason": "unresolved read operand: WS-DONOT-EXCLUDE-THIS-RECORD"
         },
         {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE CARD-NUM TO WS-ROW-CARD-NUM(WS-SCRN-COUNTER)",
-          "reason": "unresolved read operand: CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE CARD-NUM TO WS-ROW-CARD-NUM(WS-SCRN-COUNTER)",
-          "reason": "unresolved mutate operand: WS-ROW-CARD-NUM(WS-SCRN-COUNTER)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE CARD-ACCT-ID TO WS-ROW-ACCTNO(WS-SCRN-COUNTER)",
-          "reason": "unresolved read operand: CARD-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE CARD-ACCT-ID TO WS-ROW-ACCTNO(WS-SCRN-COUNTER)",
-          "reason": "unresolved mutate operand: WS-ROW-ACCTNO(WS-SCRN-COUNTER)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE CARD-ACTIVE-STATUS TO WS-ROW-CARD-STATUS(WS-SCRN-COUNTER)",
-          "reason": "unresolved read operand: CARD-ACTIVE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE CARD-ACTIVE-STATUS TO WS-ROW-CARD-STATUS(WS-SCRN-COUNTER)",
-          "reason": "unresolved mutate operand: WS-ROW-CARD-STATUS(WS-SCRN-COUNTER)"
-        },
-        {
-          "verb": "SUBTRACT",
-          "line_no": 1276,
-          "raw_text": "SUBTRACT 1  FROM WS-SCRN-COUNTER",
-          "reason": "unresolved read operand: WS-SCRN-COUNTER"
-        },
-        {
-          "verb": "SUBTRACT",
-          "line_no": 1276,
-          "raw_text": "SUBTRACT 1  FROM WS-SCRN-COUNTER",
-          "reason": "unresolved mutate operand: WS-SCRN-COUNTER"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1276,
-          "raw_text": "IF WS-SCRN-COUNTER = 0",
-          "reason": "unresolved read operand: WS-SCRN-COUNTER"
-        },
-        {
           "verb": "SET",
           "line_no": 1276,
           "raw_text": "SET READ-LOOP-EXIT  TO TRUE",
           "reason": "unresolved mutate operand: READ-LOOP-EXIT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE CARD-ACCT-ID TO WS-CA-FIRST-CARD-ACCT-ID",
-          "reason": "unresolved read operand: CARD-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE CARD-ACCT-ID TO WS-CA-FIRST-CARD-ACCT-ID",
-          "reason": "unresolved mutate operand: WS-CA-FIRST-CARD-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE CARD-NUM TO WS-CA-FIRST-CARD-NUM ELSE",
-          "reason": "unresolved read operand: CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE CARD-NUM TO WS-CA-FIRST-CARD-NUM ELSE",
-          "reason": "unresolved mutate operand: WS-CA-FIRST-CARD-NUM"
         },
         {
           "verb": "MOVE",
@@ -5287,60 +4264,6 @@
           "line_no": 1276,
           "raw_text": "SET READ-LOOP-EXIT             TO TRUE",
           "reason": "unresolved mutate operand: READ-LOOP-EXIT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE 'READ'                     TO ERROR-OPNAME",
-          "reason": "unresolved mutate operand: ERROR-OPNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE LIT-CARD-FILE              TO ERROR-FILE",
-          "reason": "unresolved read operand: LIT-CARD-FILE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE LIT-CARD-FILE              TO ERROR-FILE",
-          "reason": "unresolved mutate operand: ERROR-FILE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE WS-RESP-CD                 TO ERROR-RESP",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE WS-RESP-CD                 TO ERROR-RESP",
-          "reason": "unresolved mutate operand: ERROR-RESP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE WS-REAS-CD                 TO ERROR-RESP2",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE WS-REAS-CD                 TO ERROR-RESP2",
-          "reason": "unresolved mutate operand: ERROR-RESP2"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE WS-FILE-ERROR-MESSAGE      TO WS-ERROR-MSG",
-          "reason": "unresolved read operand: WS-FILE-ERROR-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 1276,
-          "raw_text": "MOVE WS-FILE-ERROR-MESSAGE      TO WS-ERROR-MSG",
-          "reason": "unresolved mutate operand: WS-ERROR-MSG"
         }
       ]
     },
@@ -5352,7 +4275,36 @@
     },
     "9500-FILTER-RECORDS": {
       "section_name": null,
-      "reads": [],
+      "reads": [
+        {
+          "field": "CARD-RECORD.CARD-ACCT-ID",
+          "record": "CARD-RECORD",
+          "copybook": "CVACT02Y",
+          "offset": 16,
+          "length": 11
+        },
+        {
+          "field": "CC-WORK-AREAS.CC-WORK-AREA.CC-ACCT-ID",
+          "record": "CC-WORK-AREAS",
+          "copybook": "CVCRD01Y",
+          "offset": 177,
+          "length": 11
+        },
+        {
+          "field": "CARD-RECORD.CARD-NUM",
+          "record": "CARD-RECORD",
+          "copybook": "CVACT02Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "CC-WORK-AREAS.CC-WORK-AREA.CC-CARD-NUM-N",
+          "record": "CC-WORK-AREAS",
+          "copybook": "CVCRD01Y",
+          "offset": 188,
+          "length": 16
+        }
+      ],
       "mutates": [],
       "unresolved": [
         {
@@ -5368,18 +4320,6 @@
           "reason": "unresolved read operand: FLG-ACCTFILTER-ISVALID"
         },
         {
-          "verb": "IF",
-          "line_no": 1393,
-          "raw_text": "IF  CARD-ACCT-ID = CC-ACCT-ID",
-          "reason": "unresolved read operand: CARD-ACCT-ID"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1393,
-          "raw_text": "IF  CARD-ACCT-ID = CC-ACCT-ID",
-          "reason": "unresolved read operand: CC-ACCT-ID"
-        },
-        {
           "verb": "SET",
           "line_no": 1393,
           "raw_text": "SET WS-EXCLUDE-THIS-RECORD  TO TRUE",
@@ -5390,18 +4330,6 @@
           "line_no": 1393,
           "raw_text": "IF FLG-CARDFILTER-ISVALID",
           "reason": "unresolved read operand: FLG-CARDFILTER-ISVALID"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1393,
-          "raw_text": "IF  CARD-NUM = CC-CARD-NUM-N",
-          "reason": "unresolved read operand: CARD-NUM"
-        },
-        {
-          "verb": "IF",
-          "line_no": 1393,
-          "raw_text": "IF  CARD-NUM = CC-CARD-NUM-N",
-          "reason": "unresolved read operand: CC-CARD-NUM-N"
         },
         {
           "verb": "SET",

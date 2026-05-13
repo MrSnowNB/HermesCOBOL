@@ -1,0 +1,308 @@
+{
+  "program": "CBACT03C",
+  "schema_version": "1.2",
+  "records": [
+    {
+      "name": "FD-XREFFILE-REC",
+      "copybook": null,
+      "total_bytes": 50,
+      "fields": [
+        {
+          "qualified_name": "FD-XREFFILE-REC.FD-XREF-CARD-NUM",
+          "level": 5,
+          "offset": 0,
+          "length": 16,
+          "pic": "X(16)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FD-XREFFILE-REC.FD-XREF-DATA",
+          "level": 5,
+          "offset": 16,
+          "length": 34,
+          "pic": "X(34)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "CARD-XREF-RECORD",
+      "copybook": "CVACT03Y",
+      "total_bytes": 50,
+      "fields": [
+        {
+          "qualified_name": "CARD-XREF-RECORD.XREF-CARD-NUM",
+          "level": 5,
+          "offset": 0,
+          "length": 16,
+          "pic": "X(16)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT03Y"
+        },
+        {
+          "qualified_name": "CARD-XREF-RECORD.XREF-CUST-ID",
+          "level": 5,
+          "offset": 16,
+          "length": 9,
+          "pic": "9(09)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT03Y"
+        },
+        {
+          "qualified_name": "CARD-XREF-RECORD.XREF-ACCT-ID",
+          "level": 5,
+          "offset": 25,
+          "length": 11,
+          "pic": "9(11)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT03Y"
+        },
+        {
+          "qualified_name": "CARD-XREF-RECORD.FILLER",
+          "level": 5,
+          "offset": 36,
+          "length": 14,
+          "pic": "X(14)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1,
+          "copybook": "CVACT03Y"
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "XREFFILE-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "XREFFILE-STATUS.XREFFILE-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "XREFFILE-STATUS.XREFFILE-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "IO-STATUS",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "IO-STATUS.IO-STAT1",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "IO-STATUS.IO-STAT2",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TWO-BYTES-BINARY",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "TWO-BYTES-BINARY",
+          "level": 1,
+          "offset": 0,
+          "length": 2,
+          "pic": "9(4)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TWO-BYTES-ALPHA",
+      "copybook": null,
+      "total_bytes": 2,
+      "fields": [
+        {
+          "qualified_name": "TWO-BYTES-ALPHA.TWO-BYTES-LEFT",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "TWO-BYTES-ALPHA.TWO-BYTES-RIGHT",
+          "level": 5,
+          "offset": 1,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "IO-STATUS-04",
+      "copybook": null,
+      "total_bytes": 4,
+      "fields": [
+        {
+          "qualified_name": "IO-STATUS-04.IO-STATUS-0401",
+          "level": 5,
+          "offset": 0,
+          "length": 1,
+          "pic": "9",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "IO-STATUS-04.IO-STATUS-0403",
+          "level": 5,
+          "offset": 1,
+          "length": 3,
+          "pic": "999",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "APPL-RESULT",
+      "copybook": null,
+      "total_bytes": 4,
+      "fields": [
+        {
+          "qualified_name": "APPL-RESULT",
+          "level": 1,
+          "offset": 0,
+          "length": 4,
+          "pic": "S9(9)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "END-OF-FILE",
+      "copybook": null,
+      "total_bytes": 1,
+      "fields": [
+        {
+          "qualified_name": "END-OF-FILE",
+          "level": 1,
+          "offset": 0,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "ABCODE",
+      "copybook": null,
+      "total_bytes": 4,
+      "fields": [
+        {
+          "qualified_name": "ABCODE",
+          "level": 1,
+          "offset": 0,
+          "length": 4,
+          "pic": "S9(9)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "TIMING",
+      "copybook": null,
+      "total_bytes": 4,
+      "fields": [
+        {
+          "qualified_name": "TIMING",
+          "level": 1,
+          "offset": 0,
+          "length": 4,
+          "pic": "S9(9)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    }
+  ],
+  "unresolved": []
+}
