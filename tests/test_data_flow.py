@@ -1176,3 +1176,68 @@ class TestV10AmbiguousConflictFlagging(unittest.TestCase):
         assert "FIELD-DUP" in unresolved_names, (
             f"FIELD-DUP should appear in unresolved: {unresolved}"
         )
+
+
+class TestV11ColumnAwareParagraphLexing(unittest.TestCase):
+    def test_v11_column_aware_paragraph_lexing(self):
+        """V11: Fixed-form COBOL — only valid Area A paragraph names extracted"""
+        from data_flow import _normalise_source, extract_paragraphs
+
+        synthetic_cobol = (
+            "000010 IDENTIFICATION DIVISION.                                         \n"
+            "000020 PROGRAM-ID. TESTPROG.                                            \n"
+            "000030 PROCEDURE DIVISION.                                              \n"
+            "000040 MAIN-PARA.                                                       \n"
+            "000050*    THIS IS A COMMENT LINE — should produce no paragraph         \n"
+            "000060     MOVE A TO B.                                                 \n"
+            "000070-    CONTINUED-LINE.                                              \n"
+            "000080 SECOND-PARA.                                                     \n"
+            "000090     MOVE C TO D.                                                 \n"
+        )
+
+        lines = _normalise_source(synthetic_cobol)
+        paragraphs = extract_paragraphs(lines)
+        para_names = sorted(k for k in paragraphs if k != '__MAIN__')
+
+        assert "MAIN-PARA" in para_names, f"MAIN-PARA not found: {para_names}"
+        assert "SECOND-PARA" in para_names, f"SECOND-PARA not found: {para_names}"
+        assert "000010" not in para_names, f"Sequence number misclassified: {para_names}"
+        assert "000050" not in para_names, f"Comment line misclassified: {para_names}"
+        assert "CONTINUED-LINE" not in para_names, (
+            f"Continuation line should not be a paragraph: {para_names}"
+        )
+
+
+class TestV12SectionBoundaryEncapsulation(unittest.TestCase):
+    def test_v12_section_boundary_encapsulation(self):
+        """V12: Paragraphs inherit section_name from enclosing SECTION header"""
+        from data_flow import _normalise_source, extract_paragraphs
+
+        synthetic_cobol = (
+            "000010 PROCEDURE DIVISION.                                              \n"
+            "000020 MAIN-SECTION SECTION.                                           \n"
+            "000030 PARA-A.                                                         \n"
+            "000040     MOVE VAR-X TO VAR-Y.                                        \n"
+            "000050 PARA-B.                                                         \n"
+            "000060     MOVE VAR-Z TO VAR-W.                                        \n"
+        )
+
+        lines = _normalise_source(synthetic_cobol)
+        paragraphs = extract_paragraphs(lines)
+
+        para_a = paragraphs.get("PARA-A")
+        para_b = paragraphs.get("PARA-B")
+
+        assert para_a is not None, f"PARA-A not found: {list(paragraphs.keys())}"
+        assert para_b is not None, f"PARA-B not found: {list(paragraphs.keys())}"
+
+        # section_name is stored in occurrences, not directly in paragraph dict
+        para_a_section = para_a["occurrences"][0].get("section_name")
+        para_b_section = para_b["occurrences"][0].get("section_name")
+
+        assert para_a_section == "MAIN-SECTION", (
+            f"PARA-A section_name wrong: {para_a}"
+        )
+        assert para_b_section == "MAIN-SECTION", (
+            f"PARA-B section_name wrong: {para_b}"
+        )
