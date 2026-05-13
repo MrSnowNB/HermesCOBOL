@@ -333,6 +333,7 @@ def _find_copybook(
     if env_dir:
         candidates.append(Path(env_dir))
     candidates.append(Path(CPY_DIR_DEFAULT))
+    candidates.append(Path("data/raw/cpy-bms"))
 
     exts = ["", ".cpy", ".CPY", ".cbl", ".CBL"]
     for base in candidates:
