@@ -163,6 +163,17 @@ def _should_skip_operand(tok: str) -> bool:
     return False
 
 
+def _canonical_operand(tokens, i):
+    """Canonicalize COBOL qualified-name syntax: FIELD OF RECORD or FIELD IN RECORD
+    becomes RECORD.FIELD for resolution."""
+    tok = tokens[i]
+    if i + 2 < len(tokens) and tokens[i + 1].upper() in {"OF", "IN"}:
+        owner = tokens[i + 2]
+        if not _should_skip_operand(tok) and not _should_skip_operand(owner):
+            return f"{owner}.{tok}"
+    return tok
+
+
 # ---------------------------------------------------------------------------
 # Source normalisation  --  FIXED COLUMN POSITIONS (COBOL fixed format)
 # ---------------------------------------------------------------------------
@@ -698,6 +709,11 @@ def classify_statement(
             return
         if name == '__LIT__' or is_literal(name):
             return
+        # Apply OF/IN qualifier canonicalization before resolution
+        for i, tok in enumerate(tokens):
+            if tok == name:
+                name = _canonical_operand(tokens, i)
+                break
         hits = resolve(name, qmap, context_records)
         if not hits:
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
@@ -715,6 +731,11 @@ def classify_statement(
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                                'reason': f'literal as mutate target (ignored): {name}'})
             return
+        # Apply OF/IN qualifier canonicalization before resolution
+        for i, tok in enumerate(tokens):
+            if tok == name:
+                name = _canonical_operand(tokens, i)
+                break
         hits = resolve(name, qmap, context_records)
         if not hits:
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
