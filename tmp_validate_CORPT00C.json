@@ -1,7 +1,0 @@
-{
-  "tier": "T-PASS1-BYTES",
-  "program": "CORPT00C",
-  "source_sha256": null,
-  "pass": true,
-  "failures": []
-}
