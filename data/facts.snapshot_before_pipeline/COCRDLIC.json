@@ -1,0 +1,861 @@
+{
+  "schema_version": "1.1",
+  "program": "COCRDLIC",
+  "source_file": "data/raw/cbl/COCRDLIC.cbl",
+  "extracted_at": "2026-05-12T16:52:22.474848+00:00",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 0,
+  "gate_status": "PASS",
+  "gate_reasons": [],
+  "cics_present": true,
+  "sql_present": false,
+  "paragraphs": [
+    "0000-MAIN",
+    "0000-MAIN-EXIT",
+    "1000-SEND-MAP",
+    "1000-SEND-MAP-EXIT",
+    "1100-SCREEN-INIT",
+    "1100-SCREEN-INIT-EXIT",
+    "1200-SCREEN-ARRAY-INIT",
+    "1200-SCREEN-ARRAY-INIT-EXIT",
+    "1250-SETUP-ARRAY-ATTRIBS",
+    "1250-SETUP-ARRAY-ATTRIBS-EXIT",
+    "1300-SETUP-SCREEN-ATTRS",
+    "1300-SETUP-SCREEN-ATTRS-EXIT",
+    "1400-SETUP-MESSAGE",
+    "1400-SETUP-MESSAGE-EXIT",
+    "1500-SEND-SCREEN",
+    "1500-SEND-SCREEN-EXIT",
+    "2000-RECEIVE-MAP",
+    "2000-RECEIVE-MAP-EXIT",
+    "2100-RECEIVE-SCREEN",
+    "2100-RECEIVE-SCREEN-EXIT",
+    "2200-EDIT-INPUTS",
+    "2200-EDIT-INPUTS-EXIT",
+    "2210-EDIT-ACCOUNT",
+    "2210-EDIT-ACCOUNT-EXIT",
+    "2220-EDIT-CARD",
+    "2220-EDIT-CARD-EXIT",
+    "2250-EDIT-ARRAY",
+    "2250-EDIT-ARRAY-EXIT",
+    "9000-READ-FORWARD",
+    "9000-READ-FORWARD-EXIT",
+    "9100-READ-BACKWARDS",
+    "9100-READ-BACKWARDS-EXIT",
+    "9500-FILTER-RECORDS",
+    "9500-FILTER-RECORDS-EXIT",
+    "COMMON-RETURN",
+    "SEND-LONG-TEXT",
+    "SEND-LONG-TEXT-EXIT",
+    "SEND-PLAIN-TEXT",
+    "SEND-PLAIN-TEXT-EXIT"
+  ],
+  "data_items": [
+    "DFHCOMMAREA",
+    "WS-COMMAREA",
+    "WS-CONSTANTS",
+    "WS-MISC-STORAGE",
+    "WS-THIS-PROGCOMMAREA"
+  ],
+  "external_calls": [],
+  "internal_performs": [
+    "1000-SEND-MAP",
+    "1100-SCREEN-INIT",
+    "1200-SCREEN-ARRAY-INIT",
+    "1250-SETUP-ARRAY-ATTRIBS",
+    "1300-SETUP-SCREEN-ATTRS",
+    "1400-SETUP-MESSAGE",
+    "1500-SEND-SCREEN",
+    "2000-RECEIVE-MAP",
+    "2100-RECEIVE-SCREEN",
+    "2200-EDIT-INPUTS",
+    "2210-EDIT-ACCOUNT",
+    "2220-EDIT-CARD",
+    "2250-EDIT-ARRAY",
+    "9000-READ-FORWARD",
+    "9100-READ-BACKWARDS",
+    "9500-FILTER-RECORDS",
+    "EXEC",
+    "YYYY-STORE-PFKEY"
+  ],
+  "data_files": [],
+  "copybooks_referenced": [
+    "COCOM01Y",
+    "COCRDLI",
+    "COTTL01Y",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CSUSR01Y",
+    "CVACT02Y",
+    "CVCRD01Y",
+    "DFHAID",
+    "DFHBMSCA"
+  ],
+  "cfg": {
+    "source": null,
+    "edges": null,
+    "unresolved": null
+  },
+  "paragraphs_defined": [
+    {
+      "name": "0000-MAIN",
+      "source_line": 236,
+      "area_a": false
+    },
+    {
+      "name": "COMMON-RETURN",
+      "source_line": 467,
+      "area_a": false
+    },
+    {
+      "name": "0000-MAIN-EXIT",
+      "source_line": 484,
+      "area_a": false
+    },
+    {
+      "name": "1000-SEND-MAP",
+      "source_line": 487,
+      "area_a": false
+    },
+    {
+      "name": "1000-SEND-MAP-EXIT",
+      "source_line": 502,
+      "area_a": false
+    },
+    {
+      "name": "1100-SCREEN-INIT",
+      "source_line": 505,
+      "area_a": false
+    },
+    {
+      "name": "1100-SCREEN-INIT-EXIT",
+      "source_line": 535,
+      "area_a": false
+    },
+    {
+      "name": "1200-SCREEN-ARRAY-INIT",
+      "source_line": 539,
+      "area_a": false
+    },
+    {
+      "name": "1200-SCREEN-ARRAY-INIT-EXIT",
+      "source_line": 605,
+      "area_a": false
+    },
+    {
+      "name": "1250-SETUP-ARRAY-ATTRIBS",
+      "source_line": 608,
+      "area_a": false
+    },
+    {
+      "name": "1250-SETUP-ARRAY-ATTRIBS-EXIT",
+      "source_line": 693,
+      "area_a": false
+    },
+    {
+      "name": "1300-SETUP-SCREEN-ATTRS",
+      "source_line": 696,
+      "area_a": false
+    },
+    {
+      "name": "1300-SETUP-SCREEN-ATTRS-EXIT",
+      "source_line": 746,
+      "area_a": false
+    },
+    {
+      "name": "1400-SETUP-MESSAGE",
+      "source_line": 751,
+      "area_a": false
+    },
+    {
+      "name": "1400-SETUP-MESSAGE-EXIT",
+      "source_line": 788,
+      "area_a": false
+    },
+    {
+      "name": "1500-SEND-SCREEN",
+      "source_line": 793,
+      "area_a": false
+    },
+    {
+      "name": "1500-SEND-SCREEN-EXIT",
+      "source_line": 803,
+      "area_a": false
+    },
+    {
+      "name": "2000-RECEIVE-MAP",
+      "source_line": 806,
+      "area_a": false
+    },
+    {
+      "name": "2000-RECEIVE-MAP-EXIT",
+      "source_line": 814,
+      "area_a": false
+    },
+    {
+      "name": "2100-RECEIVE-SCREEN",
+      "source_line": 817,
+      "area_a": false
+    },
+    {
+      "name": "2100-RECEIVE-SCREEN-EXIT",
+      "source_line": 836,
+      "area_a": false
+    },
+    {
+      "name": "2200-EDIT-INPUTS",
+      "source_line": 840,
+      "area_a": false
+    },
+    {
+      "name": "2200-EDIT-INPUTS-EXIT",
+      "source_line": 854,
+      "area_a": false
+    },
+    {
+      "name": "2210-EDIT-ACCOUNT",
+      "source_line": 858,
+      "area_a": false
+    },
+    {
+      "name": "2210-EDIT-ACCOUNT-EXIT",
+      "source_line": 883,
+      "area_a": false
+    },
+    {
+      "name": "2220-EDIT-CARD",
+      "source_line": 887,
+      "area_a": false
+    },
+    {
+      "name": "2220-EDIT-CARD-EXIT",
+      "source_line": 914,
+      "area_a": false
+    },
+    {
+      "name": "2250-EDIT-ARRAY",
+      "source_line": 918,
+      "area_a": false
+    },
+    {
+      "name": "2250-EDIT-ARRAY-EXIT",
+      "source_line": 964,
+      "area_a": false
+    },
+    {
+      "name": "9000-READ-FORWARD",
+      "source_line": 968,
+      "area_a": false
+    },
+    {
+      "name": "9000-READ-FORWARD-EXIT",
+      "source_line": 1092,
+      "area_a": false
+    },
+    {
+      "name": "9100-READ-BACKWARDS",
+      "source_line": 1095,
+      "area_a": false
+    },
+    {
+      "name": "9100-READ-BACKWARDS-EXIT",
+      "source_line": 1192,
+      "area_a": false
+    },
+    {
+      "name": "9500-FILTER-RECORDS",
+      "source_line": 1200,
+      "area_a": false
+    },
+    {
+      "name": "9500-FILTER-RECORDS-EXIT",
+      "source_line": 1227,
+      "area_a": false
+    },
+    {
+      "name": "SEND-PLAIN-TEXT",
+      "source_line": 1232,
+      "area_a": false
+    },
+    {
+      "name": "SEND-PLAIN-TEXT-EXIT",
+      "source_line": 1243,
+      "area_a": false
+    },
+    {
+      "name": "SEND-LONG-TEXT",
+      "source_line": 1246,
+      "area_a": false
+    },
+    {
+      "name": "SEND-LONG-TEXT-EXIT",
+      "source_line": 1257,
+      "area_a": false
+    }
+  ],
+  "paragraphs_referenced": [
+    "1000-SEND-MAP",
+    "1100-SCREEN-INIT",
+    "1200-SCREEN-ARRAY-INIT",
+    "1250-SETUP-ARRAY-ATTRIBS",
+    "1300-SETUP-SCREEN-ATTRS",
+    "1400-SETUP-MESSAGE",
+    "1500-SEND-SCREEN",
+    "2000-RECEIVE-MAP",
+    "2100-RECEIVE-SCREEN",
+    "2200-EDIT-INPUTS",
+    "2210-EDIT-ACCOUNT",
+    "2210-EDIT-ACCOUNT-EXIT",
+    "2220-EDIT-CARD",
+    "2220-EDIT-CARD-EXIT",
+    "2250-EDIT-ARRAY",
+    "2250-EDIT-ARRAY-EXIT",
+    "9000-READ-FORWARD",
+    "9100-READ-BACKWARDS",
+    "9100-READ-BACKWARDS-EXIT",
+    "9500-FILTER-RECORDS",
+    "9500-FILTER-RECORDS-EXIT",
+    "COMMON-RETURN"
+  ],
+  "paragraph_actions": {
+    "COCRDLIC": [
+      "no_action_detected"
+    ],
+    "TODAY": [
+      "no_action_detected"
+    ],
+    "0000-MAIN": [
+      "branch_logic",
+      "cics_command"
+    ],
+    "COMMON-RETURN": [
+      "cics_command"
+    ],
+    "0000-MAIN-EXIT": [
+      "no_action_detected"
+    ],
+    "1000-SEND-MAP": [
+      "no_action_detected"
+    ],
+    "1000-SEND-MAP-EXIT": [
+      "no_action_detected"
+    ],
+    "1100-SCREEN-INIT": [
+      "transform_data"
+    ],
+    "1100-SCREEN-INIT-EXIT": [
+      "no_action_detected"
+    ],
+    "1200-SCREEN-ARRAY-INIT": [
+      "branch_logic",
+      "transform_data"
+    ],
+    "1200-SCREEN-ARRAY-INIT-EXIT": [
+      "no_action_detected"
+    ],
+    "1250-SETUP-ARRAY-ATTRIBS": [
+      "branch_logic",
+      "transform_data"
+    ],
+    "1250-SETUP-ARRAY-ATTRIBS-EXIT": [
+      "no_action_detected"
+    ],
+    "1300-SETUP-SCREEN-ATTRS": [
+      "branch_logic",
+      "transform_data"
+    ],
+    "1300-SETUP-SCREEN-ATTRS-EXIT": [
+      "no_action_detected"
+    ],
+    "1400-SETUP-MESSAGE": [
+      "branch_logic",
+      "display_output",
+      "transform_data"
+    ],
+    "1400-SETUP-MESSAGE-EXIT": [
+      "no_action_detected"
+    ],
+    "1500-SEND-SCREEN": [
+      "cics_command",
+      "send_map"
+    ],
+    "1500-SEND-SCREEN-EXIT": [
+      "no_action_detected"
+    ],
+    "2000-RECEIVE-MAP": [
+      "no_action_detected"
+    ],
+    "2000-RECEIVE-MAP-EXIT": [
+      "no_action_detected"
+    ],
+    "2100-RECEIVE-SCREEN": [
+      "cics_command",
+      "receive_map"
+    ],
+    "2100-RECEIVE-SCREEN-EXIT": [
+      "no_action_detected"
+    ],
+    "2200-EDIT-INPUTS": [
+      "no_action_detected"
+    ],
+    "2200-EDIT-INPUTS-EXIT": [
+      "no_action_detected"
+    ],
+    "2210-EDIT-ACCOUNT": [
+      "branch_logic",
+      "transform_data"
+    ],
+    "2210-EDIT-ACCOUNT-EXIT": [
+      "no_action_detected"
+    ],
+    "2220-EDIT-CARD": [
+      "branch_logic",
+      "transform_data"
+    ],
+    "2220-EDIT-CARD-EXIT": [
+      "no_action_detected"
+    ],
+    "2250-EDIT-ARRAY": [
+      "branch_logic",
+      "transform_data"
+    ],
+    "2250-EDIT-ARRAY-EXIT": [
+      "no_action_detected"
+    ],
+    "9000-READ-FORWARD": [
+      "branch_logic",
+      "cics_command",
+      "read_file"
+    ],
+    "9000-READ-FORWARD-EXIT": [
+      "no_action_detected"
+    ],
+    "9100-READ-BACKWARDS": [
+      "branch_logic",
+      "cics_command",
+      "read_file"
+    ],
+    "9100-READ-BACKWARDS-EXIT": [
+      "cics_command"
+    ],
+    "9500-FILTER-RECORDS": [
+      "branch_logic"
+    ],
+    "9500-FILTER-RECORDS-EXIT": [
+      "no_action_detected"
+    ],
+    "SEND-PLAIN-TEXT": [
+      "cics_command"
+    ],
+    "SEND-PLAIN-TEXT-EXIT": [
+      "no_action_detected"
+    ],
+    "SEND-LONG-TEXT": [
+      "cics_command"
+    ],
+    "SEND-LONG-TEXT-EXIT": [
+      "no_action_detected"
+    ]
+  },
+  "file_lineage": [],
+  "file_operations": {
+    "TO": [
+      {
+        "paragraph": "9000-READ-FORWARD",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "9100-READ-BACKWARDS",
+        "operation": "read",
+        "source_line": null
+      }
+    ]
+  },
+  "control_flow": {
+    "cfg_source": "text_scan",
+    "entry_points": [
+      "COCRDLIC"
+    ],
+    "exit_points": [
+      "0000-MAIN",
+      "2210-EDIT-ACCOUNT",
+      "2220-EDIT-CARD",
+      "2250-EDIT-ARRAY",
+      "9100-READ-BACKWARDS",
+      "9500-FILTER-RECORDS",
+      "COMMON-RETURN",
+      "SEND-LONG-TEXT",
+      "SEND-LONG-TEXT-EXIT",
+      "SEND-PLAIN-TEXT"
+    ],
+    "edges": [
+      {
+        "from": "COCRDLIC",
+        "to": "TODAY",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "TODAY",
+        "to": "0000-MAIN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "0000-MAIN",
+        "to": "YYYY-STORE-PFKEY",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-MAIN",
+        "to": "2000-RECEIVE-MAP",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-MAIN",
+        "to": "9000-READ-FORWARD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-MAIN",
+        "to": "1000-SEND-MAP",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-MAIN",
+        "to": "9100-READ-BACKWARDS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-MAIN",
+        "to": "COMMON-RETURN",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "0000-MAIN-EXIT",
+        "to": "1000-SEND-MAP",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1000-SEND-MAP",
+        "to": "1100-SCREEN-INIT",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-SEND-MAP",
+        "to": "1200-SCREEN-ARRAY-INIT",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-SEND-MAP",
+        "to": "1250-SETUP-ARRAY-ATTRIBS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-SEND-MAP",
+        "to": "1300-SETUP-SCREEN-ATTRS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-SEND-MAP",
+        "to": "1400-SETUP-MESSAGE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-SEND-MAP",
+        "to": "1500-SEND-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-SEND-MAP",
+        "to": "1000-SEND-MAP-EXIT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1000-SEND-MAP-EXIT",
+        "to": "1100-SCREEN-INIT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1100-SCREEN-INIT",
+        "to": "1100-SCREEN-INIT-EXIT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1100-SCREEN-INIT-EXIT",
+        "to": "1200-SCREEN-ARRAY-INIT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1200-SCREEN-ARRAY-INIT",
+        "to": "1200-SCREEN-ARRAY-INIT-EXIT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1200-SCREEN-ARRAY-INIT-EXIT",
+        "to": "1250-SETUP-ARRAY-ATTRIBS",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1250-SETUP-ARRAY-ATTRIBS",
+        "to": "1250-SETUP-ARRAY-ATTRIBS-EXIT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1250-SETUP-ARRAY-ATTRIBS-EXIT",
+        "to": "1300-SETUP-SCREEN-ATTRS",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1300-SETUP-SCREEN-ATTRS",
+        "to": "1300-SETUP-SCREEN-ATTRS-EXIT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1300-SETUP-SCREEN-ATTRS-EXIT",
+        "to": "1400-SETUP-MESSAGE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1400-SETUP-MESSAGE",
+        "to": "1400-SETUP-MESSAGE-EXIT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1400-SETUP-MESSAGE-EXIT",
+        "to": "1500-SEND-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1500-SEND-SCREEN",
+        "to": "1500-SEND-SCREEN-EXIT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1500-SEND-SCREEN-EXIT",
+        "to": "2000-RECEIVE-MAP",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2000-RECEIVE-MAP",
+        "to": "2100-RECEIVE-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2000-RECEIVE-MAP",
+        "to": "2200-EDIT-INPUTS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2000-RECEIVE-MAP",
+        "to": "2000-RECEIVE-MAP-EXIT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2000-RECEIVE-MAP-EXIT",
+        "to": "2100-RECEIVE-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2100-RECEIVE-SCREEN",
+        "to": "2100-RECEIVE-SCREEN-EXIT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2100-RECEIVE-SCREEN-EXIT",
+        "to": "2200-EDIT-INPUTS",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2200-EDIT-INPUTS",
+        "to": "2210-EDIT-ACCOUNT",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2200-EDIT-INPUTS",
+        "to": "2220-EDIT-CARD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2200-EDIT-INPUTS",
+        "to": "2250-EDIT-ARRAY",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2200-EDIT-INPUTS",
+        "to": "2200-EDIT-INPUTS-EXIT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2200-EDIT-INPUTS-EXIT",
+        "to": "2210-EDIT-ACCOUNT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2210-EDIT-ACCOUNT",
+        "to": "2210-EDIT-ACCOUNT-EXIT",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "2210-EDIT-ACCOUNT-EXIT",
+        "to": "2220-EDIT-CARD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2220-EDIT-CARD",
+        "to": "2220-EDIT-CARD-EXIT",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "2220-EDIT-CARD-EXIT",
+        "to": "2250-EDIT-ARRAY",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2250-EDIT-ARRAY",
+        "to": "2250-EDIT-ARRAY-EXIT",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "2250-EDIT-ARRAY-EXIT",
+        "to": "9000-READ-FORWARD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9000-READ-FORWARD",
+        "to": "9500-FILTER-RECORDS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9000-READ-FORWARD",
+        "to": "9000-READ-FORWARD-EXIT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9000-READ-FORWARD-EXIT",
+        "to": "9100-READ-BACKWARDS",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9100-READ-BACKWARDS",
+        "to": "9500-FILTER-RECORDS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9100-READ-BACKWARDS",
+        "to": "9100-READ-BACKWARDS-EXIT",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "9100-READ-BACKWARDS-EXIT",
+        "to": "9500-FILTER-RECORDS",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9500-FILTER-RECORDS",
+        "to": "9500-FILTER-RECORDS-EXIT",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "9500-FILTER-RECORDS-EXIT",
+        "to": "SEND-PLAIN-TEXT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "SEND-PLAIN-TEXT-EXIT",
+        "to": "SEND-LONG-TEXT",
+        "type": "fallthrough",
+        "source_lines": null
+      }
+    ],
+    "unresolved": [
+      "YYYY-STORE-PFKEY"
+    ],
+    "cfg_note": "CICS program: text_scan CFG; conditional branches not resolved without a CICS translator.  Maps, commands, and AID keys are captured separately in the 'cics' subtree."
+  },
+  "cics": {
+    "commarea_used": true,
+    "commands": [
+      "ENDBR",
+      "READNEXT",
+      "READPREV",
+      "RECEIVE",
+      "RETURN",
+      "SEND",
+      "STARTBR",
+      "XCTL"
+    ],
+    "maps_used": [
+      "LIT-THISMAP"
+    ],
+    "mapsets_used": [
+      "LIT-THISMAPSET"
+    ],
+    "aid_keys": [],
+    "screen_flow": [
+      {
+        "paragraph": "1500-SEND-SCREEN",
+        "action": "send_map",
+        "map": "LIT-THISMAP"
+      },
+      {
+        "paragraph": "2100-RECEIVE-SCREEN",
+        "action": "receive_map",
+        "map": "LIT-THISMAP"
+      }
+    ]
+  }
+}

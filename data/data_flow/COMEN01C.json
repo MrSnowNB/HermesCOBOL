@@ -1,10 +1,76 @@
 {
   "program": "COMEN01C",
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "paragraph_data_flow": {
     "MAIN-PARA": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "DFHCOMMAREA",
+          "record": "DFHCOMMAREA",
+          "copybook": null,
+          "offset": 0,
+          "length": 1
+        },
+        {
+          "field": "CCDA-COMMON-MESSAGES.CCDA-MSG-INVALID-KEY",
+          "record": "CCDA-COMMON-MESSAGES",
+          "copybook": "CSMSG01Y",
+          "offset": 50,
+          "length": 50
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        },
+        {
+          "field": "COMEN1AO.ERRMSGO",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 609,
+          "length": 50
+        },
+        {
+          "field": "COMEN1AO",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 0,
+          "length": 659
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-FROM-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 4,
+          "length": 8
+        },
+        {
+          "field": "CARDDEMO-COMMAREA",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 0,
+          "length": 160
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-TO-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 16,
+          "length": 8
+        },
+        {
+          "field": "WS-VARIABLES.WS-ERR-FLG",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 100,
+          "length": 1
+        }
+      ],
       "unresolved": [
         {
           "verb": "SET",
@@ -13,52 +79,10 @@
           "reason": "unresolved mutate operand: ERR-FLG-OFF"
         },
         {
-          "verb": "MOVE",
-          "line_no": 77,
-          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COMEN1AO",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 77,
-          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COMEN1AO",
-          "reason": "unresolved mutate operand: ERRMSGO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 77,
-          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 77,
-          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COMEN1AO",
-          "reason": "unresolved mutate operand: COMEN1AO"
-        },
-        {
           "verb": "IF",
           "line_no": 77,
           "raw_text": "IF EIBCALEN = 0",
           "reason": "unresolved read operand: EIBCALEN"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 77,
-          "raw_text": "MOVE 'COSGN00C' TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 77,
-          "raw_text": "MOVE DFHCOMMAREA(1:EIBCALEN) TO CARDDEMO-COMMAREA",
-          "reason": "unresolved read operand: DFHCOMMAREA(1:EIBCALEN)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 77,
-          "raw_text": "MOVE DFHCOMMAREA(1:EIBCALEN) TO CARDDEMO-COMMAREA",
-          "reason": "unresolved mutate operand: CARDDEMO-COMMAREA"
         },
         {
           "verb": "IF",
@@ -71,12 +95,6 @@
           "line_no": 77,
           "raw_text": "SET CDEMO-PGM-REENTER    TO TRUE",
           "reason": "unresolved mutate operand: CDEMO-PGM-REENTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 77,
-          "raw_text": "MOVE LOW-VALUES          TO COMEN1AO",
-          "reason": "unresolved mutate operand: COMEN1AO"
         },
         {
           "verb": "EVALUATE",
@@ -97,30 +115,6 @@
           "reason": "unresolved read operand: DFHPF3"
         },
         {
-          "verb": "MOVE",
-          "line_no": 77,
-          "raw_text": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 77,
-          "raw_text": "MOVE 'Y'                       TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 77,
-          "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
-          "reason": "unresolved read operand: CCDA-MSG-INVALID-KEY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 77,
-          "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
           "verb": "RETURN",
           "line_no": 77,
           "raw_text": "RETURN TRANSID (WS-TRANID) COMMAREA (CARDDEMO-COMMAREA)",
@@ -129,87 +123,152 @@
       ]
     },
     "PROCESS-ENTER-KEY": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "COMEN1AI.OPTIONI",
+          "record": "COMEN1AI",
+          "copybook": "COMEN01",
+          "offset": 16,
+          "length": 2
+        },
+        {
+          "field": "COMEN1AI",
+          "record": "COMEN1AI",
+          "copybook": "COMEN01",
+          "offset": 0,
+          "length": 310
+        },
+        {
+          "field": "WS-VARIABLES.WS-OPTION-X",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 109,
+          "length": 2
+        },
+        {
+          "field": "WS-VARIABLES.WS-OPTION",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 111,
+          "length": 2
+        },
+        {
+          "field": "CARDDEMO-MAIN-MENU-OPTIONS.CDEMO-MENU-OPT-COUNT",
+          "record": "CARDDEMO-MAIN-MENU-OPTIONS",
+          "copybook": "COMEN02Y",
+          "offset": 0,
+          "length": 2
+        },
+        {
+          "field": "CARDDEMO-MAIN-MENU-OPTIONS.CDEMO-MENU-OPTIONS.CDEMO-MENU-OPT.CDEMO-MENU-OPT-USRTYPE",
+          "record": "CARDDEMO-MAIN-MENU-OPTIONS",
+          "copybook": "COMEN02Y",
+          "offset": 47,
+          "length": 1
+        },
+        {
+          "field": "CARDDEMO-MAIN-MENU-OPTIONS.CDEMO-MENU-OPTIONS.CDEMO-MENU-OPT.CDEMO-MENU-OPT-PGMNAME",
+          "record": "CARDDEMO-MAIN-MENU-OPTIONS",
+          "copybook": "COMEN02Y",
+          "offset": 39,
+          "length": 8
+        },
+        {
+          "field": "WS-VARIABLES.WS-TRANID",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 8,
+          "length": 4
+        },
+        {
+          "field": "WS-VARIABLES.WS-PGMNAME",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 0,
+          "length": 8
+        },
+        {
+          "field": "CARDDEMO-MAIN-MENU-OPTIONS.CDEMO-MENU-OPTIONS.CDEMO-MENU-OPT.CDEMO-MENU-OPT-NAME",
+          "record": "CARDDEMO-MAIN-MENU-OPTIONS",
+          "copybook": "COMEN02Y",
+          "offset": 4,
+          "length": 35
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-VARIABLES.WS-OPTION-X",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 109,
+          "length": 2
+        },
+        {
+          "field": "WS-VARIABLES.WS-OPTION",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 111,
+          "length": 2
+        },
+        {
+          "field": "COMEN1AO.OPTIONO",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 16,
+          "length": 2
+        },
+        {
+          "field": "COMEN1AO",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 0,
+          "length": 659
+        },
+        {
+          "field": "WS-VARIABLES.WS-ERR-FLG",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 100,
+          "length": 1
+        },
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-FROM-TRANID",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-FROM-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 4,
+          "length": 8
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-PGM-CONTEXT",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 33,
+          "length": 1
+        },
+        {
+          "field": "COMEN1AO.ERRMSGC",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 608,
+          "length": 1
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE OPTIONI OF COMEN1AI(1:WS-IDX) TO WS-OPTION-X",
-          "reason": "unresolved read operand: OPTIONI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE OPTIONI OF COMEN1AI(1:WS-IDX) TO WS-OPTION-X",
-          "reason": "unresolved read operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE OPTIONI OF COMEN1AI(1:WS-IDX) TO WS-OPTION-X",
-          "reason": "unresolved read operand: COMEN1AI(1:WS-IDX)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE OPTIONI OF COMEN1AI(1:WS-IDX) TO WS-OPTION-X",
-          "reason": "unresolved mutate operand: WS-OPTION-X"
-        },
-        {
-          "verb": "INSPECT",
-          "line_no": 117,
-          "raw_text": "INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'",
-          "reason": "unresolved read operand: WS-OPTION-X"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-OPTION-X              TO WS-OPTION",
-          "reason": "unresolved read operand: WS-OPTION-X"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-OPTION-X              TO WS-OPTION",
-          "reason": "unresolved mutate operand: WS-OPTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-OPTION                TO OPTIONO OF COMEN1AO",
-          "reason": "unresolved read operand: WS-OPTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-OPTION                TO OPTIONO OF COMEN1AO",
-          "reason": "unresolved mutate operand: OPTIONO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-OPTION                TO OPTIONO OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-OPTION                TO OPTIONO OF COMEN1AO",
-          "reason": "unresolved mutate operand: COMEN1AO"
-        },
-        {
-          "verb": "IF",
-          "line_no": 117,
-          "raw_text": "IF WS-OPTION IS NOT NUMERIC OR WS-OPTION > CDEMO-MENU-OPT-COUNT OR WS-OPTION = ZEROS",
-          "reason": "unresolved read operand: WS-OPTION"
-        },
-        {
-          "verb": "IF",
-          "line_no": 117,
-          "raw_text": "IF WS-OPTION IS NOT NUMERIC OR WS-OPTION > CDEMO-MENU-OPT-COUNT OR WS-OPTION = ZEROS",
-          "reason": "unresolved read operand: IS"
-        },
         {
           "verb": "IF",
           "line_no": 117,
@@ -219,44 +278,8 @@
         {
           "verb": "IF",
           "line_no": 117,
-          "raw_text": "IF WS-OPTION IS NOT NUMERIC OR WS-OPTION > CDEMO-MENU-OPT-COUNT OR WS-OPTION = ZEROS",
-          "reason": "unresolved read operand: WS-OPTION"
-        },
-        {
-          "verb": "IF",
-          "line_no": 117,
-          "raw_text": "IF WS-OPTION IS NOT NUMERIC OR WS-OPTION > CDEMO-MENU-OPT-COUNT OR WS-OPTION = ZEROS",
-          "reason": "unresolved read operand: CDEMO-MENU-OPT-COUNT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 117,
-          "raw_text": "IF WS-OPTION IS NOT NUMERIC OR WS-OPTION > CDEMO-MENU-OPT-COUNT OR WS-OPTION = ZEROS",
-          "reason": "unresolved read operand: WS-OPTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE 'Please enter a valid option number...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "IF",
-          "line_no": 117,
           "raw_text": "IF CDEMO-USRTYP-USER AND CDEMO-MENU-OPT-USRTYPE(WS-OPTION) = 'A'",
           "reason": "unresolved read operand: CDEMO-USRTYP-USER"
-        },
-        {
-          "verb": "IF",
-          "line_no": 117,
-          "raw_text": "IF CDEMO-USRTYP-USER AND CDEMO-MENU-OPT-USRTYPE(WS-OPTION) = 'A'",
-          "reason": "unresolved read operand: CDEMO-MENU-OPT-USRTYPE(WS-OPTION)"
         },
         {
           "verb": "SET",
@@ -265,28 +288,10 @@
           "reason": "unresolved mutate operand: ERR-FLG-ON"
         },
         {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE SPACES             TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE 'No access - Admin Only option... ' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
           "verb": "IF",
           "line_no": 117,
           "raw_text": "IF NOT ERR-FLG-ON",
           "reason": "unresolved read operand: ERR-FLG-ON"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 117,
-          "raw_text": "WHEN CDEMO-MENU-OPT-PGMNAME(WS-OPTION) = 'COPAUS0C'",
-          "reason": "unresolved read operand: CDEMO-MENU-OPT-PGMNAME(WS-OPTION)"
         },
         {
           "verb": "IF",
@@ -303,639 +308,390 @@
         {
           "verb": "MOVE",
           "line_no": 117,
-          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
-          "reason": "unresolved read operand: WS-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
-          "reason": "unresolved mutate operand: CDEMO-FROM-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved read operand: WS-PGMNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE ZEROS        TO CDEMO-PGM-CONTEXT",
-          "reason": "unresolved mutate operand: CDEMO-PGM-CONTEXT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE SPACES             TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
           "raw_text": "MOVE DFHRED             TO ERRMSGC  OF COMEN1AO",
           "reason": "unresolved read operand: DFHRED"
         },
         {
           "verb": "MOVE",
           "line_no": 117,
-          "raw_text": "MOVE DFHRED             TO ERRMSGC  OF COMEN1AO",
-          "reason": "unresolved mutate operand: ERRMSGC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE DFHRED             TO ERRMSGC  OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE DFHRED             TO ERRMSGC  OF COMEN1AO",
-          "reason": "unresolved mutate operand: COMEN1AO"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 117,
-          "raw_text": "STRING 'This option '       DELIMITED BY SIZE CDEMO-MENU-OPT-NAME(WS-OPTION) DELIMITED BY '  ' ' is not installed...'   DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: CDEMO-MENU-OPT-NAME(WS-OPTION)"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 117,
-          "raw_text": "STRING 'This option '       DELIMITED BY SIZE CDEMO-MENU-OPT-NAME(WS-OPTION) DELIMITED BY '  ' ' is not installed...'   DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 117,
-          "raw_text": "WHEN CDEMO-MENU-OPT-PGMNAME(WS-OPTION)(1:5) = 'DUMMY'",
-          "reason": "unresolved read operand: CDEMO-MENU-OPT-PGMNAME(WS-OPTION)(1:5)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE SPACES             TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
           "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COMEN1AO",
           "reason": "unresolved read operand: DFHGREEN"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COMEN1AO",
-          "reason": "unresolved mutate operand: ERRMSGC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COMEN1AO",
-          "reason": "unresolved mutate operand: COMEN1AO"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 117,
-          "raw_text": "STRING 'This option '       DELIMITED BY SIZE CDEMO-MENU-OPT-NAME(WS-OPTION) DELIMITED BY SPACE 'is coming soon ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: CDEMO-MENU-OPT-NAME(WS-OPTION)"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 117,
-          "raw_text": "STRING 'This option '       DELIMITED BY SIZE CDEMO-MENU-OPT-NAME(WS-OPTION) DELIMITED BY SPACE 'is coming soon ...'   DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
-          "reason": "unresolved read operand: WS-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
-          "reason": "unresolved mutate operand: CDEMO-FROM-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved read operand: WS-PGMNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved read operand: WS-PGMNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 117,
-          "raw_text": "MOVE ZEROS        TO CDEMO-PGM-CONTEXT",
-          "reason": "unresolved mutate operand: CDEMO-PGM-CONTEXT"
         }
       ]
     },
     "RETURN-TO-SIGNON-SCREEN": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "IF",
-          "line_no": 198,
-          "raw_text": "IF CDEMO-TO-PROGRAM = LOW-VALUES OR SPACES",
-          "reason": "unresolved read operand: CDEMO-TO-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 198,
-          "raw_text": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-TO-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 16,
+          "length": 8
         }
-      ]
+      ],
+      "mutates": [
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-TO-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 16,
+          "length": 8
+        }
+      ],
+      "unresolved": []
     },
     "SEND-MENU-SCREEN": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COMEN1AO",
-          "reason": "unresolved read operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COMEN1AO",
-          "reason": "unresolved mutate operand: ERRMSGO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 210,
-          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COMEN1AO",
-          "reason": "unresolved mutate operand: COMEN1AO"
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
         }
-      ]
+      ],
+      "mutates": [
+        {
+          "field": "COMEN1AO.ERRMSGO",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 609,
+          "length": 50
+        },
+        {
+          "field": "COMEN1AO",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 0,
+          "length": 659
+        }
+      ],
+      "unresolved": []
     },
     "RECEIVE-MENU-SCREEN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "POPULATE-HEADER-INFO": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved read operand: FUNCTION"
+          "field": "CCDA-SCREEN-TITLE.CCDA-TITLE01",
+          "record": "CCDA-SCREEN-TITLE",
+          "copybook": "COTTL01Y",
+          "offset": 0,
+          "length": 40
         },
         {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved read operand: CURRENT-DATE"
+          "field": "CCDA-SCREEN-TITLE.CCDA-TITLE02",
+          "record": "CCDA-SCREEN-TITLE",
+          "copybook": "COTTL01Y",
+          "offset": 40,
+          "length": 40
         },
         {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved mutate operand: WS-CURDATE-DATA"
+          "field": "WS-VARIABLES.WS-TRANID",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 8,
+          "length": 4
         },
         {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COMEN1AO",
-          "reason": "unresolved read operand: CCDA-TITLE01"
+          "field": "WS-VARIABLES.WS-PGMNAME",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 0,
+          "length": 8
         },
         {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COMEN1AO",
-          "reason": "unresolved mutate operand: TITLE01O"
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURDATE.WS-CURDATE-MONTH",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 4,
+          "length": 2
         },
         {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURDATE.WS-CURDATE-DAY",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 6,
+          "length": 2
         },
         {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COMEN1AO",
-          "reason": "unresolved mutate operand: COMEN1AO"
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURDATE.WS-CURDATE-YEAR",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 0,
+          "length": 4
         },
         {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COMEN1AO",
-          "reason": "unresolved read operand: CCDA-TITLE02"
+          "field": "WS-DATE-TIME.WS-CURDATE-MM-DD-YY",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 16,
+          "length": 8
         },
         {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COMEN1AO",
-          "reason": "unresolved mutate operand: TITLE02O"
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURTIME.WS-CURTIME-HOURS",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 8,
+          "length": 2
         },
         {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURTIME.WS-CURTIME-MINUTE",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 10,
+          "length": 2
         },
         {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COMEN1AO",
-          "reason": "unresolved mutate operand: COMEN1AO"
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURTIME.WS-CURTIME-SECOND",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 12,
+          "length": 2
         },
         {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COMEN1AO",
-          "reason": "unresolved read operand: WS-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COMEN1AO",
-          "reason": "unresolved mutate operand: TRNNAMEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COMEN1AO",
-          "reason": "unresolved mutate operand: COMEN1AO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COMEN1AO",
-          "reason": "unresolved read operand: WS-PGMNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COMEN1AO",
-          "reason": "unresolved mutate operand: PGMNAMEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COMEN1AO",
-          "reason": "unresolved mutate operand: COMEN1AO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURDATE-MONTH       TO WS-CURDATE-MM",
-          "reason": "unresolved read operand: WS-CURDATE-MONTH"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURDATE-MONTH       TO WS-CURDATE-MM",
-          "reason": "unresolved mutate operand: WS-CURDATE-MM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURDATE-DAY         TO WS-CURDATE-DD",
-          "reason": "unresolved read operand: WS-CURDATE-DAY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURDATE-DAY         TO WS-CURDATE-DD",
-          "reason": "unresolved mutate operand: WS-CURDATE-DD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURDATE-YEAR(3:2)   TO WS-CURDATE-YY",
-          "reason": "unresolved read operand: WS-CURDATE-YEAR(3:2)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURDATE-YEAR(3:2)   TO WS-CURDATE-YY",
-          "reason": "unresolved mutate operand: WS-CURDATE-YY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COMEN1AO",
-          "reason": "unresolved read operand: WS-CURDATE-MM-DD-YY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COMEN1AO",
-          "reason": "unresolved mutate operand: CURDATEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COMEN1AO",
-          "reason": "unresolved mutate operand: COMEN1AO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURTIME-HOURS       TO WS-CURTIME-HH",
-          "reason": "unresolved read operand: WS-CURTIME-HOURS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURTIME-HOURS       TO WS-CURTIME-HH",
-          "reason": "unresolved mutate operand: WS-CURTIME-HH"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURTIME-MINUTE      TO WS-CURTIME-MM",
-          "reason": "unresolved read operand: WS-CURTIME-MINUTE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURTIME-MINUTE      TO WS-CURTIME-MM",
-          "reason": "unresolved mutate operand: WS-CURTIME-MM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURTIME-SECOND      TO WS-CURTIME-SS",
-          "reason": "unresolved read operand: WS-CURTIME-SECOND"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURTIME-SECOND      TO WS-CURTIME-SS",
-          "reason": "unresolved mutate operand: WS-CURTIME-SS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COMEN1AO",
-          "reason": "unresolved read operand: WS-CURTIME-HH-MM-SS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COMEN1AO",
-          "reason": "unresolved mutate operand: CURTIMEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COMEN1AO",
-          "reason": "unresolved mutate operand: OF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 240,
-          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COMEN1AO",
-          "reason": "unresolved mutate operand: COMEN1AO"
+          "field": "WS-DATE-TIME.WS-CURTIME-HH-MM-SS",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 24,
+          "length": 8
         }
-      ]
+      ],
+      "mutates": [
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "COMEN1AO.TITLE01O",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 18,
+          "length": 40
+        },
+        {
+          "field": "COMEN1AO",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 0,
+          "length": 659
+        },
+        {
+          "field": "COMEN1AO.TITLE02O",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 58,
+          "length": 40
+        },
+        {
+          "field": "COMEN1AO.TRNNAMEO",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 98,
+          "length": 4
+        },
+        {
+          "field": "COMEN1AO.PGMNAMEO",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 102,
+          "length": 8
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-MM-DD-YY.WS-CURDATE-MM",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 16,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-MM-DD-YY.WS-CURDATE-DD",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 19,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-MM-DD-YY.WS-CURDATE-YY",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 22,
+          "length": 2
+        },
+        {
+          "field": "COMEN1AO.CURDATEO",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 110,
+          "length": 8
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURTIME-HH-MM-SS.WS-CURTIME-HH",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 24,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURTIME-HH-MM-SS.WS-CURTIME-MM",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 27,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURTIME-HH-MM-SS.WS-CURTIME-SS",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 30,
+          "length": 2
+        },
+        {
+          "field": "COMEN1AO.CURTIMEO",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 118,
+          "length": 8
+        }
+      ],
+      "unresolved": []
     },
     "BUILD-MENU-OPTIONS": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE SPACES             TO WS-MENU-OPT-TXT",
-          "reason": "unresolved mutate operand: WS-MENU-OPT-TXT"
+          "field": "CARDDEMO-MAIN-MENU-OPTIONS.CDEMO-MENU-OPTIONS.CDEMO-MENU-OPT.CDEMO-MENU-OPT-NUM",
+          "record": "CARDDEMO-MAIN-MENU-OPTIONS",
+          "copybook": "COMEN02Y",
+          "offset": 2,
+          "length": 2
         },
         {
-          "verb": "STRING",
-          "line_no": 264,
-          "raw_text": "STRING CDEMO-MENU-OPT-NUM(WS-IDX)  DELIMITED BY SIZE '. '                         DELIMITED BY SIZE CDEMO-MENU-OPT-NAME(WS-IDX) DELIMITED BY SIZE INTO WS-MENU-OPT-TXT",
-          "reason": "unresolved read operand: CDEMO-MENU-OPT-NUM(WS-IDX)"
+          "field": "CARDDEMO-MAIN-MENU-OPTIONS.CDEMO-MENU-OPTIONS.CDEMO-MENU-OPT.CDEMO-MENU-OPT-NAME",
+          "record": "CARDDEMO-MAIN-MENU-OPTIONS",
+          "copybook": "COMEN02Y",
+          "offset": 4,
+          "length": 35
         },
         {
-          "verb": "STRING",
-          "line_no": 264,
-          "raw_text": "STRING CDEMO-MENU-OPT-NUM(WS-IDX)  DELIMITED BY SIZE '. '                         DELIMITED BY SIZE CDEMO-MENU-OPT-NAME(WS-IDX) DELIMITED BY SIZE INTO WS-MENU-OPT-TXT",
-          "reason": "unresolved read operand: CDEMO-MENU-OPT-NAME(WS-IDX)"
+          "field": "WS-VARIABLES.WS-IDX",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 113,
+          "length": 2
         },
         {
-          "verb": "STRING",
-          "line_no": 264,
-          "raw_text": "STRING CDEMO-MENU-OPT-NUM(WS-IDX)  DELIMITED BY SIZE '. '                         DELIMITED BY SIZE CDEMO-MENU-OPT-NAME(WS-IDX) DELIMITED BY SIZE INTO WS-MENU-OPT-TXT",
-          "reason": "unresolved mutate operand: WS-MENU-OPT-TXT"
-        },
-        {
-          "verb": "EVALUATE",
-          "line_no": 264,
-          "raw_text": "EVALUATE WS-IDX",
-          "reason": "unresolved read operand: WS-IDX"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN001O",
-          "reason": "unresolved read operand: WS-MENU-OPT-TXT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN001O",
-          "reason": "unresolved mutate operand: OPTN001O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN002O",
-          "reason": "unresolved read operand: WS-MENU-OPT-TXT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN002O",
-          "reason": "unresolved mutate operand: OPTN002O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN003O",
-          "reason": "unresolved read operand: WS-MENU-OPT-TXT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN003O",
-          "reason": "unresolved mutate operand: OPTN003O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN004O",
-          "reason": "unresolved read operand: WS-MENU-OPT-TXT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN004O",
-          "reason": "unresolved mutate operand: OPTN004O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN005O",
-          "reason": "unresolved read operand: WS-MENU-OPT-TXT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN005O",
-          "reason": "unresolved mutate operand: OPTN005O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN006O",
-          "reason": "unresolved read operand: WS-MENU-OPT-TXT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN006O",
-          "reason": "unresolved mutate operand: OPTN006O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN007O",
-          "reason": "unresolved read operand: WS-MENU-OPT-TXT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN007O",
-          "reason": "unresolved mutate operand: OPTN007O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN008O",
-          "reason": "unresolved read operand: WS-MENU-OPT-TXT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN008O",
-          "reason": "unresolved mutate operand: OPTN008O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN009O",
-          "reason": "unresolved read operand: WS-MENU-OPT-TXT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN009O",
-          "reason": "unresolved mutate operand: OPTN009O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN010O",
-          "reason": "unresolved read operand: WS-MENU-OPT-TXT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN010O",
-          "reason": "unresolved mutate operand: OPTN010O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN011O",
-          "reason": "unresolved read operand: WS-MENU-OPT-TXT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN011O",
-          "reason": "unresolved mutate operand: OPTN011O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN012O",
-          "reason": "unresolved read operand: WS-MENU-OPT-TXT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 264,
-          "raw_text": "MOVE WS-MENU-OPT-TXT TO OPTN012O",
-          "reason": "unresolved mutate operand: OPTN012O"
+          "field": "WS-VARIABLES.WS-MENU-OPT-TXT",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 115,
+          "length": 40
         }
-      ]
+      ],
+      "mutates": [
+        {
+          "field": "WS-VARIABLES.WS-MENU-OPT-TXT",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 115,
+          "length": 40
+        },
+        {
+          "field": "COMEN1AO.OPTN001O",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 126,
+          "length": 40
+        },
+        {
+          "field": "COMEN1AO.OPTN002O",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 166,
+          "length": 40
+        },
+        {
+          "field": "COMEN1AO.OPTN003O",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 206,
+          "length": 40
+        },
+        {
+          "field": "COMEN1AO.OPTN004O",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 246,
+          "length": 40
+        },
+        {
+          "field": "COMEN1AO.OPTN005O",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 286,
+          "length": 40
+        },
+        {
+          "field": "COMEN1AO.OPTN006O",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 326,
+          "length": 40
+        },
+        {
+          "field": "COMEN1AO.OPTN007O",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 366,
+          "length": 40
+        },
+        {
+          "field": "COMEN1AO.OPTN008O",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 406,
+          "length": 40
+        },
+        {
+          "field": "COMEN1AO.OPTN009O",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 446,
+          "length": 40
+        },
+        {
+          "field": "COMEN1AO.OPTN010O",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 486,
+          "length": 40
+        },
+        {
+          "field": "COMEN1AO.OPTN011O",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 526,
+          "length": 40
+        },
+        {
+          "field": "COMEN1AO.OPTN012O",
+          "record": "COMEN1AO",
+          "copybook": "COMEN01",
+          "offset": 566,
+          "length": 40
+        }
+      ],
+      "unresolved": []
     }
   },
   "call_graph": {

@@ -1,0 +1,45 @@
+{
+  "program": "COBSWAIT",
+  "schema_version": "1.2",
+  "records": [
+    {
+      "name": "MVSWAIT-TIME",
+      "copybook": null,
+      "total_bytes": 4,
+      "fields": [
+        {
+          "qualified_name": "MVSWAIT-TIME",
+          "level": 1,
+          "offset": 0,
+          "length": 4,
+          "pic": "9(8)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "PARM-VALUE",
+      "copybook": null,
+      "total_bytes": 8,
+      "fields": [
+        {
+          "qualified_name": "PARM-VALUE",
+          "level": 1,
+          "offset": 0,
+          "length": 8,
+          "pic": "X(8)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    }
+  ],
+  "unresolved": []
+}

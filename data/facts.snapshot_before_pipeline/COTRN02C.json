@@ -1,0 +1,608 @@
+{
+  "schema_version": "1.1",
+  "program": "COTRN02C",
+  "source_file": "data/raw/cbl/COTRN02C.cbl",
+  "extracted_at": "2026-05-12T16:52:22.573852+00:00",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 0,
+  "gate_status": "PASS",
+  "gate_reasons": [],
+  "cics_present": true,
+  "sql_present": false,
+  "paragraphs": [
+    "ADD-TRANSACTION",
+    "CLEAR-CURRENT-SCREEN",
+    "COPY-LAST-TRAN-DATA",
+    "ENDBR-TRANSACT-FILE",
+    "INITIALIZE-ALL-FIELDS",
+    "MAIN-PARA",
+    "POPULATE-HEADER-INFO",
+    "PROCESS-ENTER-KEY",
+    "READ-CCXREF-FILE",
+    "READ-CXACAIX-FILE",
+    "READPREV-TRANSACT-FILE",
+    "RECEIVE-TRNADD-SCREEN",
+    "RETURN-TO-PREV-SCREEN",
+    "SEND-TRNADD-SCREEN",
+    "STARTBR-TRANSACT-FILE",
+    "VALIDATE-INPUT-DATA-FIELDS",
+    "VALIDATE-INPUT-KEY-FIELDS",
+    "WRITE-TRANSACT-FILE"
+  ],
+  "data_items": [
+    "CSUTLDTC-PARM",
+    "DFHCOMMAREA",
+    "WS-VARIABLES"
+  ],
+  "external_calls": [
+    "CSUTLDTC"
+  ],
+  "internal_performs": [
+    "ADD-TRANSACTION",
+    "CLEAR-CURRENT-SCREEN",
+    "COPY-LAST-TRAN-DATA",
+    "ENDBR-TRANSACT-FILE",
+    "INITIALIZE-ALL-FIELDS",
+    "POPULATE-HEADER-INFO",
+    "PROCESS-ENTER-KEY",
+    "READ-CCXREF-FILE",
+    "READ-CXACAIX-FILE",
+    "READPREV-TRANSACT-FILE",
+    "RECEIVE-TRNADD-SCREEN",
+    "RETURN-TO-PREV-SCREEN",
+    "SEND-TRNADD-SCREEN",
+    "STARTBR-TRANSACT-FILE",
+    "VALIDATE-INPUT-DATA-FIELDS",
+    "VALIDATE-INPUT-KEY-FIELDS",
+    "WRITE-TRANSACT-FILE"
+  ],
+  "data_files": [],
+  "copybooks_referenced": [
+    "COCOM01Y",
+    "COTRN02",
+    "COTTL01Y",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CVACT01Y",
+    "CVACT03Y",
+    "CVTRA05Y",
+    "DFHAID",
+    "DFHBMSCA"
+  ],
+  "cfg": {
+    "source": null,
+    "edges": null,
+    "unresolved": null
+  },
+  "paragraphs_defined": [
+    {
+      "name": "MAIN-PARA",
+      "source_line": 56,
+      "area_a": false
+    },
+    {
+      "name": "PROCESS-ENTER-KEY",
+      "source_line": 115,
+      "area_a": false
+    },
+    {
+      "name": "VALIDATE-INPUT-KEY-FIELDS",
+      "source_line": 135,
+      "area_a": false
+    },
+    {
+      "name": "VALIDATE-INPUT-DATA-FIELDS",
+      "source_line": 184,
+      "area_a": false
+    },
+    {
+      "name": "ADD-TRANSACTION",
+      "source_line": 370,
+      "area_a": false
+    },
+    {
+      "name": "COPY-LAST-TRAN-DATA",
+      "source_line": 398,
+      "area_a": false
+    },
+    {
+      "name": "RETURN-TO-PREV-SCREEN",
+      "source_line": 425,
+      "area_a": false
+    },
+    {
+      "name": "SEND-TRNADD-SCREEN",
+      "source_line": 440,
+      "area_a": false
+    },
+    {
+      "name": "RECEIVE-TRNADD-SCREEN",
+      "source_line": 452,
+      "area_a": false
+    },
+    {
+      "name": "POPULATE-HEADER-INFO",
+      "source_line": 458,
+      "area_a": false
+    },
+    {
+      "name": "READ-CXACAIX-FILE",
+      "source_line": 476,
+      "area_a": false
+    },
+    {
+      "name": "READ-CCXREF-FILE",
+      "source_line": 500,
+      "area_a": false
+    },
+    {
+      "name": "STARTBR-TRANSACT-FILE",
+      "source_line": 536,
+      "area_a": false
+    },
+    {
+      "name": "READPREV-TRANSACT-FILE",
+      "source_line": 561,
+      "area_a": false
+    },
+    {
+      "name": "ENDBR-TRANSACT-FILE",
+      "source_line": 584,
+      "area_a": false
+    },
+    {
+      "name": "WRITE-TRANSACT-FILE",
+      "source_line": 589,
+      "area_a": false
+    },
+    {
+      "name": "CLEAR-CURRENT-SCREEN",
+      "source_line": 630,
+      "area_a": false
+    },
+    {
+      "name": "INITIALIZE-ALL-FIELDS",
+      "source_line": 632,
+      "area_a": false
+    }
+  ],
+  "paragraphs_referenced": [
+    "ADD-TRANSACTION",
+    "CLEAR-CURRENT-SCREEN",
+    "COPY-LAST-TRAN-DATA",
+    "ENDBR-TRANSACT-FILE",
+    "INITIALIZE-ALL-FIELDS",
+    "POPULATE-HEADER-INFO",
+    "PROCESS-ENTER-KEY",
+    "READ-CCXREF-FILE",
+    "READ-CXACAIX-FILE",
+    "READPREV-TRANSACT-FILE",
+    "RECEIVE-TRNADD-SCREEN",
+    "RETURN-TO-PREV-SCREEN",
+    "SEND-TRNADD-SCREEN",
+    "STARTBR-TRANSACT-FILE",
+    "VALIDATE-INPUT-DATA-FIELDS",
+    "VALIDATE-INPUT-KEY-FIELDS",
+    "WRITE-TRANSACT-FILE"
+  ],
+  "paragraph_actions": {
+    "MAIN-PARA": [
+      "aid_branch",
+      "branch_logic",
+      "cics_command"
+    ],
+    "PROCESS-ENTER-KEY": [
+      "branch_logic",
+      "transform_data"
+    ],
+    "VALIDATE-INPUT-KEY-FIELDS": [
+      "branch_logic",
+      "transform_data"
+    ],
+    "VALIDATE-INPUT-DATA-FIELDS": [
+      "branch_logic",
+      "call_program"
+    ],
+    "ADD-TRANSACTION": [
+      "transform_data"
+    ],
+    "COPY-LAST-TRAN-DATA": [
+      "branch_logic",
+      "transform_data"
+    ],
+    "RETURN-TO-PREV-SCREEN": [
+      "branch_logic",
+      "cics_command"
+    ],
+    "SEND-TRNADD-SCREEN": [
+      "cics_command",
+      "send_map"
+    ],
+    "RECEIVE-TRNADD-SCREEN": [
+      "cics_command",
+      "receive_map"
+    ],
+    "POPULATE-HEADER-INFO": [
+      "transform_data"
+    ],
+    "READ-CXACAIX-FILE": [
+      "branch_logic",
+      "cics_command",
+      "display_output",
+      "read_file"
+    ],
+    "READ-CCXREF-FILE": [
+      "branch_logic",
+      "cics_command",
+      "display_output",
+      "read_file"
+    ],
+    "STARTBR-TRANSACT-FILE": [
+      "branch_logic",
+      "cics_command",
+      "display_output"
+    ],
+    "READPREV-TRANSACT-FILE": [
+      "branch_logic",
+      "cics_command",
+      "display_output"
+    ],
+    "ENDBR-TRANSACT-FILE": [
+      "cics_command"
+    ],
+    "WRITE-TRANSACT-FILE": [
+      "branch_logic",
+      "cics_command",
+      "display_output",
+      "write_file"
+    ],
+    "CLEAR-CURRENT-SCREEN": [
+      "no_action_detected"
+    ],
+    "INITIALIZE-ALL-FIELDS": [
+      "transform_data"
+    ]
+  },
+  "file_lineage": [],
+  "file_operations": {
+    "DATASET": [
+      {
+        "paragraph": "READ-CXACAIX-FILE",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "READ-CCXREF-FILE",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "WRITE-TRANSACT-FILE",
+        "operation": "write",
+        "source_line": null
+      }
+    ]
+  },
+  "control_flow": {
+    "cfg_source": "text_scan",
+    "entry_points": [
+      "MAIN-PARA"
+    ],
+    "exit_points": [
+      "INITIALIZE-ALL-FIELDS",
+      "MAIN-PARA",
+      "SEND-TRNADD-SCREEN"
+    ],
+    "edges": [
+      {
+        "from": "MAIN-PARA",
+        "to": "RETURN-TO-PREV-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "PROCESS-ENTER-KEY",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "SEND-TRNADD-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "RECEIVE-TRNADD-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "CLEAR-CURRENT-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "COPY-LAST-TRAN-DATA",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "VALIDATE-INPUT-KEY-FIELDS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "ADD-TRANSACTION",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "SEND-TRNADD-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "VALIDATE-INPUT-KEY-FIELDS",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "VALIDATE-INPUT-KEY-FIELDS",
+        "to": "SEND-TRNADD-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "VALIDATE-INPUT-KEY-FIELDS",
+        "to": "READ-CXACAIX-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "VALIDATE-INPUT-KEY-FIELDS",
+        "to": "READ-CCXREF-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "VALIDATE-INPUT-KEY-FIELDS",
+        "to": "VALIDATE-INPUT-DATA-FIELDS",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "VALIDATE-INPUT-DATA-FIELDS",
+        "to": "SEND-TRNADD-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "VALIDATE-INPUT-DATA-FIELDS",
+        "to": "CSUTLDTC",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "VALIDATE-INPUT-DATA-FIELDS",
+        "to": "ADD-TRANSACTION",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "ADD-TRANSACTION",
+        "to": "STARTBR-TRANSACT-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "ADD-TRANSACTION",
+        "to": "READPREV-TRANSACT-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "ADD-TRANSACTION",
+        "to": "ENDBR-TRANSACT-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "ADD-TRANSACTION",
+        "to": "COPY-LAST-TRAN-DATA",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "COPY-LAST-TRAN-DATA",
+        "to": "VALIDATE-INPUT-KEY-FIELDS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "COPY-LAST-TRAN-DATA",
+        "to": "STARTBR-TRANSACT-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "COPY-LAST-TRAN-DATA",
+        "to": "READPREV-TRANSACT-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "COPY-LAST-TRAN-DATA",
+        "to": "ENDBR-TRANSACT-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "COPY-LAST-TRAN-DATA",
+        "to": "RETURN-TO-PREV-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "RETURN-TO-PREV-SCREEN",
+        "to": "SEND-TRNADD-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "SEND-TRNADD-SCREEN",
+        "to": "POPULATE-HEADER-INFO",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "RECEIVE-TRNADD-SCREEN",
+        "to": "POPULATE-HEADER-INFO",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "POPULATE-HEADER-INFO",
+        "to": "READ-CXACAIX-FILE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "READ-CXACAIX-FILE",
+        "to": "SEND-TRNADD-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "READ-CXACAIX-FILE",
+        "to": "READ-CCXREF-FILE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "READ-CCXREF-FILE",
+        "to": "SEND-TRNADD-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "READ-CCXREF-FILE",
+        "to": "STARTBR-TRANSACT-FILE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "STARTBR-TRANSACT-FILE",
+        "to": "SEND-TRNADD-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "STARTBR-TRANSACT-FILE",
+        "to": "READPREV-TRANSACT-FILE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "READPREV-TRANSACT-FILE",
+        "to": "SEND-TRNADD-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "READPREV-TRANSACT-FILE",
+        "to": "ENDBR-TRANSACT-FILE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "ENDBR-TRANSACT-FILE",
+        "to": "WRITE-TRANSACT-FILE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "WRITE-TRANSACT-FILE",
+        "to": "INITIALIZE-ALL-FIELDS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "WRITE-TRANSACT-FILE",
+        "to": "SEND-TRNADD-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "WRITE-TRANSACT-FILE",
+        "to": "CLEAR-CURRENT-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "CLEAR-CURRENT-SCREEN",
+        "to": "INITIALIZE-ALL-FIELDS",
+        "type": "fallthrough",
+        "source_lines": null
+      }
+    ],
+    "unresolved": [],
+    "cfg_note": "CICS program: text_scan CFG; conditional branches not resolved without a CICS translator.  Maps, commands, and AID keys are captured separately in the 'cics' subtree."
+  },
+  "cics": {
+    "commarea_used": true,
+    "commands": [
+      "ENDBR",
+      "READ",
+      "READPREV",
+      "RECEIVE",
+      "RETURN",
+      "SEND",
+      "STARTBR",
+      "WRITE",
+      "XCTL"
+    ],
+    "maps_used": [
+      "COTRN2A"
+    ],
+    "mapsets_used": [
+      "COTRN02"
+    ],
+    "aid_keys": [
+      "DFHENTER",
+      "DFHPF3",
+      "DFHPF4",
+      "DFHPF5"
+    ],
+    "screen_flow": [
+      {
+        "paragraph": "MAIN-PARA",
+        "action": "aid_dispatch",
+        "aid_keys": [
+          "DFHENTER",
+          "DFHPF3",
+          "DFHPF4",
+          "DFHPF5"
+        ],
+        "maps": null
+      },
+      {
+        "paragraph": "SEND-TRNADD-SCREEN",
+        "action": "send_map",
+        "map": "COTRN2A"
+      },
+      {
+        "paragraph": "RECEIVE-TRNADD-SCREEN",
+        "action": "receive_map",
+        "map": "COTRN2A"
+      }
+    ]
+  }
+}

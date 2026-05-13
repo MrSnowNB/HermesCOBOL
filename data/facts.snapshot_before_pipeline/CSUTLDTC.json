@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.1",
+  "program": "CSUTLDTC",
+  "source_file": "data/raw/cbl/CSUTLDTC.cbl",
+  "extracted_at": "2026-05-12T16:52:22.626531+00:00",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 0,
+  "gate_status": "PASS",
+  "gate_reasons": [],
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [
+    "A000-MAIN",
+    "A000-MAIN-EXIT"
+  ],
+  "data_items": [
+    "FEEDBACK-CODE",
+    "LS-DATE",
+    "LS-DATE-FORMAT",
+    "LS-RESULT",
+    "OUTPUT-LILLIAN",
+    "WS-DATE-FORMAT",
+    "WS-DATE-TO-TEST",
+    "WS-MESSAGE"
+  ],
+  "external_calls": [
+    "CEEDAYS"
+  ],
+  "internal_performs": [
+    "A000-MAIN"
+  ],
+  "data_files": [],
+  "copybooks_referenced": [],
+  "cfg": {
+    "source": null,
+    "edges": null,
+    "unresolved": null
+  },
+  "paragraphs_defined": [
+    {
+      "name": "A000-MAIN",
+      "source_line": 77,
+      "area_a": false
+    },
+    {
+      "name": "A000-MAIN-EXIT",
+      "source_line": 124,
+      "area_a": false
+    }
+  ],
+  "paragraphs_referenced": [
+    "A000-MAIN"
+  ],
+  "paragraph_actions": {
+    "A000-MAIN": [
+      "branch_logic",
+      "call_program"
+    ],
+    "A000-MAIN-EXIT": [
+      "no_action_detected"
+    ]
+  },
+  "file_lineage": [],
+  "file_operations": {},
+  "control_flow": {
+    "cfg_source": "text_scan",
+    "entry_points": [
+      "A000-MAIN"
+    ],
+    "exit_points": [
+      "A000-MAIN-EXIT"
+    ],
+    "edges": [
+      {
+        "from": "A000-MAIN",
+        "to": "CEEDAYS",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "A000-MAIN",
+        "to": "A000-MAIN-EXIT",
+        "type": "fallthrough",
+        "source_lines": null
+      }
+    ],
+    "unresolved": []
+  },
+  "cics": null
+}

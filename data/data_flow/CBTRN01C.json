@@ -1,154 +1,146 @@
 {
   "program": "CBTRN01C",
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "paragraph_data_flow": {
     "MAIN-PARA": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "IF",
-          "line_no": 164,
-          "raw_text": "IF  END-OF-DAILY-TRANS-FILE = 'N'",
-          "reason": "unresolved read operand: END-OF-DAILY-TRANS-FILE"
+          "field": "END-OF-DAILY-TRANS-FILE",
+          "record": "END-OF-DAILY-TRANS-FILE",
+          "copybook": null,
+          "offset": 0,
+          "length": 1
         },
         {
-          "verb": "IF",
-          "line_no": 164,
-          "raw_text": "IF  END-OF-DAILY-TRANS-FILE = 'N'",
-          "reason": "unresolved read operand: END-OF-DAILY-TRANS-FILE"
+          "field": "DALYTRAN-RECORD",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 0,
+          "length": 350
         },
         {
-          "verb": "DISPLAY",
-          "line_no": 164,
-          "raw_text": "DISPLAY DALYTRAN-RECORD",
-          "reason": "unresolved read operand: DALYTRAN-RECORD"
+          "field": "DALYTRAN-RECORD.DALYTRAN-CARD-NUM",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 262,
+          "length": 16
         },
         {
-          "verb": "MOVE",
-          "line_no": 164,
-          "raw_text": "MOVE 0                 TO WS-XREF-READ-STATUS",
-          "reason": "unresolved mutate operand: WS-XREF-READ-STATUS"
+          "field": "WS-MISC-VARIABLES.WS-XREF-READ-STATUS",
+          "record": "WS-MISC-VARIABLES",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
         },
         {
-          "verb": "MOVE",
-          "line_no": 164,
-          "raw_text": "MOVE DALYTRAN-CARD-NUM TO XREF-CARD-NUM",
-          "reason": "unresolved read operand: DALYTRAN-CARD-NUM"
+          "field": "CARD-XREF-RECORD.XREF-ACCT-ID",
+          "record": "CARD-XREF-RECORD",
+          "copybook": "CVACT03Y",
+          "offset": 25,
+          "length": 11
         },
         {
-          "verb": "MOVE",
-          "line_no": 164,
-          "raw_text": "MOVE DALYTRAN-CARD-NUM TO XREF-CARD-NUM",
-          "reason": "unresolved mutate operand: XREF-CARD-NUM"
+          "field": "WS-MISC-VARIABLES.WS-ACCT-READ-STATUS",
+          "record": "WS-MISC-VARIABLES",
+          "copybook": null,
+          "offset": 4,
+          "length": 4
         },
         {
-          "verb": "IF",
-          "line_no": 164,
-          "raw_text": "IF WS-XREF-READ-STATUS = 0",
-          "reason": "unresolved read operand: WS-XREF-READ-STATUS"
+          "field": "ACCOUNT-RECORD.ACCT-ID",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 0,
+          "length": 11
         },
         {
-          "verb": "MOVE",
-          "line_no": 164,
-          "raw_text": "MOVE 0            TO WS-ACCT-READ-STATUS",
-          "reason": "unresolved mutate operand: WS-ACCT-READ-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 164,
-          "raw_text": "MOVE XREF-ACCT-ID TO ACCT-ID",
-          "reason": "unresolved read operand: XREF-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 164,
-          "raw_text": "MOVE XREF-ACCT-ID TO ACCT-ID",
-          "reason": "unresolved mutate operand: ACCT-ID"
-        },
-        {
-          "verb": "IF",
-          "line_no": 164,
-          "raw_text": "IF WS-ACCT-READ-STATUS NOT = 0",
-          "reason": "unresolved read operand: WS-ACCT-READ-STATUS"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 164,
-          "raw_text": "DISPLAY 'ACCOUNT ' ACCT-ID ' NOT FOUND'",
-          "reason": "unresolved read operand: ACCT-ID"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 164,
-          "raw_text": "DISPLAY 'CARD NUMBER ' DALYTRAN-CARD-NUM ' COULD NOT BE VERIFIED. SKIPPING TRANSACTION ID-' DALYTRAN-ID",
-          "reason": "unresolved read operand: DALYTRAN-CARD-NUM"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 164,
-          "raw_text": "DISPLAY 'CARD NUMBER ' DALYTRAN-CARD-NUM ' COULD NOT BE VERIFIED. SKIPPING TRANSACTION ID-' DALYTRAN-ID",
-          "reason": "unresolved read operand: DALYTRAN-ID"
+          "field": "DALYTRAN-RECORD.DALYTRAN-ID",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 0,
+          "length": 16
         }
-      ]
+      ],
+      "mutates": [
+        {
+          "field": "WS-MISC-VARIABLES.WS-XREF-READ-STATUS",
+          "record": "WS-MISC-VARIABLES",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "CARD-XREF-RECORD.XREF-CARD-NUM",
+          "record": "CARD-XREF-RECORD",
+          "copybook": "CVACT03Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "WS-MISC-VARIABLES.WS-ACCT-READ-STATUS",
+          "record": "WS-MISC-VARIABLES",
+          "copybook": null,
+          "offset": 4,
+          "length": 4
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-ID",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 0,
+          "length": 11
+        }
+      ],
+      "unresolved": []
     },
     "1000-DALYTRAN-GET-NEXT": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "DALYTRAN-STATUS",
+          "record": "DALYTRAN-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "DALYTRAN-RECORD",
+          "record": "DALYTRAN-RECORD",
+          "copybook": "CVTRA06Y",
+          "offset": 0,
+          "length": 350
+        },
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "END-OF-DAILY-TRANS-FILE",
+          "record": "END-OF-DAILY-TRANS-FILE",
+          "copybook": null,
+          "offset": 0,
+          "length": 1
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
         {
           "verb": "READ",
           "line_no": 203,
           "raw_text": "READ DALYTRAN-FILE INTO DALYTRAN-RECORD",
           "reason": "unresolved mutate operand: DALYTRAN-FILE"
-        },
-        {
-          "verb": "READ",
-          "line_no": 203,
-          "raw_text": "READ DALYTRAN-FILE INTO DALYTRAN-RECORD",
-          "reason": "unresolved mutate operand: DALYTRAN-RECORD"
-        },
-        {
-          "verb": "IF",
-          "line_no": 204,
-          "raw_text": "IF  DALYTRAN-STATUS = '00'",
-          "reason": "unresolved read operand: DALYTRAN-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 204,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 204,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "IF",
-          "line_no": 204,
-          "raw_text": "IF  DALYTRAN-STATUS = '10'",
-          "reason": "unresolved read operand: DALYTRAN-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 204,
-          "raw_text": "MOVE 16 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 204,
-          "raw_text": "MOVE 16 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 204,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
         },
         {
           "verb": "IF",
@@ -161,49 +153,58 @@
           "line_no": 204,
           "raw_text": "IF  APPL-EOF",
           "reason": "unresolved read operand: APPL-EOF"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 204,
-          "raw_text": "MOVE 'Y' TO END-OF-DAILY-TRANS-FILE ELSE",
-          "reason": "unresolved mutate operand: END-OF-DAILY-TRANS-FILE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 204,
-          "raw_text": "MOVE 'Y' TO END-OF-DAILY-TRANS-FILE ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 204,
-          "raw_text": "MOVE DALYTRAN-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: DALYTRAN-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 204,
-          "raw_text": "MOVE DALYTRAN-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "2000-LOOKUP-XREF": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "CARD-XREF-RECORD.XREF-CARD-NUM",
+          "record": "CARD-XREF-RECORD",
+          "copybook": "CVACT03Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "CARD-XREF-RECORD.XREF-ACCT-ID",
+          "record": "CARD-XREF-RECORD",
+          "copybook": "CVACT03Y",
+          "offset": 25,
+          "length": 11
+        },
+        {
+          "field": "CARD-XREF-RECORD.XREF-CUST-ID",
+          "record": "CARD-XREF-RECORD",
+          "copybook": "CVACT03Y",
+          "offset": 16,
+          "length": 9
+        }
+      ],
+      "mutates": [
+        {
+          "field": "FD-XREFFILE-REC.FD-XREF-CARD-NUM",
+          "record": "FD-XREFFILE-REC",
+          "copybook": null,
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "CARD-XREF-RECORD",
+          "record": "CARD-XREF-RECORD",
+          "copybook": "CVACT03Y",
+          "offset": 0,
+          "length": 50
+        },
+        {
+          "field": "WS-MISC-VARIABLES.WS-XREF-READ-STATUS",
+          "record": "WS-MISC-VARIABLES",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 228,
-          "raw_text": "MOVE XREF-CARD-NUM TO FD-XREF-CARD-NUM",
-          "reason": "unresolved read operand: XREF-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 228,
-          "raw_text": "MOVE XREF-CARD-NUM TO FD-XREF-CARD-NUM",
-          "reason": "unresolved mutate operand: FD-XREF-CARD-NUM"
-        },
         {
           "verb": "READ",
           "line_no": 228,
@@ -211,71 +212,48 @@
           "reason": "unresolved mutate operand: XREF-FILE"
         },
         {
-          "verb": "READ",
-          "line_no": 228,
-          "raw_text": "READ XREF-FILE  RECORD INTO CARD-XREF-RECORD KEY IS FD-XREF-CARD-NUM INVALID KEY",
-          "reason": "unresolved mutate operand: CARD-XREF-RECORD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 228,
-          "raw_text": "MOVE 4 TO WS-XREF-READ-STATUS NOT INVALID KEY",
-          "reason": "unresolved mutate operand: WS-XREF-READ-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 228,
-          "raw_text": "MOVE 4 TO WS-XREF-READ-STATUS NOT INVALID KEY",
-          "reason": "unresolved mutate operand: NOT"
-        },
-        {
           "verb": "MOVE",
           "line_no": 228,
           "raw_text": "MOVE 4 TO WS-XREF-READ-STATUS NOT INVALID KEY",
           "reason": "unresolved mutate operand: INVALID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 228,
-          "raw_text": "MOVE 4 TO WS-XREF-READ-STATUS NOT INVALID KEY",
-          "reason": "unresolved mutate operand: KEY"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 228,
-          "raw_text": "DISPLAY 'CARD NUMBER: ' XREF-CARD-NUM",
-          "reason": "unresolved read operand: XREF-CARD-NUM"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 228,
-          "raw_text": "DISPLAY 'ACCOUNT ID : ' XREF-ACCT-ID",
-          "reason": "unresolved read operand: XREF-ACCT-ID"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 228,
-          "raw_text": "DISPLAY 'CUSTOMER ID: ' XREF-CUST-ID",
-          "reason": "unresolved read operand: XREF-CUST-ID"
         }
       ]
     },
     "3000-READ-ACCOUNT": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "ACCOUNT-RECORD.ACCT-ID",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 0,
+          "length": 11
+        }
+      ],
+      "mutates": [
+        {
+          "field": "FD-ACCTFILE-REC.FD-ACCT-ID",
+          "record": "FD-ACCTFILE-REC",
+          "copybook": null,
+          "offset": 0,
+          "length": 11
+        },
+        {
+          "field": "ACCOUNT-RECORD",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 0,
+          "length": 300
+        },
+        {
+          "field": "WS-MISC-VARIABLES.WS-ACCT-READ-STATUS",
+          "record": "WS-MISC-VARIABLES",
+          "copybook": null,
+          "offset": 4,
+          "length": 4
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 242,
-          "raw_text": "MOVE ACCT-ID TO FD-ACCT-ID",
-          "reason": "unresolved read operand: ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 242,
-          "raw_text": "MOVE ACCT-ID TO FD-ACCT-ID",
-          "reason": "unresolved mutate operand: FD-ACCT-ID"
-        },
         {
           "verb": "READ",
           "line_no": 242,
@@ -283,814 +261,563 @@
           "reason": "unresolved mutate operand: ACCOUNT-FILE"
         },
         {
-          "verb": "READ",
-          "line_no": 242,
-          "raw_text": "READ ACCOUNT-FILE RECORD INTO ACCOUNT-RECORD KEY IS FD-ACCT-ID INVALID KEY",
-          "reason": "unresolved mutate operand: ACCOUNT-RECORD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 242,
-          "raw_text": "MOVE 4 TO WS-ACCT-READ-STATUS NOT INVALID KEY",
-          "reason": "unresolved mutate operand: WS-ACCT-READ-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 242,
-          "raw_text": "MOVE 4 TO WS-ACCT-READ-STATUS NOT INVALID KEY",
-          "reason": "unresolved mutate operand: NOT"
-        },
-        {
           "verb": "MOVE",
           "line_no": 242,
           "raw_text": "MOVE 4 TO WS-ACCT-READ-STATUS NOT INVALID KEY",
           "reason": "unresolved mutate operand: INVALID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 242,
-          "raw_text": "MOVE 4 TO WS-ACCT-READ-STATUS NOT INVALID KEY",
-          "reason": "unresolved mutate operand: KEY"
         }
       ]
     },
     "0000-DALYTRAN-OPEN": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "DALYTRAN-STATUS",
+          "record": "DALYTRAN-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 253,
-          "raw_text": "MOVE 8 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 254,
-          "raw_text": "IF  DALYTRAN-STATUS = '00'",
-          "reason": "unresolved read operand: DALYTRAN-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 254,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 254,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 254,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "IF",
           "line_no": 254,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 254,
-          "raw_text": "MOVE DALYTRAN-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: DALYTRAN-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 254,
-          "raw_text": "MOVE DALYTRAN-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "0100-CUSTFILE-OPEN": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "CUSTFILE-STATUS",
+          "record": "CUSTFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 272,
-          "raw_text": "MOVE 8 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 273,
-          "raw_text": "IF  CUSTFILE-STATUS = '00'",
-          "reason": "unresolved read operand: CUSTFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 273,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 273,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 273,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "IF",
           "line_no": 273,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 273,
-          "raw_text": "MOVE CUSTFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: CUSTFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 273,
-          "raw_text": "MOVE CUSTFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "0200-XREFFILE-OPEN": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "XREFFILE-STATUS",
+          "record": "XREFFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 290,
-          "raw_text": "MOVE 8 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 291,
-          "raw_text": "IF  XREFFILE-STATUS = '00'",
-          "reason": "unresolved read operand: XREFFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 291,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 291,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 291,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "IF",
           "line_no": 291,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 291,
-          "raw_text": "MOVE XREFFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: XREFFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 291,
-          "raw_text": "MOVE XREFFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "0300-CARDFILE-OPEN": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "CARDFILE-STATUS",
+          "record": "CARDFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 308,
-          "raw_text": "MOVE 8 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 309,
-          "raw_text": "IF  CARDFILE-STATUS = '00'",
-          "reason": "unresolved read operand: CARDFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 309,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 309,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 309,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "IF",
           "line_no": 309,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 309,
-          "raw_text": "MOVE CARDFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: CARDFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 309,
-          "raw_text": "MOVE CARDFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "0400-ACCTFILE-OPEN": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "ACCTFILE-STATUS",
+          "record": "ACCTFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 326,
-          "raw_text": "MOVE 8 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 327,
-          "raw_text": "IF  ACCTFILE-STATUS = '00'",
-          "reason": "unresolved read operand: ACCTFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 327,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 327,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 327,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "IF",
           "line_no": 327,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 327,
-          "raw_text": "MOVE ACCTFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: ACCTFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 327,
-          "raw_text": "MOVE ACCTFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "0500-TRANFILE-OPEN": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "TRANFILE-STATUS",
+          "record": "TRANFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 344,
-          "raw_text": "MOVE 8 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 345,
-          "raw_text": "IF  TRANFILE-STATUS = '00'",
-          "reason": "unresolved read operand: TRANFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "IF",
           "line_no": 345,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: TRANFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 345,
-          "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "9000-DALYTRAN-CLOSE": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "DALYTRAN-STATUS",
+          "record": "DALYTRAN-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        },
+        {
+          "field": "CUSTFILE-STATUS",
+          "record": "CUSTFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "ADD",
-          "line_no": 362,
-          "raw_text": "ADD 8 TO ZERO GIVING APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 363,
-          "raw_text": "IF  DALYTRAN-STATUS = '00'",
-          "reason": "unresolved read operand: DALYTRAN-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 363,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 363,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 363,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "IF",
           "line_no": 363,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 363,
-          "raw_text": "MOVE CUSTFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: CUSTFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 363,
-          "raw_text": "MOVE CUSTFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "9100-CUSTFILE-CLOSE": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "CUSTFILE-STATUS",
+          "record": "CUSTFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "ADD",
-          "line_no": 380,
-          "raw_text": "ADD 8 TO ZERO GIVING APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 381,
-          "raw_text": "IF  CUSTFILE-STATUS = '00'",
-          "reason": "unresolved read operand: CUSTFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 381,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 381,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 381,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "IF",
           "line_no": 381,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 381,
-          "raw_text": "MOVE CUSTFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: CUSTFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 381,
-          "raw_text": "MOVE CUSTFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "9200-XREFFILE-CLOSE": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "XREFFILE-STATUS",
+          "record": "XREFFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "ADD",
-          "line_no": 398,
-          "raw_text": "ADD 8 TO ZERO GIVING APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 399,
-          "raw_text": "IF  XREFFILE-STATUS = '00'",
-          "reason": "unresolved read operand: XREFFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 399,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 399,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 399,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "IF",
           "line_no": 399,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 399,
-          "raw_text": "MOVE XREFFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: XREFFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 399,
-          "raw_text": "MOVE XREFFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "9300-CARDFILE-CLOSE": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "CARDFILE-STATUS",
+          "record": "CARDFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "ADD",
-          "line_no": 416,
-          "raw_text": "ADD 8 TO ZERO GIVING APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 417,
-          "raw_text": "IF  CARDFILE-STATUS = '00'",
-          "reason": "unresolved read operand: CARDFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 417,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 417,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 417,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "IF",
           "line_no": 417,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 417,
-          "raw_text": "MOVE CARDFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: CARDFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 417,
-          "raw_text": "MOVE CARDFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "9400-ACCTFILE-CLOSE": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "ACCTFILE-STATUS",
+          "record": "ACCTFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "ADD",
-          "line_no": 434,
-          "raw_text": "ADD 8 TO ZERO GIVING APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 435,
-          "raw_text": "IF  ACCTFILE-STATUS = '00'",
-          "reason": "unresolved read operand: ACCTFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 435,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 435,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 435,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "IF",
           "line_no": 435,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 435,
-          "raw_text": "MOVE ACCTFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: ACCTFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 435,
-          "raw_text": "MOVE ACCTFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "9500-TRANFILE-CLOSE": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "TRANFILE-STATUS",
+          "record": "TRANFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
+      "mutates": [
+        {
+          "field": "APPL-RESULT",
+          "record": "APPL-RESULT",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "ADD",
-          "line_no": 452,
-          "raw_text": "ADD 8 TO ZERO GIVING APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 453,
-          "raw_text": "IF  TRANFILE-STATUS = '00'",
-          "reason": "unresolved read operand: TRANFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 453,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 453,
-          "raw_text": "MOVE 0 TO APPL-RESULT ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 453,
-          "raw_text": "MOVE 12 TO APPL-RESULT",
-          "reason": "unresolved mutate operand: APPL-RESULT"
-        },
         {
           "verb": "IF",
           "line_no": 453,
           "raw_text": "IF  APPL-AOK",
           "reason": "unresolved read operand: APPL-AOK"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 453,
-          "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved read operand: TRANFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 453,
-          "raw_text": "MOVE TRANFILE-STATUS TO IO-STATUS",
-          "reason": "unresolved mutate operand: IO-STATUS"
         }
       ]
     },
     "Z-ABEND-PROGRAM": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "TIMING",
+          "record": "TIMING",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        }
+      ],
+      "mutates": [
+        {
+          "field": "TIMING",
+          "record": "TIMING",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "ABCODE",
+          "record": "ABCODE",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "MOVE",
-          "line_no": 470,
-          "raw_text": "MOVE 0 TO TIMING",
-          "reason": "unresolved mutate operand: TIMING"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 470,
-          "raw_text": "MOVE 999 TO ABCODE",
-          "reason": "unresolved mutate operand: ABCODE"
-        },
         {
           "verb": "CALL",
           "line_no": 470,
           "raw_text": "CALL 'CEE3ABD' USING ABCODE, TIMING",
           "reason": "unresolved CALL USING operand: ABCODE,"
-        },
-        {
-          "verb": "CALL",
-          "line_no": 470,
-          "raw_text": "CALL 'CEE3ABD' USING ABCODE, TIMING",
-          "reason": "unresolved CALL USING operand: TIMING"
         }
       ]
     },
     "Z-DISPLAY-IO-STATUS": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "IO-STATUS",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        },
+        {
+          "field": "IO-STATUS.IO-STAT1",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 1
+        },
+        {
+          "field": "IO-STATUS.IO-STAT2",
+          "record": "IO-STATUS",
+          "copybook": null,
+          "offset": 1,
+          "length": 1
+        },
+        {
+          "field": "TWO-BYTES-BINARY",
+          "record": "TWO-BYTES-BINARY",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        },
+        {
+          "field": "IO-STATUS-04",
+          "record": "IO-STATUS-04",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        }
+      ],
+      "mutates": [
+        {
+          "field": "IO-STATUS-04",
+          "record": "IO-STATUS-04",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "TWO-BYTES-BINARY",
+          "record": "TWO-BYTES-BINARY",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        },
+        {
+          "field": "TWO-BYTES-ALPHA.TWO-BYTES-RIGHT",
+          "record": "TWO-BYTES-ALPHA",
+          "copybook": null,
+          "offset": 1,
+          "length": 1
+        },
+        {
+          "field": "IO-STATUS-04.IO-STATUS-0403",
+          "record": "IO-STATUS-04",
+          "copybook": null,
+          "offset": 1,
+          "length": 3
+        }
+      ],
       "unresolved": [
         {
           "verb": "IF",
           "line_no": 477,
           "raw_text": "IF  IO-STATUS NOT NUMERIC OR  IO-STAT1 = '9'",
-          "reason": "unresolved read operand: IO-STATUS"
-        },
-        {
-          "verb": "IF",
-          "line_no": 477,
-          "raw_text": "IF  IO-STATUS NOT NUMERIC OR  IO-STAT1 = '9'",
           "reason": "unresolved read operand: NUMERIC"
-        },
-        {
-          "verb": "IF",
-          "line_no": 477,
-          "raw_text": "IF  IO-STATUS NOT NUMERIC OR  IO-STAT1 = '9'",
-          "reason": "unresolved read operand: IO-STAT1"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 477,
-          "raw_text": "MOVE IO-STAT1 TO IO-STATUS-04(1:1)",
-          "reason": "unresolved read operand: IO-STAT1"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 477,
-          "raw_text": "MOVE IO-STAT1 TO IO-STATUS-04(1:1)",
-          "reason": "unresolved mutate operand: IO-STATUS-04(1:1)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 477,
-          "raw_text": "MOVE 0        TO TWO-BYTES-BINARY",
-          "reason": "unresolved mutate operand: TWO-BYTES-BINARY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 477,
-          "raw_text": "MOVE IO-STAT2 TO TWO-BYTES-RIGHT",
-          "reason": "unresolved read operand: IO-STAT2"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 477,
-          "raw_text": "MOVE IO-STAT2 TO TWO-BYTES-RIGHT",
-          "reason": "unresolved mutate operand: TWO-BYTES-RIGHT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 477,
-          "raw_text": "MOVE TWO-BYTES-BINARY TO IO-STATUS-0403",
-          "reason": "unresolved read operand: TWO-BYTES-BINARY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 477,
-          "raw_text": "MOVE TWO-BYTES-BINARY TO IO-STATUS-0403",
-          "reason": "unresolved mutate operand: IO-STATUS-0403"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 477,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
-          "reason": "unresolved read operand: IO-STATUS-04"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 477,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04 ELSE",
-          "reason": "unresolved read operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 477,
-          "raw_text": "MOVE '0000' TO IO-STATUS-04",
-          "reason": "unresolved mutate operand: IO-STATUS-04"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 477,
-          "raw_text": "MOVE IO-STATUS TO IO-STATUS-04(3:2)",
-          "reason": "unresolved read operand: IO-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 477,
-          "raw_text": "MOVE IO-STATUS TO IO-STATUS-04(3:2)",
-          "reason": "unresolved mutate operand: IO-STATUS-04(3:2)"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 477,
-          "raw_text": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04",
-          "reason": "unresolved read operand: IO-STATUS-04"
         }
       ]
     }

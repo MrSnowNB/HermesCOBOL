@@ -1,0 +1,224 @@
+{
+  "schema_version": "1.1",
+  "program": "CBCUS01C",
+  "source_file": "data/raw/cbl/CBCUS01C.cbl",
+  "extracted_at": "2026-05-12T16:52:22.096647+00:00",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 0,
+  "gate_status": "PASS",
+  "gate_reasons": [],
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [
+    "0000-CUSTFILE-OPEN",
+    "1000-CUSTFILE-GET-NEXT",
+    "9000-CUSTFILE-CLOSE",
+    "Z-ABEND-PROGRAM",
+    "Z-DISPLAY-IO-STATUS"
+  ],
+  "data_items": [
+    "ABCODE",
+    "APPL-RESULT",
+    "CUSTFILE-STATUS",
+    "END-OF-FILE",
+    "FD-CUSTFILE-REC",
+    "IO-STATUS",
+    "IO-STATUS-04",
+    "TIMING",
+    "TWO-BYTES-ALPHA",
+    "TWO-BYTES-BINARY"
+  ],
+  "external_calls": [
+    "CEE3ABD"
+  ],
+  "internal_performs": [
+    "0000-CUSTFILE-OPEN",
+    "1000-CUSTFILE-GET-NEXT",
+    "9000-CUSTFILE-CLOSE",
+    "Z-ABEND-PROGRAM",
+    "Z-DISPLAY-IO-STATUS"
+  ],
+  "data_files": [
+    {
+      "name": "CUSTFILE-FILE",
+      "ddname": "CUSTFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    }
+  ],
+  "copybooks_referenced": [
+    "CVCUS01Y"
+  ],
+  "cfg": {
+    "source": null,
+    "edges": null,
+    "unresolved": null
+  },
+  "paragraphs_defined": [
+    {
+      "name": "1000-CUSTFILE-GET-NEXT",
+      "source_line": 40,
+      "area_a": false
+    },
+    {
+      "name": "0000-CUSTFILE-OPEN",
+      "source_line": 62,
+      "area_a": false
+    },
+    {
+      "name": "9000-CUSTFILE-CLOSE",
+      "source_line": 76,
+      "area_a": false
+    },
+    {
+      "name": "Z-ABEND-PROGRAM",
+      "source_line": 92,
+      "area_a": false
+    },
+    {
+      "name": "Z-DISPLAY-IO-STATUS",
+      "source_line": 96,
+      "area_a": false
+    }
+  ],
+  "paragraphs_referenced": [
+    "0000-CUSTFILE-OPEN",
+    "1000-CUSTFILE-GET-NEXT",
+    "9000-CUSTFILE-CLOSE",
+    "Z-ABEND-PROGRAM",
+    "Z-DISPLAY-IO-STATUS"
+  ],
+  "paragraph_actions": {
+    "1000-CUSTFILE-GET-NEXT": [
+      "branch_logic",
+      "display_output",
+      "read_file"
+    ],
+    "0000-CUSTFILE-OPEN": [
+      "branch_logic",
+      "display_output",
+      "open_file"
+    ],
+    "9000-CUSTFILE-CLOSE": [
+      "branch_logic",
+      "close_file",
+      "display_output"
+    ],
+    "Z-ABEND-PROGRAM": [
+      "abend",
+      "call_program",
+      "display_output"
+    ],
+    "Z-DISPLAY-IO-STATUS": [
+      "branch_logic",
+      "display_error",
+      "transform_data"
+    ]
+  },
+  "file_lineage": [
+    {
+      "name": "CUSTFILE-FILE",
+      "ddname": "CUSTFILE",
+      "fd_record": "CUSTFILE-FILE"
+    }
+  ],
+  "file_operations": {
+    "CUSTFILE-FILE": [
+      {
+        "paragraph": "1000-CUSTFILE-GET-NEXT",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "0000-CUSTFILE-OPEN",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "9000-CUSTFILE-CLOSE",
+        "operation": "close",
+        "source_line": null
+      }
+    ]
+  },
+  "control_flow": {
+    "cfg_source": "text_scan",
+    "entry_points": [
+      "1000-CUSTFILE-GET-NEXT"
+    ],
+    "exit_points": [
+      "Z-ABEND-PROGRAM",
+      "Z-DISPLAY-IO-STATUS"
+    ],
+    "edges": [
+      {
+        "from": "1000-CUSTFILE-GET-NEXT",
+        "to": "Z-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-CUSTFILE-GET-NEXT",
+        "to": "Z-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-CUSTFILE-GET-NEXT",
+        "to": "0000-CUSTFILE-OPEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "0000-CUSTFILE-OPEN",
+        "to": "Z-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-CUSTFILE-OPEN",
+        "to": "Z-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-CUSTFILE-OPEN",
+        "to": "9000-CUSTFILE-CLOSE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9000-CUSTFILE-CLOSE",
+        "to": "Z-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9000-CUSTFILE-CLOSE",
+        "to": "Z-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9000-CUSTFILE-CLOSE",
+        "to": "Z-ABEND-PROGRAM",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "Z-ABEND-PROGRAM",
+        "to": "CEE3ABD",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "Z-ABEND-PROGRAM",
+        "to": "Z-DISPLAY-IO-STATUS",
+        "type": "fallthrough",
+        "source_lines": null
+      }
+    ],
+    "unresolved": []
+  },
+  "cics": null
+}

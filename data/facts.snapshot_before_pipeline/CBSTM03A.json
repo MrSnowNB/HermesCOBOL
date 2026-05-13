@@ -1,0 +1,759 @@
+{
+  "schema_version": "1.1",
+  "program": "CBSTM03A",
+  "source_file": "data/raw/cbl/CBSTM03A.CBL",
+  "extracted_at": "2026-05-12T16:52:22.162231+00:00",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 0,
+  "gate_status": "PASS",
+  "gate_reasons": [],
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [
+    "0000-START",
+    "1000-MAINLINE",
+    "1000-XREFFILE-GET-NEXT",
+    "2000-CUSTFILE-GET",
+    "3000-ACCTFILE-GET",
+    "4000-TRNXFILE-GET",
+    "5000-CREATE-STATEMENT",
+    "5100-EXIT",
+    "5100-WRITE-HTML-HEADER",
+    "5200-EXIT",
+    "5200-WRITE-HTML-NMADBS",
+    "6000-WRITE-TRANS",
+    "8100-FILE-OPEN",
+    "8100-TRNXFILE-OPEN",
+    "8200-XREFFILE-OPEN",
+    "8300-CUSTFILE-OPEN",
+    "8400-ACCTFILE-OPEN",
+    "8500-READTRNX-READ",
+    "8599-EXIT",
+    "9100-TRNXFILE-CLOSE",
+    "9200-XREFFILE-CLOSE",
+    "9300-CUSTFILE-CLOSE",
+    "9400-ACCTFILE-CLOSE",
+    "9999-ABEND-PROGRAM",
+    "9999-GOBACK"
+  ],
+  "data_items": [
+    "ALIGN-PSA",
+    "BUMP-TIOT",
+    "COMP-VARIABLES",
+    "COMP3-VARIABLES",
+    "FD-HTMLFILE-REC",
+    "FD-STMTFILE-REC",
+    "HTML-LINES",
+    "MISC-VARIABLES",
+    "PSA-BLOCK",
+    "PSAPTR",
+    "STATEMENT-LINES",
+    "TCB-BLOCK",
+    "TIOT-BLOCK",
+    "TIOT-ENTRY",
+    "TIOT-INDEX",
+    "WS-M03B-AREA",
+    "WS-TRN-TBL-CNTR",
+    "WS-TRNX-TABLE"
+  ],
+  "external_calls": [
+    "CBSTM03B"
+  ],
+  "internal_performs": [
+    "1000-XREFFILE-GET-NEXT",
+    "2000-CUSTFILE-GET",
+    "3000-ACCTFILE-GET",
+    "4000-TRNXFILE-GET",
+    "5000-CREATE-STATEMENT",
+    "5100-WRITE-HTML-HEADER",
+    "5200-WRITE-HTML-NMADBS",
+    "6000-WRITE-TRANS",
+    "9100-TRNXFILE-CLOSE",
+    "9200-XREFFILE-CLOSE",
+    "9300-CUSTFILE-CLOSE",
+    "9400-ACCTFILE-CLOSE",
+    "9999-ABEND-PROGRAM",
+    "END-IF"
+  ],
+  "data_files": [
+    {
+      "name": "STMT-FILE",
+      "ddname": "STMTFILE",
+      "organization": null,
+      "access": null
+    },
+    {
+      "name": "HTML-FILE",
+      "ddname": "HTMLFILE",
+      "organization": null,
+      "access": null
+    }
+  ],
+  "copybooks_referenced": [
+    "COSTM01",
+    "CUSTREC",
+    "CVACT01Y",
+    "CVACT03Y"
+  ],
+  "cfg": {
+    "source": null,
+    "edges": null,
+    "unresolved": null
+  },
+  "paragraphs_defined": [
+    {
+      "name": "0000-START",
+      "source_line": 248,
+      "area_a": false
+    },
+    {
+      "name": "1000-MAINLINE",
+      "source_line": 264,
+      "area_a": false
+    },
+    {
+      "name": "9999-GOBACK",
+      "source_line": 281,
+      "area_a": false
+    },
+    {
+      "name": "1000-XREFFILE-GET-NEXT",
+      "source_line": 282,
+      "area_a": false
+    },
+    {
+      "name": "2000-CUSTFILE-GET",
+      "source_line": 302,
+      "area_a": false
+    },
+    {
+      "name": "3000-ACCTFILE-GET",
+      "source_line": 321,
+      "area_a": false
+    },
+    {
+      "name": "4000-TRNXFILE-GET",
+      "source_line": 347,
+      "area_a": false
+    },
+    {
+      "name": "5000-CREATE-STATEMENT",
+      "source_line": 404,
+      "area_a": false
+    },
+    {
+      "name": "5100-WRITE-HTML-HEADER",
+      "source_line": 454,
+      "area_a": false
+    },
+    {
+      "name": "5100-EXIT",
+      "source_line": 500,
+      "area_a": false
+    },
+    {
+      "name": "5200-WRITE-HTML-NMADBS",
+      "source_line": 501,
+      "area_a": false
+    },
+    {
+      "name": "5200-EXIT",
+      "source_line": 620,
+      "area_a": false
+    },
+    {
+      "name": "6000-WRITE-TRANS",
+      "source_line": 621,
+      "area_a": false
+    },
+    {
+      "name": "8100-FILE-OPEN",
+      "source_line": 661,
+      "area_a": false
+    },
+    {
+      "name": "8100-TRNXFILE-OPEN",
+      "source_line": 663,
+      "area_a": false
+    },
+    {
+      "name": "8200-XREFFILE-OPEN",
+      "source_line": 692,
+      "area_a": false
+    },
+    {
+      "name": "8300-CUSTFILE-OPEN",
+      "source_line": 706,
+      "area_a": false
+    },
+    {
+      "name": "8400-ACCTFILE-OPEN",
+      "source_line": 720,
+      "area_a": false
+    },
+    {
+      "name": "8500-READTRNX-READ",
+      "source_line": 737,
+      "area_a": false
+    },
+    {
+      "name": "8599-EXIT",
+      "source_line": 769,
+      "area_a": false
+    },
+    {
+      "name": "9100-TRNXFILE-CLOSE",
+      "source_line": 774,
+      "area_a": false
+    },
+    {
+      "name": "9200-XREFFILE-CLOSE",
+      "source_line": 787,
+      "area_a": false
+    },
+    {
+      "name": "9300-CUSTFILE-CLOSE",
+      "source_line": 802,
+      "area_a": false
+    },
+    {
+      "name": "9400-ACCTFILE-CLOSE",
+      "source_line": 817,
+      "area_a": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "source_line": 829,
+      "area_a": false
+    }
+  ],
+  "paragraphs_referenced": [
+    "0000-START",
+    "1000-MAINLINE",
+    "1000-XREFFILE-GET-NEXT",
+    "2000-CUSTFILE-GET",
+    "3000-ACCTFILE-GET",
+    "4000-TRNXFILE-GET",
+    "5000-CREATE-STATEMENT",
+    "5100-WRITE-HTML-HEADER",
+    "5200-WRITE-HTML-NMADBS",
+    "6000-WRITE-TRANS",
+    "8100-FILE-OPEN",
+    "8100-TRNXFILE-OPEN",
+    "8500-READTRNX-READ",
+    "8599-EXIT",
+    "9100-TRNXFILE-CLOSE",
+    "9200-XREFFILE-CLOSE",
+    "9300-CUSTFILE-CLOSE",
+    "9400-ACCTFILE-CLOSE",
+    "9999-ABEND-PROGRAM",
+    "9999-GOBACK"
+  ],
+  "paragraph_actions": {
+    "0000-START": [
+      "branch_logic",
+      "program_exit"
+    ],
+    "1000-MAINLINE": [
+      "branch_logic",
+      "close_file"
+    ],
+    "9999-GOBACK": [
+      "abend",
+      "program_exit"
+    ],
+    "1000-XREFFILE-GET-NEXT": [
+      "branch_logic",
+      "call_program",
+      "display_output",
+      "read_file"
+    ],
+    "2000-CUSTFILE-GET": [
+      "branch_logic",
+      "call_program",
+      "display_output"
+    ],
+    "3000-ACCTFILE-GET": [
+      "branch_logic",
+      "call_program",
+      "display_output"
+    ],
+    "4000-TRNXFILE-GET": [
+      "branch_logic",
+      "write_file"
+    ],
+    "5000-CREATE-STATEMENT": [
+      "display_error",
+      "write_file"
+    ],
+    "5100-WRITE-HTML-HEADER": [
+      "write_file"
+    ],
+    "5100-EXIT": [
+      "no_action_detected"
+    ],
+    "5200-WRITE-HTML-NMADBS": [
+      "write_file"
+    ],
+    "5200-EXIT": [
+      "no_action_detected"
+    ],
+    "6000-WRITE-TRANS": [
+      "write_file"
+    ],
+    "8100-FILE-OPEN": [
+      "no_action_detected"
+    ],
+    "8100-TRNXFILE-OPEN": [
+      "branch_logic",
+      "call_program",
+      "display_output",
+      "read_file"
+    ],
+    "8200-XREFFILE-OPEN": [
+      "branch_logic",
+      "call_program",
+      "display_output"
+    ],
+    "8300-CUSTFILE-OPEN": [
+      "branch_logic",
+      "call_program",
+      "display_output"
+    ],
+    "8400-ACCTFILE-OPEN": [
+      "branch_logic",
+      "call_program",
+      "display_output"
+    ],
+    "8500-READTRNX-READ": [
+      "branch_logic",
+      "call_program",
+      "display_output",
+      "read_file"
+    ],
+    "8599-EXIT": [
+      "transform_data"
+    ],
+    "9100-TRNXFILE-CLOSE": [
+      "branch_logic",
+      "call_program",
+      "close_file",
+      "display_output"
+    ],
+    "9200-XREFFILE-CLOSE": [
+      "branch_logic",
+      "call_program",
+      "close_file",
+      "display_output"
+    ],
+    "9300-CUSTFILE-CLOSE": [
+      "branch_logic",
+      "call_program",
+      "close_file",
+      "display_output"
+    ],
+    "9400-ACCTFILE-CLOSE": [
+      "branch_logic",
+      "call_program",
+      "close_file",
+      "display_output"
+    ],
+    "9999-ABEND-PROGRAM": [
+      "abend",
+      "display_output"
+    ]
+  },
+  "file_lineage": [
+    {
+      "name": "STMT-FILE",
+      "ddname": "STMTFILE",
+      "fd_record": "STMT-FILE"
+    },
+    {
+      "name": "HTML-FILE",
+      "ddname": "HTMLFILE",
+      "fd_record": "HTML-FILE"
+    }
+  ],
+  "file_operations": {
+    "STMT-FILE": [
+      {
+        "paragraph": "1000-MAINLINE",
+        "operation": "close",
+        "source_line": null
+      }
+    ]
+  },
+  "control_flow": {
+    "cfg_source": "text_scan",
+    "entry_points": [
+      "0000-START"
+    ],
+    "exit_points": [
+      "0000-START",
+      "8100-FILE-OPEN",
+      "8100-TRNXFILE-OPEN",
+      "8200-XREFFILE-OPEN",
+      "8300-CUSTFILE-OPEN",
+      "8400-ACCTFILE-OPEN",
+      "8500-READTRNX-READ",
+      "8599-EXIT",
+      "9999-ABEND-PROGRAM",
+      "9999-GOBACK"
+    ],
+    "edges": [
+      {
+        "from": "0000-START",
+        "to": "8100-FILE-OPEN",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "0000-START",
+        "to": "8500-READTRNX-READ",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "0000-START",
+        "to": "9999-GOBACK",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "1000-MAINLINE",
+        "to": "1000-XREFFILE-GET-NEXT",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-MAINLINE",
+        "to": "2000-CUSTFILE-GET",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-MAINLINE",
+        "to": "3000-ACCTFILE-GET",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-MAINLINE",
+        "to": "5000-CREATE-STATEMENT",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-MAINLINE",
+        "to": "4000-TRNXFILE-GET",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-MAINLINE",
+        "to": "9999-GOBACK",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1000-XREFFILE-GET-NEXT",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-XREFFILE-GET-NEXT",
+        "to": "CBSTM03B",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "1000-XREFFILE-GET-NEXT",
+        "to": "2000-CUSTFILE-GET",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2000-CUSTFILE-GET",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2000-CUSTFILE-GET",
+        "to": "CBSTM03B",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "2000-CUSTFILE-GET",
+        "to": "3000-ACCTFILE-GET",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "3000-ACCTFILE-GET",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "3000-ACCTFILE-GET",
+        "to": "CBSTM03B",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "3000-ACCTFILE-GET",
+        "to": "4000-TRNXFILE-GET",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "4000-TRNXFILE-GET",
+        "to": "6000-WRITE-TRANS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "4000-TRNXFILE-GET",
+        "to": "5000-CREATE-STATEMENT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "5000-CREATE-STATEMENT",
+        "to": "5100-WRITE-HTML-HEADER",
+        "type": "perform_thru",
+        "thru": "5100-EXIT",
+        "source_lines": null
+      },
+      {
+        "from": "5000-CREATE-STATEMENT",
+        "to": "5200-WRITE-HTML-NMADBS",
+        "type": "perform_thru",
+        "thru": "5200-EXIT",
+        "source_lines": null
+      },
+      {
+        "from": "5000-CREATE-STATEMENT",
+        "to": "5100-WRITE-HTML-HEADER",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "5100-WRITE-HTML-HEADER",
+        "to": "5100-EXIT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "5100-EXIT",
+        "to": "5200-WRITE-HTML-NMADBS",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "5200-WRITE-HTML-NMADBS",
+        "to": "5200-EXIT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "5200-EXIT",
+        "to": "6000-WRITE-TRANS",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "6000-WRITE-TRANS",
+        "to": "8100-FILE-OPEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "8100-FILE-OPEN",
+        "to": "8100-TRNXFILE-OPEN",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "8100-TRNXFILE-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "8100-TRNXFILE-OPEN",
+        "to": "0000-START",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "8100-TRNXFILE-OPEN",
+        "to": "CBSTM03B",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "8200-XREFFILE-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "8200-XREFFILE-OPEN",
+        "to": "0000-START",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "8200-XREFFILE-OPEN",
+        "to": "CBSTM03B",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "8300-CUSTFILE-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "8300-CUSTFILE-OPEN",
+        "to": "0000-START",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "8300-CUSTFILE-OPEN",
+        "to": "CBSTM03B",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "8400-ACCTFILE-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "8400-ACCTFILE-OPEN",
+        "to": "1000-MAINLINE",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "8400-ACCTFILE-OPEN",
+        "to": "CBSTM03B",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "8500-READTRNX-READ",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "8500-READTRNX-READ",
+        "to": "8500-READTRNX-READ",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "8500-READTRNX-READ",
+        "to": "8599-EXIT",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "8500-READTRNX-READ",
+        "to": "CBSTM03B",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "8599-EXIT",
+        "to": "0000-START",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "9100-TRNXFILE-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9100-TRNXFILE-CLOSE",
+        "to": "CBSTM03B",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "9100-TRNXFILE-CLOSE",
+        "to": "9200-XREFFILE-CLOSE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9200-XREFFILE-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9200-XREFFILE-CLOSE",
+        "to": "CBSTM03B",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "9200-XREFFILE-CLOSE",
+        "to": "9300-CUSTFILE-CLOSE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9300-CUSTFILE-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9300-CUSTFILE-CLOSE",
+        "to": "CBSTM03B",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "9300-CUSTFILE-CLOSE",
+        "to": "9400-ACCTFILE-CLOSE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9400-ACCTFILE-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9400-ACCTFILE-CLOSE",
+        "to": "CBSTM03B",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "9400-ACCTFILE-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "fallthrough",
+        "source_lines": null
+      }
+    ],
+    "unresolved": []
+  },
+  "cics": null
+}

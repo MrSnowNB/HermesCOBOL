@@ -1,27 +1,39 @@
 {
   "program": "CBSTM03B",
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "paragraph_data_flow": {
     "0000-START": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "EVALUATE",
-          "line_no": 118,
-          "raw_text": "EVALUATE LK-M03B-DD",
-          "reason": "unresolved read operand: LK-M03B-DD"
+          "field": "LK-M03B-AREA.LK-M03B-DD",
+          "record": "LK-M03B-AREA",
+          "copybook": null,
+          "offset": 0,
+          "length": 8
         }
-      ]
+      ],
+      "mutates": [],
+      "unresolved": []
     },
     "9999-GOBACK": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "1000-TRNXFILE-PROC": {
+      "section_name": null,
       "reads": [],
-      "mutates": [],
+      "mutates": [
+        {
+          "field": "LK-M03B-AREA.LK-M03B-FLDT",
+          "record": "LK-M03B-AREA",
+          "copybook": null,
+          "offset": 40,
+          "length": 1000
+        }
+      ],
       "unresolved": [
         {
           "verb": "IF",
@@ -42,12 +54,6 @@
           "reason": "unresolved mutate operand: TRNX-FILE"
         },
         {
-          "verb": "READ",
-          "line_no": 140,
-          "raw_text": "READ TRNX-FILE INTO LK-M03B-FLDT",
-          "reason": "unresolved mutate operand: LK-M03B-FLDT"
-        },
-        {
           "verb": "IF",
           "line_no": 146,
           "raw_text": "IF M03B-CLOSE",
@@ -56,31 +62,45 @@
       ]
     },
     "1900-EXIT": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "MOVE",
-          "line_no": 152,
-          "raw_text": "MOVE TRNXFILE-STATUS TO LK-M03B-RC",
-          "reason": "unresolved read operand: TRNXFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 152,
-          "raw_text": "MOVE TRNXFILE-STATUS TO LK-M03B-RC",
-          "reason": "unresolved mutate operand: LK-M03B-RC"
+          "field": "TRNXFILE-STATUS",
+          "record": "TRNXFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
         }
-      ]
+      ],
+      "mutates": [
+        {
+          "field": "LK-M03B-AREA.LK-M03B-RC",
+          "record": "LK-M03B-AREA",
+          "copybook": null,
+          "offset": 9,
+          "length": 2
+        }
+      ],
+      "unresolved": []
     },
     "1999-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "2000-XREFFILE-PROC": {
+      "section_name": null,
       "reads": [],
-      "mutates": [],
+      "mutates": [
+        {
+          "field": "LK-M03B-AREA.LK-M03B-FLDT",
+          "record": "LK-M03B-AREA",
+          "copybook": null,
+          "offset": 40,
+          "length": 1000
+        }
+      ],
       "unresolved": [
         {
           "verb": "IF",
@@ -101,12 +121,6 @@
           "reason": "unresolved mutate operand: XREF-FILE"
         },
         {
-          "verb": "READ",
-          "line_no": 164,
-          "raw_text": "READ XREF-FILE INTO LK-M03B-FLDT",
-          "reason": "unresolved mutate operand: LK-M03B-FLDT"
-        },
-        {
           "verb": "IF",
           "line_no": 170,
           "raw_text": "IF M03B-CLOSE",
@@ -115,31 +129,60 @@
       ]
     },
     "2900-EXIT": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "MOVE",
-          "line_no": 176,
-          "raw_text": "MOVE XREFFILE-STATUS TO LK-M03B-RC",
-          "reason": "unresolved read operand: XREFFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 176,
-          "raw_text": "MOVE XREFFILE-STATUS TO LK-M03B-RC",
-          "reason": "unresolved mutate operand: LK-M03B-RC"
+          "field": "XREFFILE-STATUS",
+          "record": "XREFFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
         }
-      ]
+      ],
+      "mutates": [
+        {
+          "field": "LK-M03B-AREA.LK-M03B-RC",
+          "record": "LK-M03B-AREA",
+          "copybook": null,
+          "offset": 9,
+          "length": 2
+        }
+      ],
+      "unresolved": []
     },
     "2999-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "3000-CUSTFILE-PROC": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "LK-M03B-AREA.LK-M03B-KEY",
+          "record": "LK-M03B-AREA",
+          "copybook": null,
+          "offset": 11,
+          "length": 25
+        }
+      ],
+      "mutates": [
+        {
+          "field": "FD-CUSTFILE-REC.FD-CUST-ID",
+          "record": "FD-CUSTFILE-REC",
+          "copybook": null,
+          "offset": 0,
+          "length": 9
+        },
+        {
+          "field": "LK-M03B-AREA.LK-M03B-FLDT",
+          "record": "LK-M03B-AREA",
+          "copybook": null,
+          "offset": 40,
+          "length": 1000
+        }
+      ],
       "unresolved": [
         {
           "verb": "IF",
@@ -157,31 +200,13 @@
           "verb": "MOVE",
           "line_no": 188,
           "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-CUST-ID",
-          "reason": "unresolved read operand: LK-M03B-KEY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 188,
-          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-CUST-ID",
           "reason": "unresolved read operand: (1:LK-M03B-KEY-LN)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 188,
-          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-CUST-ID",
-          "reason": "unresolved mutate operand: FD-CUST-ID"
         },
         {
           "verb": "READ",
           "line_no": 188,
           "raw_text": "READ CUST-FILE INTO LK-M03B-FLDT",
           "reason": "unresolved mutate operand: CUST-FILE"
-        },
-        {
-          "verb": "READ",
-          "line_no": 188,
-          "raw_text": "READ CUST-FILE INTO LK-M03B-FLDT",
-          "reason": "unresolved mutate operand: LK-M03B-FLDT"
         },
         {
           "verb": "IF",
@@ -192,31 +217,60 @@
       ]
     },
     "3900-EXIT": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "MOVE",
-          "line_no": 201,
-          "raw_text": "MOVE CUSTFILE-STATUS TO LK-M03B-RC",
-          "reason": "unresolved read operand: CUSTFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 201,
-          "raw_text": "MOVE CUSTFILE-STATUS TO LK-M03B-RC",
-          "reason": "unresolved mutate operand: LK-M03B-RC"
+          "field": "CUSTFILE-STATUS",
+          "record": "CUSTFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
         }
-      ]
+      ],
+      "mutates": [
+        {
+          "field": "LK-M03B-AREA.LK-M03B-RC",
+          "record": "LK-M03B-AREA",
+          "copybook": null,
+          "offset": 9,
+          "length": 2
+        }
+      ],
+      "unresolved": []
     },
     "3999-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "4000-ACCTFILE-PROC": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "LK-M03B-AREA.LK-M03B-KEY",
+          "record": "LK-M03B-AREA",
+          "copybook": null,
+          "offset": 11,
+          "length": 25
+        }
+      ],
+      "mutates": [
+        {
+          "field": "FD-ACCTFILE-REC.FD-ACCT-ID",
+          "record": "FD-ACCTFILE-REC",
+          "copybook": null,
+          "offset": 0,
+          "length": 11
+        },
+        {
+          "field": "LK-M03B-AREA.LK-M03B-FLDT",
+          "record": "LK-M03B-AREA",
+          "copybook": null,
+          "offset": 40,
+          "length": 1000
+        }
+      ],
       "unresolved": [
         {
           "verb": "IF",
@@ -234,31 +288,13 @@
           "verb": "MOVE",
           "line_no": 213,
           "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-ACCT-ID",
-          "reason": "unresolved read operand: LK-M03B-KEY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 213,
-          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-ACCT-ID",
           "reason": "unresolved read operand: (1:LK-M03B-KEY-LN)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 213,
-          "raw_text": "MOVE LK-M03B-KEY (1:LK-M03B-KEY-LN) TO FD-ACCT-ID",
-          "reason": "unresolved mutate operand: FD-ACCT-ID"
         },
         {
           "verb": "READ",
           "line_no": 213,
           "raw_text": "READ ACCT-FILE INTO LK-M03B-FLDT",
           "reason": "unresolved mutate operand: ACCT-FILE"
-        },
-        {
-          "verb": "READ",
-          "line_no": 213,
-          "raw_text": "READ ACCT-FILE INTO LK-M03B-FLDT",
-          "reason": "unresolved mutate operand: LK-M03B-FLDT"
         },
         {
           "verb": "IF",
@@ -269,24 +305,29 @@
       ]
     },
     "4900-EXIT": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "MOVE",
-          "line_no": 226,
-          "raw_text": "MOVE ACCTFILE-STATUS TO LK-M03B-RC",
-          "reason": "unresolved read operand: ACCTFILE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 226,
-          "raw_text": "MOVE ACCTFILE-STATUS TO LK-M03B-RC",
-          "reason": "unresolved mutate operand: LK-M03B-RC"
+          "field": "ACCTFILE-STATUS",
+          "record": "ACCTFILE-STATUS",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
         }
-      ]
+      ],
+      "mutates": [
+        {
+          "field": "LK-M03B-AREA.LK-M03B-RC",
+          "record": "LK-M03B-AREA",
+          "copybook": null,
+          "offset": 9,
+          "length": 2
+        }
+      ],
+      "unresolved": []
     },
     "4999-EXIT": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []

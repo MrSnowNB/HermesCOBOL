@@ -1,10 +1,69 @@
 {
   "program": "COTRN02C",
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "paragraph_data_flow": {
     "MAIN-PARA": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "DFHCOMMAREA",
+          "record": "DFHCOMMAREA",
+          "copybook": null,
+          "offset": 0,
+          "length": 1
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-CT02-INFO.CDEMO-CT02-TRN-SELECTED",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 202,
+          "length": 16
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-FROM-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 4,
+          "length": 8
+        },
+        {
+          "field": "CCDA-COMMON-MESSAGES.CCDA-MSG-INVALID-KEY",
+          "record": "CCDA-COMMON-MESSAGES",
+          "copybook": "CSMSG01Y",
+          "offset": 50,
+          "length": 50
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-TO-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 16,
+          "length": 8
+        },
+        {
+          "field": "CARDDEMO-COMMAREA",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 0,
+          "length": 218
+        },
+        {
+          "field": "WS-VARIABLES.WS-ERR-FLG",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 124,
+          "length": 1
+        }
+      ],
       "unresolved": [
         {
           "verb": "SET",
@@ -22,19 +81,7 @@
           "verb": "MOVE",
           "line_no": 109,
           "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COTRN2AO",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 109,
-          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COTRN2AO",
-          "reason": "unresolved mutate operand: ERRMSGO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 109,
-          "raw_text": "MOVE SPACES TO WS-MESSAGE ERRMSGO OF COTRN2AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AO.ERRMSGO"
         },
         {
           "verb": "MOVE",
@@ -47,24 +94,6 @@
           "line_no": 109,
           "raw_text": "IF EIBCALEN = 0",
           "reason": "unresolved read operand: EIBCALEN"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 109,
-          "raw_text": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 109,
-          "raw_text": "MOVE DFHCOMMAREA(1:EIBCALEN) TO CARDDEMO-COMMAREA",
-          "reason": "unresolved read operand: DFHCOMMAREA(1:EIBCALEN)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 109,
-          "raw_text": "MOVE DFHCOMMAREA(1:EIBCALEN) TO CARDDEMO-COMMAREA",
-          "reason": "unresolved mutate operand: CARDDEMO-COMMAREA"
         },
         {
           "verb": "IF",
@@ -88,13 +117,7 @@
           "verb": "MOVE",
           "line_no": 109,
           "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 109,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -103,28 +126,10 @@
           "reason": "unresolved mutate operand: COTRN2AI"
         },
         {
-          "verb": "IF",
-          "line_no": 109,
-          "raw_text": "IF CDEMO-CT02-TRN-SELECTED NOT = SPACES AND LOW-VALUES",
-          "reason": "unresolved read operand: CDEMO-CT02-TRN-SELECTED"
-        },
-        {
           "verb": "MOVE",
           "line_no": 109,
           "raw_text": "MOVE CDEMO-CT02-TRN-SELECTED TO CARDNINI OF COTRN2AI",
-          "reason": "unresolved read operand: CDEMO-CT02-TRN-SELECTED"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 109,
-          "raw_text": "MOVE CDEMO-CT02-TRN-SELECTED TO CARDNINI OF COTRN2AI",
-          "reason": "unresolved mutate operand: CARDNINI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 109,
-          "raw_text": "MOVE CDEMO-CT02-TRN-SELECTED TO CARDNINI OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.CARDNINI"
         },
         {
           "verb": "MOVE",
@@ -151,36 +156,6 @@
           "reason": "unresolved read operand: DFHPF3"
         },
         {
-          "verb": "IF",
-          "line_no": 109,
-          "raw_text": "IF CDEMO-FROM-PROGRAM = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 109,
-          "raw_text": "MOVE 'COMEN01C' TO CDEMO-TO-PROGRAM ELSE",
-          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 109,
-          "raw_text": "MOVE 'COMEN01C' TO CDEMO-TO-PROGRAM ELSE",
-          "reason": "unresolved mutate operand: ELSE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 109,
-          "raw_text": "MOVE CDEMO-FROM-PROGRAM TO CDEMO-TO-PROGRAM",
-          "reason": "unresolved read operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 109,
-          "raw_text": "MOVE CDEMO-FROM-PROGRAM TO CDEMO-TO-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
-        },
-        {
           "verb": "WHEN",
           "line_no": 109,
           "raw_text": "WHEN DFHPF4",
@@ -193,24 +168,6 @@
           "reason": "unresolved read operand: DFHPF5"
         },
         {
-          "verb": "MOVE",
-          "line_no": 109,
-          "raw_text": "MOVE 'Y'                       TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 109,
-          "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
-          "reason": "unresolved read operand: CCDA-MSG-INVALID-KEY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 109,
-          "raw_text": "MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
           "verb": "RETURN",
           "line_no": 109,
           "raw_text": "RETURN TRANSID (WS-TRANID) COMMAREA (CARDDEMO-COMMAREA)",
@@ -219,20 +176,30 @@
       ]
     },
     "PROCESS-ENTER-KEY": {
+      "section_name": null,
       "reads": [],
-      "mutates": [],
+      "mutates": [
+        {
+          "field": "WS-VARIABLES.WS-ERR-FLG",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 124,
+          "length": 1
+        },
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        }
+      ],
       "unresolved": [
         {
           "verb": "EVALUATE",
           "line_no": 169,
           "raw_text": "EVALUATE CONFIRMI OF COTRN2AI",
-          "reason": "unresolved read operand: CONFIRMI"
-        },
-        {
-          "verb": "EVALUATE",
-          "line_no": 169,
-          "raw_text": "EVALUATE CONFIRMI OF COTRN2AI",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.CONFIRMI"
         },
         {
           "verb": "EVALUATE",
@@ -243,26 +210,8 @@
         {
           "verb": "MOVE",
           "line_no": 169,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 169,
-          "raw_text": "MOVE 'Confirm to add this transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 169,
           "raw_text": "MOVE -1      TO CONFIRML OF COTRN2AI",
-          "reason": "unresolved mutate operand: CONFIRML"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 169,
-          "raw_text": "MOVE -1      TO CONFIRML OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.CONFIRML"
         },
         {
           "verb": "MOVE",
@@ -273,26 +222,8 @@
         {
           "verb": "MOVE",
           "line_no": 169,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 169,
-          "raw_text": "MOVE 'Invalid value. Valid values are (Y/N)...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 169,
           "raw_text": "MOVE -1      TO CONFIRML OF COTRN2AI",
-          "reason": "unresolved mutate operand: CONFIRML"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 169,
-          "raw_text": "MOVE -1      TO CONFIRML OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.CONFIRML"
         },
         {
           "verb": "MOVE",
@@ -303,20 +234,87 @@
       ]
     },
     "VALIDATE-INPUT-KEY-FIELDS": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "WS-VARIABLES.WS-ACCT-ID-N",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 150,
+          "length": 11
+        },
+        {
+          "field": "CARD-XREF-RECORD.XREF-CARD-NUM",
+          "record": "CARD-XREF-RECORD",
+          "copybook": "CVACT03Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "WS-VARIABLES.WS-CARD-NUM-N",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 161,
+          "length": 16
+        },
+        {
+          "field": "CARD-XREF-RECORD.XREF-ACCT-ID",
+          "record": "CARD-XREF-RECORD",
+          "copybook": "CVACT03Y",
+          "offset": 25,
+          "length": 11
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-VARIABLES.WS-ERR-FLG",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 124,
+          "length": 1
+        },
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        },
+        {
+          "field": "WS-VARIABLES.WS-ACCT-ID-N",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 150,
+          "length": 11
+        },
+        {
+          "field": "CARD-XREF-RECORD.XREF-ACCT-ID",
+          "record": "CARD-XREF-RECORD",
+          "copybook": "CVACT03Y",
+          "offset": 25,
+          "length": 11
+        },
+        {
+          "field": "WS-VARIABLES.WS-CARD-NUM-N",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 161,
+          "length": 16
+        },
+        {
+          "field": "CARD-XREF-RECORD.XREF-CARD-NUM",
+          "record": "CARD-XREF-RECORD",
+          "copybook": "CVACT03Y",
+          "offset": 0,
+          "length": 16
+        }
+      ],
       "unresolved": [
         {
           "verb": "WHEN",
           "line_no": 195,
           "raw_text": "WHEN ACTIDINI OF COTRN2AI NOT = SPACES AND LOW-VALUES",
-          "reason": "unresolved read operand: ACTIDINI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 195,
-          "raw_text": "WHEN ACTIDINI OF COTRN2AI NOT = SPACES AND LOW-VALUES",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.ACTIDINI"
         },
         {
           "verb": "WHEN",
@@ -328,13 +326,7 @@
           "verb": "IF",
           "line_no": 195,
           "raw_text": "IF ACTIDINI OF COTRN2AI IS NOT NUMERIC",
-          "reason": "unresolved read operand: ACTIDINI"
-        },
-        {
-          "verb": "IF",
-          "line_no": 195,
-          "raw_text": "IF ACTIDINI OF COTRN2AI IS NOT NUMERIC",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.ACTIDINI"
         },
         {
           "verb": "IF",
@@ -346,37 +338,13 @@
           "verb": "IF",
           "line_no": 195,
           "raw_text": "IF ACTIDINI OF COTRN2AI IS NOT NUMERIC",
-          "reason": "unresolved read operand: IS"
-        },
-        {
-          "verb": "IF",
-          "line_no": 195,
-          "raw_text": "IF ACTIDINI OF COTRN2AI IS NOT NUMERIC",
           "reason": "unresolved read operand: NUMERIC"
         },
         {
           "verb": "MOVE",
           "line_no": 195,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 195,
-          "raw_text": "MOVE 'Account ID must be Numeric...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 195,
           "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 195,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -388,25 +356,7 @@
           "verb": "COMPUTE",
           "line_no": 195,
           "raw_text": "COMPUTE WS-ACCT-ID-N = FUNCTION NUMVAL(ACTIDINI OF COTRN2AI)",
-          "reason": "unresolved mutate operand: WS-ACCT-ID-N"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 195,
-          "raw_text": "COMPUTE WS-ACCT-ID-N = FUNCTION NUMVAL(ACTIDINI OF COTRN2AI)",
-          "reason": "unresolved read operand: FUNCTION"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 195,
-          "raw_text": "COMPUTE WS-ACCT-ID-N = FUNCTION NUMVAL(ACTIDINI OF COTRN2AI)",
-          "reason": "unresolved read operand: NUMVAL(ACTIDINI"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 195,
-          "raw_text": "COMPUTE WS-ACCT-ID-N = FUNCTION NUMVAL(ACTIDINI OF COTRN2AI)",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI).NUMVAL(ACTIDINI"
         },
         {
           "verb": "COMPUTE",
@@ -418,25 +368,7 @@
           "verb": "MOVE",
           "line_no": 195,
           "raw_text": "MOVE WS-ACCT-ID-N            TO XREF-ACCT-ID ACTIDINI OF COTRN2AI",
-          "reason": "unresolved read operand: WS-ACCT-ID-N"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 195,
-          "raw_text": "MOVE WS-ACCT-ID-N            TO XREF-ACCT-ID ACTIDINI OF COTRN2AI",
-          "reason": "unresolved mutate operand: XREF-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 195,
-          "raw_text": "MOVE WS-ACCT-ID-N            TO XREF-ACCT-ID ACTIDINI OF COTRN2AI",
-          "reason": "unresolved mutate operand: ACTIDINI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 195,
-          "raw_text": "MOVE WS-ACCT-ID-N            TO XREF-ACCT-ID ACTIDINI OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.ACTIDINI"
         },
         {
           "verb": "MOVE",
@@ -448,19 +380,7 @@
           "verb": "MOVE",
           "line_no": 195,
           "raw_text": "MOVE XREF-CARD-NUM         TO CARDNINI OF COTRN2AI",
-          "reason": "unresolved read operand: XREF-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 195,
-          "raw_text": "MOVE XREF-CARD-NUM         TO CARDNINI OF COTRN2AI",
-          "reason": "unresolved mutate operand: CARDNINI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 195,
-          "raw_text": "MOVE XREF-CARD-NUM         TO CARDNINI OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.CARDNINI"
         },
         {
           "verb": "MOVE",
@@ -472,13 +392,7 @@
           "verb": "WHEN",
           "line_no": 195,
           "raw_text": "WHEN CARDNINI OF COTRN2AI NOT = SPACES AND LOW-VALUES",
-          "reason": "unresolved read operand: CARDNINI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 195,
-          "raw_text": "WHEN CARDNINI OF COTRN2AI NOT = SPACES AND LOW-VALUES",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.CARDNINI"
         },
         {
           "verb": "WHEN",
@@ -490,25 +404,13 @@
           "verb": "IF",
           "line_no": 195,
           "raw_text": "IF CARDNINI OF COTRN2AI IS NOT NUMERIC",
-          "reason": "unresolved read operand: CARDNINI"
-        },
-        {
-          "verb": "IF",
-          "line_no": 195,
-          "raw_text": "IF CARDNINI OF COTRN2AI IS NOT NUMERIC",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.CARDNINI"
         },
         {
           "verb": "IF",
           "line_no": 195,
           "raw_text": "IF CARDNINI OF COTRN2AI IS NOT NUMERIC",
           "reason": "unresolved read operand: COTRN2AI"
-        },
-        {
-          "verb": "IF",
-          "line_no": 195,
-          "raw_text": "IF CARDNINI OF COTRN2AI IS NOT NUMERIC",
-          "reason": "unresolved read operand: IS"
         },
         {
           "verb": "IF",
@@ -519,26 +421,8 @@
         {
           "verb": "MOVE",
           "line_no": 195,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 195,
-          "raw_text": "MOVE 'Card Number must be Numeric...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 195,
           "raw_text": "MOVE -1       TO CARDNINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: CARDNINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 195,
-          "raw_text": "MOVE -1       TO CARDNINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.CARDNINL"
         },
         {
           "verb": "MOVE",
@@ -550,25 +434,7 @@
           "verb": "COMPUTE",
           "line_no": 195,
           "raw_text": "COMPUTE WS-CARD-NUM-N = FUNCTION NUMVAL(CARDNINI OF COTRN2AI)",
-          "reason": "unresolved mutate operand: WS-CARD-NUM-N"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 195,
-          "raw_text": "COMPUTE WS-CARD-NUM-N = FUNCTION NUMVAL(CARDNINI OF COTRN2AI)",
-          "reason": "unresolved read operand: FUNCTION"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 195,
-          "raw_text": "COMPUTE WS-CARD-NUM-N = FUNCTION NUMVAL(CARDNINI OF COTRN2AI)",
-          "reason": "unresolved read operand: NUMVAL(CARDNINI"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 195,
-          "raw_text": "COMPUTE WS-CARD-NUM-N = FUNCTION NUMVAL(CARDNINI OF COTRN2AI)",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI).NUMVAL(CARDNINI"
         },
         {
           "verb": "COMPUTE",
@@ -580,25 +446,7 @@
           "verb": "MOVE",
           "line_no": 195,
           "raw_text": "MOVE WS-CARD-NUM-N        TO XREF-CARD-NUM CARDNINI OF COTRN2AI",
-          "reason": "unresolved read operand: WS-CARD-NUM-N"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 195,
-          "raw_text": "MOVE WS-CARD-NUM-N        TO XREF-CARD-NUM CARDNINI OF COTRN2AI",
-          "reason": "unresolved mutate operand: XREF-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 195,
-          "raw_text": "MOVE WS-CARD-NUM-N        TO XREF-CARD-NUM CARDNINI OF COTRN2AI",
-          "reason": "unresolved mutate operand: CARDNINI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 195,
-          "raw_text": "MOVE WS-CARD-NUM-N        TO XREF-CARD-NUM CARDNINI OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.CARDNINI"
         },
         {
           "verb": "MOVE",
@@ -610,19 +458,7 @@
           "verb": "MOVE",
           "line_no": 195,
           "raw_text": "MOVE XREF-ACCT-ID         TO ACTIDINI OF COTRN2AI",
-          "reason": "unresolved read operand: XREF-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 195,
-          "raw_text": "MOVE XREF-ACCT-ID         TO ACTIDINI OF COTRN2AI",
-          "reason": "unresolved mutate operand: ACTIDINI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 195,
-          "raw_text": "MOVE XREF-ACCT-ID         TO ACTIDINI OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.ACTIDINI"
         },
         {
           "verb": "MOVE",
@@ -633,26 +469,8 @@
         {
           "verb": "MOVE",
           "line_no": 195,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 195,
-          "raw_text": "MOVE 'Account or Card Number must be entered...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 195,
           "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 195,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -663,8 +481,116 @@
       ]
     },
     "VALIDATE-INPUT-DATA-FIELDS": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "WS-VARIABLES.WS-TRAN-AMT-N",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 193,
+          "length": 11
+        },
+        {
+          "field": "WS-VARIABLES.WS-TRAN-AMT-E",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 204,
+          "length": 8
+        },
+        {
+          "field": "WS-VARIABLES.WS-DATE-FORMAT",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 212,
+          "length": 10
+        },
+        {
+          "field": "CSUTLDTC-PARM.CSUTLDTC-DATE",
+          "record": "CSUTLDTC-PARM",
+          "copybook": null,
+          "offset": 0,
+          "length": 10
+        },
+        {
+          "field": "CSUTLDTC-PARM.CSUTLDTC-DATE-FORMAT",
+          "record": "CSUTLDTC-PARM",
+          "copybook": null,
+          "offset": 10,
+          "length": 10
+        },
+        {
+          "field": "CSUTLDTC-PARM.CSUTLDTC-RESULT",
+          "record": "CSUTLDTC-PARM",
+          "copybook": null,
+          "offset": 20,
+          "length": 80
+        },
+        {
+          "field": "CSUTLDTC-PARM.CSUTLDTC-RESULT.CSUTLDTC-RESULT-SEV-CD",
+          "record": "CSUTLDTC-PARM",
+          "copybook": null,
+          "offset": 20,
+          "length": 4
+        },
+        {
+          "field": "CSUTLDTC-PARM.CSUTLDTC-RESULT.CSUTLDTC-RESULT-MSG-NUM",
+          "record": "CSUTLDTC-PARM",
+          "copybook": null,
+          "offset": 35,
+          "length": 4
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-VARIABLES.WS-ERR-FLG",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 124,
+          "length": 1
+        },
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        },
+        {
+          "field": "WS-VARIABLES.WS-TRAN-AMT-N",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 193,
+          "length": 11
+        },
+        {
+          "field": "WS-VARIABLES.WS-TRAN-AMT-E",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 204,
+          "length": 8
+        },
+        {
+          "field": "CSUTLDTC-PARM.CSUTLDTC-DATE",
+          "record": "CSUTLDTC-PARM",
+          "copybook": null,
+          "offset": 0,
+          "length": 10
+        },
+        {
+          "field": "CSUTLDTC-PARM.CSUTLDTC-DATE-FORMAT",
+          "record": "CSUTLDTC-PARM",
+          "copybook": null,
+          "offset": 10,
+          "length": 10
+        },
+        {
+          "field": "CSUTLDTC-PARM.CSUTLDTC-RESULT",
+          "record": "CSUTLDTC-PARM",
+          "copybook": null,
+          "offset": 20,
+          "length": 80
+        }
+      ],
       "unresolved": [
         {
           "verb": "IF",
@@ -676,13 +602,7 @@
           "verb": "MOVE",
           "line_no": 237,
           "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: TTYPCDI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 237,
-          "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TTYPCDI"
         },
         {
           "verb": "MOVE",
@@ -694,13 +614,7 @@
           "verb": "MOVE",
           "line_no": 237,
           "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: TCATCDI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 237,
-          "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TCATCDI"
         },
         {
           "verb": "MOVE",
@@ -712,13 +626,7 @@
           "verb": "MOVE",
           "line_no": 237,
           "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: TRNSRCI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 237,
-          "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TRNSRCI"
         },
         {
           "verb": "MOVE",
@@ -730,13 +638,7 @@
           "verb": "MOVE",
           "line_no": 237,
           "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: TRNAMTI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 237,
-          "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TRNAMTI"
         },
         {
           "verb": "MOVE",
@@ -748,13 +650,7 @@
           "verb": "MOVE",
           "line_no": 237,
           "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: TDESCI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 237,
-          "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TDESCI"
         },
         {
           "verb": "MOVE",
@@ -766,13 +662,7 @@
           "verb": "MOVE",
           "line_no": 237,
           "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: TORIGDTI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 237,
-          "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TORIGDTI"
         },
         {
           "verb": "MOVE",
@@ -784,13 +674,7 @@
           "verb": "MOVE",
           "line_no": 237,
           "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: TPROCDTI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 237,
-          "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TPROCDTI"
         },
         {
           "verb": "MOVE",
@@ -802,13 +686,7 @@
           "verb": "MOVE",
           "line_no": 237,
           "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: MIDI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 237,
-          "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.MIDI"
         },
         {
           "verb": "MOVE",
@@ -820,13 +698,7 @@
           "verb": "MOVE",
           "line_no": 237,
           "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: MNAMEI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 237,
-          "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.MNAMEI"
         },
         {
           "verb": "MOVE",
@@ -838,13 +710,7 @@
           "verb": "MOVE",
           "line_no": 237,
           "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: MCITYI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 237,
-          "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.MCITYI"
         },
         {
           "verb": "MOVE",
@@ -856,13 +722,7 @@
           "verb": "MOVE",
           "line_no": 237,
           "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: MZIPI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 237,
-          "raw_text": "MOVE SPACES      TO TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.MZIPI"
         },
         {
           "verb": "MOVE",
@@ -874,13 +734,7 @@
           "verb": "WHEN",
           "line_no": 251,
           "raw_text": "WHEN TTYPCDI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: TTYPCDI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 251,
-          "raw_text": "WHEN TTYPCDI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.TTYPCDI"
         },
         {
           "verb": "WHEN",
@@ -891,26 +745,8 @@
         {
           "verb": "MOVE",
           "line_no": 251,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE 'Type CD can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
           "raw_text": "MOVE -1       TO TTYPCDL OF COTRN2AI",
-          "reason": "unresolved mutate operand: TTYPCDL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE -1       TO TTYPCDL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TTYPCDL"
         },
         {
           "verb": "MOVE",
@@ -922,13 +758,7 @@
           "verb": "WHEN",
           "line_no": 251,
           "raw_text": "WHEN TCATCDI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: TCATCDI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 251,
-          "raw_text": "WHEN TCATCDI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.TCATCDI"
         },
         {
           "verb": "WHEN",
@@ -939,26 +769,8 @@
         {
           "verb": "MOVE",
           "line_no": 251,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE 'Category CD can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
           "raw_text": "MOVE -1       TO TCATCDL OF COTRN2AI",
-          "reason": "unresolved mutate operand: TCATCDL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE -1       TO TCATCDL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TCATCDL"
         },
         {
           "verb": "MOVE",
@@ -970,13 +782,7 @@
           "verb": "WHEN",
           "line_no": 251,
           "raw_text": "WHEN TRNSRCI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: TRNSRCI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 251,
-          "raw_text": "WHEN TRNSRCI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.TRNSRCI"
         },
         {
           "verb": "WHEN",
@@ -987,26 +793,8 @@
         {
           "verb": "MOVE",
           "line_no": 251,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE 'Source can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
           "raw_text": "MOVE -1       TO TRNSRCL OF COTRN2AI",
-          "reason": "unresolved mutate operand: TRNSRCL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE -1       TO TRNSRCL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TRNSRCL"
         },
         {
           "verb": "MOVE",
@@ -1018,13 +806,7 @@
           "verb": "WHEN",
           "line_no": 251,
           "raw_text": "WHEN TDESCI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: TDESCI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 251,
-          "raw_text": "WHEN TDESCI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.TDESCI"
         },
         {
           "verb": "WHEN",
@@ -1035,26 +817,8 @@
         {
           "verb": "MOVE",
           "line_no": 251,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE 'Description can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
           "raw_text": "MOVE -1       TO TDESCL OF COTRN2AI",
-          "reason": "unresolved mutate operand: TDESCL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE -1       TO TDESCL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TDESCL"
         },
         {
           "verb": "MOVE",
@@ -1066,13 +830,7 @@
           "verb": "WHEN",
           "line_no": 251,
           "raw_text": "WHEN TRNAMTI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: TRNAMTI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 251,
-          "raw_text": "WHEN TRNAMTI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.TRNAMTI"
         },
         {
           "verb": "WHEN",
@@ -1083,26 +841,8 @@
         {
           "verb": "MOVE",
           "line_no": 251,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE 'Amount can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
           "raw_text": "MOVE -1       TO TRNAMTL OF COTRN2AI",
-          "reason": "unresolved mutate operand: TRNAMTL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE -1       TO TRNAMTL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TRNAMTL"
         },
         {
           "verb": "MOVE",
@@ -1114,13 +854,7 @@
           "verb": "WHEN",
           "line_no": 251,
           "raw_text": "WHEN TORIGDTI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: TORIGDTI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 251,
-          "raw_text": "WHEN TORIGDTI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.TORIGDTI"
         },
         {
           "verb": "WHEN",
@@ -1131,26 +865,8 @@
         {
           "verb": "MOVE",
           "line_no": 251,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE 'Orig Date can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
           "raw_text": "MOVE -1       TO TORIGDTL OF COTRN2AI",
-          "reason": "unresolved mutate operand: TORIGDTL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE -1       TO TORIGDTL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TORIGDTL"
         },
         {
           "verb": "MOVE",
@@ -1162,13 +878,7 @@
           "verb": "WHEN",
           "line_no": 251,
           "raw_text": "WHEN TPROCDTI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: TPROCDTI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 251,
-          "raw_text": "WHEN TPROCDTI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.TPROCDTI"
         },
         {
           "verb": "WHEN",
@@ -1179,26 +889,8 @@
         {
           "verb": "MOVE",
           "line_no": 251,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE 'Proc Date can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
           "raw_text": "MOVE -1       TO TPROCDTL OF COTRN2AI",
-          "reason": "unresolved mutate operand: TPROCDTL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE -1       TO TPROCDTL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TPROCDTL"
         },
         {
           "verb": "MOVE",
@@ -1210,13 +902,7 @@
           "verb": "WHEN",
           "line_no": 251,
           "raw_text": "WHEN MIDI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: MIDI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 251,
-          "raw_text": "WHEN MIDI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.MIDI"
         },
         {
           "verb": "WHEN",
@@ -1227,26 +913,8 @@
         {
           "verb": "MOVE",
           "line_no": 251,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE 'Merchant ID can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
           "raw_text": "MOVE -1       TO MIDL OF COTRN2AI",
-          "reason": "unresolved mutate operand: MIDL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE -1       TO MIDL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.MIDL"
         },
         {
           "verb": "MOVE",
@@ -1258,13 +926,7 @@
           "verb": "WHEN",
           "line_no": 251,
           "raw_text": "WHEN MNAMEI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: MNAMEI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 251,
-          "raw_text": "WHEN MNAMEI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.MNAMEI"
         },
         {
           "verb": "WHEN",
@@ -1275,26 +937,8 @@
         {
           "verb": "MOVE",
           "line_no": 251,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE 'Merchant Name can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
           "raw_text": "MOVE -1       TO MNAMEL OF COTRN2AI",
-          "reason": "unresolved mutate operand: MNAMEL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE -1       TO MNAMEL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.MNAMEL"
         },
         {
           "verb": "MOVE",
@@ -1306,13 +950,7 @@
           "verb": "WHEN",
           "line_no": 251,
           "raw_text": "WHEN MCITYI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: MCITYI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 251,
-          "raw_text": "WHEN MCITYI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.MCITYI"
         },
         {
           "verb": "WHEN",
@@ -1323,26 +961,8 @@
         {
           "verb": "MOVE",
           "line_no": 251,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE 'Merchant City can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
           "raw_text": "MOVE -1       TO MCITYL OF COTRN2AI",
-          "reason": "unresolved mutate operand: MCITYL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE -1       TO MCITYL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.MCITYL"
         },
         {
           "verb": "MOVE",
@@ -1354,43 +974,19 @@
           "verb": "WHEN",
           "line_no": 251,
           "raw_text": "WHEN MZIPI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: MZIPI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 251,
-          "raw_text": "WHEN MZIPI OF COTRN2AI = SPACES OR LOW-VALUES",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.MZIPI"
         },
         {
           "verb": "WHEN",
           "line_no": 251,
           "raw_text": "WHEN MZIPI OF COTRN2AI = SPACES OR LOW-VALUES",
           "reason": "unresolved read operand: COTRN2AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE 'Merchant Zip can NOT be empty...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
           "verb": "MOVE",
           "line_no": 251,
           "raw_text": "MOVE -1       TO MZIPL OF COTRN2AI",
-          "reason": "unresolved mutate operand: MZIPL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 251,
-          "raw_text": "MOVE -1       TO MZIPL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.MZIPL"
         },
         {
           "verb": "MOVE",
@@ -1402,13 +998,7 @@
           "verb": "WHEN",
           "line_no": 322,
           "raw_text": "WHEN TTYPCDI OF COTRN2AI NOT NUMERIC",
-          "reason": "unresolved read operand: TTYPCDI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 322,
-          "raw_text": "WHEN TTYPCDI OF COTRN2AI NOT NUMERIC",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.TTYPCDI"
         },
         {
           "verb": "WHEN",
@@ -1425,26 +1015,8 @@
         {
           "verb": "MOVE",
           "line_no": 322,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE 'Type CD must be Numeric...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
           "raw_text": "MOVE -1       TO TTYPCDL OF COTRN2AI",
-          "reason": "unresolved mutate operand: TTYPCDL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE -1       TO TTYPCDL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TTYPCDL"
         },
         {
           "verb": "MOVE",
@@ -1456,13 +1028,7 @@
           "verb": "WHEN",
           "line_no": 322,
           "raw_text": "WHEN TCATCDI OF COTRN2AI NOT NUMERIC",
-          "reason": "unresolved read operand: TCATCDI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 322,
-          "raw_text": "WHEN TCATCDI OF COTRN2AI NOT NUMERIC",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.TCATCDI"
         },
         {
           "verb": "WHEN",
@@ -1479,26 +1045,8 @@
         {
           "verb": "MOVE",
           "line_no": 322,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE 'Category CD must be Numeric...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
           "raw_text": "MOVE -1       TO TCATCDL OF COTRN2AI",
-          "reason": "unresolved mutate operand: TCATCDL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE -1       TO TCATCDL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TCATCDL"
         },
         {
           "verb": "MOVE",
@@ -1510,13 +1058,7 @@
           "verb": "WHEN",
           "line_no": 322,
           "raw_text": "WHEN TRNAMTI OF COTRN2AI(1:1) NOT EQUAL '-' AND '+'",
-          "reason": "unresolved read operand: TRNAMTI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 322,
-          "raw_text": "WHEN TRNAMTI OF COTRN2AI(1:1) NOT EQUAL '-' AND '+'",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI(1:1).TRNAMTI"
         },
         {
           "verb": "WHEN",
@@ -1528,13 +1070,7 @@
           "verb": "WHEN",
           "line_no": 322,
           "raw_text": "WHEN TRNAMTI OF COTRN2AI(2:8) NOT NUMERIC",
-          "reason": "unresolved read operand: TRNAMTI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 322,
-          "raw_text": "WHEN TRNAMTI OF COTRN2AI(2:8) NOT NUMERIC",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI(2:8).TRNAMTI"
         },
         {
           "verb": "WHEN",
@@ -1552,13 +1088,7 @@
           "verb": "WHEN",
           "line_no": 322,
           "raw_text": "WHEN TRNAMTI OF COTRN2AI(10:1) NOT = '.'",
-          "reason": "unresolved read operand: TRNAMTI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 322,
-          "raw_text": "WHEN TRNAMTI OF COTRN2AI(10:1) NOT = '.'",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI(10:1).TRNAMTI"
         },
         {
           "verb": "WHEN",
@@ -1570,13 +1100,7 @@
           "verb": "WHEN",
           "line_no": 322,
           "raw_text": "WHEN TRNAMTI OF COTRN2AI(11:2) IS NOT NUMERIC",
-          "reason": "unresolved read operand: TRNAMTI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 322,
-          "raw_text": "WHEN TRNAMTI OF COTRN2AI(11:2) IS NOT NUMERIC",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI(11:2).TRNAMTI"
         },
         {
           "verb": "WHEN",
@@ -1588,37 +1112,13 @@
           "verb": "WHEN",
           "line_no": 322,
           "raw_text": "WHEN TRNAMTI OF COTRN2AI(11:2) IS NOT NUMERIC",
-          "reason": "unresolved read operand: IS"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 322,
-          "raw_text": "WHEN TRNAMTI OF COTRN2AI(11:2) IS NOT NUMERIC",
           "reason": "unresolved read operand: NUMERIC"
         },
         {
           "verb": "MOVE",
           "line_no": 322,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE 'Amount should be in format -99999999.99' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
           "raw_text": "MOVE -1       TO TRNAMTL OF COTRN2AI",
-          "reason": "unresolved mutate operand: TRNAMTL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE -1       TO TRNAMTL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TRNAMTL"
         },
         {
           "verb": "MOVE",
@@ -1630,13 +1130,7 @@
           "verb": "WHEN",
           "line_no": 322,
           "raw_text": "WHEN TORIGDTI OF COTRN2AI(1:4) IS NOT NUMERIC",
-          "reason": "unresolved read operand: TORIGDTI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 322,
-          "raw_text": "WHEN TORIGDTI OF COTRN2AI(1:4) IS NOT NUMERIC",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI(1:4).TORIGDTI"
         },
         {
           "verb": "WHEN",
@@ -1648,25 +1142,13 @@
           "verb": "WHEN",
           "line_no": 322,
           "raw_text": "WHEN TORIGDTI OF COTRN2AI(1:4) IS NOT NUMERIC",
-          "reason": "unresolved read operand: IS"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 322,
-          "raw_text": "WHEN TORIGDTI OF COTRN2AI(1:4) IS NOT NUMERIC",
           "reason": "unresolved read operand: NUMERIC"
         },
         {
           "verb": "WHEN",
           "line_no": 322,
           "raw_text": "WHEN TORIGDTI OF COTRN2AI(5:1) NOT EQUAL '-'",
-          "reason": "unresolved read operand: TORIGDTI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 322,
-          "raw_text": "WHEN TORIGDTI OF COTRN2AI(5:1) NOT EQUAL '-'",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI(5:1).TORIGDTI"
         },
         {
           "verb": "WHEN",
@@ -1678,13 +1160,7 @@
           "verb": "WHEN",
           "line_no": 322,
           "raw_text": "WHEN TORIGDTI OF COTRN2AI(6:2) NOT NUMERIC",
-          "reason": "unresolved read operand: TORIGDTI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 322,
-          "raw_text": "WHEN TORIGDTI OF COTRN2AI(6:2) NOT NUMERIC",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI(6:2).TORIGDTI"
         },
         {
           "verb": "WHEN",
@@ -1702,13 +1178,7 @@
           "verb": "WHEN",
           "line_no": 322,
           "raw_text": "WHEN TORIGDTI OF COTRN2AI(8:1) NOT EQUAL '-'",
-          "reason": "unresolved read operand: TORIGDTI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 322,
-          "raw_text": "WHEN TORIGDTI OF COTRN2AI(8:1) NOT EQUAL '-'",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI(8:1).TORIGDTI"
         },
         {
           "verb": "WHEN",
@@ -1720,13 +1190,7 @@
           "verb": "WHEN",
           "line_no": 322,
           "raw_text": "WHEN TORIGDTI OF COTRN2AI(9:2) NOT NUMERIC",
-          "reason": "unresolved read operand: TORIGDTI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 322,
-          "raw_text": "WHEN TORIGDTI OF COTRN2AI(9:2) NOT NUMERIC",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI(9:2).TORIGDTI"
         },
         {
           "verb": "WHEN",
@@ -1743,26 +1207,8 @@
         {
           "verb": "MOVE",
           "line_no": 322,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE 'Orig Date should be in format YYYY-MM-DD' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
           "raw_text": "MOVE -1       TO TORIGDTL OF COTRN2AI",
-          "reason": "unresolved mutate operand: TORIGDTL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE -1       TO TORIGDTL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TORIGDTL"
         },
         {
           "verb": "MOVE",
@@ -1774,13 +1220,7 @@
           "verb": "WHEN",
           "line_no": 322,
           "raw_text": "WHEN TPROCDTI OF COTRN2AI(1:4) IS NOT NUMERIC",
-          "reason": "unresolved read operand: TPROCDTI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 322,
-          "raw_text": "WHEN TPROCDTI OF COTRN2AI(1:4) IS NOT NUMERIC",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI(1:4).TPROCDTI"
         },
         {
           "verb": "WHEN",
@@ -1792,25 +1232,13 @@
           "verb": "WHEN",
           "line_no": 322,
           "raw_text": "WHEN TPROCDTI OF COTRN2AI(1:4) IS NOT NUMERIC",
-          "reason": "unresolved read operand: IS"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 322,
-          "raw_text": "WHEN TPROCDTI OF COTRN2AI(1:4) IS NOT NUMERIC",
           "reason": "unresolved read operand: NUMERIC"
         },
         {
           "verb": "WHEN",
           "line_no": 322,
           "raw_text": "WHEN TPROCDTI OF COTRN2AI(5:1) NOT EQUAL '-'",
-          "reason": "unresolved read operand: TPROCDTI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 322,
-          "raw_text": "WHEN TPROCDTI OF COTRN2AI(5:1) NOT EQUAL '-'",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI(5:1).TPROCDTI"
         },
         {
           "verb": "WHEN",
@@ -1822,13 +1250,7 @@
           "verb": "WHEN",
           "line_no": 322,
           "raw_text": "WHEN TPROCDTI OF COTRN2AI(6:2) NOT NUMERIC",
-          "reason": "unresolved read operand: TPROCDTI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 322,
-          "raw_text": "WHEN TPROCDTI OF COTRN2AI(6:2) NOT NUMERIC",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI(6:2).TPROCDTI"
         },
         {
           "verb": "WHEN",
@@ -1846,13 +1268,7 @@
           "verb": "WHEN",
           "line_no": 322,
           "raw_text": "WHEN TPROCDTI OF COTRN2AI(8:1) NOT EQUAL '-'",
-          "reason": "unresolved read operand: TPROCDTI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 322,
-          "raw_text": "WHEN TPROCDTI OF COTRN2AI(8:1) NOT EQUAL '-'",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI(8:1).TPROCDTI"
         },
         {
           "verb": "WHEN",
@@ -1864,13 +1280,7 @@
           "verb": "WHEN",
           "line_no": 322,
           "raw_text": "WHEN TPROCDTI OF COTRN2AI(9:2) NOT NUMERIC",
-          "reason": "unresolved read operand: TPROCDTI"
-        },
-        {
-          "verb": "WHEN",
-          "line_no": 322,
-          "raw_text": "WHEN TPROCDTI OF COTRN2AI(9:2) NOT NUMERIC",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI(9:2).TPROCDTI"
         },
         {
           "verb": "WHEN",
@@ -1887,26 +1297,8 @@
         {
           "verb": "MOVE",
           "line_no": 322,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE 'Proc Date should be in format YYYY-MM-DD' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
           "raw_text": "MOVE -1       TO TPROCDTL OF COTRN2AI",
-          "reason": "unresolved mutate operand: TPROCDTL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE -1       TO TPROCDTL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TPROCDTL"
         },
         {
           "verb": "MOVE",
@@ -1918,25 +1310,7 @@
           "verb": "COMPUTE",
           "line_no": 322,
           "raw_text": "COMPUTE WS-TRAN-AMT-N = FUNCTION NUMVAL-C(TRNAMTI OF COTRN2AI)",
-          "reason": "unresolved mutate operand: WS-TRAN-AMT-N"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 322,
-          "raw_text": "COMPUTE WS-TRAN-AMT-N = FUNCTION NUMVAL-C(TRNAMTI OF COTRN2AI)",
-          "reason": "unresolved read operand: FUNCTION"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 322,
-          "raw_text": "COMPUTE WS-TRAN-AMT-N = FUNCTION NUMVAL-C(TRNAMTI OF COTRN2AI)",
-          "reason": "unresolved read operand: NUMVAL-C(TRNAMTI"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 322,
-          "raw_text": "COMPUTE WS-TRAN-AMT-N = FUNCTION NUMVAL-C(TRNAMTI OF COTRN2AI)",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI).NUMVAL-C(TRNAMTI"
         },
         {
           "verb": "COMPUTE",
@@ -1947,32 +1321,8 @@
         {
           "verb": "MOVE",
           "line_no": 322,
-          "raw_text": "MOVE WS-TRAN-AMT-N TO WS-TRAN-AMT-E",
-          "reason": "unresolved read operand: WS-TRAN-AMT-N"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE WS-TRAN-AMT-N TO WS-TRAN-AMT-E",
-          "reason": "unresolved mutate operand: WS-TRAN-AMT-E"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
           "raw_text": "MOVE WS-TRAN-AMT-E TO TRNAMTI OF COTRN2AI",
-          "reason": "unresolved read operand: WS-TRAN-AMT-E"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE WS-TRAN-AMT-E TO TRNAMTI OF COTRN2AI",
-          "reason": "unresolved mutate operand: TRNAMTI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE WS-TRAN-AMT-E TO TRNAMTI OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TRNAMTI"
         },
         {
           "verb": "MOVE",
@@ -1984,13 +1334,7 @@
           "verb": "MOVE",
           "line_no": 322,
           "raw_text": "MOVE TORIGDTI OF COTRN2AI TO CSUTLDTC-DATE",
-          "reason": "unresolved read operand: TORIGDTI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE TORIGDTI OF COTRN2AI TO CSUTLDTC-DATE",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.TORIGDTI"
         },
         {
           "verb": "MOVE",
@@ -2001,80 +1345,8 @@
         {
           "verb": "MOVE",
           "line_no": 322,
-          "raw_text": "MOVE TORIGDTI OF COTRN2AI TO CSUTLDTC-DATE",
-          "reason": "unresolved mutate operand: CSUTLDTC-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE WS-DATE-FORMAT       TO CSUTLDTC-DATE-FORMAT",
-          "reason": "unresolved read operand: WS-DATE-FORMAT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE WS-DATE-FORMAT       TO CSUTLDTC-DATE-FORMAT",
-          "reason": "unresolved mutate operand: CSUTLDTC-DATE-FORMAT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE SPACES               TO CSUTLDTC-RESULT",
-          "reason": "unresolved mutate operand: CSUTLDTC-RESULT"
-        },
-        {
-          "verb": "CALL",
-          "line_no": 322,
-          "raw_text": "CALL 'CSUTLDTC' USING   CSUTLDTC-DATE CSUTLDTC-DATE-FORMAT CSUTLDTC-RESULT",
-          "reason": "unresolved CALL USING operand: CSUTLDTC-DATE"
-        },
-        {
-          "verb": "CALL",
-          "line_no": 322,
-          "raw_text": "CALL 'CSUTLDTC' USING   CSUTLDTC-DATE CSUTLDTC-DATE-FORMAT CSUTLDTC-RESULT",
-          "reason": "unresolved CALL USING operand: CSUTLDTC-DATE-FORMAT"
-        },
-        {
-          "verb": "CALL",
-          "line_no": 322,
-          "raw_text": "CALL 'CSUTLDTC' USING   CSUTLDTC-DATE CSUTLDTC-DATE-FORMAT CSUTLDTC-RESULT",
-          "reason": "unresolved CALL USING operand: CSUTLDTC-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 322,
-          "raw_text": "IF CSUTLDTC-RESULT-SEV-CD = '0000'",
-          "reason": "unresolved read operand: CSUTLDTC-RESULT-SEV-CD"
-        },
-        {
-          "verb": "IF",
-          "line_no": 322,
-          "raw_text": "IF CSUTLDTC-RESULT-MSG-NUM NOT = '2513'",
-          "reason": "unresolved read operand: CSUTLDTC-RESULT-MSG-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE 'Orig Date - Not a valid date...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
           "raw_text": "MOVE -1       TO TORIGDTL OF COTRN2AI",
-          "reason": "unresolved mutate operand: TORIGDTL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE -1       TO TORIGDTL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TORIGDTL"
         },
         {
           "verb": "MOVE",
@@ -2086,13 +1358,7 @@
           "verb": "MOVE",
           "line_no": 322,
           "raw_text": "MOVE TPROCDTI OF COTRN2AI TO CSUTLDTC-DATE",
-          "reason": "unresolved read operand: TPROCDTI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE TPROCDTI OF COTRN2AI TO CSUTLDTC-DATE",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.TPROCDTI"
         },
         {
           "verb": "MOVE",
@@ -2103,80 +1369,8 @@
         {
           "verb": "MOVE",
           "line_no": 322,
-          "raw_text": "MOVE TPROCDTI OF COTRN2AI TO CSUTLDTC-DATE",
-          "reason": "unresolved mutate operand: CSUTLDTC-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE WS-DATE-FORMAT       TO CSUTLDTC-DATE-FORMAT",
-          "reason": "unresolved read operand: WS-DATE-FORMAT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE WS-DATE-FORMAT       TO CSUTLDTC-DATE-FORMAT",
-          "reason": "unresolved mutate operand: CSUTLDTC-DATE-FORMAT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE SPACES               TO CSUTLDTC-RESULT",
-          "reason": "unresolved mutate operand: CSUTLDTC-RESULT"
-        },
-        {
-          "verb": "CALL",
-          "line_no": 322,
-          "raw_text": "CALL 'CSUTLDTC' USING   CSUTLDTC-DATE CSUTLDTC-DATE-FORMAT CSUTLDTC-RESULT",
-          "reason": "unresolved CALL USING operand: CSUTLDTC-DATE"
-        },
-        {
-          "verb": "CALL",
-          "line_no": 322,
-          "raw_text": "CALL 'CSUTLDTC' USING   CSUTLDTC-DATE CSUTLDTC-DATE-FORMAT CSUTLDTC-RESULT",
-          "reason": "unresolved CALL USING operand: CSUTLDTC-DATE-FORMAT"
-        },
-        {
-          "verb": "CALL",
-          "line_no": 322,
-          "raw_text": "CALL 'CSUTLDTC' USING   CSUTLDTC-DATE CSUTLDTC-DATE-FORMAT CSUTLDTC-RESULT",
-          "reason": "unresolved CALL USING operand: CSUTLDTC-RESULT"
-        },
-        {
-          "verb": "IF",
-          "line_no": 322,
-          "raw_text": "IF CSUTLDTC-RESULT-SEV-CD = '0000'",
-          "reason": "unresolved read operand: CSUTLDTC-RESULT-SEV-CD"
-        },
-        {
-          "verb": "IF",
-          "line_no": 322,
-          "raw_text": "IF CSUTLDTC-RESULT-MSG-NUM NOT = '2513'",
-          "reason": "unresolved read operand: CSUTLDTC-RESULT-MSG-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE 'Proc Date - Not a valid date...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
           "raw_text": "MOVE -1       TO TPROCDTL OF COTRN2AI",
-          "reason": "unresolved mutate operand: TPROCDTL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE -1       TO TPROCDTL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TPROCDTL"
         },
         {
           "verb": "MOVE",
@@ -2188,25 +1382,13 @@
           "verb": "IF",
           "line_no": 322,
           "raw_text": "IF MIDI OF COTRN2AI IS NOT NUMERIC",
-          "reason": "unresolved read operand: MIDI"
-        },
-        {
-          "verb": "IF",
-          "line_no": 322,
-          "raw_text": "IF MIDI OF COTRN2AI IS NOT NUMERIC",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.MIDI"
         },
         {
           "verb": "IF",
           "line_no": 322,
           "raw_text": "IF MIDI OF COTRN2AI IS NOT NUMERIC",
           "reason": "unresolved read operand: COTRN2AI"
-        },
-        {
-          "verb": "IF",
-          "line_no": 322,
-          "raw_text": "IF MIDI OF COTRN2AI IS NOT NUMERIC",
-          "reason": "unresolved read operand: IS"
         },
         {
           "verb": "IF",
@@ -2217,26 +1399,8 @@
         {
           "verb": "MOVE",
           "line_no": 322,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE 'Merchant ID must be Numeric...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
           "raw_text": "MOVE -1       TO MIDL OF COTRN2AI",
-          "reason": "unresolved mutate operand: MIDL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 322,
-          "raw_text": "MOVE -1       TO MIDL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.MIDL"
         },
         {
           "verb": "MOVE",
@@ -2247,68 +1411,150 @@
       ]
     },
     "ADD-TRANSACTION": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "TRAN-RECORD.TRAN-ID",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "WS-VARIABLES.WS-TRAN-ID-N",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 177,
+          "length": 16
+        },
+        {
+          "field": "WS-VARIABLES.WS-TRAN-AMT-N",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 193,
+          "length": 11
+        }
+      ],
+      "mutates": [
+        {
+          "field": "TRAN-RECORD.TRAN-ID",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "WS-VARIABLES.WS-TRAN-ID-N",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 177,
+          "length": 16
+        },
+        {
+          "field": "TRAN-RECORD",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 0,
+          "length": 350
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-TYPE-CD",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 16,
+          "length": 2
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-CAT-CD",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 18,
+          "length": 4
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-SOURCE",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 22,
+          "length": 10
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-DESC",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 32,
+          "length": 100
+        },
+        {
+          "field": "WS-VARIABLES.WS-TRAN-AMT-N",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 193,
+          "length": 11
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-AMT",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 132,
+          "length": 11
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-CARD-NUM",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 262,
+          "length": 16
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-MERCHANT-ID",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 143,
+          "length": 9
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-MERCHANT-NAME",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 152,
+          "length": 50
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-MERCHANT-CITY",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 202,
+          "length": 50
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-MERCHANT-ZIP",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 252,
+          "length": 10
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-ORIG-TS",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 278,
+          "length": 26
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-PROC-TS",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 304,
+          "length": 26
+        }
+      ],
       "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 444,
-          "raw_text": "MOVE HIGH-VALUES TO TRAN-ID",
-          "reason": "unresolved mutate operand: TRAN-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
-          "raw_text": "MOVE TRAN-ID     TO WS-TRAN-ID-N",
-          "reason": "unresolved read operand: TRAN-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
-          "raw_text": "MOVE TRAN-ID     TO WS-TRAN-ID-N",
-          "reason": "unresolved mutate operand: WS-TRAN-ID-N"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 444,
-          "raw_text": "ADD 1 TO WS-TRAN-ID-N",
-          "reason": "unresolved read operand: WS-TRAN-ID-N"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 444,
-          "raw_text": "ADD 1 TO WS-TRAN-ID-N",
-          "reason": "unresolved mutate operand: WS-TRAN-ID-N"
-        },
-        {
-          "verb": "INITIALIZE",
-          "line_no": 444,
-          "raw_text": "INITIALIZE TRAN-RECORD",
-          "reason": "unresolved mutate operand: TRAN-RECORD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
-          "raw_text": "MOVE WS-TRAN-ID-N         TO TRAN-ID",
-          "reason": "unresolved read operand: WS-TRAN-ID-N"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
-          "raw_text": "MOVE WS-TRAN-ID-N         TO TRAN-ID",
-          "reason": "unresolved mutate operand: TRAN-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
           "raw_text": "MOVE TTYPCDI  OF COTRN2AI TO TRAN-TYPE-CD",
-          "reason": "unresolved read operand: TTYPCDI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
-          "raw_text": "MOVE TTYPCDI  OF COTRN2AI TO TRAN-TYPE-CD",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.TTYPCDI"
         },
         {
           "verb": "MOVE",
@@ -2319,20 +1565,8 @@
         {
           "verb": "MOVE",
           "line_no": 444,
-          "raw_text": "MOVE TTYPCDI  OF COTRN2AI TO TRAN-TYPE-CD",
-          "reason": "unresolved mutate operand: TRAN-TYPE-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
           "raw_text": "MOVE TCATCDI  OF COTRN2AI TO TRAN-CAT-CD",
-          "reason": "unresolved read operand: TCATCDI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
-          "raw_text": "MOVE TCATCDI  OF COTRN2AI TO TRAN-CAT-CD",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.TCATCDI"
         },
         {
           "verb": "MOVE",
@@ -2343,20 +1577,8 @@
         {
           "verb": "MOVE",
           "line_no": 444,
-          "raw_text": "MOVE TCATCDI  OF COTRN2AI TO TRAN-CAT-CD",
-          "reason": "unresolved mutate operand: TRAN-CAT-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
           "raw_text": "MOVE TRNSRCI  OF COTRN2AI TO TRAN-SOURCE",
-          "reason": "unresolved read operand: TRNSRCI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
-          "raw_text": "MOVE TRNSRCI  OF COTRN2AI TO TRAN-SOURCE",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.TRNSRCI"
         },
         {
           "verb": "MOVE",
@@ -2367,20 +1589,8 @@
         {
           "verb": "MOVE",
           "line_no": 444,
-          "raw_text": "MOVE TRNSRCI  OF COTRN2AI TO TRAN-SOURCE",
-          "reason": "unresolved mutate operand: TRAN-SOURCE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
           "raw_text": "MOVE TDESCI   OF COTRN2AI TO TRAN-DESC",
-          "reason": "unresolved read operand: TDESCI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
-          "raw_text": "MOVE TDESCI   OF COTRN2AI TO TRAN-DESC",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.TDESCI"
         },
         {
           "verb": "MOVE",
@@ -2389,34 +1599,10 @@
           "reason": "unresolved read operand: COTRN2AI"
         },
         {
-          "verb": "MOVE",
-          "line_no": 444,
-          "raw_text": "MOVE TDESCI   OF COTRN2AI TO TRAN-DESC",
-          "reason": "unresolved mutate operand: TRAN-DESC"
-        },
-        {
           "verb": "COMPUTE",
           "line_no": 444,
           "raw_text": "COMPUTE WS-TRAN-AMT-N = FUNCTION NUMVAL-C(TRNAMTI OF COTRN2AI)",
-          "reason": "unresolved mutate operand: WS-TRAN-AMT-N"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 444,
-          "raw_text": "COMPUTE WS-TRAN-AMT-N = FUNCTION NUMVAL-C(TRNAMTI OF COTRN2AI)",
-          "reason": "unresolved read operand: FUNCTION"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 444,
-          "raw_text": "COMPUTE WS-TRAN-AMT-N = FUNCTION NUMVAL-C(TRNAMTI OF COTRN2AI)",
-          "reason": "unresolved read operand: NUMVAL-C(TRNAMTI"
-        },
-        {
-          "verb": "COMPUTE",
-          "line_no": 444,
-          "raw_text": "COMPUTE WS-TRAN-AMT-N = FUNCTION NUMVAL-C(TRNAMTI OF COTRN2AI)",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI).NUMVAL-C(TRNAMTI"
         },
         {
           "verb": "COMPUTE",
@@ -2427,26 +1613,8 @@
         {
           "verb": "MOVE",
           "line_no": 444,
-          "raw_text": "MOVE WS-TRAN-AMT-N TO TRAN-AMT",
-          "reason": "unresolved read operand: WS-TRAN-AMT-N"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
-          "raw_text": "MOVE WS-TRAN-AMT-N TO TRAN-AMT",
-          "reason": "unresolved mutate operand: TRAN-AMT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
           "raw_text": "MOVE CARDNINI OF COTRN2AI TO TRAN-CARD-NUM",
-          "reason": "unresolved read operand: CARDNINI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
-          "raw_text": "MOVE CARDNINI OF COTRN2AI TO TRAN-CARD-NUM",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.CARDNINI"
         },
         {
           "verb": "MOVE",
@@ -2457,20 +1625,8 @@
         {
           "verb": "MOVE",
           "line_no": 444,
-          "raw_text": "MOVE CARDNINI OF COTRN2AI TO TRAN-CARD-NUM",
-          "reason": "unresolved mutate operand: TRAN-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
           "raw_text": "MOVE MIDI     OF COTRN2AI TO TRAN-MERCHANT-ID",
-          "reason": "unresolved read operand: MIDI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
-          "raw_text": "MOVE MIDI     OF COTRN2AI TO TRAN-MERCHANT-ID",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.MIDI"
         },
         {
           "verb": "MOVE",
@@ -2481,20 +1637,8 @@
         {
           "verb": "MOVE",
           "line_no": 444,
-          "raw_text": "MOVE MIDI     OF COTRN2AI TO TRAN-MERCHANT-ID",
-          "reason": "unresolved mutate operand: TRAN-MERCHANT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
           "raw_text": "MOVE MNAMEI   OF COTRN2AI TO TRAN-MERCHANT-NAME",
-          "reason": "unresolved read operand: MNAMEI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
-          "raw_text": "MOVE MNAMEI   OF COTRN2AI TO TRAN-MERCHANT-NAME",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.MNAMEI"
         },
         {
           "verb": "MOVE",
@@ -2505,20 +1649,8 @@
         {
           "verb": "MOVE",
           "line_no": 444,
-          "raw_text": "MOVE MNAMEI   OF COTRN2AI TO TRAN-MERCHANT-NAME",
-          "reason": "unresolved mutate operand: TRAN-MERCHANT-NAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
           "raw_text": "MOVE MCITYI   OF COTRN2AI TO TRAN-MERCHANT-CITY",
-          "reason": "unresolved read operand: MCITYI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
-          "raw_text": "MOVE MCITYI   OF COTRN2AI TO TRAN-MERCHANT-CITY",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.MCITYI"
         },
         {
           "verb": "MOVE",
@@ -2529,20 +1661,8 @@
         {
           "verb": "MOVE",
           "line_no": 444,
-          "raw_text": "MOVE MCITYI   OF COTRN2AI TO TRAN-MERCHANT-CITY",
-          "reason": "unresolved mutate operand: TRAN-MERCHANT-CITY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
           "raw_text": "MOVE MZIPI    OF COTRN2AI TO TRAN-MERCHANT-ZIP",
-          "reason": "unresolved read operand: MZIPI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
-          "raw_text": "MOVE MZIPI    OF COTRN2AI TO TRAN-MERCHANT-ZIP",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.MZIPI"
         },
         {
           "verb": "MOVE",
@@ -2553,20 +1673,8 @@
         {
           "verb": "MOVE",
           "line_no": 444,
-          "raw_text": "MOVE MZIPI    OF COTRN2AI TO TRAN-MERCHANT-ZIP",
-          "reason": "unresolved mutate operand: TRAN-MERCHANT-ZIP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
           "raw_text": "MOVE TORIGDTI OF COTRN2AI TO TRAN-ORIG-TS",
-          "reason": "unresolved read operand: TORIGDTI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
-          "raw_text": "MOVE TORIGDTI OF COTRN2AI TO TRAN-ORIG-TS",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.TORIGDTI"
         },
         {
           "verb": "MOVE",
@@ -2577,45 +1685,122 @@
         {
           "verb": "MOVE",
           "line_no": 444,
-          "raw_text": "MOVE TORIGDTI OF COTRN2AI TO TRAN-ORIG-TS",
-          "reason": "unresolved mutate operand: TRAN-ORIG-TS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
           "raw_text": "MOVE TPROCDTI OF COTRN2AI TO TRAN-PROC-TS",
-          "reason": "unresolved read operand: TPROCDTI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
-          "raw_text": "MOVE TPROCDTI OF COTRN2AI TO TRAN-PROC-TS",
-          "reason": "unresolved read operand: OF"
+          "reason": "unresolved read operand: COTRN2AI.TPROCDTI"
         },
         {
           "verb": "MOVE",
           "line_no": 444,
           "raw_text": "MOVE TPROCDTI OF COTRN2AI TO TRAN-PROC-TS",
           "reason": "unresolved read operand: COTRN2AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 444,
-          "raw_text": "MOVE TPROCDTI OF COTRN2AI TO TRAN-PROC-TS",
-          "reason": "unresolved mutate operand: TRAN-PROC-TS"
         }
       ]
     },
     "COPY-LAST-TRAN-DATA": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE HIGH-VALUES TO TRAN-ID",
-          "reason": "unresolved mutate operand: TRAN-ID"
+          "field": "TRAN-RECORD.TRAN-AMT",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 132,
+          "length": 11
         },
+        {
+          "field": "TRAN-RECORD.TRAN-TYPE-CD",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 16,
+          "length": 2
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-CAT-CD",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 18,
+          "length": 4
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-SOURCE",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 22,
+          "length": 10
+        },
+        {
+          "field": "WS-VARIABLES.WS-TRAN-AMT-E",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 204,
+          "length": 8
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-DESC",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 32,
+          "length": 100
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-ORIG-TS",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 278,
+          "length": 26
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-PROC-TS",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 304,
+          "length": 26
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-MERCHANT-ID",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 143,
+          "length": 9
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-MERCHANT-NAME",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 152,
+          "length": 50
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-MERCHANT-CITY",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 202,
+          "length": 50
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-MERCHANT-ZIP",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 252,
+          "length": 10
+        }
+      ],
+      "mutates": [
+        {
+          "field": "TRAN-RECORD.TRAN-ID",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "WS-VARIABLES.WS-TRAN-AMT-E",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 204,
+          "length": 8
+        }
+      ],
+      "unresolved": [
         {
           "verb": "IF",
           "line_no": 473,
@@ -2625,32 +1810,8 @@
         {
           "verb": "MOVE",
           "line_no": 473,
-          "raw_text": "MOVE TRAN-AMT TO WS-TRAN-AMT-E",
-          "reason": "unresolved read operand: TRAN-AMT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-AMT TO WS-TRAN-AMT-E",
-          "reason": "unresolved mutate operand: WS-TRAN-AMT-E"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
           "raw_text": "MOVE TRAN-TYPE-CD        TO TTYPCDI  OF COTRN2AI",
-          "reason": "unresolved read operand: TRAN-TYPE-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-TYPE-CD        TO TTYPCDI  OF COTRN2AI",
-          "reason": "unresolved mutate operand: TTYPCDI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-TYPE-CD        TO TTYPCDI  OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TTYPCDI"
         },
         {
           "verb": "MOVE",
@@ -2662,19 +1823,7 @@
           "verb": "MOVE",
           "line_no": 473,
           "raw_text": "MOVE TRAN-CAT-CD         TO TCATCDI  OF COTRN2AI",
-          "reason": "unresolved read operand: TRAN-CAT-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-CAT-CD         TO TCATCDI  OF COTRN2AI",
-          "reason": "unresolved mutate operand: TCATCDI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-CAT-CD         TO TCATCDI  OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TCATCDI"
         },
         {
           "verb": "MOVE",
@@ -2686,19 +1835,7 @@
           "verb": "MOVE",
           "line_no": 473,
           "raw_text": "MOVE TRAN-SOURCE         TO TRNSRCI  OF COTRN2AI",
-          "reason": "unresolved read operand: TRAN-SOURCE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-SOURCE         TO TRNSRCI  OF COTRN2AI",
-          "reason": "unresolved mutate operand: TRNSRCI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-SOURCE         TO TRNSRCI  OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TRNSRCI"
         },
         {
           "verb": "MOVE",
@@ -2710,19 +1847,7 @@
           "verb": "MOVE",
           "line_no": 473,
           "raw_text": "MOVE WS-TRAN-AMT-E       TO TRNAMTI  OF COTRN2AI",
-          "reason": "unresolved read operand: WS-TRAN-AMT-E"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE WS-TRAN-AMT-E       TO TRNAMTI  OF COTRN2AI",
-          "reason": "unresolved mutate operand: TRNAMTI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE WS-TRAN-AMT-E       TO TRNAMTI  OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TRNAMTI"
         },
         {
           "verb": "MOVE",
@@ -2734,19 +1859,7 @@
           "verb": "MOVE",
           "line_no": 473,
           "raw_text": "MOVE TRAN-DESC           TO TDESCI   OF COTRN2AI",
-          "reason": "unresolved read operand: TRAN-DESC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-DESC           TO TDESCI   OF COTRN2AI",
-          "reason": "unresolved mutate operand: TDESCI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-DESC           TO TDESCI   OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TDESCI"
         },
         {
           "verb": "MOVE",
@@ -2758,19 +1871,7 @@
           "verb": "MOVE",
           "line_no": 473,
           "raw_text": "MOVE TRAN-ORIG-TS        TO TORIGDTI OF COTRN2AI",
-          "reason": "unresolved read operand: TRAN-ORIG-TS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-ORIG-TS        TO TORIGDTI OF COTRN2AI",
-          "reason": "unresolved mutate operand: TORIGDTI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-ORIG-TS        TO TORIGDTI OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TORIGDTI"
         },
         {
           "verb": "MOVE",
@@ -2782,19 +1883,7 @@
           "verb": "MOVE",
           "line_no": 473,
           "raw_text": "MOVE TRAN-PROC-TS        TO TPROCDTI OF COTRN2AI",
-          "reason": "unresolved read operand: TRAN-PROC-TS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-PROC-TS        TO TPROCDTI OF COTRN2AI",
-          "reason": "unresolved mutate operand: TPROCDTI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-PROC-TS        TO TPROCDTI OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TPROCDTI"
         },
         {
           "verb": "MOVE",
@@ -2806,19 +1895,7 @@
           "verb": "MOVE",
           "line_no": 473,
           "raw_text": "MOVE TRAN-MERCHANT-ID    TO MIDI     OF COTRN2AI",
-          "reason": "unresolved read operand: TRAN-MERCHANT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-MERCHANT-ID    TO MIDI     OF COTRN2AI",
-          "reason": "unresolved mutate operand: MIDI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-MERCHANT-ID    TO MIDI     OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.MIDI"
         },
         {
           "verb": "MOVE",
@@ -2830,19 +1907,7 @@
           "verb": "MOVE",
           "line_no": 473,
           "raw_text": "MOVE TRAN-MERCHANT-NAME  TO MNAMEI   OF COTRN2AI",
-          "reason": "unresolved read operand: TRAN-MERCHANT-NAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-MERCHANT-NAME  TO MNAMEI   OF COTRN2AI",
-          "reason": "unresolved mutate operand: MNAMEI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-MERCHANT-NAME  TO MNAMEI   OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.MNAMEI"
         },
         {
           "verb": "MOVE",
@@ -2854,19 +1919,7 @@
           "verb": "MOVE",
           "line_no": 473,
           "raw_text": "MOVE TRAN-MERCHANT-CITY  TO MCITYI   OF COTRN2AI",
-          "reason": "unresolved read operand: TRAN-MERCHANT-CITY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-MERCHANT-CITY  TO MCITYI   OF COTRN2AI",
-          "reason": "unresolved mutate operand: MCITYI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-MERCHANT-CITY  TO MCITYI   OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.MCITYI"
         },
         {
           "verb": "MOVE",
@@ -2878,19 +1931,7 @@
           "verb": "MOVE",
           "line_no": 473,
           "raw_text": "MOVE TRAN-MERCHANT-ZIP   TO MZIPI    OF COTRN2AI",
-          "reason": "unresolved read operand: TRAN-MERCHANT-ZIP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-MERCHANT-ZIP   TO MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: MZIPI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 473,
-          "raw_text": "MOVE TRAN-MERCHANT-ZIP   TO MZIPI    OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.MZIPI"
         },
         {
           "verb": "MOVE",
@@ -2901,74 +1942,80 @@
       ]
     },
     "RETURN-TO-PREV-SCREEN": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "IF",
-          "line_no": 502,
-          "raw_text": "IF CDEMO-TO-PROGRAM = LOW-VALUES OR SPACES",
-          "reason": "unresolved read operand: CDEMO-TO-PROGRAM"
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-TO-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 16,
+          "length": 8
         },
         {
-          "verb": "MOVE",
-          "line_no": 502,
-          "raw_text": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-TO-PROGRAM"
+          "field": "WS-VARIABLES.WS-TRANID",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 8,
+          "length": 4
         },
         {
-          "verb": "MOVE",
-          "line_no": 502,
-          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
-          "reason": "unresolved read operand: WS-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 502,
-          "raw_text": "MOVE WS-TRANID    TO CDEMO-FROM-TRANID",
-          "reason": "unresolved mutate operand: CDEMO-FROM-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 502,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved read operand: WS-PGMNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 502,
-          "raw_text": "MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM",
-          "reason": "unresolved mutate operand: CDEMO-FROM-PROGRAM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 502,
-          "raw_text": "MOVE ZEROS        TO CDEMO-PGM-CONTEXT",
-          "reason": "unresolved mutate operand: CDEMO-PGM-CONTEXT"
+          "field": "WS-VARIABLES.WS-PGMNAME",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 0,
+          "length": 8
         }
-      ]
+      ],
+      "mutates": [
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-TO-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 16,
+          "length": 8
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-FROM-TRANID",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-FROM-PROGRAM",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 4,
+          "length": 8
+        },
+        {
+          "field": "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-PGM-CONTEXT",
+          "record": "CARDDEMO-COMMAREA",
+          "copybook": "COCOM01Y",
+          "offset": 33,
+          "length": 1
+        }
+      ],
+      "unresolved": []
     },
     "SEND-TRNADD-SCREEN": {
-      "reads": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        }
+      ],
       "mutates": [],
       "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 518,
           "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COTRN2AO",
-          "reason": "unresolved read operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 518,
-          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COTRN2AO",
-          "reason": "unresolved mutate operand: ERRMSGO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 518,
-          "raw_text": "MOVE WS-MESSAGE TO ERRMSGO OF COTRN2AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AO.ERRMSGO"
         },
         {
           "verb": "MOVE",
@@ -2985,49 +2032,156 @@
       ]
     },
     "RECEIVE-TRNADD-SCREEN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "POPULATE-HEADER-INFO": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "CCDA-SCREEN-TITLE.CCDA-TITLE01",
+          "record": "CCDA-SCREEN-TITLE",
+          "copybook": "COTTL01Y",
+          "offset": 0,
+          "length": 40
+        },
+        {
+          "field": "CCDA-SCREEN-TITLE.CCDA-TITLE02",
+          "record": "CCDA-SCREEN-TITLE",
+          "copybook": "COTTL01Y",
+          "offset": 40,
+          "length": 40
+        },
+        {
+          "field": "WS-VARIABLES.WS-TRANID",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 8,
+          "length": 4
+        },
+        {
+          "field": "WS-VARIABLES.WS-PGMNAME",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 0,
+          "length": 8
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURDATE.WS-CURDATE-MONTH",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 4,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURDATE.WS-CURDATE-DAY",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 6,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURDATE.WS-CURDATE-YEAR",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 0,
+          "length": 4
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-MM-DD-YY",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 16,
+          "length": 8
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURTIME.WS-CURTIME-HOURS",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 8,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURTIME.WS-CURTIME-MINUTE",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 10,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURTIME.WS-CURTIME-SECOND",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 12,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURTIME-HH-MM-SS",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 24,
+          "length": 8
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-DATA",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-MM-DD-YY.WS-CURDATE-MM",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 16,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-MM-DD-YY.WS-CURDATE-DD",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 19,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURDATE-MM-DD-YY.WS-CURDATE-YY",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 22,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURTIME-HH-MM-SS.WS-CURTIME-HH",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 24,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURTIME-HH-MM-SS.WS-CURTIME-MM",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 27,
+          "length": 2
+        },
+        {
+          "field": "WS-DATE-TIME.WS-CURTIME-HH-MM-SS.WS-CURTIME-SS",
+          "record": "WS-DATE-TIME",
+          "copybook": "CSDAT01Y",
+          "offset": 30,
+          "length": 2
+        }
+      ],
       "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 554,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved read operand: FUNCTION"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved read operand: CURRENT-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA",
-          "reason": "unresolved mutate operand: WS-CURDATE-DATA"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
           "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COTRN2AO",
-          "reason": "unresolved read operand: CCDA-TITLE01"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COTRN2AO",
-          "reason": "unresolved mutate operand: TITLE01O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE CCDA-TITLE01           TO TITLE01O OF COTRN2AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AO.TITLE01O"
         },
         {
           "verb": "MOVE",
@@ -3039,19 +2193,7 @@
           "verb": "MOVE",
           "line_no": 554,
           "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COTRN2AO",
-          "reason": "unresolved read operand: CCDA-TITLE02"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COTRN2AO",
-          "reason": "unresolved mutate operand: TITLE02O"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE CCDA-TITLE02           TO TITLE02O OF COTRN2AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AO.TITLE02O"
         },
         {
           "verb": "MOVE",
@@ -3063,19 +2205,7 @@
           "verb": "MOVE",
           "line_no": 554,
           "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COTRN2AO",
-          "reason": "unresolved read operand: WS-TRANID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COTRN2AO",
-          "reason": "unresolved mutate operand: TRNNAMEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE WS-TRANID              TO TRNNAMEO OF COTRN2AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AO.TRNNAMEO"
         },
         {
           "verb": "MOVE",
@@ -3087,19 +2217,7 @@
           "verb": "MOVE",
           "line_no": 554,
           "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COTRN2AO",
-          "reason": "unresolved read operand: WS-PGMNAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COTRN2AO",
-          "reason": "unresolved mutate operand: PGMNAMEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE WS-PGMNAME             TO PGMNAMEO OF COTRN2AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AO.PGMNAMEO"
         },
         {
           "verb": "MOVE",
@@ -3110,116 +2228,20 @@
         {
           "verb": "MOVE",
           "line_no": 554,
-          "raw_text": "MOVE WS-CURDATE-MONTH       TO WS-CURDATE-MM",
-          "reason": "unresolved read operand: WS-CURDATE-MONTH"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE WS-CURDATE-MONTH       TO WS-CURDATE-MM",
-          "reason": "unresolved mutate operand: WS-CURDATE-MM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE WS-CURDATE-DAY         TO WS-CURDATE-DD",
-          "reason": "unresolved read operand: WS-CURDATE-DAY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE WS-CURDATE-DAY         TO WS-CURDATE-DD",
-          "reason": "unresolved mutate operand: WS-CURDATE-DD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE WS-CURDATE-YEAR(3:2)   TO WS-CURDATE-YY",
-          "reason": "unresolved read operand: WS-CURDATE-YEAR(3:2)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE WS-CURDATE-YEAR(3:2)   TO WS-CURDATE-YY",
-          "reason": "unresolved mutate operand: WS-CURDATE-YY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
           "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COTRN2AO",
-          "reason": "unresolved read operand: WS-CURDATE-MM-DD-YY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COTRN2AO",
-          "reason": "unresolved mutate operand: CURDATEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COTRN2AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AO.CURDATEO"
         },
         {
           "verb": "MOVE",
           "line_no": 554,
           "raw_text": "MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COTRN2AO",
           "reason": "unresolved mutate operand: COTRN2AO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE WS-CURTIME-HOURS       TO WS-CURTIME-HH",
-          "reason": "unresolved read operand: WS-CURTIME-HOURS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE WS-CURTIME-HOURS       TO WS-CURTIME-HH",
-          "reason": "unresolved mutate operand: WS-CURTIME-HH"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE WS-CURTIME-MINUTE      TO WS-CURTIME-MM",
-          "reason": "unresolved read operand: WS-CURTIME-MINUTE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE WS-CURTIME-MINUTE      TO WS-CURTIME-MM",
-          "reason": "unresolved mutate operand: WS-CURTIME-MM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE WS-CURTIME-SECOND      TO WS-CURTIME-SS",
-          "reason": "unresolved read operand: WS-CURTIME-SECOND"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE WS-CURTIME-SECOND      TO WS-CURTIME-SS",
-          "reason": "unresolved mutate operand: WS-CURTIME-SS"
         },
         {
           "verb": "MOVE",
           "line_no": 554,
           "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COTRN2AO",
-          "reason": "unresolved read operand: WS-CURTIME-HH-MM-SS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COTRN2AO",
-          "reason": "unresolved mutate operand: CURTIMEO"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 554,
-          "raw_text": "MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COTRN2AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AO.CURTIMEO"
         },
         {
           "verb": "MOVE",
@@ -3230,8 +2252,39 @@
       ]
     },
     "READ-CXACAIX-FILE": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "WS-VARIABLES.WS-RESP-CD",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 125,
+          "length": 4
+        },
+        {
+          "field": "WS-VARIABLES.WS-REAS-CD",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 129,
+          "length": 4
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-VARIABLES.WS-ERR-FLG",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 124,
+          "length": 1
+        },
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        }
+      ],
       "unresolved": [
         {
           "verb": "READ",
@@ -3244,12 +2297,6 @@
           "line_no": 578,
           "raw_text": "READ DATASET   (WS-CXACAIX-FILE) INTO      (CARD-XREF-RECORD) LENGTH    (LENGTH OF CARD-XREF-RECORD) RIDFLD    (XREF-ACCT-ID) KEYLENGTH (LENGTH OF XREF-ACCT-ID) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
           "reason": "unresolved mutate operand: (CARD-XREF-RECORD)"
-        },
-        {
-          "verb": "EVALUATE",
-          "line_no": 578,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
         },
         {
           "verb": "WHEN",
@@ -3266,26 +2313,8 @@
         {
           "verb": "MOVE",
           "line_no": 578,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 578,
-          "raw_text": "MOVE 'Account ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 578,
           "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 578,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -3294,40 +2323,10 @@
           "reason": "unresolved mutate operand: COTRN2AI"
         },
         {
-          "verb": "DISPLAY",
-          "line_no": 578,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 578,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 578,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 578,
-          "raw_text": "MOVE 'Unable to lookup Acct in XREF AIX file...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
           "verb": "MOVE",
           "line_no": 578,
           "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 578,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -3338,8 +2337,39 @@
       ]
     },
     "READ-CCXREF-FILE": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "WS-VARIABLES.WS-RESP-CD",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 125,
+          "length": 4
+        },
+        {
+          "field": "WS-VARIABLES.WS-REAS-CD",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 129,
+          "length": 4
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-VARIABLES.WS-ERR-FLG",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 124,
+          "length": 1
+        },
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        }
+      ],
       "unresolved": [
         {
           "verb": "READ",
@@ -3352,12 +2382,6 @@
           "line_no": 611,
           "raw_text": "READ DATASET   (WS-CCXREF-FILE) INTO      (CARD-XREF-RECORD) LENGTH    (LENGTH OF CARD-XREF-RECORD) RIDFLD    (XREF-CARD-NUM) KEYLENGTH (LENGTH OF XREF-CARD-NUM) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
           "reason": "unresolved mutate operand: (CARD-XREF-RECORD)"
-        },
-        {
-          "verb": "EVALUATE",
-          "line_no": 611,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
         },
         {
           "verb": "WHEN",
@@ -3374,26 +2398,8 @@
         {
           "verb": "MOVE",
           "line_no": 611,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 611,
-          "raw_text": "MOVE 'Card Number NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 611,
           "raw_text": "MOVE -1       TO CARDNINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: CARDNINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 611,
-          "raw_text": "MOVE -1       TO CARDNINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.CARDNINL"
         },
         {
           "verb": "MOVE",
@@ -3402,40 +2408,10 @@
           "reason": "unresolved mutate operand: COTRN2AI"
         },
         {
-          "verb": "DISPLAY",
-          "line_no": 611,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 611,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 611,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 611,
-          "raw_text": "MOVE 'Unable to lookup Card # in XREF file...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
           "verb": "MOVE",
           "line_no": 611,
           "raw_text": "MOVE -1       TO CARDNINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: CARDNINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 611,
-          "raw_text": "MOVE -1       TO CARDNINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.CARDNINL"
         },
         {
           "verb": "MOVE",
@@ -3446,8 +2422,39 @@
       ]
     },
     "STARTBR-TRANSACT-FILE": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "WS-VARIABLES.WS-RESP-CD",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 125,
+          "length": 4
+        },
+        {
+          "field": "WS-VARIABLES.WS-REAS-CD",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 129,
+          "length": 4
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-VARIABLES.WS-ERR-FLG",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 124,
+          "length": 1
+        },
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        }
+      ],
       "unresolved": [
         {
           "verb": "EXEC",
@@ -3474,12 +2481,6 @@
           "reason": "unresolved mutate operand: (WS-REAS-CD)"
         },
         {
-          "verb": "EVALUATE",
-          "line_no": 644,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
           "verb": "WHEN",
           "line_no": 644,
           "raw_text": "WHEN DFHRESP(NORMAL)",
@@ -3494,26 +2495,8 @@
         {
           "verb": "MOVE",
           "line_no": 644,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 644,
-          "raw_text": "MOVE 'Transaction ID NOT found...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 644,
           "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 644,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -3522,40 +2505,10 @@
           "reason": "unresolved mutate operand: COTRN2AI"
         },
         {
-          "verb": "DISPLAY",
-          "line_no": 644,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 644,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 644,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 644,
-          "raw_text": "MOVE 'Unable to lookup Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
           "verb": "MOVE",
           "line_no": 644,
           "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 644,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -3566,8 +2519,46 @@
       ]
     },
     "READPREV-TRANSACT-FILE": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "WS-VARIABLES.WS-RESP-CD",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 125,
+          "length": 4
+        },
+        {
+          "field": "WS-VARIABLES.WS-REAS-CD",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 129,
+          "length": 4
+        }
+      ],
+      "mutates": [
+        {
+          "field": "TRAN-RECORD.TRAN-ID",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "WS-VARIABLES.WS-ERR-FLG",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 124,
+          "length": 1
+        },
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        }
+      ],
       "unresolved": [
         {
           "verb": "EXEC",
@@ -3579,7 +2570,7 @@
           "verb": "EXEC",
           "line_no": 675,
           "raw_text": "EXEC CICS READPREV DATASET   (WS-TRANSACT-FILE) INTO      (TRAN-RECORD) LENGTH    (LENGTH OF TRAN-RECORD) RIDFLD    (TRAN-ID) KEYLENGTH (LENGTH OF TRAN-ID) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
-          "reason": "unresolved read operand: (LENGTH"
+          "reason": "unresolved read operand: TRAN-RECORD).(LENGTH"
         },
         {
           "verb": "EXEC",
@@ -3604,12 +2595,6 @@
           "line_no": 675,
           "raw_text": "EXEC CICS READPREV DATASET   (WS-TRANSACT-FILE) INTO      (TRAN-RECORD) LENGTH    (LENGTH OF TRAN-RECORD) RIDFLD    (TRAN-ID) KEYLENGTH (LENGTH OF TRAN-ID) RESP      (WS-RESP-CD) RESP2     (WS-REAS-CD)",
           "reason": "unresolved mutate operand: (WS-REAS-CD)"
-        },
-        {
-          "verb": "EVALUATE",
-          "line_no": 675,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
         },
         {
           "verb": "WHEN",
@@ -3626,44 +2611,8 @@
         {
           "verb": "MOVE",
           "line_no": 675,
-          "raw_text": "MOVE ZEROS TO TRAN-ID",
-          "reason": "unresolved mutate operand: TRAN-ID"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 675,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 675,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 675,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 675,
-          "raw_text": "MOVE 'Unable to lookup Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 675,
           "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 675,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -3674,13 +2623,52 @@
       ]
     },
     "ENDBR-TRANSACT-FILE": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "WRITE-TRANSACT-FILE": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "WS-VARIABLES.WS-RESP-CD",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 125,
+          "length": 4
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-ID",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "WS-VARIABLES.WS-REAS-CD",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 129,
+          "length": 4
+        }
+      ],
+      "mutates": [
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        },
+        {
+          "field": "WS-VARIABLES.WS-ERR-FLG",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 124,
+          "length": 1
+        }
+      ],
       "unresolved": [
         {
           "verb": "WRITE",
@@ -3695,22 +2683,10 @@
           "reason": "unresolved read operand: (TRAN-RECORD)"
         },
         {
-          "verb": "EVALUATE",
-          "line_no": 713,
-          "raw_text": "EVALUATE WS-RESP-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
           "verb": "WHEN",
           "line_no": 713,
           "raw_text": "WHEN DFHRESP(NORMAL)",
           "reason": "unresolved read operand: DFHRESP(NORMAL)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 713,
-          "raw_text": "MOVE SPACES             TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
           "verb": "MOVE",
@@ -3722,31 +2698,13 @@
           "verb": "MOVE",
           "line_no": 713,
           "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COTRN2AO",
-          "reason": "unresolved mutate operand: ERRMSGC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 713,
-          "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COTRN2AO",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AO.ERRMSGC"
         },
         {
           "verb": "MOVE",
           "line_no": 713,
           "raw_text": "MOVE DFHGREEN           TO ERRMSGC  OF COTRN2AO",
           "reason": "unresolved mutate operand: COTRN2AO"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 713,
-          "raw_text": "STRING 'Transaction added successfully. ' DELIMITED BY SIZE ' Your Tran ID is ' DELIMITED BY SIZE TRAN-ID  DELIMITED BY SPACE '.' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved read operand: TRAN-ID"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 713,
-          "raw_text": "STRING 'Transaction added successfully. ' DELIMITED BY SIZE ' Your Tran ID is ' DELIMITED BY SIZE TRAN-ID  DELIMITED BY SPACE '.' DELIMITED BY SIZE INTO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
         },
         {
           "verb": "WHEN",
@@ -3763,26 +2721,8 @@
         {
           "verb": "MOVE",
           "line_no": 713,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 713,
-          "raw_text": "MOVE 'Tran ID already exist...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 713,
           "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 713,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -3791,40 +2731,10 @@
           "reason": "unresolved mutate operand: COTRN2AI"
         },
         {
-          "verb": "DISPLAY",
-          "line_no": 713,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-RESP-CD"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 713,
-          "raw_text": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD",
-          "reason": "unresolved read operand: WS-REAS-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 713,
-          "raw_text": "MOVE 'Y'     TO WS-ERR-FLG",
-          "reason": "unresolved mutate operand: WS-ERR-FLG"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 713,
-          "raw_text": "MOVE 'Unable to Add Transaction...' TO WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
-        },
-        {
           "verb": "MOVE",
           "line_no": 713,
           "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 713,
-          "raw_text": "MOVE -1       TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -3835,25 +2745,29 @@
       ]
     },
     "CLEAR-CURRENT-SCREEN": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "INITIALIZE-ALL-FIELDS": {
+      "section_name": null,
       "reads": [],
-      "mutates": [],
+      "mutates": [
+        {
+          "field": "WS-VARIABLES.WS-MESSAGE",
+          "record": "WS-VARIABLES",
+          "copybook": null,
+          "offset": 12,
+          "length": 80
+        }
+      ],
       "unresolved": [
         {
           "verb": "MOVE",
           "line_no": 764,
           "raw_text": "MOVE -1              TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: ACTIDINL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 764,
-          "raw_text": "MOVE -1              TO ACTIDINL OF COTRN2AI",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.ACTIDINL"
         },
         {
           "verb": "MOVE",
@@ -3865,13 +2779,7 @@
           "verb": "MOVE",
           "line_no": 764,
           "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: ACTIDINI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 764,
-          "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.ACTIDINI"
         },
         {
           "verb": "MOVE",
@@ -3883,13 +2791,7 @@
           "verb": "MOVE",
           "line_no": 764,
           "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: CARDNINI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 764,
-          "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.CARDNINI"
         },
         {
           "verb": "MOVE",
@@ -3901,13 +2803,7 @@
           "verb": "MOVE",
           "line_no": 764,
           "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: TTYPCDI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 764,
-          "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TTYPCDI"
         },
         {
           "verb": "MOVE",
@@ -3919,13 +2815,7 @@
           "verb": "MOVE",
           "line_no": 764,
           "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: TCATCDI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 764,
-          "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TCATCDI"
         },
         {
           "verb": "MOVE",
@@ -3937,13 +2827,7 @@
           "verb": "MOVE",
           "line_no": 764,
           "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: TRNSRCI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 764,
-          "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TRNSRCI"
         },
         {
           "verb": "MOVE",
@@ -3955,13 +2839,7 @@
           "verb": "MOVE",
           "line_no": 764,
           "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: TRNAMTI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 764,
-          "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TRNAMTI"
         },
         {
           "verb": "MOVE",
@@ -3973,13 +2851,7 @@
           "verb": "MOVE",
           "line_no": 764,
           "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: TDESCI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 764,
-          "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TDESCI"
         },
         {
           "verb": "MOVE",
@@ -3991,13 +2863,7 @@
           "verb": "MOVE",
           "line_no": 764,
           "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: TORIGDTI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 764,
-          "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TORIGDTI"
         },
         {
           "verb": "MOVE",
@@ -4009,13 +2875,7 @@
           "verb": "MOVE",
           "line_no": 764,
           "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: TPROCDTI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 764,
-          "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.TPROCDTI"
         },
         {
           "verb": "MOVE",
@@ -4027,13 +2887,7 @@
           "verb": "MOVE",
           "line_no": 764,
           "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: MIDI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 764,
-          "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.MIDI"
         },
         {
           "verb": "MOVE",
@@ -4045,13 +2899,7 @@
           "verb": "MOVE",
           "line_no": 764,
           "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: MNAMEI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 764,
-          "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.MNAMEI"
         },
         {
           "verb": "MOVE",
@@ -4063,13 +2911,7 @@
           "verb": "MOVE",
           "line_no": 764,
           "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: MCITYI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 764,
-          "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.MCITYI"
         },
         {
           "verb": "MOVE",
@@ -4081,13 +2923,7 @@
           "verb": "MOVE",
           "line_no": 764,
           "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: MZIPI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 764,
-          "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.MZIPI"
         },
         {
           "verb": "MOVE",
@@ -4099,25 +2935,13 @@
           "verb": "MOVE",
           "line_no": 764,
           "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: CONFIRMI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 764,
-          "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: OF"
+          "reason": "unresolved mutate operand: COTRN2AI.CONFIRMI"
         },
         {
           "verb": "MOVE",
           "line_no": 764,
           "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
           "reason": "unresolved mutate operand: COTRN2AI"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 764,
-          "raw_text": "MOVE SPACES          TO ACTIDINI OF COTRN2AI CARDNINI OF COTRN2AI TTYPCDI  OF COTRN2AI TCATCDI  OF COTRN2AI TRNSRCI  OF COTRN2AI TRNAMTI  OF COTRN2AI TDESCI   OF COTRN2AI TORIGDTI OF COTRN2AI TPROCDTI OF COTRN2AI MIDI     OF COTRN2AI MNAMEI   OF COTRN2AI MCITYI   OF COTRN2AI MZIPI    OF COTRN2AI CONFIRMI OF COTRN2AI WS-MESSAGE",
-          "reason": "unresolved mutate operand: WS-MESSAGE"
         }
       ]
     }

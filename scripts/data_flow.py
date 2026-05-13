@@ -15,7 +15,7 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-SCHEMA_VERSION = "1.2"
+SCHEMA_VERSION = "1.3"
 BYTE_LAYOUTS_DIR = Path("data/byte_layouts")
 CBL_DIR          = Path("data/raw/cbl")
 OUT_DIR          = Path("data/data_flow")
@@ -53,7 +53,7 @@ _PARA_HEADER_RE = re.compile(
 )
 
 _SECTION_HEADER_RE = re.compile(
-    r'^[A-Z0-9][A-Z0-9\-]*\s+SECTION\b',
+    r'^([A-Z0-9][A-Z0-9\-]*)\s+SECTION\b',
     re.IGNORECASE
 )
 
@@ -61,6 +61,117 @@ _CALL_TARGET_RE = re.compile(
     r'^CALL\s+(?:\'([^\']+)\'|"([^"]+)"|([A-Z0-9][A-Z0-9\-]*))',
     re.IGNORECASE
 )
+
+# ---------------------------------------------------------------------------
+# Intrinsic and connective skip sets (STEP 2: Patch 2)
+# ---------------------------------------------------------------------------
+
+_INTRINSICS = frozenset({
+    "FUNCTION",
+    "UPPER-CASE",
+    "LOWER-CASE",
+    "TRIM",
+    "LENGTH",
+    "NUMVAL",
+    "NUMVAL-C",
+    "CURRENT-DATE",
+    "INTEGER",
+    "INTEGER-OF-DATE",
+    "DATE-OF-INTEGER",
+    "WHEN-COMPILED",
+    "RANDOM",
+    "MOD",
+})
+
+_CONNECTIVES = frozenset({
+    "TO",
+    "FROM",
+    "BY",
+    "INTO",
+    "USING",
+    "GIVING",
+    "UPON",
+    "THRU",
+    "THROUGH",
+    "TIMES",
+    "UNTIL",
+    "VARYING",
+    "IS",
+    "ARE",
+    "NOT",
+    "AND",
+    "OR",
+    "OF",
+    "IN",
+    "THEN",
+    "ELSE",
+    "WHEN",
+    "ON",
+    "SIZE",
+    "ERROR",
+    "AT",
+    "END",
+    "KEY",
+    "EQUAL",
+    "GREATER",
+    "LESS",
+    "THAN",
+    "ZERO",
+    "ZEROS",
+    "ZEROES",
+    "SPACE",
+    "SPACES",
+    "HIGH-VALUE",
+    "HIGH-VALUES",
+    "LOW-VALUE",
+    "LOW-VALUES",
+    "ALL",
+    "FIRST",
+    "LAST",
+    "ANY",
+    "EACH",
+    "WITH",
+    "BEFORE",
+    "AFTER",
+    "INPUT",
+    "OUTPUT",
+    "I-O",
+    "EXTEND",
+    "REVERSED",
+    "NO",
+    "REWIND",
+    "RECORD",
+    "CORRESPONDING",
+    "CORR",
+})
+
+
+def _should_skip_operand(tok: str) -> bool:
+    """Return True if *tok* is a COBOL keyword/syntax token that should never
+    be resolved as a data-field operand."""
+    if not tok:
+        return True
+    u = tok.upper()
+    if u in _INTRINSICS or u in _CONNECTIVES:
+        return True
+    if u in {"(", ")", ",", ".", ":", ";"}:
+        return True
+    if u.startswith("'") or u.startswith('"'):
+        return True
+    if u.isdigit():
+        return True
+    return False
+
+
+def _canonical_operand(tokens, i):
+    """Canonicalize COBOL qualified-name syntax: FIELD OF RECORD or FIELD IN RECORD
+    becomes RECORD.FIELD for resolution."""
+    tok = tokens[i]
+    if i + 2 < len(tokens) and tokens[i + 1].upper() in {"OF", "IN"}:
+        owner = tokens[i + 2]
+        if not _should_skip_operand(tok) and not _should_skip_operand(owner):
+            return f"{owner}.{tok}"
+    return tok
 
 
 # ---------------------------------------------------------------------------
@@ -319,13 +430,44 @@ def _split_on_period(text: str) -> list:
 
 
 # ---------------------------------------------------------------------------
-# Paragraph extractor
+# Paragraph extractor  (Section 3.4: per-name occurrences list)
 # ---------------------------------------------------------------------------
 
 def extract_paragraphs(lines: list) -> dict:
+    """
+    Return a dict mapping paragraph names to their occurrence data.
+    Public signature: dict[str, entry]  --  FROZEN (Sections 3.1-3.3).
+
+    Special key '__MAIN__' maps to a plain list[(lineno, text)] for lines
+    that appear before the first named paragraph.
+
+    For every real paragraph name the value is:
+        {
+            'name': str,           # paragraph name (uppercased)
+            'occurrences': [       # one entry per encounter, never merged
+                {
+                    'section_name': str | None,
+                    'lines': [(lineno, text), ...]
+                },
+                ...
+            ]
+        }
+
+    When the same paragraph name appears under two different SECTION headers
+    a second occurrence is appended rather than merging into the first.
+    len(occurrences) == 1 for unique names; 2+ for cross-section duplicates.
+
+    Section-name canonicalization:
+      - Full identifier before the SECTION keyword
+      - Trailing period stripped
+      - Whitespace collapsed
+      - Digit prefix and hyphen preserved verbatim
+      - Uppercased
+    """
     paragraphs = {}
     current = '__MAIN__'
-    paragraphs[current] = []
+    paragraphs[current] = []          # plain list; callers skip __MAIN__
+    current_section = None            # None = no SECTION header seen yet
 
     proc_lines_raw = []
     in_procedure = False
@@ -341,13 +483,34 @@ def extract_paragraphs(lines: list) -> dict:
     proc_lines = _join_source_lines(proc_lines_raw)
 
     for lineno, text in proc_lines:
+        stripped = text.strip()
+        # --- SECTION header? ---
+        sm = _SECTION_HEADER_RE.match(stripped)
+        if sm and not text[0:1] == ' ':   # must be Area A (no leading space)
+            # canonicalize: group 1 is the identifier before SECTION
+            current_section = sm.group(1).rstrip('.').strip().upper()
+            # do NOT emit a paragraph entry for the section header
+            continue
+
         if _is_area_a_paragraph(text):
-            candidate = _PARA_HEADER_RE.match(text.strip()).group(1).upper()
+            candidate = _PARA_HEADER_RE.match(stripped).group(1).upper()
             current = candidate
             if current not in paragraphs:
-                paragraphs[current] = []
+                # First encounter: create the per-name entry
+                paragraphs[current] = {'name': current, 'occurrences': []}
+            # Always append a fresh occurrence for this encounter
+            paragraphs[current]['occurrences'].append(
+                {'section_name': current_section, 'lines': []}
+            )
         else:
-            paragraphs[current].append((lineno, text))
+            entry_val = paragraphs[current]
+            if isinstance(entry_val, list):
+                # __MAIN__ path: plain list
+                entry_val.append((lineno, text))
+            else:
+                # Real paragraph: append to the most recent occurrence
+                entry_val['occurrences'][-1]['lines'].append((lineno, text))
+
     return paragraphs
 
 
@@ -542,8 +705,15 @@ def classify_statement(
     verb = tokens[0].upper()
 
     def _add_read(name):
+        if _should_skip_operand(name):
+            return
         if name == '__LIT__' or is_literal(name):
             return
+        # Apply OF/IN qualifier canonicalization before resolution
+        for i, tok in enumerate(tokens):
+            if tok == name:
+                name = _canonical_operand(tokens, i)
+                break
         hits = resolve(name, qmap, context_records)
         if not hits:
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
@@ -555,10 +725,17 @@ def classify_statement(
                     context_records.add(h['record'])
 
     def _add_mutate(name):
+        if _should_skip_operand(name):
+            return
         if name == '__LIT__' or is_literal(name):
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
                                'reason': f'literal as mutate target (ignored): {name}'})
             return
+        # Apply OF/IN qualifier canonicalization before resolution
+        for i, tok in enumerate(tokens):
+            if tok == name:
+                name = _canonical_operand(tokens, i)
+                break
         hits = resolve(name, qmap, context_records)
         if not hits:
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
@@ -922,6 +1099,16 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
 
     program_unresolved = []
     facts_path = FACTS_DIR / f"{program_name}.json"
+
+    # Build flat occurrence list: (name, section_name, lines) per occurrence
+    # Used for: actual_para count, collision detection, and per-occurrence emit.
+    all_occurrences = [
+        (name, occ['section_name'], occ['lines'])
+        for name, entry in paragraphs.items()
+        if name != '__MAIN__'
+        for occ in entry['occurrences']
+    ]
+
     if facts_path.exists():
         try:
             with open(facts_path, encoding='utf-8') as fh:
@@ -934,7 +1121,8 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
             else:
                 expected_para = None
 
-            actual_para = len([k for k in paragraphs if k != '__MAIN__'])
+            # actual_para = total occurrence count (not unique name count)
+            actual_para = len(all_occurrences)
             if expected_para is not None and abs(actual_para - expected_para) > 1:
                 msg = (f"paragraph count mismatch: local={actual_para} "
                        f"facts={expected_para}")
@@ -944,11 +1132,19 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
             print(f"WARNING [{program_name}]: could not read facts: {exc}", file=sys.stderr)
 
     call_graph_set = []
+
+    # --- Collision detection: names that appear under 2+ distinct section values ---
+    name_section_sets = defaultdict(set)
+    for name, sname, _ in all_occurrences:
+        name_section_sets[name].add(sname)
+    colliding_names = {
+        name for name, snames in name_section_sets.items() if len(snames) > 1
+    }
+
+    # --- Emit paragraph_data_flow: one entry per occurrence ---
     paragraph_data_flow = {}
 
-    for para_name, para_lines in paragraphs.items():
-        if para_name == '__MAIN__':
-            continue
+    for para_name, section_name, para_lines in all_occurrences:
         reads = []; mutates = []; unresolved_list = []
         para_call_targets = []
         context_records: set = set()
@@ -964,11 +1160,20 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
             if t not in call_graph_set:
                 call_graph_set.append(t)
 
-        paragraph_data_flow[para_name] = {
-            'reads':      reads,
-            'mutates':    mutates,
-            'unresolved': unresolved_list,
+        entry_data = {
+            'section_name': section_name,
+            'reads':        reads,
+            'mutates':      mutates,
+            'unresolved':   unresolved_list,
         }
+
+        # Apply compound key only for cross-section name collisions
+        if para_name in colliding_names:
+            emit_key = f"{section_name}::{para_name}"
+        else:
+            emit_key = para_name
+
+        paragraph_data_flow[emit_key] = entry_data
 
     return {
         'program':             program_name,

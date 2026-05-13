@@ -1,0 +1,430 @@
+{
+  "schema_version": "1.1",
+  "program": "CBSTM03B",
+  "source_file": "data/raw/cbl/CBSTM03B.CBL",
+  "extracted_at": "2026-05-12T16:52:22.162231+00:00",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 0,
+  "gate_status": "PASS",
+  "gate_reasons": [],
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [
+    "0000-START",
+    "1000-TRNXFILE-PROC",
+    "1900-EXIT",
+    "1999-EXIT",
+    "2000-XREFFILE-PROC",
+    "2900-EXIT",
+    "2999-EXIT",
+    "3000-CUSTFILE-PROC",
+    "3900-EXIT",
+    "3999-EXIT",
+    "4000-ACCTFILE-PROC",
+    "4900-EXIT",
+    "4999-EXIT",
+    "9999-GOBACK"
+  ],
+  "data_items": [
+    "ACCTFILE-STATUS",
+    "CUSTFILE-STATUS",
+    "FD-ACCTFILE-REC",
+    "FD-CUSTFILE-REC",
+    "FD-TRNXFILE-REC",
+    "FD-XREFFILE-REC",
+    "LK-M03B-AREA",
+    "TRNXFILE-STATUS",
+    "XREFFILE-STATUS"
+  ],
+  "external_calls": [],
+  "internal_performs": [
+    "1000-TRNXFILE-PROC",
+    "2000-XREFFILE-PROC",
+    "3000-CUSTFILE-PROC",
+    "4000-ACCTFILE-PROC"
+  ],
+  "data_files": [
+    {
+      "name": "TRNX-FILE",
+      "ddname": "TRNXFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "XREF-FILE",
+      "ddname": "XREFFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "CUST-FILE",
+      "ddname": "CUSTFILE",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    },
+    {
+      "name": "ACCT-FILE",
+      "ddname": "ACCTFILE",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    }
+  ],
+  "copybooks_referenced": [],
+  "cfg": {
+    "source": null,
+    "edges": null,
+    "unresolved": null
+  },
+  "paragraphs_defined": [
+    {
+      "name": "0000-START",
+      "source_line": 76,
+      "area_a": false
+    },
+    {
+      "name": "9999-GOBACK",
+      "source_line": 89,
+      "area_a": false
+    },
+    {
+      "name": "1000-TRNXFILE-PROC",
+      "source_line": 92,
+      "area_a": false
+    },
+    {
+      "name": "1900-EXIT",
+      "source_line": 104,
+      "area_a": false
+    },
+    {
+      "name": "1999-EXIT",
+      "source_line": 105,
+      "area_a": false
+    },
+    {
+      "name": "2000-XREFFILE-PROC",
+      "source_line": 106,
+      "area_a": false
+    },
+    {
+      "name": "2900-EXIT",
+      "source_line": 119,
+      "area_a": false
+    },
+    {
+      "name": "2999-EXIT",
+      "source_line": 120,
+      "area_a": false
+    },
+    {
+      "name": "3000-CUSTFILE-PROC",
+      "source_line": 121,
+      "area_a": false
+    },
+    {
+      "name": "3900-EXIT",
+      "source_line": 138,
+      "area_a": false
+    },
+    {
+      "name": "3999-EXIT",
+      "source_line": 141,
+      "area_a": false
+    },
+    {
+      "name": "4000-ACCTFILE-PROC",
+      "source_line": 142,
+      "area_a": false
+    },
+    {
+      "name": "4900-EXIT",
+      "source_line": 165,
+      "area_a": false
+    },
+    {
+      "name": "4999-EXIT",
+      "source_line": 167,
+      "area_a": false
+    }
+  ],
+  "paragraphs_referenced": [
+    "1000-TRNXFILE-PROC",
+    "1900-EXIT",
+    "2000-XREFFILE-PROC",
+    "2900-EXIT",
+    "3000-CUSTFILE-PROC",
+    "3900-EXIT",
+    "4000-ACCTFILE-PROC",
+    "4900-EXIT",
+    "9999-GOBACK"
+  ],
+  "paragraph_actions": {
+    "0000-START": [
+      "branch_logic",
+      "program_exit"
+    ],
+    "9999-GOBACK": [
+      "abend",
+      "program_exit"
+    ],
+    "1000-TRNXFILE-PROC": [
+      "branch_logic",
+      "close_file",
+      "open_file",
+      "read_file"
+    ],
+    "1900-EXIT": [
+      "transform_data"
+    ],
+    "1999-EXIT": [
+      "no_action_detected"
+    ],
+    "2000-XREFFILE-PROC": [
+      "branch_logic",
+      "close_file",
+      "open_file",
+      "read_file"
+    ],
+    "2900-EXIT": [
+      "transform_data"
+    ],
+    "2999-EXIT": [
+      "no_action_detected"
+    ],
+    "3000-CUSTFILE-PROC": [
+      "branch_logic",
+      "close_file",
+      "open_file",
+      "read_file"
+    ],
+    "3900-EXIT": [
+      "transform_data"
+    ],
+    "3999-EXIT": [
+      "no_action_detected"
+    ],
+    "4000-ACCTFILE-PROC": [
+      "branch_logic",
+      "close_file",
+      "open_file",
+      "read_file"
+    ],
+    "4900-EXIT": [
+      "transform_data"
+    ],
+    "4999-EXIT": [
+      "no_action_detected"
+    ]
+  },
+  "file_lineage": [
+    {
+      "name": "TRNX-FILE",
+      "ddname": "TRNXFILE",
+      "fd_record": "TRNX-FILE"
+    },
+    {
+      "name": "XREF-FILE",
+      "ddname": "XREFFILE",
+      "fd_record": "XREF-FILE"
+    },
+    {
+      "name": "CUST-FILE",
+      "ddname": "CUSTFILE",
+      "fd_record": "CUST-FILE"
+    },
+    {
+      "name": "ACCT-FILE",
+      "ddname": "ACCTFILE",
+      "fd_record": "ACCT-FILE"
+    }
+  ],
+  "file_operations": {
+    "TRNX-FILE": [
+      {
+        "paragraph": "1000-TRNXFILE-PROC",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "1000-TRNXFILE-PROC",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "1000-TRNXFILE-PROC",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "XREF-FILE": [
+      {
+        "paragraph": "2000-XREFFILE-PROC",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "2000-XREFFILE-PROC",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "2000-XREFFILE-PROC",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "CUST-FILE": [
+      {
+        "paragraph": "3000-CUSTFILE-PROC",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "3000-CUSTFILE-PROC",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "3000-CUSTFILE-PROC",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "ACCT-FILE": [
+      {
+        "paragraph": "4000-ACCTFILE-PROC",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "4000-ACCTFILE-PROC",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "4000-ACCTFILE-PROC",
+        "operation": "close",
+        "source_line": null
+      }
+    ]
+  },
+  "control_flow": {
+    "cfg_source": "text_scan",
+    "entry_points": [
+      "0000-START"
+    ],
+    "exit_points": [
+      "0000-START",
+      "1000-TRNXFILE-PROC",
+      "2000-XREFFILE-PROC",
+      "3000-CUSTFILE-PROC",
+      "4000-ACCTFILE-PROC",
+      "4999-EXIT",
+      "9999-GOBACK"
+    ],
+    "edges": [
+      {
+        "from": "0000-START",
+        "to": "1000-TRNXFILE-PROC",
+        "type": "perform_thru",
+        "thru": "1999-EXIT",
+        "source_lines": null
+      },
+      {
+        "from": "0000-START",
+        "to": "2000-XREFFILE-PROC",
+        "type": "perform_thru",
+        "thru": "2999-EXIT",
+        "source_lines": null
+      },
+      {
+        "from": "0000-START",
+        "to": "3000-CUSTFILE-PROC",
+        "type": "perform_thru",
+        "thru": "3999-EXIT",
+        "source_lines": null
+      },
+      {
+        "from": "0000-START",
+        "to": "4000-ACCTFILE-PROC",
+        "type": "perform_thru",
+        "thru": "4999-EXIT",
+        "source_lines": null
+      },
+      {
+        "from": "0000-START",
+        "to": "9999-GOBACK",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "1000-TRNXFILE-PROC",
+        "to": "1900-EXIT",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "1900-EXIT",
+        "to": "1999-EXIT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1999-EXIT",
+        "to": "2000-XREFFILE-PROC",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2000-XREFFILE-PROC",
+        "to": "2900-EXIT",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "2900-EXIT",
+        "to": "2999-EXIT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2999-EXIT",
+        "to": "3000-CUSTFILE-PROC",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "3000-CUSTFILE-PROC",
+        "to": "3900-EXIT",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "3900-EXIT",
+        "to": "3999-EXIT",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "3999-EXIT",
+        "to": "4000-ACCTFILE-PROC",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "4000-ACCTFILE-PROC",
+        "to": "4900-EXIT",
+        "type": "goto",
+        "source_lines": null
+      },
+      {
+        "from": "4900-EXIT",
+        "to": "4999-EXIT",
+        "type": "fallthrough",
+        "source_lines": null
+      }
+    ],
+    "unresolved": []
+  },
+  "cics": null
+}

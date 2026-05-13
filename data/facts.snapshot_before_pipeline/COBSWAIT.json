@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.1",
+  "program": "COBSWAIT",
+  "source_file": "data/raw/cbl/COBSWAIT.cbl",
+  "extracted_at": "2026-05-12T16:52:22.406903+00:00",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 1,
+  "gate_status": "WARN",
+  "gate_reasons": [
+    "no_paragraphs"
+  ],
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [],
+  "data_items": [
+    "MVSWAIT-TIME",
+    "PARM-VALUE"
+  ],
+  "external_calls": [
+    "MVSWAIT"
+  ],
+  "internal_performs": [],
+  "data_files": [],
+  "copybooks_referenced": [],
+  "cfg": {
+    "source": null,
+    "edges": null,
+    "unresolved": null
+  },
+  "paragraphs_defined": [],
+  "paragraphs_referenced": [],
+  "paragraph_actions": {},
+  "file_lineage": [],
+  "file_operations": {},
+  "control_flow": {
+    "cfg_source": "text_scan",
+    "entry_points": [],
+    "exit_points": [],
+    "edges": [],
+    "unresolved": [],
+    "cfg_note": "structural_minimal: no paragraphs detected"
+  },
+  "cics": null
+}

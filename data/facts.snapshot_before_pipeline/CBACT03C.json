@@ -1,0 +1,224 @@
+{
+  "schema_version": "1.1",
+  "program": "CBACT03C",
+  "source_file": "data/raw/cbl/CBACT03C.cbl",
+  "extracted_at": "2026-05-12T16:52:22.073974+00:00",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 0,
+  "gate_status": "PASS",
+  "gate_reasons": [],
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [
+    "0000-XREFFILE-OPEN",
+    "1000-XREFFILE-GET-NEXT",
+    "9000-XREFFILE-CLOSE",
+    "9910-DISPLAY-IO-STATUS",
+    "9999-ABEND-PROGRAM"
+  ],
+  "data_items": [
+    "ABCODE",
+    "APPL-RESULT",
+    "END-OF-FILE",
+    "FD-XREFFILE-REC",
+    "IO-STATUS",
+    "IO-STATUS-04",
+    "TIMING",
+    "TWO-BYTES-ALPHA",
+    "TWO-BYTES-BINARY",
+    "XREFFILE-STATUS"
+  ],
+  "external_calls": [
+    "CEE3ABD"
+  ],
+  "internal_performs": [
+    "0000-XREFFILE-OPEN",
+    "1000-XREFFILE-GET-NEXT",
+    "9000-XREFFILE-CLOSE",
+    "9910-DISPLAY-IO-STATUS",
+    "9999-ABEND-PROGRAM"
+  ],
+  "data_files": [
+    {
+      "name": "XREFFILE-FILE",
+      "ddname": "XREFFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    }
+  ],
+  "copybooks_referenced": [
+    "CVACT03Y"
+  ],
+  "cfg": {
+    "source": null,
+    "edges": null,
+    "unresolved": null
+  },
+  "paragraphs_defined": [
+    {
+      "name": "1000-XREFFILE-GET-NEXT",
+      "source_line": 67,
+      "area_a": false
+    },
+    {
+      "name": "0000-XREFFILE-OPEN",
+      "source_line": 92,
+      "area_a": false
+    },
+    {
+      "name": "9000-XREFFILE-CLOSE",
+      "source_line": 109,
+      "area_a": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "source_line": 127,
+      "area_a": false
+    },
+    {
+      "name": "9910-DISPLAY-IO-STATUS",
+      "source_line": 133,
+      "area_a": false
+    }
+  ],
+  "paragraphs_referenced": [
+    "0000-XREFFILE-OPEN",
+    "1000-XREFFILE-GET-NEXT",
+    "9000-XREFFILE-CLOSE",
+    "9910-DISPLAY-IO-STATUS",
+    "9999-ABEND-PROGRAM"
+  ],
+  "paragraph_actions": {
+    "1000-XREFFILE-GET-NEXT": [
+      "branch_logic",
+      "display_output",
+      "read_file"
+    ],
+    "0000-XREFFILE-OPEN": [
+      "branch_logic",
+      "display_output",
+      "open_file"
+    ],
+    "9000-XREFFILE-CLOSE": [
+      "branch_logic",
+      "close_file",
+      "display_output"
+    ],
+    "9999-ABEND-PROGRAM": [
+      "abend",
+      "call_program",
+      "display_output"
+    ],
+    "9910-DISPLAY-IO-STATUS": [
+      "branch_logic",
+      "display_error",
+      "transform_data"
+    ]
+  },
+  "file_lineage": [
+    {
+      "name": "XREFFILE-FILE",
+      "ddname": "XREFFILE",
+      "fd_record": "XREFFILE-FILE"
+    }
+  ],
+  "file_operations": {
+    "XREFFILE-FILE": [
+      {
+        "paragraph": "1000-XREFFILE-GET-NEXT",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "0000-XREFFILE-OPEN",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "9000-XREFFILE-CLOSE",
+        "operation": "close",
+        "source_line": null
+      }
+    ]
+  },
+  "control_flow": {
+    "cfg_source": "text_scan",
+    "entry_points": [
+      "1000-XREFFILE-GET-NEXT"
+    ],
+    "exit_points": [
+      "9910-DISPLAY-IO-STATUS",
+      "9999-ABEND-PROGRAM"
+    ],
+    "edges": [
+      {
+        "from": "1000-XREFFILE-GET-NEXT",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-XREFFILE-GET-NEXT",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-XREFFILE-GET-NEXT",
+        "to": "0000-XREFFILE-OPEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "0000-XREFFILE-OPEN",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-XREFFILE-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-XREFFILE-OPEN",
+        "to": "9000-XREFFILE-CLOSE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9000-XREFFILE-CLOSE",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9000-XREFFILE-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9000-XREFFILE-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9999-ABEND-PROGRAM",
+        "to": "CEE3ABD",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "9999-ABEND-PROGRAM",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "fallthrough",
+        "source_lines": null
+      }
+    ],
+    "unresolved": []
+  },
+  "cics": null
+}

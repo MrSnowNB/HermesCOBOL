@@ -1,0 +1,314 @@
+{
+  "schema_version": "1.1",
+  "program": "COTRN01C",
+  "source_file": "data/raw/cbl/COTRN01C.cbl",
+  "extracted_at": "2026-05-12T16:52:22.559482+00:00",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 0,
+  "gate_status": "PASS",
+  "gate_reasons": [],
+  "cics_present": true,
+  "sql_present": false,
+  "paragraphs": [
+    "CLEAR-CURRENT-SCREEN",
+    "INITIALIZE-ALL-FIELDS",
+    "MAIN-PARA",
+    "POPULATE-HEADER-INFO",
+    "PROCESS-ENTER-KEY",
+    "READ-TRANSACT-FILE",
+    "RECEIVE-TRNVIEW-SCREEN",
+    "RETURN-TO-PREV-SCREEN",
+    "SEND-TRNVIEW-SCREEN"
+  ],
+  "data_items": [
+    "DFHCOMMAREA",
+    "WS-VARIABLES"
+  ],
+  "external_calls": [],
+  "internal_performs": [
+    "CLEAR-CURRENT-SCREEN",
+    "INITIALIZE-ALL-FIELDS",
+    "POPULATE-HEADER-INFO",
+    "PROCESS-ENTER-KEY",
+    "READ-TRANSACT-FILE",
+    "RECEIVE-TRNVIEW-SCREEN",
+    "RETURN-TO-PREV-SCREEN",
+    "SEND-TRNVIEW-SCREEN"
+  ],
+  "data_files": [],
+  "copybooks_referenced": [
+    "COCOM01Y",
+    "COTRN01",
+    "COTTL01Y",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CVTRA05Y",
+    "DFHAID",
+    "DFHBMSCA"
+  ],
+  "cfg": {
+    "source": null,
+    "edges": null,
+    "unresolved": null
+  },
+  "paragraphs_defined": [
+    {
+      "name": "MAIN-PARA",
+      "source_line": 38,
+      "area_a": false
+    },
+    {
+      "name": "PROCESS-ENTER-KEY",
+      "source_line": 95,
+      "area_a": false
+    },
+    {
+      "name": "RETURN-TO-PREV-SCREEN",
+      "source_line": 149,
+      "area_a": false
+    },
+    {
+      "name": "SEND-TRNVIEW-SCREEN",
+      "source_line": 160,
+      "area_a": false
+    },
+    {
+      "name": "RECEIVE-TRNVIEW-SCREEN",
+      "source_line": 166,
+      "area_a": false
+    },
+    {
+      "name": "POPULATE-HEADER-INFO",
+      "source_line": 171,
+      "area_a": false
+    },
+    {
+      "name": "READ-TRANSACT-FILE",
+      "source_line": 187,
+      "area_a": false
+    },
+    {
+      "name": "CLEAR-CURRENT-SCREEN",
+      "source_line": 215,
+      "area_a": false
+    },
+    {
+      "name": "INITIALIZE-ALL-FIELDS",
+      "source_line": 219,
+      "area_a": false
+    }
+  ],
+  "paragraphs_referenced": [
+    "CLEAR-CURRENT-SCREEN",
+    "INITIALIZE-ALL-FIELDS",
+    "POPULATE-HEADER-INFO",
+    "PROCESS-ENTER-KEY",
+    "READ-TRANSACT-FILE",
+    "RECEIVE-TRNVIEW-SCREEN",
+    "RETURN-TO-PREV-SCREEN",
+    "SEND-TRNVIEW-SCREEN"
+  ],
+  "paragraph_actions": {
+    "MAIN-PARA": [
+      "aid_branch",
+      "branch_logic",
+      "cics_command"
+    ],
+    "PROCESS-ENTER-KEY": [
+      "branch_logic",
+      "transform_data"
+    ],
+    "RETURN-TO-PREV-SCREEN": [
+      "branch_logic",
+      "cics_command"
+    ],
+    "SEND-TRNVIEW-SCREEN": [
+      "cics_command",
+      "send_map"
+    ],
+    "RECEIVE-TRNVIEW-SCREEN": [
+      "cics_command",
+      "receive_map"
+    ],
+    "POPULATE-HEADER-INFO": [
+      "transform_data"
+    ],
+    "READ-TRANSACT-FILE": [
+      "branch_logic",
+      "cics_command",
+      "display_output",
+      "read_file"
+    ],
+    "CLEAR-CURRENT-SCREEN": [
+      "no_action_detected"
+    ],
+    "INITIALIZE-ALL-FIELDS": [
+      "transform_data"
+    ]
+  },
+  "file_lineage": [],
+  "file_operations": {
+    "DATASET": [
+      {
+        "paragraph": "READ-TRANSACT-FILE",
+        "operation": "read",
+        "source_line": null
+      }
+    ]
+  },
+  "control_flow": {
+    "cfg_source": "text_scan",
+    "entry_points": [
+      "MAIN-PARA"
+    ],
+    "exit_points": [
+      "INITIALIZE-ALL-FIELDS",
+      "MAIN-PARA"
+    ],
+    "edges": [
+      {
+        "from": "MAIN-PARA",
+        "to": "RETURN-TO-PREV-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "PROCESS-ENTER-KEY",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "SEND-TRNVIEW-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "RECEIVE-TRNVIEW-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "CLEAR-CURRENT-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "SEND-TRNVIEW-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "READ-TRANSACT-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "RETURN-TO-PREV-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "RETURN-TO-PREV-SCREEN",
+        "to": "SEND-TRNVIEW-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "SEND-TRNVIEW-SCREEN",
+        "to": "POPULATE-HEADER-INFO",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "SEND-TRNVIEW-SCREEN",
+        "to": "RECEIVE-TRNVIEW-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "RECEIVE-TRNVIEW-SCREEN",
+        "to": "POPULATE-HEADER-INFO",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "POPULATE-HEADER-INFO",
+        "to": "READ-TRANSACT-FILE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "READ-TRANSACT-FILE",
+        "to": "SEND-TRNVIEW-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "READ-TRANSACT-FILE",
+        "to": "CLEAR-CURRENT-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "CLEAR-CURRENT-SCREEN",
+        "to": "INITIALIZE-ALL-FIELDS",
+        "type": "fallthrough",
+        "source_lines": null
+      }
+    ],
+    "unresolved": [],
+    "cfg_note": "CICS program: text_scan CFG; conditional branches not resolved without a CICS translator.  Maps, commands, and AID keys are captured separately in the 'cics' subtree."
+  },
+  "cics": {
+    "commarea_used": true,
+    "commands": [
+      "READ",
+      "RECEIVE",
+      "RETURN",
+      "SEND",
+      "XCTL"
+    ],
+    "maps_used": [
+      "COTRN1A"
+    ],
+    "mapsets_used": [
+      "COTRN01"
+    ],
+    "aid_keys": [
+      "DFHENTER",
+      "DFHPF3",
+      "DFHPF4",
+      "DFHPF5"
+    ],
+    "screen_flow": [
+      {
+        "paragraph": "MAIN-PARA",
+        "action": "aid_dispatch",
+        "aid_keys": [
+          "DFHENTER",
+          "DFHPF3",
+          "DFHPF4",
+          "DFHPF5"
+        ],
+        "maps": null
+      },
+      {
+        "paragraph": "SEND-TRNVIEW-SCREEN",
+        "action": "send_map",
+        "map": "COTRN1A"
+      },
+      {
+        "paragraph": "RECEIVE-TRNVIEW-SCREEN",
+        "action": "receive_map",
+        "map": "COTRN1A"
+      }
+    ]
+  }
+}

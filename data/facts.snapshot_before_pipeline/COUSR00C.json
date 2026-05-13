@@ -1,0 +1,567 @@
+{
+  "schema_version": "1.1",
+  "program": "COUSR00C",
+  "source_file": "data/raw/cbl/COUSR00C.cbl",
+  "extracted_at": "2026-05-12T16:52:22.591858+00:00",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 0,
+  "gate_status": "PASS",
+  "gate_reasons": [],
+  "cics_present": true,
+  "sql_present": false,
+  "paragraphs": [
+    "ENDBR-USER-SEC-FILE",
+    "INITIALIZE-USER-DATA",
+    "MAIN-PARA",
+    "POPULATE-HEADER-INFO",
+    "POPULATE-USER-DATA",
+    "PROCESS-ENTER-KEY",
+    "PROCESS-PAGE-BACKWARD",
+    "PROCESS-PAGE-FORWARD",
+    "PROCESS-PF7-KEY",
+    "PROCESS-PF8-KEY",
+    "READNEXT-USER-SEC-FILE",
+    "READPREV-USER-SEC-FILE",
+    "RECEIVE-USRLST-SCREEN",
+    "RETURN-TO-PREV-SCREEN",
+    "SEND-USRLST-SCREEN",
+    "STARTBR-USER-SEC-FILE"
+  ],
+  "data_items": [
+    "DFHCOMMAREA",
+    "WS-USER-DATA",
+    "WS-VARIABLES"
+  ],
+  "external_calls": [],
+  "internal_performs": [
+    "END-IF",
+    "ENDBR-USER-SEC-FILE",
+    "IF",
+    "INITIALIZE-USER-DATA",
+    "POPULATE-HEADER-INFO",
+    "POPULATE-USER-DATA",
+    "PROCESS-ENTER-KEY",
+    "PROCESS-PAGE-BACKWARD",
+    "PROCESS-PAGE-FORWARD",
+    "PROCESS-PF7-KEY",
+    "PROCESS-PF8-KEY",
+    "READNEXT-USER-SEC-FILE",
+    "READPREV-USER-SEC-FILE",
+    "RECEIVE-USRLST-SCREEN",
+    "RETURN-TO-PREV-SCREEN",
+    "SEND-USRLST-SCREEN",
+    "STARTBR-USER-SEC-FILE"
+  ],
+  "data_files": [],
+  "copybooks_referenced": [
+    "COCOM01Y",
+    "COTTL01Y",
+    "COUSR00",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CSUSR01Y",
+    "DFHAID",
+    "DFHBMSCA"
+  ],
+  "cfg": {
+    "source": null,
+    "edges": null,
+    "unresolved": null
+  },
+  "paragraphs_defined": [
+    {
+      "name": "MAIN-PARA",
+      "source_line": 51,
+      "area_a": false
+    },
+    {
+      "name": "PROCESS-ENTER-KEY",
+      "source_line": 95,
+      "area_a": false
+    },
+    {
+      "name": "PROCESS-PF7-KEY",
+      "source_line": 181,
+      "area_a": false
+    },
+    {
+      "name": "PROCESS-PF8-KEY",
+      "source_line": 194,
+      "area_a": false
+    },
+    {
+      "name": "PROCESS-PAGE-FORWARD",
+      "source_line": 206,
+      "area_a": false
+    },
+    {
+      "name": "PROCESS-PAGE-BACKWARD",
+      "source_line": 257,
+      "area_a": false
+    },
+    {
+      "name": "POPULATE-USER-DATA",
+      "source_line": 300,
+      "area_a": false
+    },
+    {
+      "name": "INITIALIZE-USER-DATA",
+      "source_line": 383,
+      "area_a": false
+    },
+    {
+      "name": "RETURN-TO-PREV-SCREEN",
+      "source_line": 432,
+      "area_a": false
+    },
+    {
+      "name": "SEND-USRLST-SCREEN",
+      "source_line": 440,
+      "area_a": false
+    },
+    {
+      "name": "RECEIVE-USRLST-SCREEN",
+      "source_line": 456,
+      "area_a": false
+    },
+    {
+      "name": "POPULATE-HEADER-INFO",
+      "source_line": 462,
+      "area_a": false
+    },
+    {
+      "name": "STARTBR-USER-SEC-FILE",
+      "source_line": 478,
+      "area_a": false
+    },
+    {
+      "name": "READNEXT-USER-SEC-FILE",
+      "source_line": 503,
+      "area_a": false
+    },
+    {
+      "name": "READPREV-USER-SEC-FILE",
+      "source_line": 535,
+      "area_a": false
+    },
+    {
+      "name": "ENDBR-USER-SEC-FILE",
+      "source_line": 568,
+      "area_a": false
+    }
+  ],
+  "paragraphs_referenced": [
+    "ENDBR-USER-SEC-FILE",
+    "INITIALIZE-USER-DATA",
+    "POPULATE-HEADER-INFO",
+    "POPULATE-USER-DATA",
+    "PROCESS-ENTER-KEY",
+    "PROCESS-PAGE-BACKWARD",
+    "PROCESS-PAGE-FORWARD",
+    "PROCESS-PF7-KEY",
+    "PROCESS-PF8-KEY",
+    "READNEXT-USER-SEC-FILE",
+    "READPREV-USER-SEC-FILE",
+    "RECEIVE-USRLST-SCREEN",
+    "RETURN-TO-PREV-SCREEN",
+    "SEND-USRLST-SCREEN",
+    "STARTBR-USER-SEC-FILE"
+  ],
+  "paragraph_actions": {
+    "MAIN-PARA": [
+      "aid_branch",
+      "branch_logic",
+      "cics_command"
+    ],
+    "PROCESS-ENTER-KEY": [
+      "branch_logic",
+      "cics_command"
+    ],
+    "PROCESS-PF7-KEY": [
+      "branch_logic",
+      "transform_data"
+    ],
+    "PROCESS-PF8-KEY": [
+      "branch_logic",
+      "transform_data"
+    ],
+    "PROCESS-PAGE-FORWARD": [
+      "aid_branch",
+      "branch_logic",
+      "transform_data"
+    ],
+    "PROCESS-PAGE-BACKWARD": [
+      "aid_branch",
+      "branch_logic",
+      "transform_data"
+    ],
+    "POPULATE-USER-DATA": [
+      "branch_logic",
+      "transform_data"
+    ],
+    "INITIALIZE-USER-DATA": [
+      "branch_logic",
+      "transform_data"
+    ],
+    "RETURN-TO-PREV-SCREEN": [
+      "branch_logic",
+      "cics_command"
+    ],
+    "SEND-USRLST-SCREEN": [
+      "branch_logic",
+      "cics_command",
+      "send_map"
+    ],
+    "RECEIVE-USRLST-SCREEN": [
+      "cics_command",
+      "receive_map"
+    ],
+    "POPULATE-HEADER-INFO": [
+      "transform_data"
+    ],
+    "STARTBR-USER-SEC-FILE": [
+      "branch_logic",
+      "cics_command",
+      "display_output"
+    ],
+    "READNEXT-USER-SEC-FILE": [
+      "branch_logic",
+      "cics_command",
+      "display_output"
+    ],
+    "READPREV-USER-SEC-FILE": [
+      "branch_logic",
+      "cics_command",
+      "display_output"
+    ],
+    "ENDBR-USER-SEC-FILE": [
+      "cics_command"
+    ]
+  },
+  "file_lineage": [],
+  "file_operations": {},
+  "control_flow": {
+    "cfg_source": "text_scan",
+    "entry_points": [
+      "MAIN-PARA"
+    ],
+    "exit_points": [
+      "ENDBR-USER-SEC-FILE",
+      "MAIN-PARA"
+    ],
+    "edges": [
+      {
+        "from": "MAIN-PARA",
+        "to": "RETURN-TO-PREV-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "PROCESS-ENTER-KEY",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "SEND-USRLST-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "RECEIVE-USRLST-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "PROCESS-PF7-KEY",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "PROCESS-PF8-KEY",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "PROCESS-PAGE-FORWARD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "PROCESS-PF7-KEY",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PF7-KEY",
+        "to": "PROCESS-PAGE-BACKWARD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PF7-KEY",
+        "to": "SEND-USRLST-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PF7-KEY",
+        "to": "PROCESS-PF8-KEY",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PF8-KEY",
+        "to": "PROCESS-PAGE-FORWARD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PF8-KEY",
+        "to": "SEND-USRLST-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PF8-KEY",
+        "to": "PROCESS-PAGE-FORWARD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PAGE-FORWARD",
+        "to": "STARTBR-USER-SEC-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PAGE-FORWARD",
+        "to": "READNEXT-USER-SEC-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PAGE-FORWARD",
+        "to": "INITIALIZE-USER-DATA",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PAGE-FORWARD",
+        "to": "POPULATE-USER-DATA",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PAGE-FORWARD",
+        "to": "ENDBR-USER-SEC-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PAGE-FORWARD",
+        "to": "SEND-USRLST-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PAGE-FORWARD",
+        "to": "PROCESS-PAGE-BACKWARD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PAGE-BACKWARD",
+        "to": "STARTBR-USER-SEC-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PAGE-BACKWARD",
+        "to": "READPREV-USER-SEC-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PAGE-BACKWARD",
+        "to": "INITIALIZE-USER-DATA",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PAGE-BACKWARD",
+        "to": "POPULATE-USER-DATA",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PAGE-BACKWARD",
+        "to": "ENDBR-USER-SEC-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PAGE-BACKWARD",
+        "to": "SEND-USRLST-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-PAGE-BACKWARD",
+        "to": "POPULATE-USER-DATA",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "POPULATE-USER-DATA",
+        "to": "INITIALIZE-USER-DATA",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "INITIALIZE-USER-DATA",
+        "to": "RETURN-TO-PREV-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "RETURN-TO-PREV-SCREEN",
+        "to": "SEND-USRLST-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "SEND-USRLST-SCREEN",
+        "to": "POPULATE-HEADER-INFO",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "SEND-USRLST-SCREEN",
+        "to": "RECEIVE-USRLST-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "RECEIVE-USRLST-SCREEN",
+        "to": "POPULATE-HEADER-INFO",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "POPULATE-HEADER-INFO",
+        "to": "STARTBR-USER-SEC-FILE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "STARTBR-USER-SEC-FILE",
+        "to": "SEND-USRLST-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "STARTBR-USER-SEC-FILE",
+        "to": "READNEXT-USER-SEC-FILE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "READNEXT-USER-SEC-FILE",
+        "to": "SEND-USRLST-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "READNEXT-USER-SEC-FILE",
+        "to": "READPREV-USER-SEC-FILE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "READPREV-USER-SEC-FILE",
+        "to": "SEND-USRLST-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "READPREV-USER-SEC-FILE",
+        "to": "ENDBR-USER-SEC-FILE",
+        "type": "fallthrough",
+        "source_lines": null
+      }
+    ],
+    "unresolved": [],
+    "cfg_note": "CICS program: text_scan CFG; conditional branches not resolved without a CICS translator.  Maps, commands, and AID keys are captured separately in the 'cics' subtree."
+  },
+  "cics": {
+    "commarea_used": true,
+    "commands": [
+      "ENDBR",
+      "READNEXT",
+      "READPREV",
+      "RECEIVE",
+      "RETURN",
+      "SEND",
+      "STARTBR",
+      "XCTL"
+    ],
+    "maps_used": [
+      "COUSR0A"
+    ],
+    "mapsets_used": [
+      "COUSR00"
+    ],
+    "aid_keys": [
+      "DFHENTER",
+      "DFHPF3",
+      "DFHPF7",
+      "DFHPF8"
+    ],
+    "screen_flow": [
+      {
+        "paragraph": "MAIN-PARA",
+        "action": "aid_dispatch",
+        "aid_keys": [
+          "DFHENTER",
+          "DFHPF3",
+          "DFHPF7",
+          "DFHPF8"
+        ],
+        "maps": null
+      },
+      {
+        "paragraph": "PROCESS-PAGE-FORWARD",
+        "action": "aid_dispatch",
+        "aid_keys": [
+          "DFHENTER"
+        ],
+        "maps": null
+      },
+      {
+        "paragraph": "PROCESS-PAGE-BACKWARD",
+        "action": "aid_dispatch",
+        "aid_keys": [
+          "DFHENTER"
+        ],
+        "maps": null
+      },
+      {
+        "paragraph": "SEND-USRLST-SCREEN",
+        "action": "send_map",
+        "map": "COUSR0A"
+      },
+      {
+        "paragraph": "RECEIVE-USRLST-SCREEN",
+        "action": "receive_map",
+        "map": "COUSR0A"
+      }
+    ]
+  }
+}

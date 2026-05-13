@@ -1,116 +1,179 @@
 {
   "program": "CBEXPORT",
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "paragraph_data_flow": {
     "0000-MAIN-PROCESSING": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []
     },
     "1000-INITIALIZE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "DISPLAY",
-          "line_no": 163,
-          "raw_text": "DISPLAY 'CBEXPORT: Export Date: ' WS-EXPORT-DATE",
-          "reason": "unresolved read operand: WS-EXPORT-DATE"
+          "field": "WS-EXPORT-CONTROL.WS-EXPORT-DATE",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 0,
+          "length": 10
         },
         {
-          "verb": "DISPLAY",
-          "line_no": 163,
-          "raw_text": "DISPLAY 'CBEXPORT: Export Time: ' WS-EXPORT-TIME",
-          "reason": "unresolved read operand: WS-EXPORT-TIME"
+          "field": "WS-EXPORT-CONTROL.WS-EXPORT-TIME",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 10,
+          "length": 8
         }
-      ]
+      ],
+      "mutates": [],
+      "unresolved": []
     },
     "1050-GENERATE-TIMESTAMP": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "ACCEPT",
-          "line_no": 175,
-          "raw_text": "ACCEPT WS-CURRENT-DATE FROM DATE YYYYMMDD",
-          "reason": "unresolved mutate operand: WS-CURRENT-DATE"
+          "field": "WS-TIMESTAMP-FIELDS.WS-CURRENT-DATE.WS-CURR-YEAR",
+          "record": "WS-TIMESTAMP-FIELDS",
+          "copybook": null,
+          "offset": 0,
+          "length": 4
         },
         {
-          "verb": "ACCEPT",
-          "line_no": 175,
-          "raw_text": "ACCEPT WS-CURRENT-TIME FROM TIME",
-          "reason": "unresolved mutate operand: WS-CURRENT-TIME"
+          "field": "WS-TIMESTAMP-FIELDS.WS-CURRENT-DATE.WS-CURR-MONTH",
+          "record": "WS-TIMESTAMP-FIELDS",
+          "copybook": null,
+          "offset": 4,
+          "length": 2
         },
         {
-          "verb": "STRING",
-          "line_no": 175,
-          "raw_text": "STRING WS-CURR-YEAR '-' WS-CURR-MONTH '-' WS-CURR-DAY DELIMITED BY SIZE INTO WS-EXPORT-DATE",
-          "reason": "unresolved read operand: WS-CURR-YEAR"
+          "field": "WS-TIMESTAMP-FIELDS.WS-CURRENT-DATE.WS-CURR-DAY",
+          "record": "WS-TIMESTAMP-FIELDS",
+          "copybook": null,
+          "offset": 6,
+          "length": 2
         },
         {
-          "verb": "STRING",
-          "line_no": 175,
-          "raw_text": "STRING WS-CURR-YEAR '-' WS-CURR-MONTH '-' WS-CURR-DAY DELIMITED BY SIZE INTO WS-EXPORT-DATE",
-          "reason": "unresolved read operand: WS-CURR-MONTH"
+          "field": "WS-TIMESTAMP-FIELDS.WS-CURRENT-TIME.WS-CURR-HOUR",
+          "record": "WS-TIMESTAMP-FIELDS",
+          "copybook": null,
+          "offset": 8,
+          "length": 2
         },
         {
-          "verb": "STRING",
-          "line_no": 175,
-          "raw_text": "STRING WS-CURR-YEAR '-' WS-CURR-MONTH '-' WS-CURR-DAY DELIMITED BY SIZE INTO WS-EXPORT-DATE",
-          "reason": "unresolved read operand: WS-CURR-DAY"
+          "field": "WS-TIMESTAMP-FIELDS.WS-CURRENT-TIME.WS-CURR-MINUTE",
+          "record": "WS-TIMESTAMP-FIELDS",
+          "copybook": null,
+          "offset": 10,
+          "length": 2
         },
         {
-          "verb": "STRING",
-          "line_no": 175,
-          "raw_text": "STRING WS-CURR-YEAR '-' WS-CURR-MONTH '-' WS-CURR-DAY DELIMITED BY SIZE INTO WS-EXPORT-DATE",
-          "reason": "unresolved mutate operand: WS-EXPORT-DATE"
+          "field": "WS-TIMESTAMP-FIELDS.WS-CURRENT-TIME.WS-CURR-SECOND",
+          "record": "WS-TIMESTAMP-FIELDS",
+          "copybook": null,
+          "offset": 12,
+          "length": 2
         },
         {
-          "verb": "STRING",
-          "line_no": 175,
-          "raw_text": "STRING WS-CURR-HOUR ':' WS-CURR-MINUTE ':' WS-CURR-SECOND DELIMITED BY SIZE INTO WS-EXPORT-TIME",
-          "reason": "unresolved read operand: WS-CURR-HOUR"
+          "field": "WS-EXPORT-CONTROL.WS-EXPORT-DATE",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 0,
+          "length": 10
         },
         {
-          "verb": "STRING",
-          "line_no": 175,
-          "raw_text": "STRING WS-CURR-HOUR ':' WS-CURR-MINUTE ':' WS-CURR-SECOND DELIMITED BY SIZE INTO WS-EXPORT-TIME",
-          "reason": "unresolved read operand: WS-CURR-MINUTE"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 175,
-          "raw_text": "STRING WS-CURR-HOUR ':' WS-CURR-MINUTE ':' WS-CURR-SECOND DELIMITED BY SIZE INTO WS-EXPORT-TIME",
-          "reason": "unresolved read operand: WS-CURR-SECOND"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 175,
-          "raw_text": "STRING WS-CURR-HOUR ':' WS-CURR-MINUTE ':' WS-CURR-SECOND DELIMITED BY SIZE INTO WS-EXPORT-TIME",
-          "reason": "unresolved mutate operand: WS-EXPORT-TIME"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 175,
-          "raw_text": "STRING WS-EXPORT-DATE ' ' WS-EXPORT-TIME '.00' DELIMITED BY SIZE INTO WS-FORMATTED-TIMESTAMP",
-          "reason": "unresolved read operand: WS-EXPORT-DATE"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 175,
-          "raw_text": "STRING WS-EXPORT-DATE ' ' WS-EXPORT-TIME '.00' DELIMITED BY SIZE INTO WS-FORMATTED-TIMESTAMP",
-          "reason": "unresolved read operand: WS-EXPORT-TIME"
-        },
-        {
-          "verb": "STRING",
-          "line_no": 175,
-          "raw_text": "STRING WS-EXPORT-DATE ' ' WS-EXPORT-TIME '.00' DELIMITED BY SIZE INTO WS-FORMATTED-TIMESTAMP",
-          "reason": "unresolved mutate operand: WS-FORMATTED-TIMESTAMP"
+          "field": "WS-EXPORT-CONTROL.WS-EXPORT-TIME",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 10,
+          "length": 8
         }
-      ]
+      ],
+      "mutates": [
+        {
+          "field": "WS-TIMESTAMP-FIELDS.WS-CURRENT-DATE",
+          "record": "WS-TIMESTAMP-FIELDS",
+          "copybook": null,
+          "offset": 0,
+          "length": 8
+        },
+        {
+          "field": "WS-TIMESTAMP-FIELDS.WS-CURRENT-TIME",
+          "record": "WS-TIMESTAMP-FIELDS",
+          "copybook": null,
+          "offset": 8,
+          "length": 8
+        },
+        {
+          "field": "WS-EXPORT-CONTROL.WS-EXPORT-DATE",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 0,
+          "length": 10
+        },
+        {
+          "field": "WS-EXPORT-CONTROL.WS-EXPORT-TIME",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 10,
+          "length": 8
+        },
+        {
+          "field": "WS-EXPORT-CONTROL.WS-FORMATTED-TIMESTAMP",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 18,
+          "length": 26
+        }
+      ],
+      "unresolved": []
     },
     "1100-OPEN-FILES": {
-      "reads": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "WS-FILE-STATUS-AREA.WS-CUSTOMER-STATUS",
+          "record": "WS-FILE-STATUS-AREA",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        },
+        {
+          "field": "WS-FILE-STATUS-AREA.WS-ACCOUNT-STATUS",
+          "record": "WS-FILE-STATUS-AREA",
+          "copybook": null,
+          "offset": 2,
+          "length": 2
+        },
+        {
+          "field": "WS-FILE-STATUS-AREA.WS-XREF-STATUS",
+          "record": "WS-FILE-STATUS-AREA",
+          "copybook": null,
+          "offset": 4,
+          "length": 2
+        },
+        {
+          "field": "WS-FILE-STATUS-AREA.WS-TRANSACTION-STATUS",
+          "record": "WS-FILE-STATUS-AREA",
+          "copybook": null,
+          "offset": 6,
+          "length": 2
+        },
+        {
+          "field": "WS-FILE-STATUS-AREA.WS-CARD-STATUS",
+          "record": "WS-FILE-STATUS-AREA",
+          "copybook": null,
+          "offset": 8,
+          "length": 2
+        },
+        {
+          "field": "WS-FILE-STATUS-AREA.WS-EXPORT-STATUS",
+          "record": "WS-FILE-STATUS-AREA",
+          "copybook": null,
+          "offset": 10,
+          "length": 2
+        }
+      ],
       "mutates": [],
       "unresolved": [
         {
@@ -120,22 +183,10 @@
           "reason": "unresolved read operand: WS-CUSTOMER-OK"
         },
         {
-          "verb": "DISPLAY",
-          "line_no": 200,
-          "raw_text": "DISPLAY 'ERROR: Cannot open CUSTOMER-INPUT, Status: ' WS-CUSTOMER-STATUS",
-          "reason": "unresolved read operand: WS-CUSTOMER-STATUS"
-        },
-        {
           "verb": "IF",
           "line_no": 200,
           "raw_text": "IF NOT WS-ACCOUNT-OK",
           "reason": "unresolved read operand: WS-ACCOUNT-OK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 200,
-          "raw_text": "DISPLAY 'ERROR: Cannot open ACCOUNT-INPUT, Status: ' WS-ACCOUNT-STATUS",
-          "reason": "unresolved read operand: WS-ACCOUNT-STATUS"
         },
         {
           "verb": "IF",
@@ -144,22 +195,10 @@
           "reason": "unresolved read operand: WS-XREF-OK"
         },
         {
-          "verb": "DISPLAY",
-          "line_no": 200,
-          "raw_text": "DISPLAY 'ERROR: Cannot open XREF-INPUT, Status: ' WS-XREF-STATUS",
-          "reason": "unresolved read operand: WS-XREF-STATUS"
-        },
-        {
           "verb": "IF",
           "line_no": 200,
           "raw_text": "IF NOT WS-TRANSACTION-OK",
           "reason": "unresolved read operand: WS-TRANSACTION-OK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 200,
-          "raw_text": "DISPLAY 'ERROR: Cannot open TRANSACTION-INPUT, Status: ' WS-TRANSACTION-STATUS",
-          "reason": "unresolved read operand: WS-TRANSACTION-STATUS"
         },
         {
           "verb": "IF",
@@ -168,39 +207,38 @@
           "reason": "unresolved read operand: WS-CARD-OK"
         },
         {
-          "verb": "DISPLAY",
-          "line_no": 200,
-          "raw_text": "DISPLAY 'ERROR: Cannot open CARD-INPUT, Status: ' WS-CARD-STATUS",
-          "reason": "unresolved read operand: WS-CARD-STATUS"
-        },
-        {
           "verb": "IF",
           "line_no": 200,
           "raw_text": "IF NOT WS-EXPORT-OK",
           "reason": "unresolved read operand: WS-EXPORT-OK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 200,
-          "raw_text": "DISPLAY 'ERROR: Cannot open EXPORT-OUTPUT, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: WS-EXPORT-STATUS"
         }
       ]
     },
     "2000-EXPORT-CUSTOMERS": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "DISPLAY",
-          "line_no": 245,
-          "raw_text": "DISPLAY 'CBEXPORT: Customers exported: ' WS-CUSTOMER-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-CUSTOMER-RECORDS-EXPORTED"
+          "field": "WS-EXPORT-STATISTICS.WS-CUSTOMER-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 0,
+          "length": 9
         }
-      ]
+      ],
+      "mutates": [],
+      "unresolved": []
     },
     "2100-READ-CUSTOMER-RECORD": {
-      "reads": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "WS-FILE-STATUS-AREA.WS-CUSTOMER-STATUS",
+          "record": "WS-FILE-STATUS-AREA",
+          "copybook": null,
+          "offset": 0,
+          "length": 2
+        }
+      ],
       "mutates": [],
       "unresolved": [
         {
@@ -220,359 +258,392 @@
           "line_no": 260,
           "raw_text": "IF NOT WS-CUSTOMER-OK AND NOT WS-CUSTOMER-EOF",
           "reason": "unresolved read operand: WS-CUSTOMER-EOF"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 260,
-          "raw_text": "DISPLAY 'ERROR: Reading CUSTOMER-INPUT, Status: ' WS-CUSTOMER-STATUS",
-          "reason": "unresolved read operand: WS-CUSTOMER-STATUS"
         }
       ]
     },
     "2200-CREATE-CUSTOMER-EXP-REC": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "WS-EXPORT-CONTROL.WS-FORMATTED-TIMESTAMP",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 18,
+          "length": 26
+        },
+        {
+          "field": "WS-EXPORT-CONTROL.WS-SEQUENCE-COUNTER",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 44,
+          "length": 9
+        },
+        {
+          "field": "CUSTOMER-RECORD.CUST-ID",
+          "record": "CUSTOMER-RECORD",
+          "copybook": "CVCUS01Y",
+          "offset": 0,
+          "length": 9
+        },
+        {
+          "field": "CUSTOMER-RECORD.CUST-FIRST-NAME",
+          "record": "CUSTOMER-RECORD",
+          "copybook": "CVCUS01Y",
+          "offset": 9,
+          "length": 25
+        },
+        {
+          "field": "CUSTOMER-RECORD.CUST-MIDDLE-NAME",
+          "record": "CUSTOMER-RECORD",
+          "copybook": "CVCUS01Y",
+          "offset": 34,
+          "length": 25
+        },
+        {
+          "field": "CUSTOMER-RECORD.CUST-LAST-NAME",
+          "record": "CUSTOMER-RECORD",
+          "copybook": "CVCUS01Y",
+          "offset": 59,
+          "length": 25
+        },
+        {
+          "field": "CUSTOMER-RECORD.CUST-ADDR-LINE-1",
+          "record": "CUSTOMER-RECORD",
+          "copybook": "CVCUS01Y",
+          "offset": 84,
+          "length": 50
+        },
+        {
+          "field": "CUSTOMER-RECORD.CUST-ADDR-LINE-2",
+          "record": "CUSTOMER-RECORD",
+          "copybook": "CVCUS01Y",
+          "offset": 134,
+          "length": 50
+        },
+        {
+          "field": "CUSTOMER-RECORD.CUST-ADDR-LINE-3",
+          "record": "CUSTOMER-RECORD",
+          "copybook": "CVCUS01Y",
+          "offset": 184,
+          "length": 50
+        },
+        {
+          "field": "CUSTOMER-RECORD.CUST-ADDR-STATE-CD",
+          "record": "CUSTOMER-RECORD",
+          "copybook": "CVCUS01Y",
+          "offset": 234,
+          "length": 2
+        },
+        {
+          "field": "CUSTOMER-RECORD.CUST-ADDR-COUNTRY-CD",
+          "record": "CUSTOMER-RECORD",
+          "copybook": "CVCUS01Y",
+          "offset": 236,
+          "length": 3
+        },
+        {
+          "field": "CUSTOMER-RECORD.CUST-ADDR-ZIP",
+          "record": "CUSTOMER-RECORD",
+          "copybook": "CVCUS01Y",
+          "offset": 239,
+          "length": 10
+        },
+        {
+          "field": "CUSTOMER-RECORD.CUST-PHONE-NUM-1",
+          "record": "CUSTOMER-RECORD",
+          "copybook": "CVCUS01Y",
+          "offset": 249,
+          "length": 15
+        },
+        {
+          "field": "CUSTOMER-RECORD.CUST-PHONE-NUM-2",
+          "record": "CUSTOMER-RECORD",
+          "copybook": "CVCUS01Y",
+          "offset": 264,
+          "length": 15
+        },
+        {
+          "field": "CUSTOMER-RECORD.CUST-SSN",
+          "record": "CUSTOMER-RECORD",
+          "copybook": "CVCUS01Y",
+          "offset": 279,
+          "length": 9
+        },
+        {
+          "field": "CUSTOMER-RECORD.CUST-GOVT-ISSUED-ID",
+          "record": "CUSTOMER-RECORD",
+          "copybook": "CVCUS01Y",
+          "offset": 288,
+          "length": 20
+        },
+        {
+          "field": "CUSTOMER-RECORD.CUST-DOB-YYYY-MM-DD",
+          "record": "CUSTOMER-RECORD",
+          "copybook": "CVCUS01Y",
+          "offset": 308,
+          "length": 10
+        },
+        {
+          "field": "CUSTOMER-RECORD.CUST-EFT-ACCOUNT-ID",
+          "record": "CUSTOMER-RECORD",
+          "copybook": "CVCUS01Y",
+          "offset": 318,
+          "length": 10
+        },
+        {
+          "field": "CUSTOMER-RECORD.CUST-PRI-CARD-HOLDER-IND",
+          "record": "CUSTOMER-RECORD",
+          "copybook": "CVCUS01Y",
+          "offset": 328,
+          "length": 1
+        },
+        {
+          "field": "CUSTOMER-RECORD.CUST-FICO-CREDIT-SCORE",
+          "record": "CUSTOMER-RECORD",
+          "copybook": "CVCUS01Y",
+          "offset": 329,
+          "length": 3
+        },
+        {
+          "field": "EXPORT-RECORD",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 0,
+          "length": 500
+        },
+        {
+          "field": "WS-FILE-STATUS-AREA.WS-EXPORT-STATUS",
+          "record": "WS-FILE-STATUS-AREA",
+          "copybook": null,
+          "offset": 10,
+          "length": 2
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-CUSTOMER-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 0,
+          "length": 9
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-TOTAL-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 45,
+          "length": 9
+        }
+      ],
+      "mutates": [
+        {
+          "field": "EXPORT-RECORD",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 0,
+          "length": 500
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-REC-TYPE",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 0,
+          "length": 1
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-TIMESTAMP",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 1,
+          "length": 26
+        },
+        {
+          "field": "WS-EXPORT-CONTROL.WS-SEQUENCE-COUNTER",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 44,
+          "length": 9
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-SEQUENCE-NUM",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 27,
+          "length": 4
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-BRANCH-ID",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 31,
+          "length": 4
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-REGION-CODE",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 35,
+          "length": 5
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CUSTOMER-DATA.EXP-CUST-ID",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 40,
+          "length": 4
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CUSTOMER-DATA.EXP-CUST-FIRST-NAME",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 44,
+          "length": 25
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CUSTOMER-DATA.EXP-CUST-MIDDLE-NAME",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 69,
+          "length": 25
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CUSTOMER-DATA.EXP-CUST-LAST-NAME",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 94,
+          "length": 25
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CUSTOMER-DATA.EXP-CUST-ADDR-LINES.EXP-CUST-ADDR-LINE",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 119,
+          "length": 50
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CUSTOMER-DATA.EXP-CUST-ADDR-STATE-CD",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 269,
+          "length": 2
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CUSTOMER-DATA.EXP-CUST-ADDR-COUNTRY-CD",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 271,
+          "length": 3
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CUSTOMER-DATA.EXP-CUST-ADDR-ZIP",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 274,
+          "length": 10
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CUSTOMER-DATA.EXP-CUST-PHONE-NUMS.EXP-CUST-PHONE-NUM",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 284,
+          "length": 15
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CUSTOMER-DATA.EXP-CUST-SSN",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 314,
+          "length": 9
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CUSTOMER-DATA.EXP-CUST-GOVT-ISSUED-ID",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 323,
+          "length": 20
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CUSTOMER-DATA.EXP-CUST-DOB-YYYY-MM-DD",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 343,
+          "length": 10
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CUSTOMER-DATA.EXP-CUST-EFT-ACCOUNT-ID",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 353,
+          "length": 10
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CUSTOMER-DATA.EXP-CUST-PRI-CARD-HOLDER-IND",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 363,
+          "length": 1
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CUSTOMER-DATA.EXP-CUST-FICO-CREDIT-SCORE",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 364,
+          "length": 2
+        },
+        {
+          "field": "EXPORT-OUTPUT-RECORD",
+          "record": "EXPORT-OUTPUT-RECORD",
+          "copybook": null,
+          "offset": 0,
+          "length": 500
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-CUSTOMER-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 0,
+          "length": 9
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-TOTAL-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 45,
+          "length": 9
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "INITIALIZE",
-          "line_no": 271,
-          "raw_text": "INITIALIZE EXPORT-RECORD",
-          "reason": "unresolved mutate operand: EXPORT-RECORD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE 'C' TO EXPORT-REC-TYPE",
-          "reason": "unresolved mutate operand: EXPORT-REC-TYPE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE WS-FORMATTED-TIMESTAMP TO EXPORT-TIMESTAMP",
-          "reason": "unresolved read operand: WS-FORMATTED-TIMESTAMP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE WS-FORMATTED-TIMESTAMP TO EXPORT-TIMESTAMP",
-          "reason": "unresolved mutate operand: EXPORT-TIMESTAMP"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 271,
-          "raw_text": "ADD 1 TO WS-SEQUENCE-COUNTER",
-          "reason": "unresolved read operand: WS-SEQUENCE-COUNTER"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 271,
-          "raw_text": "ADD 1 TO WS-SEQUENCE-COUNTER",
-          "reason": "unresolved mutate operand: WS-SEQUENCE-COUNTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE WS-SEQUENCE-COUNTER TO EXPORT-SEQUENCE-NUM",
-          "reason": "unresolved read operand: WS-SEQUENCE-COUNTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE WS-SEQUENCE-COUNTER TO EXPORT-SEQUENCE-NUM",
-          "reason": "unresolved mutate operand: EXPORT-SEQUENCE-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE '0001' TO EXPORT-BRANCH-ID",
-          "reason": "unresolved mutate operand: EXPORT-BRANCH-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE 'NORTH' TO EXPORT-REGION-CODE",
-          "reason": "unresolved mutate operand: EXPORT-REGION-CODE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-ID TO EXP-CUST-ID",
-          "reason": "unresolved read operand: CUST-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-ID TO EXP-CUST-ID",
-          "reason": "unresolved mutate operand: EXP-CUST-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-FIRST-NAME TO EXP-CUST-FIRST-NAME",
-          "reason": "unresolved read operand: CUST-FIRST-NAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-FIRST-NAME TO EXP-CUST-FIRST-NAME",
-          "reason": "unresolved mutate operand: EXP-CUST-FIRST-NAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-MIDDLE-NAME TO EXP-CUST-MIDDLE-NAME",
-          "reason": "unresolved read operand: CUST-MIDDLE-NAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-MIDDLE-NAME TO EXP-CUST-MIDDLE-NAME",
-          "reason": "unresolved mutate operand: EXP-CUST-MIDDLE-NAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-LAST-NAME TO EXP-CUST-LAST-NAME",
-          "reason": "unresolved read operand: CUST-LAST-NAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-LAST-NAME TO EXP-CUST-LAST-NAME",
-          "reason": "unresolved mutate operand: EXP-CUST-LAST-NAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-ADDR-LINE-1 TO EXP-CUST-ADDR-LINE(1)",
-          "reason": "unresolved read operand: CUST-ADDR-LINE-1"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-ADDR-LINE-1 TO EXP-CUST-ADDR-LINE(1)",
-          "reason": "unresolved mutate operand: EXP-CUST-ADDR-LINE(1)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-ADDR-LINE-2 TO EXP-CUST-ADDR-LINE(2)",
-          "reason": "unresolved read operand: CUST-ADDR-LINE-2"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-ADDR-LINE-2 TO EXP-CUST-ADDR-LINE(2)",
-          "reason": "unresolved mutate operand: EXP-CUST-ADDR-LINE(2)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-ADDR-LINE-3 TO EXP-CUST-ADDR-LINE(3)",
-          "reason": "unresolved read operand: CUST-ADDR-LINE-3"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-ADDR-LINE-3 TO EXP-CUST-ADDR-LINE(3)",
-          "reason": "unresolved mutate operand: EXP-CUST-ADDR-LINE(3)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-ADDR-STATE-CD TO EXP-CUST-ADDR-STATE-CD",
-          "reason": "unresolved read operand: CUST-ADDR-STATE-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-ADDR-STATE-CD TO EXP-CUST-ADDR-STATE-CD",
-          "reason": "unresolved mutate operand: EXP-CUST-ADDR-STATE-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-ADDR-COUNTRY-CD TO EXP-CUST-ADDR-COUNTRY-CD",
-          "reason": "unresolved read operand: CUST-ADDR-COUNTRY-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-ADDR-COUNTRY-CD TO EXP-CUST-ADDR-COUNTRY-CD",
-          "reason": "unresolved mutate operand: EXP-CUST-ADDR-COUNTRY-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-ADDR-ZIP TO EXP-CUST-ADDR-ZIP",
-          "reason": "unresolved read operand: CUST-ADDR-ZIP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-ADDR-ZIP TO EXP-CUST-ADDR-ZIP",
-          "reason": "unresolved mutate operand: EXP-CUST-ADDR-ZIP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-PHONE-NUM-1 TO EXP-CUST-PHONE-NUM(1)",
-          "reason": "unresolved read operand: CUST-PHONE-NUM-1"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-PHONE-NUM-1 TO EXP-CUST-PHONE-NUM(1)",
-          "reason": "unresolved mutate operand: EXP-CUST-PHONE-NUM(1)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-PHONE-NUM-2 TO EXP-CUST-PHONE-NUM(2)",
-          "reason": "unresolved read operand: CUST-PHONE-NUM-2"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-PHONE-NUM-2 TO EXP-CUST-PHONE-NUM(2)",
-          "reason": "unresolved mutate operand: EXP-CUST-PHONE-NUM(2)"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-SSN TO EXP-CUST-SSN",
-          "reason": "unresolved read operand: CUST-SSN"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-SSN TO EXP-CUST-SSN",
-          "reason": "unresolved mutate operand: EXP-CUST-SSN"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-GOVT-ISSUED-ID TO EXP-CUST-GOVT-ISSUED-ID",
-          "reason": "unresolved read operand: CUST-GOVT-ISSUED-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-GOVT-ISSUED-ID TO EXP-CUST-GOVT-ISSUED-ID",
-          "reason": "unresolved mutate operand: EXP-CUST-GOVT-ISSUED-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-DOB-YYYY-MM-DD TO EXP-CUST-DOB-YYYY-MM-DD",
-          "reason": "unresolved read operand: CUST-DOB-YYYY-MM-DD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-DOB-YYYY-MM-DD TO EXP-CUST-DOB-YYYY-MM-DD",
-          "reason": "unresolved mutate operand: EXP-CUST-DOB-YYYY-MM-DD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-EFT-ACCOUNT-ID TO EXP-CUST-EFT-ACCOUNT-ID",
-          "reason": "unresolved read operand: CUST-EFT-ACCOUNT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-EFT-ACCOUNT-ID TO EXP-CUST-EFT-ACCOUNT-ID",
-          "reason": "unresolved mutate operand: EXP-CUST-EFT-ACCOUNT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-PRI-CARD-HOLDER-IND TO EXP-CUST-PRI-CARD-HOLDER-IND",
-          "reason": "unresolved read operand: CUST-PRI-CARD-HOLDER-IND"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-PRI-CARD-HOLDER-IND TO EXP-CUST-PRI-CARD-HOLDER-IND",
-          "reason": "unresolved mutate operand: EXP-CUST-PRI-CARD-HOLDER-IND"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-FICO-CREDIT-SCORE TO EXP-CUST-FICO-CREDIT-SCORE",
-          "reason": "unresolved read operand: CUST-FICO-CREDIT-SCORE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 271,
-          "raw_text": "MOVE CUST-FICO-CREDIT-SCORE TO EXP-CUST-FICO-CREDIT-SCORE",
-          "reason": "unresolved mutate operand: EXP-CUST-FICO-CREDIT-SCORE"
-        },
-        {
-          "verb": "WRITE",
-          "line_no": 271,
-          "raw_text": "WRITE EXPORT-OUTPUT-RECORD FROM EXPORT-RECORD",
-          "reason": "unresolved mutate operand: EXPORT-OUTPUT-RECORD"
-        },
-        {
-          "verb": "WRITE",
-          "line_no": 271,
-          "raw_text": "WRITE EXPORT-OUTPUT-RECORD FROM EXPORT-RECORD",
-          "reason": "unresolved read operand: EXPORT-RECORD"
-        },
         {
           "verb": "IF",
           "line_no": 271,
           "raw_text": "IF NOT WS-EXPORT-OK",
           "reason": "unresolved read operand: WS-EXPORT-OK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 271,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: WS-EXPORT-STATUS"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 271,
-          "raw_text": "ADD 1 TO WS-CUSTOMER-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-CUSTOMER-RECORDS-EXPORTED"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 271,
-          "raw_text": "ADD 1 TO WS-CUSTOMER-RECORDS-EXPORTED",
-          "reason": "unresolved mutate operand: WS-CUSTOMER-RECORDS-EXPORTED"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 271,
-          "raw_text": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-TOTAL-RECORDS-EXPORTED"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 271,
-          "raw_text": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED",
-          "reason": "unresolved mutate operand: WS-TOTAL-RECORDS-EXPORTED"
         }
       ]
     },
     "3000-EXPORT-ACCOUNTS": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "DISPLAY",
-          "line_no": 314,
-          "raw_text": "DISPLAY 'CBEXPORT: Accounts exported: ' WS-ACCOUNT-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-ACCOUNT-RECORDS-EXPORTED"
+          "field": "WS-EXPORT-STATISTICS.WS-ACCOUNT-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 9,
+          "length": 9
         }
-      ]
+      ],
+      "mutates": [],
+      "unresolved": []
     },
     "3100-READ-ACCOUNT-RECORD": {
-      "reads": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "WS-FILE-STATUS-AREA.WS-ACCOUNT-STATUS",
+          "record": "WS-FILE-STATUS-AREA",
+          "copybook": null,
+          "offset": 2,
+          "length": 2
+        }
+      ],
       "mutates": [],
       "unresolved": [
         {
@@ -592,287 +663,329 @@
           "line_no": 329,
           "raw_text": "IF NOT WS-ACCOUNT-OK AND NOT WS-ACCOUNT-EOF",
           "reason": "unresolved read operand: WS-ACCOUNT-EOF"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 329,
-          "raw_text": "DISPLAY 'ERROR: Reading ACCOUNT-INPUT, Status: ' WS-ACCOUNT-STATUS",
-          "reason": "unresolved read operand: WS-ACCOUNT-STATUS"
         }
       ]
     },
     "3200-CREATE-ACCOUNT-EXP-REC": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "WS-EXPORT-CONTROL.WS-FORMATTED-TIMESTAMP",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 18,
+          "length": 26
+        },
+        {
+          "field": "WS-EXPORT-CONTROL.WS-SEQUENCE-COUNTER",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 44,
+          "length": 9
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-ID",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 0,
+          "length": 11
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-ACTIVE-STATUS",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 11,
+          "length": 1
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-CURR-BAL",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 12,
+          "length": 12
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-CREDIT-LIMIT",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 24,
+          "length": 12
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-CASH-CREDIT-LIMIT",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 36,
+          "length": 12
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-OPEN-DATE",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 48,
+          "length": 10
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-EXPIRAION-DATE",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 58,
+          "length": 10
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-REISSUE-DATE",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 68,
+          "length": 10
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-CURR-CYC-CREDIT",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 78,
+          "length": 12
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-CURR-CYC-DEBIT",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 90,
+          "length": 12
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-ADDR-ZIP",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 102,
+          "length": 10
+        },
+        {
+          "field": "ACCOUNT-RECORD.ACCT-GROUP-ID",
+          "record": "ACCOUNT-RECORD",
+          "copybook": "CVACT01Y",
+          "offset": 112,
+          "length": 10
+        },
+        {
+          "field": "EXPORT-RECORD",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 0,
+          "length": 500
+        },
+        {
+          "field": "WS-FILE-STATUS-AREA.WS-EXPORT-STATUS",
+          "record": "WS-FILE-STATUS-AREA",
+          "copybook": null,
+          "offset": 10,
+          "length": 2
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-ACCOUNT-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 9,
+          "length": 9
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-TOTAL-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 45,
+          "length": 9
+        }
+      ],
+      "mutates": [
+        {
+          "field": "EXPORT-RECORD",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 0,
+          "length": 500
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-REC-TYPE",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 0,
+          "length": 1
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-TIMESTAMP",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 1,
+          "length": 26
+        },
+        {
+          "field": "WS-EXPORT-CONTROL.WS-SEQUENCE-COUNTER",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 44,
+          "length": 9
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-SEQUENCE-NUM",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 27,
+          "length": 4
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-BRANCH-ID",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 31,
+          "length": 4
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-REGION-CODE",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 35,
+          "length": 5
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-ACCOUNT-DATA.EXP-ACCT-ID",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 40,
+          "length": 11
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-ACCOUNT-DATA.EXP-ACCT-ACTIVE-STATUS",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 51,
+          "length": 1
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-ACCOUNT-DATA.EXP-ACCT-CURR-BAL",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 52,
+          "length": 7
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-ACCOUNT-DATA.EXP-ACCT-CREDIT-LIMIT",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 59,
+          "length": 12
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-ACCOUNT-DATA.EXP-ACCT-CASH-CREDIT-LIMIT",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 71,
+          "length": 7
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-ACCOUNT-DATA.EXP-ACCT-OPEN-DATE",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 78,
+          "length": 10
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-ACCOUNT-DATA.EXP-ACCT-EXPIRAION-DATE",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 88,
+          "length": 10
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-ACCOUNT-DATA.EXP-ACCT-REISSUE-DATE",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 98,
+          "length": 10
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-ACCOUNT-DATA.EXP-ACCT-CURR-CYC-CREDIT",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 108,
+          "length": 12
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-ACCOUNT-DATA.EXP-ACCT-CURR-CYC-DEBIT",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 120,
+          "length": 8
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-ACCOUNT-DATA.EXP-ACCT-ADDR-ZIP",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 128,
+          "length": 10
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-ACCOUNT-DATA.EXP-ACCT-GROUP-ID",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 138,
+          "length": 10
+        },
+        {
+          "field": "EXPORT-OUTPUT-RECORD",
+          "record": "EXPORT-OUTPUT-RECORD",
+          "copybook": null,
+          "offset": 0,
+          "length": 500
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-ACCOUNT-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 9,
+          "length": 9
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-TOTAL-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 45,
+          "length": 9
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "INITIALIZE",
-          "line_no": 340,
-          "raw_text": "INITIALIZE EXPORT-RECORD",
-          "reason": "unresolved mutate operand: EXPORT-RECORD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE 'A' TO EXPORT-REC-TYPE",
-          "reason": "unresolved mutate operand: EXPORT-REC-TYPE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE WS-FORMATTED-TIMESTAMP TO EXPORT-TIMESTAMP",
-          "reason": "unresolved read operand: WS-FORMATTED-TIMESTAMP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE WS-FORMATTED-TIMESTAMP TO EXPORT-TIMESTAMP",
-          "reason": "unresolved mutate operand: EXPORT-TIMESTAMP"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 340,
-          "raw_text": "ADD 1 TO WS-SEQUENCE-COUNTER",
-          "reason": "unresolved read operand: WS-SEQUENCE-COUNTER"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 340,
-          "raw_text": "ADD 1 TO WS-SEQUENCE-COUNTER",
-          "reason": "unresolved mutate operand: WS-SEQUENCE-COUNTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE WS-SEQUENCE-COUNTER TO EXPORT-SEQUENCE-NUM",
-          "reason": "unresolved read operand: WS-SEQUENCE-COUNTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE WS-SEQUENCE-COUNTER TO EXPORT-SEQUENCE-NUM",
-          "reason": "unresolved mutate operand: EXPORT-SEQUENCE-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE '0001' TO EXPORT-BRANCH-ID",
-          "reason": "unresolved mutate operand: EXPORT-BRANCH-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE 'NORTH' TO EXPORT-REGION-CODE",
-          "reason": "unresolved mutate operand: EXPORT-REGION-CODE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-ID TO EXP-ACCT-ID",
-          "reason": "unresolved read operand: ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-ID TO EXP-ACCT-ID",
-          "reason": "unresolved mutate operand: EXP-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-ACTIVE-STATUS TO EXP-ACCT-ACTIVE-STATUS",
-          "reason": "unresolved read operand: ACCT-ACTIVE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-ACTIVE-STATUS TO EXP-ACCT-ACTIVE-STATUS",
-          "reason": "unresolved mutate operand: EXP-ACCT-ACTIVE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-CURR-BAL TO EXP-ACCT-CURR-BAL",
-          "reason": "unresolved read operand: ACCT-CURR-BAL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-CURR-BAL TO EXP-ACCT-CURR-BAL",
-          "reason": "unresolved mutate operand: EXP-ACCT-CURR-BAL"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-CREDIT-LIMIT TO EXP-ACCT-CREDIT-LIMIT",
-          "reason": "unresolved read operand: ACCT-CREDIT-LIMIT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-CREDIT-LIMIT TO EXP-ACCT-CREDIT-LIMIT",
-          "reason": "unresolved mutate operand: EXP-ACCT-CREDIT-LIMIT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-CASH-CREDIT-LIMIT TO EXP-ACCT-CASH-CREDIT-LIMIT",
-          "reason": "unresolved read operand: ACCT-CASH-CREDIT-LIMIT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-CASH-CREDIT-LIMIT TO EXP-ACCT-CASH-CREDIT-LIMIT",
-          "reason": "unresolved mutate operand: EXP-ACCT-CASH-CREDIT-LIMIT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-OPEN-DATE TO EXP-ACCT-OPEN-DATE",
-          "reason": "unresolved read operand: ACCT-OPEN-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-OPEN-DATE TO EXP-ACCT-OPEN-DATE",
-          "reason": "unresolved mutate operand: EXP-ACCT-OPEN-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-EXPIRAION-DATE TO EXP-ACCT-EXPIRAION-DATE",
-          "reason": "unresolved read operand: ACCT-EXPIRAION-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-EXPIRAION-DATE TO EXP-ACCT-EXPIRAION-DATE",
-          "reason": "unresolved mutate operand: EXP-ACCT-EXPIRAION-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-REISSUE-DATE TO EXP-ACCT-REISSUE-DATE",
-          "reason": "unresolved read operand: ACCT-REISSUE-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-REISSUE-DATE TO EXP-ACCT-REISSUE-DATE",
-          "reason": "unresolved mutate operand: EXP-ACCT-REISSUE-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-CURR-CYC-CREDIT TO EXP-ACCT-CURR-CYC-CREDIT",
-          "reason": "unresolved read operand: ACCT-CURR-CYC-CREDIT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-CURR-CYC-CREDIT TO EXP-ACCT-CURR-CYC-CREDIT",
-          "reason": "unresolved mutate operand: EXP-ACCT-CURR-CYC-CREDIT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-CURR-CYC-DEBIT TO EXP-ACCT-CURR-CYC-DEBIT",
-          "reason": "unresolved read operand: ACCT-CURR-CYC-DEBIT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-CURR-CYC-DEBIT TO EXP-ACCT-CURR-CYC-DEBIT",
-          "reason": "unresolved mutate operand: EXP-ACCT-CURR-CYC-DEBIT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-ADDR-ZIP TO EXP-ACCT-ADDR-ZIP",
-          "reason": "unresolved read operand: ACCT-ADDR-ZIP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-ADDR-ZIP TO EXP-ACCT-ADDR-ZIP",
-          "reason": "unresolved mutate operand: EXP-ACCT-ADDR-ZIP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-GROUP-ID TO EXP-ACCT-GROUP-ID",
-          "reason": "unresolved read operand: ACCT-GROUP-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 340,
-          "raw_text": "MOVE ACCT-GROUP-ID TO EXP-ACCT-GROUP-ID",
-          "reason": "unresolved mutate operand: EXP-ACCT-GROUP-ID"
-        },
-        {
-          "verb": "WRITE",
-          "line_no": 340,
-          "raw_text": "WRITE EXPORT-OUTPUT-RECORD FROM EXPORT-RECORD",
-          "reason": "unresolved mutate operand: EXPORT-OUTPUT-RECORD"
-        },
-        {
-          "verb": "WRITE",
-          "line_no": 340,
-          "raw_text": "WRITE EXPORT-OUTPUT-RECORD FROM EXPORT-RECORD",
-          "reason": "unresolved read operand: EXPORT-RECORD"
-        },
         {
           "verb": "IF",
           "line_no": 340,
           "raw_text": "IF NOT WS-EXPORT-OK",
           "reason": "unresolved read operand: WS-EXPORT-OK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 340,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: WS-EXPORT-STATUS"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 340,
-          "raw_text": "ADD 1 TO WS-ACCOUNT-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-ACCOUNT-RECORDS-EXPORTED"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 340,
-          "raw_text": "ADD 1 TO WS-ACCOUNT-RECORDS-EXPORTED",
-          "reason": "unresolved mutate operand: WS-ACCOUNT-RECORDS-EXPORTED"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 340,
-          "raw_text": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-TOTAL-RECORDS-EXPORTED"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 340,
-          "raw_text": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED",
-          "reason": "unresolved mutate operand: WS-TOTAL-RECORDS-EXPORTED"
         }
       ]
     },
     "4000-EXPORT-XREFS": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "DISPLAY",
-          "line_no": 378,
-          "raw_text": "DISPLAY 'CBEXPORT: Cross-references exported: ' WS-XREF-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-XREF-RECORDS-EXPORTED"
+          "field": "WS-EXPORT-STATISTICS.WS-XREF-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 18,
+          "length": 9
         }
-      ]
+      ],
+      "mutates": [],
+      "unresolved": []
     },
     "4100-READ-XREF-RECORD": {
-      "reads": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "WS-FILE-STATUS-AREA.WS-XREF-STATUS",
+          "record": "WS-FILE-STATUS-AREA",
+          "copybook": null,
+          "offset": 4,
+          "length": 2
+        }
+      ],
       "mutates": [],
       "unresolved": [
         {
@@ -892,179 +1005,203 @@
           "line_no": 393,
           "raw_text": "IF NOT WS-XREF-OK AND NOT WS-XREF-EOF",
           "reason": "unresolved read operand: WS-XREF-EOF"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 393,
-          "raw_text": "DISPLAY 'ERROR: Reading XREF-INPUT, Status: ' WS-XREF-STATUS",
-          "reason": "unresolved read operand: WS-XREF-STATUS"
         }
       ]
     },
     "4200-CREATE-XREF-EXPORT-RECORD": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "WS-EXPORT-CONTROL.WS-FORMATTED-TIMESTAMP",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 18,
+          "length": 26
+        },
+        {
+          "field": "WS-EXPORT-CONTROL.WS-SEQUENCE-COUNTER",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 44,
+          "length": 9
+        },
+        {
+          "field": "CARD-XREF-RECORD.XREF-CARD-NUM",
+          "record": "CARD-XREF-RECORD",
+          "copybook": "CVACT03Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "CARD-XREF-RECORD.XREF-CUST-ID",
+          "record": "CARD-XREF-RECORD",
+          "copybook": "CVACT03Y",
+          "offset": 16,
+          "length": 9
+        },
+        {
+          "field": "CARD-XREF-RECORD.XREF-ACCT-ID",
+          "record": "CARD-XREF-RECORD",
+          "copybook": "CVACT03Y",
+          "offset": 25,
+          "length": 11
+        },
+        {
+          "field": "EXPORT-RECORD",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 0,
+          "length": 500
+        },
+        {
+          "field": "WS-FILE-STATUS-AREA.WS-EXPORT-STATUS",
+          "record": "WS-FILE-STATUS-AREA",
+          "copybook": null,
+          "offset": 10,
+          "length": 2
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-XREF-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 18,
+          "length": 9
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-TOTAL-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 45,
+          "length": 9
+        }
+      ],
+      "mutates": [
+        {
+          "field": "EXPORT-RECORD",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 0,
+          "length": 500
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-REC-TYPE",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 0,
+          "length": 1
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-TIMESTAMP",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 1,
+          "length": 26
+        },
+        {
+          "field": "WS-EXPORT-CONTROL.WS-SEQUENCE-COUNTER",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 44,
+          "length": 9
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-SEQUENCE-NUM",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 27,
+          "length": 4
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-BRANCH-ID",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 31,
+          "length": 4
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-REGION-CODE",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 35,
+          "length": 5
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CARD-XREF-DATA.EXP-XREF-CARD-NUM",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 40,
+          "length": 16
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CARD-XREF-DATA.EXP-XREF-CUST-ID",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 56,
+          "length": 9
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CARD-XREF-DATA.EXP-XREF-ACCT-ID",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 65,
+          "length": 8
+        },
+        {
+          "field": "EXPORT-OUTPUT-RECORD",
+          "record": "EXPORT-OUTPUT-RECORD",
+          "copybook": null,
+          "offset": 0,
+          "length": 500
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-XREF-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 18,
+          "length": 9
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-TOTAL-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 45,
+          "length": 9
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "INITIALIZE",
-          "line_no": 404,
-          "raw_text": "INITIALIZE EXPORT-RECORD",
-          "reason": "unresolved mutate operand: EXPORT-RECORD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 404,
-          "raw_text": "MOVE 'X' TO EXPORT-REC-TYPE",
-          "reason": "unresolved mutate operand: EXPORT-REC-TYPE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 404,
-          "raw_text": "MOVE WS-FORMATTED-TIMESTAMP TO EXPORT-TIMESTAMP",
-          "reason": "unresolved read operand: WS-FORMATTED-TIMESTAMP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 404,
-          "raw_text": "MOVE WS-FORMATTED-TIMESTAMP TO EXPORT-TIMESTAMP",
-          "reason": "unresolved mutate operand: EXPORT-TIMESTAMP"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 404,
-          "raw_text": "ADD 1 TO WS-SEQUENCE-COUNTER",
-          "reason": "unresolved read operand: WS-SEQUENCE-COUNTER"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 404,
-          "raw_text": "ADD 1 TO WS-SEQUENCE-COUNTER",
-          "reason": "unresolved mutate operand: WS-SEQUENCE-COUNTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 404,
-          "raw_text": "MOVE WS-SEQUENCE-COUNTER TO EXPORT-SEQUENCE-NUM",
-          "reason": "unresolved read operand: WS-SEQUENCE-COUNTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 404,
-          "raw_text": "MOVE WS-SEQUENCE-COUNTER TO EXPORT-SEQUENCE-NUM",
-          "reason": "unresolved mutate operand: EXPORT-SEQUENCE-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 404,
-          "raw_text": "MOVE '0001' TO EXPORT-BRANCH-ID",
-          "reason": "unresolved mutate operand: EXPORT-BRANCH-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 404,
-          "raw_text": "MOVE 'NORTH' TO EXPORT-REGION-CODE",
-          "reason": "unresolved mutate operand: EXPORT-REGION-CODE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 404,
-          "raw_text": "MOVE XREF-CARD-NUM TO EXP-XREF-CARD-NUM",
-          "reason": "unresolved read operand: XREF-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 404,
-          "raw_text": "MOVE XREF-CARD-NUM TO EXP-XREF-CARD-NUM",
-          "reason": "unresolved mutate operand: EXP-XREF-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 404,
-          "raw_text": "MOVE XREF-CUST-ID TO EXP-XREF-CUST-ID",
-          "reason": "unresolved read operand: XREF-CUST-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 404,
-          "raw_text": "MOVE XREF-CUST-ID TO EXP-XREF-CUST-ID",
-          "reason": "unresolved mutate operand: EXP-XREF-CUST-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 404,
-          "raw_text": "MOVE XREF-ACCT-ID TO EXP-XREF-ACCT-ID",
-          "reason": "unresolved read operand: XREF-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 404,
-          "raw_text": "MOVE XREF-ACCT-ID TO EXP-XREF-ACCT-ID",
-          "reason": "unresolved mutate operand: EXP-XREF-ACCT-ID"
-        },
-        {
-          "verb": "WRITE",
-          "line_no": 404,
-          "raw_text": "WRITE EXPORT-OUTPUT-RECORD FROM EXPORT-RECORD",
-          "reason": "unresolved mutate operand: EXPORT-OUTPUT-RECORD"
-        },
-        {
-          "verb": "WRITE",
-          "line_no": 404,
-          "raw_text": "WRITE EXPORT-OUTPUT-RECORD FROM EXPORT-RECORD",
-          "reason": "unresolved read operand: EXPORT-RECORD"
-        },
         {
           "verb": "IF",
           "line_no": 404,
           "raw_text": "IF NOT WS-EXPORT-OK",
           "reason": "unresolved read operand: WS-EXPORT-OK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 404,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: WS-EXPORT-STATUS"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 404,
-          "raw_text": "ADD 1 TO WS-XREF-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-XREF-RECORDS-EXPORTED"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 404,
-          "raw_text": "ADD 1 TO WS-XREF-RECORDS-EXPORTED",
-          "reason": "unresolved mutate operand: WS-XREF-RECORDS-EXPORTED"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 404,
-          "raw_text": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-TOTAL-RECORDS-EXPORTED"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 404,
-          "raw_text": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED",
-          "reason": "unresolved mutate operand: WS-TOTAL-RECORDS-EXPORTED"
         }
       ]
     },
     "5000-EXPORT-TRANSACTIONS": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "DISPLAY",
-          "line_no": 433,
-          "raw_text": "DISPLAY 'CBEXPORT: Transactions exported: ' WS-TRAN-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-TRAN-RECORDS-EXPORTED"
+          "field": "WS-EXPORT-STATISTICS.WS-TRAN-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 27,
+          "length": 9
         }
-      ]
+      ],
+      "mutates": [],
+      "unresolved": []
     },
     "5100-READ-TRANSACTION-RECORD": {
-      "reads": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "WS-FILE-STATUS-AREA.WS-TRANSACTION-STATUS",
+          "record": "WS-FILE-STATUS-AREA",
+          "copybook": null,
+          "offset": 6,
+          "length": 2
+        }
+      ],
       "mutates": [],
       "unresolved": [
         {
@@ -1084,299 +1221,343 @@
           "line_no": 448,
           "raw_text": "IF NOT WS-TRANSACTION-OK AND NOT WS-TRANSACTION-EOF",
           "reason": "unresolved read operand: WS-TRANSACTION-EOF"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 448,
-          "raw_text": "DISPLAY 'ERROR: Reading TRANSACTION-INPUT, Status: ' WS-TRANSACTION-STATUS",
-          "reason": "unresolved read operand: WS-TRANSACTION-STATUS"
         }
       ]
     },
     "5200-CREATE-TRAN-EXP-REC": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "WS-EXPORT-CONTROL.WS-FORMATTED-TIMESTAMP",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 18,
+          "length": 26
+        },
+        {
+          "field": "WS-EXPORT-CONTROL.WS-SEQUENCE-COUNTER",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 44,
+          "length": 9
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-ID",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-TYPE-CD",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 16,
+          "length": 2
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-CAT-CD",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 18,
+          "length": 4
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-SOURCE",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 22,
+          "length": 10
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-DESC",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 32,
+          "length": 100
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-AMT",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 132,
+          "length": 11
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-MERCHANT-ID",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 143,
+          "length": 9
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-MERCHANT-NAME",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 152,
+          "length": 50
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-MERCHANT-CITY",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 202,
+          "length": 50
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-MERCHANT-ZIP",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 252,
+          "length": 10
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-CARD-NUM",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 262,
+          "length": 16
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-ORIG-TS",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 278,
+          "length": 26
+        },
+        {
+          "field": "TRAN-RECORD.TRAN-PROC-TS",
+          "record": "TRAN-RECORD",
+          "copybook": "CVTRA05Y",
+          "offset": 304,
+          "length": 26
+        },
+        {
+          "field": "EXPORT-RECORD",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 0,
+          "length": 500
+        },
+        {
+          "field": "WS-FILE-STATUS-AREA.WS-EXPORT-STATUS",
+          "record": "WS-FILE-STATUS-AREA",
+          "copybook": null,
+          "offset": 10,
+          "length": 2
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-TRAN-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 27,
+          "length": 9
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-TOTAL-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 45,
+          "length": 9
+        }
+      ],
+      "mutates": [
+        {
+          "field": "EXPORT-RECORD",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 0,
+          "length": 500
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-REC-TYPE",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 0,
+          "length": 1
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-TIMESTAMP",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 1,
+          "length": 26
+        },
+        {
+          "field": "WS-EXPORT-CONTROL.WS-SEQUENCE-COUNTER",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 44,
+          "length": 9
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-SEQUENCE-NUM",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 27,
+          "length": 4
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-BRANCH-ID",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 31,
+          "length": 4
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-REGION-CODE",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 35,
+          "length": 5
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-TRANSACTION-DATA.EXP-TRAN-ID",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 40,
+          "length": 16
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-TRANSACTION-DATA.EXP-TRAN-TYPE-CD",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 56,
+          "length": 2
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-TRANSACTION-DATA.EXP-TRAN-CAT-CD",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 58,
+          "length": 4
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-TRANSACTION-DATA.EXP-TRAN-SOURCE",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 62,
+          "length": 10
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-TRANSACTION-DATA.EXP-TRAN-DESC",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 72,
+          "length": 100
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-TRANSACTION-DATA.EXP-TRAN-AMT",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 172,
+          "length": 6
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-TRANSACTION-DATA.EXP-TRAN-MERCHANT-ID",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 178,
+          "length": 4
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-TRANSACTION-DATA.EXP-TRAN-MERCHANT-NAME",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 182,
+          "length": 50
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-TRANSACTION-DATA.EXP-TRAN-MERCHANT-CITY",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 232,
+          "length": 50
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-TRANSACTION-DATA.EXP-TRAN-MERCHANT-ZIP",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 282,
+          "length": 10
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-TRANSACTION-DATA.EXP-TRAN-CARD-NUM",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 292,
+          "length": 16
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-TRANSACTION-DATA.EXP-TRAN-ORIG-TS",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 308,
+          "length": 26
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-TRANSACTION-DATA.EXP-TRAN-PROC-TS",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 334,
+          "length": 26
+        },
+        {
+          "field": "EXPORT-OUTPUT-RECORD",
+          "record": "EXPORT-OUTPUT-RECORD",
+          "copybook": null,
+          "offset": 0,
+          "length": 500
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-TRAN-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 27,
+          "length": 9
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-TOTAL-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 45,
+          "length": 9
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "INITIALIZE",
-          "line_no": 459,
-          "raw_text": "INITIALIZE EXPORT-RECORD",
-          "reason": "unresolved mutate operand: EXPORT-RECORD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE 'T' TO EXPORT-REC-TYPE",
-          "reason": "unresolved mutate operand: EXPORT-REC-TYPE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE WS-FORMATTED-TIMESTAMP TO EXPORT-TIMESTAMP",
-          "reason": "unresolved read operand: WS-FORMATTED-TIMESTAMP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE WS-FORMATTED-TIMESTAMP TO EXPORT-TIMESTAMP",
-          "reason": "unresolved mutate operand: EXPORT-TIMESTAMP"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 459,
-          "raw_text": "ADD 1 TO WS-SEQUENCE-COUNTER",
-          "reason": "unresolved read operand: WS-SEQUENCE-COUNTER"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 459,
-          "raw_text": "ADD 1 TO WS-SEQUENCE-COUNTER",
-          "reason": "unresolved mutate operand: WS-SEQUENCE-COUNTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE WS-SEQUENCE-COUNTER TO EXPORT-SEQUENCE-NUM",
-          "reason": "unresolved read operand: WS-SEQUENCE-COUNTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE WS-SEQUENCE-COUNTER TO EXPORT-SEQUENCE-NUM",
-          "reason": "unresolved mutate operand: EXPORT-SEQUENCE-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE '0001' TO EXPORT-BRANCH-ID",
-          "reason": "unresolved mutate operand: EXPORT-BRANCH-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE 'NORTH' TO EXPORT-REGION-CODE",
-          "reason": "unresolved mutate operand: EXPORT-REGION-CODE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-ID TO EXP-TRAN-ID",
-          "reason": "unresolved read operand: TRAN-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-ID TO EXP-TRAN-ID",
-          "reason": "unresolved mutate operand: EXP-TRAN-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-TYPE-CD TO EXP-TRAN-TYPE-CD",
-          "reason": "unresolved read operand: TRAN-TYPE-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-TYPE-CD TO EXP-TRAN-TYPE-CD",
-          "reason": "unresolved mutate operand: EXP-TRAN-TYPE-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-CAT-CD TO EXP-TRAN-CAT-CD",
-          "reason": "unresolved read operand: TRAN-CAT-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-CAT-CD TO EXP-TRAN-CAT-CD",
-          "reason": "unresolved mutate operand: EXP-TRAN-CAT-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-SOURCE TO EXP-TRAN-SOURCE",
-          "reason": "unresolved read operand: TRAN-SOURCE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-SOURCE TO EXP-TRAN-SOURCE",
-          "reason": "unresolved mutate operand: EXP-TRAN-SOURCE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-DESC TO EXP-TRAN-DESC",
-          "reason": "unresolved read operand: TRAN-DESC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-DESC TO EXP-TRAN-DESC",
-          "reason": "unresolved mutate operand: EXP-TRAN-DESC"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-AMT TO EXP-TRAN-AMT",
-          "reason": "unresolved read operand: TRAN-AMT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-AMT TO EXP-TRAN-AMT",
-          "reason": "unresolved mutate operand: EXP-TRAN-AMT"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-MERCHANT-ID TO EXP-TRAN-MERCHANT-ID",
-          "reason": "unresolved read operand: TRAN-MERCHANT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-MERCHANT-ID TO EXP-TRAN-MERCHANT-ID",
-          "reason": "unresolved mutate operand: EXP-TRAN-MERCHANT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-MERCHANT-NAME TO EXP-TRAN-MERCHANT-NAME",
-          "reason": "unresolved read operand: TRAN-MERCHANT-NAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-MERCHANT-NAME TO EXP-TRAN-MERCHANT-NAME",
-          "reason": "unresolved mutate operand: EXP-TRAN-MERCHANT-NAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-MERCHANT-CITY TO EXP-TRAN-MERCHANT-CITY",
-          "reason": "unresolved read operand: TRAN-MERCHANT-CITY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-MERCHANT-CITY TO EXP-TRAN-MERCHANT-CITY",
-          "reason": "unresolved mutate operand: EXP-TRAN-MERCHANT-CITY"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-MERCHANT-ZIP TO EXP-TRAN-MERCHANT-ZIP",
-          "reason": "unresolved read operand: TRAN-MERCHANT-ZIP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-MERCHANT-ZIP TO EXP-TRAN-MERCHANT-ZIP",
-          "reason": "unresolved mutate operand: EXP-TRAN-MERCHANT-ZIP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-CARD-NUM TO EXP-TRAN-CARD-NUM",
-          "reason": "unresolved read operand: TRAN-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-CARD-NUM TO EXP-TRAN-CARD-NUM",
-          "reason": "unresolved mutate operand: EXP-TRAN-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-ORIG-TS TO EXP-TRAN-ORIG-TS",
-          "reason": "unresolved read operand: TRAN-ORIG-TS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-ORIG-TS TO EXP-TRAN-ORIG-TS",
-          "reason": "unresolved mutate operand: EXP-TRAN-ORIG-TS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-PROC-TS TO EXP-TRAN-PROC-TS",
-          "reason": "unresolved read operand: TRAN-PROC-TS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 459,
-          "raw_text": "MOVE TRAN-PROC-TS TO EXP-TRAN-PROC-TS",
-          "reason": "unresolved mutate operand: EXP-TRAN-PROC-TS"
-        },
-        {
-          "verb": "WRITE",
-          "line_no": 459,
-          "raw_text": "WRITE EXPORT-OUTPUT-RECORD FROM EXPORT-RECORD",
-          "reason": "unresolved mutate operand: EXPORT-OUTPUT-RECORD"
-        },
-        {
-          "verb": "WRITE",
-          "line_no": 459,
-          "raw_text": "WRITE EXPORT-OUTPUT-RECORD FROM EXPORT-RECORD",
-          "reason": "unresolved read operand: EXPORT-RECORD"
-        },
         {
           "verb": "IF",
           "line_no": 459,
           "raw_text": "IF NOT WS-EXPORT-OK",
           "reason": "unresolved read operand: WS-EXPORT-OK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 459,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: WS-EXPORT-STATUS"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 459,
-          "raw_text": "ADD 1 TO WS-TRAN-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-TRAN-RECORDS-EXPORTED"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 459,
-          "raw_text": "ADD 1 TO WS-TRAN-RECORDS-EXPORTED",
-          "reason": "unresolved mutate operand: WS-TRAN-RECORDS-EXPORTED"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 459,
-          "raw_text": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-TOTAL-RECORDS-EXPORTED"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 459,
-          "raw_text": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED",
-          "reason": "unresolved mutate operand: WS-TOTAL-RECORDS-EXPORTED"
         }
       ]
     },
     "5500-EXPORT-CARDS": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "DISPLAY",
-          "line_no": 498,
-          "raw_text": "DISPLAY 'CBEXPORT: Cards exported: ' WS-CARD-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-CARD-RECORDS-EXPORTED"
+          "field": "WS-EXPORT-STATISTICS.WS-CARD-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 36,
+          "length": 9
         }
-      ]
+      ],
+      "mutates": [],
+      "unresolved": []
     },
     "5600-READ-CARD-RECORD": {
-      "reads": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "WS-FILE-STATUS-AREA.WS-CARD-STATUS",
+          "record": "WS-FILE-STATUS-AREA",
+          "copybook": null,
+          "offset": 8,
+          "length": 2
+        }
+      ],
       "mutates": [],
       "unresolved": [
         {
@@ -1396,244 +1577,271 @@
           "line_no": 513,
           "raw_text": "IF NOT WS-CARD-OK AND NOT WS-CARD-EOF",
           "reason": "unresolved read operand: WS-CARD-EOF"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 513,
-          "raw_text": "DISPLAY 'ERROR: Reading CARD-INPUT, Status: ' WS-CARD-STATUS",
-          "reason": "unresolved read operand: WS-CARD-STATUS"
         }
       ]
     },
     "5700-CREATE-CARD-EXPORT-RECORD": {
-      "reads": [],
-      "mutates": [],
+      "section_name": null,
+      "reads": [
+        {
+          "field": "WS-EXPORT-CONTROL.WS-FORMATTED-TIMESTAMP",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 18,
+          "length": 26
+        },
+        {
+          "field": "WS-EXPORT-CONTROL.WS-SEQUENCE-COUNTER",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 44,
+          "length": 9
+        },
+        {
+          "field": "CARD-RECORD.CARD-NUM",
+          "record": "CARD-RECORD",
+          "copybook": "CVACT02Y",
+          "offset": 0,
+          "length": 16
+        },
+        {
+          "field": "CARD-RECORD.CARD-ACCT-ID",
+          "record": "CARD-RECORD",
+          "copybook": "CVACT02Y",
+          "offset": 16,
+          "length": 11
+        },
+        {
+          "field": "CARD-RECORD.CARD-CVV-CD",
+          "record": "CARD-RECORD",
+          "copybook": "CVACT02Y",
+          "offset": 27,
+          "length": 3
+        },
+        {
+          "field": "CARD-RECORD.CARD-EMBOSSED-NAME",
+          "record": "CARD-RECORD",
+          "copybook": "CVACT02Y",
+          "offset": 30,
+          "length": 50
+        },
+        {
+          "field": "CARD-RECORD.CARD-EXPIRAION-DATE",
+          "record": "CARD-RECORD",
+          "copybook": "CVACT02Y",
+          "offset": 80,
+          "length": 10
+        },
+        {
+          "field": "CARD-RECORD.CARD-ACTIVE-STATUS",
+          "record": "CARD-RECORD",
+          "copybook": "CVACT02Y",
+          "offset": 90,
+          "length": 1
+        },
+        {
+          "field": "EXPORT-RECORD",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 0,
+          "length": 500
+        },
+        {
+          "field": "WS-FILE-STATUS-AREA.WS-EXPORT-STATUS",
+          "record": "WS-FILE-STATUS-AREA",
+          "copybook": null,
+          "offset": 10,
+          "length": 2
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-CARD-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 36,
+          "length": 9
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-TOTAL-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 45,
+          "length": 9
+        }
+      ],
+      "mutates": [
+        {
+          "field": "EXPORT-RECORD",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 0,
+          "length": 500
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-REC-TYPE",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 0,
+          "length": 1
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-TIMESTAMP",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 1,
+          "length": 26
+        },
+        {
+          "field": "WS-EXPORT-CONTROL.WS-SEQUENCE-COUNTER",
+          "record": "WS-EXPORT-CONTROL",
+          "copybook": null,
+          "offset": 44,
+          "length": 9
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-SEQUENCE-NUM",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 27,
+          "length": 4
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-BRANCH-ID",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 31,
+          "length": 4
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-REGION-CODE",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 35,
+          "length": 5
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CARD-DATA.EXP-CARD-NUM",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 40,
+          "length": 16
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CARD-DATA.EXP-CARD-ACCT-ID",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 56,
+          "length": 8
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CARD-DATA.EXP-CARD-CVV-CD",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 64,
+          "length": 2
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CARD-DATA.EXP-CARD-EMBOSSED-NAME",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 66,
+          "length": 50
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CARD-DATA.EXP-CARD-EXPIRAION-DATE",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 116,
+          "length": 10
+        },
+        {
+          "field": "EXPORT-RECORD.EXPORT-CARD-DATA.EXP-CARD-ACTIVE-STATUS",
+          "record": "EXPORT-RECORD",
+          "copybook": "CVEXPORT",
+          "offset": 126,
+          "length": 1
+        },
+        {
+          "field": "EXPORT-OUTPUT-RECORD",
+          "record": "EXPORT-OUTPUT-RECORD",
+          "copybook": null,
+          "offset": 0,
+          "length": 500
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-CARD-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 36,
+          "length": 9
+        },
+        {
+          "field": "WS-EXPORT-STATISTICS.WS-TOTAL-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 45,
+          "length": 9
+        }
+      ],
       "unresolved": [
-        {
-          "verb": "INITIALIZE",
-          "line_no": 524,
-          "raw_text": "INITIALIZE EXPORT-RECORD",
-          "reason": "unresolved mutate operand: EXPORT-RECORD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE 'D' TO EXPORT-REC-TYPE",
-          "reason": "unresolved mutate operand: EXPORT-REC-TYPE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE WS-FORMATTED-TIMESTAMP TO EXPORT-TIMESTAMP",
-          "reason": "unresolved read operand: WS-FORMATTED-TIMESTAMP"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE WS-FORMATTED-TIMESTAMP TO EXPORT-TIMESTAMP",
-          "reason": "unresolved mutate operand: EXPORT-TIMESTAMP"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 524,
-          "raw_text": "ADD 1 TO WS-SEQUENCE-COUNTER",
-          "reason": "unresolved read operand: WS-SEQUENCE-COUNTER"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 524,
-          "raw_text": "ADD 1 TO WS-SEQUENCE-COUNTER",
-          "reason": "unresolved mutate operand: WS-SEQUENCE-COUNTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE WS-SEQUENCE-COUNTER TO EXPORT-SEQUENCE-NUM",
-          "reason": "unresolved read operand: WS-SEQUENCE-COUNTER"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE WS-SEQUENCE-COUNTER TO EXPORT-SEQUENCE-NUM",
-          "reason": "unresolved mutate operand: EXPORT-SEQUENCE-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE '0001' TO EXPORT-BRANCH-ID",
-          "reason": "unresolved mutate operand: EXPORT-BRANCH-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE 'NORTH' TO EXPORT-REGION-CODE",
-          "reason": "unresolved mutate operand: EXPORT-REGION-CODE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE CARD-NUM TO EXP-CARD-NUM",
-          "reason": "unresolved read operand: CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE CARD-NUM TO EXP-CARD-NUM",
-          "reason": "unresolved mutate operand: EXP-CARD-NUM"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE CARD-ACCT-ID TO EXP-CARD-ACCT-ID",
-          "reason": "unresolved read operand: CARD-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE CARD-ACCT-ID TO EXP-CARD-ACCT-ID",
-          "reason": "unresolved mutate operand: EXP-CARD-ACCT-ID"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE CARD-CVV-CD TO EXP-CARD-CVV-CD",
-          "reason": "unresolved read operand: CARD-CVV-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE CARD-CVV-CD TO EXP-CARD-CVV-CD",
-          "reason": "unresolved mutate operand: EXP-CARD-CVV-CD"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE CARD-EMBOSSED-NAME TO EXP-CARD-EMBOSSED-NAME",
-          "reason": "unresolved read operand: CARD-EMBOSSED-NAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE CARD-EMBOSSED-NAME TO EXP-CARD-EMBOSSED-NAME",
-          "reason": "unresolved mutate operand: EXP-CARD-EMBOSSED-NAME"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE CARD-EXPIRAION-DATE TO EXP-CARD-EXPIRAION-DATE",
-          "reason": "unresolved read operand: CARD-EXPIRAION-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE CARD-EXPIRAION-DATE TO EXP-CARD-EXPIRAION-DATE",
-          "reason": "unresolved mutate operand: EXP-CARD-EXPIRAION-DATE"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE CARD-ACTIVE-STATUS TO EXP-CARD-ACTIVE-STATUS",
-          "reason": "unresolved read operand: CARD-ACTIVE-STATUS"
-        },
-        {
-          "verb": "MOVE",
-          "line_no": 524,
-          "raw_text": "MOVE CARD-ACTIVE-STATUS TO EXP-CARD-ACTIVE-STATUS",
-          "reason": "unresolved mutate operand: EXP-CARD-ACTIVE-STATUS"
-        },
-        {
-          "verb": "WRITE",
-          "line_no": 524,
-          "raw_text": "WRITE EXPORT-OUTPUT-RECORD FROM EXPORT-RECORD",
-          "reason": "unresolved mutate operand: EXPORT-OUTPUT-RECORD"
-        },
-        {
-          "verb": "WRITE",
-          "line_no": 524,
-          "raw_text": "WRITE EXPORT-OUTPUT-RECORD FROM EXPORT-RECORD",
-          "reason": "unresolved read operand: EXPORT-RECORD"
-        },
         {
           "verb": "IF",
           "line_no": 524,
           "raw_text": "IF NOT WS-EXPORT-OK",
           "reason": "unresolved read operand: WS-EXPORT-OK"
-        },
-        {
-          "verb": "DISPLAY",
-          "line_no": 524,
-          "raw_text": "DISPLAY 'ERROR: Writing export record, Status: ' WS-EXPORT-STATUS",
-          "reason": "unresolved read operand: WS-EXPORT-STATUS"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 524,
-          "raw_text": "ADD 1 TO WS-CARD-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-CARD-RECORDS-EXPORTED"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 524,
-          "raw_text": "ADD 1 TO WS-CARD-RECORDS-EXPORTED",
-          "reason": "unresolved mutate operand: WS-CARD-RECORDS-EXPORTED"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 524,
-          "raw_text": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-TOTAL-RECORDS-EXPORTED"
-        },
-        {
-          "verb": "ADD",
-          "line_no": 524,
-          "raw_text": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED",
-          "reason": "unresolved mutate operand: WS-TOTAL-RECORDS-EXPORTED"
         }
       ]
     },
     "6000-FINALIZE": {
-      "reads": [],
-      "mutates": [],
-      "unresolved": [
+      "section_name": null,
+      "reads": [
         {
-          "verb": "DISPLAY",
-          "line_no": 556,
-          "raw_text": "DISPLAY 'CBEXPORT: Customers Exported: ' WS-CUSTOMER-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-CUSTOMER-RECORDS-EXPORTED"
+          "field": "WS-EXPORT-STATISTICS.WS-CUSTOMER-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 0,
+          "length": 9
         },
         {
-          "verb": "DISPLAY",
-          "line_no": 556,
-          "raw_text": "DISPLAY 'CBEXPORT: Accounts Exported: ' WS-ACCOUNT-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-ACCOUNT-RECORDS-EXPORTED"
+          "field": "WS-EXPORT-STATISTICS.WS-ACCOUNT-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 9,
+          "length": 9
         },
         {
-          "verb": "DISPLAY",
-          "line_no": 556,
-          "raw_text": "DISPLAY 'CBEXPORT: XRefs Exported: ' WS-XREF-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-XREF-RECORDS-EXPORTED"
+          "field": "WS-EXPORT-STATISTICS.WS-XREF-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 18,
+          "length": 9
         },
         {
-          "verb": "DISPLAY",
-          "line_no": 556,
-          "raw_text": "DISPLAY 'CBEXPORT: Transactions Exported: ' WS-TRAN-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-TRAN-RECORDS-EXPORTED"
+          "field": "WS-EXPORT-STATISTICS.WS-TRAN-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 27,
+          "length": 9
         },
         {
-          "verb": "DISPLAY",
-          "line_no": 556,
-          "raw_text": "DISPLAY 'CBEXPORT: Cards Exported: ' WS-CARD-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-CARD-RECORDS-EXPORTED"
+          "field": "WS-EXPORT-STATISTICS.WS-CARD-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 36,
+          "length": 9
         },
         {
-          "verb": "DISPLAY",
-          "line_no": 556,
-          "raw_text": "DISPLAY 'CBEXPORT: Total Records Exported: ' WS-TOTAL-RECORDS-EXPORTED",
-          "reason": "unresolved read operand: WS-TOTAL-RECORDS-EXPORTED"
+          "field": "WS-EXPORT-STATISTICS.WS-TOTAL-RECORDS-EXPORTED",
+          "record": "WS-EXPORT-STATISTICS",
+          "copybook": null,
+          "offset": 45,
+          "length": 9
         }
-      ]
+      ],
+      "mutates": [],
+      "unresolved": []
     },
     "9999-ABEND-PROGRAM": {
+      "section_name": null,
       "reads": [],
       "mutates": [],
       "unresolved": []

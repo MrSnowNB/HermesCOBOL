@@ -1,0 +1,251 @@
+{
+  "schema_version": "1.1",
+  "program": "COMEN01C",
+  "source_file": "data/raw/cbl/COMEN01C.cbl",
+  "extracted_at": "2026-05-12T16:52:22.506639+00:00",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 0,
+  "gate_status": "PASS",
+  "gate_reasons": [],
+  "cics_present": true,
+  "sql_present": false,
+  "paragraphs": [
+    "BUILD-MENU-OPTIONS",
+    "MAIN-PARA",
+    "POPULATE-HEADER-INFO",
+    "PROCESS-ENTER-KEY",
+    "RECEIVE-MENU-SCREEN",
+    "RETURN-TO-SIGNON-SCREEN",
+    "SEND-MENU-SCREEN"
+  ],
+  "data_items": [
+    "DFHCOMMAREA",
+    "WS-VARIABLES"
+  ],
+  "external_calls": [],
+  "internal_performs": [
+    "BUILD-MENU-OPTIONS",
+    "MOVE",
+    "POPULATE-HEADER-INFO",
+    "PROCESS-ENTER-KEY",
+    "RECEIVE-MENU-SCREEN",
+    "RETURN-TO-SIGNON-SCREEN",
+    "SEND-MENU-SCREEN"
+  ],
+  "data_files": [],
+  "copybooks_referenced": [
+    "COCOM01Y",
+    "COMEN01",
+    "COMEN02Y",
+    "COTTL01Y",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CSUSR01Y",
+    "DFHAID",
+    "DFHBMSCA"
+  ],
+  "cfg": {
+    "source": null,
+    "edges": null,
+    "unresolved": null
+  },
+  "paragraphs_defined": [
+    {
+      "name": "MAIN-PARA",
+      "source_line": 35,
+      "area_a": false
+    },
+    {
+      "name": "PROCESS-ENTER-KEY",
+      "source_line": 68,
+      "area_a": false
+    },
+    {
+      "name": "RETURN-TO-SIGNON-SCREEN",
+      "source_line": 154,
+      "area_a": false
+    },
+    {
+      "name": "SEND-MENU-SCREEN",
+      "source_line": 158,
+      "area_a": false
+    },
+    {
+      "name": "RECEIVE-MENU-SCREEN",
+      "source_line": 165,
+      "area_a": false
+    },
+    {
+      "name": "POPULATE-HEADER-INFO",
+      "source_line": 170,
+      "area_a": false
+    },
+    {
+      "name": "BUILD-MENU-OPTIONS",
+      "source_line": 184,
+      "area_a": false
+    }
+  ],
+  "paragraphs_referenced": [
+    "BUILD-MENU-OPTIONS",
+    "POPULATE-HEADER-INFO",
+    "PROCESS-ENTER-KEY",
+    "RECEIVE-MENU-SCREEN",
+    "RETURN-TO-SIGNON-SCREEN",
+    "SEND-MENU-SCREEN"
+  ],
+  "paragraph_actions": {
+    "MAIN-PARA": [
+      "aid_branch",
+      "branch_logic",
+      "cics_command"
+    ],
+    "PROCESS-ENTER-KEY": [
+      "branch_logic",
+      "cics_command"
+    ],
+    "RETURN-TO-SIGNON-SCREEN": [
+      "branch_logic",
+      "cics_command"
+    ],
+    "SEND-MENU-SCREEN": [
+      "cics_command",
+      "send_map"
+    ],
+    "RECEIVE-MENU-SCREEN": [
+      "cics_command",
+      "receive_map"
+    ],
+    "POPULATE-HEADER-INFO": [
+      "transform_data"
+    ],
+    "BUILD-MENU-OPTIONS": [
+      "branch_logic",
+      "transform_data"
+    ]
+  },
+  "file_lineage": [],
+  "file_operations": {},
+  "control_flow": {
+    "cfg_source": "text_scan",
+    "entry_points": [
+      "MAIN-PARA"
+    ],
+    "exit_points": [
+      "BUILD-MENU-OPTIONS",
+      "MAIN-PARA",
+      "PROCESS-ENTER-KEY"
+    ],
+    "edges": [
+      {
+        "from": "MAIN-PARA",
+        "to": "RETURN-TO-SIGNON-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "SEND-MENU-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "RECEIVE-MENU-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "PROCESS-ENTER-KEY",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "SEND-MENU-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "RETURN-TO-SIGNON-SCREEN",
+        "to": "SEND-MENU-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "SEND-MENU-SCREEN",
+        "to": "POPULATE-HEADER-INFO",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "SEND-MENU-SCREEN",
+        "to": "BUILD-MENU-OPTIONS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "SEND-MENU-SCREEN",
+        "to": "RECEIVE-MENU-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "RECEIVE-MENU-SCREEN",
+        "to": "POPULATE-HEADER-INFO",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "POPULATE-HEADER-INFO",
+        "to": "BUILD-MENU-OPTIONS",
+        "type": "fallthrough",
+        "source_lines": null
+      }
+    ],
+    "unresolved": [],
+    "cfg_note": "CICS program: text_scan CFG; conditional branches not resolved without a CICS translator.  Maps, commands, and AID keys are captured separately in the 'cics' subtree."
+  },
+  "cics": {
+    "commarea_used": true,
+    "commands": [
+      "INQUIRE",
+      "RECEIVE",
+      "RETURN",
+      "SEND",
+      "XCTL"
+    ],
+    "maps_used": [
+      "COMEN1A"
+    ],
+    "mapsets_used": [
+      "COMEN01"
+    ],
+    "aid_keys": [
+      "DFHENTER",
+      "DFHPF3"
+    ],
+    "screen_flow": [
+      {
+        "paragraph": "MAIN-PARA",
+        "action": "aid_dispatch",
+        "aid_keys": [
+          "DFHENTER",
+          "DFHPF3"
+        ],
+        "maps": null
+      },
+      {
+        "paragraph": "SEND-MENU-SCREEN",
+        "action": "send_map",
+        "map": "COMEN1A"
+      },
+      {
+        "paragraph": "RECEIVE-MENU-SCREEN",
+        "action": "receive_map",
+        "map": "COMEN1A"
+      }
+    ]
+  }
+}

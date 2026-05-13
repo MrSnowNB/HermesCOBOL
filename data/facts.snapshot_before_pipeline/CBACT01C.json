@@ -1,0 +1,632 @@
+{
+  "schema_version": "1.1",
+  "program": "CBACT01C",
+  "source_file": "data/raw/cbl/CBACT01C.cbl",
+  "extracted_at": "2026-05-12T16:52:22.058002+00:00",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 0,
+  "gate_status": "PASS",
+  "gate_reasons": [],
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [
+    "0000-ACCTFILE-OPEN",
+    "1000-ACCTFILE-GET-NEXT",
+    "1100-DISPLAY-ACCT-RECORD",
+    "1300-POPUL-ACCT-RECORD",
+    "1350-WRITE-ACCT-RECORD",
+    "1400-POPUL-ARRAY-RECORD",
+    "1450-WRITE-ARRY-RECORD",
+    "1500-POPUL-VBRC-RECORD",
+    "1550-WRITE-VB1-RECORD",
+    "1575-WRITE-VB2-RECORD",
+    "2000-OUTFILE-OPEN",
+    "3000-ARRFILE-OPEN",
+    "4000-VBRFILE-OPEN",
+    "9000-ACCTFILE-CLOSE",
+    "9910-DISPLAY-IO-STATUS",
+    "9999-ABEND-PROGRAM"
+  ],
+  "data_items": [
+    "ABCODE",
+    "ACCTFILE-STATUS",
+    "APPL-RESULT",
+    "ARR-ARRAY-REC",
+    "ARRYFILE-STATUS",
+    "END-OF-FILE",
+    "FD-ACCTFILE-REC",
+    "IO-STATUS",
+    "IO-STATUS-04",
+    "OUT-ACCT-REC",
+    "OUTFILE-STATUS",
+    "TIMING",
+    "TWO-BYTES-ALPHA",
+    "TWO-BYTES-BINARY",
+    "VBR-REC",
+    "VBRC-REC1",
+    "VBRC-REC2",
+    "VBRCFILE-STATUS",
+    "WS-ACCT-REISSUE-DATE",
+    "WS-RECD-LEN",
+    "WS-REISSUE-DATE"
+  ],
+  "external_calls": [
+    "CEE3ABD",
+    "COBDATFT"
+  ],
+  "internal_performs": [
+    "0000-ACCTFILE-OPEN",
+    "1000-ACCTFILE-GET-NEXT",
+    "1100-DISPLAY-ACCT-RECORD",
+    "1300-POPUL-ACCT-RECORD",
+    "1350-WRITE-ACCT-RECORD",
+    "1400-POPUL-ARRAY-RECORD",
+    "1450-WRITE-ARRY-RECORD",
+    "1500-POPUL-VBRC-RECORD",
+    "1550-WRITE-VB1-RECORD",
+    "1575-WRITE-VB2-RECORD",
+    "2000-OUTFILE-OPEN",
+    "3000-ARRFILE-OPEN",
+    "4000-VBRFILE-OPEN",
+    "9000-ACCTFILE-CLOSE",
+    "9910-DISPLAY-IO-STATUS",
+    "9999-ABEND-PROGRAM"
+  ],
+  "data_files": [
+    {
+      "name": "ACCTFILE-FILE",
+      "ddname": "ACCTFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "OUT-FILE",
+      "ddname": "OUTFILE",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "ARRY-FILE",
+      "ddname": "ARRYFILE",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "VBRC-FILE",
+      "ddname": "VBRCFILE",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    }
+  ],
+  "copybooks_referenced": [
+    "CODATECN",
+    "CVACT01Y"
+  ],
+  "cfg": {
+    "source": null,
+    "edges": null,
+    "unresolved": null
+  },
+  "paragraphs_defined": [
+    {
+      "name": "1000-ACCTFILE-GET-NEXT",
+      "source_line": 127,
+      "area_a": false
+    },
+    {
+      "name": "1100-DISPLAY-ACCT-RECORD",
+      "source_line": 158,
+      "area_a": false
+    },
+    {
+      "name": "1300-POPUL-ACCT-RECORD",
+      "source_line": 179,
+      "area_a": false
+    },
+    {
+      "name": "1350-WRITE-ACCT-RECORD",
+      "source_line": 208,
+      "area_a": false
+    },
+    {
+      "name": "1400-POPUL-ARRAY-RECORD",
+      "source_line": 214,
+      "area_a": false
+    },
+    {
+      "name": "1450-WRITE-ARRY-RECORD",
+      "source_line": 221,
+      "area_a": false
+    },
+    {
+      "name": "1500-POPUL-VBRC-RECORD",
+      "source_line": 229,
+      "area_a": false
+    },
+    {
+      "name": "1550-WRITE-VB1-RECORD",
+      "source_line": 240,
+      "area_a": false
+    },
+    {
+      "name": "1575-WRITE-VB2-RECORD",
+      "source_line": 252,
+      "area_a": false
+    },
+    {
+      "name": "0000-ACCTFILE-OPEN",
+      "source_line": 262,
+      "area_a": false
+    },
+    {
+      "name": "2000-OUTFILE-OPEN",
+      "source_line": 275,
+      "area_a": false
+    },
+    {
+      "name": "3000-ARRFILE-OPEN",
+      "source_line": 286,
+      "area_a": false
+    },
+    {
+      "name": "4000-VBRFILE-OPEN",
+      "source_line": 298,
+      "area_a": false
+    },
+    {
+      "name": "9000-ACCTFILE-CLOSE",
+      "source_line": 312,
+      "area_a": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "source_line": 329,
+      "area_a": false
+    },
+    {
+      "name": "9910-DISPLAY-IO-STATUS",
+      "source_line": 335,
+      "area_a": false
+    }
+  ],
+  "paragraphs_referenced": [
+    "0000-ACCTFILE-OPEN",
+    "1000-ACCTFILE-GET-NEXT",
+    "1100-DISPLAY-ACCT-RECORD",
+    "1300-POPUL-ACCT-RECORD",
+    "1350-WRITE-ACCT-RECORD",
+    "1400-POPUL-ARRAY-RECORD",
+    "1450-WRITE-ARRY-RECORD",
+    "1500-POPUL-VBRC-RECORD",
+    "1550-WRITE-VB1-RECORD",
+    "1575-WRITE-VB2-RECORD",
+    "2000-OUTFILE-OPEN",
+    "3000-ARRFILE-OPEN",
+    "4000-VBRFILE-OPEN",
+    "9000-ACCTFILE-CLOSE",
+    "9910-DISPLAY-IO-STATUS",
+    "9999-ABEND-PROGRAM"
+  ],
+  "paragraph_actions": {
+    "1000-ACCTFILE-GET-NEXT": [
+      "branch_logic",
+      "display_output",
+      "read_file"
+    ],
+    "1100-DISPLAY-ACCT-RECORD": [
+      "display_output"
+    ],
+    "1300-POPUL-ACCT-RECORD": [
+      "branch_logic",
+      "call_program"
+    ],
+    "1350-WRITE-ACCT-RECORD": [
+      "branch_logic",
+      "display_output",
+      "write_file"
+    ],
+    "1400-POPUL-ARRAY-RECORD": [
+      "transform_data"
+    ],
+    "1450-WRITE-ARRY-RECORD": [
+      "branch_logic",
+      "display_output",
+      "write_file"
+    ],
+    "1500-POPUL-VBRC-RECORD": [
+      "display_output",
+      "transform_data"
+    ],
+    "1550-WRITE-VB1-RECORD": [
+      "branch_logic",
+      "display_output",
+      "write_file"
+    ],
+    "1575-WRITE-VB2-RECORD": [
+      "branch_logic",
+      "display_output",
+      "write_file"
+    ],
+    "0000-ACCTFILE-OPEN": [
+      "branch_logic",
+      "display_output",
+      "open_file"
+    ],
+    "2000-OUTFILE-OPEN": [
+      "branch_logic",
+      "display_output",
+      "open_file"
+    ],
+    "3000-ARRFILE-OPEN": [
+      "branch_logic",
+      "display_output",
+      "open_file"
+    ],
+    "4000-VBRFILE-OPEN": [
+      "branch_logic",
+      "display_output",
+      "open_file"
+    ],
+    "9000-ACCTFILE-CLOSE": [
+      "branch_logic",
+      "close_file",
+      "display_output"
+    ],
+    "9999-ABEND-PROGRAM": [
+      "abend",
+      "call_program",
+      "display_output"
+    ],
+    "9910-DISPLAY-IO-STATUS": [
+      "branch_logic",
+      "display_error",
+      "transform_data"
+    ]
+  },
+  "file_lineage": [
+    {
+      "name": "ACCTFILE-FILE",
+      "ddname": "ACCTFILE",
+      "fd_record": "ACCTFILE-FILE"
+    },
+    {
+      "name": "OUT-FILE",
+      "ddname": "OUTFILE",
+      "fd_record": "OUT-FILE"
+    },
+    {
+      "name": "ARRY-FILE",
+      "ddname": "ARRYFILE",
+      "fd_record": "ARRY-FILE"
+    },
+    {
+      "name": "VBRC-FILE",
+      "ddname": "VBRCFILE",
+      "fd_record": "VBRC-FILE"
+    }
+  ],
+  "file_operations": {
+    "ACCTFILE-FILE": [
+      {
+        "paragraph": "1000-ACCTFILE-GET-NEXT",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "0000-ACCTFILE-OPEN",
+        "operation": "open_input",
+        "source_line": null
+      },
+      {
+        "paragraph": "9000-ACCTFILE-CLOSE",
+        "operation": "close",
+        "source_line": null
+      }
+    ],
+    "OUT-FILE": [
+      {
+        "paragraph": "2000-OUTFILE-OPEN",
+        "operation": "open_output",
+        "source_line": null
+      }
+    ],
+    "ARRY-FILE": [
+      {
+        "paragraph": "3000-ARRFILE-OPEN",
+        "operation": "open_output",
+        "source_line": null
+      }
+    ],
+    "VBRC-FILE": [
+      {
+        "paragraph": "4000-VBRFILE-OPEN",
+        "operation": "open_output",
+        "source_line": null
+      }
+    ]
+  },
+  "control_flow": {
+    "cfg_source": "text_scan",
+    "entry_points": [
+      "1000-ACCTFILE-GET-NEXT"
+    ],
+    "exit_points": [
+      "9910-DISPLAY-IO-STATUS",
+      "9999-ABEND-PROGRAM"
+    ],
+    "edges": [
+      {
+        "from": "1000-ACCTFILE-GET-NEXT",
+        "to": "1100-DISPLAY-ACCT-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-ACCTFILE-GET-NEXT",
+        "to": "1300-POPUL-ACCT-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-ACCTFILE-GET-NEXT",
+        "to": "1350-WRITE-ACCT-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-ACCTFILE-GET-NEXT",
+        "to": "1400-POPUL-ARRAY-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-ACCTFILE-GET-NEXT",
+        "to": "1450-WRITE-ARRY-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-ACCTFILE-GET-NEXT",
+        "to": "1500-POPUL-VBRC-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-ACCTFILE-GET-NEXT",
+        "to": "1550-WRITE-VB1-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-ACCTFILE-GET-NEXT",
+        "to": "1575-WRITE-VB2-RECORD",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-ACCTFILE-GET-NEXT",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-ACCTFILE-GET-NEXT",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1000-ACCTFILE-GET-NEXT",
+        "to": "1100-DISPLAY-ACCT-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1100-DISPLAY-ACCT-RECORD",
+        "to": "1300-POPUL-ACCT-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1300-POPUL-ACCT-RECORD",
+        "to": "COBDATFT",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "1300-POPUL-ACCT-RECORD",
+        "to": "1350-WRITE-ACCT-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1350-WRITE-ACCT-RECORD",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1350-WRITE-ACCT-RECORD",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1350-WRITE-ACCT-RECORD",
+        "to": "1400-POPUL-ARRAY-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1400-POPUL-ARRAY-RECORD",
+        "to": "1450-WRITE-ARRY-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1450-WRITE-ARRY-RECORD",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1450-WRITE-ARRY-RECORD",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1450-WRITE-ARRY-RECORD",
+        "to": "1500-POPUL-VBRC-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1500-POPUL-VBRC-RECORD",
+        "to": "1550-WRITE-VB1-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1550-WRITE-VB1-RECORD",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1550-WRITE-VB1-RECORD",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1550-WRITE-VB1-RECORD",
+        "to": "1575-WRITE-VB2-RECORD",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "1575-WRITE-VB2-RECORD",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1575-WRITE-VB2-RECORD",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "1575-WRITE-VB2-RECORD",
+        "to": "0000-ACCTFILE-OPEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "0000-ACCTFILE-OPEN",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-ACCTFILE-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "0000-ACCTFILE-OPEN",
+        "to": "2000-OUTFILE-OPEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "2000-OUTFILE-OPEN",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2000-OUTFILE-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "2000-OUTFILE-OPEN",
+        "to": "3000-ARRFILE-OPEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "3000-ARRFILE-OPEN",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "3000-ARRFILE-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "3000-ARRFILE-OPEN",
+        "to": "4000-VBRFILE-OPEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "4000-VBRFILE-OPEN",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "4000-VBRFILE-OPEN",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "4000-VBRFILE-OPEN",
+        "to": "9000-ACCTFILE-CLOSE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9000-ACCTFILE-CLOSE",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9000-ACCTFILE-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "9000-ACCTFILE-CLOSE",
+        "to": "9999-ABEND-PROGRAM",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "9999-ABEND-PROGRAM",
+        "to": "CEE3ABD",
+        "type": "call",
+        "source_lines": null
+      },
+      {
+        "from": "9999-ABEND-PROGRAM",
+        "to": "9910-DISPLAY-IO-STATUS",
+        "type": "fallthrough",
+        "source_lines": null
+      }
+    ],
+    "unresolved": []
+  },
+  "cics": null
+}

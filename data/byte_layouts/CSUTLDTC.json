@@ -1,0 +1,467 @@
+{
+  "program": "CSUTLDTC",
+  "schema_version": "1.2",
+  "records": [
+    {
+      "name": "WS-DATE-TO-TEST",
+      "copybook": null,
+      "total_bytes": 3,
+      "fields": [
+        {
+          "qualified_name": "WS-DATE-TO-TEST.VSTRING-LENGTH",
+          "level": 2,
+          "offset": 0,
+          "length": 2,
+          "pic": "S9(4)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-DATE-TO-TEST.VSTRING-TEXT",
+          "level": 2,
+          "offset": 2,
+          "length": 1,
+          "pic": null,
+          "storage": "GROUP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-DATE-TO-TEST.VSTRING-TEXT.VSTRING-CHAR",
+          "level": 3,
+          "offset": 2,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "WS-DATE-FORMAT",
+      "copybook": null,
+      "total_bytes": 3,
+      "fields": [
+        {
+          "qualified_name": "WS-DATE-FORMAT.VSTRING-LENGTH",
+          "level": 2,
+          "offset": 0,
+          "length": 2,
+          "pic": "S9(4)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-DATE-FORMAT.VSTRING-TEXT",
+          "level": 2,
+          "offset": 2,
+          "length": 1,
+          "pic": null,
+          "storage": "GROUP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-DATE-FORMAT.VSTRING-TEXT.VSTRING-CHAR",
+          "level": 3,
+          "offset": 2,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "OUTPUT-LILLIAN",
+      "copybook": null,
+      "total_bytes": 4,
+      "fields": [
+        {
+          "qualified_name": "OUTPUT-LILLIAN",
+          "level": 1,
+          "offset": 0,
+          "length": 4,
+          "pic": "S9(9)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "WS-MESSAGE",
+      "copybook": null,
+      "total_bytes": 80,
+      "fields": [
+        {
+          "qualified_name": "WS-MESSAGE.WS-SEVERITY",
+          "level": 2,
+          "offset": 0,
+          "length": 4,
+          "pic": "X(04)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-MESSAGE.WS-SEVERITY-N",
+          "level": 2,
+          "offset": 0,
+          "length": 4,
+          "pic": "9(4)",
+          "storage": "DISPLAY",
+          "redefines": "WS-SEVERITY",
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-MESSAGE.FILLER",
+          "level": 2,
+          "offset": 4,
+          "length": 11,
+          "pic": "X(11)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-MESSAGE.WS-MSG-NO",
+          "level": 2,
+          "offset": 15,
+          "length": 4,
+          "pic": "X(04)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-MESSAGE.WS-MSG-NO-N",
+          "level": 2,
+          "offset": 15,
+          "length": 4,
+          "pic": "9(4)",
+          "storage": "DISPLAY",
+          "redefines": "WS-MSG-NO",
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-MESSAGE.FILLER",
+          "level": 2,
+          "offset": 19,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-MESSAGE.WS-RESULT",
+          "level": 2,
+          "offset": 20,
+          "length": 15,
+          "pic": "X(15)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-MESSAGE.FILLER",
+          "level": 2,
+          "offset": 35,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-MESSAGE.FILLER",
+          "level": 2,
+          "offset": 36,
+          "length": 9,
+          "pic": "X(09)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-MESSAGE.WS-DATE",
+          "level": 2,
+          "offset": 45,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-MESSAGE.FILLER",
+          "level": 2,
+          "offset": 55,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-MESSAGE.FILLER",
+          "level": 2,
+          "offset": 56,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-MESSAGE.WS-DATE-FMT",
+          "level": 2,
+          "offset": 66,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-MESSAGE.FILLER",
+          "level": 2,
+          "offset": 76,
+          "length": 1,
+          "pic": "X(01)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "WS-MESSAGE.FILLER",
+          "level": 2,
+          "offset": 77,
+          "length": 3,
+          "pic": "X(03)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": [
+        {
+          "name": "WS-MESSAGE.WS-SEVERITY-N",
+          "redefines_target": "WS-SEVERITY",
+          "total_bytes": 4
+        },
+        {
+          "name": "WS-MESSAGE.WS-MSG-NO-N",
+          "redefines_target": "WS-MSG-NO",
+          "total_bytes": 4
+        }
+      ]
+    },
+    {
+      "name": "FEEDBACK-CODE",
+      "copybook": null,
+      "total_bytes": 16,
+      "fields": [
+        {
+          "qualified_name": "FEEDBACK-CODE.FEEDBACK-TOKEN-VALUE",
+          "level": 2,
+          "offset": 0,
+          "length": 12,
+          "pic": null,
+          "storage": "GROUP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FEEDBACK-CODE.FEEDBACK-TOKEN-VALUE.CASE-1-CONDITION-ID",
+          "level": 3,
+          "offset": 0,
+          "length": 4,
+          "pic": null,
+          "storage": "GROUP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FEEDBACK-CODE.FEEDBACK-TOKEN-VALUE.CASE-1-CONDITION-ID.SEVERITY",
+          "level": 4,
+          "offset": 0,
+          "length": 2,
+          "pic": "S9(4)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FEEDBACK-CODE.FEEDBACK-TOKEN-VALUE.CASE-1-CONDITION-ID.MSG-NO",
+          "level": 4,
+          "offset": 2,
+          "length": 2,
+          "pic": "S9(4)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FEEDBACK-CODE.FEEDBACK-TOKEN-VALUE.CASE-2-CONDITION-ID",
+          "level": 3,
+          "offset": 4,
+          "length": 4,
+          "pic": null,
+          "storage": "GROUP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FEEDBACK-CODE.FEEDBACK-TOKEN-VALUE.CASE-2-CONDITION-ID.CLASS-CODE",
+          "level": 4,
+          "offset": 4,
+          "length": 2,
+          "pic": "S9(4)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FEEDBACK-CODE.FEEDBACK-TOKEN-VALUE.CASE-2-CONDITION-ID.CAUSE-CODE",
+          "level": 4,
+          "offset": 6,
+          "length": 2,
+          "pic": "S9(4)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FEEDBACK-CODE.FEEDBACK-TOKEN-VALUE.CASE-SEV-CTL",
+          "level": 3,
+          "offset": 8,
+          "length": 1,
+          "pic": "X",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FEEDBACK-CODE.FEEDBACK-TOKEN-VALUE.FACILITY-ID",
+          "level": 3,
+          "offset": 9,
+          "length": 3,
+          "pic": "XXX",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        },
+        {
+          "qualified_name": "FEEDBACK-CODE.I-S-INFO",
+          "level": 2,
+          "offset": 12,
+          "length": 4,
+          "pic": "S9(9)",
+          "storage": "COMP",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "LS-DATE",
+      "copybook": null,
+      "total_bytes": 10,
+      "fields": [
+        {
+          "qualified_name": "LS-DATE",
+          "level": 1,
+          "offset": 0,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "LS-DATE-FORMAT",
+      "copybook": null,
+      "total_bytes": 10,
+      "fields": [
+        {
+          "qualified_name": "LS-DATE-FORMAT",
+          "level": 1,
+          "offset": 0,
+          "length": 10,
+          "pic": "X(10)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    },
+    {
+      "name": "LS-RESULT",
+      "copybook": null,
+      "total_bytes": 80,
+      "fields": [
+        {
+          "qualified_name": "LS-RESULT",
+          "level": 1,
+          "offset": 0,
+          "length": 80,
+          "pic": "X(80)",
+          "storage": "DISPLAY",
+          "redefines": null,
+          "synchronized": false,
+          "occurs": 1
+        }
+      ],
+      "redefines_groups": []
+    }
+  ],
+  "unresolved": []
+}

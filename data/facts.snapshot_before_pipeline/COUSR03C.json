@@ -1,0 +1,404 @@
+{
+  "schema_version": "1.1",
+  "program": "COUSR03C",
+  "source_file": "data/raw/cbl/COUSR03C.cbl",
+  "extracted_at": "2026-05-12T16:52:22.626531+00:00",
+  "gnucobol_version": "cobc (GnuCOBOL) 3.2.0",
+  "gate_rc": 0,
+  "gate_status": "PASS",
+  "gate_reasons": [],
+  "cics_present": true,
+  "sql_present": false,
+  "paragraphs": [
+    "CLEAR-CURRENT-SCREEN",
+    "DELETE-USER-INFO",
+    "DELETE-USER-SEC-FILE",
+    "INITIALIZE-ALL-FIELDS",
+    "MAIN-PARA",
+    "POPULATE-HEADER-INFO",
+    "PROCESS-ENTER-KEY",
+    "READ-USER-SEC-FILE",
+    "RECEIVE-USRDEL-SCREEN",
+    "RETURN-TO-PREV-SCREEN",
+    "SEND-USRDEL-SCREEN"
+  ],
+  "data_items": [
+    "DFHCOMMAREA",
+    "WS-VARIABLES"
+  ],
+  "external_calls": [],
+  "internal_performs": [
+    "CLEAR-CURRENT-SCREEN",
+    "DELETE-USER-INFO",
+    "DELETE-USER-SEC-FILE",
+    "INITIALIZE-ALL-FIELDS",
+    "POPULATE-HEADER-INFO",
+    "PROCESS-ENTER-KEY",
+    "READ-USER-SEC-FILE",
+    "RECEIVE-USRDEL-SCREEN",
+    "RETURN-TO-PREV-SCREEN",
+    "SEND-USRDEL-SCREEN"
+  ],
+  "data_files": [],
+  "copybooks_referenced": [
+    "COCOM01Y",
+    "COTTL01Y",
+    "COUSR03",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CSUSR01Y",
+    "DFHAID",
+    "DFHBMSCA"
+  ],
+  "cfg": {
+    "source": null,
+    "edges": null,
+    "unresolved": null
+  },
+  "paragraphs_defined": [
+    {
+      "name": "MAIN-PARA",
+      "source_line": 36,
+      "area_a": false
+    },
+    {
+      "name": "PROCESS-ENTER-KEY",
+      "source_line": 94,
+      "area_a": false
+    },
+    {
+      "name": "DELETE-USER-INFO",
+      "source_line": 117,
+      "area_a": false
+    },
+    {
+      "name": "RETURN-TO-PREV-SCREEN",
+      "source_line": 131,
+      "area_a": false
+    },
+    {
+      "name": "SEND-USRDEL-SCREEN",
+      "source_line": 145,
+      "area_a": false
+    },
+    {
+      "name": "RECEIVE-USRDEL-SCREEN",
+      "source_line": 152,
+      "area_a": false
+    },
+    {
+      "name": "POPULATE-HEADER-INFO",
+      "source_line": 159,
+      "area_a": false
+    },
+    {
+      "name": "READ-USER-SEC-FILE",
+      "source_line": 179,
+      "area_a": false
+    },
+    {
+      "name": "DELETE-USER-SEC-FILE",
+      "source_line": 215,
+      "area_a": false
+    },
+    {
+      "name": "CLEAR-CURRENT-SCREEN",
+      "source_line": 253,
+      "area_a": false
+    },
+    {
+      "name": "INITIALIZE-ALL-FIELDS",
+      "source_line": 256,
+      "area_a": false
+    }
+  ],
+  "paragraphs_referenced": [
+    "CLEAR-CURRENT-SCREEN",
+    "DELETE-USER-INFO",
+    "DELETE-USER-SEC-FILE",
+    "INITIALIZE-ALL-FIELDS",
+    "POPULATE-HEADER-INFO",
+    "PROCESS-ENTER-KEY",
+    "READ-USER-SEC-FILE",
+    "RECEIVE-USRDEL-SCREEN",
+    "RETURN-TO-PREV-SCREEN",
+    "SEND-USRDEL-SCREEN"
+  ],
+  "paragraph_actions": {
+    "MAIN-PARA": [
+      "aid_branch",
+      "branch_logic",
+      "cics_command"
+    ],
+    "PROCESS-ENTER-KEY": [
+      "branch_logic",
+      "transform_data"
+    ],
+    "DELETE-USER-INFO": [
+      "branch_logic",
+      "transform_data"
+    ],
+    "RETURN-TO-PREV-SCREEN": [
+      "branch_logic",
+      "cics_command"
+    ],
+    "SEND-USRDEL-SCREEN": [
+      "cics_command",
+      "send_map"
+    ],
+    "RECEIVE-USRDEL-SCREEN": [
+      "cics_command",
+      "receive_map"
+    ],
+    "POPULATE-HEADER-INFO": [
+      "transform_data"
+    ],
+    "READ-USER-SEC-FILE": [
+      "branch_logic",
+      "cics_command",
+      "delete_record",
+      "display_output",
+      "read_file"
+    ],
+    "DELETE-USER-SEC-FILE": [
+      "branch_logic",
+      "cics_command",
+      "delete_record",
+      "display_output"
+    ],
+    "CLEAR-CURRENT-SCREEN": [
+      "no_action_detected"
+    ],
+    "INITIALIZE-ALL-FIELDS": [
+      "transform_data"
+    ]
+  },
+  "file_lineage": [],
+  "file_operations": {
+    "DATASET": [
+      {
+        "paragraph": "READ-USER-SEC-FILE",
+        "operation": "read",
+        "source_line": null
+      },
+      {
+        "paragraph": "DELETE-USER-SEC-FILE",
+        "operation": "delete",
+        "source_line": null
+      }
+    ],
+    "THIS": [
+      {
+        "paragraph": "READ-USER-SEC-FILE",
+        "operation": "delete",
+        "source_line": null
+      }
+    ]
+  },
+  "control_flow": {
+    "cfg_source": "text_scan",
+    "entry_points": [
+      "MAIN-PARA"
+    ],
+    "exit_points": [
+      "INITIALIZE-ALL-FIELDS",
+      "MAIN-PARA"
+    ],
+    "edges": [
+      {
+        "from": "MAIN-PARA",
+        "to": "RETURN-TO-PREV-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "PROCESS-ENTER-KEY",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "SEND-USRDEL-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "RECEIVE-USRDEL-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "CLEAR-CURRENT-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "MAIN-PARA",
+        "to": "DELETE-USER-INFO",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "SEND-USRDEL-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "READ-USER-SEC-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "PROCESS-ENTER-KEY",
+        "to": "DELETE-USER-INFO",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "DELETE-USER-INFO",
+        "to": "SEND-USRDEL-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "DELETE-USER-INFO",
+        "to": "READ-USER-SEC-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "DELETE-USER-INFO",
+        "to": "DELETE-USER-SEC-FILE",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "DELETE-USER-INFO",
+        "to": "RETURN-TO-PREV-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "RETURN-TO-PREV-SCREEN",
+        "to": "SEND-USRDEL-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "SEND-USRDEL-SCREEN",
+        "to": "POPULATE-HEADER-INFO",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "SEND-USRDEL-SCREEN",
+        "to": "RECEIVE-USRDEL-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "RECEIVE-USRDEL-SCREEN",
+        "to": "POPULATE-HEADER-INFO",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "POPULATE-HEADER-INFO",
+        "to": "READ-USER-SEC-FILE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "READ-USER-SEC-FILE",
+        "to": "SEND-USRDEL-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "READ-USER-SEC-FILE",
+        "to": "DELETE-USER-SEC-FILE",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "DELETE-USER-SEC-FILE",
+        "to": "INITIALIZE-ALL-FIELDS",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "DELETE-USER-SEC-FILE",
+        "to": "SEND-USRDEL-SCREEN",
+        "type": "perform",
+        "source_lines": null
+      },
+      {
+        "from": "DELETE-USER-SEC-FILE",
+        "to": "CLEAR-CURRENT-SCREEN",
+        "type": "fallthrough",
+        "source_lines": null
+      },
+      {
+        "from": "CLEAR-CURRENT-SCREEN",
+        "to": "INITIALIZE-ALL-FIELDS",
+        "type": "fallthrough",
+        "source_lines": null
+      }
+    ],
+    "unresolved": [],
+    "cfg_note": "CICS program: text_scan CFG; conditional branches not resolved without a CICS translator.  Maps, commands, and AID keys are captured separately in the 'cics' subtree."
+  },
+  "cics": {
+    "commarea_used": true,
+    "commands": [
+      "DELETE",
+      "READ",
+      "RECEIVE",
+      "RETURN",
+      "SEND",
+      "XCTL"
+    ],
+    "maps_used": [
+      "COUSR3A"
+    ],
+    "mapsets_used": [
+      "COUSR03"
+    ],
+    "aid_keys": [
+      "DFHENTER",
+      "DFHPF12",
+      "DFHPF3",
+      "DFHPF4",
+      "DFHPF5"
+    ],
+    "screen_flow": [
+      {
+        "paragraph": "MAIN-PARA",
+        "action": "aid_dispatch",
+        "aid_keys": [
+          "DFHENTER",
+          "DFHPF12",
+          "DFHPF3",
+          "DFHPF4",
+          "DFHPF5"
+        ],
+        "maps": null
+      },
+      {
+        "paragraph": "SEND-USRDEL-SCREEN",
+        "action": "send_map",
+        "map": "COUSR3A"
+      },
+      {
+        "paragraph": "RECEIVE-USRDEL-SCREEN",
+        "action": "receive_map",
+        "map": "COUSR3A"
+      }
+    ]
+  }
+}
