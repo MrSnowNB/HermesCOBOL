@@ -1070,3 +1070,56 @@ class TestV06UnstringGlobalTally(unittest.TestCase):
             self.assertIn(var, rf, f"{var} not in reads: {r}")
         for var in ["WS.DEST-A", "WS.CNT-A", "WS.DEST-B", "WS.CNT-B", "WS.TALLY-VAR", "WS.PTR-VAR"]:
             self.assertIn(var, mf, f"{var} not in mutates: {m}")
+
+
+# ---------------------------------------------------------------------------
+# 3.4 V07-V08 EXEC CICS / MOVE CORRESPONDING test vectors
+# ---------------------------------------------------------------------------
+
+
+class TestV07ExecCicsMasking(unittest.TestCase):
+    def test_v07_exec_cics_masking(self):
+        """V07: EXEC CICS — INTO and RESP targets in mutates; DATASET/READ/literal excluded"""
+        reads, mutates, unresolved = [], [], []
+        qmap = {
+            "LOCAL-VAR": [{"field": "WS.LOCAL-VAR", "record": "WS", "copybook": None, "offset": 122, "length": 10}],
+            "CODE-VAR":  [{"field": "WS.CODE-VAR",  "record": "WS", "copybook": None, "offset": 132, "length": 4}],
+        }
+        stmt = "EXEC CICS READ DATASET('FILE') INTO(LOCAL-VAR) RESP(CODE-VAR) END-EXEC"
+        classify_statement(1, stmt, qmap, set(), reads, mutates, unresolved)
+        # INTO and RESP targets should be in mutates
+        self.assertIn("WS.LOCAL-VAR", [e['field'] for e in mutates], f"LOCAL-VAR not in mutates: {mutates}")
+        self.assertIn("WS.CODE-VAR", [e['field'] for e in mutates], f"CODE-VAR not in mutates: {mutates}")
+        # DATASET, READ, and literals should NOT be in reads or mutates
+        for noise in ["FILE", "DATASET", "READ"]:
+            reads_fields = [e['field'] for e in reads]
+            mutates_fields = [e['field'] for e in mutates]
+            self.assertNotIn(noise, reads_fields, f"{noise} should not be in reads: {reads}")
+            self.assertNotIn(noise, mutates_fields, f"{noise} should not be in mutates: {mutates}")
+
+
+class TestV08MoveCorrespondingDualTree(unittest.TestCase):
+    def test_v08_move_corresponding_dual_tree(self):
+        """V08: MOVE CORR — matching non-FILLER children only; non-matches excluded"""
+        qmap = {
+            "ROOT-A":  [{"field": "WS.ROOT-A",  "record": "WS", "copybook": None, "offset": 136, "length": 30}],
+            "ROOT-B":  [{"field": "WS.ROOT-B",  "record": "WS", "copybook": None, "offset": 166, "length": 30}],
+            "CHILD-X": [{"field": "WS.CHILD-X", "record": "WS", "copybook": None, "offset": 136, "length": 10}],
+            "CHILD-Y": [{"field": "WS.CHILD-Y", "record": "WS", "copybook": None, "offset": 146, "length": 10}],
+            "CHILD-Z": [{"field": "WS.CHILD-Z", "record": "WS", "copybook": None, "offset": 176, "length": 10}],
+            "FILLER":  [{"field": "WS.FILLER",  "record": "WS", "copybook": None, "offset": 156, "length": 10}],
+        }
+        reads, mutates, unresolved = [], [], []
+        classify_statement(1, "MOVE CORRESPONDING ROOT-A TO ROOT-B", qmap, set(), reads, mutates, unresolved)
+        rf = [e['field'] for e in reads]
+        mf = [e['field'] for e in mutates]
+        # CHILD-X is in both ROOT-A and ROOT-B - should be in reads and mutates
+        self.assertIn("WS.CHILD-X", rf, f"CHILD-X not in reads: {reads}")
+        self.assertIn("WS.CHILD-X", mf, f"CHILD-X not in mutates: {mutates}")
+        # CHILD-Y is only in ROOT-A (source) - should NOT be in mutates
+        self.assertNotIn("WS.CHILD-Y", mf, f"CHILD-Y should not be in mutates: {mutates}")
+        # CHILD-Z is only in ROOT-B (dest) - should NOT be in reads
+        self.assertNotIn("WS.CHILD-Z", rf, f"CHILD-Z should not be in reads: {reads}")
+        # FILLER should not be in reads or mutates
+        self.assertNotIn("WS.FILLER", rf, f"FILLER should not be in reads: {reads}")
+        self.assertNotIn("WS.FILLER", mf, f"FILLER should not be in mutates: {mutates}")
