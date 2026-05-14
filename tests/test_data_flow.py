@@ -964,20 +964,19 @@ class TestSectionNameSchema(unittest.TestCase):
         )
 
     # ------------------------------------------------------------------
-    # Test 6: SCHEMA_VERSION must be "1.3" once section_name is present
+    # Test 6: SCHEMA_VERSION must be "1.4" once statements[] is present
     # ------------------------------------------------------------------
 
-    def test_schema_version_field_is_1_3_when_section_name_present(self):
+    def test_schema_version_field_is_1_4_when_statements_present(self):
         """
-        After Step 2 bumps SCHEMA_VERSION, extract_data_flow output must
-        return schema_version == "1.3". This test will fail in Step 1
-        because the production code has not been modified yet (still "1.2").
+        After Stage 4e bumps SCHEMA_VERSION to 1.4, extract_data_flow output must
+        return schema_version == "1.4". This test validates the statements[] addition.
         """
         result = _extract_synthetic(self._SRC_ONE_SECTION)
         schema_ver = result.get('schema_version')
         self.assertEqual(
-            schema_ver, '1.3',
-            f'Expected schema_version="1.3" (Step 2 bumps this), got: "{schema_ver}"'
+            schema_ver, '1.4',
+            f'Expected schema_version="1.4" (Stage 4e bumps this for statements[]), got: "{schema_ver}"'
         )
 
 
@@ -1245,3 +1244,57 @@ class TestV12SectionBoundaryEncapsulation(unittest.TestCase):
         assert para_b_section == "MAIN-SECTION", (
             f"PARA-B section_name wrong: {para_b}"
         )
+
+
+class TestV13StatementsOrdering(unittest.TestCase):
+    """V13: statements[] — ordered verb metadata per paragraph"""
+
+    _SRC_V13 = (
+        "       IDENTIFICATION DIVISION.\n"
+        "       PROGRAM-ID. TESTV13.\n"
+        "       PROCEDURE DIVISION.\n"
+        "       PROCESS-PARA.\n"
+        "           MOVE VAR-A TO VAR-B.\n"
+        "           COMPUTE VAR-X = VAR-A + VAR-B.\n"
+        "           IF VAR-X > ZERO\n"
+        "               MOVE VAR-X TO VAR-C\n"
+        "           END-IF.\n"
+        "           GOBACK.\n"
+    )
+
+    def test_v13_statements_ordering(self):
+        result = _extract_synthetic(self._SRC_V13)
+        pdf = result.get('paragraph_data_flow', {})
+
+        self.assertIn('PROCESS-PARA', pdf,
+            f'Expected PROCESS-PARA in paragraph_data_flow, got: {list(pdf.keys())}')
+
+        stmts = pdf['PROCESS-PARA'].get('statements', [])
+        self.assertTrue(len(stmts) >= 3,
+            f'Expected at least 3 statements, got: {stmts}')
+
+        # seq must be 1-based and ordered
+        seqs = [s['seq'] for s in stmts]
+        self.assertEqual(seqs, list(range(1, len(stmts) + 1)),
+            f'seq values must be consecutive 1-based: {seqs}')
+
+        # first statement must be MOVE
+        self.assertEqual(stmts[0]['verb'], 'MOVE',
+            f'First statement verb must be MOVE, got: {stmts[0].get("verb")}')
+        self.assertEqual(stmts[0]['seq'], 1,
+            f'First statement seq must be 1, got: {stmts[0].get("seq")}')
+
+        # second statement must be COMPUTE
+        self.assertEqual(stmts[1]['verb'], 'COMPUTE',
+            f'Second statement verb must be COMPUTE, got: {stmts[1].get("verb")}')
+
+        # all entries must have seq, verb, sources, targets keys
+        for s in stmts:
+            for key in ('seq', 'verb', 'sources', 'targets'):
+                self.assertIn(key, s,
+                    f'Statement missing required key "{key}": {s}')
+
+    def test_v13_schema_version_is_1_4(self):
+        result = _extract_synthetic(self._SRC_V13)
+        self.assertEqual(result.get('schema_version'), '1.4',
+            f'Expected schema_version="1.4", got: {result.get("schema_version")}')

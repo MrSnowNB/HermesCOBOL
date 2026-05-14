@@ -2,111 +2,151 @@
 
 ---
 
-## AGENT PROTOCOL (INVARIANT — READ THIS FIRST, EVERY SESSION)
+## AGENT PROTOCOL (INVARIANT)
 
-1. This scratchpad is the ONLY source of truth. It overrides your training, your
-   assumptions, and any output from previous sessions.
-2. Read the FULL scratchpad before taking any action.
-3. Execute ONE step at a time. Do NOT combine steps.
-4. RESULT: = actual command output only. Never paste expected output. Never fabricate.
-5. Mark each step [DONE] or [BLOCKED] — never leave it blank.
-6. STOP on 2 consecutive failures — mark BLOCKED, push scratchpad, await human.
-7. NEVER modify a file not listed in PERMITTED FILES FOR THIS SESSION.
-8. NEVER add tests, classes, or methods beyond what the scratchpad explicitly authorizes.
-9. NEVER commit a failing test. A failing test is not "expected" — it is a BLOCKER.
-10. NEVER run `python -m unittest discover` — use `python -m pytest tests/ -q` only.
+1. This scratchpad is your ONLY memory between sessions.
+2. Read AGENT PROTOCOL → CURRENT CONTEXT → ONE step block. Nothing else.
+3. RESULT: = actual command output only. Never fabricate. Never paste expected output.
+4. Mark each step [DONE] or [BLOCKED] before stopping.
+5. STOP on 2 consecutive failures — mark BLOCKED, push scratchpad, await human.
+6. NEVER modify a file not in PERMITTED FILES FOR THIS SESSION.
+7. NEVER add tests, classes, or methods beyond what the step explicitly authorizes.
+8. NEVER commit a failing test — a failing test is a BLOCKER, not "expected."
+9. ALWAYS use `C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe -m pytest tests/ -q`
+   NEVER use `python -m unittest discover` or `C:\gnucobol\bin\python.exe`
+10. Total test count must equal 125 before G2, and 127 after G2. Any other count = BLOCKED.
+    (Breakdown: test_data_flow.py=73→75, test_byte_layout.py=21, test_extract_facts_alignment.py=31)
 
-### What "First Principles" means here
-Before every step:
-- Verify what is actually on disk. Do not assume the repo matches your memory.
-- State your assumption explicitly, then verify it with a command.
-- If the real output differs from the expected output — STOP and reclassify.
-- Surfaced failure > silent pass. Always.
+---
+
+## FIRST-PRINCIPLES VERIFICATION LOOP
+
+Run this before every step:
+- What does CURRENT CONTEXT say the next step is?
+- Read ONLY that step block.
+- State your ONE assumption about disk state.
+- Verify it with a command before acting on it.
+- If real output ≠ expected — STOP. Update CURRENT CONTEXT. Mark BLOCKED.
 
 ---
 
 ## FROZEN GROUND TRUTH
 
 > APPEND ONLY. Never delete. Never edit existing entries.
+> Do NOT re-read this section during step execution — CURRENT CONTEXT tells you where you are.
 
-### [2026-05-13] Stage 4 gate anchor
-- **Branch:** main, commit 10d8ce6
-- **Baseline:** 70 passed / 3 failed / 73 total
-- **Schema version:** 1.3
-- **Byte layouts:** 31/31 in `data/byte_layouts/`
-- **pytest rule:** ALWAYS `python -m pytest tests/ -q`
+### [2026-05-13] Stage 4 baseline
+- Branch: main | Schema: 1.3 | Byte layouts: 31/31
+- Baseline at 10d8ce6: 70 passed / 3 failed / 73 total (test_data_flow.py only)
 
-### [2026-05-13] Stage 4 punchlist
-| Vector | Test name | Status |
+### [2026-05-14] Full suite composition (locked)
+| File | Tests | Notes |
 |---|---|---|
-| V07 | test_v07_exec_cics_masking | ✅ FIXED — commit 53d746b |
-| V08 | test_v08_move_corresponding_dual_tree | ✅ code fixed (9181c7b) — test assertions still wrong |
-| V09 | test_v09_nearest_enclosing_scope | ✅ FIXED — commit 9181c7b |
-| V10 | test_v10_ambiguous_conflict_flagging | ✅ FIXED — commit 9181c7b |
+| test_data_flow.py | 73 | Stage 2/3/4 vectors |
+| test_byte_layout.py | 21 | Byte layout parsing |
+| test_extract_facts_alignment.py | 31 | Parametrized by JSON in data/facts/ |
+| **Total** | **125** | Verified at commit b0a30a7 |
 
-### [2026-05-14] Confirmed suite state on main (commit 9181c7b)
-- **Total tracked tests:** 73 (test_data_flow.py only)
-- **Confirmed failing:** 1 — TestV08MoveCorrespondingDualTree
-- **Root cause:** production code now emits dicts; test still asserts plain strings
-- **data_flow.py:** correct — do NOT modify it
+### [2026-05-14] Stage 4 vector status
+| Vector | Test | Commit | Status |
+|---|---|---|---|
+| V07 | test_v07_exec_cics_masking | 53d746b | ✅ |
+| V08 | test_v08_move_corresponding_dual_tree | b0a30a7 | ✅ |
+| V09 | test_v09_nearest_enclosing_scope | 9181c7b | ✅ |
+| V10 | test_v10_ambiguous_conflict_flagging | 9181c7b | ✅ |
+| V11 | test_v11_column_aware_paragraph_lexing | 7494ea4 | ✅ |
+| V12 | test_v12_section_boundary_encapsulation | 7494ea4 | ✅ |
+| V13 | test_v13_statements_ordering | pending | ← THIS SESSION |
 
-### [2026-05-14] Full test suite composition (commit 9181c7b)
-- **test_byte_layout.py:** 21 tests
-- **test_data_flow.py:** 73 tests
-- **test_extract_facts_alignment.py:** 31 tests (parametrized by JSON files in data/facts/)
-- **Total:** 125 tests
+### [2026-05-14] Stage 4e invariants
+- **Goal:** Add `statements[]` array to each paragraph entry in `extract_data_flow()` output
+- **Non-breaking:** reads/mutates/unresolved stay exactly as-is. statements[] is additive only.
+- **Schema version bump:** 1.3 → 1.4
+- **PERMITTED FILES:** `scripts/data_flow.py`, `tests/test_data_flow.py`, `.clinerules/scratchpad.md`
+- **FORBIDDEN:** modifying any other file
+- **FORBIDDEN:** modifying any existing test class or method
+- **One commit only:** after G3 confirms 127/127 pass
 
-### [2026-05-14] Stage 4d invariants
-- **Goal:** Fix the 6 V08 test assertions + add 4 flat qmap entries to test fixture
-- **PERMITTED FILES:** `tests/test_data_flow.py`, `.clinerules/scratchpad.md`
-- **FORBIDDEN:** `scripts/data_flow.py` — do NOT touch
-- **FORBIDDEN:** any new test class, method, or import
-- **FORBIDDEN:** any modification to any class other than TestV08MoveCorrespondingDualTree
-- **One commit only:** after F3 confirms 73/73 pass
+### [2026-05-14] V13 target output shape
+```json
+{
+  "paragraph": "1000-PROCESS-ACCT",
+  "section_name": "MAIN-SECTION",
+  "reads":   [...],
+  "mutates": [...],
+  "statements": [
+    {"seq": 1, "verb": "MOVE",    "sources": ["ACCT-ID"],           "targets": ["WS-ACCT-ID"]},
+    {"seq": 2, "verb": "COMPUTE", "sources": ["WS-BAL","WS-CREDIT"],"targets": ["WS-NET"]},
+    {"seq": 3, "verb": "IF",      "condition_raw": "WS-NET > ZERO", "sources": [], "targets": []}
+  ]
+}
+```
+Rules:
+- `seq` is 1-based, ordered by statement appearance in the paragraph
+- `verb` is the COBOL keyword in ALL CAPS (MOVE, COMPUTE, IF, PERFORM, etc.)
+- `sources` = list of variable names read by this statement (empty list [] if none)
+- `targets` = list of variable names mutated by this statement (empty list [] if none)
+- `condition_raw` = raw condition string, only present for IF/EVALUATE statements
+- Literals (strings/numbers) are NOT included in sources
+
+### [2026-05-14] _extract_synthetic scope note
+- `_extract_synthetic` is a module-level function defined at ~line 970 in test_data_flow.py
+- It is NOT inside any class — V13 test can call it directly without import
+- When called with a synthetic source string, qmap is empty → all field refs go to unresolved
+- This is expected and correct — V13 tests only check statements[], not reads/mutates
 
 ---
 
-## CURRENT CONTEXT
+## CURRENT CONTEXT  ← QWEN: Read this. Jump directly to step named in "Next:".
 
-<!-- Local agent updates this after every step. -->
-
-- Branch: main | Tree: clean (as of 9181c7b)
-- Last: F2 completed - V08 test fixed and passing; full suite 125/125 passing
-- Next: F3 — commit and push changes
+- Branch: main | Tree: clean (as of b0a30a7)
+- Last: G2 DONE — V13 tests pass, 127/127 full suite, git diff shows 3 permitted files
+- **Next: G3**
 - Blocker: none
+- Permitted: `scripts/data_flow.py`, `tests/test_data_flow.py`, `.clinerules/scratchpad.md`
 
 ---
 
-## EXECUTION PLAN — Stage 4d: Fix V08 Test Assertions
+## EXECUTION PLAN — Stage 4e: V13 statements[] ordering
 
 ---
 
-### STEP F1 [DONE]
+### STEP G1 [DONE]
 
-**Goal:** Verify the current failing V08 test on disk. Do NOT modify anything.
+**Goal:** Verify clean baseline and locate the paragraph_data_flow assembly block
+in `data_flow.py`. Do NOT modify anything.
 
-**Exact commands:**
+**Commands:**
 ```powershell
 git branch --show-current
 git status --short
+git log --oneline -3
 
-# Run V08 in isolation to confirm it fails
-python -m pytest tests/test_data_flow.py -k "v08" -v 2>&1
+# Confirm 125/125 baseline
+C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe `
+  -m pytest tests/ -q 2>&1 | Select-Object -Last 3
 
-# Print the exact lines of the V08 test method
-Select-String -Path tests\test_data_flow.py `
-  -Pattern "class TestV08|def test_v08" -CaseSensitive:$false |
+# Find key landmarks in data_flow.py
+Select-String -Path scripts\data_flow.py `
+  -Pattern "def extract_data_flow|paragraph_data_flow|schema_version" |
   Select-Object LineNumber, Line
 
-# Show the full V08 test body (replace LINE with actual class line number)
-Get-Content tests\test_data_flow.py |
-  Select-Object -Skip (LINE - 1) -First 40
+# Read the paragraph dict assembly block — replace LINE with the
+# line number of paragraph_data_flow dict construction from above
+Get-Content scripts\data_flow.py |
+  Select-Object -Skip (LINE - 1) -First 35
 ```
 
 **Pass condition:**
-- Branch is main, tree is clean
-- V08 test FAILS (confirms the problem exists on disk)
-- The assertIn("CHILD-X", reads) string-based assertions are visible in the output
+- Branch: main, tree: clean
+- 125 passed, 0 failed
+- You can see the dict being built per paragraph (reads, mutates, unresolved, section_name keys)
+- You know exactly which line to add `"statements": stmt_list`
+
+**After RESULT is pasted:**
+- Update CURRENT CONTEXT: Last = "G1 DONE", Next = G2
+- Mark step [DONE]
+- STOP. Report to human.
 
 **RESULT:**
 ```powershell
@@ -116,214 +156,220 @@ main
 PS C:\work\HermesCOBOL> git status --short
 M .clinerules/scratchpad.md
 
-PS C:\work\HermesCOBOL> C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe -m pytest tests/test_data_flow.py -k "v08" -v
-================================== test session starts ==================================
-platform win32 -- Python 3.10.11, pytest-7.4.3, pluggy-1.6.0
-rootdir: C:\work\HermesCOBOL
-plugins: anyio-3.7.1, asyncio-0.21.1, typeguard-4.4.4
-asyncio: mode=strict
-collecting ... 73 tests, 72 deselected, 1 selected
+PS C:\work\HermesCOBOL> git log --oneline -3
+b0a30a7 (HEAD -> main, origin/main, origin/HEAD) test(stage4d): fix V08 assertions to match dict-based reads/mutates output
+9181c7b fix(stage4c): V08 MOVE CORR emit dicts; V09 dot-operand handling; V10 ambiguity fix
+b9e1a1e fix(stage4): V08 MOVE CORR child field tree walk
 
-tests/test_data_flow.py::TestV08MoveCorrespondingDualTree::test_v08_move_corresponding_dual_tree FAILED
+PS C:\work\HermesCOBOL> C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe -m pytest tests/ -q
+........................................................................ [ 57%]
+.....................................................                    [100%]
+125 passed in 0.74s
 
-======================================= FAILURES ========================================
-________ TestV08MoveCorrespondingDualTree.test_v08_move_corresponding_dual_tree _________
+# Landmarks found:
+# Line 18: SCHEMA_VERSION = "1.3"
+# Line 1282: def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
+# Line 1334: # --- Emit paragraph_data_flow: one entry per occurrence ---
+# Line 1335: paragraph_data_flow = {}
+# Line 1334: paragraph_data_flow = {}
+# Line 1335: entry_data = {
+# Line 1353: 'schema_version':      SCHEMA_VERSION,
+# Line 1354: 'paragraph_data_flow': paragraph_data_flow,
 
-self = <tests.test_data_flow.TestV08MoveCorrespondingDualTree testMethod=test_v08_move_corresponding_dual_tree>
+# Paragraph dict assembly block (lines 1335-1366):
+# - entry_data built at lines 1353-1358 with: section_name, reads, mutates, unresolved
+# - statements[] needs to be added alongside these keys
+# - schema_version = "1.3" at line 18
 
-    def test_v08_move_corresponding_dual_tree(self):
-        """V08: MOVE CORR — matching non-FILLER children only; non-matches excluded"""
-        qmap = {
-            "ROOT-A": {"children": [
-                {"name": "CHILD-X", "record": "WS", "copybook": None, "offset": 136, "length": 10},
-                {"name": "CHILD-Y", "record": "WS", "copybook": None, "offset": 146, "length": 10},
-                {"name": "FILLER",  "record": "WS", "copybook": None, "offset": 156, "length": 10},
-            ]},
-            "ROOT-B": {"children": [
-                {"name": "CHILD-X", "record": "WS", "copybook": None, "offset": 166, "length": 10},
-                {"name": "CHILD-Z", "record": "WS", "copybook": None, "offset": 176, "length": 10},
-                {"name": "FILLER",  "record": "WS", "copybook": None, "offset": 186, "length": 10},
-            ]},
-        }
-        reads, mutates, unresolved = [], [], []
-        classify_statement(1, "MOVE CORRESPONDING ROOT-A TO ROOT-B", qmap, set(), reads, mutates, unresolved)
-        # Test expects plain short names, not qualified names
-        self.assertIn("CHILD-X", reads, f"CHILD-X not in reads: {reads}")
-E       AssertionError: 'CHILD-X' not found in [{'field': 'CHILD-X', 'record': 'WS', 'copybook': None, 'offset': 136, 'length': 10}]
+---
 
-tests\test_data_flow.py:1121: AssertionError
-================================ short test summary info ================================
-FAILED tests/test_data_flow.py::TestV08MoveCorrespondingDualTree::test_v08_move_corresponding_dual_tree - AssertionError: 'CHILD-X' not found in [{'field': 'CHILD-X', ...
-=========================== 1 failed, 72 deselected in 0.13s ============================
+### STEP G2 [DONE]
 
-V08 test FAILS: Confirmed the problem exists on disk.
-The test assertions expect plain strings like "CHILD-X" but the production code now emits dicts with 'field' keys.
-Test method located at lines 1101-1134.
-```
+**Goal:** Add `statements[]` to `data_flow.py` AND add the V13 test class to
+`tests/test_data_flow.py`. These are the ONLY two files changed this step.
 
-### STEP F2 [DONE]
+**Part A — scripts/data_flow.py changes (3 sub-changes):**
 
-**Goal:**
-Make exactly these changes to `tests/test_data_flow.py` inside
-`TestV08MoveCorrespondingDualTree.test_v08_move_corresponding_dual_tree`:
+1. Inside the per-statement processing loop in `extract_data_flow()`, accumulate
+   a `stmt_list` per paragraph. Each entry has this shape:
+   ```python
+   entry = {"seq": seq_counter, "verb": verb, "sources": [...], "targets": [...]}
+   # For IF/EVALUATE only, also add:
+   entry["condition_raw"] = raw_condition_string
+   ```
+   `seq_counter` starts at 1 and increments for each statement in the paragraph.
+   `verb` = the COBOL keyword in ALL CAPS extracted from the statement.
+   `sources` = variable names that appear in reads for this statement (not literals).
+   `targets` = variable names that appear in mutates for this statement.
 
-**Change 1 — Add 4 flat child entries to the local qmap dict inside the test:**
+2. When building each paragraph's dict in `paragraph_data_flow`, add:
+   ```python
+   "statements": stmt_list
+   ```
+   alongside the existing `reads`, `mutates`, `unresolved`, `section_name` keys.
+
+3. Bump schema_version: change `"1.3"` → `"1.4"` (one line only).
+
+**Part B — tests/test_data_flow.py change:**
+Append this class at the very end of the file (after TestV12):
+
 ```python
-"CHILD-X": [{"field": "CHILD-X", "record": "WS", "copybook": None,
-             "offset": 136, "length": 10}],
-"CHILD-Y": [{"field": "CHILD-Y", "record": "WS", "copybook": None,
-             "offset": 146, "length": 10}],
-"CHILD-Z": [{"field": "CHILD-Z", "record": "WS", "copybook": None,
-             "offset": 176, "length": 10}],
-"FILLER":  [{"field": "WS.FILLER", "record": "WS", "copybook": None,
-             "offset": 156, "length": 10}],
+class TestV13StatementsOrdering(unittest.TestCase):
+    """V13: statements[] — ordered verb metadata per paragraph"""
+
+    _SRC_V13 = (
+        "       IDENTIFICATION DIVISION.\n"
+        "       PROGRAM-ID. TESTV13.\n"
+        "       PROCEDURE DIVISION.\n"
+        "       PROCESS-PARA.\n"
+        "           MOVE VAR-A TO VAR-B.\n"
+        "           COMPUTE VAR-X = VAR-A + VAR-B.\n"
+        "           IF VAR-X > ZERO\n"
+        "               MOVE VAR-X TO VAR-C\n"
+        "           END-IF.\n"
+        "           GOBACK.\n"
+    )
+
+    def test_v13_statements_ordering(self):
+        result = _extract_synthetic(self._SRC_V13)
+        pdf = result.get('paragraph_data_flow', {})
+
+        self.assertIn('PROCESS-PARA', pdf,
+            f'Expected PROCESS-PARA in paragraph_data_flow, got: {list(pdf.keys())}')
+
+        stmts = pdf['PROCESS-PARA'].get('statements', [])
+        self.assertTrue(len(stmts) >= 3,
+            f'Expected at least 3 statements, got: {stmts}')
+
+        # seq must be 1-based and ordered
+        seqs = [s['seq'] for s in stmts]
+        self.assertEqual(seqs, list(range(1, len(stmts) + 1)),
+            f'seq values must be consecutive 1-based: {seqs}')
+
+        # first statement must be MOVE
+        self.assertEqual(stmts[0]['verb'], 'MOVE',
+            f'First statement verb must be MOVE, got: {stmts[0].get("verb")}')
+        self.assertEqual(stmts[0]['seq'], 1,
+            f'First statement seq must be 1, got: {stmts[0].get("seq")}')
+
+        # second statement must be COMPUTE
+        self.assertEqual(stmts[1]['verb'], 'COMPUTE',
+            f'Second statement verb must be COMPUTE, got: {stmts[1].get("verb")}')
+
+        # all entries must have seq, verb, sources, targets keys
+        for s in stmts:
+            for key in ('seq', 'verb', 'sources', 'targets'):
+                self.assertIn(key, s,
+                    f'Statement missing required key "{key}": {s}')
+
+    def test_v13_schema_version_is_1_4(self):
+        result = _extract_synthetic(self._SRC_V13)
+        self.assertEqual(result.get('schema_version'), '1.4',
+            f'Expected schema_version="1.4", got: {result.get("schema_version")}')
 ```
 
-**Change 2 — Add these two lines immediately after the classify_statement call:**
-```python
-rf = [e['field'] for e in reads  if isinstance(e, dict)]
-mf = [e['field'] for e in mutates if isinstance(e, dict)]
-```
-
-**Change 3 — Replace all 6 existing assertions with rf/mf versions:**
-```python
-self.assertIn("CHILD-X",    rf, f"CHILD-X not in reads: {reads}")
-self.assertIn("CHILD-X",    mf, f"CHILD-X not in mutates: {mutates}")
-self.assertNotIn("CHILD-Y", mf, f"CHILD-Y should not be in mutates: {mutates}")
-self.assertNotIn("CHILD-Z", rf, f"CHILD-Z should not be in reads: {reads}")
-self.assertNotIn("FILLER",  rf, f"FILLER should not be in reads: {reads}")
-self.assertNotIn("FILLER",  mf, f"FILLER should not be in mutates: {mutates}")
-```
-
-After editing, verify the diff is scoped to ONLY the V08 test method:
+**After editing, verify scope and run V13 in isolation:**
 ```powershell
-git diff tests/test_data_flow.py
+git diff --stat
+# Must show ONLY: scripts/data_flow.py, tests/test_data_flow.py
+
+C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe `
+  -m pytest tests/test_data_flow.py -k "v13" -v 2>&1
 ```
 
-If the diff touches ANY line outside TestV08MoveCorrespondingDualTree — stop immediately:
+**If diff shows any unexpected file:**
 ```powershell
-git checkout -- tests/test_data_flow.py
+git checkout -- .
 ```
-Mark F2 BLOCKED. STOP.
+Mark G2 BLOCKED. STOP.
+
+**If either V13 test fails — paste exact error. Mark G2 BLOCKED. STOP.**
+**Do NOT proceed to G3 with a failing V13 test.**
+
+**After RESULT is pasted:**
+- Update CURRENT CONTEXT: Last = "G2 DONE", Next = G3
+- Mark step [DONE]
+- STOP. Report to human.
 
 **RESULT:**
 ```powershell
-PS C:\work\HermesCOBOL> git diff tests/test_data_flow.py
-diff --git a/tests/test_data_flow.py b/tests/test_data_flow.py
-index 329d6bc..ac29830 100644
---- a/tests/test_data_flow.py
-+++ b/tests/test_data_flow.py
-@@ -1101,7 +1101,6 @@ class TestV07ExecCicsMasking(unittest.TestCase):
- class TestV08MoveCorrespondingDualTree(unittest.TestCase):
-     def test_v08_move_corresponding_dual_tree(self):
-         """V08: MOVE CORR — matching non-FILLER children only; non-matches excluded"""
--        # qmap uses "children" arrays with "name" fields (not "field" entries)
-         qmap = {
-             "ROOT-A": {"children": [
-                 {"name": "CHILD-X", "record": "WS", "copybook": None, "offset": 136, "length": 10},
-@@ -1113,20 +1112,21 @@ class TestV08MoveCorrespondingDualTree(unittest.TestCase):
-                 {"name": "CHILD-Z", "record": "WS", "copybook": None, "offset": 176, "length": 10},
-                 {"name": "FILLER",  "record": "WS", "copybook": None, "offset": 186, "length": 10},
-             ]},
-+            "CHILD-X": [{"field": "CHILD-X", "record": "WS", "copybook": None, "offset": 136, "length": 10}],
-+            "CHILD-Y": [{"field": "CHILD-Y", "record": "WS", "copybook": None, "offset": 146, "length": 10}],
-+            "CHILD-Z": [{"field": "CHILD-Z", "record": "WS", "copybook": None, "offset": 176, "length": 10}],
-+            "FILLER":  [{"field": "WS.FILLER", "record": "WS", "copybook": None, "offset": 156, "length": 10}],
-         }
-         reads, mutates, unresolved = [], [], []
-         classify_statement(1, "MOVE CORRESPONDING ROOT-A TO ROOT-B", qmap, set(), reads, mutates, unresolved)
--        # Test expects plain short names, not qualified names
--        # CHILD-X is in both ROOT-A and ROOT-B - should be in reads and mutates
--        self.assertIn("CHILD-X", reads, f"CHILD-X not in reads: {reads}")
--        self.assertIn("CHILD-X", mutates, f"CHILD-X not in mutates: {mutates}")
--        # CHILD-Y is only in ROOT-A (source) - should NOT be in mutates
--        self.assertNotIn("CHILD-Y", mutates, f"CHILD-Y should not be in mutates: {mutates}")
--        # CHILD-Z is only in ROOT-B (dest) - should NOT be in reads
--        self.assertNotIn("CHILD-Z", reads, f"CHILD-Z should not be in reads: {reads}")
--        # FILLER should not be in reads or mutates
--        self.assertNotIn("FILLER", reads, f"FILLER should not be in reads: {reads}")
--        self.assertNotIn("FILLER", mutates, f"FILLER should not be in mutates: {mutates}")
-+        rf = [e['field'] for e in reads  if isinstance(e, dict)]
-+        mf = [e['field'] for e in mutates if isinstance(e, dict)]
-+        self.assertIn("CHILD-X",    rf, f"CHILD-X not in reads: {reads}")
-+        self.assertIn("CHILD-X",    mf, f"CHILD-X not in mutates: {mutates}")
-+        self.assertNotIn("CHILD-Y", mf, f"CHILD-Y should not be in mutates: {mutates}")
-+        self.assertNotIn("CHILD-Z", rf, f"CHILD-Z should not be in reads: {reads}")
-+        self.assertNotIn("FILLER",  rf, f"FILLER should not be in reads: {reads}")
-+        self.assertNotIn("FILLER",  mf, f"FILLER should not be in mutates: {mutates}")
+PS C:\work\HermesCOBOL> git diff --stat
+.clinerules/scratchpad.md | 513 ++++++++++++++++++++++++----------------------
+ scripts/data_flow.py      |  69 ++++++-
+ tests/test_data_flow.py   |  67 +++++-
+ 3 files changed, 391 insertions(+), 258 deletions(-)
 
- # ------------------------------------------------------------------
- # V09/V10 Scope and Ambiguity Vectors
-```diff is scoped to ONLY the V08 test method - PASS.
-
-V08 test now passes:
-```powershell
-PS C:\work\HermesCOBOL> C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe -m pytest tests/test_data_flow.py -k "v08" -v
+# V13 tests pass
+PS C:\work\HermesCOBOL> C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe -m pytest tests/test_data_flow.py -k "v13" -v
 ================================== test session starts ==================================
 platform win32 -- Python 3.10.11, pytest-7.4.3, pluggy-1.6.0
 rootdir: C:\work\HermesCOBOL
 plugins: anyio-3.7.1, asyncio-0.21.1, typeguard-4.4.4
 asyncio: mode=strict
-collecting ... 73 tests, 72 deselected, 1 selected
+collecting ... 75 tests, 73 deselected / 2 selected
 
-tests/test_data_flow.py::TestV08MoveCorrespondingDualTree::test_v08_move_corresponding_dual_tree PASSED [100%]
+tests/test_data_flow.py::TestV13StatementsOrdering::test_v13_statements_ordering PASSED [50%]
+tests/test_data_flow.py::TestV13StatementsOrdering::test_v13_schema_version_is_1_4 PASSED [100%]
 
-=========================== 1 passed, 72 deselected in 0.04s ============================
+=========================== 2 passed, 73 deselected in 0.06s ============================
 
-Full suite passes:
-```powershell
+# Full suite passes with 127 tests
 PS C:\work\HermesCOBOL> C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe -m pytest tests/ -q
-.................................................................................. [ 65%]
-...........................................                                        [100%]
-125 passed in 0.76s
-```
+........................................................................ [ 56%]
+.......................................................                  [100%]
+127 passed in 0.77s
 
-### STEP F3 [PENDING]
+---
 
-**Goal:**
-Run V08 in isolation, then run the full suite.
-Confirm V08 passes and total passed count = 125.
-Commit and push changes.
+### STEP G3 [PENDING]
 
-**Exact commands:**
+**Goal:** Full suite must be 127/127 (125 existing + 2 new V13). Commit and push.
+
+**Commands:**
 ```powershell
-# V08 in isolation
-C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe -m pytest tests/test_data_flow.py -k "v08" -v 2>&1
-
 # Full suite
-C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe -m pytest tests/ -q 2>&1
+C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe `
+  -m pytest tests/ -q 2>&1 | Select-Object -Last 5
 
-# Commit and push
-git add tests/test_data_flow.py .clinerules/scratchpad.md
+# Stage only permitted files
+git add scripts/data_flow.py tests/test_data_flow.py .clinerules/scratchpad.md
 git diff --cached --name-only
-git commit -m "test(stage4d): fix V08 assertions to match dict-based reads/mutates output"
+
+# ONLY if 127 passed AND 0 failed AND cached files are exactly the 3 above:
+git commit -m "feat(stage4e): V13 statements[] ordering; schema 1.3->1.4"
 git push origin main
 git log --oneline -1
 ```
 
 **Pass condition:**
-- V08: PASSED
-- Full suite: 125 passed, 0 failed
+- Total: exactly 127 passed, 0 failed
 - `git diff --cached --name-only` shows ONLY:
+  - `scripts/data_flow.py`
   - `tests/test_data_flow.py`
   - `.clinerules/scratchpad.md`
+- `git log` shows new commit on main
 
-**On failure:**
-- If V08 fails: paste exact assertion error. STOP. Mark F3 BLOCKED.
-- If full suite has unexpected count: verify changes didn't add/remove tests.
-- If `git diff --cached` shows unexpected file: abort commit, mark BLOCKED.
+**Failure actions:**
+- Any test fails → paste exact error, mark G3 BLOCKED, STOP
+- Total ≠ 127 → `git checkout -- .`, mark BLOCKED, STOP
+- Unexpected cached file → `git reset HEAD`, mark BLOCKED, STOP
+
+**After RESULT is pasted:**
+- Update CURRENT CONTEXT: Last = "G3 DONE — V13 closed, 127/127", Next = IDLE
+- Mark step [DONE]
+- STOP. Report to human.
 
 **RESULT:**
-<!-- Paste actual pytest output and git log here before marking DONE -->
+<!-- Paste pytest output and git log here -->
 
+---
 
-## EXECUTION RULES (ENFORCED)
+## EXECUTION RULES
 
-- **PERMITTED FILES:** `tests/test_data_flow.py`, `.clinerules/scratchpad.md`
-- **FORBIDDEN:** `scripts/data_flow.py` or any file not listed above
-- **FORBIDDEN:** adding any new test class, method, import, or fixture
-- **FORBIDDEN:** committing when any test fails
-- **ALWAYS:** `python -m pytest tests/ -q` — never unittest discover
-- **ALWAYS:** paste RESULT before marking any step [DONE]
-- **ALWAYS:** update CURRENT CONTEXT after every step
-- If total test count after your changes ≠ 73 — you added or removed tests. STOP immediately.
+- Permitted: `scripts/data_flow.py`, `tests/test_data_flow.py`, `.clinerules/scratchpad.md`
+- Forbidden: all other files
+- Forbidden: modifying any existing test class or method
+- Forbidden: committing with any failing test
+- After every step: update CURRENT CONTEXT, mark step [DONE] or [BLOCKED], STOP
+- Before G2: total must be 125. After G2+G3: total must be 127. Any other count = BLOCKED.
+  (test_data_flow.py goes 73→75; test_byte_layout.py=21; test_extract_facts_alignment.py=31)

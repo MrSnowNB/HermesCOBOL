@@ -15,7 +15,7 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-SCHEMA_VERSION = "1.3"
+SCHEMA_VERSION = "1.4"
 BYTE_LAYOUTS_DIR = Path("data/byte_layouts")
 CBL_DIR          = Path("data/raw/cbl")
 OUT_DIR          = Path("data/data_flow")
@@ -1335,16 +1335,74 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
     paragraph_data_flow = {}
 
     for para_name, section_name, para_lines in all_occurrences:
-        reads = []; mutates = []; unresolved_list = []
+        reads = []; mutates = []; unresolved_list = []; stmt_list = []
         para_call_targets = []
         context_records: set = set()
+        seq_counter = 0
 
         for lineno, text in _join_lines(para_lines):
             for part in _split_on_period(text):
                 if part:
-                    _dispatch_inline(lineno, part, qmap, context_records,
-                                     reads, mutates, unresolved_list,
-                                     para_call_targets)
+                    # Extract verb for statements[] tracking
+                    raw_part = part.strip().rstrip('.')
+                    part_tokens = _tokens(raw_part)
+                    verb = part_tokens[0].upper() if part_tokens else None
+                    
+                    # Build statement entry (only for recognized verbs)
+                    if verb and verb not in ('IF', 'EVALUATE', 'WHEN', 'END-IF', 'END-EVALUATE', 'ELSE'):
+                        seq_counter += 1
+                        entry = {'seq': seq_counter, 'verb': verb, 'sources': [], 'targets': []}
+                        
+                        # Extract sources (from reads in this statement)
+                        # We need to track which reads/ mutates belong to this statement
+                        # Store the current counts before _dispatch_inline
+                        read_idx_before = len(reads)
+                        mutate_idx_before = len(mutates)
+                        
+                        _dispatch_inline(lineno, part, qmap, context_records,
+                                         reads, mutates, unresolved_list,
+                                         para_call_targets)
+                        
+                        # Extract sources and targets from the new entries
+                        for i in range(read_idx_before, len(reads)):
+                            entry_item = reads[i]
+                            if isinstance(entry_item, dict) and 'field' in entry_item:
+                                entry['sources'].append(entry_item['field'])
+                            elif isinstance(entry_item, str):
+                                entry['sources'].append(entry_item)
+                        
+                        for i in range(mutate_idx_before, len(mutates)):
+                            entry_item = mutates[i]
+                            if isinstance(entry_item, dict) and 'field' in entry_item:
+                                entry['targets'].append(entry_item['field'])
+                            elif isinstance(entry_item, str):
+                                entry['targets'].append(entry_item)
+                        
+                        stmt_list.append(entry)
+                    else:
+                        _dispatch_inline(lineno, part, qmap, context_records,
+                                         reads, mutates, unresolved_list,
+                                         para_call_targets)
+                        
+                        # Handle IF/EVALUATE statements with condition_raw
+                        if verb in ('IF', 'EVALUATE', 'WHEN'):
+                            seq_counter += 1
+                            # Get the condition part after the verb
+                            condition_parts = []
+                            in_condition = False
+                            for t in part_tokens[1:]:
+                                if t.upper() in ('THEN', 'ELSE', 'END-IF', 'END-EVALUATE', 'WHEN', 'OTHER'):
+                                    break
+                                if t not in ('IF', 'EVALUATE', 'WHEN'):
+                                    condition_parts.append(t)
+                            condition_raw = ' '.join(condition_parts) if condition_parts else raw_part
+                            stmt_list.append({
+                                'seq': seq_counter,
+                                'verb': verb,
+                                'condition_raw': condition_raw,
+                                'sources': [],
+                                'targets': []
+                            })
 
         for t in para_call_targets:
             if t not in call_graph_set:
@@ -1355,6 +1413,7 @@ def extract_data_flow(cbl_path: Path, layout_path: Path) -> dict:
             'reads':        reads,
             'mutates':      mutates,
             'unresolved':   unresolved_list,
+            'statements':   stmt_list,
         }
 
         # Apply compound key only for cross-section name collisions
