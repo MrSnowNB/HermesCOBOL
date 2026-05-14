@@ -165,8 +165,19 @@ def _should_skip_operand(tok: str) -> bool:
 
 def _canonical_operand(tokens, i):
     """Canonicalize COBOL qualified-name syntax: FIELD OF RECORD or FIELD IN RECORD
-    becomes RECORD.FIELD for resolution."""
+    becomes RECORD.FIELD for resolution. Also handles dot-qualified names like
+    GROUP.FIELD by extracting the short name."""
     tok = tokens[i]
+    
+    # Handle dot-qualified operand (GROUP.FIELD)
+    if '.' in tok:
+        parts = tok.split('.')
+        if len(parts) == 2:
+            owner = parts[0]
+            field = parts[1]
+            if not _should_skip_operand(field) and not _should_skip_operand(owner):
+                return field
+    
     if i + 2 < len(tokens) and tokens[i + 1].upper() in {"OF", "IN"}:
         owner = tokens[i + 2]
         if not _should_skip_operand(tok) and not _should_skip_operand(owner):
@@ -356,7 +367,8 @@ def resolve(name: str, qmap: dict, context_records: set) -> list:
                     if m['record'].upper() in {r.upper() for r in context_records}]
         if filtered:
             return filtered
-    return matches
+    # Ambiguous: no context to disambiguate multiple matches
+    return []
 
 
 def is_literal(token: str) -> bool:
@@ -709,15 +721,38 @@ def classify_statement(
             return
         if name == '__LIT__' or is_literal(name):
             return
+        # Extract owner from dot-qualified operand (GROUP.FIELD) before canonicalization
+        owner = None
+        owner_upper = None
+        if '.' in name:
+            parts = name.split('.')
+            if len(parts) == 2:
+                owner = parts[0]
+                owner_upper = owner.upper()
         # Apply OF/IN qualifier canonicalization before resolution
         for i, tok in enumerate(tokens):
             if tok == name:
                 name = _canonical_operand(tokens, i)
                 break
+        bare = name.upper()
         hits = resolve(name, qmap, context_records)
+        # If owner is specified and hits is empty due to ambiguity, return matches
+        # to allow filtering by owner (V09 case: dot-qualified operand)
+        if owner_upper and not hits:
+            matches = qmap.get(bare, [])
+            if matches and len(matches) > 1:
+                hits = matches
+        # Filter hits by owner if dot-qualified operand was provided
+        if owner_upper and hits:
+            hits = [h for h in hits if h['record'].upper() == owner_upper]
         if not hits:
+            reason = (
+                f'ambiguous field (no context): {name}'
+                if bare in qmap and len(qmap[bare]) > 1
+                else f'unresolved read operand: {name}'
+            )
             unresolved.append({'verb': verb, 'line_no': lineno, 'raw_text': raw_text,
-                               'reason': f'unresolved read operand: {name}'})
+                               'reason': reason, 'name': name})
         else:
             for h in hits:
                 if h not in reads:
@@ -792,11 +827,40 @@ def classify_statement(
                     # Add matching child names to reads (from src) and mutates (from dst)
                     for name in matching_names:
                         if name and name != 'FILLER':
-                            # V08 expects plain short names, not dicts
-                            if name not in reads:
-                                reads.append(name)
-                            if name not in mutates:
-                                mutates.append(name)
+                            # First try qmap-lookup for normal structure (child name as key)
+                            child_hits = qmap.get(name.upper(), [])
+                            if child_hits and isinstance(child_hits, list) and len(child_hits) > 0:
+                                # Normal qmap structure: entries are dicts with 'field', 'record', etc.
+                                for h in child_hits:
+                                    if h not in reads:   reads.append(h)
+                                    if h not in mutates: mutates.append(h)
+                            else:
+                                # Children array structure: build entry from children data
+                                # First check if we have source children data
+                                src_entry = None
+                                for c in src_children_list:
+                                    if c.get('name', '').upper() == name:
+                                        src_entry = c
+                                        break
+                                # Build proper dict entry
+                                if src_entry:
+                                    entry = {
+                                        'field':    name,
+                                        'record':   src_entry.get('record', name),
+                                        'copybook': src_entry.get('copybook'),
+                                        'offset':   src_entry.get('offset', 0),
+                                        'length':   src_entry.get('length', 0),
+                                    }
+                                else:
+                                    entry = {
+                                        'field':    name,
+                                        'record':   name,
+                                        'copybook': None,
+                                        'offset':   0,
+                                        'length':   0,
+                                    }
+                                if entry not in reads:   reads.append(entry)
+                                if entry not in mutates: mutates.append(entry)
                 else:
                     # Legacy style: add group name to reads and mutates
                     # Find existing entry for src_group in qmap to get the full entry
