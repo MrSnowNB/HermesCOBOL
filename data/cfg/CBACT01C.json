@@ -1,0 +1,1063 @@
+{
+  "program_id": "CBACT01C",
+  "source_file": "data/raw/cbl/CBACT01C.cbl",
+  "source_sha": "04afa9ea75e6ef9feb9f6bfe6018af1eea2a3aa4",
+  "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
+  "paragraphs": [
+    {
+      "name": "END-PERFORM",
+      "reachable": true,
+      "performs": [
+        "0000-ACCTFILE-OPEN",
+        "2000-OUTFILE-OPEN",
+        "3000-ARRFILE-OPEN",
+        "4000-VBRFILE-OPEN",
+        "1000-ACCTFILE-GET-NEXT",
+        "9000-ACCTFILE-CLOSE"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1000-ACCTFILE-GET-NEXT",
+      "reachable": true,
+      "performs": [
+        "1100-DISPLAY-ACCT-RECORD",
+        "1300-POPUL-ACCT-RECORD",
+        "1350-WRITE-ACCT-RECORD",
+        "1400-POPUL-ARRAY-RECORD",
+        "1450-WRITE-ARRY-RECORD",
+        "1500-POPUL-VBRC-RECORD",
+        "1550-WRITE-VB1-RECORD",
+        "1575-WRITE-VB2-RECORD",
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1100-DISPLAY-ACCT-RECORD",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1300-POPUL-ACCT-RECORD",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "WS-REISSUE-DATE",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "END-IF",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1350-WRITE-ACCT-RECORD",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1400-POPUL-ARRAY-RECORD",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1450-WRITE-ARRY-RECORD",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1500-POPUL-VBRC-RECORD",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "VB2-ACCT-ID",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1550-WRITE-VB1-RECORD",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1575-WRITE-VB2-RECORD",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0000-ACCTFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2000-OUTFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "3000-ARRFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "4000-VBRFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9000-ACCTFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9910-DISPLAY-IO-STATUS",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    }
+  ],
+  "data_items": [
+    {
+      "name": "FD-ACCTFILE-REC",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-ACCT-ID",
+      "level": 5,
+      "picture": "9(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-ACCT-DATA",
+      "level": 5,
+      "picture": "X(289)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "OUT-ACCT-REC",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "OUT-ACCT-ID",
+      "level": 5,
+      "picture": "9(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "OUT-ACCT-ACTIVE-STATUS",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "OUT-ACCT-CURR-BAL",
+      "level": 5,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "OUT-ACCT-CREDIT-LIMIT",
+      "level": 5,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "OUT-ACCT-CASH-CREDIT-LIMIT",
+      "level": 5,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "OUT-ACCT-OPEN-DATE",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "OUT-ACCT-EXPIRAION-DATE",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "OUT-ACCT-REISSUE-DATE",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "OUT-ACCT-CURR-CYC-CREDIT",
+      "level": 5,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "OUT-ACCT-CURR-CYC-DEBIT",
+      "level": 5,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "OUT-ACCT-GROUP-ID",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ARR-ARRAY-REC",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ARR-ACCT-ID",
+      "level": 5,
+      "picture": "9(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ARR-ACCT-BAL",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ARR-ACCT-CURR-BAL",
+      "level": 10,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ARR-ACCT-CURR-CYC-DEBIT",
+      "level": 10,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ARR-FILLER",
+      "level": 5,
+      "picture": "X(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "VBR-REC",
+      "level": 1,
+      "picture": "X(80)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCOUNT-RECORD",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-ID",
+      "level": 5,
+      "picture": "9(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-ACTIVE-STATUS",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-CURR-BAL",
+      "level": 5,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-CREDIT-LIMIT",
+      "level": 5,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-CASH-CREDIT-LIMIT",
+      "level": 5,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-OPEN-DATE",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-EXPIRAION-DATE",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-REISSUE-DATE",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-CURR-CYC-CREDIT",
+      "level": 5,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-CURR-CYC-DEBIT",
+      "level": 5,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-ADDR-ZIP",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-GROUP-ID",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-REC",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-IN-REC",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-TYPE",
+      "level": 10,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "YYYYMMDD-IN",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "YYYY-MM-DD-IN",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-INP-DATE",
+      "level": 10,
+      "picture": "X(20)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-1INP",
+      "level": 10,
+      "picture": null,
+      "redefines": "CODATECN-INP-DATE",
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-1YYYY",
+      "level": 15,
+      "picture": "XXXX",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-1MM",
+      "level": 15,
+      "picture": "XX",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-1DD",
+      "level": 15,
+      "picture": "XX",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-1FIL",
+      "level": 15,
+      "picture": "X(12)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-2INP",
+      "level": 10,
+      "picture": null,
+      "redefines": "CODATECN-INP-DATE",
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-1O-YYYY",
+      "level": 15,
+      "picture": "XXXX",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-1I-S1",
+      "level": 15,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-1MM",
+      "level": 15,
+      "picture": "XX",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-1I-S2",
+      "level": 15,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-2YY",
+      "level": 15,
+      "picture": "XX",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-2FIL",
+      "level": 15,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-OUT-REC",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-OUTTYPE",
+      "level": 10,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "YYYY-MM-DD-OP",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "YYYYMMDD-OP",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-0UT-DATE",
+      "level": 10,
+      "picture": "X(20)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-1OUT",
+      "level": 10,
+      "picture": null,
+      "redefines": "CODATECN-0UT-DATE",
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-1O-YYYY",
+      "level": 15,
+      "picture": "XXXX",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-1O-S1",
+      "level": 15,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-1O-MM",
+      "level": 15,
+      "picture": "XX",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-1O-S2",
+      "level": 15,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-1O-DD",
+      "level": 15,
+      "picture": "XX",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-1OFIL",
+      "level": 15,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-2OUT",
+      "level": 10,
+      "picture": null,
+      "redefines": "CODATECN-0UT-DATE",
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-2O-YYYY",
+      "level": 15,
+      "picture": "XXXX",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-2O-MM",
+      "level": 15,
+      "picture": "XX",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-2O-DD",
+      "level": 15,
+      "picture": "XX",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-2OFIL",
+      "level": 15,
+      "picture": "X(12)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-ERROR-MSG",
+      "level": 5,
+      "picture": "X(38)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCTFILE-STATUS",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCTFILE-STAT1",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCTFILE-STAT2",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "OUTFILE-STATUS",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "OUTFILE-STAT1",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "OUTFILE-STAT2",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ARRYFILE-STATUS",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ARRYFILE-STAT1",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ARRYFILE-STAT2",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "VBRCFILE-STATUS",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "VBRCFILE-STAT1",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "VBRCFILE-STAT2",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "IO-STATUS",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "IO-STAT1",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "IO-STAT2",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TWO-BYTES-BINARY",
+      "level": 1,
+      "picture": "9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TWO-BYTES-ALPHA",
+      "level": 1,
+      "picture": null,
+      "redefines": "TWO-BYTES-BINARY",
+      "reachable": true
+    },
+    {
+      "name": "TWO-BYTES-LEFT",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TWO-BYTES-RIGHT",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "IO-STATUS-04",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "IO-STATUS-0401",
+      "level": 5,
+      "picture": "9",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "IO-STATUS-0403",
+      "level": 5,
+      "picture": "999",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "APPL-RESULT",
+      "level": 1,
+      "picture": "S9(9)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "APPL-AOK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "APPL-EOF",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "END-OF-FILE",
+      "level": 1,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ABCODE",
+      "level": 1,
+      "picture": "S9(9)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TIMING",
+      "level": 1,
+      "picture": "S9(9)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-RECD-LEN",
+      "level": 1,
+      "picture": "9(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "VBRC-REC1",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "VB1-ACCT-ID",
+      "level": 5,
+      "picture": "9(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "VB1-ACCT-ACTIVE-STATUS",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "VBRC-REC2",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "VB2-ACCT-ID",
+      "level": 5,
+      "picture": "9(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "VB2-ACCT-CURR-BAL",
+      "level": 5,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "VB2-ACCT-CREDIT-LIMIT",
+      "level": 5,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "VB2-ACCT-REISSUE-YYYY",
+      "level": 5,
+      "picture": "X(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-ACCT-REISSUE-DATE",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-ACCT-REISSUE-YYYY",
+      "level": 5,
+      "picture": "X(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-FILLER-1",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-ACCT-REISSUE-MM",
+      "level": 5,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-FILLER-2",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-ACCT-REISSUE-DD",
+      "level": 5,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-REISSUE-DATE",
+      "level": 1,
+      "picture": "X(10)",
+      "redefines": "WS-ACCT-REISSUE-DATE",
+      "reachable": true
+    }
+  ],
+  "redefines_clauses": [
+    {
+      "name": "CODATECN-1INP",
+      "level": 10,
+      "picture": null,
+      "redefines": "CODATECN-INP-DATE",
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-2INP",
+      "level": 10,
+      "picture": null,
+      "redefines": "CODATECN-INP-DATE",
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-1OUT",
+      "level": 10,
+      "picture": null,
+      "redefines": "CODATECN-0UT-DATE",
+      "reachable": true
+    },
+    {
+      "name": "CODATECN-2OUT",
+      "level": 10,
+      "picture": null,
+      "redefines": "CODATECN-0UT-DATE",
+      "reachable": true
+    },
+    {
+      "name": "TWO-BYTES-ALPHA",
+      "level": 1,
+      "picture": null,
+      "redefines": "TWO-BYTES-BINARY",
+      "reachable": true
+    },
+    {
+      "name": "WS-REISSUE-DATE",
+      "level": 1,
+      "picture": "X(10)",
+      "redefines": "WS-ACCT-REISSUE-DATE",
+      "reachable": true
+    }
+  ],
+  "copybooks_used": [
+    "CODATECN",
+    "CVACT01Y",
+    "of"
+  ],
+  "calls_to": [
+    "CEE3ABD",
+    "COBDATFT"
+  ],
+  "cics_commands": [],
+  "dead_code_paragraphs": [
+    "WS-REISSUE-DATE",
+    "END-IF",
+    "VB2-ACCT-ID"
+  ],
+  "dead_code_items": [],
+  "irreducible_gotos": [],
+  "smojol_cfg_path": null,
+  "smojol_node_count": 0
+}
