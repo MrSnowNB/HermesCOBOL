@@ -65,9 +65,7 @@ import re
 import sys
 from pathlib import Path
 
-from config import RAW_CBL_DIR
-
-FALLTHROUGH_DIR = RAW_CBL_DIR.parent.parent / "fallthrough"
+from config import RAW_CBL_DIR, FALLTHROUGH_DIR
 
 
 __LLM_FREE__ = True

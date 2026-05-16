@@ -19,9 +19,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from config import RAW_CBL_DIR, RAW_CPY_DIR, RAW_CPY_BMS_DIR
-
-CFG_DIR = RAW_CBL_DIR.parent.parent / "cfg"
+from config import RAW_CBL_DIR, RAW_CPY_DIR, RAW_CPY_BMS_DIR, CFG_DIR
 
 
 def git_blob_sha(path: Path) -> str:

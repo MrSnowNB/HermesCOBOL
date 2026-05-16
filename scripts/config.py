@@ -26,5 +26,11 @@ VALID_DIR       = REPO_ROOT / "validation"
 RECON_CBL_DIR   = VALID_DIR / "reconstructed" / "cbl"
 REPORTS_DIR     = VALID_DIR / "reports"
 
+# Generated data directories (Stage 5-B / 5-D / 5-E outputs)
+DATA_DIR                 = REPO_ROOT / "data"
+CFG_DIR                  = DATA_DIR / "cfg"
+FALLTHROUGH_DIR          = DATA_DIR / "fallthrough"
+PASS1_ANNOTATIONS_DIR    = VALID_DIR / "pass1"
+
 # Schema version — must match extract_facts.py
 SCHEMA_VERSION  = "1.0"

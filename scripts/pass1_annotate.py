@@ -76,7 +76,7 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 # HermesCOBOL path configuration (Stage 5-D minimal adaptation only)
 # ---------------------------------------------------------------------------
-from config import RAW_CBL_DIR, VALID_DIR, REKT_DIR
+from config import RAW_CBL_DIR, CFG_DIR, PASS1_ANNOTATIONS_DIR, VALID_DIR
 
 PASS1_DIR = VALID_DIR / "pass1"
 
@@ -549,6 +549,65 @@ def selftest() -> int:
     return 0
 
 
+def emit(anns: list[dict], phantoms: list[dict], program_id: str, out_path: Path, phantoms_out: Path | None = None) -> dict:
+    """Write annotations (and optional phantoms) and return summary dict."""
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(anns, indent=2))
+
+    if phantoms_out:
+        phantoms_out.parent.mkdir(parents=True, exist_ok=True)
+        phantoms_out.write_text(json.dumps(phantoms, indent=2))
+
+    resolved_edges = sum(
+        1 for a in anns
+        if a.get("cfg_perform_target") or a.get("cfg_goto_target")
+    )
+
+    return {
+        "annotations": len(anns),
+        "phantoms_filtered": len(phantoms),
+        "unresolved_operands": sum(1 for a in anns if a.get("operand_unresolved")),
+        "branch_verbs": sum(1 for a in anns if a["verb"] in BRANCH_VERBS),
+        "cics_branches": sum(1 for a in anns if a.get("is_cics_branch")),
+        "cfg_edges_resolved": resolved_edges,
+        "cfg_edges_unresolved": sum(1 for a in anns if a.get("cfg_edge_unresolved")),
+        "out": str(out_path),
+    }
+
+
+def run_all() -> None:
+    PASS1_ANNOTATIONS_DIR.mkdir(parents=True, exist_ok=True)
+    cbl_files = sorted(RAW_CBL_DIR.glob("*.cbl")) + sorted(RAW_CBL_DIR.glob("*.CBL"))
+    seen: set[str] = set()
+    unique = []
+    for f in cbl_files:
+        if f.stem.upper() not in seen:
+            seen.add(f.stem.upper())
+            unique.append(f)
+
+    completed = 0
+    errors = 0
+    for cbl_path in unique:
+        stem = cbl_path.stem.upper()
+        cfg_path = CFG_DIR / f"{stem}.json"
+        out_path = PASS1_ANNOTATIONS_DIR / f"{stem}_annotations.json"
+        if not cfg_path.exists():
+            print(f"[skip] {stem} — no CFG JSON at {cfg_path}")
+            continue
+        try:
+            anns, phantoms = annotate(cbl_path, cfg_path, stem)
+            result = emit(anns, phantoms, stem, out_path)
+            print(f"[ok] {stem}  annotations={result['annotations']}"
+                  f"  cics_branches={result['cics_branches']}"
+                  f"  cfg_edges_resolved={result['cfg_edges_resolved']}")
+            completed += 1
+        except Exception as exc:
+            print(f"[ERROR] {stem}: {exc}")
+            errors += 1
+
+    print(f"\n[ok] {completed}/{len(unique)} complete  ({errors} errors)")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="Pass 1 annotator (deterministic)")
     ap.add_argument("--src", type=Path, help="Path to COBOL source (.cbl)")
@@ -556,36 +615,27 @@ def main() -> int:
     ap.add_argument("--program-id", type=str, help="PROGRAM-ID (e.g. COBSWAIT)")
     ap.add_argument("--out", type=Path, help="Output annotations JSON path")
     ap.add_argument("--phantoms-out", type=Path, default=None, help="Optional: phantom events JSON path")
+    ap.add_argument("--all", action="store_true", help="Process all programs with existing CFG JSON")
     ap.add_argument("--selftest", action="store_true", help="Run built-in COBSWAIT selftest and exit")
     args = ap.parse_args()
 
     if args.selftest:
         return selftest()
 
+    if args.all:
+        if args.src or args.out:
+            ap.error("--all is mutually exclusive with --src/--out")
+        run_all()
+        return 0
+
     if not (args.src and args.cfg and args.program_id and args.out):
         ap.error("--src, --cfg, --program-id, --out all required (or --selftest)")
 
     annotations, phantoms = annotate(args.src, args.cfg, args.program_id)
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.out.write_text(json.dumps(annotations, indent=2))
-    if args.phantoms_out:
-        args.phantoms_out.parent.mkdir(parents=True, exist_ok=True)
-        args.phantoms_out.write_text(json.dumps(phantoms, indent=2))
-
-    resolved_edges = sum(
-        1 for a in annotations
-        if a.get("cfg_perform_target") or a.get("cfg_goto_target")
-    )
+    result = emit(annotations, phantoms, args.program_id, args.out, args.phantoms_out)
     print(json.dumps({
         "program_id": args.program_id,
-        "annotations": len(annotations),
-        "phantoms_filtered": len(phantoms),
-        "unresolved_operands": sum(1 for a in annotations if a.get("operand_unresolved")),
-        "branch_verbs": sum(1 for a in annotations if a["verb"] in BRANCH_VERBS),
-        "cics_branches": sum(1 for a in annotations if a.get("is_cics_branch")),
-        "cfg_edges_resolved": resolved_edges,
-        "cfg_edges_unresolved": sum(1 for a in annotations if a.get("cfg_edge_unresolved")),
-        "out": str(args.out),
+        **{k: v for k, v in result.items() if k not in ("out",)}
     }))
     return 0
 
