@@ -4,10 +4,13 @@ extract_cfg_local.py
 
 A pure-Python local replacement for Phase 0 (smojol/Cobol-REKT).
 Uses 'cobc -E' to expand copybooks and performs regex-based static analysis
-to produce a validation/structure/<PROG>_cfg.json file.
+to produce data/cfg/<PROG>.json files.
 
 This unblocks Windows dev environments without Java/Smojol dependencies.
+
+Stage 5-B (CFG wiring) — promoted with minimal path adaptation for HermesCOBOL.
 """
+
 import argparse
 import hashlib
 import json
@@ -15,6 +18,11 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+
+from config import RAW_CBL_DIR, RAW_CPY_DIR, RAW_CPY_BMS_DIR
+
+CFG_DIR = RAW_CBL_DIR.parent.parent / "cfg"
+
 
 def git_blob_sha(path: Path) -> str:
     try:
@@ -25,20 +33,19 @@ def git_blob_sha(path: Path) -> str:
     except Exception:
         return hashlib.sha1(path.read_bytes()).hexdigest()
 
+
 def extract_program_id(text: str, fallback: str) -> str:
     m = re.search(r"PROGRAM-ID\.\s*([A-Za-z0-9\-_]+)", text, re.IGNORECASE)
     if not m:
         return fallback.upper()
     return m.group(1).upper()
 
+
 def preprocess(src_path: Path) -> str:
-    """Uses cobc -E to get expanded source."""
+    """Uses cobc -E to get expanded source (with HermesCOBOL copybook includes)."""
     try:
-        env = dict(Path().absolute().parts[0] == "C:" and {} or {}) # dummy to avoid injection block
-        # In a real shell we'd use the setx vars, but here we must be explicit
-        # if the subprocess doesn't inherit them.
         proc = subprocess.run(
-            ["cobc", "-E", "-I", "app/cpy", str(src_path)],
+            ["cobc", "-E", "-I", str(RAW_CPY_DIR), "-I", str(RAW_CPY_BMS_DIR), str(src_path)],
             capture_output=True,
             text=True,
             check=True
@@ -48,6 +55,7 @@ def preprocess(src_path: Path) -> str:
         print(f"Warning: cobc -E failed, using raw source: {e}", file=sys.stderr)
         return src_path.read_text(errors="replace")
 
+
 def clean_preprocessed(text: str) -> str:
     """Removes #line markers and handles whitespace."""
     lines = []
@@ -56,6 +64,7 @@ def clean_preprocessed(text: str) -> str:
             continue
         lines.append(line)
     return "\n".join(lines)
+
 
 def extract_paragraphs(text: str) -> list[str]:
     paragraphs = []
@@ -67,8 +76,6 @@ def extract_paragraphs(text: str) -> list[str]:
             continue
         if not in_proc:
             continue
-        # Paragraph headers start in Area A (col 8-11 in fixed, but cobc -E varies)
-        # We look for a name followed by a dot alone on a line or with minimal trailing space
         m = re.match(r"^\s{0,3}([A-Z0-9][A-Z0-9\-]*)\.\s*$", line, re.IGNORECASE)
         if m:
             name = m.group(1).upper()
@@ -77,6 +84,7 @@ def extract_paragraphs(text: str) -> list[str]:
                     paragraphs.append(name)
     return paragraphs
 
+
 def analyze_flow(text: str, paragraphs: list[str]) -> tuple[dict[str, list[str]], dict[str, list[str]]]:
     performs = {p: [] for p in paragraphs}
     gotos = {p: [] for p in paragraphs}
@@ -84,7 +92,6 @@ def analyze_flow(text: str, paragraphs: list[str]) -> tuple[dict[str, list[str]]
     current_para = None
     in_proc = False
     
-    # Simple regexes for PERFORM and GO TO targets
     perf_re = re.compile(r"\bPERFORM\s+([A-Z0-9][A-Z0-9\-]+)", re.IGNORECASE)
     goto_re = re.compile(r"\bGO\s+TO\s+([A-Z0-9][A-Z0-9\-]+)", re.IGNORECASE)
     
@@ -118,10 +125,10 @@ def analyze_flow(text: str, paragraphs: list[str]) -> tuple[dict[str, list[str]]
                 
     return performs, gotos
 
+
 def extract_data_items(text: str) -> list[dict]:
     items = []
     in_data = False
-    # Simplified regex for level + name
     item_re = re.compile(r"^\s+(0[1-9]|[1-4][0-9]|77|88)\s+([A-Z0-9][A-Z0-9\-]+)", re.IGNORECASE)
     redef_re = re.compile(r"\bREDEFINES\s+([A-Z0-9][A-Z0-9\-]+)", re.IGNORECASE)
     pic_re = re.compile(r"\bPIC(?:TURE)?\s+(?:IS\s+)?(\S+)", re.IGNORECASE)
@@ -155,15 +162,12 @@ def extract_data_items(text: str) -> list[dict]:
             })
     return items
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--source", required=True)
-    ap.add_argument("--output", required=True)
-    args = ap.parse_args()
-    
-    source_path = Path(args.source)
-    output_path = Path(args.output)
-    
+
+def run_single(source_path: Path, output_path: Path = None):
+    """Run CFG extraction for a single program."""
+    if output_path is None:
+        output_path = CFG_DIR / f"{source_path.stem.upper()}.json"
+
     raw_source = source_path.read_text(errors="replace")
     expanded_source = clean_preprocessed(preprocess(source_path))
     
@@ -174,7 +178,6 @@ def main():
     performs, gotos = analyze_flow(expanded_source, paras)
     data_items = extract_data_items(expanded_source)
     
-    # Reachability: Start with first paragraph, then transitively follow PERFORMs
     reachable = set()
     if paras:
         worklist = [paras[0]]
@@ -199,7 +202,7 @@ def main():
         "program_id": program_id,
         "source_file": str(source_path).replace("\\", "/"),
         "source_sha": source_sha,
-        "cfg_tool": "Gemini-CLI extract_cfg_local.py (No-Smojol Fallback)",
+        "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
         "paragraphs": paragraph_records,
         "data_items": data_items,
         "redefines_clauses": [d for d in data_items if d["redefines"]],
@@ -215,7 +218,55 @@ def main():
     
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(cfg_out, indent=2))
-    print(f"[ok] Local Phase 0 complete: wrote {output_path} (paragraphs={len(paras)}, data_items={len(data_items)})")
+    print(f"[ok] {source_path.stem.upper()}  paragraphs={len(paras)}  data_items={len(data_items)}")
+
+
+def run_all():
+    """Process all programs in RAW_CBL_DIR (Stage 5-B corpus mode)."""
+    CFG_DIR.mkdir(parents=True, exist_ok=True)
+    seen = set()
+    unique = []
+    for f in sorted(RAW_CBL_DIR.glob('*.cbl')) + sorted(RAW_CBL_DIR.glob('*.CBL')):
+        stem_upper = f.stem.upper()
+        if stem_upper not in seen:
+            seen.add(stem_upper)
+            unique.append(f)
+
+    print(f"[corpus] processing {len(unique)} programs for CFG...", file=sys.stderr)
+    for cbl_path in unique:
+        try:
+            out_path = CFG_DIR / f"{cbl_path.stem.upper()}.json"
+            run_single(cbl_path, out_path)
+        except Exception as exc:
+            print(f"[{cbl_path.stem.upper()}] ERROR: {exc}", file=sys.stderr)
+
+    print(f"[ok] {len(unique)}/31 complete — wrote to {CFG_DIR}/", file=sys.stderr)
+
+
+def main():
+    ap = argparse.ArgumentParser(description="Local CFG extractor (Stage 5-B)")
+    ap.add_argument("--source", type=Path, help="Path to single .cbl file")
+    ap.add_argument("--output", type=Path, help="Output JSON path (single mode)")
+    ap.add_argument("--all", action="store_true", help="Process entire corpus (requires no --source)")
+    args = ap.parse_args()
+
+    if args.all:
+        if args.source or args.output:
+            ap.error("--all is mutually exclusive with --source/--output")
+        run_all()
+        return
+
+    if not args.source:
+        ap.error("--source is required (or use --all)")
+
+    source_path = args.source
+    if args.output:
+        output_path = args.output
+    else:
+        output_path = CFG_DIR / f"{source_path.stem.upper()}.json"
+
+    run_single(source_path, output_path)
+
 
 if __name__ == "__main__":
     main()

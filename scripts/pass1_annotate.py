@@ -525,7 +525,7 @@ def selftest() -> int:
     src = RAW_CBL_DIR / "COBSWAIT.cbl"
     # CFG path will be data/cfg/COBSWAIT.json once Stage 5-B lands.
     # Until then, skip gracefully so --selftest exits 0 without crashing.
-    cfg_path = VALID_DIR / "cfg" / "COBSWAIT.json"
+    cfg_path = RAW_CBL_DIR.parent.parent / "cfg" / "COBSWAIT.json"
     if not cfg_path.exists():
         print(json.dumps({
             "selftest": "SKIP",
