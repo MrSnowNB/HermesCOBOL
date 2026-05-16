@@ -104,9 +104,9 @@ def test_reserved_words_membership():
 
 def test_extract_paragraphs_empty_source():
     """Empty or comment-only source should return an empty list."""
-    assert extract_paragraphs("") == []
+    assert extract_paragraphs("") == set()
     comment_only = "      * This is a comment\n      * Another comment\n"
-    assert extract_paragraphs(comment_only) == []
+    assert extract_paragraphs(comment_only) == set()
 
 
 def test_extract_paragraphs_excludes_section_headers():
