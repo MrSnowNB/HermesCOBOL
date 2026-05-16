@@ -60,17 +60,15 @@ except ImportError:
     RECON_CBL_DIR   = VALID_DIR / "reconstructed" / "cbl"
     REPORTS_DIR     = VALID_DIR / "reports"
 
-# ---------------------------------------------------------------------------
-# Regex patterns (mirror extract_facts.py exactly)
-# ---------------------------------------------------------------------------
-RE_PARAGRAPH = re.compile(
-    r"^[ ]{0,11}([A-Z0-9][A-Z0-9-]*)[ \t]*\.[ \t]*(?:\*.*)?$",
-    re.MULTILINE,
+from cobol_parse_utils import (
+    RE_PARAGRAPH, RE_SECTION,
+    RESERVED_WORDS, PARAGRAPH_NOISE, PERFORM_NON_TARGETS,
+    strip_cobol_comments, slice_procedure_division, extract_paragraphs,
 )
-RE_SECTION = re.compile(
-    r"^[ ]{0,11}([A-Z0-9][A-Z0-9-]*)[ \t]+SECTION[ \t]*\.[ \t]*$",
-    re.MULTILINE | re.IGNORECASE,
-)
+
+# ---------------------------------------------------------------------------
+# Other regex patterns (specific to roundtrip validation)
+# ---------------------------------------------------------------------------
 RE_DATA_01 = re.compile(
     r"^[ ]{0,11}01[ \t]+([A-Z0-9][A-Z0-9-]*)",
     re.MULTILINE | re.IGNORECASE,
@@ -88,34 +86,6 @@ RE_SELECT = re.compile(
 )
 RE_EXEC_CICS = re.compile(r"\bEXEC[ \t]+CICS\b", re.IGNORECASE)
 RE_EXEC_SQL  = re.compile(r"\bEXEC[ \t]+SQL\b",  re.IGNORECASE)
-
-RESERVED_WORDS = frozenset([
-    "IDENTIFICATION", "ENVIRONMENT", "DATA", "PROCEDURE",
-    "CONFIGURATION", "INPUT-OUTPUT", "FILE", "WORKING-STORAGE",
-    "LINKAGE", "LOCAL-STORAGE", "REPORT", "SCREEN",
-    "PROGRAM-ID", "AUTHOR", "INSTALLATION", "DATE-WRITTEN",
-    "DATE-COMPILED", "SECURITY", "REMARKS",
-    "FD", "SD", "RD",
-])
-
-PERFORM_NON_TARGETS = frozenset([
-    "UNTIL", "VARYING", "TIMES", "WITH", "TEST",
-    "THRU", "THROUGH", "BEFORE", "AFTER",
-])
-
-PARAGRAPH_NOISE = frozenset([
-    # Scope terminators (appear alone on a line with a period in Procedure Division)
-    "END-IF", "END-EVALUATE", "END-PERFORM", "END-READ", "END-WRITE",
-    "END-REWRITE", "END-DELETE", "END-START", "END-CALL", "END-STRING",
-    "END-UNSTRING", "END-COMPUTE", "END-ADD", "END-SUBTRACT",
-    "END-MULTIPLY", "END-DIVIDE", "END-EXEC", "END-SEARCH",
-    # Division/section markers not in RESERVED_WORDS
-    "FILE-CONTROL", "FILE-SECTION", "I-O-CONTROL",
-    # Statement keywords that can appear line-solo
-    "GOBACK", "EXIT", "CONTINUE", "STOP",
-    # Common false-positive paragraph-name matches
-    "FILLER",
-])
 
 
 # ---------------------------------------------------------------------------
@@ -189,29 +159,15 @@ def is_cics_program(cbl_path: Path, facts: dict | None) -> bool:
 # Raw structure scanner — mirrors extract_facts.py logic exactly
 # ---------------------------------------------------------------------------
 
-def _slice_procedure_division(text: str) -> str:
-    """Return only the text from PROCEDURE DIVISION onward."""
-    m = re.search(
-        r"^[ \t]*PROCEDURE[ \t]+DIVISION\b",
-        text, re.MULTILINE | re.IGNORECASE,
-    )
-    return text[m.start():] if m else text
-
-
 def extract_raw_structure(cbl_path: Path) -> dict:
     raw  = cbl_path.read_text(encoding="utf-8", errors="replace")
     text = strip_cobol_comments(raw)
 
-    paragraphs: set[str] = set()
-    proc_text = _slice_procedure_division(text)
-    for m in RE_PARAGRAPH.finditer(proc_text):
-        name = m.group(1).upper()
-        if (name not in RESERVED_WORDS
-                and name not in PARAGRAPH_NOISE
-                and not name.endswith("-DIVISION")):
-            paragraphs.add(name)
-    for m in RE_SECTION.finditer(text):
-        paragraphs.discard(m.group(1).upper())
+    # Use shared paragraph extractor (deduped in cobol_parse_utils)
+    paragraphs = extract_paragraphs(raw)  # note: passes raw; function handles stripping/slicing internally
+
+    # Section discard is already handled inside extract_paragraphs, but we keep
+    # the original RE_SECTION for any legacy callers if needed (none here).
 
     data_items: set[str] = {
         m.group(1).upper()
