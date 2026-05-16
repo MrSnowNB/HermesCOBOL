@@ -51,12 +51,24 @@ REKT_DIR        = REPO_ROOT / "data" / "rekt"
 # Prefer the combined extractor; fall back to the legacy shim if running
 # the script directly from the scripts/ directory.
 try:
-    from scripts.hermes_v11_combined_extractor import enrich, PARAGRAPH_NOISE
+    from scripts.hermes_v11_combined_extractor import enrich
 except ImportError:
     try:
-        from hermes_v11_combined_extractor import enrich, PARAGRAPH_NOISE
+        from hermes_v11_combined_extractor import enrich
     except ImportError:
-        from semantic_extract import enrich, PARAGRAPH_NOISE  # legacy shim
+        from semantic_extract import enrich  # legacy shim
+# PARAGRAPH_NOISE and other paragraph primitives now come exclusively from cobol_parse_utils
+
+from cobol_parse_utils import (
+    RE_PARAGRAPH,
+    RE_SECTION,
+    RESERVED_WORDS,
+    PARAGRAPH_NOISE,
+    PERFORM_NON_TARGETS,
+    strip_cobol_comments,
+    slice_procedure_division,
+    extract_paragraphs,
+)
 
 SCHEMA_VERSION = "1.1"
 
@@ -65,14 +77,6 @@ SCHEMA_VERSION = "1.1"
 # ---------------------------------------------------------------------------
 RE_PROGRAM_ID = re.compile(
     r"^\s{0,11}PROGRAM-ID\.\s+([A-Z0-9][A-Z0-9-]*)",
-    re.MULTILINE | re.IGNORECASE,
-)
-RE_PARAGRAPH = re.compile(
-    r"^\s{0,11}([A-Z0-9][A-Z0-9-]*)\s*\.\s*(?:\*.*)?$",
-    re.MULTILINE,
-)
-RE_SECTION = re.compile(
-    r"^\s{0,11}([A-Z0-9][A-Z0-9-]*)\s+SECTION\s*\.\s*$",
     re.MULTILINE | re.IGNORECASE,
 )
 RE_DATA_01 = re.compile(
@@ -93,19 +97,6 @@ RE_ORGANIZATION = re.compile(r"\bORGANIZATION\s+IS\s+([A-Z]+)",  re.IGNORECASE)
 RE_ACCESS       = re.compile(r"\bACCESS\s+MODE\s+IS\s+([A-Z]+)", re.IGNORECASE)
 RE_EXEC_CICS    = re.compile(r"\bEXEC\s+CICS\b", re.IGNORECASE)
 RE_EXEC_SQL     = re.compile(r"\bEXEC\s+SQL\b",  re.IGNORECASE)
-
-RESERVED_WORDS = frozenset([
-    "IDENTIFICATION", "ENVIRONMENT", "DATA", "PROCEDURE",
-    "CONFIGURATION", "INPUT-OUTPUT", "FILE", "WORKING-STORAGE",
-    "LINKAGE", "LOCAL-STORAGE", "REPORT", "SCREEN",
-    "PROGRAM-ID", "AUTHOR", "INSTALLATION", "DATE-WRITTEN",
-    "DATE-COMPILED", "SECURITY", "REMARKS",
-    "FD", "SD", "RD",
-])
-PERFORM_NON_TARGETS = frozenset([
-    "UNTIL", "VARYING", "TIMES", "WITH", "TEST",
-    "THRU", "THROUGH", "BEFORE", "AFTER",
-])
 
 
 # ---------------------------------------------------------------------------
@@ -136,16 +127,8 @@ def strip_cobol_comments(text: str) -> str:
     return "\n".join(out)
 
 
-def _slice_procedure_division(text: str) -> str:
-    """Return text from PROCEDURE DIVISION onward. Empty string if absent.
-    Mirrors data_flow.py's walker scoping so paragraph detection ignores
-    IDENTIFICATION DIVISION metadata paragraphs (PROGRAM-ID continuation,
-    DATE-WRITTEN value, DATE-COMPILED value) which were previously
-    miscounted as PROCEDURE DIVISION paragraphs."""
-    m = re.search(r"^\s{0,11}PROCEDURE\s+DIVISION", text, re.MULTILINE | re.IGNORECASE)
-    if m:
-        return text[m.start():]
-    return ""
+# _slice_procedure_division removed — now provided by cobol_parse_utils
+# and used internally by extract_paragraphs()
 
 
 # ---------------------------------------------------------------------------
@@ -158,15 +141,8 @@ def extract_structure_v10(cbl_path: Path) -> dict:
     m = RE_PROGRAM_ID.search(text)
     program_id = m.group(1).upper() if m else cbl_path.stem.upper()
 
-    paragraphs: set[str] = set()
-    for m in RE_PARAGRAPH.finditer(_slice_procedure_division(text)):
-        name = m.group(1).upper()
-        if name in RESERVED_WORDS:  continue
-        if name in PARAGRAPH_NOISE: continue
-        if name.endswith("-DIVISION"): continue
-        paragraphs.add(name)
-    for m in RE_SECTION.finditer(text):
-        paragraphs.discard(m.group(1).upper())
+    # Use shared paragraph extractor (authoritative implementation)
+    paragraphs = extract_paragraphs(raw)
 
     data_items: set[str] = {
         m.group(1).upper()
