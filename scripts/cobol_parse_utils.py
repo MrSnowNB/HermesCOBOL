@@ -1,11 +1,33 @@
 """
-cobol_parse_utils.py — Shared COBOL paragraph parsing primitives.
+cobol_parse_utils.py — Shared COBOL parsing primitives (Single Source of Truth)
 
-Single authoritative source for paragraph detection constants and helpers
-used by extract_facts.py, validate_roundtrip.py, and extract_fallthrough.py.
+This module centralizes low-level paragraph detection and text processing logic
+used across the HermesCOBOL extraction pipeline.
 
-Do NOT import from pipeline scripts here — this module must remain dependency-free
-(stdlib only). It may be imported by any pipeline script safely.
+Purpose:
+    Provide reusable, well-tested primitives for identifying paragraphs,
+    filtering noise tokens (scope terminators, keywords, etc.), and slicing
+    COBOL source divisions. This prevents duplication and divergence bugs
+    (such as the missing_paragraphs inconsistency fixed in Stage 5-F).
+
+Expected Consumers:
+    - scripts/extract_facts.py
+    - scripts/validate_roundtrip.py
+
+DO NOT ADD:
+    - Program-level business logic or enrichment (belongs in extract_facts.py)
+    - CICS-specific detection or command parsing (belongs in pass1_annotate.py)
+    - Data flow, call graph, or mutation analysis (belongs in data_flow.py)
+    - Canonical IR assembly logic (belongs in assemble_canonical.py)
+    - Any higher-level orchestration or schema merging
+
+Legacy Note:
+    scripts/hermes_v11_combined_extractor.py intentionally retains its own
+    copy of these primitives as it is a legacy monolith. It is NOT considered
+    a consumer of this module. New code should import from cobol_parse_utils
+    instead of hermes_v11_combined_extractor.
+
+This module should remain focused on pure, stateless parsing utilities.
 """
 
 from __future__ import annotations
@@ -33,6 +55,8 @@ RESERVED_WORDS = frozenset([
     "PROGRAM-ID", "AUTHOR", "INSTALLATION", "DATE-WRITTEN",
     "DATE-COMPILED", "SECURITY", "REMARKS",
     "FD", "SD", "RD",
+    # Common statement keywords that cannot be paragraph names
+    "STOP", "EXIT", "GOBACK", "MOVE",
 ])
 
 PARAGRAPH_NOISE = frozenset([
