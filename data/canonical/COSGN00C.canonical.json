@@ -15,7 +15,8 @@
       "cfg_branch_context": "EXEC CICS RETURN RETURN",
       "is_cics_branch": true,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "POPULATE-HEADER-INFO",
@@ -26,7 +27,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "PROCESS-ENTER-KEY",
@@ -37,7 +39,8 @@
       "cfg_branch_context": "IF NOT ERR-FLG-ON",
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "READ-USER-SEC-FILE",
@@ -48,7 +51,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "SEND-PLAIN-TEXT",
@@ -59,7 +63,8 @@
       "cfg_branch_context": "EXEC CICS RETURN RETURN",
       "is_cics_branch": true,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "SEND-SIGNON-SCREEN",
@@ -70,7 +75,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     }
   ],
   "data_files": [],

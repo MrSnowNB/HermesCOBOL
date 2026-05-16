@@ -141,6 +141,7 @@ def _merge_paragraphs(
         p.setdefault("falls_through_to", None)
         p.setdefault("performs", [])
         p.setdefault("goto_targets", [])
+        p.setdefault("reachable", True)
         enriched.append(p)
 
     return enriched

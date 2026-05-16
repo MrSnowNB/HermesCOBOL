@@ -15,7 +15,8 @@
       "cfg_branch_context": "EVALUATE WS-IDX",
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "MAIN-PARA",
@@ -26,7 +27,8 @@
       "cfg_branch_context": "EXEC CICS RETURN RETURN",
       "is_cics_branch": true,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "POPULATE-HEADER-INFO",
@@ -37,7 +39,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "PROCESS-ENTER-KEY",
@@ -48,7 +51,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "RECEIVE-MENU-SCREEN",
@@ -59,7 +63,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "RETURN-TO-SIGNON-SCREEN",
@@ -70,7 +75,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "SEND-MENU-SCREEN",
@@ -81,7 +87,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     }
   ],
   "data_files": [],

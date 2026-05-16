@@ -1,9 +1,8 @@
 {
   "programs_total": 31,
-  "programs_pass": 13,
-  "programs_fail": 18,
+  "programs_pass": 30,
+  "programs_fail": 1,
   "failures_by_rule": {
-    "missing_paragraph_fields": 317,
     "no_paragraphs": 1
   }
 }

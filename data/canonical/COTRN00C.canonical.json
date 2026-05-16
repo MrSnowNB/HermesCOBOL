@@ -15,7 +15,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "INITIALIZE-TRAN-DATA",
@@ -26,7 +27,8 @@
       "cfg_branch_context": "EVALUATE WS-IDX",
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "MAIN-PARA",
@@ -37,7 +39,8 @@
       "cfg_branch_context": "EXEC CICS RETURN RETURN",
       "is_cics_branch": true,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "POPULATE-HEADER-INFO",
@@ -48,7 +51,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "POPULATE-TRAN-DATA",
@@ -59,7 +63,8 @@
       "cfg_branch_context": "EVALUATE WS-IDX",
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "PROCESS-ENTER-KEY",
@@ -70,7 +75,8 @@
       "cfg_branch_context": "IF NOT ERR-FLG-ON",
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "PROCESS-PAGE-BACKWARD",
@@ -81,7 +87,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "PROCESS-PAGE-FORWARD",
@@ -92,7 +99,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "PROCESS-PF7-KEY",
@@ -103,7 +111,8 @@
       "cfg_branch_context": "IF CDEMO-CT00-PAGE-NUM > 1",
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "PROCESS-PF8-KEY",
@@ -114,7 +123,8 @@
       "cfg_branch_context": "IF NEXT-PAGE-YES",
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "READNEXT-TRANSACT-FILE",
@@ -125,7 +135,8 @@
       "cfg_branch_context": "EVALUATE WS-RESP-CD",
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "READPREV-TRANSACT-FILE",
@@ -136,7 +147,8 @@
       "cfg_branch_context": "EVALUATE WS-RESP-CD",
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "RECEIVE-TRNLST-SCREEN",
@@ -147,7 +159,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "RETURN-TO-PREV-SCREEN",
@@ -158,7 +171,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "SEND-TRNLST-SCREEN",
@@ -169,7 +183,8 @@
       "cfg_branch_context": "IF SEND-ERASE-YES",
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "STARTBR-TRANSACT-FILE",
@@ -180,7 +195,8 @@
       "cfg_branch_context": "EVALUATE WS-RESP-CD",
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     }
   ],
   "data_files": [],

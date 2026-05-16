@@ -15,7 +15,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "0000-MAIN-EXIT",
@@ -26,7 +27,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "1000-SEND-MAP",
@@ -37,7 +39,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "1000-SEND-MAP-EXIT",
@@ -48,7 +51,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "1100-SCREEN-INIT",
@@ -59,7 +63,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "1100-SCREEN-INIT-EXIT",
@@ -70,7 +75,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "1200-SCREEN-ARRAY-INIT",
@@ -81,7 +87,8 @@
       "cfg_branch_context": "IF WS-EACH-CARD(7) EQUAL LOW-VALUES",
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "1200-SCREEN-ARRAY-INIT-EXIT",
@@ -92,7 +99,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "1250-SETUP-ARRAY-ATTRIBS",
@@ -103,7 +111,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "1250-SETUP-ARRAY-ATTRIBS-EXIT",
@@ -114,7 +123,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "1300-SETUP-SCREEN-ATTRS",
@@ -125,7 +135,8 @@
       "cfg_branch_context": "IF INPUT-OK",
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "1300-SETUP-SCREEN-ATTRS-EXIT",
@@ -136,7 +147,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "1400-SETUP-MESSAGE",
@@ -147,7 +159,8 @@
       "cfg_branch_context": "IF NOT WS-NO-INFO-MESSAGE",
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "1400-SETUP-MESSAGE-EXIT",
@@ -158,7 +171,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "1500-SEND-SCREEN",
@@ -169,7 +183,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "1500-SEND-SCREEN-EXIT",
@@ -180,7 +195,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "2000-RECEIVE-MAP",
@@ -191,7 +207,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "2000-RECEIVE-MAP-EXIT",
@@ -202,7 +219,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "2100-RECEIVE-SCREEN",
@@ -213,7 +231,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "2100-RECEIVE-SCREEN-EXIT",
@@ -224,7 +243,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "2200-EDIT-INPUTS",
@@ -235,7 +255,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "2200-EDIT-INPUTS-EXIT",
@@ -246,7 +267,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "2210-EDIT-ACCOUNT",
@@ -257,7 +279,8 @@
       "cfg_branch_context": "IF CC-ACCT-ID IS NOT NUMERIC",
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "2210-EDIT-ACCOUNT-EXIT",
@@ -268,7 +291,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "2220-EDIT-CARD",
@@ -279,7 +303,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "2220-EDIT-CARD-EXIT",
@@ -290,7 +315,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "2250-EDIT-ARRAY",
@@ -301,7 +327,8 @@
       "cfg_branch_context": "IF WS-ERROR-MSG-OFF",
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "2250-EDIT-ARRAY-EXIT",
@@ -312,7 +339,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "9000-READ-FORWARD",
@@ -323,7 +351,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "9000-READ-FORWARD-EXIT",
@@ -334,7 +363,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "9100-READ-BACKWARDS",
@@ -345,7 +375,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "9100-READ-BACKWARDS-EXIT",
@@ -356,7 +387,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "9500-FILTER-RECORDS",
@@ -367,7 +399,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "9500-FILTER-RECORDS-EXIT",
@@ -378,7 +411,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "COMMON-RETURN",
@@ -389,7 +423,8 @@
       "cfg_branch_context": "EXEC CICS RETURN RETURN",
       "is_cics_branch": true,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "SEND-LONG-TEXT",
@@ -400,7 +435,8 @@
       "cfg_branch_context": "EXEC CICS RETURN RETURN",
       "is_cics_branch": true,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "SEND-LONG-TEXT-EXIT",
@@ -411,7 +447,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "SEND-PLAIN-TEXT",
@@ -422,7 +459,8 @@
       "cfg_branch_context": "EXEC CICS RETURN RETURN",
       "is_cics_branch": true,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     },
     {
       "name": "SEND-PLAIN-TEXT-EXIT",
@@ -433,7 +471,8 @@
       "cfg_branch_context": null,
       "is_cics_branch": false,
       "performs": [],
-      "goto_targets": []
+      "goto_targets": [],
+      "reachable": true
     }
   ],
   "data_files": [],
