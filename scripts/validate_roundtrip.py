@@ -103,6 +103,20 @@ PERFORM_NON_TARGETS = frozenset([
     "THRU", "THROUGH", "BEFORE", "AFTER",
 ])
 
+PARAGRAPH_NOISE = frozenset([
+    # Scope terminators (appear alone on a line with a period in Procedure Division)
+    "END-IF", "END-EVALUATE", "END-PERFORM", "END-READ", "END-WRITE",
+    "END-REWRITE", "END-DELETE", "END-START", "END-CALL", "END-STRING",
+    "END-UNSTRING", "END-COMPUTE", "END-ADD", "END-SUBTRACT",
+    "END-MULTIPLY", "END-DIVIDE", "END-EXEC", "END-SEARCH",
+    # Division/section markers not in RESERVED_WORDS
+    "FILE-CONTROL", "FILE-SECTION", "I-O-CONTROL",
+    # Statement keywords that can appear line-solo
+    "GOBACK", "EXIT", "CONTINUE", "STOP",
+    # Common false-positive paragraph-name matches
+    "FILLER",
+])
+
 
 # ---------------------------------------------------------------------------
 # Utilities
@@ -174,14 +188,27 @@ def is_cics_program(cbl_path: Path, facts: dict | None) -> bool:
 # ---------------------------------------------------------------------------
 # Raw structure scanner — mirrors extract_facts.py logic exactly
 # ---------------------------------------------------------------------------
+
+def _slice_procedure_division(text: str) -> str:
+    """Return only the text from PROCEDURE DIVISION onward."""
+    m = re.search(
+        r"^[ \t]*PROCEDURE[ \t]+DIVISION\b",
+        text, re.MULTILINE | re.IGNORECASE,
+    )
+    return text[m.start():] if m else text
+
+
 def extract_raw_structure(cbl_path: Path) -> dict:
     raw  = cbl_path.read_text(encoding="utf-8", errors="replace")
     text = strip_cobol_comments(raw)
 
     paragraphs: set[str] = set()
-    for m in RE_PARAGRAPH.finditer(text):
+    proc_text = _slice_procedure_division(text)
+    for m in RE_PARAGRAPH.finditer(proc_text):
         name = m.group(1).upper()
-        if name not in RESERVED_WORDS and not name.endswith("-DIVISION"):
+        if (name not in RESERVED_WORDS
+                and name not in PARAGRAPH_NOISE
+                and not name.endswith("-DIVISION")):
             paragraphs.add(name)
     for m in RE_SECTION.finditer(text):
         paragraphs.discard(m.group(1).upper())
