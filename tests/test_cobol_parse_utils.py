@@ -100,3 +100,31 @@ def test_reserved_words_membership():
     assert "GOBACK" in RESERVED_WORDS
     assert "MOVE" in RESERVED_WORDS
     assert "1000-MAIN" not in RESERVED_WORDS
+
+
+def test_extract_paragraphs_empty_source():
+    """Empty or comment-only source should return an empty list."""
+    assert extract_paragraphs("") == []
+    comment_only = "      * This is a comment\n      * Another comment\n"
+    assert extract_paragraphs(comment_only) == []
+
+
+def test_extract_paragraphs_excludes_section_headers():
+    """SECTION names should not appear in paragraph list."""
+    source = """
+       PROCEDURE DIVISION.
+       FILE-CONTROL-SECTION SECTION.
+       1000-REAL-PARA.
+           DISPLAY 'HI'.
+    """
+    paragraphs = extract_paragraphs(source)
+    assert "1000-REAL-PARA" in paragraphs
+    assert "FILE-CONTROL-SECTION" not in paragraphs
+
+
+def test_strip_cobol_comments_preserves_code_lines():
+    """Non-comment lines must be returned unchanged."""
+    source = "       MOVE A TO B.\n      * comment\n       DISPLAY X.\n"
+    cleaned = strip_cobol_comments(source)
+    assert "MOVE A TO B." in cleaned
+    assert "DISPLAY X." in cleaned
