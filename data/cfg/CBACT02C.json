@@ -1,0 +1,290 @@
+{
+  "program_id": "CBACT02C",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBACT02C.cbl",
+  "source_sha": "c913858a230043953fa4fd560a3b7bba46c11322",
+  "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
+  "paragraphs": [
+    {
+      "name": "END-PERFORM",
+      "reachable": true,
+      "performs": [
+        "0000-CARDFILE-OPEN",
+        "1000-CARDFILE-GET-NEXT",
+        "9000-CARDFILE-CLOSE"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1000-CARDFILE-GET-NEXT",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0000-CARDFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9000-CARDFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9910-DISPLAY-IO-STATUS",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    }
+  ],
+  "data_items": [
+    {
+      "name": "FD-CARDFILE-REC",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-CARD-NUM",
+      "level": 5,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-CARD-DATA",
+      "level": 5,
+      "picture": "X(134)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CARD-RECORD",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CARD-NUM",
+      "level": 5,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CARD-ACCT-ID",
+      "level": 5,
+      "picture": "9(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CARD-CVV-CD",
+      "level": 5,
+      "picture": "9(03)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CARD-EMBOSSED-NAME",
+      "level": 5,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CARD-EXPIRAION-DATE",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CARD-ACTIVE-STATUS",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CARDFILE-STATUS",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CARDFILE-STAT1",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CARDFILE-STAT2",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "IO-STATUS",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "IO-STAT1",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "IO-STAT2",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TWO-BYTES-BINARY",
+      "level": 1,
+      "picture": "9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TWO-BYTES-ALPHA",
+      "level": 1,
+      "picture": null,
+      "redefines": "TWO-BYTES-BINARY",
+      "reachable": true
+    },
+    {
+      "name": "TWO-BYTES-LEFT",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TWO-BYTES-RIGHT",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "IO-STATUS-04",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "IO-STATUS-0401",
+      "level": 5,
+      "picture": "9",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "IO-STATUS-0403",
+      "level": 5,
+      "picture": "999",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "APPL-RESULT",
+      "level": 1,
+      "picture": "S9(9)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "APPL-AOK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "APPL-EOF",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "END-OF-FILE",
+      "level": 1,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ABCODE",
+      "level": 1,
+      "picture": "S9(9)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TIMING",
+      "level": 1,
+      "picture": "S9(9)",
+      "redefines": null,
+      "reachable": true
+    }
+  ],
+  "redefines_clauses": [
+    {
+      "name": "TWO-BYTES-ALPHA",
+      "level": 1,
+      "picture": null,
+      "redefines": "TWO-BYTES-BINARY",
+      "reachable": true
+    }
+  ],
+  "copybooks_used": [
+    "CVACT02Y",
+    "of"
+  ],
+  "calls_to": [
+    "CEE3ABD"
+  ],
+  "cics_commands": [],
+  "dead_code_paragraphs": [],
+  "dead_code_items": [],
+  "irreducible_gotos": [],
+  "smojol_cfg_path": null,
+  "smojol_node_count": 0
+}

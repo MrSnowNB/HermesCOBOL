@@ -1,0 +1,1570 @@
+{
+  "program_id": "CBSTM03A",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBSTM03A.CBL",
+  "source_sha": "290c3f4a9c51e1f9aa5bb180237dfbeb1d02b26a",
+  "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
+  "paragraphs": [
+    {
+      "name": "END-PERFORM",
+      "reachable": true,
+      "performs": [
+        "9100-TRNXFILE-CLOSE",
+        "9200-XREFFILE-CLOSE",
+        "9300-CUSTFILE-CLOSE",
+        "9400-ACCTFILE-CLOSE"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "END-IF",
+      "reachable": false,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [
+        "0000-START",
+        "1000-MAINLINE",
+        "8500-READTRNX-READ",
+        "8599-EXIT"
+      ],
+      "goto_flag": true
+    },
+    {
+      "name": "0000-START",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [
+        "8100-FILE-OPEN",
+        "8500-READTRNX-READ",
+        "9999-GOBACK"
+      ],
+      "goto_flag": true
+    },
+    {
+      "name": "1000-MAINLINE",
+      "reachable": false,
+      "performs": [
+        "1000-XREFFILE-GET-NEXT",
+        "2000-CUSTFILE-GET",
+        "3000-ACCTFILE-GET",
+        "5000-CREATE-STATEMENT",
+        "4000-TRNXFILE-GET"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9999-GOBACK",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1000-XREFFILE-GET-NEXT",
+      "reachable": false,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "END-EVALUATE",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2000-CUSTFILE-GET",
+      "reachable": false,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "3000-ACCTFILE-GET",
+      "reachable": false,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "4000-TRNXFILE-GET",
+      "reachable": false,
+      "performs": [
+        "6000-WRITE-TRANS"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "5000-CREATE-STATEMENT",
+      "reachable": false,
+      "performs": [
+        "5100-WRITE-HTML-HEADER"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "END-STRING",
+      "reachable": false,
+      "performs": [
+        "5200-WRITE-HTML-NMADBS"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "5100-WRITE-HTML-HEADER",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "5100-EXIT",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "5200-WRITE-HTML-NMADBS",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "5200-EXIT",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "6000-WRITE-TRANS",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "8100-FILE-OPEN",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [
+        "8100-TRNXFILE-OPEN"
+      ],
+      "goto_flag": true
+    },
+    {
+      "name": "8100-TRNXFILE-OPEN",
+      "reachable": false,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "8200-XREFFILE-OPEN",
+      "reachable": false,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "8300-CUSTFILE-OPEN",
+      "reachable": false,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "8400-ACCTFILE-OPEN",
+      "reachable": false,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "8500-READTRNX-READ",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "8599-EXIT",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [
+        "0000-START"
+      ],
+      "goto_flag": true
+    },
+    {
+      "name": "9100-TRNXFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9200-XREFFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9300-CUSTFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9400-ACCTFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    }
+  ],
+  "data_items": [
+    {
+      "name": "FD-STMTFILE-REC",
+      "level": 1,
+      "picture": "X(80)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-HTMLFILE-REC",
+      "level": 1,
+      "picture": "X(100)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRNX-RECORD",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRNX-KEY",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRNX-CARD-NUM",
+      "level": 10,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRNX-ID",
+      "level": 10,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRNX-REST",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRNX-TYPE-CD",
+      "level": 10,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRNX-CAT-CD",
+      "level": 10,
+      "picture": "9(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRNX-SOURCE",
+      "level": 10,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRNX-DESC",
+      "level": 10,
+      "picture": "X(100)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRNX-AMT",
+      "level": 10,
+      "picture": "S9(09)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRNX-MERCHANT-ID",
+      "level": 10,
+      "picture": "9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRNX-MERCHANT-NAME",
+      "level": 10,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRNX-MERCHANT-CITY",
+      "level": 10,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRNX-MERCHANT-ZIP",
+      "level": 10,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRNX-ORIG-TS",
+      "level": 10,
+      "picture": "X(26)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRNX-PROC-TS",
+      "level": 10,
+      "picture": "X(26)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CARD-XREF-RECORD",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "XREF-CARD-NUM",
+      "level": 5,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "XREF-CUST-ID",
+      "level": 5,
+      "picture": "9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "XREF-ACCT-ID",
+      "level": 5,
+      "picture": "9(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUSTOMER-RECORD",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-ID",
+      "level": 5,
+      "picture": "9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-FIRST-NAME",
+      "level": 5,
+      "picture": "X(2",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-MIDDLE-NAME",
+      "level": 5,
+      "picture": "X(2",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-LAST-NAME",
+      "level": 5,
+      "picture": "X(2",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-ADDR-LINE-1",
+      "level": 5,
+      "picture": "X(5",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-ADDR-LINE-2",
+      "level": 5,
+      "picture": "X(5",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-ADDR-LINE-3",
+      "level": 5,
+      "picture": "X(5",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-ADDR-STATE-CD",
+      "level": 5,
+      "picture": "X(0",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-ADDR-COUNTRY-CD",
+      "level": 5,
+      "picture": "X(0",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-ADDR-ZIP",
+      "level": 5,
+      "picture": "X(1",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-PHONE-NUM-1",
+      "level": 5,
+      "picture": "X(1",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-PHONE-NUM-2",
+      "level": 5,
+      "picture": "X(1",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-SSN",
+      "level": 5,
+      "picture": "9(0",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-GOVT-ISSUED-ID",
+      "level": 5,
+      "picture": "X(2",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-DOB-YYYYMMDD",
+      "level": 5,
+      "picture": "X(1",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-EFT-ACCOUNT-ID",
+      "level": 5,
+      "picture": "X(1",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-PRI-CARD-HOLDER-IND",
+      "level": 5,
+      "picture": "X(0",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-FICO-CREDIT-SCORE",
+      "level": 5,
+      "picture": "9(0",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCOUNT-RECORD",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-ID",
+      "level": 5,
+      "picture": "9(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-ACTIVE-STATUS",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-CURR-BAL",
+      "level": 5,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-CREDIT-LIMIT",
+      "level": 5,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-CASH-CREDIT-LIMIT",
+      "level": 5,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-OPEN-DATE",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-EXPIRAION-DATE",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-REISSUE-DATE",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-CURR-CYC-CREDIT",
+      "level": 5,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-CURR-CYC-DEBIT",
+      "level": 5,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-ADDR-ZIP",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-GROUP-ID",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "COMP-VARIABLES",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CR-CNT",
+      "level": 5,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TR-CNT",
+      "level": 5,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CR-JMP",
+      "level": 5,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TR-JMP",
+      "level": 5,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "COMP3-VARIABLES",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TOTAL-AMT",
+      "level": 5,
+      "picture": "S9(9)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "MISC-VARIABLES",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-FL-DD",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TRN-AMT",
+      "level": 5,
+      "picture": "S9(9)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-SAVE-CARD",
+      "level": 5,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "END-OF-FILE",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-M03B-AREA",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-M03B-DD",
+      "level": 5,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-M03B-OPER",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "M03B-OPEN",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "M03B-CLOSE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "M03B-READ",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "M03B-READ-K",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "M03B-WRITE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "M03B-REWRITE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-M03B-RC",
+      "level": 5,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-M03B-KEY",
+      "level": 5,
+      "picture": "X(25)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-M03B-KEY-LN",
+      "level": 5,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-M03B-FLDT",
+      "level": 5,
+      "picture": "X(1000)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "STATEMENT-LINES",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-LINE0",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-LINE1",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-NAME",
+      "level": 10,
+      "picture": "X(75)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-LINE2",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-ADD1",
+      "level": 10,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-LINE3",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-ADD2",
+      "level": 10,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-LINE4",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-ADD3",
+      "level": 10,
+      "picture": "X(80)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-LINE5",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-LINE6",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-LINE7",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-ACCT-ID",
+      "level": 10,
+      "picture": "X(20)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-LINE8",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-CURR-BAL",
+      "level": 10,
+      "picture": "9(9).99-",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-LINE9",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-FICO-SCORE",
+      "level": 10,
+      "picture": "X(20)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-LINE10",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-LINE11",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-LINE12",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-LINE13",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-LINE14",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-TRANID",
+      "level": 10,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-TRANDT",
+      "level": 10,
+      "picture": "X(49)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-TRANAMT",
+      "level": 10,
+      "picture": "Z(9).99-",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-LINE14A",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-TOTAL-TRAMT",
+      "level": 10,
+      "picture": "Z(9).99-",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ST-LINE15",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-LINES",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-FIXED-LN",
+      "level": 5,
+      "picture": "X(100)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L01",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L02",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L03",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L04",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L05",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L06",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L07",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L08",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-LTRS",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-LTRE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-LTDS",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-LTDE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L10",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L15",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L16",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L17",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L18",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L22-35",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L30-42",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L31",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L43",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L47",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L48",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L50",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L51",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L53",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L54",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L58",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L61",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L64",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L75",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L78",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L79",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L80",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L11",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "L11-ACCT",
+      "level": 10,
+      "picture": "X(20)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-L23",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "L23-NAME",
+      "level": 10,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-ADDR-LN",
+      "level": 5,
+      "picture": "X(100)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-BSIC-LN",
+      "level": 5,
+      "picture": "X(100)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "HTML-TRAN-LN",
+      "level": 5,
+      "picture": "X(100)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TRNX-TABLE",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CARD-TBL",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CARD-NUM",
+      "level": 10,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TRAN-TBL",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TRAN-NUM",
+      "level": 15,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TRAN-REST",
+      "level": 15,
+      "picture": "X(318)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TRN-TBL-CNTR",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TRN-TBL-CTR",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TRCT",
+      "level": 10,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "PSAPTR",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "BUMP-TIOT",
+      "level": 1,
+      "picture": "S9(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TIOT-INDEX",
+      "level": 1,
+      "picture": null,
+      "redefines": "BUMP-TIOT",
+      "reachable": true
+    },
+    {
+      "name": "ALIGN-PSA",
+      "level": 1,
+      "picture": "9(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "PSA-BLOCK",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TCB-POINT",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TCB-BLOCK",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TIOT-POINT",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TIOT-BLOCK",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TIOTNJOB",
+      "level": 5,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TIOTJSTP",
+      "level": 5,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TIOTPSTP",
+      "level": 5,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TIOT-ENTRY",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TIOT-SEG",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TIO-LEN",
+      "level": 10,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TIOCDDNM",
+      "level": 10,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "UCB-ADDR",
+      "level": 10,
+      "picture": "X(03)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "NULL-UCB",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "END-OF-TIOT",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    }
+  ],
+  "redefines_clauses": [
+    {
+      "name": "TIOT-INDEX",
+      "level": 1,
+      "picture": null,
+      "redefines": "BUMP-TIOT",
+      "reachable": true
+    }
+  ],
+  "copybooks_used": [
+    "COSTM01",
+    "CUSTREC",
+    "CVACT01Y",
+    "CVACT03Y",
+    "of"
+  ],
+  "calls_to": [
+    "CBSTM03B",
+    "CEE3ABD"
+  ],
+  "cics_commands": [],
+  "dead_code_paragraphs": [
+    "END-IF",
+    "0000-START",
+    "1000-MAINLINE",
+    "9999-GOBACK",
+    "1000-XREFFILE-GET-NEXT",
+    "END-EVALUATE",
+    "2000-CUSTFILE-GET",
+    "3000-ACCTFILE-GET",
+    "4000-TRNXFILE-GET",
+    "5000-CREATE-STATEMENT",
+    "END-STRING",
+    "5100-WRITE-HTML-HEADER",
+    "5100-EXIT",
+    "5200-WRITE-HTML-NMADBS",
+    "5200-EXIT",
+    "6000-WRITE-TRANS",
+    "8100-FILE-OPEN",
+    "8100-TRNXFILE-OPEN",
+    "8200-XREFFILE-OPEN",
+    "8300-CUSTFILE-OPEN",
+    "8400-ACCTFILE-OPEN",
+    "8500-READTRNX-READ",
+    "8599-EXIT"
+  ],
+  "dead_code_items": [],
+  "irreducible_gotos": [],
+  "smojol_cfg_path": null,
+  "smojol_node_count": 0
+}

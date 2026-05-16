@@ -1,0 +1,203 @@
+{
+  "program_id": "COUSR03C",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/COUSR03C.cbl",
+  "source_sha": "6647578d7054ad718c256db9a979895182c862d0",
+  "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
+  "paragraphs": [],
+  "data_items": [
+    {
+      "name": "WS-VARIABLES",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-PGMNAME",
+      "level": 5,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TRANID",
+      "level": 5,
+      "picture": "X(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-MESSAGE",
+      "level": 5,
+      "picture": "X(80)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-USRSEC-FILE",
+      "level": 5,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-ERR-FLG",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ERR-FLG-ON",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ERR-FLG-OFF",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-RESP-CD",
+      "level": 5,
+      "picture": "S9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-REAS-CD",
+      "level": 5,
+      "picture": "S9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-USR-MODIFIED",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "USR-MODIFIED-YES",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "USR-MODIFIED-NO",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CDEMO-CU03-INFO",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CDEMO-CU03-USRID-FIRST",
+      "level": 10,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CDEMO-CU03-USRID-LAST",
+      "level": 10,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CDEMO-CU03-PAGE-NUM",
+      "level": 10,
+      "picture": "9(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CDEMO-CU03-NEXT-PAGE-FLG",
+      "level": 10,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "NEXT-PAGE-YES",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "NEXT-PAGE-NO",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CDEMO-CU03-USR-SEL-FLG",
+      "level": 10,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CDEMO-CU03-USR-SELECTED",
+      "level": 10,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DFHCOMMAREA",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LK-COMMAREA",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    }
+  ],
+  "redefines_clauses": [],
+  "copybooks_used": [
+    "COCOM01Y",
+    "COTTL01Y",
+    "COUSR03",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CSUSR01Y",
+    "DFHAID",
+    "DFHBMSCA",
+    "of"
+  ],
+  "calls_to": [],
+  "cics_commands": [
+    "DELETE",
+    "READ",
+    "RECEIVE",
+    "RETURN",
+    "SEND",
+    "XCTL"
+  ],
+  "dead_code_paragraphs": [],
+  "dead_code_items": [],
+  "irreducible_gotos": [],
+  "smojol_cfg_path": null,
+  "smojol_node_count": 0
+}

@@ -1,0 +1,374 @@
+{
+  "program_id": "CBCUS01C",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBCUS01C.cbl",
+  "source_sha": "ad4c512be0d7bd72a933966d299ea21fb31b6b5b",
+  "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
+  "paragraphs": [
+    {
+      "name": "END-PERFORM",
+      "reachable": true,
+      "performs": [
+        "0000-CUSTFILE-OPEN",
+        "1000-CUSTFILE-GET-NEXT",
+        "9000-CUSTFILE-CLOSE"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1000-CUSTFILE-GET-NEXT",
+      "reachable": true,
+      "performs": [
+        "Z-DISPLAY-IO-STATUS",
+        "Z-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0000-CUSTFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "Z-DISPLAY-IO-STATUS",
+        "Z-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9000-CUSTFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "Z-DISPLAY-IO-STATUS",
+        "Z-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "Z-ABEND-PROGRAM",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "Z-DISPLAY-IO-STATUS",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    }
+  ],
+  "data_items": [
+    {
+      "name": "FD-CUSTFILE-REC",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-CUST-ID",
+      "level": 5,
+      "picture": "9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-CUST-DATA",
+      "level": 5,
+      "picture": "X(491)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUSTOMER-RECORD",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-ID",
+      "level": 5,
+      "picture": "9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-FIRST-NAME",
+      "level": 5,
+      "picture": "X(25)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-MIDDLE-NAME",
+      "level": 5,
+      "picture": "X(25)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-LAST-NAME",
+      "level": 5,
+      "picture": "X(25)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-ADDR-LINE-1",
+      "level": 5,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-ADDR-LINE-2",
+      "level": 5,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-ADDR-LINE-3",
+      "level": 5,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-ADDR-STATE-CD",
+      "level": 5,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-ADDR-COUNTRY-CD",
+      "level": 5,
+      "picture": "X(03)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-ADDR-ZIP",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-PHONE-NUM-1",
+      "level": 5,
+      "picture": "X(15)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-PHONE-NUM-2",
+      "level": 5,
+      "picture": "X(15)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-SSN",
+      "level": 5,
+      "picture": "9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-GOVT-ISSUED-ID",
+      "level": 5,
+      "picture": "X(20)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-DOB-YYYY-MM-DD",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-EFT-ACCOUNT-ID",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-PRI-CARD-HOLDER-IND",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-FICO-CREDIT-SCORE",
+      "level": 5,
+      "picture": "9(03)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUSTFILE-STATUS",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUSTFILE-STAT1",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUSTFILE-STAT2",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "IO-STATUS",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "IO-STAT1",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "IO-STAT2",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TWO-BYTES-BINARY",
+      "level": 1,
+      "picture": "9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TWO-BYTES-ALPHA",
+      "level": 1,
+      "picture": null,
+      "redefines": "TWO-BYTES-BINARY",
+      "reachable": true
+    },
+    {
+      "name": "TWO-BYTES-LEFT",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TWO-BYTES-RIGHT",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "IO-STATUS-04",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "IO-STATUS-0401",
+      "level": 5,
+      "picture": "9",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "IO-STATUS-0403",
+      "level": 5,
+      "picture": "999",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "APPL-RESULT",
+      "level": 1,
+      "picture": "S9(9)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "APPL-AOK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "APPL-EOF",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "END-OF-FILE",
+      "level": 1,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ABCODE",
+      "level": 1,
+      "picture": "S9(9)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TIMING",
+      "level": 1,
+      "picture": "S9(9)",
+      "redefines": null,
+      "reachable": true
+    }
+  ],
+  "redefines_clauses": [
+    {
+      "name": "TWO-BYTES-ALPHA",
+      "level": 1,
+      "picture": null,
+      "redefines": "TWO-BYTES-BINARY",
+      "reachable": true
+    }
+  ],
+  "copybooks_used": [
+    "CVCUS01Y",
+    "of"
+  ],
+  "calls_to": [
+    "CEE3ABD"
+  ],
+  "cics_commands": [],
+  "dead_code_paragraphs": [],
+  "dead_code_items": [],
+  "irreducible_gotos": [],
+  "smojol_cfg_path": null,
+  "smojol_node_count": 0
+}

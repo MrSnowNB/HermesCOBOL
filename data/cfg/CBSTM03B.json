@@ -1,0 +1,425 @@
+{
+  "program_id": "CBSTM03B",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBSTM03B.CBL",
+  "source_sha": "7d70690ea9afada3c21f227c0a1f9602af39c89d",
+  "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
+  "paragraphs": [
+    {
+      "name": "0000-START",
+      "reachable": true,
+      "performs": [
+        "1000-TRNXFILE-PROC",
+        "2000-XREFFILE-PROC",
+        "3000-CUSTFILE-PROC",
+        "4000-ACCTFILE-PROC"
+      ],
+      "goto_targets": [
+        "9999-GOBACK"
+      ],
+      "goto_flag": true
+    },
+    {
+      "name": "9999-GOBACK",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1000-TRNXFILE-PROC",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [
+        "1900-EXIT"
+      ],
+      "goto_flag": true
+    },
+    {
+      "name": "END-IF",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [
+        "1900-EXIT",
+        "2900-EXIT",
+        "3900-EXIT",
+        "4900-EXIT"
+      ],
+      "goto_flag": true
+    },
+    {
+      "name": "1900-EXIT",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1999-EXIT",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2000-XREFFILE-PROC",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [
+        "2900-EXIT"
+      ],
+      "goto_flag": true
+    },
+    {
+      "name": "2900-EXIT",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2999-EXIT",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "3000-CUSTFILE-PROC",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [
+        "3900-EXIT"
+      ],
+      "goto_flag": true
+    },
+    {
+      "name": "3900-EXIT",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "3999-EXIT",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "4000-ACCTFILE-PROC",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [
+        "4900-EXIT"
+      ],
+      "goto_flag": true
+    },
+    {
+      "name": "4900-EXIT",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "4999-EXIT",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    }
+  ],
+  "data_items": [
+    {
+      "name": "FD-TRNXFILE-REC",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-TRNXS-ID",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-TRNX-CARD",
+      "level": 10,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-TRNX-ID",
+      "level": 10,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-ACCT-DATA",
+      "level": 5,
+      "picture": "X(318)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-XREFFILE-REC",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-XREF-CARD-NUM",
+      "level": 5,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-XREF-DATA",
+      "level": 5,
+      "picture": "X(34)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-CUSTFILE-REC",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-CUST-ID",
+      "level": 5,
+      "picture": "X(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-CUST-DATA",
+      "level": 5,
+      "picture": "X(491)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-ACCTFILE-REC",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-ACCT-ID",
+      "level": 5,
+      "picture": "9(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-ACCT-DATA",
+      "level": 5,
+      "picture": "X(289)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRNXFILE-STATUS",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRNXFILE-STAT1",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRNXFILE-STAT2",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "XREFFILE-STATUS",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "XREFFILE-STAT1",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "XREFFILE-STAT2",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUSTFILE-STATUS",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUSTFILE-STAT1",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUSTFILE-STAT2",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCTFILE-STATUS",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCTFILE-STAT1",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCTFILE-STAT2",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LK-M03B-AREA",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LK-M03B-DD",
+      "level": 5,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LK-M03B-OPER",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "M03B-OPEN",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "M03B-CLOSE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "M03B-READ",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "M03B-READ-K",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "M03B-WRITE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "M03B-REWRITE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LK-M03B-RC",
+      "level": 5,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LK-M03B-KEY",
+      "level": 5,
+      "picture": "X(25)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LK-M03B-KEY-LN",
+      "level": 5,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LK-M03B-FLDT",
+      "level": 5,
+      "picture": "X(1000)",
+      "redefines": null,
+      "reachable": true
+    }
+  ],
+  "redefines_clauses": [],
+  "copybooks_used": [
+    "of"
+  ],
+  "calls_to": [],
+  "cics_commands": [],
+  "dead_code_paragraphs": [
+    "END-IF",
+    "1999-EXIT",
+    "2999-EXIT",
+    "3999-EXIT",
+    "4999-EXIT"
+  ],
+  "dead_code_items": [],
+  "irreducible_gotos": [],
+  "smojol_cfg_path": null,
+  "smojol_node_count": 0
+}

@@ -1,0 +1,910 @@
+{
+  "program_id": "COCRDLIC",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/COCRDLIC.cbl",
+  "source_sha": "bf18933337604df3ab15c4a8a8e6b9af3c263e02",
+  "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
+  "paragraphs": [],
+  "data_items": [
+    {
+      "name": "WS-MISC-STORAGE",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CICS-PROCESSNG-VARS",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-RESP-CD",
+      "level": 7,
+      "picture": "S9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-REAS-CD",
+      "level": 7,
+      "picture": "S9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TRANID",
+      "level": 7,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-INPUT-FLAG",
+      "level": 5,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "INPUT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "INPUT-ERROR",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-ACCT-FLAG",
+      "level": 5,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ACCTFILTER-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ACCTFILTER-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ACCTFILTER-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-CARD-FLAG",
+      "level": 5,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CARDFILTER-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CARDFILTER-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CARDFILTER-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-SELECT-COUNTER",
+      "level": 5,
+      "picture": "S9(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-SELECT-FLAGS",
+      "level": 5,
+      "picture": "X(7)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-SELECT-ARRAY",
+      "level": 5,
+      "picture": null,
+      "redefines": "WS-EDIT-SELECT-FLAGS",
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-SELECT",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "SELECT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "VIEW-REQUESTED-ON",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "UPDATE-REQUESTED-ON",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "SELECT-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-SELECT-ERROR-FLAGS",
+      "level": 5,
+      "picture": "X(7)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-SELECT-ERROR-FLAGX",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-SELECT-ERRORS",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-ROW-CRDSELECT-ERROR",
+      "level": 20,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-ROW-SELECT-ERROR",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-SUBSCRIPT-VARS",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "I-SELECTED",
+      "level": 10,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DETAIL-WAS-REQUESTED",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CICS-OUTPUT-EDIT-VARS",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CARD-ACCT-ID-X",
+      "level": 10,
+      "picture": "X(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CARD-ACCT-ID-N",
+      "level": 10,
+      "picture": null,
+      "redefines": "CARD-ACCT-ID-X",
+      "reachable": true
+    },
+    {
+      "name": "CARD-CVV-CD-X",
+      "level": 10,
+      "picture": "X(03)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CARD-CVV-CD-N",
+      "level": 10,
+      "picture": null,
+      "redefines": "CARD-CVV-CD-X",
+      "reachable": true
+    },
+    {
+      "name": "FLG-PROTECT-SELECT-ROWS",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PROTECT-SELECT-ROWS-NO",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PROTECT-SELECT-ROWS-YES",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-LONG-MSG",
+      "level": 5,
+      "picture": "X(500)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-INFO-MSG",
+      "level": 5,
+      "picture": "X(45)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-NO-INFO-MESSAGE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-INFORM-REC-ACTIONS",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-ERROR-MSG",
+      "level": 5,
+      "picture": "X(75)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-ERROR-MSG-OFF",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EXIT-MESSAGE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-NO-RECORDS-FOUND",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-MORE-THAN-1-ACTION",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-INVALID-ACTION-CODE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-PFK-FLAG",
+      "level": 5,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "PFK-VALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "PFK-INVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CONTEXT-FLAG",
+      "level": 5,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CONTEXT-FRESH-START",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CONTEXT-FRESH-START-NO",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-FILE-HANDLING-VARS",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CARD-RID",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CARD-RID-CARDNUM",
+      "level": 20,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CARD-RID-ACCT-ID",
+      "level": 20,
+      "picture": "9(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CARD-RID-ACCT-ID-X",
+      "level": 20,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-SCRN-COUNTER",
+      "level": 5,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-FILTER-RECORD-FLAG",
+      "level": 5,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EXCLUDE-THIS-RECORD",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-DONOT-EXCLUDE-THIS-RECORD",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-RECORDS-TO-PROCESS-FLAG",
+      "level": 5,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "READ-LOOP-EXIT",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "MORE-RECORDS-TO-READ",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-FILE-ERROR-MESSAGE",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ERROR-OPNAME",
+      "level": 10,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ERROR-FILE",
+      "level": 10,
+      "picture": "X(9)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ERROR-RESP",
+      "level": 10,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ERROR-RESP2",
+      "level": 10,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CONSTANTS",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-MAX-SCREEN-LINES",
+      "level": 5,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-THISPGM",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-THISTRANID",
+      "level": 5,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-THISMAPSET",
+      "level": 5,
+      "picture": "X(7)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-THISMAP",
+      "level": 5,
+      "picture": "X(7)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-MENUPGM",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-MENUTRANID",
+      "level": 5,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-MENUMAPSET",
+      "level": 5,
+      "picture": "X(7)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-MENUMAP",
+      "level": 5,
+      "picture": "X(7)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARDDTLPGM",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARDDTLTRANID",
+      "level": 5,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARDDTLMAPSET",
+      "level": 5,
+      "picture": "X(7)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARDDTLMAP",
+      "level": 5,
+      "picture": "X(7)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARDUPDPGM",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARDUPDTRANID",
+      "level": 5,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARDUPDMAPSET",
+      "level": 5,
+      "picture": "X(7)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARDUPDMAP",
+      "level": 5,
+      "picture": "X(7)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARD-FILE",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARD-FILE-ACCT-PATH",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-THIS-PROGCOMMAREA",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CA-LAST-CARDKEY",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CA-LAST-CARD-NUM",
+      "level": 15,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CA-LAST-CARD-ACCT-ID",
+      "level": 15,
+      "picture": "9(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CA-FIRST-CARDKEY",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CA-FIRST-CARD-NUM",
+      "level": 15,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CA-FIRST-CARD-ACCT-ID",
+      "level": 15,
+      "picture": "9(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CA-SCREEN-NUM",
+      "level": 10,
+      "picture": "9(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CA-FIRST-PAGE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CA-LAST-PAGE-DISPLAYED",
+      "level": 10,
+      "picture": "9(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CA-LAST-PAGE-SHOWN",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CA-LAST-PAGE-NOT-SHOWN",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CA-NEXT-PAGE-IND",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CA-NEXT-PAGE-NOT-EXISTS",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CA-NEXT-PAGE-EXISTS",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-RETURN-FLAG",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-RETURN-FLAG-OFF",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-RETURN-FLAG-ON",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-SCREEN-DATA",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-ALL-ROWS",
+      "level": 10,
+      "picture": "X(196)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-SCREEN-ROWS",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EACH-ROW",
+      "level": 20,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EACH-CARD",
+      "level": 25,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-ROW-ACCTNO",
+      "level": 30,
+      "picture": "X(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-ROW-CARD-NUM",
+      "level": 30,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-ROW-CARD-STATUS",
+      "level": 30,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-COMMAREA",
+      "level": 1,
+      "picture": "X(2000)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DFHCOMMAREA",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    }
+  ],
+  "redefines_clauses": [
+    {
+      "name": "WS-EDIT-SELECT-ARRAY",
+      "level": 5,
+      "picture": null,
+      "redefines": "WS-EDIT-SELECT-FLAGS",
+      "reachable": true
+    },
+    {
+      "name": "CARD-ACCT-ID-N",
+      "level": 10,
+      "picture": null,
+      "redefines": "CARD-ACCT-ID-X",
+      "reachable": true
+    },
+    {
+      "name": "CARD-CVV-CD-N",
+      "level": 10,
+      "picture": null,
+      "redefines": "CARD-CVV-CD-X",
+      "reachable": true
+    }
+  ],
+  "copybooks_used": [
+    "COCOM01Y",
+    "COCRDLI",
+    "COCRDSL",
+    "COTTL01Y",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CSMSG02Y",
+    "CSUSR01Y",
+    "CVACT02Y",
+    "CVCRD01Y",
+    "DFHAID",
+    "DFHBMSCA",
+    "of"
+  ],
+  "calls_to": [],
+  "cics_commands": [
+    "ENDBR",
+    "READNEXT",
+    "READPREV",
+    "RECEIVE",
+    "RETURN",
+    "SEND",
+    "STARTBR",
+    "XCTL"
+  ],
+  "dead_code_paragraphs": [],
+  "dead_code_items": [],
+  "irreducible_gotos": [],
+  "smojol_cfg_path": null,
+  "smojol_node_count": 0
+}

@@ -1,0 +1,436 @@
+{
+  "program_id": "CORPT00C",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CORPT00C.cbl",
+  "source_sha": "0ab81360d6396b8e85f0977d922be2df0b32ca7b",
+  "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
+  "paragraphs": [],
+  "data_items": [
+    {
+      "name": "WS-VARIABLES",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-PGMNAME",
+      "level": 5,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TRANID",
+      "level": 5,
+      "picture": "X(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-MESSAGE",
+      "level": 5,
+      "picture": "X(80)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TRANSACT-FILE",
+      "level": 5,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-ERR-FLG",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ERR-FLG-ON",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ERR-FLG-OFF",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TRANSACT-EOF",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRANSACT-EOF",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRANSACT-NOT-EOF",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-SEND-ERASE-FLG",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "SEND-ERASE-YES",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "SEND-ERASE-NO",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-END-LOOP",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "END-LOOP-YES",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "END-LOOP-NO",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-RESP-CD",
+      "level": 5,
+      "picture": "S9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-REAS-CD",
+      "level": 5,
+      "picture": "S9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-REC-COUNT",
+      "level": 5,
+      "picture": "S9(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-IDX",
+      "level": 5,
+      "picture": "S9(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-REPORT-NAME",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-START-DATE",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-START-DATE-YYYY",
+      "level": 10,
+      "picture": "X(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-START-DATE-MM",
+      "level": 10,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-START-DATE-DD",
+      "level": 10,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-END-DATE",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-END-DATE-YYYY",
+      "level": 10,
+      "picture": "X(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-END-DATE-MM",
+      "level": 10,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-END-DATE-DD",
+      "level": 10,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-DATE-FORMAT",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-NUM-99",
+      "level": 5,
+      "picture": "99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-NUM-9999",
+      "level": 5,
+      "picture": "9999",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TRAN-AMT",
+      "level": 5,
+      "picture": "+99999999.99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TRAN-DATE",
+      "level": 5,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "JCL-RECORD",
+      "level": 5,
+      "picture": "X(80)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "JOB-DATA",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "JOB-DATA-1",
+      "level": 2,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FILLER-1",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "PARM-START-DATE-1",
+      "level": 10,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FILLER-2",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "PARM-END-DATE-1",
+      "level": 10,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FILLER-3",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "PARM-START-DATE-2",
+      "level": 10,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "PARM-END-DATE-2",
+      "level": 10,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "JOB-DATA-2",
+      "level": 2,
+      "picture": null,
+      "redefines": "JOB-DATA-1",
+      "reachable": true
+    },
+    {
+      "name": "JOB-LINES",
+      "level": 5,
+      "picture": "X(80)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CSUTLDTC-PARM",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CSUTLDTC-DATE",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CSUTLDTC-DATE-FORMAT",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CSUTLDTC-RESULT",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CSUTLDTC-RESULT-SEV-CD",
+      "level": 10,
+      "picture": "X(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CSUTLDTC-RESULT-MSG-NUM",
+      "level": 10,
+      "picture": "X(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CSUTLDTC-RESULT-MSG",
+      "level": 10,
+      "picture": "X(61)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DFHCOMMAREA",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LK-COMMAREA",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    }
+  ],
+  "redefines_clauses": [
+    {
+      "name": "JOB-DATA-2",
+      "level": 2,
+      "picture": null,
+      "redefines": "JOB-DATA-1",
+      "reachable": true
+    }
+  ],
+  "copybooks_used": [
+    "COCOM01Y",
+    "CORPT00",
+    "COTTL01Y",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CVTRA05Y",
+    "DFHAID",
+    "DFHBMSCA",
+    "of"
+  ],
+  "calls_to": [
+    "CSUTLDTC"
+  ],
+  "cics_commands": [
+    "RECEIVE",
+    "RETURN",
+    "SEND",
+    "WRITEQ",
+    "XCTL"
+  ],
+  "dead_code_paragraphs": [],
+  "dead_code_items": [],
+  "irreducible_gotos": [],
+  "smojol_cfg_path": null,
+  "smojol_node_count": 0
+}

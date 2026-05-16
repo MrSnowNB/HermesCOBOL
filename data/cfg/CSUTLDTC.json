@@ -1,0 +1,336 @@
+{
+  "program_id": "CSUTLDTC",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CSUTLDTC.cbl",
+  "source_sha": "1f378709ba39b0ad319700060e52f3f68f270a39",
+  "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
+  "paragraphs": [
+    {
+      "name": "A000-MAIN",
+      "reachable": true,
+      "performs": [
+        "A000-MAIN"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "A000-MAIN-EXIT",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    }
+  ],
+  "data_items": [
+    {
+      "name": "WS-DATE-TO-TEST",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "VSTRING-LENGTH",
+      "level": 2,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "VSTRING-TEXT",
+      "level": 2,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "VSTRING-CHAR",
+      "level": 3,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-DATE-FORMAT",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "VSTRING-LENGTH",
+      "level": 2,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "VSTRING-TEXT",
+      "level": 2,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "VSTRING-CHAR",
+      "level": 3,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "OUTPUT-LILLIAN",
+      "level": 1,
+      "picture": "S9(9)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-MESSAGE",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-SEVERITY",
+      "level": 2,
+      "picture": "X(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-SEVERITY-N",
+      "level": 2,
+      "picture": "9(4)",
+      "redefines": "WS-SEVERITY",
+      "reachable": true
+    },
+    {
+      "name": "WS-MSG-NO",
+      "level": 2,
+      "picture": "X(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-MSG-NO-N",
+      "level": 2,
+      "picture": "9(4)",
+      "redefines": "WS-MSG-NO",
+      "reachable": true
+    },
+    {
+      "name": "WS-RESULT",
+      "level": 2,
+      "picture": "X(15)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-DATE",
+      "level": 2,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-DATE-FMT",
+      "level": 2,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FEEDBACK-CODE",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FEEDBACK-TOKEN-VALUE",
+      "level": 2,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FC-INVALID-DATE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FC-INSUFFICIENT-DATA",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FC-BAD-DATE-VALUE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FC-INVALID-ERA",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FC-UNSUPP-RANGE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FC-INVALID-MONTH",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FC-BAD-PIC-STRING",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FC-NON-NUMERIC-DATA",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FC-YEAR-IN-ERA-ZERO",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CASE-1-CONDITION-ID",
+      "level": 3,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "SEVERITY",
+      "level": 4,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "MSG-NO",
+      "level": 4,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CASE-2-CONDITION-ID",
+      "level": 3,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CLASS-CODE",
+      "level": 4,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CAUSE-CODE",
+      "level": 4,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CASE-SEV-CTL",
+      "level": 3,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FACILITY-ID",
+      "level": 3,
+      "picture": "XXX",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "I-S-INFO",
+      "level": 2,
+      "picture": "S9(9)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LS-DATE",
+      "level": 1,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LS-DATE-FORMAT",
+      "level": 1,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LS-RESULT",
+      "level": 1,
+      "picture": "X(80)",
+      "redefines": null,
+      "reachable": true
+    }
+  ],
+  "redefines_clauses": [
+    {
+      "name": "WS-SEVERITY-N",
+      "level": 2,
+      "picture": "9(4)",
+      "redefines": "WS-SEVERITY",
+      "reachable": true
+    },
+    {
+      "name": "WS-MSG-NO-N",
+      "level": 2,
+      "picture": "9(4)",
+      "redefines": "WS-MSG-NO",
+      "reachable": true
+    }
+  ],
+  "copybooks_used": [
+    "of"
+  ],
+  "calls_to": [
+    "CEEDAYS"
+  ],
+  "cics_commands": [],
+  "dead_code_paragraphs": [
+    "A000-MAIN-EXIT"
+  ],
+  "dead_code_items": [],
+  "irreducible_gotos": [],
+  "smojol_cfg_path": null,
+  "smojol_node_count": 0
+}

@@ -1,7 +1,7 @@
 {
   "program_id": "COBSWAIT",
-  "source_file": "data/raw/cbl/COBSWAIT.cbl",
-  "source_sha": "dc5edd66b1900e4f616bcb52e1362e037c2b85b2",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/COBSWAIT.cbl",
+  "source_sha": "7957347717cf04be2dc4f5be24aa94668cf780ab",
   "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
   "paragraphs": [],
   "data_items": [

@@ -1,35 +1,38 @@
 {
-  "program_id": "CBACT01C",
-  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBACT01C.cbl",
-  "source_sha": "e680f8e4239a85eb9f95f129f282aa28e165496a",
+  "program_id": "CBACT04C",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBACT04C.cbl",
+  "source_sha": "c5e0280e2ed0891877b43eda7bc7c6dc86752421",
   "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
   "paragraphs": [
     {
       "name": "END-PERFORM",
       "reachable": true,
       "performs": [
-        "0000-ACCTFILE-OPEN",
-        "2000-OUTFILE-OPEN",
-        "3000-ARRFILE-OPEN",
-        "4000-VBRFILE-OPEN",
-        "1000-ACCTFILE-GET-NEXT",
-        "9000-ACCTFILE-CLOSE"
+        "0000-TCATBALF-OPEN",
+        "0100-XREFFILE-OPEN",
+        "0200-DISCGRP-OPEN",
+        "0300-ACCTFILE-OPEN",
+        "0400-TRANFILE-OPEN",
+        "1000-TCATBALF-GET-NEXT",
+        "1050-UPDATE-ACCOUNT",
+        "1100-GET-ACCT-DATA",
+        "1110-GET-XREF-DATA",
+        "1200-GET-INTEREST-RATE",
+        "1300-COMPUTE-INTEREST",
+        "1400-COMPUTE-FEES",
+        "9000-TCATBALF-CLOSE",
+        "9100-XREFFILE-CLOSE",
+        "9200-DISCGRP-CLOSE",
+        "9300-ACCTFILE-CLOSE",
+        "9400-TRANFILE-CLOSE"
       ],
       "goto_targets": [],
       "goto_flag": false
     },
     {
-      "name": "1000-ACCTFILE-GET-NEXT",
+      "name": "0000-TCATBALF-OPEN",
       "reachable": true,
       "performs": [
-        "1100-DISPLAY-ACCT-RECORD",
-        "1300-POPUL-ACCT-RECORD",
-        "1350-WRITE-ACCT-RECORD",
-        "1400-POPUL-ARRAY-RECORD",
-        "1450-WRITE-ARRY-RECORD",
-        "1500-POPUL-VBRC-RECORD",
-        "1550-WRITE-VB1-RECORD",
-        "1575-WRITE-VB2-RECORD",
         "9910-DISPLAY-IO-STATUS",
         "9999-ABEND-PROGRAM"
       ],
@@ -37,141 +40,201 @@
       "goto_flag": false
     },
     {
-      "name": "1100-DISPLAY-ACCT-RECORD",
+      "name": "0100-XREFFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0200-DISCGRP-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0300-ACCTFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0400-TRANFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1000-TCATBALF-GET-NEXT",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1050-UPDATE-ACCOUNT",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1100-GET-ACCT-DATA",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1110-GET-XREF-DATA",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1200-GET-INTEREST-RATE",
       "reachable": true,
       "performs": [],
       "goto_targets": [],
       "goto_flag": false
     },
     {
-      "name": "1300-POPUL-ACCT-RECORD",
+      "name": "END-READ",
+      "reachable": false,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM",
+        "1200-A-GET-DEFAULT-INT-RATE"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1200-A-GET-DEFAULT-INT-RATE",
+      "reachable": false,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1300-COMPUTE-INTEREST",
+      "reachable": true,
+      "performs": [
+        "1300-B-WRITE-TX"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1300-B-WRITE-TX",
       "reachable": true,
       "performs": [],
       "goto_targets": [],
       "goto_flag": false
     },
     {
-      "name": "WS-REISSUE-DATE",
+      "name": "END-STRING",
+      "reachable": false,
+      "performs": [
+        "Z-GET-DB2-FORMAT-TIMESTAMP",
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1400-COMPUTE-FEES",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9000-TCATBALF-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9100-XREFFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9200-DISCGRP-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9300-ACCTFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9400-TRANFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "Z-GET-DB2-FORMAT-TIMESTAMP",
       "reachable": false,
       "performs": [],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "END-IF",
-      "reachable": false,
-      "performs": [],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "1350-WRITE-ACCT-RECORD",
-      "reachable": true,
-      "performs": [
-        "9910-DISPLAY-IO-STATUS",
-        "9999-ABEND-PROGRAM"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "1400-POPUL-ARRAY-RECORD",
-      "reachable": true,
-      "performs": [],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "1450-WRITE-ARRY-RECORD",
-      "reachable": true,
-      "performs": [
-        "9910-DISPLAY-IO-STATUS",
-        "9999-ABEND-PROGRAM"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "1500-POPUL-VBRC-RECORD",
-      "reachable": true,
-      "performs": [],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "VB2-ACCT-ID",
-      "reachable": false,
-      "performs": [],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "1550-WRITE-VB1-RECORD",
-      "reachable": true,
-      "performs": [
-        "9910-DISPLAY-IO-STATUS",
-        "9999-ABEND-PROGRAM"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "1575-WRITE-VB2-RECORD",
-      "reachable": true,
-      "performs": [
-        "9910-DISPLAY-IO-STATUS",
-        "9999-ABEND-PROGRAM"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "0000-ACCTFILE-OPEN",
-      "reachable": true,
-      "performs": [
-        "9910-DISPLAY-IO-STATUS",
-        "9999-ABEND-PROGRAM"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "2000-OUTFILE-OPEN",
-      "reachable": true,
-      "performs": [
-        "9910-DISPLAY-IO-STATUS",
-        "9999-ABEND-PROGRAM"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "3000-ARRFILE-OPEN",
-      "reachable": true,
-      "performs": [
-        "9910-DISPLAY-IO-STATUS",
-        "9999-ABEND-PROGRAM"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "4000-VBRFILE-OPEN",
-      "reachable": true,
-      "performs": [
-        "9910-DISPLAY-IO-STATUS",
-        "9999-ABEND-PROGRAM"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "9000-ACCTFILE-CLOSE",
-      "reachable": true,
-      "performs": [
-        "9910-DISPLAY-IO-STATUS",
-        "9999-ABEND-PROGRAM"
-      ],
       "goto_targets": [],
       "goto_flag": false
     },
@@ -191,6 +254,125 @@
     }
   ],
   "data_items": [
+    {
+      "name": "FD-TRAN-CAT-BAL-RECORD",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-TRAN-CAT-KEY",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-TRANCAT-ACCT-ID",
+      "level": 10,
+      "picture": "9(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-TRANCAT-TYPE-CD",
+      "level": 10,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-TRANCAT-CD",
+      "level": 10,
+      "picture": "9(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-FD-TRAN-CAT-DATA",
+      "level": 5,
+      "picture": "X(33)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-XREFFILE-REC",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-XREF-CARD-NUM",
+      "level": 5,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-XREF-CUST-NUM",
+      "level": 5,
+      "picture": "9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-XREF-ACCT-ID",
+      "level": 5,
+      "picture": "9(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-XREF-FILLER",
+      "level": 5,
+      "picture": "X(14)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-DISCGRP-REC",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-DISCGRP-KEY",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-DIS-ACCT-GROUP-ID",
+      "level": 10,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-DIS-TRAN-TYPE-CD",
+      "level": 10,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-DIS-TRAN-CAT-CD",
+      "level": 10,
+      "picture": "9(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-DISCGRP-DATA",
+      "level": 5,
+      "picture": "X(34)",
+      "redefines": null,
+      "reachable": true
+    },
     {
       "name": "FD-ACCTFILE-REC",
       "level": 1,
@@ -213,135 +395,198 @@
       "reachable": true
     },
     {
-      "name": "OUT-ACCT-REC",
+      "name": "FD-TRANFILE-REC",
       "level": 1,
       "picture": null,
       "redefines": null,
       "reachable": true
     },
     {
-      "name": "OUT-ACCT-ID",
+      "name": "FD-TRANS-ID",
+      "level": 5,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FD-ACCT-DATA",
+      "level": 5,
+      "picture": "X(334)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRAN-CAT-BAL-RECORD",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRAN-CAT-KEY",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRANCAT-ACCT-ID",
+      "level": 10,
+      "picture": "9(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRANCAT-TYPE-CD",
+      "level": 10,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRANCAT-CD",
+      "level": 10,
+      "picture": "9(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRAN-CAT-BAL",
+      "level": 5,
+      "picture": "S9(09)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TCATBALF-STATUS",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TCATBALF-STAT1",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TCATBALF-STAT2",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CARD-XREF-RECORD",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "XREF-CARD-NUM",
+      "level": 5,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "XREF-CUST-ID",
+      "level": 5,
+      "picture": "9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "XREF-ACCT-ID",
       "level": 5,
       "picture": "9(11)",
       "redefines": null,
       "reachable": true
     },
     {
-      "name": "OUT-ACCT-ACTIVE-STATUS",
-      "level": 5,
-      "picture": "X(01)",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "OUT-ACCT-CURR-BAL",
-      "level": 5,
-      "picture": "S9(10)V99",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "OUT-ACCT-CREDIT-LIMIT",
-      "level": 5,
-      "picture": "S9(10)V99",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "OUT-ACCT-CASH-CREDIT-LIMIT",
-      "level": 5,
-      "picture": "S9(10)V99",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "OUT-ACCT-OPEN-DATE",
-      "level": 5,
-      "picture": "X(10)",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "OUT-ACCT-EXPIRAION-DATE",
-      "level": 5,
-      "picture": "X(10)",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "OUT-ACCT-REISSUE-DATE",
-      "level": 5,
-      "picture": "X(10)",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "OUT-ACCT-CURR-CYC-CREDIT",
-      "level": 5,
-      "picture": "S9(10)V99",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "OUT-ACCT-CURR-CYC-DEBIT",
-      "level": 5,
-      "picture": "S9(10)V99",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "OUT-ACCT-GROUP-ID",
-      "level": 5,
-      "picture": "X(10)",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "ARR-ARRAY-REC",
+      "name": "XREFFILE-STATUS",
       "level": 1,
       "picture": null,
       "redefines": null,
       "reachable": true
     },
     {
-      "name": "ARR-ACCT-ID",
+      "name": "XREFFILE-STAT1",
       "level": 5,
-      "picture": "9(11)",
+      "picture": "X",
       "redefines": null,
       "reachable": true
     },
     {
-      "name": "ARR-ACCT-BAL",
+      "name": "XREFFILE-STAT2",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DIS-GROUP-RECORD",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DIS-GROUP-KEY",
       "level": 5,
       "picture": null,
       "redefines": null,
       "reachable": true
     },
     {
-      "name": "ARR-ACCT-CURR-BAL",
+      "name": "DIS-ACCT-GROUP-ID",
       "level": 10,
-      "picture": "S9(10)V99",
+      "picture": "X(10)",
       "redefines": null,
       "reachable": true
     },
     {
-      "name": "ARR-ACCT-CURR-CYC-DEBIT",
+      "name": "DIS-TRAN-TYPE-CD",
       "level": 10,
-      "picture": "S9(10)V99",
+      "picture": "X(02)",
       "redefines": null,
       "reachable": true
     },
     {
-      "name": "ARR-FILLER",
+      "name": "DIS-TRAN-CAT-CD",
+      "level": 10,
+      "picture": "9(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DIS-INT-RATE",
       "level": 5,
-      "picture": "X(04)",
+      "picture": "S9(04)V99",
       "redefines": null,
       "reachable": true
     },
     {
-      "name": "VBR-REC",
+      "name": "DISCGRP-STATUS",
       "level": 1,
-      "picture": "X(80)",
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DISCGRP-STAT1",
+      "level": 5,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DISCGRP-STAT2",
+      "level": 5,
+      "picture": "X",
       "redefines": null,
       "reachable": true
     },
@@ -437,258 +682,6 @@
       "reachable": true
     },
     {
-      "name": "CODATECN-REC",
-      "level": 1,
-      "picture": null,
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-IN-REC",
-      "level": 5,
-      "picture": null,
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-TYPE",
-      "level": 10,
-      "picture": "X",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "YYYYMMDD-IN",
-      "level": 88,
-      "picture": null,
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "YYYY-MM-DD-IN",
-      "level": 88,
-      "picture": null,
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-INP-DATE",
-      "level": 10,
-      "picture": "X(20)",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-1INP",
-      "level": 10,
-      "picture": null,
-      "redefines": "CODATECN-INP-DATE",
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-1YYYY",
-      "level": 15,
-      "picture": "XXXX",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-1MM",
-      "level": 15,
-      "picture": "XX",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-1DD",
-      "level": 15,
-      "picture": "XX",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-1FIL",
-      "level": 15,
-      "picture": "X(12)",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-2INP",
-      "level": 10,
-      "picture": null,
-      "redefines": "CODATECN-INP-DATE",
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-1O-YYYY",
-      "level": 15,
-      "picture": "XXXX",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-1I-S1",
-      "level": 15,
-      "picture": "X",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-1MM",
-      "level": 15,
-      "picture": "XX",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-1I-S2",
-      "level": 15,
-      "picture": "X",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-2YY",
-      "level": 15,
-      "picture": "XX",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-2FIL",
-      "level": 15,
-      "picture": "X(10)",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-OUT-REC",
-      "level": 5,
-      "picture": null,
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-OUTTYPE",
-      "level": 10,
-      "picture": "X",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "YYYY-MM-DD-OP",
-      "level": 88,
-      "picture": null,
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "YYYYMMDD-OP",
-      "level": 88,
-      "picture": null,
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-0UT-DATE",
-      "level": 10,
-      "picture": "X(20)",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-1OUT",
-      "level": 10,
-      "picture": null,
-      "redefines": "CODATECN-0UT-DATE",
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-1O-YYYY",
-      "level": 15,
-      "picture": "XXXX",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-1O-S1",
-      "level": 15,
-      "picture": "X",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-1O-MM",
-      "level": 15,
-      "picture": "XX",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-1O-S2",
-      "level": 15,
-      "picture": "X",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-1O-DD",
-      "level": 15,
-      "picture": "XX",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-1OFIL",
-      "level": 15,
-      "picture": "X(10)",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-2OUT",
-      "level": 10,
-      "picture": null,
-      "redefines": "CODATECN-0UT-DATE",
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-2O-YYYY",
-      "level": 15,
-      "picture": "XXXX",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-2O-MM",
-      "level": 15,
-      "picture": "XX",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-2O-DD",
-      "level": 15,
-      "picture": "XX",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-2OFIL",
-      "level": 15,
-      "picture": "X(12)",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-ERROR-MSG",
-      "level": 5,
-      "picture": "X(38)",
-      "redefines": null,
-      "reachable": true
-    },
-    {
       "name": "ACCTFILE-STATUS",
       "level": 1,
       "picture": null,
@@ -710,63 +703,119 @@
       "reachable": true
     },
     {
-      "name": "OUTFILE-STATUS",
+      "name": "TRAN-RECORD",
       "level": 1,
       "picture": null,
       "redefines": null,
       "reachable": true
     },
     {
-      "name": "OUTFILE-STAT1",
+      "name": "TRAN-ID",
       "level": 5,
-      "picture": "X",
+      "picture": "X(16)",
       "redefines": null,
       "reachable": true
     },
     {
-      "name": "OUTFILE-STAT2",
+      "name": "TRAN-TYPE-CD",
       "level": 5,
-      "picture": "X",
+      "picture": "X(02)",
       "redefines": null,
       "reachable": true
     },
     {
-      "name": "ARRYFILE-STATUS",
+      "name": "TRAN-CAT-CD",
+      "level": 5,
+      "picture": "9(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRAN-SOURCE",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRAN-DESC",
+      "level": 5,
+      "picture": "X(100)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRAN-AMT",
+      "level": 5,
+      "picture": "S9(09)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRAN-MERCHANT-ID",
+      "level": 5,
+      "picture": "9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRAN-MERCHANT-NAME",
+      "level": 5,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRAN-MERCHANT-CITY",
+      "level": 5,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRAN-MERCHANT-ZIP",
+      "level": 5,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRAN-CARD-NUM",
+      "level": 5,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRAN-ORIG-TS",
+      "level": 5,
+      "picture": "X(26)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRAN-PROC-TS",
+      "level": 5,
+      "picture": "X(26)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "TRANFILE-STATUS",
       "level": 1,
       "picture": null,
       "redefines": null,
       "reachable": true
     },
     {
-      "name": "ARRYFILE-STAT1",
+      "name": "TRANFILE-STAT1",
       "level": 5,
       "picture": "X",
       "redefines": null,
       "reachable": true
     },
     {
-      "name": "ARRYFILE-STAT2",
-      "level": 5,
-      "picture": "X",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "VBRCFILE-STATUS",
-      "level": 1,
-      "picture": null,
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "VBRCFILE-STAT1",
-      "level": 5,
-      "picture": "X",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "VBRCFILE-STAT2",
+      "name": "TRANFILE-STAT2",
       "level": 5,
       "picture": "X",
       "redefines": null,
@@ -885,176 +934,277 @@
       "reachable": true
     },
     {
-      "name": "WS-RECD-LEN",
-      "level": 1,
-      "picture": "9(04)",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "VBRC-REC1",
+      "name": "COBOL-TS",
       "level": 1,
       "picture": null,
       "redefines": null,
       "reachable": true
     },
     {
-      "name": "VB1-ACCT-ID",
-      "level": 5,
-      "picture": "9(11)",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "VB1-ACCT-ACTIVE-STATUS",
-      "level": 5,
-      "picture": "X(01)",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "VBRC-REC2",
-      "level": 1,
-      "picture": null,
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "VB2-ACCT-ID",
-      "level": 5,
-      "picture": "9(11)",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "VB2-ACCT-CURR-BAL",
-      "level": 5,
-      "picture": "S9(10)V99",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "VB2-ACCT-CREDIT-LIMIT",
-      "level": 5,
-      "picture": "S9(10)V99",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "VB2-ACCT-REISSUE-YYYY",
+      "name": "COB-YYYY",
       "level": 5,
       "picture": "X(04)",
       "redefines": null,
       "reachable": true
     },
     {
-      "name": "WS-ACCT-REISSUE-DATE",
+      "name": "COB-MM",
+      "level": 5,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "COB-DD",
+      "level": 5,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "COB-HH",
+      "level": 5,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "COB-MIN",
+      "level": 5,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "COB-SS",
+      "level": 5,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "COB-MIL",
+      "level": 5,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "COB-REST",
+      "level": 5,
+      "picture": "X(05)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DB2-FORMAT-TS",
+      "level": 1,
+      "picture": "X(26)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DB2-YYYY",
+      "level": 6,
+      "picture": "X(004)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DB2-STREEP-1",
+      "level": 6,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DB2-MM",
+      "level": 6,
+      "picture": "X(002)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DB2-STREEP-2",
+      "level": 6,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DB2-DD",
+      "level": 6,
+      "picture": "X(002)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DB2-STREEP-3",
+      "level": 6,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DB2-HH",
+      "level": 6,
+      "picture": "X(002)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DB2-DOT-1",
+      "level": 6,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DB2-MIN",
+      "level": 6,
+      "picture": "X(002)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DB2-DOT-2",
+      "level": 6,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DB2-SS",
+      "level": 6,
+      "picture": "X(002)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DB2-DOT-3",
+      "level": 6,
+      "picture": "X",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DB2-MIL",
+      "level": 6,
+      "picture": "9(002)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DB2-REST",
+      "level": 6,
+      "picture": "X(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-MISC-VARS",
       "level": 1,
       "picture": null,
       "redefines": null,
       "reachable": true
     },
     {
-      "name": "WS-ACCT-REISSUE-YYYY",
+      "name": "WS-LAST-ACCT-NUM",
       "level": 5,
-      "picture": "X(04)",
+      "picture": "X(11)",
       "redefines": null,
       "reachable": true
     },
     {
-      "name": "WS-FILLER-1",
+      "name": "WS-MONTHLY-INT",
+      "level": 5,
+      "picture": "S9(09)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TOTAL-INT",
+      "level": 5,
+      "picture": "S9(09)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-FIRST-TIME",
       "level": 5,
       "picture": "X(01)",
       "redefines": null,
       "reachable": true
     },
     {
-      "name": "WS-ACCT-REISSUE-MM",
-      "level": 5,
-      "picture": "X(02)",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "WS-FILLER-2",
-      "level": 5,
-      "picture": "X(01)",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "WS-ACCT-REISSUE-DD",
-      "level": 5,
-      "picture": "X(02)",
-      "redefines": null,
-      "reachable": true
-    },
-    {
-      "name": "WS-REISSUE-DATE",
+      "name": "WS-COUNTERS",
       "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-RECORD-COUNT",
+      "level": 5,
+      "picture": "9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TRANID-SUFFIX",
+      "level": 5,
+      "picture": "9(06)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "EXTERNAL-PARMS",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "PARM-LENGTH",
+      "level": 5,
+      "picture": "S9(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "PARM-DATE",
+      "level": 5,
       "picture": "X(10)",
-      "redefines": "WS-ACCT-REISSUE-DATE",
+      "redefines": null,
       "reachable": true
     }
   ],
   "redefines_clauses": [
-    {
-      "name": "CODATECN-1INP",
-      "level": 10,
-      "picture": null,
-      "redefines": "CODATECN-INP-DATE",
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-2INP",
-      "level": 10,
-      "picture": null,
-      "redefines": "CODATECN-INP-DATE",
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-1OUT",
-      "level": 10,
-      "picture": null,
-      "redefines": "CODATECN-0UT-DATE",
-      "reachable": true
-    },
-    {
-      "name": "CODATECN-2OUT",
-      "level": 10,
-      "picture": null,
-      "redefines": "CODATECN-0UT-DATE",
-      "reachable": true
-    },
     {
       "name": "TWO-BYTES-ALPHA",
       "level": 1,
       "picture": null,
       "redefines": "TWO-BYTES-BINARY",
       "reachable": true
-    },
-    {
-      "name": "WS-REISSUE-DATE",
-      "level": 1,
-      "picture": "X(10)",
-      "redefines": "WS-ACCT-REISSUE-DATE",
-      "reachable": true
     }
   ],
   "copybooks_used": [
-    "CODATECN",
     "CVACT01Y",
+    "CVACT03Y",
+    "CVTRA01Y",
+    "CVTRA02Y",
+    "CVTRA05Y",
     "of"
   ],
   "calls_to": [
-    "CEE3ABD",
-    "COBDATFT"
+    "CEE3ABD"
   ],
   "cics_commands": [],
   "dead_code_paragraphs": [
-    "WS-REISSUE-DATE",
-    "END-IF",
-    "VB2-ACCT-ID"
+    "END-READ",
+    "1200-A-GET-DEFAULT-INT-RATE",
+    "END-STRING",
+    "Z-GET-DB2-FORMAT-TIMESTAMP"
   ],
   "dead_code_items": [],
   "irreducible_gotos": [],

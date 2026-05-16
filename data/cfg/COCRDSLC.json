@@ -1,0 +1,251 @@
+{
+  "program_id": "COCRDSLC",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/COCRDSLC.cbl",
+  "source_sha": "9e915b4227ffbc6725b0035ba84eaa10b0054940",
+  "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
+  "paragraphs": [],
+  "data_items": [
+    {
+      "name": "WS-CONSTANTS",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-THISPGM",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-THISTRANID",
+      "level": 5,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-THISMAPSET",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-THISMAP",
+      "level": 5,
+      "picture": "X(7)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CCLISTPGM",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-MENUPGM",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CCVIEWPGM",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-FLAGS",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "INPUT-FLAG",
+      "level": 5,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "INPUT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "INPUT-ERROR",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-MISC-STORAGE",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-PGMNAME",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TRANID",
+      "level": 5,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-MSG",
+      "level": 5,
+      "picture": "X(40)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TMPVAR",
+      "level": 5,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-ERR-FLG",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ERR-FLG-ON",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ERR-FLG-OFF",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-RESP-CD",
+      "level": 5,
+      "picture": "S9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-REAS-CD",
+      "level": 5,
+      "picture": "S9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-THIS-PROGCOMMAREA",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CA-FIRST-TIME",
+      "level": 5,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CA-IS-FIRST-TIME",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CA-NOT-FIRST-TIME",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CC-DATA",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CC-ACCT-ID-N",
+      "level": 5,
+      "picture": "9(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CC-CARD-NUM-N",
+      "level": 5,
+      "picture": "9(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DFHCOMMAREA",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LK-COMMAREA",
+      "level": 5,
+      "picture": "X(1000)",
+      "redefines": null,
+      "reachable": true
+    }
+  ],
+  "redefines_clauses": [],
+  "copybooks_used": [
+    "BOOKS",
+    "COCOM01Y",
+    "COCRDSLI",
+    "COTTL01Y",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CSUSR01Y",
+    "DFHAID",
+    "DFHBMSCA",
+    "of"
+  ],
+  "calls_to": [],
+  "cics_commands": [
+    "RECEIVE",
+    "RETURN",
+    "SEND",
+    "XCTL"
+  ],
+  "dead_code_paragraphs": [],
+  "dead_code_items": [],
+  "irreducible_gotos": [],
+  "smojol_cfg_path": null,
+  "smojol_node_count": 0
+}

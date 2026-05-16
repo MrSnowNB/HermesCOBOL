@@ -1,0 +1,134 @@
+{
+  "program_id": "COSGN00C",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/COSGN00C.cbl",
+  "source_sha": "28e2061e3f0ec1fbde590b0cf2236e2919567aee",
+  "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
+  "paragraphs": [],
+  "data_items": [
+    {
+      "name": "WS-VARIABLES",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-PGMNAME",
+      "level": 5,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TRANID",
+      "level": 5,
+      "picture": "X(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-MESSAGE",
+      "level": 5,
+      "picture": "X(80)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-USRSEC-FILE",
+      "level": 5,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-ERR-FLG",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ERR-FLG-ON",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ERR-FLG-OFF",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-RESP-CD",
+      "level": 5,
+      "picture": "S9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-REAS-CD",
+      "level": 5,
+      "picture": "S9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-USER-ID",
+      "level": 5,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-USER-PWD",
+      "level": 5,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DFHCOMMAREA",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LK-COMMAREA",
+      "level": 5,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    }
+  ],
+  "redefines_clauses": [],
+  "copybooks_used": [
+    "COCOM01Y",
+    "COSGN00",
+    "COTTL01Y",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CSUSR01Y",
+    "DFHAID",
+    "DFHATTR",
+    "DFHBMSCA",
+    "of"
+  ],
+  "calls_to": [],
+  "cics_commands": [
+    "ASSIGN",
+    "READ",
+    "RECEIVE",
+    "RETURN",
+    "SEND",
+    "XCTL"
+  ],
+  "dead_code_paragraphs": [],
+  "dead_code_items": [],
+  "irreducible_gotos": [],
+  "smojol_cfg_path": null,
+  "smojol_node_count": 0
+}

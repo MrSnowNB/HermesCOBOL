@@ -1,0 +1,3884 @@
+{
+  "program_id": "COACTUPC",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/COACTUPC.cbl",
+  "source_sha": "2c8b2a7b4dada1ea66c13a9bf90577082ad3a171",
+  "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
+  "paragraphs": [],
+  "data_items": [
+    {
+      "name": "WS-MISC-STORAGE",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CICS-PROCESSNG-VARS",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-RESP-CD",
+      "level": 7,
+      "picture": "S9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-REAS-CD",
+      "level": 7,
+      "picture": "S9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-TRANID",
+      "level": 7,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-UCTRANS",
+      "level": 7,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-GENERIC-EDITS",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-VARIABLE-NAME",
+      "level": 10,
+      "picture": "X(25)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-SIGNED-NUMBER-9V2-X",
+      "level": 10,
+      "picture": "X(15)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-FLG-SIGNED-NUMBER-EDIT",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-SIGNED-NUMBER-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-SIGNED-NUMBER-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-SIGNED-NUMBER-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-ALPHANUM-ONLY",
+      "level": 10,
+      "picture": "X(256)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-ALPHANUM-LENGTH",
+      "level": 10,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-ALPHA-ONLY-FLAGS",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ALPHA-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ALPHA-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ALPHA-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-ALPHANUM-ONLY-FLAGS",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ALPHNANUM-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ALPHNANUM-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ALPHNANUM-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-MANDATORY-FLAGS",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-MANDATORY-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-MANDATORY-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-MANDATORY-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-YES-NO",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-YES-NO-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-YES-NO-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-YES-NO-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-PHONE-NUM",
+      "level": 10,
+      "picture": "X(15)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-PHONE-NUM-X",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-PHONE-NUMA",
+      "level": 20,
+      "picture": "X(3)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-PHONE-NUMA-N",
+      "level": 20,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-PHONE-NUMB",
+      "level": 20,
+      "picture": "X(3)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-PHONE-NUMB-N",
+      "level": 20,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-PHONE-NUMC",
+      "level": 20,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-PHONE-NUMC-N",
+      "level": 20,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-PHONE-NUM-FLGS",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-PHONE-IS-INVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-PHONE-IS-VALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-PHONEA-FLG",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EDIT-US-PHONEA-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EDIT-US-PHONEA-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EDIT-US-PHONEA-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-EDIT-US-PHONEB",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EDIT-US-PHONEB-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EDIT-US-PHONEB-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EDIT-US-PHONEB-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-EDIT-PHONEC",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EDIT-US-PHONEC-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EDIT-US-PHONEC-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EDIT-US-PHONEC-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-SSN",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-SSN-PART1",
+      "level": 20,
+      "picture": "X(3)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-SSN-PART1-N",
+      "level": 20,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "INVALID-SSN-PART1",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-SSN-PART2",
+      "level": 20,
+      "picture": "X(2)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-SSN-PART2-N",
+      "level": 20,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-SSN-PART3",
+      "level": 20,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-SSN-PART3-N",
+      "level": 20,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-SSN-N",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-SSN-FLGS",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-SSN-IS-INVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-SSN-IS-VALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-SSN-PART1-FLGS",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EDIT-US-SSN-PART1-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EDIT-US-SSN-PART1-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EDIT-US-SSN-PART1-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-SSN-PART2-FLGS",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EDIT-US-SSN-PART2-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EDIT-US-SSN-PART2-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EDIT-US-SSN-PART2-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-US-SSN-PART3-FLGS",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EDIT-US-SSN-PART3-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EDIT-US-SSN-PART3-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EDIT-US-SSN-PART3-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CALCULATION-VARS",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-DIV-BY",
+      "level": 10,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-DIVIDEND",
+      "level": 10,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-REMAINDER",
+      "level": 10,
+      "picture": "S9(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CURR-DATE",
+      "level": 10,
+      "picture": "X(21)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-DATACHANGED-FLAG",
+      "level": 5,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "NO-CHANGES-FOUND",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CHANGE-HAS-OCCURRED",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-INPUT-FLAG",
+      "level": 5,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "INPUT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "INPUT-ERROR",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "INPUT-PENDING",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-RETURN-FLAG",
+      "level": 5,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-RETURN-FLAG-OFF",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-RETURN-FLAG-ON",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-PFK-FLAG",
+      "level": 5,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "PFK-VALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "PFK-INVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-ACCT-FLAG",
+      "level": 5,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ACCTFILTER-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ACCTFILTER-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ACCTFILTER-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-CUST-FLAG",
+      "level": 5,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CUSTFILTER-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CUSTFILTER-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CUSTFILTER-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-NON-KEY-FLAGS",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-ACCT-STATUS",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ACCT-STATUS-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ACCT-STATUS-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ACCT-STATUS-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-CREDIT-LIMIT",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CRED-LIMIT-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CRED-LIMIT-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CRED-LIMIT-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-CASH-CREDIT-LIMIT",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CASH-CREDIT-LIMIT-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CASH-CREDIT-LIMIT-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CASH-CREDIT-LIMIT-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-CURR-BAL",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CURR-BAL-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CURR-BAL-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CURR-BAL-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-CURR-CYC-CREDIT",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CURR-CYC-CREDIT-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CURR-CYC-CREDIT-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CURR-CYC-CREDIT-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-CURR-CYC-DEBIT",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CURR-CYC-DEBIT-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CURR-CYC-DEBIT-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CURR-CYC-DEBIT-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-DT-OF-BIRTH-FLGS",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-DT-OF-BIRTH-INVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-DT-OF-BIRTH-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-DT-OF-BIRTH-YEAR-FLG",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-DT-OF-BIRTH-YEAR-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-DT-OF-BIRTH-YEAR-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-DT-OF-BIRTH-YEAR-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-DT-OF-BIRTH-MONTH",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-DT-OF-BIRTH-MONTH-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-DT-OF-BIRTH-MONTH-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-DT-OF-BIRTH-MONTH-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-DT-OF-BIRTH-DAY",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-DT-OF-BIRTH-DAY-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-DT-OF-BIRTH-DAY-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-DT-OF-BIRTH-DAY-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-FICO-SCORE-FLGS",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-FICO-SCORE-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-FICO-SCORE-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-FICO-SCORE-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-OPEN-DATE-FLGS",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-OPEN-DATE-IS-INVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-OPEN-YEAR-FLG",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-OPEN-YEAR-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-OPEN-YEAR-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-OPEN-YEAR-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-OPEN-MONTH",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-OPEN-MONTH-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-OPEN-MONTH-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-OPEN-MONTH-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-OPEN-DAY",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-OPEN-DAY-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-OPEN-DAY-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-OPEN-DAY-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EXPIRY-DATE-FLGS",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-EXPIRY-IS-INVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-EXPIRY-YEAR-FLG",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EXPIRY-YEAR-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EXPIRY-YEAR-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EXPIRY-YEAR-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-EXPIRY-MONTH",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EXPIRY-MONTH-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EXPIRY-MONTH-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EXPIRY-MONTH-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-EXPIRY-DAY",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EXPIRY-DAY-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EXPIRY-DAY-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EXPIRY-DAY-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-REISSUE-DATE-FLGS",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-REISSUE-DATE-INVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-REISSUE-YEAR-FLG",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-REISSUE-YEAR-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-REISSUE-YEAR-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-REISSUE-YEAR-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-REISSUE-MONTH",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-REISSUE-MONTH-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-REISSUE-MONTH-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-REISSUE-MONTH-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-REISSUE-DAY",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-REISSUE-DAY-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-REISSUE-DAY-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-REISSUE-DAY-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-NAME-FLAGS",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-FIRST-NAME-FLGS",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-FIRST-NAME-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-FIRST-NAME-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-FIRST-NAME-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-MIDDLE-NAME-FLGS",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-MIDDLE-NAME-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-MIDDLE-NAME-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-MIDDLE-NAME-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-LAST-NAME-FLGS",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-LAST-NAME-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-LAST-NAME-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-LAST-NAME-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-ADDRESS-FLAGS",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-ADDRESS-LINE-1-FLGS",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ADDRESS-LINE-1-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ADDRESS-LINE-1-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ADDRESS-LINE-1-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-ADDRESS-LINE-2-FLGS",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ADDRESS-LINE-2-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ADDRESS-LINE-2-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ADDRESS-LINE-2-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-CITY-FLGS",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CITY-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CITY-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-CITY-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-STATE-FLGS",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-STATE-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-STATE-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-STATE-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-ZIPCODE-FLGS",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ZIPCODE-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ZIPCODE-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-ZIPCODE-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-COUNTRY-FLGS",
+      "level": 20,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-COUNTRY-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-COUNTRY-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-COUNTRY-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-PHONE-NUM-1-FLGS",
+      "level": 20,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-PHONE-NUM-1-IS-INVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-PHONE-NUM-1A-FLG",
+      "level": 30,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PHONE-NUM-1A-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PHONE-NUM-1A-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PHONE-NUM-1A-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-PHONE-NUM-1B",
+      "level": 30,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PHONE-NUM-1B-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PHONE-NUM-1B-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PHONE-NUM-1B-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-PHONE-NUM-1C",
+      "level": 30,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PHONE-NUM-1C-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PHONE-NUM-1C-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PHONE-NUM-1C-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-PHONE-NUM-2-FLGS",
+      "level": 20,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-PHONE-NUM-2-IS-INVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-PHONE-NUM-2A-FLG",
+      "level": 30,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PHONE-NUM-2A-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PHONE-NUM-2A-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PHONE-NUM-2A-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-PHONE-NUM-2B",
+      "level": 30,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PHONE-NUM-2B-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PHONE-NUM-2B-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PHONE-NUM-2B-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-PHONE-NUM-2C",
+      "level": 30,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PHONE-NUM-2C-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PHONE-NUM-2C-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PHONE-NUM-2C-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EFT-ACCOUNT-ID-FLGS",
+      "level": 10,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EFT-ACCOUNT-ID-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EFT-ACCOUNT-ID-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-EFT-ACCOUNT-ID-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-PRI-CARDHOLDER",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PRI-CARDHOLDER-ISVALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PRI-CARDHOLDER-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FLG-PRI-CARDHOLDER-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CICS-OUTPUT-EDIT-VARS",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-ACCT-ID-X",
+      "level": 10,
+      "picture": "X(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-ACCT-ID-N",
+      "level": 10,
+      "picture": null,
+      "redefines": "CUST-ACCT-ID-X",
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-DATE-X",
+      "level": 10,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-DATE-X-YEAR",
+      "level": 20,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-DATE-MONTH",
+      "level": 20,
+      "picture": "X(2)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-DATE-DAY",
+      "level": 20,
+      "picture": "X(2)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-DATE-X",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-CURRENCY-9-2",
+      "level": 10,
+      "picture": "X(15)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EDIT-CURRENCY-9-2-F",
+      "level": 10,
+      "picture": "+ZZZ,ZZZ,ZZZ.99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-XREF-RID",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CARD-RID-CARDNUM",
+      "level": 10,
+      "picture": "X(16)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CARD-RID-CUST-ID",
+      "level": 10,
+      "picture": "9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CARD-RID-CUST-ID-X",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CARD-RID-ACCT-ID",
+      "level": 10,
+      "picture": "9(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CARD-RID-ACCT-ID-X",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-FILE-READ-FLAGS",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-ACCOUNT-MASTER-READ-FLAG",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FOUND-ACCT-IN-MASTER",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-CUST-MASTER-READ-FLAG",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FOUND-CUST-IN-MASTER",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-FILE-ERROR-MESSAGE",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ERROR-OPNAME",
+      "level": 10,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ERROR-FILE",
+      "level": 10,
+      "picture": "X(9)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ERROR-RESP",
+      "level": 10,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ERROR-RESP2",
+      "level": 10,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ALPHA-VARS-FOR-DATA-EDITING",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CREDIT-LIMIT-X",
+      "level": 15,
+      "picture": "X(15)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CASH-CREDIT-LIMIT-X",
+      "level": 15,
+      "picture": "X(15)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CURR-BAL-X",
+      "level": 15,
+      "picture": "X(15)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CURR-CYC-CREDIT-X",
+      "level": 15,
+      "picture": "X(15)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CURR-CYC-DEBIT-X",
+      "level": 15,
+      "picture": "X(15)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-UPDATE-RECORD",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-UPDATE-ID",
+      "level": 15,
+      "picture": "9(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-UPDATE-ACTIVE-STATUS",
+      "level": 15,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-UPDATE-CURR-BAL",
+      "level": 15,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-UPDATE-CREDIT-LIMIT",
+      "level": 15,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-UPDATE-CASH-CREDIT-LIMIT",
+      "level": 15,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-UPDATE-OPEN-DATE",
+      "level": 15,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-UPDATE-EXPIRAION-DATE",
+      "level": 15,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-UPDATE-REISSUE-DATE",
+      "level": 15,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-UPDATE-CURR-CYC-CREDIT",
+      "level": 15,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-UPDATE-CURR-CYC-DEBIT",
+      "level": 15,
+      "picture": "S9(10)V99",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-UPDATE-GROUP-ID",
+      "level": 15,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-UPDATE-RECORD",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-UPDATE-ID",
+      "level": 15,
+      "picture": "9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-UPDATE-FIRST-NAME",
+      "level": 15,
+      "picture": "X(25)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-UPDATE-MIDDLE-NAME",
+      "level": 15,
+      "picture": "X(25)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-UPDATE-LAST-NAME",
+      "level": 15,
+      "picture": "X(25)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-UPDATE-ADDR-LINE-1",
+      "level": 15,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-UPDATE-ADDR-LINE-2",
+      "level": 15,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-UPDATE-ADDR-LINE-3",
+      "level": 15,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-UPDATE-ADDR-STATE-CD",
+      "level": 15,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-UPDATE-ADDR-COUNTRY-CD",
+      "level": 15,
+      "picture": "X(03)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-UPDATE-ADDR-ZIP",
+      "level": 15,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-UPDATE-PHONE-NUM-1",
+      "level": 15,
+      "picture": "X(15)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-UPDATE-PHONE-NUM-2",
+      "level": 15,
+      "picture": "X(15)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-UPDATE-SSN",
+      "level": 15,
+      "picture": "9(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-UPDATE-GOVT-ISSUED-ID",
+      "level": 15,
+      "picture": "X(20)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-UPDATE-DOB-YYYY-MM-DD",
+      "level": 15,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-UPDATE-EFT-ACCOUNT-ID",
+      "level": 15,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-UPDATE-PRI-CARD-IND",
+      "level": 15,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CUST-UPDATE-FICO-CREDIT-SCORE",
+      "level": 15,
+      "picture": "9(03)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-LONG-MSG",
+      "level": 5,
+      "picture": "X(500)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-INFO-MSG",
+      "level": 5,
+      "picture": "X(40)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-NO-INFO-MESSAGE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FOUND-ACCOUNT-DATA",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "PROMPT-FOR-SEARCH-KEYS",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "PROMPT-FOR-CHANGES",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "PROMPT-FOR-CONFIRMATION",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CONFIRM-UPDATE-SUCCESS",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "INFORM-FAILURE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-RETURN-MSG",
+      "level": 5,
+      "picture": "X(75)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-RETURN-MSG-OFF",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-EXIT-MESSAGE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-PROMPT-FOR-ACCT",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-PROMPT-FOR-LASTNAME",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-NAME-MUST-BE-ALPHA",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "NO-SEARCH-CRITERIA-RECEIVED",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "NO-CHANGES-DETECTED",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "SEARCHED-ACCT-ZEROES",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "SEARCHED-ACCT-NOT-NUMERIC",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DID-NOT-FIND-ACCT-IN-CARDXREF",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DID-NOT-FIND-ACCT-IN-ACCTDAT",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DID-NOT-FIND-CUST-IN-CUSTDAT",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-STATUS-MUST-BE-YES-NO",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CRED-LIMIT-IS-BLANK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CRED-LIMIT-IS-NOT-VALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "THIS-MONTH-NOT-VALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "THIS-YEAR-NOT-VALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DID-NOT-FIND-ACCT-IN-CARDXREF",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DID-NOT-FIND-ACCTCARD-COMBO",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "COULD-NOT-LOCK-ACCT-FOR-UPDATE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "COULD-NOT-LOCK-CUST-FOR-UPDATE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DATA-WAS-CHANGED-BEFORE-UPDATE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LOCKED-BUT-UPDATE-FAILED",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "XREF-READ-ERROR",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "CODING-TO-BE-DONE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-LITERALS",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-THISPGM",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-THISTRANID",
+      "level": 5,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-THISMAPSET",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-THISMAP",
+      "level": 5,
+      "picture": "X(7)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARDUPDATE-PGM",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARDUPDATE-TRANID",
+      "level": 5,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARDUPDATE-MAPSET",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARDUPDATE-MAP",
+      "level": 5,
+      "picture": "X(7)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CCLISTPGM",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CCLISTTRANID",
+      "level": 5,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CCLISTMAPSET",
+      "level": 5,
+      "picture": "X(7)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CCLISTMAP",
+      "level": 5,
+      "picture": "X(7)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-MENUPGM",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-MENUTRANID",
+      "level": 5,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-MENUMAPSET",
+      "level": 5,
+      "picture": "X(7)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-MENUMAP",
+      "level": 5,
+      "picture": "X(7)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARDDTLPGM",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARDDTLTRANID",
+      "level": 5,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARDDTLMAPSET",
+      "level": 5,
+      "picture": "X(7)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARDDTLMAP",
+      "level": 5,
+      "picture": "X(7)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-ACCTFILENAME",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CUSTFILENAME",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARDFILENAME",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARDFILENAME-ACCT-PATH",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-CARDXREFNAME-ACCT-PATH",
+      "level": 5,
+      "picture": "X(8)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-ALL-ALPHANUM-FROM-X",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-ALL-ALPHA-FROM-X",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-UPPER",
+      "level": 15,
+      "picture": "X(26)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-LOWER",
+      "level": 15,
+      "picture": "X(26)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-NUMBERS",
+      "level": 10,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-ALL-ALPHA-FROM",
+      "level": 1,
+      "picture": "X(52)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-ALL-ALPHANUM-FROM",
+      "level": 1,
+      "picture": "X(62)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-ALL-NUM-FROM",
+      "level": 1,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-ALPHA-SPACES-TO",
+      "level": 77,
+      "picture": "X(52)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-ALPHANUM-SPACES-TO",
+      "level": 77,
+      "picture": "X(62)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "LIT-NUM-SPACES-TO",
+      "level": 77,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-THIS-PROGCOMMAREA",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACCT-UPDATE-SCREEN-DATA",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-CHANGE-ACTION",
+      "level": 10,
+      "picture": "X(1)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-DETAILS-NOT-FETCHED",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-SHOW-DETAILS",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-CHANGES-MADE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-CHANGES-NOT-OK",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-CHANGES-OK-NOT-CONFIRMED",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-CHANGES-OKAYED-AND-DONE",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-CHANGES-FAILED",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-CHANGES-OKAYED-LOCK-ERROR",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-CHANGES-OKAYED-BUT-FAILED",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-DETAILS",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-ACCT-DATA",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-ACCT-ID-X",
+      "level": 15,
+      "picture": "X(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-ACCT-ID",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-ACTIVE-STATUS",
+      "level": 15,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CURR-BAL",
+      "level": 15,
+      "picture": "X(12)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CURR-BAL-N",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CREDIT-LIMIT",
+      "level": 15,
+      "picture": "X(12)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CREDIT-LIMIT-N",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CASH-CREDIT-LIMIT",
+      "level": 15,
+      "picture": "X(12)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CASH-CREDIT-LIMIT-N",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-OPEN-DATE",
+      "level": 15,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-OPEN-DATE-PARTS",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-OPEN-YEAR",
+      "level": 20,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-OPEN-MON",
+      "level": 20,
+      "picture": "X(2)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-OPEN-DAY",
+      "level": 20,
+      "picture": "X(2)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-EXPIRAION-DATE",
+      "level": 15,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-EXPIRAION-DATE-PARTS",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-EXP-YEAR",
+      "level": 20,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-EXP-MON",
+      "level": 20,
+      "picture": "X(2)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-EXP-DAY",
+      "level": 20,
+      "picture": "X(2)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-REISSUE-DATE",
+      "level": 15,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-REISSUE-DATE-PARTS",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-REISSUE-YEAR",
+      "level": 20,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-REISSUE-MON",
+      "level": 20,
+      "picture": "X(2)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-REISSUE-DAY",
+      "level": 20,
+      "picture": "X(2)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CURR-CYC-CREDIT",
+      "level": 15,
+      "picture": "X(12)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CURR-CYC-CREDIT-N",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CURR-CYC-DEBIT",
+      "level": 15,
+      "picture": "X(12)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CURR-CYC-DEBIT-N",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-GROUP-ID",
+      "level": 15,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-DATA",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-ID-X",
+      "level": 15,
+      "picture": "X(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-ID",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-FIRST-NAME",
+      "level": 15,
+      "picture": "X(25)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-MIDDLE-NAME",
+      "level": 15,
+      "picture": "X(25)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-LAST-NAME",
+      "level": 15,
+      "picture": "X(25)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-ADDR-LINE-1",
+      "level": 15,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-ADDR-LINE-2",
+      "level": 15,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-ADDR-LINE-3",
+      "level": 15,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-ADDR-STATE-CD",
+      "level": 15,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-ADDR-COUNTRY-CD",
+      "level": 15,
+      "picture": "X(03)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-ADDR-ZIP",
+      "level": 15,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-PHONE-NUM-1",
+      "level": 15,
+      "picture": "X(15)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-PHONE-NUM-1-X",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-PHONE-NUM-1A",
+      "level": 20,
+      "picture": "X(3)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-PHONE-NUM-1B",
+      "level": 20,
+      "picture": "X(3)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-PHONE-NUM-1C",
+      "level": 20,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-PHONE-NUM-2",
+      "level": 15,
+      "picture": "X(15)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-PHONE-NUM-2-X",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-PHONE-NUM-2A",
+      "level": 20,
+      "picture": "X(3)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-PHONE-NUM-2B",
+      "level": 20,
+      "picture": "X(3)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-PHONE-NUM-2C",
+      "level": 20,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-SSN-X",
+      "level": 15,
+      "picture": "X(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-SSN",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-GOVT-ISSUED-ID",
+      "level": 15,
+      "picture": "X(20)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-DOB-YYYY-MM-DD",
+      "level": 15,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-DOB-PARTS",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-DOB-YEAR",
+      "level": 20,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-DOB-MON",
+      "level": 20,
+      "picture": "X(2)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-DOB-DAY",
+      "level": 20,
+      "picture": "X(2)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-EFT-ACCOUNT-ID",
+      "level": 15,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-PRI-HOLDER-IND",
+      "level": 15,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-FICO-SCORE-X",
+      "level": 15,
+      "picture": "X(03)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-OLD-CUST-FICO-SCORE",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-DETAILS",
+      "level": 5,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-ACCT-DATA",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-ACCT-ID-X",
+      "level": 15,
+      "picture": "X(11)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-ACCT-ID",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-ACTIVE-STATUS",
+      "level": 15,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CURR-BAL",
+      "level": 15,
+      "picture": "X(12)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CURR-BAL-N",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CREDIT-LIMIT",
+      "level": 15,
+      "picture": "X(12)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CREDIT-LIMIT-N",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CASH-CREDIT-LIMIT",
+      "level": 15,
+      "picture": "X(12)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CASH-CREDIT-LIMIT-N",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-OPEN-DATE",
+      "level": 15,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-OPEN-DATE-PARTS",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-OPEN-YEAR",
+      "level": 20,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-OPEN-MON",
+      "level": 20,
+      "picture": "X(2)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-OPEN-DAY",
+      "level": 20,
+      "picture": "X(2)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-EXPIRAION-DATE",
+      "level": 15,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-EXPIRAION-DATE-PARTS",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-EXP-YEAR",
+      "level": 20,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-EXP-MON",
+      "level": 20,
+      "picture": "X(2)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-EXP-DAY",
+      "level": 20,
+      "picture": "X(2)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-REISSUE-DATE",
+      "level": 15,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-REISSUE-DATE-PARTS",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-REISSUE-YEAR",
+      "level": 20,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-REISSUE-MON",
+      "level": 20,
+      "picture": "X(2)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-REISSUE-DAY",
+      "level": 20,
+      "picture": "X(2)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CURR-CYC-CREDIT",
+      "level": 15,
+      "picture": "X(12)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CURR-CYC-CREDIT-N",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CURR-CYC-DEBIT",
+      "level": 15,
+      "picture": "X(12)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CURR-CYC-DEBIT-N",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-GROUP-ID",
+      "level": 15,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-DATA",
+      "level": 10,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-ID-X",
+      "level": 15,
+      "picture": "X(09)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-ID",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-FIRST-NAME",
+      "level": 15,
+      "picture": "X(25)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-MIDDLE-NAME",
+      "level": 15,
+      "picture": "X(25)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-LAST-NAME",
+      "level": 15,
+      "picture": "X(25)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-ADDR-LINE-1",
+      "level": 15,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-ADDR-LINE-2",
+      "level": 15,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-ADDR-LINE-3",
+      "level": 15,
+      "picture": "X(50)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-ADDR-STATE-CD",
+      "level": 15,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-ADDR-COUNTRY-CD",
+      "level": 15,
+      "picture": "X(03)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-ADDR-ZIP",
+      "level": 15,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-PHONE-NUM-1",
+      "level": 15,
+      "picture": "X(15)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-PHONE-NUM-1-X",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-PHONE-NUM-1A",
+      "level": 20,
+      "picture": "X(3)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-PHONE-NUM-1B",
+      "level": 20,
+      "picture": "X(3)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-PHONE-NUM-1C",
+      "level": 20,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-PHONE-NUM-2",
+      "level": 15,
+      "picture": "X(15)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-PHONE-NUM-2-X",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-PHONE-NUM-2A",
+      "level": 20,
+      "picture": "X(3)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-PHONE-NUM-2B",
+      "level": 20,
+      "picture": "X(3)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-PHONE-NUM-2C",
+      "level": 20,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-SSN-X",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-SSN-1",
+      "level": 20,
+      "picture": "X(03)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-SSN-2",
+      "level": 20,
+      "picture": "X(02)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-SSN-3",
+      "level": 20,
+      "picture": "X(04)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-SSN",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-GOVT-ISSUED-ID",
+      "level": 15,
+      "picture": "X(20)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-DOB-YYYY-MM-DD",
+      "level": 15,
+      "picture": "X(08)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-DOB-PARTS",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-DOB-YEAR",
+      "level": 20,
+      "picture": "X(4)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-DOB-MON",
+      "level": 20,
+      "picture": "X(2)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-DOB-DAY",
+      "level": 20,
+      "picture": "X(2)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-EFT-ACCOUNT-ID",
+      "level": 15,
+      "picture": "X(10)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-PRI-HOLDER-IND",
+      "level": 15,
+      "picture": "X(01)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-FICO-SCORE-X",
+      "level": 15,
+      "picture": "X(03)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "ACUP-NEW-CUST-FICO-SCORE",
+      "level": 15,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "FICO-RANGE-IS-VALID",
+      "level": 88,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "WS-COMMAREA",
+      "level": 1,
+      "picture": "X(2000)",
+      "redefines": null,
+      "reachable": true
+    },
+    {
+      "name": "DFHCOMMAREA",
+      "level": 1,
+      "picture": null,
+      "redefines": null,
+      "reachable": true
+    }
+  ],
+  "redefines_clauses": [
+    {
+      "name": "CUST-ACCT-ID-N",
+      "level": 10,
+      "picture": null,
+      "redefines": "CUST-ACCT-ID-X",
+      "reachable": true
+    }
+  ],
+  "copybooks_used": [
+    "COACTUP",
+    "COCOM01Y",
+    "COTTL01Y",
+    "CSDAT01Y",
+    "CSLKPCDY",
+    "CSMSG01Y",
+    "CSMSG02Y",
+    "CSSETATY",
+    "CSUSR01Y",
+    "CSUTLDPY",
+    "CVACT01Y",
+    "CVACT03Y",
+    "CVCRD01Y",
+    "CVCUS01Y",
+    "DFHAID",
+    "DFHBMSCA",
+    "of",
+    "replacing"
+  ],
+  "calls_to": [],
+  "cics_commands": [
+    "ABEND",
+    "HANDLE",
+    "READ",
+    "RECEIVE",
+    "RETURN",
+    "REWRITE",
+    "SEND",
+    "SYNCPOINT",
+    "XCTL"
+  ],
+  "dead_code_paragraphs": [],
+  "dead_code_items": [],
+  "irreducible_gotos": [],
+  "smojol_cfg_path": null,
+  "smojol_node_count": 0
+}
