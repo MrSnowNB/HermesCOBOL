@@ -1,0 +1,616 @@
+{
+  "program": "CBACT04C",
+  "schema_version": "1.4",
+  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBACT04C.cbl",
+  "preprocess_available": true,
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [
+    {
+      "name": "0000-TCATBALF-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "0100-XREFFILE-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "0100-XREFFILE-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "0200-DISCGRP-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "0200-DISCGRP-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "0300-ACCTFILE-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "0300-ACCTFILE-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "0400-TRANFILE-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "0400-TRANFILE-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "1000-TCATBALF-GET-NEXT",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1000-TCATBALF-GET-NEXT",
+      "terminator": "implicit",
+      "falls_through_to": "1050-UPDATE-ACCOUNT",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1050-UPDATE-ACCOUNT",
+      "terminator": "implicit",
+      "falls_through_to": "1100-GET-ACCT-DATA",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1100-GET-ACCT-DATA",
+      "terminator": "implicit",
+      "falls_through_to": "1110-GET-XREF-DATA",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1110-GET-XREF-DATA",
+      "terminator": "implicit",
+      "falls_through_to": "1200-GET-INTEREST-RATE",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1200-A-GET-DEFAULT-INT-RATE",
+      "terminator": "implicit",
+      "falls_through_to": "1300-COMPUTE-INTEREST",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": false,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1200-GET-INTEREST-RATE",
+      "terminator": "implicit",
+      "falls_through_to": "1200-A-GET-DEFAULT-INT-RATE",
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1300-B-WRITE-TX",
+      "terminator": "implicit",
+      "falls_through_to": "END-STRING",
+      "last_verb": "STRING",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "STRING PARM-DATE",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1300-COMPUTE-INTEREST",
+      "terminator": "implicit",
+      "falls_through_to": "1300-B-WRITE-TX",
+      "last_verb": "EXIT",
+      "performs": [
+        "1300-B-WRITE-TX"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1400-COMPUTE-FEES",
+      "terminator": "implicit",
+      "falls_through_to": "9000-TCATBALF-CLOSE",
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9000-TCATBALF-CLOSE",
+      "terminator": "implicit",
+      "falls_through_to": "9100-XREFFILE-CLOSE",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9100-XREFFILE-CLOSE",
+      "terminator": "implicit",
+      "falls_through_to": "9200-DISCGRP-CLOSE",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9200-DISCGRP-CLOSE",
+      "terminator": "implicit",
+      "falls_through_to": "9300-ACCTFILE-CLOSE",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9300-ACCTFILE-CLOSE",
+      "terminator": "implicit",
+      "falls_through_to": "9400-TRANFILE-CLOSE",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9400-TRANFILE-CLOSE",
+      "terminator": "implicit",
+      "falls_through_to": "Z-GET-DB2-FORMAT-TIMESTAMP",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9910-DISPLAY-IO-STATUS",
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "terminator": "implicit",
+      "falls_through_to": "9910-DISPLAY-IO-STATUS",
+      "last_verb": "CALL",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "CALL 'CEE3ABD' USING ABCODE TIMING.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "Z-GET-DB2-FORMAT-TIMESTAMP",
+      "terminator": "implicit",
+      "falls_through_to": "9999-ABEND-PROGRAM",
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": false,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    }
+  ],
+  "data_files": [
+    {
+      "name": "TCATBAL-FILE",
+      "ddname": "TCATBALF",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "XREF-FILE",
+      "ddname": "XREFFILE",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    },
+    {
+      "name": "ACCOUNT-FILE",
+      "ddname": "ACCTFILE",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    },
+    {
+      "name": "DISCGRP-FILE",
+      "ddname": "DISCGRP",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    },
+    {
+      "name": "TRANSACT-FILE",
+      "ddname": "TRANSACT",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    }
+  ],
+  "external_calls": [
+    "CEE3ABD"
+  ],
+  "copybooks_referenced": [
+    "CVACT01Y",
+    "CVACT03Y",
+    "CVTRA01Y",
+    "CVTRA02Y",
+    "CVTRA05Y"
+  ],
+  "cfg_paragraphs": [
+    {
+      "name": "END-PERFORM",
+      "reachable": true,
+      "performs": [
+        "0000-TCATBALF-OPEN",
+        "0100-XREFFILE-OPEN",
+        "0200-DISCGRP-OPEN",
+        "0300-ACCTFILE-OPEN",
+        "0400-TRANFILE-OPEN",
+        "1000-TCATBALF-GET-NEXT",
+        "1050-UPDATE-ACCOUNT",
+        "1100-GET-ACCT-DATA",
+        "1110-GET-XREF-DATA",
+        "1200-GET-INTEREST-RATE",
+        "1300-COMPUTE-INTEREST",
+        "1400-COMPUTE-FEES",
+        "9000-TCATBALF-CLOSE",
+        "9100-XREFFILE-CLOSE",
+        "9200-DISCGRP-CLOSE",
+        "9300-ACCTFILE-CLOSE",
+        "9400-TRANFILE-CLOSE"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0000-TCATBALF-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0100-XREFFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0200-DISCGRP-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0300-ACCTFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0400-TRANFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1000-TCATBALF-GET-NEXT",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1050-UPDATE-ACCOUNT",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1100-GET-ACCT-DATA",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1110-GET-XREF-DATA",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1200-GET-INTEREST-RATE",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "END-READ",
+      "reachable": false,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM",
+        "1200-A-GET-DEFAULT-INT-RATE"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1200-A-GET-DEFAULT-INT-RATE",
+      "reachable": false,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1300-COMPUTE-INTEREST",
+      "reachable": true,
+      "performs": [
+        "1300-B-WRITE-TX"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1300-B-WRITE-TX",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "END-STRING",
+      "reachable": false,
+      "performs": [
+        "Z-GET-DB2-FORMAT-TIMESTAMP",
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1400-COMPUTE-FEES",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9000-TCATBALF-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9100-XREFFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9200-DISCGRP-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9300-ACCTFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9400-TRANFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "Z-GET-DB2-FORMAT-TIMESTAMP",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9910-DISPLAY-IO-STATUS",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    }
+  ],
+  "cics_commands": [],
+  "cics_branches": 0,
+  "cfg_edges_resolved": 53
+}

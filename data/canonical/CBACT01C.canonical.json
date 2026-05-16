@@ -1,0 +1,464 @@
+{
+  "program": "CBACT01C",
+  "schema_version": "1.4",
+  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBACT01C.cbl",
+  "preprocess_available": true,
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [
+    {
+      "name": "0000-ACCTFILE-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "2000-OUTFILE-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1000-ACCTFILE-GET-NEXT",
+      "terminator": "implicit",
+      "falls_through_to": "1100-DISPLAY-ACCT-RECORD",
+      "last_verb": "EXIT",
+      "performs": [
+        "1100-DISPLAY-ACCT-RECORD",
+        "1300-POPUL-ACCT-RECORD",
+        "1350-WRITE-ACCT-RECORD",
+        "1400-POPUL-ARRAY-RECORD",
+        "1450-WRITE-ARRY-RECORD",
+        "1500-POPUL-VBRC-RECORD",
+        "1550-WRITE-VB1-RECORD",
+        "1575-WRITE-VB2-RECORD",
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1100-DISPLAY-ACCT-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "1300-POPUL-ACCT-RECORD",
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1300-POPUL-ACCT-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "1350-WRITE-ACCT-RECORD",
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1350-WRITE-ACCT-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "1400-POPUL-ARRAY-RECORD",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1400-POPUL-ARRAY-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "1450-WRITE-ARRY-RECORD",
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1450-WRITE-ARRY-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "1500-POPUL-VBRC-RECORD",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1500-POPUL-VBRC-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "1550-WRITE-VB1-RECORD",
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1550-WRITE-VB1-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "1575-WRITE-VB2-RECORD",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1575-WRITE-VB2-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "0000-ACCTFILE-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "2000-OUTFILE-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "3000-ARRFILE-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "3000-ARRFILE-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "4000-VBRFILE-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "4000-VBRFILE-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "9000-ACCTFILE-CLOSE",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9000-ACCTFILE-CLOSE",
+      "terminator": "implicit",
+      "falls_through_to": "9999-ABEND-PROGRAM",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9910-DISPLAY-IO-STATUS",
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "terminator": "implicit",
+      "falls_through_to": "9910-DISPLAY-IO-STATUS",
+      "last_verb": "CALL",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "CALL 'CEE3ABD' USING ABCODE TIMING.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    }
+  ],
+  "data_files": [
+    {
+      "name": "ACCTFILE-FILE",
+      "ddname": "ACCTFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "OUT-FILE",
+      "ddname": "OUTFILE",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "ARRY-FILE",
+      "ddname": "ARRYFILE",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "VBRC-FILE",
+      "ddname": "VBRCFILE",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    }
+  ],
+  "external_calls": [
+    "CEE3ABD",
+    "COBDATFT"
+  ],
+  "copybooks_referenced": [
+    "CODATECN",
+    "CVACT01Y"
+  ],
+  "cfg_paragraphs": [
+    {
+      "name": "END-PERFORM",
+      "reachable": true,
+      "performs": [
+        "0000-ACCTFILE-OPEN",
+        "2000-OUTFILE-OPEN",
+        "3000-ARRFILE-OPEN",
+        "4000-VBRFILE-OPEN",
+        "1000-ACCTFILE-GET-NEXT",
+        "9000-ACCTFILE-CLOSE"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1000-ACCTFILE-GET-NEXT",
+      "reachable": true,
+      "performs": [
+        "1100-DISPLAY-ACCT-RECORD",
+        "1300-POPUL-ACCT-RECORD",
+        "1350-WRITE-ACCT-RECORD",
+        "1400-POPUL-ARRAY-RECORD",
+        "1450-WRITE-ARRY-RECORD",
+        "1500-POPUL-VBRC-RECORD",
+        "1550-WRITE-VB1-RECORD",
+        "1575-WRITE-VB2-RECORD",
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1100-DISPLAY-ACCT-RECORD",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1300-POPUL-ACCT-RECORD",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "WS-REISSUE-DATE",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "END-IF",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1350-WRITE-ACCT-RECORD",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1400-POPUL-ARRAY-RECORD",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1450-WRITE-ARRY-RECORD",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1500-POPUL-VBRC-RECORD",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "VB2-ACCT-ID",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1550-WRITE-VB1-RECORD",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1575-WRITE-VB2-RECORD",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0000-ACCTFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2000-OUTFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "3000-ARRFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "4000-VBRFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9000-ACCTFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9910-DISPLAY-IO-STATUS",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    }
+  ],
+  "cics_commands": [],
+  "cics_branches": 0,
+  "cfg_edges_resolved": 34
+}

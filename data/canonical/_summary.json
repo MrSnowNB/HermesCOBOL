@@ -1,0 +1,188 @@
+[
+  {
+    "program": "CBACT01C",
+    "paragraphs": 16,
+    "preprocess_available": true,
+    "cics_present": false
+  },
+  {
+    "program": "CBACT02C",
+    "paragraphs": 5,
+    "preprocess_available": true,
+    "cics_present": false
+  },
+  {
+    "program": "CBACT03C",
+    "paragraphs": 5,
+    "preprocess_available": true,
+    "cics_present": false
+  },
+  {
+    "program": "CBACT04C",
+    "paragraphs": 22,
+    "preprocess_available": true,
+    "cics_present": false
+  },
+  {
+    "program": "CBCUS01C",
+    "paragraphs": 5,
+    "preprocess_available": true,
+    "cics_present": false
+  },
+  {
+    "program": "CBEXPORT",
+    "paragraphs": 21,
+    "preprocess_available": true,
+    "cics_present": false
+  },
+  {
+    "program": "CBIMPORT",
+    "paragraphs": 16,
+    "preprocess_available": true,
+    "cics_present": false
+  },
+  {
+    "program": "CBSTM03A",
+    "paragraphs": 25,
+    "preprocess_available": true,
+    "cics_present": false
+  },
+  {
+    "program": "CBSTM03B",
+    "paragraphs": 14,
+    "preprocess_available": true,
+    "cics_present": false
+  },
+  {
+    "program": "CBTRN01C",
+    "paragraphs": 18,
+    "preprocess_available": true,
+    "cics_present": false
+  },
+  {
+    "program": "CBTRN02C",
+    "paragraphs": 26,
+    "preprocess_available": true,
+    "cics_present": false
+  },
+  {
+    "program": "CBTRN03C",
+    "paragraphs": 26,
+    "preprocess_available": true,
+    "cics_present": false
+  },
+  {
+    "program": "COACTUPC",
+    "paragraphs": 85,
+    "preprocess_available": false,
+    "cics_present": true
+  },
+  {
+    "program": "COACTVWC",
+    "paragraphs": 34,
+    "preprocess_available": false,
+    "cics_present": true
+  },
+  {
+    "program": "COADM01C",
+    "paragraphs": 8,
+    "preprocess_available": false,
+    "cics_present": true
+  },
+  {
+    "program": "COBIL00C",
+    "paragraphs": 16,
+    "preprocess_available": false,
+    "cics_present": true
+  },
+  {
+    "program": "COBSWAIT",
+    "paragraphs": 0,
+    "preprocess_available": true,
+    "cics_present": false
+  },
+  {
+    "program": "COCRDLIC",
+    "paragraphs": 39,
+    "preprocess_available": false,
+    "cics_present": true
+  },
+  {
+    "program": "COCRDSLC",
+    "paragraphs": 9,
+    "preprocess_available": false,
+    "cics_present": true
+  },
+  {
+    "program": "COCRDUPC",
+    "paragraphs": 13,
+    "preprocess_available": false,
+    "cics_present": true
+  },
+  {
+    "program": "COMEN01C",
+    "paragraphs": 7,
+    "preprocess_available": true,
+    "cics_present": true
+  },
+  {
+    "program": "CORPT00C",
+    "paragraphs": 10,
+    "preprocess_available": false,
+    "cics_present": true
+  },
+  {
+    "program": "COSGN00C",
+    "paragraphs": 6,
+    "preprocess_available": false,
+    "cics_present": true
+  },
+  {
+    "program": "COTRN00C",
+    "paragraphs": 16,
+    "preprocess_available": false,
+    "cics_present": true
+  },
+  {
+    "program": "COTRN01C",
+    "paragraphs": 9,
+    "preprocess_available": false,
+    "cics_present": true
+  },
+  {
+    "program": "COTRN02C",
+    "paragraphs": 18,
+    "preprocess_available": false,
+    "cics_present": true
+  },
+  {
+    "program": "COUSR00C",
+    "paragraphs": 16,
+    "preprocess_available": false,
+    "cics_present": true
+  },
+  {
+    "program": "COUSR01C",
+    "paragraphs": 9,
+    "preprocess_available": false,
+    "cics_present": true
+  },
+  {
+    "program": "COUSR02C",
+    "paragraphs": 11,
+    "preprocess_available": false,
+    "cics_present": true
+  },
+  {
+    "program": "COUSR03C",
+    "paragraphs": 11,
+    "preprocess_available": false,
+    "cics_present": true
+  },
+  {
+    "program": "CSUTLDTC",
+    "paragraphs": 2,
+    "preprocess_available": true,
+    "cics_present": false
+  }
+]

@@ -1,0 +1,62 @@
+{
+  "program": "CSUTLDTC",
+  "schema_version": "1.4",
+  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CSUTLDTC.cbl",
+  "preprocess_available": true,
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [
+    {
+      "name": "A000-MAIN",
+      "terminator": "implicit",
+      "falls_through_to": "A000-MAIN-EXIT",
+      "last_verb": "MOVE",
+      "performs": [
+        "A000-MAIN"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "MOVE 'Date is invalid' TO WS-RESULT",
+      "cfg_branch_context": "EVALUATE TRUE",
+      "is_cics_branch": false
+    },
+    {
+      "name": "A000-MAIN-EXIT",
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": false,
+      "last_raw": "EXIT",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    }
+  ],
+  "data_files": [],
+  "external_calls": [
+    "CEEDAYS"
+  ],
+  "copybooks_referenced": [],
+  "cfg_paragraphs": [
+    {
+      "name": "A000-MAIN",
+      "reachable": true,
+      "performs": [
+        "A000-MAIN"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "A000-MAIN-EXIT",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    }
+  ],
+  "cics_commands": [],
+  "cics_branches": 0,
+  "cfg_edges_resolved": 1
+}

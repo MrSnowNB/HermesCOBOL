@@ -1,0 +1,466 @@
+{
+  "program": "CBIMPORT",
+  "schema_version": "1.4",
+  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBIMPORT.cbl",
+  "preprocess_available": true,
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [
+    {
+      "name": "0000-MAIN-PROCESSING",
+      "terminator": "goback",
+      "falls_through_to": null,
+      "last_verb": "GOBACK",
+      "performs": [
+        "1000-INITIALIZE",
+        "2000-PROCESS-EXPORT-FILE",
+        "3000-VALIDATE-IMPORT",
+        "4000-FINALIZE"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "GOBACK.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1000-INITIALIZE",
+      "terminator": "implicit",
+      "falls_through_to": "1100-OPEN-FILES",
+      "last_verb": "DISPLAY",
+      "performs": [
+        "1100-OPEN-FILES"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "DISPLAY 'CBIMPORT: Import Time: ' WS-IMPORT-TIME.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1100-OPEN-FILES",
+      "terminator": "implicit",
+      "falls_through_to": "2000-PROCESS-EXPORT-FILE",
+      "last_verb": "PERFORM",
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "cfg_branch_context": "IF NOT WS-ERROR-OK",
+      "is_cics_branch": false
+    },
+    {
+      "name": "2000-PROCESS-EXPORT-FILE",
+      "terminator": "implicit",
+      "falls_through_to": "2100-READ-EXPORT-RECORD",
+      "last_verb": "PERFORM",
+      "performs": [
+        "2100-READ-EXPORT-RECORD",
+        "2200-PROCESS-RECORD-BY-TYPE"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "PERFORM 2100-READ-EXPORT-RECORD",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "2100-READ-EXPORT-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "2200-PROCESS-RECORD-BY-TYPE",
+      "last_verb": "PERFORM",
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "cfg_branch_context": "IF NOT WS-EXPORT-OK AND NOT WS-EXPORT-EOF",
+      "is_cics_branch": false
+    },
+    {
+      "name": "2200-PROCESS-RECORD-BY-TYPE",
+      "terminator": "implicit",
+      "falls_through_to": "2300-PROCESS-CUSTOMER-RECORD",
+      "last_verb": "PERFORM",
+      "performs": [
+        "2300-PROCESS-CUSTOMER-RECORD",
+        "2400-PROCESS-ACCOUNT-RECORD",
+        "2500-PROCESS-XREF-RECORD",
+        "2600-PROCESS-TRAN-RECORD",
+        "2650-PROCESS-CARD-RECORD",
+        "2700-PROCESS-UNKNOWN-RECORD"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "PERFORM 2700-PROCESS-UNKNOWN-RECORD",
+      "cfg_branch_context": "EVALUATE EXPORT-REC-TYPE",
+      "is_cics_branch": false
+    },
+    {
+      "name": "2300-PROCESS-CUSTOMER-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "2400-PROCESS-ACCOUNT-RECORD",
+      "last_verb": "ADD",
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "ADD 1 TO WS-CUSTOMER-RECORDS-IMPORTED.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "2400-PROCESS-ACCOUNT-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "2500-PROCESS-XREF-RECORD",
+      "last_verb": "ADD",
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "ADD 1 TO WS-ACCOUNT-RECORDS-IMPORTED.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "2500-PROCESS-XREF-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "2600-PROCESS-TRAN-RECORD",
+      "last_verb": "ADD",
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "ADD 1 TO WS-XREF-RECORDS-IMPORTED.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "2600-PROCESS-TRAN-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "2650-PROCESS-CARD-RECORD",
+      "last_verb": "ADD",
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "ADD 1 TO WS-TRAN-RECORDS-IMPORTED.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "2650-PROCESS-CARD-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "2700-PROCESS-UNKNOWN-RECORD",
+      "last_verb": "ADD",
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "ADD 1 TO WS-CARD-RECORDS-IMPORTED.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "2700-PROCESS-UNKNOWN-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "2750-WRITE-ERROR",
+      "last_verb": "PERFORM",
+      "performs": [
+        "2750-WRITE-ERROR"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "PERFORM 2750-WRITE-ERROR.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "2750-WRITE-ERROR",
+      "terminator": "implicit",
+      "falls_through_to": "3000-VALIDATE-IMPORT",
+      "last_verb": "ADD",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "ADD 1 TO WS-ERROR-RECORDS-WRITTEN.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "3000-VALIDATE-IMPORT",
+      "terminator": "implicit",
+      "falls_through_to": "4000-FINALIZE",
+      "last_verb": "DISPLAY",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "DISPLAY 'CBIMPORT: No validation errors detected'.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "4000-FINALIZE",
+      "terminator": "implicit",
+      "falls_through_to": "9999-ABEND-PROGRAM",
+      "last_verb": "DISPLAY",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "DISPLAY 'CBIMPORT: Unknown Record Types: '",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "CALL",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "CALL 'CEE3ABD'.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    }
+  ],
+  "data_files": [
+    {
+      "name": "EXPORT-INPUT",
+      "ddname": "EXPFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "CUSTOMER-OUTPUT",
+      "ddname": "CUSTOUT",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "ACCOUNT-OUTPUT",
+      "ddname": "ACCTOUT",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "XREF-OUTPUT",
+      "ddname": "XREFOUT",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "TRANSACTION-OUTPUT",
+      "ddname": "TRNXOUT",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "CARD-OUTPUT",
+      "ddname": "CARDOUT",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "ERROR-OUTPUT",
+      "ddname": "ERROUT",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    }
+  ],
+  "external_calls": [],
+  "copybooks_referenced": [
+    "CVACT01Y",
+    "CVACT02Y",
+    "CVACT03Y",
+    "CVCUS01Y",
+    "CVEXPORT",
+    "CVTRA05Y"
+  ],
+  "cfg_paragraphs": [
+    {
+      "name": "0000-MAIN-PROCESSING",
+      "reachable": true,
+      "performs": [
+        "1000-INITIALIZE",
+        "2000-PROCESS-EXPORT-FILE",
+        "3000-VALIDATE-IMPORT",
+        "4000-FINALIZE"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1000-INITIALIZE",
+      "reachable": true,
+      "performs": [
+        "1100-OPEN-FILES"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1100-OPEN-FILES",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "END-IF",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2000-PROCESS-EXPORT-FILE",
+      "reachable": true,
+      "performs": [
+        "2100-READ-EXPORT-RECORD",
+        "2200-PROCESS-RECORD-BY-TYPE"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "END-PERFORM",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2100-READ-EXPORT-RECORD",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2200-PROCESS-RECORD-BY-TYPE",
+      "reachable": true,
+      "performs": [
+        "2300-PROCESS-CUSTOMER-RECORD",
+        "2400-PROCESS-ACCOUNT-RECORD",
+        "2500-PROCESS-XREF-RECORD",
+        "2600-PROCESS-TRAN-RECORD",
+        "2650-PROCESS-CARD-RECORD",
+        "2700-PROCESS-UNKNOWN-RECORD"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "END-EVALUATE",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2300-PROCESS-CUSTOMER-RECORD",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2400-PROCESS-ACCOUNT-RECORD",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2500-PROCESS-XREF-RECORD",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2600-PROCESS-TRAN-RECORD",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2650-PROCESS-CARD-RECORD",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2700-PROCESS-UNKNOWN-RECORD",
+      "reachable": true,
+      "performs": [
+        "2750-WRITE-ERROR"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2750-WRITE-ERROR",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "3000-VALIDATE-IMPORT",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "4000-FINALIZE",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "WS-UNKNOWN-RECORD-TYPE-COUNT",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    }
+  ],
+  "cics_commands": [],
+  "cics_branches": 0,
+  "cfg_edges_resolved": 28
+}

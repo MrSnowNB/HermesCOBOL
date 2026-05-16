@@ -1,0 +1,130 @@
+{
+  "program": "COCRDSLC",
+  "schema_version": "1.4",
+  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COCRDSLC.cbl",
+  "preprocess_available": false,
+  "cics_present": true,
+  "sql_present": false,
+  "paragraphs": [
+    {
+      "name": "1000-SEND-MAP",
+      "terminator": "implicit",
+      "falls_through_to": "1000-SEND-MAP-EXIT",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS SEND MAP('CCRDSLA')",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "1000-SEND-MAP-EXIT",
+      "terminator": "implicit",
+      "falls_through_to": "2000-PROCESS-INPUTS",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "2000-PROCESS-INPUTS",
+      "terminator": "implicit",
+      "falls_through_to": "2000-PROCESS-INPUTS-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-MSG TO CCRDSLAO-ERRMSGO",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "2000-PROCESS-INPUTS-EXIT",
+      "terminator": "implicit",
+      "falls_through_to": "9000-READ-DATA",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "9000-READ-DATA",
+      "terminator": "implicit",
+      "falls_through_to": "9000-READ-DATA-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE CDEMO-CARD-NUM TO CC-CARD-NUM-N",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "9000-READ-DATA-EXIT",
+      "terminator": "implicit",
+      "falls_through_to": "9999-RETURN",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "9999-RETURN",
+      "terminator": "cics-xctl",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS XCTL",
+      "cfg_branch_context": "EXEC CICS XCTL XCTL",
+      "is_cics_branch": true,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "COMMON-RETURN",
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "cfg_branch_context": "EXEC CICS RETURN RETURN",
+      "is_cics_branch": true,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "MAIN-PARA",
+      "terminator": "implicit",
+      "falls_through_to": "COMMON-RETURN",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM COMMON-RETURN",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    }
+  ],
+  "data_files": [],
+  "external_calls": [],
+  "copybooks_referenced": [
+    "COCOM01Y",
+    "COCRDSLI",
+    "COTTL01Y",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CSUSR01Y",
+    "DFHAID",
+    "DFHBMSCA"
+  ],
+  "cfg_paragraphs": [],
+  "cics_commands": [
+    "RECEIVE",
+    "RETURN",
+    "SEND",
+    "XCTL"
+  ],
+  "cics_branches": 3,
+  "cfg_edges_resolved": 17
+}

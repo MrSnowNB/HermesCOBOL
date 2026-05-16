@@ -1,0 +1,18 @@
+{
+  "program": "COBSWAIT",
+  "schema_version": "1.4",
+  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COBSWAIT.cbl",
+  "preprocess_available": true,
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [],
+  "data_files": [],
+  "external_calls": [
+    "MVSWAIT"
+  ],
+  "copybooks_referenced": [],
+  "cfg_paragraphs": [],
+  "cics_commands": [],
+  "cics_branches": 0,
+  "cfg_edges_resolved": 0
+}

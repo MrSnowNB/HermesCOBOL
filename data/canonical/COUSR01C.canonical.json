@@ -1,0 +1,131 @@
+{
+  "program": "COUSR01C",
+  "schema_version": "1.4",
+  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COUSR01C.cbl",
+  "preprocess_available": false,
+  "cics_present": true,
+  "sql_present": false,
+  "paragraphs": [
+    {
+      "name": "CLEAR-CURRENT-SCREEN",
+      "terminator": "implicit",
+      "falls_through_to": "INITIALIZE-ALL-FIELDS",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-USRADD-SCREEN.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "INITIALIZE-ALL-FIELDS",
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "MOVE",
+      "last_raw": "MOVE SPACES TO USERIDI OF COUSR1AI",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "MAIN-PARA",
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "cfg_branch_context": "EXEC CICS RETURN RETURN",
+      "is_cics_branch": true,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "POPULATE-HEADER-INFO",
+      "terminator": "implicit",
+      "falls_through_to": "WRITE-USER-SEC-FILE",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-CURTIME-HH-MM-SS TO CURTIMEO OF COUSR1AO.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "PROCESS-ENTER-KEY",
+      "terminator": "implicit",
+      "falls_through_to": "RETURN-TO-PREV-SCREEN",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM WRITE-USER-SEC-FILE",
+      "cfg_branch_context": "IF NOT ERR-FLG-ON",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "RECEIVE-USRADD-SCREEN",
+      "terminator": "implicit",
+      "falls_through_to": "POPULATE-HEADER-INFO",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RECEIVE",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "RETURN-TO-PREV-SCREEN",
+      "terminator": "cics-xctl",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "SEND-USRADD-SCREEN",
+      "terminator": "implicit",
+      "falls_through_to": "RECEIVE-USRADD-SCREEN",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS SEND",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "WRITE-USER-SEC-FILE",
+      "terminator": "implicit",
+      "falls_through_to": "CLEAR-CURRENT-SCREEN",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-USRADD-SCREEN",
+      "cfg_branch_context": "EVALUATE WS-RESP-CD",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    }
+  ],
+  "data_files": [],
+  "external_calls": [],
+  "copybooks_referenced": [
+    "COCOM01Y",
+    "COTTL01Y",
+    "COUSR01",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CSUSR01Y",
+    "DFHAID",
+    "DFHBMSCA"
+  ],
+  "cfg_paragraphs": [],
+  "cics_commands": [
+    "RECEIVE",
+    "RETURN",
+    "SEND",
+    "WRITE",
+    "XCTL"
+  ],
+  "cics_branches": 1,
+  "cfg_edges_resolved": 20
+}

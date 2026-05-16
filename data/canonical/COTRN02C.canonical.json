@@ -1,0 +1,238 @@
+{
+  "program": "COTRN02C",
+  "schema_version": "1.4",
+  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COTRN02C.cbl",
+  "preprocess_available": false,
+  "cics_present": true,
+  "sql_present": false,
+  "paragraphs": [
+    {
+      "name": "ADD-TRANSACTION",
+      "terminator": "implicit",
+      "falls_through_to": "COPY-LAST-TRAN-DATA",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM WRITE-TRANSACT-FILE.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "CLEAR-CURRENT-SCREEN",
+      "terminator": "implicit",
+      "falls_through_to": "INITIALIZE-ALL-FIELDS",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNADD-SCREEN.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "COPY-LAST-TRAN-DATA",
+      "terminator": "implicit",
+      "falls_through_to": "RETURN-TO-PREV-SCREEN",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM PROCESS-ENTER-KEY.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "ENDBR-TRANSACT-FILE",
+      "terminator": "implicit",
+      "falls_through_to": "WRITE-TRANSACT-FILE",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS ENDBR",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "INITIALIZE-ALL-FIELDS",
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "MOVE",
+      "last_raw": "MOVE SPACES TO ACTIDINI OF COTRN2AI",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "MAIN-PARA",
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "cfg_branch_context": "EXEC CICS RETURN RETURN",
+      "is_cics_branch": true,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "POPULATE-HEADER-INFO",
+      "terminator": "implicit",
+      "falls_through_to": "READ-CXACAIX-FILE",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-CURTIME-HH-MM-SS TO CURTIMEO OF COTRN2AO.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "PROCESS-ENTER-KEY",
+      "terminator": "implicit",
+      "falls_through_to": "VALIDATE-INPUT-KEY-FIELDS",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNADD-SCREEN",
+      "cfg_branch_context": "EVALUATE CONFIRMI OF COTRN2AI",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "READ-CCXREF-FILE",
+      "terminator": "implicit",
+      "falls_through_to": "STARTBR-TRANSACT-FILE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNADD-SCREEN",
+      "cfg_branch_context": "EVALUATE WS-RESP-CD",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "READ-CXACAIX-FILE",
+      "terminator": "implicit",
+      "falls_through_to": "READ-CCXREF-FILE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNADD-SCREEN",
+      "cfg_branch_context": "EVALUATE WS-RESP-CD",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "READPREV-TRANSACT-FILE",
+      "terminator": "implicit",
+      "falls_through_to": "ENDBR-TRANSACT-FILE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNADD-SCREEN",
+      "cfg_branch_context": "EVALUATE WS-RESP-CD",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "RECEIVE-TRNADD-SCREEN",
+      "terminator": "implicit",
+      "falls_through_to": "POPULATE-HEADER-INFO",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RECEIVE",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "RETURN-TO-PREV-SCREEN",
+      "terminator": "cics-xctl",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "SEND-TRNADD-SCREEN",
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "cfg_branch_context": "EXEC CICS RETURN RETURN",
+      "is_cics_branch": true,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "STARTBR-TRANSACT-FILE",
+      "terminator": "implicit",
+      "falls_through_to": "READPREV-TRANSACT-FILE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNADD-SCREEN",
+      "cfg_branch_context": "EVALUATE WS-RESP-CD",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "VALIDATE-INPUT-DATA-FIELDS",
+      "terminator": "implicit",
+      "falls_through_to": "ADD-TRANSACTION",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNADD-SCREEN",
+      "cfg_branch_context": "IF MIDI OF COTRN2AI IS NOT NUMERIC",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "VALIDATE-INPUT-KEY-FIELDS",
+      "terminator": "implicit",
+      "falls_through_to": "VALIDATE-INPUT-DATA-FIELDS",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNADD-SCREEN",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "WRITE-TRANSACT-FILE",
+      "terminator": "implicit",
+      "falls_through_to": "CLEAR-CURRENT-SCREEN",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNADD-SCREEN",
+      "cfg_branch_context": "EVALUATE WS-RESP-CD",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    }
+  ],
+  "data_files": [],
+  "external_calls": [
+    "CSUTLDTC"
+  ],
+  "copybooks_referenced": [
+    "COCOM01Y",
+    "COTRN02",
+    "COTTL01Y",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CVACT01Y",
+    "CVACT03Y",
+    "CVTRA05Y",
+    "DFHAID",
+    "DFHBMSCA"
+  ],
+  "cfg_paragraphs": [],
+  "cics_commands": [
+    "ENDBR",
+    "READ",
+    "READPREV",
+    "RECEIVE",
+    "RETURN",
+    "SEND",
+    "STARTBR",
+    "WRITE",
+    "XCTL"
+  ],
+  "cics_branches": 2,
+  "cfg_edges_resolved": 61
+}

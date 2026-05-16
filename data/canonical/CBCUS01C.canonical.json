@@ -1,0 +1,153 @@
+{
+  "program": "CBCUS01C",
+  "schema_version": "1.4",
+  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBCUS01C.cbl",
+  "preprocess_available": true,
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [
+    {
+      "name": "0000-CUSTFILE-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "9000-CUSTFILE-CLOSE",
+      "last_verb": "EXIT",
+      "performs": [
+        "Z-DISPLAY-IO-STATUS",
+        "Z-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1000-CUSTFILE-GET-NEXT",
+      "terminator": "implicit",
+      "falls_through_to": "0000-CUSTFILE-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "Z-DISPLAY-IO-STATUS",
+        "Z-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9000-CUSTFILE-CLOSE",
+      "terminator": "implicit",
+      "falls_through_to": "Z-ABEND-PROGRAM",
+      "last_verb": "EXIT",
+      "performs": [
+        "Z-DISPLAY-IO-STATUS",
+        "Z-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "Z-ABEND-PROGRAM",
+      "terminator": "implicit",
+      "falls_through_to": "Z-DISPLAY-IO-STATUS",
+      "last_verb": "CALL",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "CALL 'CEE3ABD' USING ABCODE TIMING.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "Z-DISPLAY-IO-STATUS",
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    }
+  ],
+  "data_files": [
+    {
+      "name": "CUSTFILE-FILE",
+      "ddname": "CUSTFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    }
+  ],
+  "external_calls": [
+    "CEE3ABD"
+  ],
+  "copybooks_referenced": [
+    "CVCUS01Y"
+  ],
+  "cfg_paragraphs": [
+    {
+      "name": "END-PERFORM",
+      "reachable": true,
+      "performs": [
+        "0000-CUSTFILE-OPEN",
+        "1000-CUSTFILE-GET-NEXT",
+        "9000-CUSTFILE-CLOSE"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1000-CUSTFILE-GET-NEXT",
+      "reachable": true,
+      "performs": [
+        "Z-DISPLAY-IO-STATUS",
+        "Z-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0000-CUSTFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "Z-DISPLAY-IO-STATUS",
+        "Z-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9000-CUSTFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "Z-DISPLAY-IO-STATUS",
+        "Z-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "Z-ABEND-PROGRAM",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "Z-DISPLAY-IO-STATUS",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    }
+  ],
+  "cics_commands": [],
+  "cics_branches": 0,
+  "cfg_edges_resolved": 9
+}

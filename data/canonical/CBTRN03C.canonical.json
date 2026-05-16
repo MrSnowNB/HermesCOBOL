@@ -1,0 +1,722 @@
+{
+  "program": "CBTRN03C",
+  "schema_version": "1.4",
+  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBTRN03C.cbl",
+  "preprocess_available": true,
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [
+    {
+      "name": "0000-TRANFILE-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "0100-REPTFILE-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "0100-REPTFILE-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "0200-CARDXREF-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "0200-CARDXREF-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "0300-TRANTYPE-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "0300-TRANTYPE-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "0400-TRANCATG-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "0400-TRANCATG-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "0500-DATEPARM-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "0500-DATEPARM-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "1500-A-LOOKUP-XREF",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "0550-DATEPARM-READ",
+      "terminator": "implicit",
+      "falls_through_to": "1000-TRANFILE-GET-NEXT",
+      "last_verb": "PERFORM",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "cfg_branch_context": "IF APPL-AOK",
+      "is_cics_branch": false
+    },
+    {
+      "name": "1000-TRANFILE-GET-NEXT",
+      "terminator": "implicit",
+      "falls_through_to": "1100-WRITE-TRANSACTION-REPORT",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1100-WRITE-TRANSACTION-REPORT",
+      "terminator": "implicit",
+      "falls_through_to": "1110-WRITE-PAGE-TOTALS",
+      "last_verb": "EXIT",
+      "performs": [
+        "1120-WRITE-HEADERS",
+        "1110-WRITE-PAGE-TOTALS",
+        "1120-WRITE-DETAIL"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1110-WRITE-GRAND-TOTALS",
+      "terminator": "implicit",
+      "falls_through_to": "1120-WRITE-HEADERS",
+      "last_verb": "EXIT",
+      "performs": [
+        "1111-WRITE-REPORT-REC"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1110-WRITE-PAGE-TOTALS",
+      "terminator": "implicit",
+      "falls_through_to": "1120-WRITE-ACCOUNT-TOTALS",
+      "last_verb": "EXIT",
+      "performs": [
+        "1111-WRITE-REPORT-REC"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1111-WRITE-REPORT-REC",
+      "terminator": "implicit",
+      "falls_through_to": "1120-WRITE-DETAIL",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1120-WRITE-ACCOUNT-TOTALS",
+      "terminator": "implicit",
+      "falls_through_to": "1110-WRITE-GRAND-TOTALS",
+      "last_verb": "EXIT",
+      "performs": [
+        "1111-WRITE-REPORT-REC"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1120-WRITE-DETAIL",
+      "terminator": "implicit",
+      "falls_through_to": "0000-TRANFILE-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "1111-WRITE-REPORT-REC"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1120-WRITE-HEADERS",
+      "terminator": "implicit",
+      "falls_through_to": "1111-WRITE-REPORT-REC",
+      "last_verb": "EXIT",
+      "performs": [
+        "1111-WRITE-REPORT-REC"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1500-A-LOOKUP-XREF",
+      "terminator": "implicit",
+      "falls_through_to": "1500-B-LOOKUP-TRANTYPE",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1500-B-LOOKUP-TRANTYPE",
+      "terminator": "implicit",
+      "falls_through_to": "1500-C-LOOKUP-TRANCATG",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1500-C-LOOKUP-TRANCATG",
+      "terminator": "implicit",
+      "falls_through_to": "9000-TRANFILE-CLOSE",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9000-TRANFILE-CLOSE",
+      "terminator": "implicit",
+      "falls_through_to": "9100-REPTFILE-CLOSE",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9100-REPTFILE-CLOSE",
+      "terminator": "implicit",
+      "falls_through_to": "9200-CARDXREF-CLOSE",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9200-CARDXREF-CLOSE",
+      "terminator": "implicit",
+      "falls_through_to": "9300-TRANTYPE-CLOSE",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9300-TRANTYPE-CLOSE",
+      "terminator": "implicit",
+      "falls_through_to": "9400-TRANCATG-CLOSE",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9400-TRANCATG-CLOSE",
+      "terminator": "implicit",
+      "falls_through_to": "9500-DATEPARM-CLOSE",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9500-DATEPARM-CLOSE",
+      "terminator": "implicit",
+      "falls_through_to": "9999-ABEND-PROGRAM",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9910-DISPLAY-IO-STATUS",
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "terminator": "implicit",
+      "falls_through_to": "9910-DISPLAY-IO-STATUS",
+      "last_verb": "CALL",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "CALL 'CEE3ABD' USING ABCODE TIMING.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    }
+  ],
+  "data_files": [
+    {
+      "name": "TRANSACT-FILE",
+      "ddname": "TRANFILE",
+      "organization": "SEQUENTIAL",
+      "access": null
+    },
+    {
+      "name": "XREF-FILE",
+      "ddname": "CARDXREF",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    },
+    {
+      "name": "TRANTYPE-FILE",
+      "ddname": "TRANTYPE",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    },
+    {
+      "name": "TRANCATG-FILE",
+      "ddname": "TRANCATG",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    },
+    {
+      "name": "REPORT-FILE",
+      "ddname": "TRANREPT",
+      "organization": "SEQUENTIAL",
+      "access": null
+    },
+    {
+      "name": "DATE-PARMS-FILE",
+      "ddname": "DATEPARM",
+      "organization": "SEQUENTIAL",
+      "access": null
+    }
+  ],
+  "external_calls": [
+    "CEE3ABD"
+  ],
+  "copybooks_referenced": [
+    "CVACT03Y",
+    "CVTRA03Y",
+    "CVTRA04Y",
+    "CVTRA05Y",
+    "CVTRA07Y"
+  ],
+  "cfg_paragraphs": [
+    {
+      "name": "END-PERFORM",
+      "reachable": true,
+      "performs": [
+        "0000-TRANFILE-OPEN",
+        "0100-REPTFILE-OPEN",
+        "0200-CARDXREF-OPEN",
+        "0300-TRANTYPE-OPEN",
+        "0400-TRANCATG-OPEN",
+        "0500-DATEPARM-OPEN",
+        "0550-DATEPARM-READ",
+        "1000-TRANFILE-GET-NEXT",
+        "1120-WRITE-ACCOUNT-TOTALS",
+        "1500-A-LOOKUP-XREF",
+        "1500-B-LOOKUP-TRANTYPE",
+        "1500-C-LOOKUP-TRANCATG",
+        "1100-WRITE-TRANSACTION-REPORT",
+        "1110-WRITE-PAGE-TOTALS",
+        "1110-WRITE-GRAND-TOTALS",
+        "9000-TRANFILE-CLOSE",
+        "9100-REPTFILE-CLOSE",
+        "9200-CARDXREF-CLOSE",
+        "9300-TRANTYPE-CLOSE",
+        "9400-TRANCATG-CLOSE",
+        "9500-DATEPARM-CLOSE"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0550-DATEPARM-READ",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1000-TRANFILE-GET-NEXT",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1100-WRITE-TRANSACTION-REPORT",
+      "reachable": true,
+      "performs": [
+        "1120-WRITE-HEADERS",
+        "1110-WRITE-PAGE-TOTALS",
+        "1120-WRITE-DETAIL"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1110-WRITE-PAGE-TOTALS",
+      "reachable": true,
+      "performs": [
+        "1111-WRITE-REPORT-REC"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1120-WRITE-ACCOUNT-TOTALS",
+      "reachable": true,
+      "performs": [
+        "1111-WRITE-REPORT-REC"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1110-WRITE-GRAND-TOTALS",
+      "reachable": true,
+      "performs": [
+        "1111-WRITE-REPORT-REC"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1120-WRITE-HEADERS",
+      "reachable": true,
+      "performs": [
+        "1111-WRITE-REPORT-REC"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1111-WRITE-REPORT-REC",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1120-WRITE-DETAIL",
+      "reachable": true,
+      "performs": [
+        "1111-WRITE-REPORT-REC"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0000-TRANFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0100-REPTFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0200-CARDXREF-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0300-TRANTYPE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0400-TRANCATG-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0500-DATEPARM-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1500-A-LOOKUP-XREF",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1500-B-LOOKUP-TRANTYPE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1500-C-LOOKUP-TRANCATG",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9000-TRANFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9100-REPTFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9200-CARDXREF-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9300-TRANTYPE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9400-TRANCATG-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9500-DATEPARM-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9910-DISPLAY-IO-STATUS",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    }
+  ],
+  "cics_commands": [],
+  "cics_branches": 0,
+  "cfg_edges_resolved": 71
+}

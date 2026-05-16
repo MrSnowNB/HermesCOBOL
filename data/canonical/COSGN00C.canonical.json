@@ -1,0 +1,99 @@
+{
+  "program": "COSGN00C",
+  "schema_version": "1.4",
+  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COSGN00C.cbl",
+  "preprocess_available": false,
+  "cics_present": true,
+  "sql_present": false,
+  "paragraphs": [
+    {
+      "name": "MAIN-PARA",
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "cfg_branch_context": "EXEC CICS RETURN RETURN",
+      "is_cics_branch": true,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "POPULATE-HEADER-INFO",
+      "terminator": "implicit",
+      "falls_through_to": "READ-USER-SEC-FILE",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS ASSIGN",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "PROCESS-ENTER-KEY",
+      "terminator": "implicit",
+      "falls_through_to": "SEND-SIGNON-SCREEN",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM READ-USER-SEC-FILE",
+      "cfg_branch_context": "IF NOT ERR-FLG-ON",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "READ-USER-SEC-FILE",
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-SIGNON-SCREEN",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "SEND-PLAIN-TEXT",
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "cfg_branch_context": "EXEC CICS RETURN RETURN",
+      "is_cics_branch": true,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "SEND-SIGNON-SCREEN",
+      "terminator": "implicit",
+      "falls_through_to": "SEND-PLAIN-TEXT",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS SEND",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    }
+  ],
+  "data_files": [],
+  "external_calls": [],
+  "copybooks_referenced": [
+    "COCOM01Y",
+    "COSGN00",
+    "COTTL01Y",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CSUSR01Y",
+    "DFHAID",
+    "DFHBMSCA"
+  ],
+  "cfg_paragraphs": [],
+  "cics_commands": [
+    "ASSIGN",
+    "READ",
+    "RECEIVE",
+    "RETURN",
+    "SEND",
+    "XCTL"
+  ],
+  "cics_branches": 4,
+  "cfg_edges_resolved": 11
+}

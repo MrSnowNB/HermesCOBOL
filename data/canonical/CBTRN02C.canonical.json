@@ -1,0 +1,726 @@
+{
+  "program": "CBTRN02C",
+  "schema_version": "1.4",
+  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBTRN02C.cbl",
+  "preprocess_available": true,
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [
+    {
+      "name": "0000-DALYTRAN-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "0100-TRANFILE-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "0100-TRANFILE-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "0200-XREFFILE-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "0200-XREFFILE-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "0300-DALYREJS-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "0300-DALYREJS-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "0400-ACCTFILE-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "0400-ACCTFILE-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "0500-TCATBALF-OPEN",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "0500-TCATBALF-OPEN",
+      "terminator": "implicit",
+      "falls_through_to": "1000-DALYTRAN-GET-NEXT",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1000-DALYTRAN-GET-NEXT",
+      "terminator": "implicit",
+      "falls_through_to": "1500-VALIDATE-TRAN",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1500-A-LOOKUP-XREF",
+      "terminator": "implicit",
+      "falls_through_to": "1500-B-LOOKUP-ACCT",
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1500-B-LOOKUP-ACCT",
+      "terminator": "implicit",
+      "falls_through_to": "2000-POST-TRANSACTION",
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1500-VALIDATE-TRAN",
+      "terminator": "implicit",
+      "falls_through_to": "1500-A-LOOKUP-XREF",
+      "last_verb": "EXIT",
+      "performs": [
+        "1500-A-LOOKUP-XREF",
+        "1500-B-LOOKUP-ACCT"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "2000-POST-TRANSACTION",
+      "terminator": "implicit",
+      "falls_through_to": "2500-WRITE-REJECT-REC",
+      "last_verb": "EXIT",
+      "performs": [
+        "Z-GET-DB2-FORMAT-TIMESTAMP",
+        "2700-UPDATE-TCATBAL",
+        "2800-UPDATE-ACCOUNT-REC",
+        "2900-WRITE-TRANSACTION-FILE"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "2500-WRITE-REJECT-REC",
+      "terminator": "implicit",
+      "falls_through_to": "2700-UPDATE-TCATBAL",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "2700-A-CREATE-TCATBAL-REC",
+      "terminator": "implicit",
+      "falls_through_to": "2700-B-UPDATE-TCATBAL-REC",
+      "last_verb": "PERFORM",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": false,
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "cfg_branch_context": "IF APPL-AOK",
+      "is_cics_branch": false
+    },
+    {
+      "name": "2700-B-UPDATE-TCATBAL-REC",
+      "terminator": "implicit",
+      "falls_through_to": "2800-UPDATE-ACCOUNT-REC",
+      "last_verb": "PERFORM",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": false,
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "cfg_branch_context": "IF APPL-AOK",
+      "is_cics_branch": false
+    },
+    {
+      "name": "2700-UPDATE-TCATBAL",
+      "terminator": "implicit",
+      "falls_through_to": "2700-A-CREATE-TCATBAL-REC",
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "2800-UPDATE-ACCOUNT-REC",
+      "terminator": "implicit",
+      "falls_through_to": "END-REWRITE",
+      "last_verb": "MOVE",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "MOVE 'ACCOUNT RECORD NOT FOUND'",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "2900-WRITE-TRANSACTION-FILE",
+      "terminator": "implicit",
+      "falls_through_to": "9000-DALYTRAN-CLOSE",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9000-DALYTRAN-CLOSE",
+      "terminator": "implicit",
+      "falls_through_to": "9100-TRANFILE-CLOSE",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9100-TRANFILE-CLOSE",
+      "terminator": "implicit",
+      "falls_through_to": "9200-XREFFILE-CLOSE",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9200-XREFFILE-CLOSE",
+      "terminator": "implicit",
+      "falls_through_to": "9300-DALYREJS-CLOSE",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9300-DALYREJS-CLOSE",
+      "terminator": "implicit",
+      "falls_through_to": "9400-ACCTFILE-CLOSE",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9400-ACCTFILE-CLOSE",
+      "terminator": "implicit",
+      "falls_through_to": "9500-TCATBALF-CLOSE",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9500-TCATBALF-CLOSE",
+      "terminator": "implicit",
+      "falls_through_to": "Z-GET-DB2-FORMAT-TIMESTAMP",
+      "last_verb": "EXIT",
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9910-DISPLAY-IO-STATUS",
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "terminator": "implicit",
+      "falls_through_to": "9910-DISPLAY-IO-STATUS",
+      "last_verb": "CALL",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "CALL 'CEE3ABD' USING ABCODE TIMING.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "Z-GET-DB2-FORMAT-TIMESTAMP",
+      "terminator": "implicit",
+      "falls_through_to": "9999-ABEND-PROGRAM",
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    }
+  ],
+  "data_files": [
+    {
+      "name": "DALYTRAN-FILE",
+      "ddname": "DALYTRAN",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "TRANSACT-FILE",
+      "ddname": "TRANFILE",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    },
+    {
+      "name": "XREF-FILE",
+      "ddname": "XREFFILE",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    },
+    {
+      "name": "DALYREJS-FILE",
+      "ddname": "DALYREJS",
+      "organization": "SEQUENTIAL",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "ACCOUNT-FILE",
+      "ddname": "ACCTFILE",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    },
+    {
+      "name": "TCATBAL-FILE",
+      "ddname": "TCATBALF",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    }
+  ],
+  "external_calls": [
+    "CEE3ABD"
+  ],
+  "copybooks_referenced": [
+    "CVACT01Y",
+    "CVACT03Y",
+    "CVTRA01Y",
+    "CVTRA05Y",
+    "CVTRA06Y"
+  ],
+  "cfg_paragraphs": [
+    {
+      "name": "END-PERFORM",
+      "reachable": true,
+      "performs": [
+        "0000-DALYTRAN-OPEN",
+        "0100-TRANFILE-OPEN",
+        "0200-XREFFILE-OPEN",
+        "0300-DALYREJS-OPEN",
+        "0400-ACCTFILE-OPEN",
+        "0500-TCATBALF-OPEN",
+        "1000-DALYTRAN-GET-NEXT",
+        "1500-VALIDATE-TRAN",
+        "2000-POST-TRANSACTION",
+        "2500-WRITE-REJECT-REC",
+        "9000-DALYTRAN-CLOSE",
+        "9100-TRANFILE-CLOSE",
+        "9200-XREFFILE-CLOSE",
+        "9300-DALYREJS-CLOSE",
+        "9400-ACCTFILE-CLOSE",
+        "9500-TCATBALF-CLOSE"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0000-DALYTRAN-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0100-TRANFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0200-XREFFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0300-DALYREJS-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0400-ACCTFILE-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "0500-TCATBALF-OPEN",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1000-DALYTRAN-GET-NEXT",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1500-VALIDATE-TRAN",
+      "reachable": true,
+      "performs": [
+        "1500-A-LOOKUP-XREF",
+        "1500-B-LOOKUP-ACCT"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1500-A-LOOKUP-XREF",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1500-B-LOOKUP-ACCT",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2000-POST-TRANSACTION",
+      "reachable": true,
+      "performs": [
+        "Z-GET-DB2-FORMAT-TIMESTAMP",
+        "2700-UPDATE-TCATBAL",
+        "2800-UPDATE-ACCOUNT-REC",
+        "2900-WRITE-TRANSACTION-FILE"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2500-WRITE-REJECT-REC",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2700-UPDATE-TCATBAL",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "END-READ",
+      "reachable": false,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "END-IF",
+      "reachable": false,
+      "performs": [
+        "2700-A-CREATE-TCATBAL-REC",
+        "2700-B-UPDATE-TCATBAL-REC"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2700-A-CREATE-TCATBAL-REC",
+      "reachable": false,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2700-B-UPDATE-TCATBAL-REC",
+      "reachable": false,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2800-UPDATE-ACCOUNT-REC",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "END-REWRITE",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2900-WRITE-TRANSACTION-FILE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9000-DALYTRAN-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9100-TRANFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9200-XREFFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9300-DALYREJS-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9400-ACCTFILE-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9500-TCATBALF-CLOSE",
+      "reachable": true,
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "Z-GET-DB2-FORMAT-TIMESTAMP",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9910-DISPLAY-IO-STATUS",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    }
+  ],
+  "cics_commands": [],
+  "cics_branches": 0,
+  "cfg_edges_resolved": 57
+}

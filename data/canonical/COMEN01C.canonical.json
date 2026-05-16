@@ -1,0 +1,110 @@
+{
+  "program": "COMEN01C",
+  "schema_version": "1.4",
+  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COMEN01C.cbl",
+  "preprocess_available": true,
+  "cics_present": true,
+  "sql_present": false,
+  "paragraphs": [
+    {
+      "name": "BUILD-MENU-OPTIONS",
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "CONTINUE",
+      "last_raw": "CONTINUE",
+      "cfg_branch_context": "EVALUATE WS-IDX",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "MAIN-PARA",
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "cfg_branch_context": "EXEC CICS RETURN RETURN",
+      "is_cics_branch": true,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "POPULATE-HEADER-INFO",
+      "terminator": "implicit",
+      "falls_through_to": "BUILD-MENU-OPTIONS",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-CURTIME-HH-MM-SS TO CURTIMEO OF COMEN1AO.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "PROCESS-ENTER-KEY",
+      "terminator": "implicit",
+      "falls_through_to": "RETURN-TO-SIGNON-SCREEN",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-MENU-SCREEN",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "RECEIVE-MENU-SCREEN",
+      "terminator": "implicit",
+      "falls_through_to": "POPULATE-HEADER-INFO",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RECEIVE",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "RETURN-TO-SIGNON-SCREEN",
+      "terminator": "cics-xctl",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "SEND-MENU-SCREEN",
+      "terminator": "implicit",
+      "falls_through_to": "RECEIVE-MENU-SCREEN",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS SEND",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    }
+  ],
+  "data_files": [],
+  "external_calls": [],
+  "copybooks_referenced": [
+    "COCOM01Y",
+    "COMEN01",
+    "COMEN02Y",
+    "COTTL01Y",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CSUSR01Y",
+    "DFHAID",
+    "DFHBMSCA"
+  ],
+  "cfg_paragraphs": [],
+  "cics_commands": [
+    "INQUIRE",
+    "RECEIVE",
+    "RETURN",
+    "SEND",
+    "XCTL"
+  ],
+  "cics_branches": 2,
+  "cfg_edges_resolved": 11
+}

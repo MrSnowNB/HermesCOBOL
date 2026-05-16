@@ -1,0 +1,144 @@
+{
+  "program": "CORPT00C",
+  "schema_version": "1.4",
+  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CORPT00C.cbl",
+  "preprocess_available": false,
+  "cics_present": true,
+  "sql_present": false,
+  "paragraphs": [
+    {
+      "name": "INITIALIZE-ALL-FIELDS",
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "INITIALIZE",
+      "last_raw": "INITIALIZE MONTHLYI OF CORPT0AI",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "MAIN-PARA",
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "cfg_branch_context": "EXEC CICS RETURN RETURN",
+      "is_cics_branch": true,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "POPULATE-HEADER-INFO",
+      "terminator": "implicit",
+      "falls_through_to": "INITIALIZE-ALL-FIELDS",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-CURTIME-HH-MM-SS TO CURTIMEO OF CORPT0AO.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "PROCESS-ENTER-KEY",
+      "terminator": "implicit",
+      "falls_through_to": "SUBMIT-JOB-TO-INTRDR",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNRPT-SCREEN",
+      "cfg_branch_context": "IF NOT ERR-FLG-ON",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "RECEIVE-TRNRPT-SCREEN",
+      "terminator": "implicit",
+      "falls_through_to": "POPULATE-HEADER-INFO",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RECEIVE",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "RETURN-TO-CICS",
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "cfg_branch_context": "EXEC CICS RETURN RETURN",
+      "is_cics_branch": true,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "RETURN-TO-PREV-SCREEN",
+      "terminator": "cics-xctl",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "SEND-TRNRPT-SCREEN",
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "last_raw": "GO TO RETURN-TO-CICS.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "SUBMIT-JOB-TO-INTRDR",
+      "terminator": "implicit",
+      "falls_through_to": "WIRTE-JOBSUB-TDQ",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM WIRTE-JOBSUB-TDQ",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "WIRTE-JOBSUB-TDQ",
+      "terminator": "implicit",
+      "falls_through_to": "RETURN-TO-PREV-SCREEN",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNRPT-SCREEN",
+      "cfg_branch_context": "EVALUATE WS-RESP-CD",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    }
+  ],
+  "data_files": [],
+  "external_calls": [
+    "CSUTLDTC"
+  ],
+  "copybooks_referenced": [
+    "COCOM01Y",
+    "CORPT00",
+    "COTTL01Y",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CVTRA05Y",
+    "DFHAID",
+    "DFHBMSCA"
+  ],
+  "cfg_paragraphs": [],
+  "cics_commands": [
+    "RECEIVE",
+    "RETURN",
+    "SEND",
+    "WRITEQ",
+    "XCTL"
+  ],
+  "cics_branches": 2,
+  "cfg_edges_resolved": 34
+}

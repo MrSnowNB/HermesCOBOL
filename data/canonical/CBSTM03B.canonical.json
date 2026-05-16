@@ -1,0 +1,351 @@
+{
+  "program": "CBSTM03B",
+  "schema_version": "1.4",
+  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBSTM03B.cbl",
+  "preprocess_available": true,
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [
+    {
+      "name": "0000-START",
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "performs": [
+        "1000-TRNXFILE-PROC",
+        "2000-XREFFILE-PROC",
+        "3000-CUSTFILE-PROC",
+        "4000-ACCTFILE-PROC"
+      ],
+      "goto_targets": [
+        "9999-GOBACK"
+      ],
+      "reachable": true,
+      "last_raw": "GO TO 9999-GOBACK.",
+      "cfg_branch_context": "EVALUATE LK-M03B-DD",
+      "is_cics_branch": false
+    },
+    {
+      "name": "1000-TRNXFILE-PROC",
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "performs": [],
+      "goto_targets": [
+        "1900-EXIT"
+      ],
+      "reachable": true,
+      "last_raw": "GO TO 1900-EXIT",
+      "cfg_branch_context": "IF M03B-CLOSE",
+      "is_cics_branch": false
+    },
+    {
+      "name": "1900-EXIT",
+      "terminator": "implicit",
+      "falls_through_to": "1999-EXIT",
+      "last_verb": "MOVE",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "MOVE TRNXFILE-STATUS TO LK-M03B-RC.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1999-EXIT",
+      "terminator": "implicit",
+      "falls_through_to": "2000-XREFFILE-PROC",
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": false,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "2000-XREFFILE-PROC",
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "performs": [],
+      "goto_targets": [
+        "2900-EXIT"
+      ],
+      "reachable": true,
+      "last_raw": "GO TO 2900-EXIT",
+      "cfg_branch_context": "IF M03B-CLOSE",
+      "is_cics_branch": false
+    },
+    {
+      "name": "2900-EXIT",
+      "terminator": "implicit",
+      "falls_through_to": "2999-EXIT",
+      "last_verb": "MOVE",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "MOVE XREFFILE-STATUS TO LK-M03B-RC.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "2999-EXIT",
+      "terminator": "implicit",
+      "falls_through_to": "3000-CUSTFILE-PROC",
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": false,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "3000-CUSTFILE-PROC",
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "performs": [],
+      "goto_targets": [
+        "3900-EXIT"
+      ],
+      "reachable": true,
+      "last_raw": "GO TO 3900-EXIT",
+      "cfg_branch_context": "IF M03B-CLOSE",
+      "is_cics_branch": false
+    },
+    {
+      "name": "3900-EXIT",
+      "terminator": "implicit",
+      "falls_through_to": "3999-EXIT",
+      "last_verb": "MOVE",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "MOVE CUSTFILE-STATUS TO LK-M03B-RC.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "3999-EXIT",
+      "terminator": "implicit",
+      "falls_through_to": "4000-ACCTFILE-PROC",
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": false,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "4000-ACCTFILE-PROC",
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "performs": [],
+      "goto_targets": [
+        "4900-EXIT"
+      ],
+      "reachable": true,
+      "last_raw": "GO TO 4900-EXIT",
+      "cfg_branch_context": "IF M03B-CLOSE",
+      "is_cics_branch": false
+    },
+    {
+      "name": "4900-EXIT",
+      "terminator": "implicit",
+      "falls_through_to": "4999-EXIT",
+      "last_verb": "MOVE",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "MOVE ACCTFILE-STATUS TO LK-M03B-RC.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "4999-EXIT",
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "EXIT",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": false,
+      "last_raw": "EXIT.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9999-GOBACK",
+      "terminator": "goback",
+      "falls_through_to": null,
+      "last_verb": "GOBACK",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "GOBACK.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    }
+  ],
+  "data_files": [
+    {
+      "name": "TRNX-FILE",
+      "ddname": "TRNXFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "XREF-FILE",
+      "ddname": "XREFFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "CUST-FILE",
+      "ddname": "CUSTFILE",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    },
+    {
+      "name": "ACCT-FILE",
+      "ddname": "ACCTFILE",
+      "organization": "INDEXED",
+      "access": "RANDOM"
+    }
+  ],
+  "external_calls": [],
+  "copybooks_referenced": [],
+  "cfg_paragraphs": [
+    {
+      "name": "0000-START",
+      "reachable": true,
+      "performs": [
+        "1000-TRNXFILE-PROC",
+        "2000-XREFFILE-PROC",
+        "3000-CUSTFILE-PROC",
+        "4000-ACCTFILE-PROC"
+      ],
+      "goto_targets": [
+        "9999-GOBACK"
+      ],
+      "goto_flag": true
+    },
+    {
+      "name": "9999-GOBACK",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1000-TRNXFILE-PROC",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [
+        "1900-EXIT"
+      ],
+      "goto_flag": true
+    },
+    {
+      "name": "END-IF",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [
+        "1900-EXIT",
+        "2900-EXIT",
+        "3900-EXIT",
+        "4900-EXIT"
+      ],
+      "goto_flag": true
+    },
+    {
+      "name": "1900-EXIT",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1999-EXIT",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2000-XREFFILE-PROC",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [
+        "2900-EXIT"
+      ],
+      "goto_flag": true
+    },
+    {
+      "name": "2900-EXIT",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2999-EXIT",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "3000-CUSTFILE-PROC",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [
+        "3900-EXIT"
+      ],
+      "goto_flag": true
+    },
+    {
+      "name": "3900-EXIT",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "3999-EXIT",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "4000-ACCTFILE-PROC",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [
+        "4900-EXIT"
+      ],
+      "goto_flag": true
+    },
+    {
+      "name": "4900-EXIT",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "4999-EXIT",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    }
+  ],
+  "cics_commands": [],
+  "cics_branches": 0,
+  "cfg_edges_resolved": 13
+}

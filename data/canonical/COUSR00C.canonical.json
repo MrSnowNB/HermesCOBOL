@@ -1,0 +1,211 @@
+{
+  "program": "COUSR00C",
+  "schema_version": "1.4",
+  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COUSR00C.cbl",
+  "preprocess_available": false,
+  "cics_present": true,
+  "sql_present": false,
+  "paragraphs": [
+    {
+      "name": "ENDBR-USER-SEC-FILE",
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS ENDBR",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "INITIALIZE-USER-DATA",
+      "terminator": "implicit",
+      "falls_through_to": "RETURN-TO-PREV-SCREEN",
+      "last_verb": "CONTINUE",
+      "last_raw": "CONTINUE",
+      "cfg_branch_context": "EVALUATE WS-IDX",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "MAIN-PARA",
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "cfg_branch_context": "EXEC CICS RETURN RETURN",
+      "is_cics_branch": true,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "POPULATE-HEADER-INFO",
+      "terminator": "implicit",
+      "falls_through_to": "STARTBR-USER-SEC-FILE",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-CURTIME-HH-MM-SS TO CURTIMEO OF COUSR0AO.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "POPULATE-USER-DATA",
+      "terminator": "implicit",
+      "falls_through_to": "INITIALIZE-USER-DATA",
+      "last_verb": "CONTINUE",
+      "last_raw": "CONTINUE",
+      "cfg_branch_context": "EVALUATE WS-IDX",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "PROCESS-ENTER-KEY",
+      "terminator": "implicit",
+      "falls_through_to": "PROCESS-PF7-KEY",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE SPACE TO USRIDINO OF COUSR0AO",
+      "cfg_branch_context": "IF NOT ERR-FLG-ON",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "PROCESS-PAGE-BACKWARD",
+      "terminator": "implicit",
+      "falls_through_to": "POPULATE-USER-DATA",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-USRLST-SCREEN",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "PROCESS-PAGE-FORWARD",
+      "terminator": "implicit",
+      "falls_through_to": "PROCESS-PAGE-BACKWARD",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-USRLST-SCREEN",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "PROCESS-PF7-KEY",
+      "terminator": "implicit",
+      "falls_through_to": "PROCESS-PF8-KEY",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-USRLST-SCREEN",
+      "cfg_branch_context": "IF CDEMO-CU00-PAGE-NUM > 1",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "PROCESS-PF8-KEY",
+      "terminator": "implicit",
+      "falls_through_to": "PROCESS-PAGE-FORWARD",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-USRLST-SCREEN",
+      "cfg_branch_context": "IF NEXT-PAGE-YES",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "READNEXT-USER-SEC-FILE",
+      "terminator": "implicit",
+      "falls_through_to": "READPREV-USER-SEC-FILE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-USRLST-SCREEN",
+      "cfg_branch_context": "EVALUATE WS-RESP-CD",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "READPREV-USER-SEC-FILE",
+      "terminator": "implicit",
+      "falls_through_to": "ENDBR-USER-SEC-FILE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-USRLST-SCREEN",
+      "cfg_branch_context": "EVALUATE WS-RESP-CD",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "RECEIVE-USRLST-SCREEN",
+      "terminator": "implicit",
+      "falls_through_to": "POPULATE-HEADER-INFO",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RECEIVE",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "RETURN-TO-PREV-SCREEN",
+      "terminator": "cics-xctl",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS",
+      "cfg_branch_context": null,
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "SEND-USRLST-SCREEN",
+      "terminator": "implicit",
+      "falls_through_to": "RECEIVE-USRLST-SCREEN",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS SEND",
+      "cfg_branch_context": "IF SEND-ERASE-YES",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    },
+    {
+      "name": "STARTBR-USER-SEC-FILE",
+      "terminator": "implicit",
+      "falls_through_to": "READNEXT-USER-SEC-FILE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-USRLST-SCREEN",
+      "cfg_branch_context": "EVALUATE WS-RESP-CD",
+      "is_cics_branch": false,
+      "performs": [],
+      "goto_targets": []
+    }
+  ],
+  "data_files": [],
+  "external_calls": [],
+  "copybooks_referenced": [
+    "COCOM01Y",
+    "COTTL01Y",
+    "COUSR00",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CSUSR01Y",
+    "DFHAID",
+    "DFHBMSCA"
+  ],
+  "cfg_paragraphs": [],
+  "cics_commands": [
+    "ENDBR",
+    "READNEXT",
+    "READPREV",
+    "RECEIVE",
+    "RETURN",
+    "SEND",
+    "STARTBR",
+    "XCTL"
+  ],
+  "cics_branches": 1,
+  "cfg_edges_resolved": 37
+}

@@ -1,0 +1,606 @@
+{
+  "program": "CBEXPORT",
+  "schema_version": "1.4",
+  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBEXPORT.cbl",
+  "preprocess_available": true,
+  "cics_present": false,
+  "sql_present": false,
+  "paragraphs": [
+    {
+      "name": "0000-MAIN-PROCESSING",
+      "terminator": "goback",
+      "falls_through_to": null,
+      "last_verb": "GOBACK",
+      "performs": [
+        "1000-INITIALIZE",
+        "2000-EXPORT-CUSTOMERS",
+        "3000-EXPORT-ACCOUNTS",
+        "4000-EXPORT-XREFS",
+        "5000-EXPORT-TRANSACTIONS",
+        "5500-EXPORT-CARDS",
+        "6000-FINALIZE"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "GOBACK.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1000-INITIALIZE",
+      "terminator": "implicit",
+      "falls_through_to": "1050-GENERATE-TIMESTAMP",
+      "last_verb": "DISPLAY",
+      "performs": [
+        "1050-GENERATE-TIMESTAMP",
+        "1100-OPEN-FILES"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "DISPLAY 'CBEXPORT: Export Time: ' WS-EXPORT-TIME.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1050-GENERATE-TIMESTAMP",
+      "terminator": "implicit",
+      "falls_through_to": "1100-OPEN-FILES",
+      "last_verb": "STRING",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "STRING WS-EXPORT-DATE ' ' WS-EXPORT-TIME '.00'",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "1100-OPEN-FILES",
+      "terminator": "implicit",
+      "falls_through_to": "2000-EXPORT-CUSTOMERS",
+      "last_verb": "PERFORM",
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "cfg_branch_context": "IF NOT WS-EXPORT-OK",
+      "is_cics_branch": false
+    },
+    {
+      "name": "2000-EXPORT-CUSTOMERS",
+      "terminator": "implicit",
+      "falls_through_to": "2100-READ-CUSTOMER-RECORD",
+      "last_verb": "DISPLAY",
+      "performs": [
+        "2100-READ-CUSTOMER-RECORD",
+        "2200-CREATE-CUSTOMER-EXP-REC"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "DISPLAY 'CBEXPORT: Customers exported: '",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "2100-READ-CUSTOMER-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "2200-CREATE-CUSTOMER-EXP-REC",
+      "last_verb": "PERFORM",
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "cfg_branch_context": "IF NOT WS-CUSTOMER-OK AND NOT WS-CUSTOMER-EOF",
+      "is_cics_branch": false
+    },
+    {
+      "name": "2200-CREATE-CUSTOMER-EXP-REC",
+      "terminator": "implicit",
+      "falls_through_to": "3000-EXPORT-ACCOUNTS",
+      "last_verb": "ADD",
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "3000-EXPORT-ACCOUNTS",
+      "terminator": "implicit",
+      "falls_through_to": "3100-READ-ACCOUNT-RECORD",
+      "last_verb": "DISPLAY",
+      "performs": [
+        "3100-READ-ACCOUNT-RECORD",
+        "3200-CREATE-ACCOUNT-EXP-REC"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "DISPLAY 'CBEXPORT: Accounts exported: '",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "3100-READ-ACCOUNT-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "3200-CREATE-ACCOUNT-EXP-REC",
+      "last_verb": "PERFORM",
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "cfg_branch_context": "IF NOT WS-ACCOUNT-OK AND NOT WS-ACCOUNT-EOF",
+      "is_cics_branch": false
+    },
+    {
+      "name": "3200-CREATE-ACCOUNT-EXP-REC",
+      "terminator": "implicit",
+      "falls_through_to": "4000-EXPORT-XREFS",
+      "last_verb": "ADD",
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "4000-EXPORT-XREFS",
+      "terminator": "implicit",
+      "falls_through_to": "4100-READ-XREF-RECORD",
+      "last_verb": "DISPLAY",
+      "performs": [
+        "4100-READ-XREF-RECORD",
+        "4200-CREATE-XREF-EXPORT-RECORD"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "DISPLAY 'CBEXPORT: Cross-references exported: '",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "4100-READ-XREF-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "4200-CREATE-XREF-EXPORT-RECORD",
+      "last_verb": "PERFORM",
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "cfg_branch_context": "IF NOT WS-XREF-OK AND NOT WS-XREF-EOF",
+      "is_cics_branch": false
+    },
+    {
+      "name": "4200-CREATE-XREF-EXPORT-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "5000-EXPORT-TRANSACTIONS",
+      "last_verb": "ADD",
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "5000-EXPORT-TRANSACTIONS",
+      "terminator": "implicit",
+      "falls_through_to": "5100-READ-TRANSACTION-RECORD",
+      "last_verb": "DISPLAY",
+      "performs": [
+        "5100-READ-TRANSACTION-RECORD",
+        "5200-CREATE-TRAN-EXP-REC"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "DISPLAY 'CBEXPORT: Transactions exported: '",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "5100-READ-TRANSACTION-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "5200-CREATE-TRAN-EXP-REC",
+      "last_verb": "PERFORM",
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "cfg_branch_context": "IF NOT WS-TRANSACTION-OK AND NOT WS-TRANSACTION-EOF",
+      "is_cics_branch": false
+    },
+    {
+      "name": "5200-CREATE-TRAN-EXP-REC",
+      "terminator": "implicit",
+      "falls_through_to": "5500-EXPORT-CARDS",
+      "last_verb": "ADD",
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "5500-EXPORT-CARDS",
+      "terminator": "implicit",
+      "falls_through_to": "5600-READ-CARD-RECORD",
+      "last_verb": "DISPLAY",
+      "performs": [
+        "5600-READ-CARD-RECORD",
+        "5700-CREATE-CARD-EXPORT-RECORD"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "DISPLAY 'CBEXPORT: Cards exported: '",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "5600-READ-CARD-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "5700-CREATE-CARD-EXPORT-RECORD",
+      "last_verb": "PERFORM",
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "cfg_branch_context": "IF NOT WS-CARD-OK AND NOT WS-CARD-EOF",
+      "is_cics_branch": false
+    },
+    {
+      "name": "5700-CREATE-CARD-EXPORT-RECORD",
+      "terminator": "implicit",
+      "falls_through_to": "6000-FINALIZE",
+      "last_verb": "ADD",
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "6000-FINALIZE",
+      "terminator": "implicit",
+      "falls_through_to": "9999-ABEND-PROGRAM",
+      "last_verb": "DISPLAY",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "DISPLAY 'CBEXPORT: Total Records Exported: '",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "CALL",
+      "performs": [],
+      "goto_targets": [],
+      "reachable": true,
+      "last_raw": "CALL 'CEE3ABD'.",
+      "cfg_branch_context": null,
+      "is_cics_branch": false
+    }
+  ],
+  "data_files": [
+    {
+      "name": "CUSTOMER-INPUT",
+      "ddname": "CUSTFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "ACCOUNT-INPUT",
+      "ddname": "ACCTFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "XREF-INPUT",
+      "ddname": "XREFFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "TRANSACTION-INPUT",
+      "ddname": "TRANSACT",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "CARD-INPUT",
+      "ddname": "CARDFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    },
+    {
+      "name": "EXPORT-OUTPUT",
+      "ddname": "EXPFILE",
+      "organization": "INDEXED",
+      "access": "SEQUENTIAL"
+    }
+  ],
+  "external_calls": [],
+  "copybooks_referenced": [
+    "CVACT01Y",
+    "CVACT02Y",
+    "CVACT03Y",
+    "CVCUS01Y",
+    "CVEXPORT",
+    "CVTRA05Y"
+  ],
+  "cfg_paragraphs": [
+    {
+      "name": "0000-MAIN-PROCESSING",
+      "reachable": true,
+      "performs": [
+        "1000-INITIALIZE",
+        "2000-EXPORT-CUSTOMERS",
+        "3000-EXPORT-ACCOUNTS",
+        "4000-EXPORT-XREFS",
+        "5000-EXPORT-TRANSACTIONS",
+        "5500-EXPORT-CARDS",
+        "6000-FINALIZE"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1000-INITIALIZE",
+      "reachable": true,
+      "performs": [
+        "1050-GENERATE-TIMESTAMP",
+        "1100-OPEN-FILES"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1050-GENERATE-TIMESTAMP",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "1100-OPEN-FILES",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "END-IF",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2000-EXPORT-CUSTOMERS",
+      "reachable": true,
+      "performs": [
+        "2100-READ-CUSTOMER-RECORD",
+        "2200-CREATE-CUSTOMER-EXP-REC"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "WS-CUSTOMER-RECORDS-EXPORTED",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2100-READ-CUSTOMER-RECORD",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "2200-CREATE-CUSTOMER-EXP-REC",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "3000-EXPORT-ACCOUNTS",
+      "reachable": true,
+      "performs": [
+        "3100-READ-ACCOUNT-RECORD",
+        "3200-CREATE-ACCOUNT-EXP-REC"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "WS-ACCOUNT-RECORDS-EXPORTED",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "3100-READ-ACCOUNT-RECORD",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "3200-CREATE-ACCOUNT-EXP-REC",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "4000-EXPORT-XREFS",
+      "reachable": true,
+      "performs": [
+        "4100-READ-XREF-RECORD",
+        "4200-CREATE-XREF-EXPORT-RECORD"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "WS-XREF-RECORDS-EXPORTED",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "4100-READ-XREF-RECORD",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "4200-CREATE-XREF-EXPORT-RECORD",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "5000-EXPORT-TRANSACTIONS",
+      "reachable": true,
+      "performs": [
+        "5100-READ-TRANSACTION-RECORD",
+        "5200-CREATE-TRAN-EXP-REC"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "WS-TRAN-RECORDS-EXPORTED",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "5100-READ-TRANSACTION-RECORD",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "5200-CREATE-TRAN-EXP-REC",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "5500-EXPORT-CARDS",
+      "reachable": true,
+      "performs": [
+        "5600-READ-CARD-RECORD",
+        "5700-CREATE-CARD-EXPORT-RECORD"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "WS-CARD-RECORDS-EXPORTED",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "5600-READ-CARD-RECORD",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "5700-CREATE-CARD-EXPORT-RECORD",
+      "reachable": true,
+      "performs": [
+        "9999-ABEND-PROGRAM"
+      ],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "6000-FINALIZE",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "WS-TOTAL-RECORDS-EXPORTED",
+      "reachable": false,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    },
+    {
+      "name": "9999-ABEND-PROGRAM",
+      "reachable": true,
+      "performs": [],
+      "goto_targets": [],
+      "goto_flag": false
+    }
+  ],
+  "cics_commands": [],
+  "cics_branches": 0,
+  "cfg_edges_resolved": 40
+}
