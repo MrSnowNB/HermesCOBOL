@@ -122,7 +122,7 @@
   {
     "program": "COMEN01C",
     "paragraphs": 7,
-    "preprocess_available": true,
+    "preprocess_available": false,
     "cics_present": true
   },
   {
