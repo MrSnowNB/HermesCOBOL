@@ -1,0 +1,184 @@
+{
+  "program": "COBIL00C",
+  "canonical_path": "C:\\work\\HermesCOBOL\\data\\canonical\\COBIL00C.canonical.json",
+  "gate_status": "FAIL",
+  "failures": [
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'CLEAR-CURRENT-SCREEN' is missing required fields",
+      "details": {
+        "paragraph": "CLEAR-CURRENT-SCREEN",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'ENDBR-TRANSACT-FILE' is missing required fields",
+      "details": {
+        "paragraph": "ENDBR-TRANSACT-FILE",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'GET-CURRENT-TIMESTAMP' is missing required fields",
+      "details": {
+        "paragraph": "GET-CURRENT-TIMESTAMP",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'INITIALIZE-ALL-FIELDS' is missing required fields",
+      "details": {
+        "paragraph": "INITIALIZE-ALL-FIELDS",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'MAIN-PARA' is missing required fields",
+      "details": {
+        "paragraph": "MAIN-PARA",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'POPULATE-HEADER-INFO' is missing required fields",
+      "details": {
+        "paragraph": "POPULATE-HEADER-INFO",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'PROCESS-ENTER-KEY' is missing required fields",
+      "details": {
+        "paragraph": "PROCESS-ENTER-KEY",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'READ-ACCTDAT-FILE' is missing required fields",
+      "details": {
+        "paragraph": "READ-ACCTDAT-FILE",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'READ-CXACAIX-FILE' is missing required fields",
+      "details": {
+        "paragraph": "READ-CXACAIX-FILE",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'READPREV-TRANSACT-FILE' is missing required fields",
+      "details": {
+        "paragraph": "READPREV-TRANSACT-FILE",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'RECEIVE-BILLPAY-SCREEN' is missing required fields",
+      "details": {
+        "paragraph": "RECEIVE-BILLPAY-SCREEN",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'RETURN-TO-PREV-SCREEN' is missing required fields",
+      "details": {
+        "paragraph": "RETURN-TO-PREV-SCREEN",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'SEND-BILLPAY-SCREEN' is missing required fields",
+      "details": {
+        "paragraph": "SEND-BILLPAY-SCREEN",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'STARTBR-TRANSACT-FILE' is missing required fields",
+      "details": {
+        "paragraph": "STARTBR-TRANSACT-FILE",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'UPDATE-ACCTDAT-FILE' is missing required fields",
+      "details": {
+        "paragraph": "UPDATE-ACCTDAT-FILE",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'WRITE-TRANSACT-FILE' is missing required fields",
+      "details": {
+        "paragraph": "WRITE-TRANSACT-FILE",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    }
+  ],
+  "warnings": []
+}

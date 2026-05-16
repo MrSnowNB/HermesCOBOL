@@ -1,0 +1,13 @@
+{
+  "program": "COBSWAIT",
+  "canonical_path": "C:\\work\\HermesCOBOL\\data\\canonical\\COBSWAIT.canonical.json",
+  "gate_status": "FAIL",
+  "failures": [
+    {
+      "rule": "no_paragraphs",
+      "severity": "error",
+      "message": "Canonical IR contains no paragraphs"
+    }
+  ],
+  "warnings": []
+}

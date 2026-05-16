@@ -1,0 +1,382 @@
+{
+  "program": "COACTVWC",
+  "canonical_path": "C:\\work\\HermesCOBOL\\data\\canonical\\COACTVWC.canonical.json",
+  "gate_status": "FAIL",
+  "failures": [
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '0000-MAIN' is missing required fields",
+      "details": {
+        "paragraph": "0000-MAIN",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '0000-MAIN-EXIT' is missing required fields",
+      "details": {
+        "paragraph": "0000-MAIN-EXIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '1000-SEND-MAP' is missing required fields",
+      "details": {
+        "paragraph": "1000-SEND-MAP",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '1000-SEND-MAP-EXIT' is missing required fields",
+      "details": {
+        "paragraph": "1000-SEND-MAP-EXIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '1100-SCREEN-INIT' is missing required fields",
+      "details": {
+        "paragraph": "1100-SCREEN-INIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '1100-SCREEN-INIT-EXIT' is missing required fields",
+      "details": {
+        "paragraph": "1100-SCREEN-INIT-EXIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '1200-SETUP-SCREEN-VARS' is missing required fields",
+      "details": {
+        "paragraph": "1200-SETUP-SCREEN-VARS",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '1200-SETUP-SCREEN-VARS-EXIT' is missing required fields",
+      "details": {
+        "paragraph": "1200-SETUP-SCREEN-VARS-EXIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '1300-SETUP-SCREEN-ATTRS' is missing required fields",
+      "details": {
+        "paragraph": "1300-SETUP-SCREEN-ATTRS",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '1300-SETUP-SCREEN-ATTRS-EXIT' is missing required fields",
+      "details": {
+        "paragraph": "1300-SETUP-SCREEN-ATTRS-EXIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '1400-SEND-SCREEN' is missing required fields",
+      "details": {
+        "paragraph": "1400-SEND-SCREEN",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '1400-SEND-SCREEN-EXIT' is missing required fields",
+      "details": {
+        "paragraph": "1400-SEND-SCREEN-EXIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '2000-PROCESS-INPUTS' is missing required fields",
+      "details": {
+        "paragraph": "2000-PROCESS-INPUTS",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '2000-PROCESS-INPUTS-EXIT' is missing required fields",
+      "details": {
+        "paragraph": "2000-PROCESS-INPUTS-EXIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '2100-RECEIVE-MAP' is missing required fields",
+      "details": {
+        "paragraph": "2100-RECEIVE-MAP",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '2100-RECEIVE-MAP-EXIT' is missing required fields",
+      "details": {
+        "paragraph": "2100-RECEIVE-MAP-EXIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '2200-EDIT-MAP-INPUTS' is missing required fields",
+      "details": {
+        "paragraph": "2200-EDIT-MAP-INPUTS",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '2200-EDIT-MAP-INPUTS-EXIT' is missing required fields",
+      "details": {
+        "paragraph": "2200-EDIT-MAP-INPUTS-EXIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '2210-EDIT-ACCOUNT' is missing required fields",
+      "details": {
+        "paragraph": "2210-EDIT-ACCOUNT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '2210-EDIT-ACCOUNT-EXIT' is missing required fields",
+      "details": {
+        "paragraph": "2210-EDIT-ACCOUNT-EXIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '9000-READ-ACCT' is missing required fields",
+      "details": {
+        "paragraph": "9000-READ-ACCT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '9000-READ-ACCT-EXIT' is missing required fields",
+      "details": {
+        "paragraph": "9000-READ-ACCT-EXIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '9200-GETCARDXREF-BYACCT' is missing required fields",
+      "details": {
+        "paragraph": "9200-GETCARDXREF-BYACCT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '9200-GETCARDXREF-BYACCT-EXIT' is missing required fields",
+      "details": {
+        "paragraph": "9200-GETCARDXREF-BYACCT-EXIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '9300-GETACCTDATA-BYACCT' is missing required fields",
+      "details": {
+        "paragraph": "9300-GETACCTDATA-BYACCT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '9300-GETACCTDATA-BYACCT-EXIT' is missing required fields",
+      "details": {
+        "paragraph": "9300-GETACCTDATA-BYACCT-EXIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '9400-GETCUSTDATA-BYCUST' is missing required fields",
+      "details": {
+        "paragraph": "9400-GETCUSTDATA-BYCUST",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '9400-GETCUSTDATA-BYCUST-EXIT' is missing required fields",
+      "details": {
+        "paragraph": "9400-GETCUSTDATA-BYCUST-EXIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'ABEND-ROUTINE' is missing required fields",
+      "details": {
+        "paragraph": "ABEND-ROUTINE",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'COMMON-RETURN' is missing required fields",
+      "details": {
+        "paragraph": "COMMON-RETURN",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'SEND-LONG-TEXT' is missing required fields",
+      "details": {
+        "paragraph": "SEND-LONG-TEXT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'SEND-LONG-TEXT-EXIT' is missing required fields",
+      "details": {
+        "paragraph": "SEND-LONG-TEXT-EXIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'SEND-PLAIN-TEXT' is missing required fields",
+      "details": {
+        "paragraph": "SEND-PLAIN-TEXT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'SEND-PLAIN-TEXT-EXIT' is missing required fields",
+      "details": {
+        "paragraph": "SEND-PLAIN-TEXT-EXIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    }
+  ],
+  "warnings": []
+}

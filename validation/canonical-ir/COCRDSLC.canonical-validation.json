@@ -1,0 +1,107 @@
+{
+  "program": "COCRDSLC",
+  "canonical_path": "C:\\work\\HermesCOBOL\\data\\canonical\\COCRDSLC.canonical.json",
+  "gate_status": "FAIL",
+  "failures": [
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '1000-SEND-MAP' is missing required fields",
+      "details": {
+        "paragraph": "1000-SEND-MAP",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '1000-SEND-MAP-EXIT' is missing required fields",
+      "details": {
+        "paragraph": "1000-SEND-MAP-EXIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '2000-PROCESS-INPUTS' is missing required fields",
+      "details": {
+        "paragraph": "2000-PROCESS-INPUTS",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '2000-PROCESS-INPUTS-EXIT' is missing required fields",
+      "details": {
+        "paragraph": "2000-PROCESS-INPUTS-EXIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '9000-READ-DATA' is missing required fields",
+      "details": {
+        "paragraph": "9000-READ-DATA",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '9000-READ-DATA-EXIT' is missing required fields",
+      "details": {
+        "paragraph": "9000-READ-DATA-EXIT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph '9999-RETURN' is missing required fields",
+      "details": {
+        "paragraph": "9999-RETURN",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'COMMON-RETURN' is missing required fields",
+      "details": {
+        "paragraph": "COMMON-RETURN",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'MAIN-PARA' is missing required fields",
+      "details": {
+        "paragraph": "MAIN-PARA",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    }
+  ],
+  "warnings": []
+}

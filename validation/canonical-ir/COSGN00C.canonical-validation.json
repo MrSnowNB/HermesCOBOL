@@ -1,0 +1,74 @@
+{
+  "program": "COSGN00C",
+  "canonical_path": "C:\\work\\HermesCOBOL\\data\\canonical\\COSGN00C.canonical.json",
+  "gate_status": "FAIL",
+  "failures": [
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'MAIN-PARA' is missing required fields",
+      "details": {
+        "paragraph": "MAIN-PARA",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'POPULATE-HEADER-INFO' is missing required fields",
+      "details": {
+        "paragraph": "POPULATE-HEADER-INFO",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'PROCESS-ENTER-KEY' is missing required fields",
+      "details": {
+        "paragraph": "PROCESS-ENTER-KEY",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'READ-USER-SEC-FILE' is missing required fields",
+      "details": {
+        "paragraph": "READ-USER-SEC-FILE",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'SEND-PLAIN-TEXT' is missing required fields",
+      "details": {
+        "paragraph": "SEND-PLAIN-TEXT",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    },
+    {
+      "rule": "missing_paragraph_fields",
+      "severity": "error",
+      "message": "Paragraph 'SEND-SIGNON-SCREEN' is missing required fields",
+      "details": {
+        "paragraph": "SEND-SIGNON-SCREEN",
+        "missing_fields": [
+          "reachable"
+        ]
+      }
+    }
+  ],
+  "warnings": []
+}
