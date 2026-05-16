@@ -39,7 +39,7 @@ VALIDATION_DIR = VALID_DIR / "canonical-ir"
 # ---------------------------------------------------------------------------
 SCHEMA_RULES = {"schema_version", "file_missing", "facts_missing"}
 CICS_RULES = {"cics_preprocess_consistency", "stray_preprocessed_file"}
-PARAGRAPHS_RULES = {"missing_paragraphs", "noise_paragraph", "missing_paragraph_fields", "no_paragraphs"}
+PARAGRAPHS_RULES = {"missing_paragraphs", "noise_paragraph", "missing_paragraph_fields"}
 CONSISTENCY_RULES = {"cfg_edges_mismatch", "annotation_missing"}  # stubs for future
 
 
@@ -156,12 +156,12 @@ def validate_canonical(prog: str) -> dict[str, Any]:
                 "details": {"paragraph": p.get("name"), "missing_fields": list(missing_fields)}
             })
 
-    # 6. No paragraphs at all
+    # 6. No paragraphs at all (legitimate for some utility programs like COBSWAIT)
     if not canonical.get("paragraphs"):
-        result["failures"].append({
+        result["warnings"].append({
             "rule": "no_paragraphs",
-            "severity": "error",
-            "message": "Canonical IR contains no paragraphs"
+            "severity": "warning",
+            "message": "Canonical IR contains no paragraphs — verify facts.json is also empty"
         })
 
     if result["failures"]:

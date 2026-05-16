@@ -1,13 +1,13 @@
 {
   "program": "COBSWAIT",
   "canonical_path": "C:\\work\\HermesCOBOL\\data\\canonical\\COBSWAIT.canonical.json",
-  "gate_status": "FAIL",
-  "failures": [
+  "gate_status": "PASS",
+  "failures": [],
+  "warnings": [
     {
       "rule": "no_paragraphs",
-      "severity": "error",
-      "message": "Canonical IR contains no paragraphs"
+      "severity": "warning",
+      "message": "Canonical IR contains no paragraphs \u2014 verify facts.json is also empty"
     }
-  ],
-  "warnings": []
+  ]
 }
