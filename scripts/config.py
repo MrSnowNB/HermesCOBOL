@@ -31,6 +31,7 @@ DATA_DIR                 = REPO_ROOT / "data"
 CFG_DIR                  = DATA_DIR / "cfg"
 FALLTHROUGH_DIR          = DATA_DIR / "fallthrough"
 PASS1_ANNOTATIONS_DIR    = VALID_DIR / "pass1"
+CANONICAL_DIR            = DATA_DIR / "canonical"  # Stage 5-G / 5-H Canonical IR
 
 # Schema version — must match extract_facts.py
 SCHEMA_VERSION  = "1.0"
