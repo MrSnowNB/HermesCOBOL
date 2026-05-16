@@ -118,14 +118,8 @@ def gnucobol_version() -> str:
         return f"unavailable: {e}"
 
 
-def strip_cobol_comments(text: str) -> str:
-    out = []
-    for line in text.splitlines():
-        if len(line) >= 7 and line[6] in ("*", "/"):
-            continue
-        out.append(line)
-    return "\n".join(out)
-
+# strip_cobol_comments removed — now imported from cobol_parse_utils
+# (local definition was shadowing the shared implementation)
 
 # _slice_procedure_division removed — now provided by cobol_parse_utils
 # and used internally by extract_paragraphs()
