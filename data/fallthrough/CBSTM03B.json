@@ -1,0 +1,151 @@
+{
+  "program": "CBSTM03B",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBSTM03B.CBL",
+  "source_sha256": "c183707f0dae0b5e9387373fc3624f0462ad95ccbbb6c8a34167591e206bcbf8",
+  "cfg_path": "validation\\pass1\\CBSTM03B_annotations.json",
+  "cfg_sha256": "a7cd96ee75d17fb7c18a67913cf173fb9baf534dcf381ee0bb896a7c8534dd21",
+  "paragraphs": [
+    {
+      "paragraph": "0000-START",
+      "first_line": 118,
+      "last_line": 128,
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "last_raw": "GO TO 9999-GOBACK.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9999-GOBACK",
+      "first_line": 131,
+      "last_line": 131,
+      "terminator": "goback",
+      "falls_through_to": null,
+      "last_verb": "GOBACK",
+      "last_raw": "GOBACK.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1000-TRNXFILE-PROC",
+      "first_line": 135,
+      "last_line": 148,
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "last_raw": "GO TO 1900-EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1900-EXIT",
+      "first_line": 152,
+      "last_line": 152,
+      "terminator": "implicit",
+      "falls_through_to": "1999-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE TRNXFILE-STATUS TO LK-M03B-RC.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1999-EXIT",
+      "first_line": 155,
+      "last_line": 155,
+      "terminator": "implicit",
+      "falls_through_to": "2000-XREFFILE-PROC",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2000-XREFFILE-PROC",
+      "first_line": 159,
+      "last_line": 172,
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "last_raw": "GO TO 2900-EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2900-EXIT",
+      "first_line": 176,
+      "last_line": 176,
+      "terminator": "implicit",
+      "falls_through_to": "2999-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE XREFFILE-STATUS TO LK-M03B-RC.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2999-EXIT",
+      "first_line": 179,
+      "last_line": 179,
+      "terminator": "implicit",
+      "falls_through_to": "3000-CUSTFILE-PROC",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3000-CUSTFILE-PROC",
+      "first_line": 183,
+      "last_line": 197,
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "last_raw": "GO TO 3900-EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3900-EXIT",
+      "first_line": 201,
+      "last_line": 201,
+      "terminator": "implicit",
+      "falls_through_to": "3999-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE CUSTFILE-STATUS TO LK-M03B-RC.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3999-EXIT",
+      "first_line": 204,
+      "last_line": 204,
+      "terminator": "implicit",
+      "falls_through_to": "4000-ACCTFILE-PROC",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "4000-ACCTFILE-PROC",
+      "first_line": 208,
+      "last_line": 222,
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "last_raw": "GO TO 4900-EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "4900-EXIT",
+      "first_line": 226,
+      "last_line": 226,
+      "terminator": "implicit",
+      "falls_through_to": "4999-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE ACCTFILE-STATUS TO LK-M03B-RC.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "4999-EXIT",
+      "first_line": 229,
+      "last_line": 229,
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    }
+  ],
+  "c5_assertion": "PASS",
+  "c5_violations": []
+}

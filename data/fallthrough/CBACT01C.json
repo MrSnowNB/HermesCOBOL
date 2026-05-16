@@ -1,6 +1,6 @@
 {
   "program": "CBACT01C",
-  "source_path": "data\\raw\\cbl\\CBACT01C.cbl",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBACT01C.cbl",
   "source_sha256": "60f39ca08528de74ef008fd6d1d11c9c2e9be1543070d36a12cb6ef00f510cb9",
   "cfg_path": "validation\\pass1\\CBACT01C_annotations.json",
   "cfg_sha256": "ba69e09cf83d44304c63f692497b3d1a0670c0aa89d8a5149577ac64f00239c0",

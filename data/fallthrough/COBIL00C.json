@@ -1,0 +1,171 @@
+{
+  "program": "COBIL00C",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COBIL00C.cbl",
+  "source_sha256": "82325a5511bd7e409a80998ab75a3348ba91d3d4afd1a3b44a8efa7e70c4806d",
+  "cfg_path": "validation\\pass1\\COBIL00C_annotations.json",
+  "cfg_sha256": "ef164ac5cd3b92be6125880d567d5f12bc46a7c95e39fb4740174434a2ea87fc",
+  "paragraphs": [
+    {
+      "paragraph": "MAIN-PARA",
+      "first_line": 101,
+      "last_line": 146,
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "PROCESS-ENTER-KEY",
+      "first_line": 156,
+      "last_line": 242,
+      "terminator": "implicit",
+      "falls_through_to": "GET-CURRENT-TIMESTAMP",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-BILLPAY-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "GET-CURRENT-TIMESTAMP",
+      "first_line": 251,
+      "last_line": 266,
+      "terminator": "implicit",
+      "falls_through_to": "RETURN-TO-PREV-SCREEN",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE ZEROS TO WS-TIMESTAMP-TM-MS6",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "RETURN-TO-PREV-SCREEN",
+      "first_line": 275,
+      "last_line": 281,
+      "terminator": "cics-xctl",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS",
+      "classification_source": "source_scan"
+    },
+    {
+      "paragraph": "SEND-BILLPAY-SCREEN",
+      "first_line": 291,
+      "last_line": 295,
+      "terminator": "implicit",
+      "falls_through_to": "RECEIVE-BILLPAY-SCREEN",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS SEND",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "RECEIVE-BILLPAY-SCREEN",
+      "first_line": 308,
+      "last_line": 308,
+      "terminator": "implicit",
+      "falls_through_to": "POPULATE-HEADER-INFO",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RECEIVE",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "POPULATE-HEADER-INFO",
+      "first_line": 321,
+      "last_line": 338,
+      "terminator": "implicit",
+      "falls_through_to": "READ-ACCTDAT-FILE",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-CURTIME-HH-MM-SS TO CURTIMEO OF COBIL0AO.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "READ-ACCTDAT-FILE",
+      "first_line": 345,
+      "last_line": 371,
+      "terminator": "implicit",
+      "falls_through_to": "UPDATE-ACCTDAT-FILE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-BILLPAY-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "UPDATE-ACCTDAT-FILE",
+      "first_line": 379,
+      "last_line": 402,
+      "terminator": "implicit",
+      "falls_through_to": "READ-CXACAIX-FILE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-BILLPAY-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "READ-CXACAIX-FILE",
+      "first_line": 410,
+      "last_line": 435,
+      "terminator": "implicit",
+      "falls_through_to": "STARTBR-TRANSACT-FILE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-BILLPAY-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "STARTBR-TRANSACT-FILE",
+      "first_line": 443,
+      "last_line": 466,
+      "terminator": "implicit",
+      "falls_through_to": "READPREV-TRANSACT-FILE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-BILLPAY-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "READPREV-TRANSACT-FILE",
+      "first_line": 474,
+      "last_line": 495,
+      "terminator": "implicit",
+      "falls_through_to": "ENDBR-TRANSACT-FILE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-BILLPAY-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "ENDBR-TRANSACT-FILE",
+      "first_line": 503,
+      "last_line": 503,
+      "terminator": "implicit",
+      "falls_through_to": "WRITE-TRANSACT-FILE",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS ENDBR",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "WRITE-TRANSACT-FILE",
+      "first_line": 512,
+      "last_line": 546,
+      "terminator": "implicit",
+      "falls_through_to": "CLEAR-CURRENT-SCREEN",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-BILLPAY-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "CLEAR-CURRENT-SCREEN",
+      "first_line": 554,
+      "last_line": 555,
+      "terminator": "implicit",
+      "falls_through_to": "INITIALIZE-ALL-FIELDS",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-BILLPAY-SCREEN.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "INITIALIZE-ALL-FIELDS",
+      "first_line": 562,
+      "last_line": 563,
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "MOVE",
+      "last_raw": "MOVE SPACES TO ACTIDINI OF COBIL0AI",
+      "classification_source": "annotations"
+    }
+  ],
+  "c5_assertion": "PASS",
+  "c5_violations": []
+}

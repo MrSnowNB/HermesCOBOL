@@ -1,0 +1,5403 @@
+[
+  {
+    "seq": 1,
+    "paragraph": "MAIN-PARA",
+    "line": 165,
+    "verb": "SET",
+    "operands": [
+      "ERR-FLG-OFF",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [],
+    "cfg_successors": [
+      2
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET ERR-FLG-OFF TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 2,
+    "paragraph": "MAIN-PARA",
+    "line": 166,
+    "verb": "SET",
+    "operands": [
+      "TRANSACT-NOT-EOF",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      1
+    ],
+    "cfg_successors": [
+      3
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET TRANSACT-NOT-EOF TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 3,
+    "paragraph": "MAIN-PARA",
+    "line": 167,
+    "verb": "SET",
+    "operands": [
+      "SEND-ERASE-YES",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      2
+    ],
+    "cfg_successors": [
+      4
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET SEND-ERASE-YES TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 4,
+    "paragraph": "MAIN-PARA",
+    "line": 169,
+    "verb": "MOVE",
+    "operands": [
+      "WS-MESSAGE"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      3
+    ],
+    "cfg_successors": [
+      5
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE SPACES TO WS-MESSAGE"
+  },
+  {
+    "seq": 5,
+    "paragraph": "MAIN-PARA",
+    "line": 172,
+    "verb": "IF",
+    "operands": [
+      "EIBCALEN",
+      "0"
+    ],
+    "operand_types": [
+      "unresolved",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      4
+    ],
+    "cfg_successors": [
+      6
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF EIBCALEN = 0",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 6,
+    "paragraph": "MAIN-PARA",
+    "line": 173,
+    "verb": "MOVE",
+    "operands": [
+      "'COSGN00C'",
+      "CDEMO-TO-PROGRAM"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      5
+    ],
+    "cfg_successors": [
+      7
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 7,
+    "paragraph": "MAIN-PARA",
+    "line": 174,
+    "verb": "PERFORM",
+    "operands": [
+      "RETURN-TO-PREV-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      6
+    ],
+    "cfg_successors": [
+      192
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM RETURN-TO-PREV-SCREEN",
+    "cfg_perform_target": "RETURN-TO-PREV-SCREEN"
+  },
+  {
+    "seq": 8,
+    "paragraph": "MAIN-PARA",
+    "line": 176,
+    "verb": "MOVE",
+    "operands": [
+      "DFHCOMMAREA",
+      "1",
+      "EIBCALEN",
+      "CARDDEMO-COMMAREA"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      7
+    ],
+    "cfg_successors": [
+      9
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DFHCOMMAREA(1:EIBCALEN) TO CARDDEMO-COMMAREA",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 9,
+    "paragraph": "MAIN-PARA",
+    "line": 177,
+    "verb": "IF",
+    "operands": [
+      "CDEMO-PGM-REENTER"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      8
+    ],
+    "cfg_successors": [
+      10
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT CDEMO-PGM-REENTER",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 10,
+    "paragraph": "MAIN-PARA",
+    "line": 178,
+    "verb": "SET",
+    "operands": [
+      "CDEMO-PGM-REENTER",
+      "TRUE"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      9
+    ],
+    "cfg_successors": [
+      11
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET CDEMO-PGM-REENTER TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 11,
+    "paragraph": "MAIN-PARA",
+    "line": 179,
+    "verb": "MOVE",
+    "operands": [
+      "CORPT0AO"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      10
+    ],
+    "cfg_successors": [
+      12
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LOW-VALUES TO CORPT0AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 12,
+    "paragraph": "MAIN-PARA",
+    "line": 180,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "MONTHLYL",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      11
+    ],
+    "cfg_successors": [
+      13
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO MONTHLYL OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 13,
+    "paragraph": "MAIN-PARA",
+    "line": 181,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      12
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 14,
+    "paragraph": "MAIN-PARA",
+    "line": 183,
+    "verb": "PERFORM",
+    "operands": [
+      "RECEIVE-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      13
+    ],
+    "cfg_successors": [
+      205
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM RECEIVE-TRNRPT-SCREEN",
+    "cfg_perform_target": "RECEIVE-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 15,
+    "paragraph": "MAIN-PARA",
+    "line": 184,
+    "verb": "EVALUATE",
+    "operands": [
+      "EIBAID"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      14
+    ],
+    "cfg_successors": [
+      16
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE EIBAID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 16,
+    "paragraph": "MAIN-PARA",
+    "line": 186,
+    "verb": "PERFORM",
+    "operands": [
+      "PROCESS-ENTER-KEY"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      15
+    ],
+    "cfg_successors": [
+      24
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM PROCESS-ENTER-KEY",
+    "cfg_perform_target": "PROCESS-ENTER-KEY"
+  },
+  {
+    "seq": 17,
+    "paragraph": "MAIN-PARA",
+    "line": 188,
+    "verb": "MOVE",
+    "operands": [
+      "'COMEN01C'",
+      "CDEMO-TO-PROGRAM"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      16
+    ],
+    "cfg_successors": [
+      18
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'COMEN01C' TO CDEMO-TO-PROGRAM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 18,
+    "paragraph": "MAIN-PARA",
+    "line": 189,
+    "verb": "PERFORM",
+    "operands": [
+      "RETURN-TO-PREV-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      17
+    ],
+    "cfg_successors": [
+      192
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM RETURN-TO-PREV-SCREEN",
+    "cfg_perform_target": "RETURN-TO-PREV-SCREEN"
+  },
+  {
+    "seq": 19,
+    "paragraph": "MAIN-PARA",
+    "line": 191,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      18
+    ],
+    "cfg_successors": [
+      20
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 20,
+    "paragraph": "MAIN-PARA",
+    "line": 192,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "MONTHLYL",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      19
+    ],
+    "cfg_successors": [
+      21
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO MONTHLYL OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 21,
+    "paragraph": "MAIN-PARA",
+    "line": 193,
+    "verb": "MOVE",
+    "operands": [
+      "CCDA-MSG-INVALID-KEY",
+      "WS-MESSAGE"
+    ],
+    "operand_types": [
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      20
+    ],
+    "cfg_successors": [
+      22
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CCDA-MSG-INVALID-KEY TO WS-MESSAGE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 22,
+    "paragraph": "MAIN-PARA",
+    "line": 194,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      21
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 23,
+    "paragraph": "MAIN-PARA",
+    "line": 199,
+    "verb": "EXEC CICS",
+    "operands": [
+      "RETURN"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EXEC CICS RETURN RETURN",
+    "cfg_predecessors": [
+      22
+    ],
+    "cfg_successors": [
+      24
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS RETURN",
+    "operand_unresolved": true,
+    "is_cics_branch": true,
+    "cics_command": "RETURN"
+  },
+  {
+    "seq": 24,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 210,
+    "verb": "DISPLAY",
+    "operands": [
+      "'PROCESS ENTER KEY'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      23,
+      16
+    ],
+    "cfg_successors": [
+      25
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'PROCESS ENTER KEY'"
+  },
+  {
+    "seq": 25,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 212,
+    "verb": "EVALUATE",
+    "operands": [
+      "TRUE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      24
+    ],
+    "cfg_successors": [
+      26
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 26,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 214,
+    "verb": "MOVE",
+    "operands": [
+      "'Monthly'",
+      "WS-REPORT-NAME"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      25
+    ],
+    "cfg_successors": [
+      27
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Monthly' TO WS-REPORT-NAME"
+  },
+  {
+    "seq": 27,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 215,
+    "verb": "MOVE",
+    "operands": [
+      "FUNCTION",
+      "CURRENT-DATE",
+      "WS-CURDATE-DATA"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      26
+    ],
+    "cfg_successors": [
+      28
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE FUNCTION CURRENT-DATE TO WS-CURDATE-DATA",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 28,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 217,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-YEAR",
+      "WS-START-DATE-YYYY"
+    ],
+    "operand_types": [
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      27
+    ],
+    "cfg_successors": [
+      29
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-YEAR TO WS-START-DATE-YYYY",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 29,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 218,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-MONTH",
+      "WS-START-DATE-MM"
+    ],
+    "operand_types": [
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      28
+    ],
+    "cfg_successors": [
+      30
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-MONTH TO WS-START-DATE-MM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 30,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 219,
+    "verb": "MOVE",
+    "operands": [
+      "'01'",
+      "WS-START-DATE-DD"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      29
+    ],
+    "cfg_successors": [
+      31
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE '01' TO WS-START-DATE-DD"
+  },
+  {
+    "seq": 31,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 220,
+    "verb": "MOVE",
+    "operands": [
+      "WS-START-DATE",
+      "PARM-START-DATE-1"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      30
+    ],
+    "cfg_successors": [
+      32
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-START-DATE TO PARM-START-DATE-1"
+  },
+  {
+    "seq": 32,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 223,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "WS-CURDATE-DAY"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      31
+    ],
+    "cfg_successors": [
+      33
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 1 TO WS-CURDATE-DAY",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 33,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 224,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-CURDATE-MONTH"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      32
+    ],
+    "cfg_successors": [
+      34
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-CURDATE-MONTH",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 34,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 225,
+    "verb": "IF",
+    "operands": [
+      "WS-CURDATE-MONTH",
+      "12"
+    ],
+    "operand_types": [
+      "unresolved",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      33
+    ],
+    "cfg_successors": [
+      35
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF WS-CURDATE-MONTH > 12",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 35,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 226,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-CURDATE-YEAR"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      34
+    ],
+    "cfg_successors": [
+      36
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-CURDATE-YEAR",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 36,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 227,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "WS-CURDATE-MONTH"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      35
+    ],
+    "cfg_successors": [
+      37
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 1 TO WS-CURDATE-MONTH",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 37,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 229,
+    "verb": "COMPUTE",
+    "operands": [
+      "WS-CURDATE-N",
+      "FUNCTION",
+      "DATE-OF-INTEGER"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      36
+    ],
+    "cfg_successors": [
+      38
+    ],
+    "division": "PROCEDURE",
+    "raw": "COMPUTE WS-CURDATE-N = FUNCTION DATE-OF-INTEGER(",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 38,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 232,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-YEAR",
+      "WS-END-DATE-YYYY"
+    ],
+    "operand_types": [
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      37
+    ],
+    "cfg_successors": [
+      39
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-YEAR TO WS-END-DATE-YYYY",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 39,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 233,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-MONTH",
+      "WS-END-DATE-MM"
+    ],
+    "operand_types": [
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      38
+    ],
+    "cfg_successors": [
+      40
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-MONTH TO WS-END-DATE-MM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 40,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 234,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-DAY",
+      "WS-END-DATE-DD"
+    ],
+    "operand_types": [
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      39
+    ],
+    "cfg_successors": [
+      41
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-DAY TO WS-END-DATE-DD",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 41,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 235,
+    "verb": "MOVE",
+    "operands": [
+      "WS-END-DATE",
+      "PARM-END-DATE-1"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      40
+    ],
+    "cfg_successors": [
+      42
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-END-DATE TO PARM-END-DATE-1"
+  },
+  {
+    "seq": 42,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 238,
+    "verb": "PERFORM",
+    "operands": [
+      "SUBMIT-JOB-TO-INTRDR"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      41
+    ],
+    "cfg_successors": [
+      163
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SUBMIT-JOB-TO-INTRDR",
+    "cfg_perform_target": "SUBMIT-JOB-TO-INTRDR"
+  },
+  {
+    "seq": 43,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 240,
+    "verb": "MOVE",
+    "operands": [
+      "'Yearly'",
+      "WS-REPORT-NAME"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      42
+    ],
+    "cfg_successors": [
+      44
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Yearly' TO WS-REPORT-NAME"
+  },
+  {
+    "seq": 44,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 241,
+    "verb": "MOVE",
+    "operands": [
+      "FUNCTION",
+      "CURRENT-DATE",
+      "WS-CURDATE-DATA"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      43
+    ],
+    "cfg_successors": [
+      45
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE FUNCTION CURRENT-DATE TO WS-CURDATE-DATA",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 45,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 243,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-YEAR",
+      "WS-START-DATE-YYYY"
+    ],
+    "operand_types": [
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      44
+    ],
+    "cfg_successors": [
+      46
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-YEAR TO WS-START-DATE-YYYY",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 46,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 245,
+    "verb": "MOVE",
+    "operands": [
+      "'01'",
+      "WS-START-DATE-MM"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      45
+    ],
+    "cfg_successors": [
+      47
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE '01' TO WS-START-DATE-MM"
+  },
+  {
+    "seq": 47,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 247,
+    "verb": "MOVE",
+    "operands": [
+      "WS-START-DATE",
+      "PARM-START-DATE-1"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      46
+    ],
+    "cfg_successors": [
+      48
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-START-DATE TO PARM-START-DATE-1"
+  },
+  {
+    "seq": 48,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 250,
+    "verb": "MOVE",
+    "operands": [
+      "'12'",
+      "WS-END-DATE-MM"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      47
+    ],
+    "cfg_successors": [
+      49
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE '12' TO WS-END-DATE-MM"
+  },
+  {
+    "seq": 49,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 251,
+    "verb": "MOVE",
+    "operands": [
+      "'31'",
+      "WS-END-DATE-DD"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      48
+    ],
+    "cfg_successors": [
+      50
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE '31' TO WS-END-DATE-DD"
+  },
+  {
+    "seq": 50,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 252,
+    "verb": "MOVE",
+    "operands": [
+      "WS-END-DATE",
+      "PARM-END-DATE-1"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      49
+    ],
+    "cfg_successors": [
+      51
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-END-DATE TO PARM-END-DATE-1"
+  },
+  {
+    "seq": 51,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 255,
+    "verb": "PERFORM",
+    "operands": [
+      "SUBMIT-JOB-TO-INTRDR"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      50
+    ],
+    "cfg_successors": [
+      163
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SUBMIT-JOB-TO-INTRDR",
+    "cfg_perform_target": "SUBMIT-JOB-TO-INTRDR"
+  },
+  {
+    "seq": 52,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 258,
+    "verb": "EVALUATE",
+    "operands": [
+      "TRUE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      51
+    ],
+    "cfg_successors": [
+      53
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 53,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 261,
+    "verb": "MOVE",
+    "operands": [
+      "'Start Date - Month can NOT be empty...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      52
+    ],
+    "cfg_successors": [
+      54
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Start Date - Month can NOT be empty...'"
+  },
+  {
+    "seq": 54,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 263,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      53
+    ],
+    "cfg_successors": [
+      55
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 55,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 264,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "SDTMML",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      54
+    ],
+    "cfg_successors": [
+      56
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO SDTMML OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 56,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 265,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      55
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 57,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 268,
+    "verb": "MOVE",
+    "operands": [
+      "'Start Date - Day can NOT be empty...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      56
+    ],
+    "cfg_successors": [
+      58
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Start Date - Day can NOT be empty...'"
+  },
+  {
+    "seq": 58,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 270,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      57
+    ],
+    "cfg_successors": [
+      59
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 59,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 271,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "SDTDDL",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      58
+    ],
+    "cfg_successors": [
+      60
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO SDTDDL OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 60,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 272,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      59
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 61,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 275,
+    "verb": "MOVE",
+    "operands": [
+      "'Start Date - Year can NOT be empty...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      60
+    ],
+    "cfg_successors": [
+      62
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Start Date - Year can NOT be empty...'"
+  },
+  {
+    "seq": 62,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 277,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      61
+    ],
+    "cfg_successors": [
+      63
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 63,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 278,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "SDTYYYYL",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      62
+    ],
+    "cfg_successors": [
+      64
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO SDTYYYYL OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 64,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 279,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      63
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 65,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 282,
+    "verb": "MOVE",
+    "operands": [
+      "'End Date - Month can NOT be empty...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      64
+    ],
+    "cfg_successors": [
+      66
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'End Date - Month can NOT be empty...'"
+  },
+  {
+    "seq": 66,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 284,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      65
+    ],
+    "cfg_successors": [
+      67
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 67,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 285,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "EDTMML",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      66
+    ],
+    "cfg_successors": [
+      68
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO EDTMML OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 68,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 286,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      67
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 69,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 289,
+    "verb": "MOVE",
+    "operands": [
+      "'End Date - Day can NOT be empty...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      68
+    ],
+    "cfg_successors": [
+      70
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'End Date - Day can NOT be empty...'"
+  },
+  {
+    "seq": 70,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 291,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      69
+    ],
+    "cfg_successors": [
+      71
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 71,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 292,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "EDTDDL",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      70
+    ],
+    "cfg_successors": [
+      72
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO EDTDDL OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 72,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 293,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      71
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 73,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 296,
+    "verb": "MOVE",
+    "operands": [
+      "'End Date - Year can NOT be empty...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      72
+    ],
+    "cfg_successors": [
+      74
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'End Date - Year can NOT be empty...'"
+  },
+  {
+    "seq": 74,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 298,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      73
+    ],
+    "cfg_successors": [
+      75
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 75,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 299,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "EDTYYYYL",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      74
+    ],
+    "cfg_successors": [
+      76
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO EDTYYYYL OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 76,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 300,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      75
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 77,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 302,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      76
+    ],
+    "cfg_successors": [
+      78
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 78,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 305,
+    "verb": "COMPUTE",
+    "operands": [
+      "WS-NUM-99",
+      "FUNCTION",
+      "NUMVAL-C"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      77
+    ],
+    "cfg_successors": [
+      79
+    ],
+    "division": "PROCEDURE",
+    "raw": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 79,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 307,
+    "verb": "MOVE",
+    "operands": [
+      "WS-NUM-99",
+      "SDTMMI",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      78
+    ],
+    "cfg_successors": [
+      80
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-NUM-99 TO SDTMMI OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 80,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 309,
+    "verb": "COMPUTE",
+    "operands": [
+      "WS-NUM-99",
+      "FUNCTION",
+      "NUMVAL-C"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      79
+    ],
+    "cfg_successors": [
+      81
+    ],
+    "division": "PROCEDURE",
+    "raw": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 81,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 311,
+    "verb": "MOVE",
+    "operands": [
+      "WS-NUM-99",
+      "SDTDDI",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      80
+    ],
+    "cfg_successors": [
+      82
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-NUM-99 TO SDTDDI OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 82,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 313,
+    "verb": "COMPUTE",
+    "operands": [
+      "WS-NUM-9999",
+      "FUNCTION",
+      "NUMVAL-C"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      81
+    ],
+    "cfg_successors": [
+      83
+    ],
+    "division": "PROCEDURE",
+    "raw": "COMPUTE WS-NUM-9999 = FUNCTION NUMVAL-C",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 83,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 315,
+    "verb": "MOVE",
+    "operands": [
+      "WS-NUM-9999",
+      "SDTYYYYI",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      82
+    ],
+    "cfg_successors": [
+      84
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-NUM-9999 TO SDTYYYYI OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 84,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 317,
+    "verb": "COMPUTE",
+    "operands": [
+      "WS-NUM-99",
+      "FUNCTION",
+      "NUMVAL-C"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      83
+    ],
+    "cfg_successors": [
+      85
+    ],
+    "division": "PROCEDURE",
+    "raw": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 85,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 319,
+    "verb": "MOVE",
+    "operands": [
+      "WS-NUM-99",
+      "EDTMMI",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      84
+    ],
+    "cfg_successors": [
+      86
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-NUM-99 TO EDTMMI OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 86,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 321,
+    "verb": "COMPUTE",
+    "operands": [
+      "WS-NUM-99",
+      "FUNCTION",
+      "NUMVAL-C"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      85
+    ],
+    "cfg_successors": [
+      87
+    ],
+    "division": "PROCEDURE",
+    "raw": "COMPUTE WS-NUM-99 = FUNCTION NUMVAL-C",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 87,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 323,
+    "verb": "MOVE",
+    "operands": [
+      "WS-NUM-99",
+      "EDTDDI",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      86
+    ],
+    "cfg_successors": [
+      88
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-NUM-99 TO EDTDDI OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 88,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 325,
+    "verb": "COMPUTE",
+    "operands": [
+      "WS-NUM-9999",
+      "FUNCTION",
+      "NUMVAL-C"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      87
+    ],
+    "cfg_successors": [
+      89
+    ],
+    "division": "PROCEDURE",
+    "raw": "COMPUTE WS-NUM-9999 = FUNCTION NUMVAL-C",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 89,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 327,
+    "verb": "MOVE",
+    "operands": [
+      "WS-NUM-9999",
+      "EDTYYYYI",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      88
+    ],
+    "cfg_successors": [
+      90
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-NUM-9999 TO EDTYYYYI OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 90,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 329,
+    "verb": "IF",
+    "operands": [
+      "SDTMMI",
+      "CORPT0AI",
+      "NUMERIC"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF SDTMMI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      89
+    ],
+    "cfg_successors": [
+      91
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF SDTMMI OF CORPT0AI IS NOT NUMERIC OR",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 91,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 331,
+    "verb": "MOVE",
+    "operands": [
+      "'Start Date - Not a valid Month...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF SDTMMI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      90
+    ],
+    "cfg_successors": [
+      92
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Start Date - Not a valid Month...'"
+  },
+  {
+    "seq": 92,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 333,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF SDTMMI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      91
+    ],
+    "cfg_successors": [
+      93
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 93,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 334,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "SDTMML",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF SDTMMI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      92
+    ],
+    "cfg_successors": [
+      94
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO SDTMML OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 94,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 335,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF SDTMMI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      93
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 95,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 338,
+    "verb": "IF",
+    "operands": [
+      "SDTDDI",
+      "CORPT0AI",
+      "NUMERIC"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF SDTDDI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      94
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF SDTDDI OF CORPT0AI IS NOT NUMERIC OR",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 96,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 340,
+    "verb": "MOVE",
+    "operands": [
+      "'Start Date - Not a valid Day...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF SDTDDI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      95
+    ],
+    "cfg_successors": [
+      97
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Start Date - Not a valid Day...'"
+  },
+  {
+    "seq": 97,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 342,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF SDTDDI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      96
+    ],
+    "cfg_successors": [
+      98
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 98,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 343,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "SDTDDL",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF SDTDDI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      97
+    ],
+    "cfg_successors": [
+      99
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO SDTDDL OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 99,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 344,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF SDTDDI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      98
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 100,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 347,
+    "verb": "IF",
+    "operands": [
+      "SDTYYYYI",
+      "CORPT0AI",
+      "NUMERIC"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF SDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+    "cfg_predecessors": [
+      99
+    ],
+    "cfg_successors": [
+      101
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF SDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 101,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 348,
+    "verb": "MOVE",
+    "operands": [
+      "'Start Date - Not a valid Year...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF SDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+    "cfg_predecessors": [
+      100
+    ],
+    "cfg_successors": [
+      102
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Start Date - Not a valid Year...'"
+  },
+  {
+    "seq": 102,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 350,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF SDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+    "cfg_predecessors": [
+      101
+    ],
+    "cfg_successors": [
+      103
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 103,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 351,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "SDTYYYYL",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF SDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+    "cfg_predecessors": [
+      102
+    ],
+    "cfg_successors": [
+      104
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO SDTYYYYL OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 104,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 352,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF SDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+    "cfg_predecessors": [
+      103
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 105,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 355,
+    "verb": "IF",
+    "operands": [
+      "EDTMMI",
+      "CORPT0AI",
+      "NUMERIC"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EDTMMI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      104
+    ],
+    "cfg_successors": [
+      106
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF EDTMMI OF CORPT0AI IS NOT NUMERIC OR",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 106,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 357,
+    "verb": "MOVE",
+    "operands": [
+      "'End Date - Not a valid Month...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EDTMMI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      105
+    ],
+    "cfg_successors": [
+      107
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'End Date - Not a valid Month...'"
+  },
+  {
+    "seq": 107,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 359,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EDTMMI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      106
+    ],
+    "cfg_successors": [
+      108
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 108,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 360,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "EDTMML",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EDTMMI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      107
+    ],
+    "cfg_successors": [
+      109
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO EDTMML OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 109,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 361,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EDTMMI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      108
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 110,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 364,
+    "verb": "IF",
+    "operands": [
+      "EDTDDI",
+      "CORPT0AI",
+      "NUMERIC"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EDTDDI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      109
+    ],
+    "cfg_successors": [
+      111
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF EDTDDI OF CORPT0AI IS NOT NUMERIC OR",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 111,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 366,
+    "verb": "MOVE",
+    "operands": [
+      "'End Date - Not a valid Day...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EDTDDI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      110
+    ],
+    "cfg_successors": [
+      112
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'End Date - Not a valid Day...'"
+  },
+  {
+    "seq": 112,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 368,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EDTDDI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      111
+    ],
+    "cfg_successors": [
+      113
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 113,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 369,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "EDTDDL",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EDTDDI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      112
+    ],
+    "cfg_successors": [
+      114
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO EDTDDL OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 114,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 370,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EDTDDI OF CORPT0AI IS NOT NUMERIC OR",
+    "cfg_predecessors": [
+      113
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 115,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 373,
+    "verb": "IF",
+    "operands": [
+      "EDTYYYYI",
+      "CORPT0AI",
+      "NUMERIC"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+    "cfg_predecessors": [
+      114
+    ],
+    "cfg_successors": [
+      116
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF EDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 116,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 374,
+    "verb": "MOVE",
+    "operands": [
+      "'End Date - Not a valid Year...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+    "cfg_predecessors": [
+      115
+    ],
+    "cfg_successors": [
+      117
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'End Date - Not a valid Year...'"
+  },
+  {
+    "seq": 117,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 376,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+    "cfg_predecessors": [
+      116
+    ],
+    "cfg_successors": [
+      118
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 118,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 377,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "EDTYYYYL",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+    "cfg_predecessors": [
+      117
+    ],
+    "cfg_successors": [
+      119
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO EDTYYYYL OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 119,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 378,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EDTYYYYI OF CORPT0AI IS NOT NUMERIC",
+    "cfg_predecessors": [
+      118
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 120,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 381,
+    "verb": "MOVE",
+    "operands": [
+      "SDTYYYYI",
+      "CORPT0AI",
+      "WS-START-DATE-YYYY"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      119
+    ],
+    "cfg_successors": [
+      121
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE SDTYYYYI OF CORPT0AI TO WS-START-DATE-YYYY",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 121,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 382,
+    "verb": "MOVE",
+    "operands": [
+      "SDTMMI",
+      "CORPT0AI",
+      "WS-START-DATE-MM"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      120
+    ],
+    "cfg_successors": [
+      122
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE SDTMMI OF CORPT0AI TO WS-START-DATE-MM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 122,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 383,
+    "verb": "MOVE",
+    "operands": [
+      "SDTDDI",
+      "CORPT0AI",
+      "WS-START-DATE-DD"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      121
+    ],
+    "cfg_successors": [
+      123
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE SDTDDI OF CORPT0AI TO WS-START-DATE-DD",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 123,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 384,
+    "verb": "MOVE",
+    "operands": [
+      "EDTYYYYI",
+      "CORPT0AI",
+      "WS-END-DATE-YYYY"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      122
+    ],
+    "cfg_successors": [
+      124
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE EDTYYYYI OF CORPT0AI TO WS-END-DATE-YYYY",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 124,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 385,
+    "verb": "MOVE",
+    "operands": [
+      "EDTMMI",
+      "CORPT0AI",
+      "WS-END-DATE-MM"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      123
+    ],
+    "cfg_successors": [
+      125
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE EDTMMI OF CORPT0AI TO WS-END-DATE-MM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 125,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 386,
+    "verb": "MOVE",
+    "operands": [
+      "EDTDDI",
+      "CORPT0AI",
+      "WS-END-DATE-DD"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      124
+    ],
+    "cfg_successors": [
+      126
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE EDTDDI OF CORPT0AI TO WS-END-DATE-DD",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 126,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 388,
+    "verb": "MOVE",
+    "operands": [
+      "WS-START-DATE",
+      "CSUTLDTC-DATE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      125
+    ],
+    "cfg_successors": [
+      127
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-START-DATE TO CSUTLDTC-DATE"
+  },
+  {
+    "seq": 127,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 389,
+    "verb": "MOVE",
+    "operands": [
+      "WS-DATE-FORMAT",
+      "CSUTLDTC-DATE-FORMAT"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      126
+    ],
+    "cfg_successors": [
+      128
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-DATE-FORMAT TO CSUTLDTC-DATE-FORMAT"
+  },
+  {
+    "seq": 128,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 390,
+    "verb": "MOVE",
+    "operands": [
+      "CSUTLDTC-RESULT"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      127
+    ],
+    "cfg_successors": [
+      129
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE SPACES TO CSUTLDTC-RESULT"
+  },
+  {
+    "seq": 129,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 392,
+    "verb": "CALL",
+    "operands": [
+      "'CSUTLDTC'",
+      "CSUTLDTC-DATE"
+    ],
+    "operand_types": [
+      "external-program",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      128
+    ],
+    "cfg_successors": [
+      130
+    ],
+    "division": "PROCEDURE",
+    "raw": "CALL 'CSUTLDTC' USING CSUTLDTC-DATE"
+  },
+  {
+    "seq": 130,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 396,
+    "verb": "IF",
+    "operands": [
+      "CSUTLDTC-RESULT-SEV-CD",
+      "'0000'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CSUTLDTC-RESULT-SEV-CD = '0000'",
+    "cfg_predecessors": [
+      129
+    ],
+    "cfg_successors": [
+      131
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF CSUTLDTC-RESULT-SEV-CD = '0000'"
+  },
+  {
+    "seq": 131,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 397,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CSUTLDTC-RESULT-SEV-CD = '0000'",
+    "cfg_predecessors": [
+      130
+    ],
+    "cfg_successors": [
+      132
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 132,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 399,
+    "verb": "IF",
+    "operands": [
+      "CSUTLDTC-RESULT-MSG-NUM",
+      "'2513'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CSUTLDTC-RESULT-SEV-CD = '0000'",
+    "cfg_predecessors": [
+      131
+    ],
+    "cfg_successors": [
+      133
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF CSUTLDTC-RESULT-MSG-NUM NOT = '2513'"
+  },
+  {
+    "seq": 133,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 400,
+    "verb": "MOVE",
+    "operands": [
+      "'Start Date - Not a valid date...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CSUTLDTC-RESULT-SEV-CD = '0000'",
+    "cfg_predecessors": [
+      132
+    ],
+    "cfg_successors": [
+      134
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Start Date - Not a valid date...'"
+  },
+  {
+    "seq": 134,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 402,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CSUTLDTC-RESULT-SEV-CD = '0000'",
+    "cfg_predecessors": [
+      133
+    ],
+    "cfg_successors": [
+      135
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 135,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 403,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "SDTMML",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CSUTLDTC-RESULT-SEV-CD = '0000'",
+    "cfg_predecessors": [
+      134
+    ],
+    "cfg_successors": [
+      136
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO SDTMML OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 136,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 404,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CSUTLDTC-RESULT-SEV-CD = '0000'",
+    "cfg_predecessors": [
+      135
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 137,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 408,
+    "verb": "MOVE",
+    "operands": [
+      "WS-END-DATE",
+      "CSUTLDTC-DATE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      136
+    ],
+    "cfg_successors": [
+      138
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-END-DATE TO CSUTLDTC-DATE"
+  },
+  {
+    "seq": 138,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 409,
+    "verb": "MOVE",
+    "operands": [
+      "WS-DATE-FORMAT",
+      "CSUTLDTC-DATE-FORMAT"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      137
+    ],
+    "cfg_successors": [
+      139
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-DATE-FORMAT TO CSUTLDTC-DATE-FORMAT"
+  },
+  {
+    "seq": 139,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 410,
+    "verb": "MOVE",
+    "operands": [
+      "CSUTLDTC-RESULT"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      138
+    ],
+    "cfg_successors": [
+      140
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE SPACES TO CSUTLDTC-RESULT"
+  },
+  {
+    "seq": 140,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 412,
+    "verb": "CALL",
+    "operands": [
+      "'CSUTLDTC'",
+      "CSUTLDTC-DATE"
+    ],
+    "operand_types": [
+      "external-program",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      139
+    ],
+    "cfg_successors": [
+      141
+    ],
+    "division": "PROCEDURE",
+    "raw": "CALL 'CSUTLDTC' USING CSUTLDTC-DATE"
+  },
+  {
+    "seq": 141,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 416,
+    "verb": "IF",
+    "operands": [
+      "CSUTLDTC-RESULT-SEV-CD",
+      "'0000'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CSUTLDTC-RESULT-SEV-CD = '0000'",
+    "cfg_predecessors": [
+      140
+    ],
+    "cfg_successors": [
+      142
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF CSUTLDTC-RESULT-SEV-CD = '0000'"
+  },
+  {
+    "seq": 142,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 417,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CSUTLDTC-RESULT-SEV-CD = '0000'",
+    "cfg_predecessors": [
+      141
+    ],
+    "cfg_successors": [
+      143
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 143,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 419,
+    "verb": "IF",
+    "operands": [
+      "CSUTLDTC-RESULT-MSG-NUM",
+      "'2513'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CSUTLDTC-RESULT-SEV-CD = '0000'",
+    "cfg_predecessors": [
+      142
+    ],
+    "cfg_successors": [
+      144
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF CSUTLDTC-RESULT-MSG-NUM NOT = '2513'"
+  },
+  {
+    "seq": 144,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 420,
+    "verb": "MOVE",
+    "operands": [
+      "'End Date - Not a valid date...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CSUTLDTC-RESULT-SEV-CD = '0000'",
+    "cfg_predecessors": [
+      143
+    ],
+    "cfg_successors": [
+      145
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'End Date - Not a valid date...'"
+  },
+  {
+    "seq": 145,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 422,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CSUTLDTC-RESULT-SEV-CD = '0000'",
+    "cfg_predecessors": [
+      144
+    ],
+    "cfg_successors": [
+      146
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 146,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 423,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "EDTMML",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CSUTLDTC-RESULT-SEV-CD = '0000'",
+    "cfg_predecessors": [
+      145
+    ],
+    "cfg_successors": [
+      147
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO EDTMML OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 147,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 424,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CSUTLDTC-RESULT-SEV-CD = '0000'",
+    "cfg_predecessors": [
+      146
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 148,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 429,
+    "verb": "MOVE",
+    "operands": [
+      "WS-START-DATE",
+      "PARM-START-DATE-1"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      147
+    ],
+    "cfg_successors": [
+      149
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-START-DATE TO PARM-START-DATE-1"
+  },
+  {
+    "seq": 149,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 431,
+    "verb": "MOVE",
+    "operands": [
+      "WS-END-DATE",
+      "PARM-END-DATE-1"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      148
+    ],
+    "cfg_successors": [
+      150
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-END-DATE TO PARM-END-DATE-1"
+  },
+  {
+    "seq": 150,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 433,
+    "verb": "MOVE",
+    "operands": [
+      "'Custom'",
+      "WS-REPORT-NAME"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      149
+    ],
+    "cfg_successors": [
+      151
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Custom' TO WS-REPORT-NAME"
+  },
+  {
+    "seq": 151,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 434,
+    "verb": "IF",
+    "operands": [
+      "ERR-FLG-ON"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      150
+    ],
+    "cfg_successors": [
+      152
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT ERR-FLG-ON"
+  },
+  {
+    "seq": 152,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 435,
+    "verb": "PERFORM",
+    "operands": [
+      "SUBMIT-JOB-TO-INTRDR"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      151
+    ],
+    "cfg_successors": [
+      163
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SUBMIT-JOB-TO-INTRDR",
+    "cfg_perform_target": "SUBMIT-JOB-TO-INTRDR"
+  },
+  {
+    "seq": 153,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 438,
+    "verb": "MOVE",
+    "operands": [
+      "'Select a report type to print report...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      152
+    ],
+    "cfg_successors": [
+      154
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Select a report type to print report...' TO"
+  },
+  {
+    "seq": 154,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 440,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      153
+    ],
+    "cfg_successors": [
+      155
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 155,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 441,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "MONTHLYL",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      154
+    ],
+    "cfg_successors": [
+      156
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO MONTHLYL OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 156,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 442,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      155
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 157,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 445,
+    "verb": "IF",
+    "operands": [
+      "ERR-FLG-ON"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      156
+    ],
+    "cfg_successors": [
+      158
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT ERR-FLG-ON"
+  },
+  {
+    "seq": 158,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 447,
+    "verb": "PERFORM",
+    "operands": [
+      "INITIALIZE-ALL-FIELDS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      157
+    ],
+    "cfg_successors": [
+      219
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM INITIALIZE-ALL-FIELDS",
+    "cfg_perform_target": "INITIALIZE-ALL-FIELDS"
+  },
+  {
+    "seq": 159,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 448,
+    "verb": "MOVE",
+    "operands": [
+      "DFHGREEN",
+      "ERRMSGC",
+      "CORPT0AO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      158
+    ],
+    "cfg_successors": [
+      160
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DFHGREEN TO ERRMSGC OF CORPT0AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 160,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 449,
+    "verb": "STRING",
+    "operands": [
+      "WS-REPORT-NAME",
+      "DELIMITED"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      159
+    ],
+    "cfg_successors": [
+      161
+    ],
+    "division": "PROCEDURE",
+    "raw": "STRING WS-REPORT-NAME DELIMITED BY SPACE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 161,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 453,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "MONTHLYL",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      160
+    ],
+    "cfg_successors": [
+      162
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO MONTHLYL OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 162,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 454,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      161
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 163,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 464,
+    "verb": "IF",
+    "operands": [
+      "CONFIRMI",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CONFIRMI OF CORPT0AI = SPACES OR LOW-VALUES",
+    "cfg_predecessors": [
+      162,
+      42,
+      51,
+      152
+    ],
+    "cfg_successors": [
+      164
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF CONFIRMI OF CORPT0AI = SPACES OR LOW-VALUES",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 164,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 465,
+    "verb": "STRING",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CONFIRMI OF CORPT0AI = SPACES OR LOW-VALUES",
+    "cfg_predecessors": [
+      163
+    ],
+    "cfg_successors": [
+      165
+    ],
+    "division": "PROCEDURE",
+    "raw": "STRING"
+  },
+  {
+    "seq": 165,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 471,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CONFIRMI OF CORPT0AI = SPACES OR LOW-VALUES",
+    "cfg_predecessors": [
+      164
+    ],
+    "cfg_successors": [
+      166
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 166,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 472,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "CONFIRML",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CONFIRMI OF CORPT0AI = SPACES OR LOW-VALUES",
+    "cfg_predecessors": [
+      165
+    ],
+    "cfg_successors": [
+      167
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO CONFIRML OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 167,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 473,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CONFIRMI OF CORPT0AI = SPACES OR LOW-VALUES",
+    "cfg_predecessors": [
+      166
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 168,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 476,
+    "verb": "IF",
+    "operands": [
+      "ERR-FLG-ON"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      167
+    ],
+    "cfg_successors": [
+      169
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT ERR-FLG-ON"
+  },
+  {
+    "seq": 169,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 477,
+    "verb": "EVALUATE",
+    "operands": [
+      "TRUE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      168
+    ],
+    "cfg_successors": [
+      170
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 170,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 479,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      169
+    ],
+    "cfg_successors": [
+      171
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 171,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 481,
+    "verb": "PERFORM",
+    "operands": [
+      "INITIALIZE-ALL-FIELDS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      170
+    ],
+    "cfg_successors": [
+      219
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM INITIALIZE-ALL-FIELDS",
+    "cfg_perform_target": "INITIALIZE-ALL-FIELDS"
+  },
+  {
+    "seq": 172,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 482,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      171
+    ],
+    "cfg_successors": [
+      173
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 173,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 483,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      172
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 174,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 485,
+    "verb": "STRING",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      173
+    ],
+    "cfg_successors": [
+      175
+    ],
+    "division": "PROCEDURE",
+    "raw": "STRING"
+  },
+  {
+    "seq": 175,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 491,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      174
+    ],
+    "cfg_successors": [
+      176
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 176,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 492,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "CONFIRML",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      175
+    ],
+    "cfg_successors": [
+      177
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO CONFIRML OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 177,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 493,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      176
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 178,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 496,
+    "verb": "SET",
+    "operands": [
+      "END-LOOP-NO",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      177
+    ],
+    "cfg_successors": [
+      179
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET END-LOOP-NO TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 179,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 498,
+    "verb": "PERFORM",
+    "operands": [
+      "WS-IDX",
+      "1",
+      "1",
+      "WS-IDX",
+      "1000"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal",
+      "literal",
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      178
+    ],
+    "cfg_successors": [
+      180
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM VARYING WS-IDX FROM 1 BY 1 UNTIL WS-IDX > 1000 OR"
+  },
+  {
+    "seq": 180,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 501,
+    "verb": "MOVE",
+    "operands": [
+      "JOB-LINES",
+      "WS-IDX",
+      "JCL-RECORD"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      179
+    ],
+    "cfg_successors": [
+      181
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE JOB-LINES(WS-IDX) TO JCL-RECORD"
+  },
+  {
+    "seq": 181,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 502,
+    "verb": "IF",
+    "operands": [
+      "JCL-RECORD",
+      "'/*EOF'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF JCL-RECORD = '/*EOF' OR",
+    "cfg_predecessors": [
+      180
+    ],
+    "cfg_successors": [
+      182
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF JCL-RECORD = '/*EOF' OR"
+  },
+  {
+    "seq": 182,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 504,
+    "verb": "SET",
+    "operands": [
+      "END-LOOP-YES",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF JCL-RECORD = '/*EOF' OR",
+    "cfg_predecessors": [
+      181
+    ],
+    "cfg_successors": [
+      183
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET END-LOOP-YES TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 183,
+    "paragraph": "SUBMIT-JOB-TO-INTRDR",
+    "line": 507,
+    "verb": "PERFORM",
+    "operands": [
+      "WIRTE-JOBSUB-TDQ"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      182
+    ],
+    "cfg_successors": [
+      184
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM WIRTE-JOBSUB-TDQ",
+    "cfg_perform_target": "WIRTE-JOBSUB-TDQ"
+  },
+  {
+    "seq": 184,
+    "paragraph": "WIRTE-JOBSUB-TDQ",
+    "line": 517,
+    "verb": "EXEC CICS",
+    "operands": [
+      "WRITEQ",
+      "TD"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      183
+    ],
+    "cfg_successors": [
+      185
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS WRITEQ TD",
+    "operand_unresolved": true,
+    "cics_command": "WRITEQ"
+  },
+  {
+    "seq": 185,
+    "paragraph": "WIRTE-JOBSUB-TDQ",
+    "line": 525,
+    "verb": "EVALUATE",
+    "operands": [
+      "WS-RESP-CD"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      184
+    ],
+    "cfg_successors": [
+      186
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE WS-RESP-CD"
+  },
+  {
+    "seq": 186,
+    "paragraph": "WIRTE-JOBSUB-TDQ",
+    "line": 527,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      185
+    ],
+    "cfg_successors": [
+      187
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 187,
+    "paragraph": "WIRTE-JOBSUB-TDQ",
+    "line": 529,
+    "verb": "DISPLAY",
+    "operands": [
+      "'RESP:'",
+      "WS-RESP-CD",
+      "'REAS:'",
+      "WS-REAS-CD"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage",
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      186
+    ],
+    "cfg_successors": [
+      188
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD"
+  },
+  {
+    "seq": 188,
+    "paragraph": "WIRTE-JOBSUB-TDQ",
+    "line": 530,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      187
+    ],
+    "cfg_successors": [
+      189
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 189,
+    "paragraph": "WIRTE-JOBSUB-TDQ",
+    "line": 531,
+    "verb": "MOVE",
+    "operands": [
+      "'Unable to Write TDQ (JOBS)...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      188
+    ],
+    "cfg_successors": [
+      190
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Unable to Write TDQ (JOBS)...' TO"
+  },
+  {
+    "seq": 190,
+    "paragraph": "WIRTE-JOBSUB-TDQ",
+    "line": 533,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "MONTHLYL",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      189
+    ],
+    "cfg_successors": [
+      191
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO MONTHLYL OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 191,
+    "paragraph": "WIRTE-JOBSUB-TDQ",
+    "line": 534,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-TRNRPT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      190
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-TRNRPT-SCREEN",
+    "cfg_perform_target": "SEND-TRNRPT-SCREEN"
+  },
+  {
+    "seq": 192,
+    "paragraph": "RETURN-TO-PREV-SCREEN",
+    "line": 542,
+    "verb": "IF",
+    "operands": [
+      "CDEMO-TO-PROGRAM"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CDEMO-TO-PROGRAM = LOW-VALUES OR SPACES",
+    "cfg_predecessors": [
+      191,
+      7,
+      18
+    ],
+    "cfg_successors": [
+      193
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF CDEMO-TO-PROGRAM = LOW-VALUES OR SPACES",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 193,
+    "paragraph": "RETURN-TO-PREV-SCREEN",
+    "line": 543,
+    "verb": "MOVE",
+    "operands": [
+      "'COSGN00C'",
+      "CDEMO-TO-PROGRAM"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CDEMO-TO-PROGRAM = LOW-VALUES OR SPACES",
+    "cfg_predecessors": [
+      192
+    ],
+    "cfg_successors": [
+      194
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 194,
+    "paragraph": "RETURN-TO-PREV-SCREEN",
+    "line": 545,
+    "verb": "MOVE",
+    "operands": [
+      "WS-TRANID",
+      "CDEMO-FROM-TRANID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      193
+    ],
+    "cfg_successors": [
+      195
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-TRANID TO CDEMO-FROM-TRANID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 195,
+    "paragraph": "RETURN-TO-PREV-SCREEN",
+    "line": 546,
+    "verb": "MOVE",
+    "operands": [
+      "WS-PGMNAME",
+      "CDEMO-FROM-PROGRAM"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      194
+    ],
+    "cfg_successors": [
+      196
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-PGMNAME TO CDEMO-FROM-PROGRAM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 196,
+    "paragraph": "RETURN-TO-PREV-SCREEN",
+    "line": 547,
+    "verb": "MOVE",
+    "operands": [
+      "CDEMO-PGM-CONTEXT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      195
+    ],
+    "cfg_successors": [
+      197
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ZEROS TO CDEMO-PGM-CONTEXT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 197,
+    "paragraph": "RETURN-TO-PREV-SCREEN",
+    "line": 548,
+    "verb": "EXEC CICS",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      196
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS"
+  },
+  {
+    "seq": 198,
+    "paragraph": "SEND-TRNRPT-SCREEN",
+    "line": 558,
+    "verb": "PERFORM",
+    "operands": [
+      "POPULATE-HEADER-INFO"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      197,
+      13,
+      22,
+      56,
+      60,
+      64,
+      68,
+      72,
+      76,
+      94,
+      99,
+      104,
+      109,
+      114,
+      119,
+      136,
+      147,
+      156,
+      162,
+      167,
+      173,
+      177,
+      191
+    ],
+    "cfg_successors": [
+      206
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM POPULATE-HEADER-INFO",
+    "cfg_perform_target": "POPULATE-HEADER-INFO"
+  },
+  {
+    "seq": 199,
+    "paragraph": "SEND-TRNRPT-SCREEN",
+    "line": 560,
+    "verb": "MOVE",
+    "operands": [
+      "WS-MESSAGE",
+      "ERRMSGO",
+      "CORPT0AO"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      198
+    ],
+    "cfg_successors": [
+      200
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-MESSAGE TO ERRMSGO OF CORPT0AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 200,
+    "paragraph": "SEND-TRNRPT-SCREEN",
+    "line": 562,
+    "verb": "IF",
+    "operands": [
+      "SEND-ERASE-YES"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF SEND-ERASE-YES",
+    "cfg_predecessors": [
+      199
+    ],
+    "cfg_successors": [
+      201
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF SEND-ERASE-YES"
+  },
+  {
+    "seq": 201,
+    "paragraph": "SEND-TRNRPT-SCREEN",
+    "line": 563,
+    "verb": "EXEC CICS",
+    "operands": [
+      "SEND"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF SEND-ERASE-YES",
+    "cfg_predecessors": [
+      200
+    ],
+    "cfg_successors": [
+      202
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS SEND",
+    "operand_unresolved": true,
+    "cics_command": "SEND"
+  },
+  {
+    "seq": 202,
+    "paragraph": "SEND-TRNRPT-SCREEN",
+    "line": 571,
+    "verb": "EXEC CICS",
+    "operands": [
+      "SEND"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF SEND-ERASE-YES",
+    "cfg_predecessors": [
+      201
+    ],
+    "cfg_successors": [
+      203
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS SEND",
+    "operand_unresolved": true,
+    "cics_command": "SEND"
+  },
+  {
+    "seq": 203,
+    "paragraph": "SEND-TRNRPT-SCREEN",
+    "line": 580,
+    "verb": "GO TO",
+    "operands": [
+      "RETURN-TO-CICS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      202
+    ],
+    "cfg_successors": [
+      204
+    ],
+    "division": "PROCEDURE",
+    "raw": "GO TO RETURN-TO-CICS.",
+    "cfg_branch_unresolved": true,
+    "cfg_goto_target": "RETURN-TO-CICS"
+  },
+  {
+    "seq": 204,
+    "paragraph": "RETURN-TO-CICS",
+    "line": 587,
+    "verb": "EXEC CICS",
+    "operands": [
+      "RETURN"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EXEC CICS RETURN RETURN",
+    "cfg_predecessors": [
+      203
+    ],
+    "cfg_successors": [
+      205
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS RETURN",
+    "operand_unresolved": true,
+    "is_cics_branch": true,
+    "cics_command": "RETURN"
+  },
+  {
+    "seq": 205,
+    "paragraph": "RECEIVE-TRNRPT-SCREEN",
+    "line": 598,
+    "verb": "EXEC CICS",
+    "operands": [
+      "RECEIVE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      204,
+      14
+    ],
+    "cfg_successors": [
+      206
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS RECEIVE",
+    "operand_unresolved": true,
+    "cics_command": "RECEIVE"
+  },
+  {
+    "seq": 206,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 611,
+    "verb": "MOVE",
+    "operands": [
+      "FUNCTION",
+      "CURRENT-DATE",
+      "WS-CURDATE-DATA"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      205,
+      198
+    ],
+    "cfg_successors": [
+      207
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE FUNCTION CURRENT-DATE TO WS-CURDATE-DATA",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 207,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 613,
+    "verb": "MOVE",
+    "operands": [
+      "CCDA-TITLE01",
+      "TITLE01O",
+      "CORPT0AO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      206
+    ],
+    "cfg_successors": [
+      208
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CCDA-TITLE01 TO TITLE01O OF CORPT0AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 208,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 614,
+    "verb": "MOVE",
+    "operands": [
+      "CCDA-TITLE02",
+      "TITLE02O",
+      "CORPT0AO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      207
+    ],
+    "cfg_successors": [
+      209
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CCDA-TITLE02 TO TITLE02O OF CORPT0AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 209,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 615,
+    "verb": "MOVE",
+    "operands": [
+      "WS-TRANID",
+      "TRNNAMEO",
+      "CORPT0AO"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      208
+    ],
+    "cfg_successors": [
+      210
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-TRANID TO TRNNAMEO OF CORPT0AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 210,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 616,
+    "verb": "MOVE",
+    "operands": [
+      "WS-PGMNAME",
+      "PGMNAMEO",
+      "CORPT0AO"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      209
+    ],
+    "cfg_successors": [
+      211
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-PGMNAME TO PGMNAMEO OF CORPT0AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 211,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 618,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-MONTH",
+      "WS-CURDATE-MM"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      210
+    ],
+    "cfg_successors": [
+      212
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-MONTH TO WS-CURDATE-MM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 212,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 619,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-DAY",
+      "WS-CURDATE-DD"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      211
+    ],
+    "cfg_successors": [
+      213
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-DAY TO WS-CURDATE-DD",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 213,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 620,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-YEAR",
+      "3",
+      "2",
+      "WS-CURDATE-YY"
+    ],
+    "operand_types": [
+      "unresolved",
+      "literal",
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      212
+    ],
+    "cfg_successors": [
+      214
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-YEAR(3:2) TO WS-CURDATE-YY",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 214,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 622,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-MM-DD-YY",
+      "CURDATEO",
+      "CORPT0AO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      213
+    ],
+    "cfg_successors": [
+      215
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-MM-DD-YY TO CURDATEO OF CORPT0AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 215,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 624,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURTIME-HOURS",
+      "WS-CURTIME-HH"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      214
+    ],
+    "cfg_successors": [
+      216
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURTIME-HOURS TO WS-CURTIME-HH",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 216,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 625,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURTIME-MINUTE",
+      "WS-CURTIME-MM"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      215
+    ],
+    "cfg_successors": [
+      217
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURTIME-MINUTE TO WS-CURTIME-MM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 217,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 626,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURTIME-SECOND",
+      "WS-CURTIME-SS"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      216
+    ],
+    "cfg_successors": [
+      218
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURTIME-SECOND TO WS-CURTIME-SS",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 218,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 628,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURTIME-HH-MM-SS",
+      "CURTIMEO",
+      "CORPT0AO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      217
+    ],
+    "cfg_successors": [
+      219
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURTIME-HH-MM-SS TO CURTIMEO OF CORPT0AO.",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 219,
+    "paragraph": "INITIALIZE-ALL-FIELDS",
+    "line": 635,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "MONTHLYL",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      218,
+      158,
+      171
+    ],
+    "cfg_successors": [
+      220
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO MONTHLYL OF CORPT0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 220,
+    "paragraph": "INITIALIZE-ALL-FIELDS",
+    "line": 636,
+    "verb": "INITIALIZE",
+    "operands": [
+      "MONTHLYI",
+      "CORPT0AI"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      219
+    ],
+    "cfg_successors": [],
+    "division": "PROCEDURE",
+    "raw": "INITIALIZE MONTHLYI OF CORPT0AI",
+    "operand_unresolved": true
+  }
+]

@@ -1,0 +1,171 @@
+{
+  "program": "COUSR00C",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COUSR00C.cbl",
+  "source_sha256": "c4ef9ff9d7d7d3f28251de79a9583058de20a4d5248cf593f767b83ec6dec5ca",
+  "cfg_path": "validation\\pass1\\COUSR00C_annotations.json",
+  "cfg_sha256": "a4b22e7d8031fa3355b3f2ae32303c3b4d96f74cb8fd84468a177531ce1ef218",
+  "paragraphs": [
+    {
+      "paragraph": "MAIN-PARA",
+      "first_line": 100,
+      "last_line": 141,
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "PROCESS-ENTER-KEY",
+      "first_line": 151,
+      "last_line": 231,
+      "terminator": "implicit",
+      "falls_through_to": "PROCESS-PF7-KEY",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE SPACE TO USRIDINO OF COUSR0AO",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "PROCESS-PF7-KEY",
+      "first_line": 239,
+      "last_line": 254,
+      "terminator": "implicit",
+      "falls_through_to": "PROCESS-PF8-KEY",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-USRLST-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "PROCESS-PF8-KEY",
+      "first_line": 262,
+      "last_line": 276,
+      "terminator": "implicit",
+      "falls_through_to": "PROCESS-PAGE-FORWARD",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-USRLST-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "PROCESS-PAGE-FORWARD",
+      "first_line": 284,
+      "last_line": 329,
+      "terminator": "implicit",
+      "falls_through_to": "PROCESS-PAGE-BACKWARD",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-USRLST-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "PROCESS-PAGE-BACKWARD",
+      "first_line": 338,
+      "last_line": 377,
+      "terminator": "implicit",
+      "falls_through_to": "POPULATE-USER-DATA",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-USRLST-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "POPULATE-USER-DATA",
+      "first_line": 386,
+      "last_line": 440,
+      "terminator": "implicit",
+      "falls_through_to": "INITIALIZE-USER-DATA",
+      "last_verb": "CONTINUE",
+      "last_raw": "CONTINUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "INITIALIZE-USER-DATA",
+      "first_line": 448,
+      "last_line": 500,
+      "terminator": "implicit",
+      "falls_through_to": "RETURN-TO-PREV-SCREEN",
+      "last_verb": "CONTINUE",
+      "last_raw": "CONTINUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "RETURN-TO-PREV-SCREEN",
+      "first_line": 508,
+      "last_line": 514,
+      "terminator": "cics-xctl",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS",
+      "classification_source": "source_scan"
+    },
+    {
+      "paragraph": "SEND-USRLST-SCREEN",
+      "first_line": 524,
+      "last_line": 537,
+      "terminator": "implicit",
+      "falls_through_to": "RECEIVE-USRLST-SCREEN",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS SEND",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "RECEIVE-USRLST-SCREEN",
+      "first_line": 551,
+      "last_line": 551,
+      "terminator": "implicit",
+      "falls_through_to": "POPULATE-HEADER-INFO",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RECEIVE",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "POPULATE-HEADER-INFO",
+      "first_line": 564,
+      "last_line": 581,
+      "terminator": "implicit",
+      "falls_through_to": "STARTBR-USER-SEC-FILE",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-CURTIME-HH-MM-SS TO CURTIMEO OF COUSR0AO.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "STARTBR-USER-SEC-FILE",
+      "first_line": 588,
+      "last_line": 613,
+      "terminator": "implicit",
+      "falls_through_to": "READNEXT-USER-SEC-FILE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-USRLST-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "READNEXT-USER-SEC-FILE",
+      "first_line": 621,
+      "last_line": 647,
+      "terminator": "implicit",
+      "falls_through_to": "READPREV-USER-SEC-FILE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-USRLST-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "READPREV-USER-SEC-FILE",
+      "first_line": 655,
+      "last_line": 681,
+      "terminator": "implicit",
+      "falls_through_to": "ENDBR-USER-SEC-FILE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-USRLST-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "ENDBR-USER-SEC-FILE",
+      "first_line": 689,
+      "last_line": 689,
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS ENDBR",
+      "classification_source": "raw"
+    }
+  ],
+  "c5_assertion": "PASS",
+  "c5_violations": []
+}

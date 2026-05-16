@@ -1,0 +1,71 @@
+{
+  "program": "CBCUS01C",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBCUS01C.cbl",
+  "source_sha256": "583e7bc74c2daa61f89a4f18a0bcb4feb7a8d2ae141f761c680a3cf163460921",
+  "cfg_path": "validation\\pass1\\CBCUS01C_annotations.json",
+  "cfg_sha256": "fe7307577fdd24b34c2b3c3df44cc04cd8d49c03b158e87b307fcdcc62e9c361",
+  "paragraphs": [
+    {
+      "paragraph": "CBCUS01C-MAIN",
+      "first_line": 71,
+      "last_line": 87,
+      "terminator": "goback",
+      "falls_through_to": null,
+      "last_verb": "GOBACK",
+      "last_raw": "GOBACK.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1000-CUSTFILE-GET-NEXT",
+      "first_line": 93,
+      "last_line": 116,
+      "terminator": "implicit",
+      "falls_through_to": "0000-CUSTFILE-OPEN",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "0000-CUSTFILE-OPEN",
+      "first_line": 119,
+      "last_line": 134,
+      "terminator": "implicit",
+      "falls_through_to": "9000-CUSTFILE-CLOSE",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9000-CUSTFILE-CLOSE",
+      "first_line": 137,
+      "last_line": 152,
+      "terminator": "implicit",
+      "falls_through_to": "Z-ABEND-PROGRAM",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "Z-ABEND-PROGRAM",
+      "first_line": 155,
+      "last_line": 158,
+      "terminator": "implicit",
+      "falls_through_to": "Z-DISPLAY-IO-STATUS",
+      "last_verb": "CALL",
+      "last_raw": "CALL 'CEE3ABD' USING ABCODE TIMING.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "Z-DISPLAY-IO-STATUS",
+      "first_line": 162,
+      "last_line": 174,
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    }
+  ],
+  "c5_assertion": "PASS",
+  "c5_violations": []
+}

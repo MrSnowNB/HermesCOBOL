@@ -1,0 +1,4610 @@
+[
+  {
+    "seq": 1,
+    "paragraph": "MAIN-PARA",
+    "line": 101,
+    "verb": "SET",
+    "operands": [
+      "ERR-FLG-OFF",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [],
+    "cfg_successors": [
+      2
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET ERR-FLG-OFF TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 2,
+    "paragraph": "MAIN-PARA",
+    "line": 102,
+    "verb": "SET",
+    "operands": [
+      "USR-MODIFIED-NO",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      1
+    ],
+    "cfg_successors": [
+      3
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET USR-MODIFIED-NO TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 3,
+    "paragraph": "MAIN-PARA",
+    "line": 104,
+    "verb": "MOVE",
+    "operands": [
+      "WS-MESSAGE"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      2
+    ],
+    "cfg_successors": [
+      4
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE SPACES TO WS-MESSAGE"
+  },
+  {
+    "seq": 4,
+    "paragraph": "MAIN-PARA",
+    "line": 107,
+    "verb": "IF",
+    "operands": [
+      "EIBCALEN",
+      "0"
+    ],
+    "operand_types": [
+      "unresolved",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      3
+    ],
+    "cfg_successors": [
+      5
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF EIBCALEN = 0",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 5,
+    "paragraph": "MAIN-PARA",
+    "line": 108,
+    "verb": "MOVE",
+    "operands": [
+      "'COSGN00C'",
+      "CDEMO-TO-PROGRAM"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      4
+    ],
+    "cfg_successors": [
+      6
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 6,
+    "paragraph": "MAIN-PARA",
+    "line": 109,
+    "verb": "PERFORM",
+    "operands": [
+      "RETURN-TO-PREV-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      5
+    ],
+    "cfg_successors": [
+      90
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM RETURN-TO-PREV-SCREEN",
+    "cfg_perform_target": "RETURN-TO-PREV-SCREEN"
+  },
+  {
+    "seq": 7,
+    "paragraph": "MAIN-PARA",
+    "line": 111,
+    "verb": "MOVE",
+    "operands": [
+      "DFHCOMMAREA",
+      "1",
+      "EIBCALEN",
+      "CARDDEMO-COMMAREA"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      6
+    ],
+    "cfg_successors": [
+      8
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DFHCOMMAREA(1:EIBCALEN) TO CARDDEMO-COMMAREA",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 8,
+    "paragraph": "MAIN-PARA",
+    "line": 112,
+    "verb": "IF",
+    "operands": [
+      "CDEMO-PGM-REENTER"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      7
+    ],
+    "cfg_successors": [
+      9
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT CDEMO-PGM-REENTER",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 9,
+    "paragraph": "MAIN-PARA",
+    "line": 113,
+    "verb": "SET",
+    "operands": [
+      "CDEMO-PGM-REENTER",
+      "TRUE"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      8
+    ],
+    "cfg_successors": [
+      10
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET CDEMO-PGM-REENTER TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 10,
+    "paragraph": "MAIN-PARA",
+    "line": 114,
+    "verb": "MOVE",
+    "operands": [
+      "COBIL0AO"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      9
+    ],
+    "cfg_successors": [
+      11
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LOW-VALUES TO COBIL0AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 11,
+    "paragraph": "MAIN-PARA",
+    "line": 115,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "ACTIDINL",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      10
+    ],
+    "cfg_successors": [
+      12
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO ACTIDINL OF COBIL0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 12,
+    "paragraph": "MAIN-PARA",
+    "line": 116,
+    "verb": "IF",
+    "operands": [
+      "CDEMO-CB00-TRN-SELECTED"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      11
+    ],
+    "cfg_successors": [
+      13
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF CDEMO-CB00-TRN-SELECTED NOT ="
+  },
+  {
+    "seq": 13,
+    "paragraph": "MAIN-PARA",
+    "line": 118,
+    "verb": "MOVE",
+    "operands": [
+      "CDEMO-CB00-TRN-SELECTED"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      12
+    ],
+    "cfg_successors": [
+      14
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CDEMO-CB00-TRN-SELECTED TO"
+  },
+  {
+    "seq": 14,
+    "paragraph": "MAIN-PARA",
+    "line": 120,
+    "verb": "PERFORM",
+    "operands": [
+      "PROCESS-ENTER-KEY"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      13
+    ],
+    "cfg_successors": [
+      28
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM PROCESS-ENTER-KEY",
+    "cfg_perform_target": "PROCESS-ENTER-KEY"
+  },
+  {
+    "seq": 15,
+    "paragraph": "MAIN-PARA",
+    "line": 122,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      14
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-BILLPAY-SCREEN",
+    "cfg_perform_target": "SEND-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 16,
+    "paragraph": "MAIN-PARA",
+    "line": 124,
+    "verb": "PERFORM",
+    "operands": [
+      "RECEIVE-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      15
+    ],
+    "cfg_successors": [
+      99
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM RECEIVE-BILLPAY-SCREEN",
+    "cfg_perform_target": "RECEIVE-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 17,
+    "paragraph": "MAIN-PARA",
+    "line": 125,
+    "verb": "EVALUATE",
+    "operands": [
+      "EIBAID"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE EIBAID",
+    "cfg_predecessors": [
+      16
+    ],
+    "cfg_successors": [
+      18
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE EIBAID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 18,
+    "paragraph": "MAIN-PARA",
+    "line": 127,
+    "verb": "PERFORM",
+    "operands": [
+      "PROCESS-ENTER-KEY"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE EIBAID",
+    "cfg_predecessors": [
+      17
+    ],
+    "cfg_successors": [
+      28
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM PROCESS-ENTER-KEY",
+    "cfg_perform_target": "PROCESS-ENTER-KEY"
+  },
+  {
+    "seq": 19,
+    "paragraph": "MAIN-PARA",
+    "line": 129,
+    "verb": "IF",
+    "operands": [
+      "CDEMO-FROM-PROGRAM"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE EIBAID",
+    "cfg_predecessors": [
+      18
+    ],
+    "cfg_successors": [
+      20
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF CDEMO-FROM-PROGRAM = SPACES OR LOW-VALUES",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 20,
+    "paragraph": "MAIN-PARA",
+    "line": 130,
+    "verb": "MOVE",
+    "operands": [
+      "'COMEN01C'",
+      "CDEMO-TO-PROGRAM"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE EIBAID",
+    "cfg_predecessors": [
+      19
+    ],
+    "cfg_successors": [
+      21
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'COMEN01C' TO CDEMO-TO-PROGRAM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 21,
+    "paragraph": "MAIN-PARA",
+    "line": 132,
+    "verb": "MOVE",
+    "operands": [
+      "CDEMO-FROM-PROGRAM"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE EIBAID",
+    "cfg_predecessors": [
+      20
+    ],
+    "cfg_successors": [
+      22
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CDEMO-FROM-PROGRAM TO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 22,
+    "paragraph": "MAIN-PARA",
+    "line": 135,
+    "verb": "PERFORM",
+    "operands": [
+      "RETURN-TO-PREV-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      21
+    ],
+    "cfg_successors": [
+      90
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM RETURN-TO-PREV-SCREEN",
+    "cfg_perform_target": "RETURN-TO-PREV-SCREEN"
+  },
+  {
+    "seq": 23,
+    "paragraph": "MAIN-PARA",
+    "line": 137,
+    "verb": "PERFORM",
+    "operands": [
+      "CLEAR-CURRENT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      22
+    ],
+    "cfg_successors": [
+      187
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM CLEAR-CURRENT-SCREEN",
+    "cfg_perform_target": "CLEAR-CURRENT-SCREEN"
+  },
+  {
+    "seq": 24,
+    "paragraph": "MAIN-PARA",
+    "line": 139,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      23
+    ],
+    "cfg_successors": [
+      25
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 25,
+    "paragraph": "MAIN-PARA",
+    "line": 140,
+    "verb": "MOVE",
+    "operands": [
+      "CCDA-MSG-INVALID-KEY",
+      "WS-MESSAGE"
+    ],
+    "operand_types": [
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      24
+    ],
+    "cfg_successors": [
+      26
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CCDA-MSG-INVALID-KEY TO WS-MESSAGE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 26,
+    "paragraph": "MAIN-PARA",
+    "line": 141,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      25
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-BILLPAY-SCREEN",
+    "cfg_perform_target": "SEND-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 27,
+    "paragraph": "MAIN-PARA",
+    "line": 146,
+    "verb": "EXEC CICS",
+    "operands": [
+      "RETURN"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EXEC CICS RETURN RETURN",
+    "cfg_predecessors": [
+      26
+    ],
+    "cfg_successors": [
+      28
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS RETURN",
+    "operand_unresolved": true,
+    "is_cics_branch": true,
+    "cics_command": "RETURN"
+  },
+  {
+    "seq": 28,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 156,
+    "verb": "SET",
+    "operands": [
+      "CONF-PAY-NO",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      27,
+      14,
+      18
+    ],
+    "cfg_successors": [
+      29
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET CONF-PAY-NO TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 29,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 158,
+    "verb": "EVALUATE",
+    "operands": [
+      "TRUE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      28
+    ],
+    "cfg_successors": [
+      30
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 30,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 160,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      29
+    ],
+    "cfg_successors": [
+      31
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 31,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 161,
+    "verb": "MOVE",
+    "operands": [
+      "'Acct ID can NOT be empty...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      30
+    ],
+    "cfg_successors": [
+      32
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Acct ID can NOT be empty...' TO"
+  },
+  {
+    "seq": 32,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 163,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "ACTIDINL",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      31
+    ],
+    "cfg_successors": [
+      33
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO ACTIDINL OF COBIL0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 33,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 164,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      32
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-BILLPAY-SCREEN",
+    "cfg_perform_target": "SEND-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 34,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 166,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      33
+    ],
+    "cfg_successors": [
+      35
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 35,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 169,
+    "verb": "IF",
+    "operands": [
+      "ERR-FLG-ON"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      34
+    ],
+    "cfg_successors": [
+      36
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT ERR-FLG-ON"
+  },
+  {
+    "seq": 36,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 170,
+    "verb": "MOVE",
+    "operands": [
+      "ACTIDINI",
+      "COBIL0AI",
+      "ACCT-ID"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      35
+    ],
+    "cfg_successors": [
+      37
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACTIDINI OF COBIL0AI TO ACCT-ID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 37,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 173,
+    "verb": "EVALUATE",
+    "operands": [
+      "CONFIRMI",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      36
+    ],
+    "cfg_successors": [
+      38
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE CONFIRMI OF COBIL0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 38,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 176,
+    "verb": "SET",
+    "operands": [
+      "CONF-PAY-YES",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      37
+    ],
+    "cfg_successors": [
+      39
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET CONF-PAY-YES TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 39,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 177,
+    "verb": "PERFORM",
+    "operands": [
+      "READ-ACCTDAT-FILE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      38
+    ],
+    "cfg_successors": [
+      113
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM READ-ACCTDAT-FILE",
+    "cfg_perform_target": "READ-ACCTDAT-FILE"
+  },
+  {
+    "seq": 40,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 180,
+    "verb": "PERFORM",
+    "operands": [
+      "CLEAR-CURRENT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      39
+    ],
+    "cfg_successors": [
+      187
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM CLEAR-CURRENT-SCREEN",
+    "cfg_perform_target": "CLEAR-CURRENT-SCREEN"
+  },
+  {
+    "seq": 41,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 181,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      40
+    ],
+    "cfg_successors": [
+      42
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 42,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 184,
+    "verb": "PERFORM",
+    "operands": [
+      "READ-ACCTDAT-FILE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      41
+    ],
+    "cfg_successors": [
+      113
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM READ-ACCTDAT-FILE",
+    "cfg_perform_target": "READ-ACCTDAT-FILE"
+  },
+  {
+    "seq": 43,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 186,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      42
+    ],
+    "cfg_successors": [
+      44
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 44,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 187,
+    "verb": "MOVE",
+    "operands": [
+      "'Invalid value. Valid values are (Y/N)...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      43
+    ],
+    "cfg_successors": [
+      45
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Invalid value. Valid values are (Y/N)...'"
+  },
+  {
+    "seq": 45,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 189,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "CONFIRML",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      44
+    ],
+    "cfg_successors": [
+      46
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO CONFIRML OF COBIL0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 46,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 190,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      45
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-BILLPAY-SCREEN",
+    "cfg_perform_target": "SEND-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 47,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 193,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-CURR-BAL",
+      "WS-CURR-BAL"
+    ],
+    "operand_types": [
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      46
+    ],
+    "cfg_successors": [
+      48
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-CURR-BAL TO WS-CURR-BAL",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 48,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 194,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURR-BAL",
+      "CURBALI",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      47
+    ],
+    "cfg_successors": [
+      49
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURR-BAL TO CURBALI OF COBIL0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 49,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 197,
+    "verb": "IF",
+    "operands": [
+      "ERR-FLG-ON"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      48
+    ],
+    "cfg_successors": [
+      50
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT ERR-FLG-ON"
+  },
+  {
+    "seq": 50,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 198,
+    "verb": "IF",
+    "operands": [
+      "ACCT-CURR-BAL"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      49
+    ],
+    "cfg_successors": [
+      51
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF ACCT-CURR-BAL <= ZEROS AND",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 51,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 200,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      50
+    ],
+    "cfg_successors": [
+      52
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 52,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 201,
+    "verb": "MOVE",
+    "operands": [
+      "'You have nothing to pay...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      51
+    ],
+    "cfg_successors": [
+      53
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'You have nothing to pay...' TO"
+  },
+  {
+    "seq": 53,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 203,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "ACTIDINL",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      52
+    ],
+    "cfg_successors": [
+      54
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO ACTIDINL OF COBIL0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 54,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 204,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      53
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-BILLPAY-SCREEN",
+    "cfg_perform_target": "SEND-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 55,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 208,
+    "verb": "IF",
+    "operands": [
+      "ERR-FLG-ON"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      54
+    ],
+    "cfg_successors": [
+      56
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT ERR-FLG-ON"
+  },
+  {
+    "seq": 56,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 210,
+    "verb": "IF",
+    "operands": [
+      "CONF-PAY-YES"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      55
+    ],
+    "cfg_successors": [
+      57
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF CONF-PAY-YES"
+  },
+  {
+    "seq": 57,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 211,
+    "verb": "PERFORM",
+    "operands": [
+      "READ-CXACAIX-FILE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      56
+    ],
+    "cfg_successors": [
+      137
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM READ-CXACAIX-FILE",
+    "cfg_perform_target": "READ-CXACAIX-FILE"
+  },
+  {
+    "seq": 58,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 212,
+    "verb": "MOVE",
+    "operands": [
+      "TRAN-ID"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      57
+    ],
+    "cfg_successors": [
+      59
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE HIGH-VALUES TO TRAN-ID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 59,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 213,
+    "verb": "PERFORM",
+    "operands": [
+      "STARTBR-TRANSACT-FILE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      58
+    ],
+    "cfg_successors": [
+      149
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM STARTBR-TRANSACT-FILE",
+    "cfg_perform_target": "STARTBR-TRANSACT-FILE"
+  },
+  {
+    "seq": 60,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 214,
+    "verb": "PERFORM",
+    "operands": [
+      "READPREV-TRANSACT-FILE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      59
+    ],
+    "cfg_successors": [
+      161
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM READPREV-TRANSACT-FILE",
+    "cfg_perform_target": "READPREV-TRANSACT-FILE"
+  },
+  {
+    "seq": 61,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 215,
+    "verb": "PERFORM",
+    "operands": [
+      "ENDBR-TRANSACT-FILE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      60
+    ],
+    "cfg_successors": [
+      170
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM ENDBR-TRANSACT-FILE",
+    "cfg_perform_target": "ENDBR-TRANSACT-FILE"
+  },
+  {
+    "seq": 62,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 216,
+    "verb": "MOVE",
+    "operands": [
+      "TRAN-ID",
+      "WS-TRAN-ID-NUM"
+    ],
+    "operand_types": [
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      61
+    ],
+    "cfg_successors": [
+      63
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRAN-ID TO WS-TRAN-ID-NUM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 63,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 217,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-TRAN-ID-NUM"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      62
+    ],
+    "cfg_successors": [
+      64
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-TRAN-ID-NUM"
+  },
+  {
+    "seq": 64,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 218,
+    "verb": "INITIALIZE",
+    "operands": [
+      "TRAN-RECORD"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      63
+    ],
+    "cfg_successors": [
+      65
+    ],
+    "division": "PROCEDURE",
+    "raw": "INITIALIZE TRAN-RECORD",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 65,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 219,
+    "verb": "MOVE",
+    "operands": [
+      "WS-TRAN-ID-NUM",
+      "TRAN-ID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      64
+    ],
+    "cfg_successors": [
+      66
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-TRAN-ID-NUM TO TRAN-ID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 66,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 220,
+    "verb": "MOVE",
+    "operands": [
+      "'02'",
+      "TRAN-TYPE-CD"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      65
+    ],
+    "cfg_successors": [
+      67
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE '02' TO TRAN-TYPE-CD",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 67,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 221,
+    "verb": "MOVE",
+    "operands": [
+      "2",
+      "TRAN-CAT-CD"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      66
+    ],
+    "cfg_successors": [
+      68
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 2 TO TRAN-CAT-CD",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 68,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 222,
+    "verb": "MOVE",
+    "operands": [
+      "'POS TERM'",
+      "TRAN-SOURCE"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      67
+    ],
+    "cfg_successors": [
+      69
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'POS TERM' TO TRAN-SOURCE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 69,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 223,
+    "verb": "MOVE",
+    "operands": [
+      "'BILL PAYMENT - ONLINE'",
+      "TRAN-DESC"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      68
+    ],
+    "cfg_successors": [
+      70
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'BILL PAYMENT - ONLINE' TO TRAN-DESC",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 70,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 224,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-CURR-BAL",
+      "TRAN-AMT"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      69
+    ],
+    "cfg_successors": [
+      71
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-CURR-BAL TO TRAN-AMT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 71,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 225,
+    "verb": "MOVE",
+    "operands": [
+      "XREF-CARD-NUM",
+      "TRAN-CARD-NUM"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      70
+    ],
+    "cfg_successors": [
+      72
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE XREF-CARD-NUM TO TRAN-CARD-NUM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 72,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 226,
+    "verb": "MOVE",
+    "operands": [
+      "999999999",
+      "TRAN-MERCHANT-ID"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      71
+    ],
+    "cfg_successors": [
+      73
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 999999999 TO TRAN-MERCHANT-ID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 73,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 227,
+    "verb": "MOVE",
+    "operands": [
+      "'BILL PAYMENT'",
+      "TRAN-MERCHANT-NAME"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      72
+    ],
+    "cfg_successors": [
+      74
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'BILL PAYMENT' TO TRAN-MERCHANT-NAME",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 74,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 228,
+    "verb": "MOVE",
+    "operands": [
+      "'N/A'",
+      "TRAN-MERCHANT-CITY"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      73
+    ],
+    "cfg_successors": [
+      75
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'N/A' TO TRAN-MERCHANT-CITY",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 75,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 229,
+    "verb": "MOVE",
+    "operands": [
+      "'N/A'",
+      "TRAN-MERCHANT-ZIP"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      74
+    ],
+    "cfg_successors": [
+      76
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'N/A' TO TRAN-MERCHANT-ZIP",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 76,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 230,
+    "verb": "PERFORM",
+    "operands": [
+      "GET-CURRENT-TIMESTAMP"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      75
+    ],
+    "cfg_successors": [
+      84
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM GET-CURRENT-TIMESTAMP",
+    "cfg_perform_target": "GET-CURRENT-TIMESTAMP"
+  },
+  {
+    "seq": 77,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 231,
+    "verb": "MOVE",
+    "operands": [
+      "WS-TIMESTAMP",
+      "TRAN-ORIG-TS"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      76
+    ],
+    "cfg_successors": [
+      78
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-TIMESTAMP TO TRAN-ORIG-TS",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 78,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 233,
+    "verb": "PERFORM",
+    "operands": [
+      "WRITE-TRANSACT-FILE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      77
+    ],
+    "cfg_successors": [
+      171
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM WRITE-TRANSACT-FILE",
+    "cfg_perform_target": "WRITE-TRANSACT-FILE"
+  },
+  {
+    "seq": 79,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 234,
+    "verb": "COMPUTE",
+    "operands": [
+      "ACCT-CURR-BAL",
+      "ACCT-CURR-BAL",
+      "TRAN-AMT"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      78
+    ],
+    "cfg_successors": [
+      80
+    ],
+    "division": "PROCEDURE",
+    "raw": "COMPUTE ACCT-CURR-BAL = ACCT-CURR-BAL - TRAN-AMT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 80,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 235,
+    "verb": "PERFORM",
+    "operands": [
+      "UPDATE-ACCTDAT-FILE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      79
+    ],
+    "cfg_successors": [
+      125
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM UPDATE-ACCTDAT-FILE",
+    "cfg_perform_target": "UPDATE-ACCTDAT-FILE"
+  },
+  {
+    "seq": 81,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 237,
+    "verb": "MOVE",
+    "operands": [
+      "'Confirm to make a bill payment...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      80
+    ],
+    "cfg_successors": [
+      82
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Confirm to make a bill payment...' TO"
+  },
+  {
+    "seq": 82,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 239,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "CONFIRML",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      81
+    ],
+    "cfg_successors": [
+      83
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO CONFIRML OF COBIL0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 83,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 242,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      82
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-BILLPAY-SCREEN",
+    "cfg_perform_target": "SEND-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 84,
+    "paragraph": "GET-CURRENT-TIMESTAMP",
+    "line": 251,
+    "verb": "EXEC CICS",
+    "operands": [
+      "ASKTIME"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      83,
+      76
+    ],
+    "cfg_successors": [
+      85
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS ASKTIME",
+    "operand_unresolved": true,
+    "cics_command": "ASKTIME"
+  },
+  {
+    "seq": 85,
+    "paragraph": "GET-CURRENT-TIMESTAMP",
+    "line": 255,
+    "verb": "EXEC CICS",
+    "operands": [
+      "FORMATTIME"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      84
+    ],
+    "cfg_successors": [
+      86
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS FORMATTIME",
+    "operand_unresolved": true,
+    "cics_command": "FORMATTIME"
+  },
+  {
+    "seq": 86,
+    "paragraph": "GET-CURRENT-TIMESTAMP",
+    "line": 263,
+    "verb": "INITIALIZE",
+    "operands": [
+      "WS-TIMESTAMP"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      85
+    ],
+    "cfg_successors": [
+      87
+    ],
+    "division": "PROCEDURE",
+    "raw": "INITIALIZE WS-TIMESTAMP",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 87,
+    "paragraph": "GET-CURRENT-TIMESTAMP",
+    "line": 264,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CUR-DATE-X10",
+      "WS-TIMESTAMP",
+      "01",
+      "10"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "literal",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      86
+    ],
+    "cfg_successors": [
+      88
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CUR-DATE-X10 TO WS-TIMESTAMP(01:10)",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 88,
+    "paragraph": "GET-CURRENT-TIMESTAMP",
+    "line": 265,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CUR-TIME-X08",
+      "WS-TIMESTAMP",
+      "12",
+      "08"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "literal",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      87
+    ],
+    "cfg_successors": [
+      89
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CUR-TIME-X08 TO WS-TIMESTAMP(12:08)",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 89,
+    "paragraph": "GET-CURRENT-TIMESTAMP",
+    "line": 266,
+    "verb": "MOVE",
+    "operands": [
+      "WS-TIMESTAMP-TM-MS6"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      88
+    ],
+    "cfg_successors": [
+      90
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ZEROS TO WS-TIMESTAMP-TM-MS6",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 90,
+    "paragraph": "RETURN-TO-PREV-SCREEN",
+    "line": 275,
+    "verb": "IF",
+    "operands": [
+      "CDEMO-TO-PROGRAM"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CDEMO-TO-PROGRAM = LOW-VALUES OR SPACES",
+    "cfg_predecessors": [
+      89,
+      6,
+      22
+    ],
+    "cfg_successors": [
+      91
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF CDEMO-TO-PROGRAM = LOW-VALUES OR SPACES",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 91,
+    "paragraph": "RETURN-TO-PREV-SCREEN",
+    "line": 276,
+    "verb": "MOVE",
+    "operands": [
+      "'COSGN00C'",
+      "CDEMO-TO-PROGRAM"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CDEMO-TO-PROGRAM = LOW-VALUES OR SPACES",
+    "cfg_predecessors": [
+      90
+    ],
+    "cfg_successors": [
+      92
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 92,
+    "paragraph": "RETURN-TO-PREV-SCREEN",
+    "line": 278,
+    "verb": "MOVE",
+    "operands": [
+      "WS-TRANID",
+      "CDEMO-FROM-TRANID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      91
+    ],
+    "cfg_successors": [
+      93
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-TRANID TO CDEMO-FROM-TRANID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 93,
+    "paragraph": "RETURN-TO-PREV-SCREEN",
+    "line": 279,
+    "verb": "MOVE",
+    "operands": [
+      "WS-PGMNAME",
+      "CDEMO-FROM-PROGRAM"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      92
+    ],
+    "cfg_successors": [
+      94
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-PGMNAME TO CDEMO-FROM-PROGRAM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 94,
+    "paragraph": "RETURN-TO-PREV-SCREEN",
+    "line": 280,
+    "verb": "MOVE",
+    "operands": [
+      "CDEMO-PGM-CONTEXT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      93
+    ],
+    "cfg_successors": [
+      95
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ZEROS TO CDEMO-PGM-CONTEXT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 95,
+    "paragraph": "RETURN-TO-PREV-SCREEN",
+    "line": 281,
+    "verb": "EXEC CICS",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      94
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS"
+  },
+  {
+    "seq": 96,
+    "paragraph": "SEND-BILLPAY-SCREEN",
+    "line": 291,
+    "verb": "PERFORM",
+    "operands": [
+      "POPULATE-HEADER-INFO"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      95,
+      15,
+      26,
+      33,
+      46,
+      54,
+      83,
+      119,
+      124,
+      131,
+      136,
+      143,
+      148,
+      155,
+      160,
+      169,
+      177,
+      181,
+      186,
+      188
+    ],
+    "cfg_successors": [
+      100
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM POPULATE-HEADER-INFO",
+    "cfg_perform_target": "POPULATE-HEADER-INFO"
+  },
+  {
+    "seq": 97,
+    "paragraph": "SEND-BILLPAY-SCREEN",
+    "line": 293,
+    "verb": "MOVE",
+    "operands": [
+      "WS-MESSAGE",
+      "ERRMSGO",
+      "COBIL0AO"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      96
+    ],
+    "cfg_successors": [
+      98
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-MESSAGE TO ERRMSGO OF COBIL0AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 98,
+    "paragraph": "SEND-BILLPAY-SCREEN",
+    "line": 295,
+    "verb": "EXEC CICS",
+    "operands": [
+      "SEND"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      97
+    ],
+    "cfg_successors": [
+      99
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS SEND",
+    "operand_unresolved": true,
+    "cics_command": "SEND"
+  },
+  {
+    "seq": 99,
+    "paragraph": "RECEIVE-BILLPAY-SCREEN",
+    "line": 308,
+    "verb": "EXEC CICS",
+    "operands": [
+      "RECEIVE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      98,
+      16
+    ],
+    "cfg_successors": [
+      100
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS RECEIVE",
+    "operand_unresolved": true,
+    "cics_command": "RECEIVE"
+  },
+  {
+    "seq": 100,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 321,
+    "verb": "MOVE",
+    "operands": [
+      "FUNCTION",
+      "CURRENT-DATE",
+      "WS-CURDATE-DATA"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      99,
+      96
+    ],
+    "cfg_successors": [
+      101
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE FUNCTION CURRENT-DATE TO WS-CURDATE-DATA",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 101,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 323,
+    "verb": "MOVE",
+    "operands": [
+      "CCDA-TITLE01",
+      "TITLE01O",
+      "COBIL0AO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      100
+    ],
+    "cfg_successors": [
+      102
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CCDA-TITLE01 TO TITLE01O OF COBIL0AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 102,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 324,
+    "verb": "MOVE",
+    "operands": [
+      "CCDA-TITLE02",
+      "TITLE02O",
+      "COBIL0AO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      101
+    ],
+    "cfg_successors": [
+      103
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CCDA-TITLE02 TO TITLE02O OF COBIL0AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 103,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 325,
+    "verb": "MOVE",
+    "operands": [
+      "WS-TRANID",
+      "TRNNAMEO",
+      "COBIL0AO"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      102
+    ],
+    "cfg_successors": [
+      104
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-TRANID TO TRNNAMEO OF COBIL0AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 104,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 326,
+    "verb": "MOVE",
+    "operands": [
+      "WS-PGMNAME",
+      "PGMNAMEO",
+      "COBIL0AO"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      103
+    ],
+    "cfg_successors": [
+      105
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-PGMNAME TO PGMNAMEO OF COBIL0AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 105,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 328,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-MONTH",
+      "WS-CURDATE-MM"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      104
+    ],
+    "cfg_successors": [
+      106
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-MONTH TO WS-CURDATE-MM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 106,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 329,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-DAY",
+      "WS-CURDATE-DD"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      105
+    ],
+    "cfg_successors": [
+      107
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-DAY TO WS-CURDATE-DD",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 107,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 330,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-YEAR",
+      "3",
+      "2",
+      "WS-CURDATE-YY"
+    ],
+    "operand_types": [
+      "unresolved",
+      "literal",
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      106
+    ],
+    "cfg_successors": [
+      108
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-YEAR(3:2) TO WS-CURDATE-YY",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 108,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 332,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-MM-DD-YY",
+      "CURDATEO",
+      "COBIL0AO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      107
+    ],
+    "cfg_successors": [
+      109
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-MM-DD-YY TO CURDATEO OF COBIL0AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 109,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 334,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURTIME-HOURS",
+      "WS-CURTIME-HH"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      108
+    ],
+    "cfg_successors": [
+      110
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURTIME-HOURS TO WS-CURTIME-HH",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 110,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 335,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURTIME-MINUTE",
+      "WS-CURTIME-MM"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      109
+    ],
+    "cfg_successors": [
+      111
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURTIME-MINUTE TO WS-CURTIME-MM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 111,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 336,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURTIME-SECOND",
+      "WS-CURTIME-SS"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      110
+    ],
+    "cfg_successors": [
+      112
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURTIME-SECOND TO WS-CURTIME-SS",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 112,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 338,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURTIME-HH-MM-SS",
+      "CURTIMEO",
+      "COBIL0AO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      111
+    ],
+    "cfg_successors": [
+      113
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURTIME-HH-MM-SS TO CURTIMEO OF COBIL0AO.",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 113,
+    "paragraph": "READ-ACCTDAT-FILE",
+    "line": 345,
+    "verb": "EXEC CICS",
+    "operands": [
+      "READ"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      112,
+      39,
+      42
+    ],
+    "cfg_successors": [
+      114
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS READ",
+    "operand_unresolved": true,
+    "cics_command": "READ"
+  },
+  {
+    "seq": 114,
+    "paragraph": "READ-ACCTDAT-FILE",
+    "line": 356,
+    "verb": "EVALUATE",
+    "operands": [
+      "WS-RESP-CD"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      113
+    ],
+    "cfg_successors": [
+      115
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE WS-RESP-CD"
+  },
+  {
+    "seq": 115,
+    "paragraph": "READ-ACCTDAT-FILE",
+    "line": 358,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      114
+    ],
+    "cfg_successors": [
+      116
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 116,
+    "paragraph": "READ-ACCTDAT-FILE",
+    "line": 360,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      115
+    ],
+    "cfg_successors": [
+      117
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 117,
+    "paragraph": "READ-ACCTDAT-FILE",
+    "line": 361,
+    "verb": "MOVE",
+    "operands": [
+      "'Account ID NOT found...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      116
+    ],
+    "cfg_successors": [
+      118
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Account ID NOT found...' TO"
+  },
+  {
+    "seq": 118,
+    "paragraph": "READ-ACCTDAT-FILE",
+    "line": 363,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "ACTIDINL",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      117
+    ],
+    "cfg_successors": [
+      119
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO ACTIDINL OF COBIL0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 119,
+    "paragraph": "READ-ACCTDAT-FILE",
+    "line": 364,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      118
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-BILLPAY-SCREEN",
+    "cfg_perform_target": "SEND-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 120,
+    "paragraph": "READ-ACCTDAT-FILE",
+    "line": 366,
+    "verb": "DISPLAY",
+    "operands": [
+      "'RESP:'",
+      "WS-RESP-CD",
+      "'REAS:'",
+      "WS-REAS-CD"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage",
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      119
+    ],
+    "cfg_successors": [
+      121
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD"
+  },
+  {
+    "seq": 121,
+    "paragraph": "READ-ACCTDAT-FILE",
+    "line": 367,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      120
+    ],
+    "cfg_successors": [
+      122
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 122,
+    "paragraph": "READ-ACCTDAT-FILE",
+    "line": 368,
+    "verb": "MOVE",
+    "operands": [
+      "'Unable to lookup Account...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      121
+    ],
+    "cfg_successors": [
+      123
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Unable to lookup Account...' TO"
+  },
+  {
+    "seq": 123,
+    "paragraph": "READ-ACCTDAT-FILE",
+    "line": 370,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "ACTIDINL",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      122
+    ],
+    "cfg_successors": [
+      124
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO ACTIDINL OF COBIL0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 124,
+    "paragraph": "READ-ACCTDAT-FILE",
+    "line": 371,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      123
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-BILLPAY-SCREEN",
+    "cfg_perform_target": "SEND-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 125,
+    "paragraph": "UPDATE-ACCTDAT-FILE",
+    "line": 379,
+    "verb": "EXEC CICS",
+    "operands": [
+      "REWRITE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      124,
+      80
+    ],
+    "cfg_successors": [
+      126
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS REWRITE",
+    "operand_unresolved": true,
+    "cics_command": "REWRITE"
+  },
+  {
+    "seq": 126,
+    "paragraph": "UPDATE-ACCTDAT-FILE",
+    "line": 387,
+    "verb": "EVALUATE",
+    "operands": [
+      "WS-RESP-CD"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      125
+    ],
+    "cfg_successors": [
+      127
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE WS-RESP-CD"
+  },
+  {
+    "seq": 127,
+    "paragraph": "UPDATE-ACCTDAT-FILE",
+    "line": 389,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      126
+    ],
+    "cfg_successors": [
+      128
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 128,
+    "paragraph": "UPDATE-ACCTDAT-FILE",
+    "line": 391,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      127
+    ],
+    "cfg_successors": [
+      129
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 129,
+    "paragraph": "UPDATE-ACCTDAT-FILE",
+    "line": 392,
+    "verb": "MOVE",
+    "operands": [
+      "'Account ID NOT found...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      128
+    ],
+    "cfg_successors": [
+      130
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Account ID NOT found...' TO"
+  },
+  {
+    "seq": 130,
+    "paragraph": "UPDATE-ACCTDAT-FILE",
+    "line": 394,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "ACTIDINL",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      129
+    ],
+    "cfg_successors": [
+      131
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO ACTIDINL OF COBIL0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 131,
+    "paragraph": "UPDATE-ACCTDAT-FILE",
+    "line": 395,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      130
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-BILLPAY-SCREEN",
+    "cfg_perform_target": "SEND-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 132,
+    "paragraph": "UPDATE-ACCTDAT-FILE",
+    "line": 397,
+    "verb": "DISPLAY",
+    "operands": [
+      "'RESP:'",
+      "WS-RESP-CD",
+      "'REAS:'",
+      "WS-REAS-CD"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage",
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      131
+    ],
+    "cfg_successors": [
+      133
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD"
+  },
+  {
+    "seq": 133,
+    "paragraph": "UPDATE-ACCTDAT-FILE",
+    "line": 398,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      132
+    ],
+    "cfg_successors": [
+      134
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 134,
+    "paragraph": "UPDATE-ACCTDAT-FILE",
+    "line": 399,
+    "verb": "MOVE",
+    "operands": [
+      "'Unable to Update Account...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      133
+    ],
+    "cfg_successors": [
+      135
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Unable to Update Account...' TO"
+  },
+  {
+    "seq": 135,
+    "paragraph": "UPDATE-ACCTDAT-FILE",
+    "line": 401,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "ACTIDINL",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      134
+    ],
+    "cfg_successors": [
+      136
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO ACTIDINL OF COBIL0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 136,
+    "paragraph": "UPDATE-ACCTDAT-FILE",
+    "line": 402,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      135
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-BILLPAY-SCREEN",
+    "cfg_perform_target": "SEND-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 137,
+    "paragraph": "READ-CXACAIX-FILE",
+    "line": 410,
+    "verb": "EXEC CICS",
+    "operands": [
+      "READ"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      136,
+      57
+    ],
+    "cfg_successors": [
+      138
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS READ",
+    "operand_unresolved": true,
+    "cics_command": "READ"
+  },
+  {
+    "seq": 138,
+    "paragraph": "READ-CXACAIX-FILE",
+    "line": 420,
+    "verb": "EVALUATE",
+    "operands": [
+      "WS-RESP-CD"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      137
+    ],
+    "cfg_successors": [
+      139
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE WS-RESP-CD"
+  },
+  {
+    "seq": 139,
+    "paragraph": "READ-CXACAIX-FILE",
+    "line": 422,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      138
+    ],
+    "cfg_successors": [
+      140
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 140,
+    "paragraph": "READ-CXACAIX-FILE",
+    "line": 424,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      139
+    ],
+    "cfg_successors": [
+      141
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 141,
+    "paragraph": "READ-CXACAIX-FILE",
+    "line": 425,
+    "verb": "MOVE",
+    "operands": [
+      "'Account ID NOT found...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      140
+    ],
+    "cfg_successors": [
+      142
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Account ID NOT found...' TO"
+  },
+  {
+    "seq": 142,
+    "paragraph": "READ-CXACAIX-FILE",
+    "line": 427,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "ACTIDINL",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      141
+    ],
+    "cfg_successors": [
+      143
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO ACTIDINL OF COBIL0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 143,
+    "paragraph": "READ-CXACAIX-FILE",
+    "line": 428,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      142
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-BILLPAY-SCREEN",
+    "cfg_perform_target": "SEND-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 144,
+    "paragraph": "READ-CXACAIX-FILE",
+    "line": 430,
+    "verb": "DISPLAY",
+    "operands": [
+      "'RESP:'",
+      "WS-RESP-CD",
+      "'REAS:'",
+      "WS-REAS-CD"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage",
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      143
+    ],
+    "cfg_successors": [
+      145
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD"
+  },
+  {
+    "seq": 145,
+    "paragraph": "READ-CXACAIX-FILE",
+    "line": 431,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      144
+    ],
+    "cfg_successors": [
+      146
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 146,
+    "paragraph": "READ-CXACAIX-FILE",
+    "line": 432,
+    "verb": "MOVE",
+    "operands": [
+      "'Unable to lookup XREF AIX file...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      145
+    ],
+    "cfg_successors": [
+      147
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Unable to lookup XREF AIX file...' TO"
+  },
+  {
+    "seq": 147,
+    "paragraph": "READ-CXACAIX-FILE",
+    "line": 434,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "ACTIDINL",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      146
+    ],
+    "cfg_successors": [
+      148
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO ACTIDINL OF COBIL0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 148,
+    "paragraph": "READ-CXACAIX-FILE",
+    "line": 435,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      147
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-BILLPAY-SCREEN",
+    "cfg_perform_target": "SEND-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 149,
+    "paragraph": "STARTBR-TRANSACT-FILE",
+    "line": 443,
+    "verb": "EXEC CICS",
+    "operands": [
+      "STARTBR"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      148,
+      59
+    ],
+    "cfg_successors": [
+      150
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS STARTBR",
+    "operand_unresolved": true,
+    "cics_command": "STARTBR"
+  },
+  {
+    "seq": 150,
+    "paragraph": "STARTBR-TRANSACT-FILE",
+    "line": 451,
+    "verb": "EVALUATE",
+    "operands": [
+      "WS-RESP-CD"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      149
+    ],
+    "cfg_successors": [
+      151
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE WS-RESP-CD"
+  },
+  {
+    "seq": 151,
+    "paragraph": "STARTBR-TRANSACT-FILE",
+    "line": 453,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      150
+    ],
+    "cfg_successors": [
+      152
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 152,
+    "paragraph": "STARTBR-TRANSACT-FILE",
+    "line": 455,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      151
+    ],
+    "cfg_successors": [
+      153
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 153,
+    "paragraph": "STARTBR-TRANSACT-FILE",
+    "line": 456,
+    "verb": "MOVE",
+    "operands": [
+      "'Transaction ID NOT found...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      152
+    ],
+    "cfg_successors": [
+      154
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Transaction ID NOT found...' TO"
+  },
+  {
+    "seq": 154,
+    "paragraph": "STARTBR-TRANSACT-FILE",
+    "line": 458,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "ACTIDINL",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      153
+    ],
+    "cfg_successors": [
+      155
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO ACTIDINL OF COBIL0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 155,
+    "paragraph": "STARTBR-TRANSACT-FILE",
+    "line": 459,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      154
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-BILLPAY-SCREEN",
+    "cfg_perform_target": "SEND-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 156,
+    "paragraph": "STARTBR-TRANSACT-FILE",
+    "line": 461,
+    "verb": "DISPLAY",
+    "operands": [
+      "'RESP:'",
+      "WS-RESP-CD",
+      "'REAS:'",
+      "WS-REAS-CD"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage",
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      155
+    ],
+    "cfg_successors": [
+      157
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD"
+  },
+  {
+    "seq": 157,
+    "paragraph": "STARTBR-TRANSACT-FILE",
+    "line": 462,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      156
+    ],
+    "cfg_successors": [
+      158
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 158,
+    "paragraph": "STARTBR-TRANSACT-FILE",
+    "line": 463,
+    "verb": "MOVE",
+    "operands": [
+      "'Unable to lookup Transaction...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      157
+    ],
+    "cfg_successors": [
+      159
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Unable to lookup Transaction...' TO"
+  },
+  {
+    "seq": 159,
+    "paragraph": "STARTBR-TRANSACT-FILE",
+    "line": 465,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "ACTIDINL",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      158
+    ],
+    "cfg_successors": [
+      160
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO ACTIDINL OF COBIL0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 160,
+    "paragraph": "STARTBR-TRANSACT-FILE",
+    "line": 466,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      159
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-BILLPAY-SCREEN",
+    "cfg_perform_target": "SEND-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 161,
+    "paragraph": "READPREV-TRANSACT-FILE",
+    "line": 474,
+    "verb": "EXEC CICS",
+    "operands": [
+      "READPREV"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      160,
+      60
+    ],
+    "cfg_successors": [
+      162
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS READPREV",
+    "operand_unresolved": true,
+    "cics_command": "READPREV"
+  },
+  {
+    "seq": 162,
+    "paragraph": "READPREV-TRANSACT-FILE",
+    "line": 484,
+    "verb": "EVALUATE",
+    "operands": [
+      "WS-RESP-CD"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      161
+    ],
+    "cfg_successors": [
+      163
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE WS-RESP-CD"
+  },
+  {
+    "seq": 163,
+    "paragraph": "READPREV-TRANSACT-FILE",
+    "line": 486,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      162
+    ],
+    "cfg_successors": [
+      164
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 164,
+    "paragraph": "READPREV-TRANSACT-FILE",
+    "line": 488,
+    "verb": "MOVE",
+    "operands": [
+      "TRAN-ID"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      163
+    ],
+    "cfg_successors": [
+      165
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ZEROS TO TRAN-ID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 165,
+    "paragraph": "READPREV-TRANSACT-FILE",
+    "line": 490,
+    "verb": "DISPLAY",
+    "operands": [
+      "'RESP:'",
+      "WS-RESP-CD",
+      "'REAS:'",
+      "WS-REAS-CD"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage",
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      164
+    ],
+    "cfg_successors": [
+      166
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD"
+  },
+  {
+    "seq": 166,
+    "paragraph": "READPREV-TRANSACT-FILE",
+    "line": 491,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      165
+    ],
+    "cfg_successors": [
+      167
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 167,
+    "paragraph": "READPREV-TRANSACT-FILE",
+    "line": 492,
+    "verb": "MOVE",
+    "operands": [
+      "'Unable to lookup Transaction...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      166
+    ],
+    "cfg_successors": [
+      168
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Unable to lookup Transaction...' TO"
+  },
+  {
+    "seq": 168,
+    "paragraph": "READPREV-TRANSACT-FILE",
+    "line": 494,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "ACTIDINL",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      167
+    ],
+    "cfg_successors": [
+      169
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO ACTIDINL OF COBIL0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 169,
+    "paragraph": "READPREV-TRANSACT-FILE",
+    "line": 495,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      168
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-BILLPAY-SCREEN",
+    "cfg_perform_target": "SEND-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 170,
+    "paragraph": "ENDBR-TRANSACT-FILE",
+    "line": 503,
+    "verb": "EXEC CICS",
+    "operands": [
+      "ENDBR"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      169,
+      61
+    ],
+    "cfg_successors": [
+      171
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS ENDBR",
+    "operand_unresolved": true,
+    "cics_command": "ENDBR"
+  },
+  {
+    "seq": 171,
+    "paragraph": "WRITE-TRANSACT-FILE",
+    "line": 512,
+    "verb": "EXEC CICS",
+    "operands": [
+      "WRITE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      170,
+      78
+    ],
+    "cfg_successors": [
+      172
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS WRITE",
+    "operand_unresolved": true,
+    "cics_command": "WRITE"
+  },
+  {
+    "seq": 172,
+    "paragraph": "WRITE-TRANSACT-FILE",
+    "line": 522,
+    "verb": "EVALUATE",
+    "operands": [
+      "WS-RESP-CD"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      171
+    ],
+    "cfg_successors": [
+      173
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE WS-RESP-CD"
+  },
+  {
+    "seq": 173,
+    "paragraph": "WRITE-TRANSACT-FILE",
+    "line": 524,
+    "verb": "PERFORM",
+    "operands": [
+      "INITIALIZE-ALL-FIELDS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      172
+    ],
+    "cfg_successors": [
+      189
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM INITIALIZE-ALL-FIELDS",
+    "cfg_perform_target": "INITIALIZE-ALL-FIELDS"
+  },
+  {
+    "seq": 174,
+    "paragraph": "WRITE-TRANSACT-FILE",
+    "line": 525,
+    "verb": "MOVE",
+    "operands": [
+      "WS-MESSAGE"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      173
+    ],
+    "cfg_successors": [
+      175
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE SPACES TO WS-MESSAGE"
+  },
+  {
+    "seq": 175,
+    "paragraph": "WRITE-TRANSACT-FILE",
+    "line": 526,
+    "verb": "MOVE",
+    "operands": [
+      "DFHGREEN",
+      "ERRMSGC",
+      "COBIL0AO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      174
+    ],
+    "cfg_successors": [
+      176
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DFHGREEN TO ERRMSGC OF COBIL0AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 176,
+    "paragraph": "WRITE-TRANSACT-FILE",
+    "line": 527,
+    "verb": "STRING",
+    "operands": [
+      "'Payment successful. '",
+      "DELIMITED"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      175
+    ],
+    "cfg_successors": [
+      177
+    ],
+    "division": "PROCEDURE",
+    "raw": "STRING 'Payment successful. ' DELIMITED BY SIZE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 177,
+    "paragraph": "WRITE-TRANSACT-FILE",
+    "line": 532,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      176
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-BILLPAY-SCREEN",
+    "cfg_perform_target": "SEND-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 178,
+    "paragraph": "WRITE-TRANSACT-FILE",
+    "line": 535,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      177
+    ],
+    "cfg_successors": [
+      179
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 179,
+    "paragraph": "WRITE-TRANSACT-FILE",
+    "line": 536,
+    "verb": "MOVE",
+    "operands": [
+      "'Tran ID already exist...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      178
+    ],
+    "cfg_successors": [
+      180
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Tran ID already exist...' TO"
+  },
+  {
+    "seq": 180,
+    "paragraph": "WRITE-TRANSACT-FILE",
+    "line": 538,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "ACTIDINL",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      179
+    ],
+    "cfg_successors": [
+      181
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO ACTIDINL OF COBIL0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 181,
+    "paragraph": "WRITE-TRANSACT-FILE",
+    "line": 539,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      180
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-BILLPAY-SCREEN",
+    "cfg_perform_target": "SEND-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 182,
+    "paragraph": "WRITE-TRANSACT-FILE",
+    "line": 541,
+    "verb": "DISPLAY",
+    "operands": [
+      "'RESP:'",
+      "WS-RESP-CD",
+      "'REAS:'",
+      "WS-REAS-CD"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage",
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      181
+    ],
+    "cfg_successors": [
+      183
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD"
+  },
+  {
+    "seq": 183,
+    "paragraph": "WRITE-TRANSACT-FILE",
+    "line": 542,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      182
+    ],
+    "cfg_successors": [
+      184
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 184,
+    "paragraph": "WRITE-TRANSACT-FILE",
+    "line": 543,
+    "verb": "MOVE",
+    "operands": [
+      "'Unable to Add Bill pay Transaction...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      183
+    ],
+    "cfg_successors": [
+      185
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Unable to Add Bill pay Transaction...' TO"
+  },
+  {
+    "seq": 185,
+    "paragraph": "WRITE-TRANSACT-FILE",
+    "line": 545,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "ACTIDINL",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      184
+    ],
+    "cfg_successors": [
+      186
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO ACTIDINL OF COBIL0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 186,
+    "paragraph": "WRITE-TRANSACT-FILE",
+    "line": 546,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      185
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-BILLPAY-SCREEN",
+    "cfg_perform_target": "SEND-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 187,
+    "paragraph": "CLEAR-CURRENT-SCREEN",
+    "line": 554,
+    "verb": "PERFORM",
+    "operands": [
+      "INITIALIZE-ALL-FIELDS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      186,
+      23,
+      40
+    ],
+    "cfg_successors": [
+      189
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM INITIALIZE-ALL-FIELDS",
+    "cfg_perform_target": "INITIALIZE-ALL-FIELDS"
+  },
+  {
+    "seq": 188,
+    "paragraph": "CLEAR-CURRENT-SCREEN",
+    "line": 555,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-BILLPAY-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      187
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-BILLPAY-SCREEN.",
+    "cfg_perform_target": "SEND-BILLPAY-SCREEN"
+  },
+  {
+    "seq": 189,
+    "paragraph": "INITIALIZE-ALL-FIELDS",
+    "line": 562,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "ACTIDINL",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      188,
+      173,
+      187
+    ],
+    "cfg_successors": [
+      190
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO ACTIDINL OF COBIL0AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 190,
+    "paragraph": "INITIALIZE-ALL-FIELDS",
+    "line": 563,
+    "verb": "MOVE",
+    "operands": [
+      "ACTIDINI",
+      "COBIL0AI"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      189
+    ],
+    "cfg_successors": [],
+    "division": "PROCEDURE",
+    "raw": "MOVE SPACES TO ACTIDINI OF COBIL0AI",
+    "operand_unresolved": true
+  }
+]

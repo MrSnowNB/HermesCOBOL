@@ -1,0 +1,281 @@
+{
+  "program": "CBTRN03C",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBTRN03C.cbl",
+  "source_sha256": "829445100549e7840c945bab9271b931e1abb23d3b94a56bbef857d0b2f7b01a",
+  "cfg_path": "validation\\pass1\\CBTRN03C_annotations.json",
+  "cfg_sha256": "b12dafeb401a82e8d91866a7409bdead7c28817600464f4f6858cbd92539a1a2",
+  "paragraphs": [
+    {
+      "paragraph": "CBTRN03C-MAIN",
+      "first_line": 160,
+      "last_line": 217,
+      "terminator": "goback",
+      "falls_through_to": null,
+      "last_verb": "GOBACK",
+      "last_raw": "GOBACK.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "0550-DATEPARM-READ",
+      "first_line": 221,
+      "last_line": 241,
+      "terminator": "implicit",
+      "falls_through_to": "1000-TRANFILE-GET-NEXT",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1000-TRANFILE-GET-NEXT",
+      "first_line": 249,
+      "last_line": 272,
+      "terminator": "implicit",
+      "falls_through_to": "1100-WRITE-TRANSACTION-REPORT",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1100-WRITE-TRANSACTION-REPORT",
+      "first_line": 275,
+      "last_line": 290,
+      "terminator": "implicit",
+      "falls_through_to": "1110-WRITE-PAGE-TOTALS",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1110-WRITE-PAGE-TOTALS",
+      "first_line": 294,
+      "last_line": 304,
+      "terminator": "implicit",
+      "falls_through_to": "1120-WRITE-ACCOUNT-TOTALS",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1120-WRITE-ACCOUNT-TOTALS",
+      "first_line": 307,
+      "last_line": 316,
+      "terminator": "implicit",
+      "falls_through_to": "1110-WRITE-GRAND-TOTALS",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1110-WRITE-GRAND-TOTALS",
+      "first_line": 319,
+      "last_line": 322,
+      "terminator": "implicit",
+      "falls_through_to": "1120-WRITE-HEADERS",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1120-WRITE-HEADERS",
+      "first_line": 325,
+      "last_line": 341,
+      "terminator": "implicit",
+      "falls_through_to": "1111-WRITE-REPORT-REC",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1111-WRITE-REPORT-REC",
+      "first_line": 345,
+      "last_line": 359,
+      "terminator": "implicit",
+      "falls_through_to": "1120-WRITE-DETAIL",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1120-WRITE-DETAIL",
+      "first_line": 362,
+      "last_line": 374,
+      "terminator": "implicit",
+      "falls_through_to": "0000-TRANFILE-OPEN",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "0000-TRANFILE-OPEN",
+      "first_line": 377,
+      "last_line": 392,
+      "terminator": "implicit",
+      "falls_through_to": "0100-REPTFILE-OPEN",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "0100-REPTFILE-OPEN",
+      "first_line": 395,
+      "last_line": 410,
+      "terminator": "implicit",
+      "falls_through_to": "0200-CARDXREF-OPEN",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "0200-CARDXREF-OPEN",
+      "first_line": 413,
+      "last_line": 428,
+      "terminator": "implicit",
+      "falls_through_to": "0300-TRANTYPE-OPEN",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "0300-TRANTYPE-OPEN",
+      "first_line": 431,
+      "last_line": 446,
+      "terminator": "implicit",
+      "falls_through_to": "0400-TRANCATG-OPEN",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "0400-TRANCATG-OPEN",
+      "first_line": 449,
+      "last_line": 464,
+      "terminator": "implicit",
+      "falls_through_to": "0500-DATEPARM-OPEN",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "0500-DATEPARM-OPEN",
+      "first_line": 467,
+      "last_line": 482,
+      "terminator": "implicit",
+      "falls_through_to": "1500-A-LOOKUP-XREF",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1500-A-LOOKUP-XREF",
+      "first_line": 485,
+      "last_line": 492,
+      "terminator": "implicit",
+      "falls_through_to": "1500-B-LOOKUP-TRANTYPE",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1500-B-LOOKUP-TRANTYPE",
+      "first_line": 495,
+      "last_line": 502,
+      "terminator": "implicit",
+      "falls_through_to": "1500-C-LOOKUP-TRANCATG",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1500-C-LOOKUP-TRANCATG",
+      "first_line": 505,
+      "last_line": 512,
+      "terminator": "implicit",
+      "falls_through_to": "9000-TRANFILE-CLOSE",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9000-TRANFILE-CLOSE",
+      "first_line": 515,
+      "last_line": 530,
+      "terminator": "implicit",
+      "falls_through_to": "9100-REPTFILE-CLOSE",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9100-REPTFILE-CLOSE",
+      "first_line": 533,
+      "last_line": 548,
+      "terminator": "implicit",
+      "falls_through_to": "9200-CARDXREF-CLOSE",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9200-CARDXREF-CLOSE",
+      "first_line": 552,
+      "last_line": 567,
+      "terminator": "implicit",
+      "falls_through_to": "9300-TRANTYPE-CLOSE",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9300-TRANTYPE-CLOSE",
+      "first_line": 570,
+      "last_line": 585,
+      "terminator": "implicit",
+      "falls_through_to": "9400-TRANCATG-CLOSE",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9400-TRANCATG-CLOSE",
+      "first_line": 588,
+      "last_line": 603,
+      "terminator": "implicit",
+      "falls_through_to": "9500-DATEPARM-CLOSE",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9500-DATEPARM-CLOSE",
+      "first_line": 606,
+      "last_line": 621,
+      "terminator": "implicit",
+      "falls_through_to": "9999-ABEND-PROGRAM",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9999-ABEND-PROGRAM",
+      "first_line": 627,
+      "last_line": 630,
+      "terminator": "implicit",
+      "falls_through_to": "9910-DISPLAY-IO-STATUS",
+      "last_verb": "CALL",
+      "last_raw": "CALL 'CEE3ABD' USING ABCODE TIMING.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9910-DISPLAY-IO-STATUS",
+      "first_line": 634,
+      "last_line": 646,
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    }
+  ],
+  "c5_assertion": "PASS",
+  "c5_violations": []
+}

@@ -1,0 +1,5271 @@
+[
+  {
+    "seq": 1,
+    "paragraph": "0000-MAIN-PROCESSING",
+    "line": 151,
+    "verb": "PERFORM",
+    "operands": [
+      "1000-INITIALIZE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [],
+    "cfg_successors": [
+      9
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1000-INITIALIZE",
+    "cfg_perform_target": "1000-INITIALIZE"
+  },
+  {
+    "seq": 2,
+    "paragraph": "0000-MAIN-PROCESSING",
+    "line": 152,
+    "verb": "PERFORM",
+    "operands": [
+      "2000-EXPORT-CUSTOMERS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      1
+    ],
+    "cfg_successors": [
+      43
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 2000-EXPORT-CUSTOMERS",
+    "cfg_perform_target": "2000-EXPORT-CUSTOMERS"
+  },
+  {
+    "seq": 3,
+    "paragraph": "0000-MAIN-PROCESSING",
+    "line": 153,
+    "verb": "PERFORM",
+    "operands": [
+      "3000-EXPORT-ACCOUNTS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      2
+    ],
+    "cfg_successors": [
+      84
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 3000-EXPORT-ACCOUNTS",
+    "cfg_perform_target": "3000-EXPORT-ACCOUNTS"
+  },
+  {
+    "seq": 4,
+    "paragraph": "0000-MAIN-PROCESSING",
+    "line": 154,
+    "verb": "PERFORM",
+    "operands": [
+      "4000-EXPORT-XREFS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      3
+    ],
+    "cfg_successors": [
+      119
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 4000-EXPORT-XREFS",
+    "cfg_perform_target": "4000-EXPORT-XREFS"
+  },
+  {
+    "seq": 5,
+    "paragraph": "0000-MAIN-PROCESSING",
+    "line": 155,
+    "verb": "PERFORM",
+    "operands": [
+      "5000-EXPORT-TRANSACTIONS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      4
+    ],
+    "cfg_successors": [
+      145
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 5000-EXPORT-TRANSACTIONS",
+    "cfg_perform_target": "5000-EXPORT-TRANSACTIONS"
+  },
+  {
+    "seq": 6,
+    "paragraph": "0000-MAIN-PROCESSING",
+    "line": 156,
+    "verb": "PERFORM",
+    "operands": [
+      "5500-EXPORT-CARDS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      5
+    ],
+    "cfg_successors": [
+      181
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 5500-EXPORT-CARDS",
+    "cfg_perform_target": "5500-EXPORT-CARDS"
+  },
+  {
+    "seq": 7,
+    "paragraph": "0000-MAIN-PROCESSING",
+    "line": 157,
+    "verb": "PERFORM",
+    "operands": [
+      "6000-FINALIZE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      6
+    ],
+    "cfg_successors": [
+      210
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 6000-FINALIZE",
+    "cfg_perform_target": "6000-FINALIZE"
+  },
+  {
+    "seq": 8,
+    "paragraph": "0000-MAIN-PROCESSING",
+    "line": 158,
+    "verb": "GOBACK",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      7
+    ],
+    "cfg_successors": [
+      9
+    ],
+    "division": "PROCEDURE",
+    "raw": "GOBACK."
+  },
+  {
+    "seq": 9,
+    "paragraph": "1000-INITIALIZE",
+    "line": 163,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: Starting Customer Data Export'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      8,
+      1
+    ],
+    "cfg_successors": [
+      10
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: Starting Customer Data Export'"
+  },
+  {
+    "seq": 10,
+    "paragraph": "1000-INITIALIZE",
+    "line": 165,
+    "verb": "PERFORM",
+    "operands": [
+      "1050-GENERATE-TIMESTAMP"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      9
+    ],
+    "cfg_successors": [
+      14
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1050-GENERATE-TIMESTAMP",
+    "cfg_perform_target": "1050-GENERATE-TIMESTAMP"
+  },
+  {
+    "seq": 11,
+    "paragraph": "1000-INITIALIZE",
+    "line": 166,
+    "verb": "PERFORM",
+    "operands": [
+      "1100-OPEN-FILES"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      10
+    ],
+    "cfg_successors": [
+      19
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1100-OPEN-FILES",
+    "cfg_perform_target": "1100-OPEN-FILES"
+  },
+  {
+    "seq": 12,
+    "paragraph": "1000-INITIALIZE",
+    "line": 168,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: Export Date: '",
+      "WS-EXPORT-DATE"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      11
+    ],
+    "cfg_successors": [
+      13
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: Export Date: ' WS-EXPORT-DATE"
+  },
+  {
+    "seq": 13,
+    "paragraph": "1000-INITIALIZE",
+    "line": 169,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: Export Time: '",
+      "WS-EXPORT-TIME"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      12
+    ],
+    "cfg_successors": [
+      14
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: Export Time: ' WS-EXPORT-TIME."
+  },
+  {
+    "seq": 14,
+    "paragraph": "1050-GENERATE-TIMESTAMP",
+    "line": 175,
+    "verb": "ACCEPT",
+    "operands": [
+      "WS-CURRENT-DATE",
+      "DATE",
+      "YYYYMMDD"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      13,
+      10
+    ],
+    "cfg_successors": [
+      15
+    ],
+    "division": "PROCEDURE",
+    "raw": "ACCEPT WS-CURRENT-DATE FROM DATE YYYYMMDD",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 15,
+    "paragraph": "1050-GENERATE-TIMESTAMP",
+    "line": 176,
+    "verb": "ACCEPT",
+    "operands": [
+      "WS-CURRENT-TIME",
+      "TIME"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      14
+    ],
+    "cfg_successors": [
+      16
+    ],
+    "division": "PROCEDURE",
+    "raw": "ACCEPT WS-CURRENT-TIME FROM TIME",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 16,
+    "paragraph": "1050-GENERATE-TIMESTAMP",
+    "line": 179,
+    "verb": "STRING",
+    "operands": [
+      "WS-CURR-YEAR",
+      "'-'",
+      "WS-CURR-MONTH",
+      "'-'",
+      "WS-CURR-DAY"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal",
+      "working-storage",
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      15
+    ],
+    "cfg_successors": [
+      17
+    ],
+    "division": "PROCEDURE",
+    "raw": "STRING WS-CURR-YEAR '-' WS-CURR-MONTH '-' WS-CURR-DAY"
+  },
+  {
+    "seq": 17,
+    "paragraph": "1050-GENERATE-TIMESTAMP",
+    "line": 185,
+    "verb": "STRING",
+    "operands": [
+      "WS-CURR-HOUR",
+      "':'",
+      "WS-CURR-MINUTE",
+      "':'",
+      "WS-CURR-SECOND"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal",
+      "working-storage",
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      16
+    ],
+    "cfg_successors": [
+      18
+    ],
+    "division": "PROCEDURE",
+    "raw": "STRING WS-CURR-HOUR ':' WS-CURR-MINUTE ':' WS-CURR-SECOND"
+  },
+  {
+    "seq": 18,
+    "paragraph": "1050-GENERATE-TIMESTAMP",
+    "line": 191,
+    "verb": "STRING",
+    "operands": [
+      "WS-EXPORT-DATE",
+      "' '",
+      "WS-EXPORT-TIME",
+      "'.00'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal",
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      17
+    ],
+    "cfg_successors": [
+      19
+    ],
+    "division": "PROCEDURE",
+    "raw": "STRING WS-EXPORT-DATE ' ' WS-EXPORT-TIME '.00'"
+  },
+  {
+    "seq": 19,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 200,
+    "verb": "OPEN",
+    "operands": [
+      "CUSTOMER-INPUT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      18,
+      11
+    ],
+    "cfg_successors": [
+      20
+    ],
+    "division": "PROCEDURE",
+    "raw": "OPEN INPUT CUSTOMER-INPUT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 20,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 201,
+    "verb": "IF",
+    "operands": [
+      "WS-CUSTOMER-OK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-CUSTOMER-OK",
+    "cfg_predecessors": [
+      19
+    ],
+    "cfg_successors": [
+      21
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT WS-CUSTOMER-OK"
+  },
+  {
+    "seq": 21,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 202,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR: Cannot open CUSTOMER-INPUT, Status: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-CUSTOMER-OK",
+    "cfg_predecessors": [
+      20
+    ],
+    "cfg_successors": [
+      22
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR: Cannot open CUSTOMER-INPUT, Status: '"
+  },
+  {
+    "seq": 22,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 204,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-CUSTOMER-OK",
+    "cfg_predecessors": [
+      21
+    ],
+    "cfg_successors": [
+      223
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 23,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 207,
+    "verb": "OPEN",
+    "operands": [
+      "ACCOUNT-INPUT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      22
+    ],
+    "cfg_successors": [
+      24
+    ],
+    "division": "PROCEDURE",
+    "raw": "OPEN INPUT ACCOUNT-INPUT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 24,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 208,
+    "verb": "IF",
+    "operands": [
+      "WS-ACCOUNT-OK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-ACCOUNT-OK",
+    "cfg_predecessors": [
+      23
+    ],
+    "cfg_successors": [
+      25
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT WS-ACCOUNT-OK"
+  },
+  {
+    "seq": 25,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 209,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR: Cannot open ACCOUNT-INPUT, Status: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-ACCOUNT-OK",
+    "cfg_predecessors": [
+      24
+    ],
+    "cfg_successors": [
+      26
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR: Cannot open ACCOUNT-INPUT, Status: '"
+  },
+  {
+    "seq": 26,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 211,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-ACCOUNT-OK",
+    "cfg_predecessors": [
+      25
+    ],
+    "cfg_successors": [
+      223
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 27,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 214,
+    "verb": "OPEN",
+    "operands": [
+      "XREF-INPUT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      26
+    ],
+    "cfg_successors": [
+      28
+    ],
+    "division": "PROCEDURE",
+    "raw": "OPEN INPUT XREF-INPUT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 28,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 215,
+    "verb": "IF",
+    "operands": [
+      "WS-XREF-OK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-XREF-OK",
+    "cfg_predecessors": [
+      27
+    ],
+    "cfg_successors": [
+      29
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT WS-XREF-OK"
+  },
+  {
+    "seq": 29,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 216,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR: Cannot open XREF-INPUT, Status: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-XREF-OK",
+    "cfg_predecessors": [
+      28
+    ],
+    "cfg_successors": [
+      30
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR: Cannot open XREF-INPUT, Status: '"
+  },
+  {
+    "seq": 30,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 218,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-XREF-OK",
+    "cfg_predecessors": [
+      29
+    ],
+    "cfg_successors": [
+      223
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 31,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 221,
+    "verb": "OPEN",
+    "operands": [
+      "TRANSACTION-INPUT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      30
+    ],
+    "cfg_successors": [
+      32
+    ],
+    "division": "PROCEDURE",
+    "raw": "OPEN INPUT TRANSACTION-INPUT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 32,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 222,
+    "verb": "IF",
+    "operands": [
+      "WS-TRANSACTION-OK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-TRANSACTION-OK",
+    "cfg_predecessors": [
+      31
+    ],
+    "cfg_successors": [
+      33
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT WS-TRANSACTION-OK"
+  },
+  {
+    "seq": 33,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 223,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR: Cannot open TRANSACTION-INPUT, Status: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-TRANSACTION-OK",
+    "cfg_predecessors": [
+      32
+    ],
+    "cfg_successors": [
+      34
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR: Cannot open TRANSACTION-INPUT, Status: '"
+  },
+  {
+    "seq": 34,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 225,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-TRANSACTION-OK",
+    "cfg_predecessors": [
+      33
+    ],
+    "cfg_successors": [
+      223
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 35,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 228,
+    "verb": "OPEN",
+    "operands": [
+      "CARD-INPUT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      34
+    ],
+    "cfg_successors": [
+      36
+    ],
+    "division": "PROCEDURE",
+    "raw": "OPEN INPUT CARD-INPUT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 36,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 229,
+    "verb": "IF",
+    "operands": [
+      "WS-CARD-OK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-CARD-OK",
+    "cfg_predecessors": [
+      35
+    ],
+    "cfg_successors": [
+      37
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT WS-CARD-OK"
+  },
+  {
+    "seq": 37,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 230,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR: Cannot open CARD-INPUT, Status: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-CARD-OK",
+    "cfg_predecessors": [
+      36
+    ],
+    "cfg_successors": [
+      38
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR: Cannot open CARD-INPUT, Status: '"
+  },
+  {
+    "seq": 38,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 232,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-CARD-OK",
+    "cfg_predecessors": [
+      37
+    ],
+    "cfg_successors": [
+      223
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 39,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 235,
+    "verb": "OPEN",
+    "operands": [
+      "EXPORT-OUTPUT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      38
+    ],
+    "cfg_successors": [
+      40
+    ],
+    "division": "PROCEDURE",
+    "raw": "OPEN OUTPUT EXPORT-OUTPUT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 40,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 236,
+    "verb": "IF",
+    "operands": [
+      "WS-EXPORT-OK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-EXPORT-OK",
+    "cfg_predecessors": [
+      39
+    ],
+    "cfg_successors": [
+      41
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT WS-EXPORT-OK"
+  },
+  {
+    "seq": 41,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 237,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR: Cannot open EXPORT-OUTPUT, Status: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-EXPORT-OK",
+    "cfg_predecessors": [
+      40
+    ],
+    "cfg_successors": [
+      42
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR: Cannot open EXPORT-OUTPUT, Status: '"
+  },
+  {
+    "seq": 42,
+    "paragraph": "1100-OPEN-FILES",
+    "line": 239,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-EXPORT-OK",
+    "cfg_predecessors": [
+      41
+    ],
+    "cfg_successors": [
+      223
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 43,
+    "paragraph": "2000-EXPORT-CUSTOMERS",
+    "line": 245,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: Processing customer records'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      42,
+      2
+    ],
+    "cfg_successors": [
+      44
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: Processing customer records'"
+  },
+  {
+    "seq": 44,
+    "paragraph": "2000-EXPORT-CUSTOMERS",
+    "line": 247,
+    "verb": "PERFORM",
+    "operands": [
+      "2100-READ-CUSTOMER-RECORD"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      43
+    ],
+    "cfg_successors": [
+      49
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 2100-READ-CUSTOMER-RECORD",
+    "cfg_perform_target": "2100-READ-CUSTOMER-RECORD"
+  },
+  {
+    "seq": 45,
+    "paragraph": "2000-EXPORT-CUSTOMERS",
+    "line": 249,
+    "verb": "PERFORM",
+    "operands": [
+      "WS-CUSTOMER-EOF"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      44
+    ],
+    "cfg_successors": [
+      46
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM UNTIL WS-CUSTOMER-EOF"
+  },
+  {
+    "seq": 46,
+    "paragraph": "2000-EXPORT-CUSTOMERS",
+    "line": 250,
+    "verb": "PERFORM",
+    "operands": [
+      "2200-CREATE-CUSTOMER-EXP-REC"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      45
+    ],
+    "cfg_successors": [
+      53
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 2200-CREATE-CUSTOMER-EXP-REC",
+    "cfg_perform_target": "2200-CREATE-CUSTOMER-EXP-REC"
+  },
+  {
+    "seq": 47,
+    "paragraph": "2000-EXPORT-CUSTOMERS",
+    "line": 251,
+    "verb": "PERFORM",
+    "operands": [
+      "2100-READ-CUSTOMER-RECORD"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      46
+    ],
+    "cfg_successors": [
+      49
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 2100-READ-CUSTOMER-RECORD",
+    "cfg_perform_target": "2100-READ-CUSTOMER-RECORD"
+  },
+  {
+    "seq": 48,
+    "paragraph": "2000-EXPORT-CUSTOMERS",
+    "line": 254,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: Customers exported: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      47
+    ],
+    "cfg_successors": [
+      49
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: Customers exported: '"
+  },
+  {
+    "seq": 49,
+    "paragraph": "2100-READ-CUSTOMER-RECORD",
+    "line": 260,
+    "verb": "READ",
+    "operands": [
+      "CUSTOMER-INPUT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      48,
+      44,
+      47
+    ],
+    "cfg_successors": [
+      50
+    ],
+    "division": "PROCEDURE",
+    "raw": "READ CUSTOMER-INPUT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 50,
+    "paragraph": "2100-READ-CUSTOMER-RECORD",
+    "line": 262,
+    "verb": "IF",
+    "operands": [
+      "WS-CUSTOMER-OK",
+      "WS-CUSTOMER-EOF"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-CUSTOMER-OK AND NOT WS-CUSTOMER-EOF",
+    "cfg_predecessors": [
+      49
+    ],
+    "cfg_successors": [
+      51
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT WS-CUSTOMER-OK AND NOT WS-CUSTOMER-EOF"
+  },
+  {
+    "seq": 51,
+    "paragraph": "2100-READ-CUSTOMER-RECORD",
+    "line": 263,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR: Reading CUSTOMER-INPUT, Status: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-CUSTOMER-OK AND NOT WS-CUSTOMER-EOF",
+    "cfg_predecessors": [
+      50
+    ],
+    "cfg_successors": [
+      52
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR: Reading CUSTOMER-INPUT, Status: '"
+  },
+  {
+    "seq": 52,
+    "paragraph": "2100-READ-CUSTOMER-RECORD",
+    "line": 265,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-CUSTOMER-OK AND NOT WS-CUSTOMER-EOF",
+    "cfg_predecessors": [
+      51
+    ],
+    "cfg_successors": [
+      223
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 53,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 271,
+    "verb": "INITIALIZE",
+    "operands": [
+      "EXPORT-RECORD"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      52,
+      46
+    ],
+    "cfg_successors": [
+      54
+    ],
+    "division": "PROCEDURE",
+    "raw": "INITIALIZE EXPORT-RECORD"
+  },
+  {
+    "seq": 54,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 274,
+    "verb": "MOVE",
+    "operands": [
+      "'C'",
+      "EXPORT-REC-TYPE"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      53
+    ],
+    "cfg_successors": [
+      55
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'C' TO EXPORT-REC-TYPE"
+  },
+  {
+    "seq": 55,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 275,
+    "verb": "MOVE",
+    "operands": [
+      "WS-FORMATTED-TIMESTAMP",
+      "EXPORT-TIMESTAMP"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      54
+    ],
+    "cfg_successors": [
+      56
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-FORMATTED-TIMESTAMP TO EXPORT-TIMESTAMP"
+  },
+  {
+    "seq": 56,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 276,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-SEQUENCE-COUNTER"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      55
+    ],
+    "cfg_successors": [
+      57
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-SEQUENCE-COUNTER"
+  },
+  {
+    "seq": 57,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 277,
+    "verb": "MOVE",
+    "operands": [
+      "WS-SEQUENCE-COUNTER",
+      "EXPORT-SEQUENCE-NUM"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      56
+    ],
+    "cfg_successors": [
+      58
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-SEQUENCE-COUNTER TO EXPORT-SEQUENCE-NUM"
+  },
+  {
+    "seq": 58,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 278,
+    "verb": "MOVE",
+    "operands": [
+      "'0001'",
+      "EXPORT-BRANCH-ID"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      57
+    ],
+    "cfg_successors": [
+      59
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE '0001' TO EXPORT-BRANCH-ID"
+  },
+  {
+    "seq": 59,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 279,
+    "verb": "MOVE",
+    "operands": [
+      "'NORTH'",
+      "EXPORT-REGION-CODE"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      58
+    ],
+    "cfg_successors": [
+      60
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'NORTH' TO EXPORT-REGION-CODE"
+  },
+  {
+    "seq": 60,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 282,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-ID",
+      "EXP-CUST-ID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      59
+    ],
+    "cfg_successors": [
+      61
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-ID TO EXP-CUST-ID"
+  },
+  {
+    "seq": 61,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 283,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-FIRST-NAME",
+      "EXP-CUST-FIRST-NAME"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      60
+    ],
+    "cfg_successors": [
+      62
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-FIRST-NAME TO EXP-CUST-FIRST-NAME"
+  },
+  {
+    "seq": 62,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 284,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-MIDDLE-NAME",
+      "EXP-CUST-MIDDLE-NAME"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      61
+    ],
+    "cfg_successors": [
+      63
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-MIDDLE-NAME TO EXP-CUST-MIDDLE-NAME"
+  },
+  {
+    "seq": 63,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 285,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-LAST-NAME",
+      "EXP-CUST-LAST-NAME"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      62
+    ],
+    "cfg_successors": [
+      64
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-LAST-NAME TO EXP-CUST-LAST-NAME"
+  },
+  {
+    "seq": 64,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 286,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-ADDR-LINE-1",
+      "EXP-CUST-ADDR-LINE",
+      "1"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      63
+    ],
+    "cfg_successors": [
+      65
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-ADDR-LINE-1 TO EXP-CUST-ADDR-LINE(1)"
+  },
+  {
+    "seq": 65,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 287,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-ADDR-LINE-2",
+      "EXP-CUST-ADDR-LINE",
+      "2"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      64
+    ],
+    "cfg_successors": [
+      66
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-ADDR-LINE-2 TO EXP-CUST-ADDR-LINE(2)"
+  },
+  {
+    "seq": 66,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 288,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-ADDR-LINE-3",
+      "EXP-CUST-ADDR-LINE",
+      "3"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      65
+    ],
+    "cfg_successors": [
+      67
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-ADDR-LINE-3 TO EXP-CUST-ADDR-LINE(3)"
+  },
+  {
+    "seq": 67,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 289,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-ADDR-STATE-CD",
+      "EXP-CUST-ADDR-STATE-CD"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      66
+    ],
+    "cfg_successors": [
+      68
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-ADDR-STATE-CD TO EXP-CUST-ADDR-STATE-CD"
+  },
+  {
+    "seq": 68,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 290,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-ADDR-COUNTRY-CD",
+      "EXP-CUST-ADDR-COUNTRY-CD"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      67
+    ],
+    "cfg_successors": [
+      69
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-ADDR-COUNTRY-CD TO EXP-CUST-ADDR-COUNTRY-CD"
+  },
+  {
+    "seq": 69,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 291,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-ADDR-ZIP",
+      "EXP-CUST-ADDR-ZIP"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      68
+    ],
+    "cfg_successors": [
+      70
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-ADDR-ZIP TO EXP-CUST-ADDR-ZIP"
+  },
+  {
+    "seq": 70,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 292,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-PHONE-NUM-1",
+      "EXP-CUST-PHONE-NUM",
+      "1"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      69
+    ],
+    "cfg_successors": [
+      71
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-PHONE-NUM-1 TO EXP-CUST-PHONE-NUM(1)"
+  },
+  {
+    "seq": 71,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 293,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-PHONE-NUM-2",
+      "EXP-CUST-PHONE-NUM",
+      "2"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      70
+    ],
+    "cfg_successors": [
+      72
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-PHONE-NUM-2 TO EXP-CUST-PHONE-NUM(2)"
+  },
+  {
+    "seq": 72,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 294,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-SSN",
+      "EXP-CUST-SSN"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      71
+    ],
+    "cfg_successors": [
+      73
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-SSN TO EXP-CUST-SSN"
+  },
+  {
+    "seq": 73,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 295,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-GOVT-ISSUED-ID",
+      "EXP-CUST-GOVT-ISSUED-ID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      72
+    ],
+    "cfg_successors": [
+      74
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-GOVT-ISSUED-ID TO EXP-CUST-GOVT-ISSUED-ID"
+  },
+  {
+    "seq": 74,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 296,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-DOB-YYYY-MM-DD",
+      "EXP-CUST-DOB-YYYY-MM-DD"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      73
+    ],
+    "cfg_successors": [
+      75
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-DOB-YYYY-MM-DD TO EXP-CUST-DOB-YYYY-MM-DD"
+  },
+  {
+    "seq": 75,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 297,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-EFT-ACCOUNT-ID",
+      "EXP-CUST-EFT-ACCOUNT-ID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      74
+    ],
+    "cfg_successors": [
+      76
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-EFT-ACCOUNT-ID TO EXP-CUST-EFT-ACCOUNT-ID"
+  },
+  {
+    "seq": 76,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 298,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-PRI-CARD-HOLDER-IND",
+      "EXP-CUST-PRI-CARD-HOLDER-IND"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      75
+    ],
+    "cfg_successors": [
+      77
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-PRI-CARD-HOLDER-IND TO EXP-CUST-PRI-CARD-HOLDER-IND"
+  },
+  {
+    "seq": 77,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 299,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-FICO-CREDIT-SCORE",
+      "EXP-CUST-FICO-CREDIT-SCORE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      76
+    ],
+    "cfg_successors": [
+      78
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-FICO-CREDIT-SCORE TO EXP-CUST-FICO-CREDIT-SCORE"
+  },
+  {
+    "seq": 78,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 301,
+    "verb": "WRITE",
+    "operands": [
+      "EXPORT-OUTPUT-RECORD",
+      "EXPORT-RECORD"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      77
+    ],
+    "cfg_successors": [
+      79
+    ],
+    "division": "PROCEDURE",
+    "raw": "WRITE EXPORT-OUTPUT-RECORD FROM EXPORT-RECORD"
+  },
+  {
+    "seq": 79,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 303,
+    "verb": "IF",
+    "operands": [
+      "WS-EXPORT-OK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-EXPORT-OK",
+    "cfg_predecessors": [
+      78
+    ],
+    "cfg_successors": [
+      80
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT WS-EXPORT-OK"
+  },
+  {
+    "seq": 80,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 304,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR: Writing export record, Status: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-EXPORT-OK",
+    "cfg_predecessors": [
+      79
+    ],
+    "cfg_successors": [
+      81
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR: Writing export record, Status: '"
+  },
+  {
+    "seq": 81,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 306,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-EXPORT-OK",
+    "cfg_predecessors": [
+      80
+    ],
+    "cfg_successors": [
+      223
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 82,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 309,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-CUSTOMER-RECORDS-EXPORTED"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      81
+    ],
+    "cfg_successors": [
+      83
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-CUSTOMER-RECORDS-EXPORTED"
+  },
+  {
+    "seq": 83,
+    "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+    "line": 310,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-TOTAL-RECORDS-EXPORTED"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      82
+    ],
+    "cfg_successors": [
+      84
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED."
+  },
+  {
+    "seq": 84,
+    "paragraph": "3000-EXPORT-ACCOUNTS",
+    "line": 314,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: Processing account records'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      83,
+      3
+    ],
+    "cfg_successors": [
+      85
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: Processing account records'"
+  },
+  {
+    "seq": 85,
+    "paragraph": "3000-EXPORT-ACCOUNTS",
+    "line": 316,
+    "verb": "PERFORM",
+    "operands": [
+      "3100-READ-ACCOUNT-RECORD"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      84
+    ],
+    "cfg_successors": [
+      90
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 3100-READ-ACCOUNT-RECORD",
+    "cfg_perform_target": "3100-READ-ACCOUNT-RECORD"
+  },
+  {
+    "seq": 86,
+    "paragraph": "3000-EXPORT-ACCOUNTS",
+    "line": 318,
+    "verb": "PERFORM",
+    "operands": [
+      "WS-ACCOUNT-EOF"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      85
+    ],
+    "cfg_successors": [
+      87
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM UNTIL WS-ACCOUNT-EOF"
+  },
+  {
+    "seq": 87,
+    "paragraph": "3000-EXPORT-ACCOUNTS",
+    "line": 319,
+    "verb": "PERFORM",
+    "operands": [
+      "3200-CREATE-ACCOUNT-EXP-REC"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      86
+    ],
+    "cfg_successors": [
+      94
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 3200-CREATE-ACCOUNT-EXP-REC",
+    "cfg_perform_target": "3200-CREATE-ACCOUNT-EXP-REC"
+  },
+  {
+    "seq": 88,
+    "paragraph": "3000-EXPORT-ACCOUNTS",
+    "line": 320,
+    "verb": "PERFORM",
+    "operands": [
+      "3100-READ-ACCOUNT-RECORD"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      87
+    ],
+    "cfg_successors": [
+      90
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 3100-READ-ACCOUNT-RECORD",
+    "cfg_perform_target": "3100-READ-ACCOUNT-RECORD"
+  },
+  {
+    "seq": 89,
+    "paragraph": "3000-EXPORT-ACCOUNTS",
+    "line": 323,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: Accounts exported: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      88
+    ],
+    "cfg_successors": [
+      90
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: Accounts exported: '"
+  },
+  {
+    "seq": 90,
+    "paragraph": "3100-READ-ACCOUNT-RECORD",
+    "line": 329,
+    "verb": "READ",
+    "operands": [
+      "ACCOUNT-INPUT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      89,
+      85,
+      88
+    ],
+    "cfg_successors": [
+      91
+    ],
+    "division": "PROCEDURE",
+    "raw": "READ ACCOUNT-INPUT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 91,
+    "paragraph": "3100-READ-ACCOUNT-RECORD",
+    "line": 331,
+    "verb": "IF",
+    "operands": [
+      "WS-ACCOUNT-OK",
+      "WS-ACCOUNT-EOF"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-ACCOUNT-OK AND NOT WS-ACCOUNT-EOF",
+    "cfg_predecessors": [
+      90
+    ],
+    "cfg_successors": [
+      92
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT WS-ACCOUNT-OK AND NOT WS-ACCOUNT-EOF"
+  },
+  {
+    "seq": 92,
+    "paragraph": "3100-READ-ACCOUNT-RECORD",
+    "line": 332,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR: Reading ACCOUNT-INPUT, Status: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-ACCOUNT-OK AND NOT WS-ACCOUNT-EOF",
+    "cfg_predecessors": [
+      91
+    ],
+    "cfg_successors": [
+      93
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR: Reading ACCOUNT-INPUT, Status: '"
+  },
+  {
+    "seq": 93,
+    "paragraph": "3100-READ-ACCOUNT-RECORD",
+    "line": 334,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-ACCOUNT-OK AND NOT WS-ACCOUNT-EOF",
+    "cfg_predecessors": [
+      92
+    ],
+    "cfg_successors": [
+      223
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 94,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 340,
+    "verb": "INITIALIZE",
+    "operands": [
+      "EXPORT-RECORD"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      93,
+      87
+    ],
+    "cfg_successors": [
+      95
+    ],
+    "division": "PROCEDURE",
+    "raw": "INITIALIZE EXPORT-RECORD"
+  },
+  {
+    "seq": 95,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 343,
+    "verb": "MOVE",
+    "operands": [
+      "'A'",
+      "EXPORT-REC-TYPE"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      94
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'A' TO EXPORT-REC-TYPE"
+  },
+  {
+    "seq": 96,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 344,
+    "verb": "MOVE",
+    "operands": [
+      "WS-FORMATTED-TIMESTAMP",
+      "EXPORT-TIMESTAMP"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      95
+    ],
+    "cfg_successors": [
+      97
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-FORMATTED-TIMESTAMP TO EXPORT-TIMESTAMP"
+  },
+  {
+    "seq": 97,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 345,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-SEQUENCE-COUNTER"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      96
+    ],
+    "cfg_successors": [
+      98
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-SEQUENCE-COUNTER"
+  },
+  {
+    "seq": 98,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 346,
+    "verb": "MOVE",
+    "operands": [
+      "WS-SEQUENCE-COUNTER",
+      "EXPORT-SEQUENCE-NUM"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      97
+    ],
+    "cfg_successors": [
+      99
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-SEQUENCE-COUNTER TO EXPORT-SEQUENCE-NUM"
+  },
+  {
+    "seq": 99,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 347,
+    "verb": "MOVE",
+    "operands": [
+      "'0001'",
+      "EXPORT-BRANCH-ID"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      98
+    ],
+    "cfg_successors": [
+      100
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE '0001' TO EXPORT-BRANCH-ID"
+  },
+  {
+    "seq": 100,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 348,
+    "verb": "MOVE",
+    "operands": [
+      "'NORTH'",
+      "EXPORT-REGION-CODE"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      99
+    ],
+    "cfg_successors": [
+      101
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'NORTH' TO EXPORT-REGION-CODE"
+  },
+  {
+    "seq": 101,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 351,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-ID",
+      "EXP-ACCT-ID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      100
+    ],
+    "cfg_successors": [
+      102
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-ID TO EXP-ACCT-ID"
+  },
+  {
+    "seq": 102,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 352,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-ACTIVE-STATUS",
+      "EXP-ACCT-ACTIVE-STATUS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      101
+    ],
+    "cfg_successors": [
+      103
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-ACTIVE-STATUS TO EXP-ACCT-ACTIVE-STATUS"
+  },
+  {
+    "seq": 103,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 353,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-CURR-BAL",
+      "EXP-ACCT-CURR-BAL"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      102
+    ],
+    "cfg_successors": [
+      104
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-CURR-BAL TO EXP-ACCT-CURR-BAL"
+  },
+  {
+    "seq": 104,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 354,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-CREDIT-LIMIT",
+      "EXP-ACCT-CREDIT-LIMIT"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      103
+    ],
+    "cfg_successors": [
+      105
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-CREDIT-LIMIT TO EXP-ACCT-CREDIT-LIMIT"
+  },
+  {
+    "seq": 105,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 355,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-CASH-CREDIT-LIMIT",
+      "EXP-ACCT-CASH-CREDIT-LIMIT"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      104
+    ],
+    "cfg_successors": [
+      106
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-CASH-CREDIT-LIMIT TO EXP-ACCT-CASH-CREDIT-LIMIT"
+  },
+  {
+    "seq": 106,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 356,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-OPEN-DATE",
+      "EXP-ACCT-OPEN-DATE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      105
+    ],
+    "cfg_successors": [
+      107
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-OPEN-DATE TO EXP-ACCT-OPEN-DATE"
+  },
+  {
+    "seq": 107,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 357,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-EXPIRAION-DATE",
+      "EXP-ACCT-EXPIRAION-DATE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      106
+    ],
+    "cfg_successors": [
+      108
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-EXPIRAION-DATE TO EXP-ACCT-EXPIRAION-DATE"
+  },
+  {
+    "seq": 108,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 358,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-REISSUE-DATE",
+      "EXP-ACCT-REISSUE-DATE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      107
+    ],
+    "cfg_successors": [
+      109
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-REISSUE-DATE TO EXP-ACCT-REISSUE-DATE"
+  },
+  {
+    "seq": 109,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 359,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-CURR-CYC-CREDIT",
+      "EXP-ACCT-CURR-CYC-CREDIT"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      108
+    ],
+    "cfg_successors": [
+      110
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-CURR-CYC-CREDIT TO EXP-ACCT-CURR-CYC-CREDIT"
+  },
+  {
+    "seq": 110,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 360,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-CURR-CYC-DEBIT",
+      "EXP-ACCT-CURR-CYC-DEBIT"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      109
+    ],
+    "cfg_successors": [
+      111
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-CURR-CYC-DEBIT TO EXP-ACCT-CURR-CYC-DEBIT"
+  },
+  {
+    "seq": 111,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 361,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-ADDR-ZIP",
+      "EXP-ACCT-ADDR-ZIP"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      110
+    ],
+    "cfg_successors": [
+      112
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-ADDR-ZIP TO EXP-ACCT-ADDR-ZIP"
+  },
+  {
+    "seq": 112,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 362,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-GROUP-ID",
+      "EXP-ACCT-GROUP-ID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      111
+    ],
+    "cfg_successors": [
+      113
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-GROUP-ID TO EXP-ACCT-GROUP-ID"
+  },
+  {
+    "seq": 113,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 364,
+    "verb": "WRITE",
+    "operands": [
+      "EXPORT-OUTPUT-RECORD",
+      "EXPORT-RECORD"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      112
+    ],
+    "cfg_successors": [
+      114
+    ],
+    "division": "PROCEDURE",
+    "raw": "WRITE EXPORT-OUTPUT-RECORD FROM EXPORT-RECORD"
+  },
+  {
+    "seq": 114,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 366,
+    "verb": "IF",
+    "operands": [
+      "WS-EXPORT-OK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-EXPORT-OK",
+    "cfg_predecessors": [
+      113
+    ],
+    "cfg_successors": [
+      115
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT WS-EXPORT-OK"
+  },
+  {
+    "seq": 115,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 367,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR: Writing export record, Status: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-EXPORT-OK",
+    "cfg_predecessors": [
+      114
+    ],
+    "cfg_successors": [
+      116
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR: Writing export record, Status: '"
+  },
+  {
+    "seq": 116,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 369,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-EXPORT-OK",
+    "cfg_predecessors": [
+      115
+    ],
+    "cfg_successors": [
+      223
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 117,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 372,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-ACCOUNT-RECORDS-EXPORTED"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      116
+    ],
+    "cfg_successors": [
+      118
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-ACCOUNT-RECORDS-EXPORTED"
+  },
+  {
+    "seq": 118,
+    "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+    "line": 373,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-TOTAL-RECORDS-EXPORTED"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      117
+    ],
+    "cfg_successors": [
+      119
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED."
+  },
+  {
+    "seq": 119,
+    "paragraph": "4000-EXPORT-XREFS",
+    "line": 378,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: Processing cross-reference records'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      118,
+      4
+    ],
+    "cfg_successors": [
+      120
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: Processing cross-reference records'"
+  },
+  {
+    "seq": 120,
+    "paragraph": "4000-EXPORT-XREFS",
+    "line": 380,
+    "verb": "PERFORM",
+    "operands": [
+      "4100-READ-XREF-RECORD"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      119
+    ],
+    "cfg_successors": [
+      125
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 4100-READ-XREF-RECORD",
+    "cfg_perform_target": "4100-READ-XREF-RECORD"
+  },
+  {
+    "seq": 121,
+    "paragraph": "4000-EXPORT-XREFS",
+    "line": 382,
+    "verb": "PERFORM",
+    "operands": [
+      "WS-XREF-EOF"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      120
+    ],
+    "cfg_successors": [
+      122
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM UNTIL WS-XREF-EOF"
+  },
+  {
+    "seq": 122,
+    "paragraph": "4000-EXPORT-XREFS",
+    "line": 383,
+    "verb": "PERFORM",
+    "operands": [
+      "4200-CREATE-XREF-EXPORT-RECORD"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      121
+    ],
+    "cfg_successors": [
+      129
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 4200-CREATE-XREF-EXPORT-RECORD",
+    "cfg_perform_target": "4200-CREATE-XREF-EXPORT-RECORD"
+  },
+  {
+    "seq": 123,
+    "paragraph": "4000-EXPORT-XREFS",
+    "line": 384,
+    "verb": "PERFORM",
+    "operands": [
+      "4100-READ-XREF-RECORD"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      122
+    ],
+    "cfg_successors": [
+      125
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 4100-READ-XREF-RECORD",
+    "cfg_perform_target": "4100-READ-XREF-RECORD"
+  },
+  {
+    "seq": 124,
+    "paragraph": "4000-EXPORT-XREFS",
+    "line": 387,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: Cross-references exported: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      123
+    ],
+    "cfg_successors": [
+      125
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: Cross-references exported: '"
+  },
+  {
+    "seq": 125,
+    "paragraph": "4100-READ-XREF-RECORD",
+    "line": 393,
+    "verb": "READ",
+    "operands": [
+      "XREF-INPUT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      124,
+      120,
+      123
+    ],
+    "cfg_successors": [
+      126
+    ],
+    "division": "PROCEDURE",
+    "raw": "READ XREF-INPUT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 126,
+    "paragraph": "4100-READ-XREF-RECORD",
+    "line": 395,
+    "verb": "IF",
+    "operands": [
+      "WS-XREF-OK",
+      "WS-XREF-EOF"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-XREF-OK AND NOT WS-XREF-EOF",
+    "cfg_predecessors": [
+      125
+    ],
+    "cfg_successors": [
+      127
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT WS-XREF-OK AND NOT WS-XREF-EOF"
+  },
+  {
+    "seq": 127,
+    "paragraph": "4100-READ-XREF-RECORD",
+    "line": 396,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR: Reading XREF-INPUT, Status: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-XREF-OK AND NOT WS-XREF-EOF",
+    "cfg_predecessors": [
+      126
+    ],
+    "cfg_successors": [
+      128
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR: Reading XREF-INPUT, Status: '"
+  },
+  {
+    "seq": 128,
+    "paragraph": "4100-READ-XREF-RECORD",
+    "line": 398,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-XREF-OK AND NOT WS-XREF-EOF",
+    "cfg_predecessors": [
+      127
+    ],
+    "cfg_successors": [
+      223
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 129,
+    "paragraph": "4200-CREATE-XREF-EXPORT-RECORD",
+    "line": 404,
+    "verb": "INITIALIZE",
+    "operands": [
+      "EXPORT-RECORD"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      128,
+      122
+    ],
+    "cfg_successors": [
+      130
+    ],
+    "division": "PROCEDURE",
+    "raw": "INITIALIZE EXPORT-RECORD"
+  },
+  {
+    "seq": 130,
+    "paragraph": "4200-CREATE-XREF-EXPORT-RECORD",
+    "line": 407,
+    "verb": "MOVE",
+    "operands": [
+      "'X'",
+      "EXPORT-REC-TYPE"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      129
+    ],
+    "cfg_successors": [
+      131
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'X' TO EXPORT-REC-TYPE"
+  },
+  {
+    "seq": 131,
+    "paragraph": "4200-CREATE-XREF-EXPORT-RECORD",
+    "line": 408,
+    "verb": "MOVE",
+    "operands": [
+      "WS-FORMATTED-TIMESTAMP",
+      "EXPORT-TIMESTAMP"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      130
+    ],
+    "cfg_successors": [
+      132
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-FORMATTED-TIMESTAMP TO EXPORT-TIMESTAMP"
+  },
+  {
+    "seq": 132,
+    "paragraph": "4200-CREATE-XREF-EXPORT-RECORD",
+    "line": 409,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-SEQUENCE-COUNTER"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      131
+    ],
+    "cfg_successors": [
+      133
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-SEQUENCE-COUNTER"
+  },
+  {
+    "seq": 133,
+    "paragraph": "4200-CREATE-XREF-EXPORT-RECORD",
+    "line": 410,
+    "verb": "MOVE",
+    "operands": [
+      "WS-SEQUENCE-COUNTER",
+      "EXPORT-SEQUENCE-NUM"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      132
+    ],
+    "cfg_successors": [
+      134
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-SEQUENCE-COUNTER TO EXPORT-SEQUENCE-NUM"
+  },
+  {
+    "seq": 134,
+    "paragraph": "4200-CREATE-XREF-EXPORT-RECORD",
+    "line": 411,
+    "verb": "MOVE",
+    "operands": [
+      "'0001'",
+      "EXPORT-BRANCH-ID"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      133
+    ],
+    "cfg_successors": [
+      135
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE '0001' TO EXPORT-BRANCH-ID"
+  },
+  {
+    "seq": 135,
+    "paragraph": "4200-CREATE-XREF-EXPORT-RECORD",
+    "line": 412,
+    "verb": "MOVE",
+    "operands": [
+      "'NORTH'",
+      "EXPORT-REGION-CODE"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      134
+    ],
+    "cfg_successors": [
+      136
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'NORTH' TO EXPORT-REGION-CODE"
+  },
+  {
+    "seq": 136,
+    "paragraph": "4200-CREATE-XREF-EXPORT-RECORD",
+    "line": 415,
+    "verb": "MOVE",
+    "operands": [
+      "XREF-CARD-NUM",
+      "EXP-XREF-CARD-NUM"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      135
+    ],
+    "cfg_successors": [
+      137
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE XREF-CARD-NUM TO EXP-XREF-CARD-NUM"
+  },
+  {
+    "seq": 137,
+    "paragraph": "4200-CREATE-XREF-EXPORT-RECORD",
+    "line": 416,
+    "verb": "MOVE",
+    "operands": [
+      "XREF-CUST-ID",
+      "EXP-XREF-CUST-ID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      136
+    ],
+    "cfg_successors": [
+      138
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE XREF-CUST-ID TO EXP-XREF-CUST-ID"
+  },
+  {
+    "seq": 138,
+    "paragraph": "4200-CREATE-XREF-EXPORT-RECORD",
+    "line": 417,
+    "verb": "MOVE",
+    "operands": [
+      "XREF-ACCT-ID",
+      "EXP-XREF-ACCT-ID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      137
+    ],
+    "cfg_successors": [
+      139
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE XREF-ACCT-ID TO EXP-XREF-ACCT-ID"
+  },
+  {
+    "seq": 139,
+    "paragraph": "4200-CREATE-XREF-EXPORT-RECORD",
+    "line": 419,
+    "verb": "WRITE",
+    "operands": [
+      "EXPORT-OUTPUT-RECORD",
+      "EXPORT-RECORD"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      138
+    ],
+    "cfg_successors": [
+      140
+    ],
+    "division": "PROCEDURE",
+    "raw": "WRITE EXPORT-OUTPUT-RECORD FROM EXPORT-RECORD"
+  },
+  {
+    "seq": 140,
+    "paragraph": "4200-CREATE-XREF-EXPORT-RECORD",
+    "line": 421,
+    "verb": "IF",
+    "operands": [
+      "WS-EXPORT-OK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-EXPORT-OK",
+    "cfg_predecessors": [
+      139
+    ],
+    "cfg_successors": [
+      141
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT WS-EXPORT-OK"
+  },
+  {
+    "seq": 141,
+    "paragraph": "4200-CREATE-XREF-EXPORT-RECORD",
+    "line": 422,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR: Writing export record, Status: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-EXPORT-OK",
+    "cfg_predecessors": [
+      140
+    ],
+    "cfg_successors": [
+      142
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR: Writing export record, Status: '"
+  },
+  {
+    "seq": 142,
+    "paragraph": "4200-CREATE-XREF-EXPORT-RECORD",
+    "line": 424,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-EXPORT-OK",
+    "cfg_predecessors": [
+      141
+    ],
+    "cfg_successors": [
+      223
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 143,
+    "paragraph": "4200-CREATE-XREF-EXPORT-RECORD",
+    "line": 427,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-XREF-RECORDS-EXPORTED"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      142
+    ],
+    "cfg_successors": [
+      144
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-XREF-RECORDS-EXPORTED"
+  },
+  {
+    "seq": 144,
+    "paragraph": "4200-CREATE-XREF-EXPORT-RECORD",
+    "line": 428,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-TOTAL-RECORDS-EXPORTED"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      143
+    ],
+    "cfg_successors": [
+      145
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED."
+  },
+  {
+    "seq": 145,
+    "paragraph": "5000-EXPORT-TRANSACTIONS",
+    "line": 433,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: Processing transaction records'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      144,
+      5
+    ],
+    "cfg_successors": [
+      146
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: Processing transaction records'"
+  },
+  {
+    "seq": 146,
+    "paragraph": "5000-EXPORT-TRANSACTIONS",
+    "line": 435,
+    "verb": "PERFORM",
+    "operands": [
+      "5100-READ-TRANSACTION-RECORD"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      145
+    ],
+    "cfg_successors": [
+      151
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 5100-READ-TRANSACTION-RECORD",
+    "cfg_perform_target": "5100-READ-TRANSACTION-RECORD"
+  },
+  {
+    "seq": 147,
+    "paragraph": "5000-EXPORT-TRANSACTIONS",
+    "line": 437,
+    "verb": "PERFORM",
+    "operands": [
+      "WS-TRANSACTION-EOF"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      146
+    ],
+    "cfg_successors": [
+      148
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM UNTIL WS-TRANSACTION-EOF"
+  },
+  {
+    "seq": 148,
+    "paragraph": "5000-EXPORT-TRANSACTIONS",
+    "line": 438,
+    "verb": "PERFORM",
+    "operands": [
+      "5200-CREATE-TRAN-EXP-REC"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      147
+    ],
+    "cfg_successors": [
+      155
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 5200-CREATE-TRAN-EXP-REC",
+    "cfg_perform_target": "5200-CREATE-TRAN-EXP-REC"
+  },
+  {
+    "seq": 149,
+    "paragraph": "5000-EXPORT-TRANSACTIONS",
+    "line": 439,
+    "verb": "PERFORM",
+    "operands": [
+      "5100-READ-TRANSACTION-RECORD"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      148
+    ],
+    "cfg_successors": [
+      151
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 5100-READ-TRANSACTION-RECORD",
+    "cfg_perform_target": "5100-READ-TRANSACTION-RECORD"
+  },
+  {
+    "seq": 150,
+    "paragraph": "5000-EXPORT-TRANSACTIONS",
+    "line": 442,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: Transactions exported: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      149
+    ],
+    "cfg_successors": [
+      151
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: Transactions exported: '"
+  },
+  {
+    "seq": 151,
+    "paragraph": "5100-READ-TRANSACTION-RECORD",
+    "line": 448,
+    "verb": "READ",
+    "operands": [
+      "TRANSACTION-INPUT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      150,
+      146,
+      149
+    ],
+    "cfg_successors": [
+      152
+    ],
+    "division": "PROCEDURE",
+    "raw": "READ TRANSACTION-INPUT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 152,
+    "paragraph": "5100-READ-TRANSACTION-RECORD",
+    "line": 450,
+    "verb": "IF",
+    "operands": [
+      "WS-TRANSACTION-OK",
+      "WS-TRANSACTION-EOF"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-TRANSACTION-OK AND NOT WS-TRANSACTION-EOF",
+    "cfg_predecessors": [
+      151
+    ],
+    "cfg_successors": [
+      153
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT WS-TRANSACTION-OK AND NOT WS-TRANSACTION-EOF"
+  },
+  {
+    "seq": 153,
+    "paragraph": "5100-READ-TRANSACTION-RECORD",
+    "line": 451,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR: Reading TRANSACTION-INPUT, Status: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-TRANSACTION-OK AND NOT WS-TRANSACTION-EOF",
+    "cfg_predecessors": [
+      152
+    ],
+    "cfg_successors": [
+      154
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR: Reading TRANSACTION-INPUT, Status: '"
+  },
+  {
+    "seq": 154,
+    "paragraph": "5100-READ-TRANSACTION-RECORD",
+    "line": 453,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-TRANSACTION-OK AND NOT WS-TRANSACTION-EOF",
+    "cfg_predecessors": [
+      153
+    ],
+    "cfg_successors": [
+      223
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 155,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 459,
+    "verb": "INITIALIZE",
+    "operands": [
+      "EXPORT-RECORD"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      154,
+      148
+    ],
+    "cfg_successors": [
+      156
+    ],
+    "division": "PROCEDURE",
+    "raw": "INITIALIZE EXPORT-RECORD"
+  },
+  {
+    "seq": 156,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 462,
+    "verb": "MOVE",
+    "operands": [
+      "'T'",
+      "EXPORT-REC-TYPE"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      155
+    ],
+    "cfg_successors": [
+      157
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'T' TO EXPORT-REC-TYPE"
+  },
+  {
+    "seq": 157,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 463,
+    "verb": "MOVE",
+    "operands": [
+      "WS-FORMATTED-TIMESTAMP",
+      "EXPORT-TIMESTAMP"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      156
+    ],
+    "cfg_successors": [
+      158
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-FORMATTED-TIMESTAMP TO EXPORT-TIMESTAMP"
+  },
+  {
+    "seq": 158,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 464,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-SEQUENCE-COUNTER"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      157
+    ],
+    "cfg_successors": [
+      159
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-SEQUENCE-COUNTER"
+  },
+  {
+    "seq": 159,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 465,
+    "verb": "MOVE",
+    "operands": [
+      "WS-SEQUENCE-COUNTER",
+      "EXPORT-SEQUENCE-NUM"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      158
+    ],
+    "cfg_successors": [
+      160
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-SEQUENCE-COUNTER TO EXPORT-SEQUENCE-NUM"
+  },
+  {
+    "seq": 160,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 466,
+    "verb": "MOVE",
+    "operands": [
+      "'0001'",
+      "EXPORT-BRANCH-ID"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      159
+    ],
+    "cfg_successors": [
+      161
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE '0001' TO EXPORT-BRANCH-ID"
+  },
+  {
+    "seq": 161,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 467,
+    "verb": "MOVE",
+    "operands": [
+      "'NORTH'",
+      "EXPORT-REGION-CODE"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      160
+    ],
+    "cfg_successors": [
+      162
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'NORTH' TO EXPORT-REGION-CODE"
+  },
+  {
+    "seq": 162,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 470,
+    "verb": "MOVE",
+    "operands": [
+      "TRAN-ID",
+      "EXP-TRAN-ID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      161
+    ],
+    "cfg_successors": [
+      163
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRAN-ID TO EXP-TRAN-ID"
+  },
+  {
+    "seq": 163,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 471,
+    "verb": "MOVE",
+    "operands": [
+      "TRAN-TYPE-CD",
+      "EXP-TRAN-TYPE-CD"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      162
+    ],
+    "cfg_successors": [
+      164
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRAN-TYPE-CD TO EXP-TRAN-TYPE-CD"
+  },
+  {
+    "seq": 164,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 472,
+    "verb": "MOVE",
+    "operands": [
+      "TRAN-CAT-CD",
+      "EXP-TRAN-CAT-CD"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      163
+    ],
+    "cfg_successors": [
+      165
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRAN-CAT-CD TO EXP-TRAN-CAT-CD"
+  },
+  {
+    "seq": 165,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 473,
+    "verb": "MOVE",
+    "operands": [
+      "TRAN-SOURCE",
+      "EXP-TRAN-SOURCE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      164
+    ],
+    "cfg_successors": [
+      166
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRAN-SOURCE TO EXP-TRAN-SOURCE"
+  },
+  {
+    "seq": 166,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 474,
+    "verb": "MOVE",
+    "operands": [
+      "TRAN-DESC",
+      "EXP-TRAN-DESC"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      165
+    ],
+    "cfg_successors": [
+      167
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRAN-DESC TO EXP-TRAN-DESC"
+  },
+  {
+    "seq": 167,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 475,
+    "verb": "MOVE",
+    "operands": [
+      "TRAN-AMT",
+      "EXP-TRAN-AMT"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      166
+    ],
+    "cfg_successors": [
+      168
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRAN-AMT TO EXP-TRAN-AMT"
+  },
+  {
+    "seq": 168,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 476,
+    "verb": "MOVE",
+    "operands": [
+      "TRAN-MERCHANT-ID",
+      "EXP-TRAN-MERCHANT-ID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      167
+    ],
+    "cfg_successors": [
+      169
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRAN-MERCHANT-ID TO EXP-TRAN-MERCHANT-ID"
+  },
+  {
+    "seq": 169,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 477,
+    "verb": "MOVE",
+    "operands": [
+      "TRAN-MERCHANT-NAME",
+      "EXP-TRAN-MERCHANT-NAME"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      168
+    ],
+    "cfg_successors": [
+      170
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRAN-MERCHANT-NAME TO EXP-TRAN-MERCHANT-NAME"
+  },
+  {
+    "seq": 170,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 478,
+    "verb": "MOVE",
+    "operands": [
+      "TRAN-MERCHANT-CITY",
+      "EXP-TRAN-MERCHANT-CITY"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      169
+    ],
+    "cfg_successors": [
+      171
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRAN-MERCHANT-CITY TO EXP-TRAN-MERCHANT-CITY"
+  },
+  {
+    "seq": 171,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 479,
+    "verb": "MOVE",
+    "operands": [
+      "TRAN-MERCHANT-ZIP",
+      "EXP-TRAN-MERCHANT-ZIP"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      170
+    ],
+    "cfg_successors": [
+      172
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRAN-MERCHANT-ZIP TO EXP-TRAN-MERCHANT-ZIP"
+  },
+  {
+    "seq": 172,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 480,
+    "verb": "MOVE",
+    "operands": [
+      "TRAN-CARD-NUM",
+      "EXP-TRAN-CARD-NUM"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      171
+    ],
+    "cfg_successors": [
+      173
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRAN-CARD-NUM TO EXP-TRAN-CARD-NUM"
+  },
+  {
+    "seq": 173,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 481,
+    "verb": "MOVE",
+    "operands": [
+      "TRAN-ORIG-TS",
+      "EXP-TRAN-ORIG-TS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      172
+    ],
+    "cfg_successors": [
+      174
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRAN-ORIG-TS TO EXP-TRAN-ORIG-TS"
+  },
+  {
+    "seq": 174,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 482,
+    "verb": "MOVE",
+    "operands": [
+      "TRAN-PROC-TS",
+      "EXP-TRAN-PROC-TS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      173
+    ],
+    "cfg_successors": [
+      175
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRAN-PROC-TS TO EXP-TRAN-PROC-TS"
+  },
+  {
+    "seq": 175,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 484,
+    "verb": "WRITE",
+    "operands": [
+      "EXPORT-OUTPUT-RECORD",
+      "EXPORT-RECORD"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      174
+    ],
+    "cfg_successors": [
+      176
+    ],
+    "division": "PROCEDURE",
+    "raw": "WRITE EXPORT-OUTPUT-RECORD FROM EXPORT-RECORD"
+  },
+  {
+    "seq": 176,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 486,
+    "verb": "IF",
+    "operands": [
+      "WS-EXPORT-OK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-EXPORT-OK",
+    "cfg_predecessors": [
+      175
+    ],
+    "cfg_successors": [
+      177
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT WS-EXPORT-OK"
+  },
+  {
+    "seq": 177,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 487,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR: Writing export record, Status: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-EXPORT-OK",
+    "cfg_predecessors": [
+      176
+    ],
+    "cfg_successors": [
+      178
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR: Writing export record, Status: '"
+  },
+  {
+    "seq": 178,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 489,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-EXPORT-OK",
+    "cfg_predecessors": [
+      177
+    ],
+    "cfg_successors": [
+      223
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 179,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 492,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-TRAN-RECORDS-EXPORTED"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      178
+    ],
+    "cfg_successors": [
+      180
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-TRAN-RECORDS-EXPORTED"
+  },
+  {
+    "seq": 180,
+    "paragraph": "5200-CREATE-TRAN-EXP-REC",
+    "line": 493,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-TOTAL-RECORDS-EXPORTED"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      179
+    ],
+    "cfg_successors": [
+      181
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED."
+  },
+  {
+    "seq": 181,
+    "paragraph": "5500-EXPORT-CARDS",
+    "line": 498,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: Processing card records'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      180,
+      6
+    ],
+    "cfg_successors": [
+      182
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: Processing card records'"
+  },
+  {
+    "seq": 182,
+    "paragraph": "5500-EXPORT-CARDS",
+    "line": 500,
+    "verb": "PERFORM",
+    "operands": [
+      "5600-READ-CARD-RECORD"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      181
+    ],
+    "cfg_successors": [
+      187
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 5600-READ-CARD-RECORD",
+    "cfg_perform_target": "5600-READ-CARD-RECORD"
+  },
+  {
+    "seq": 183,
+    "paragraph": "5500-EXPORT-CARDS",
+    "line": 502,
+    "verb": "PERFORM",
+    "operands": [
+      "WS-CARD-EOF"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      182
+    ],
+    "cfg_successors": [
+      184
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM UNTIL WS-CARD-EOF"
+  },
+  {
+    "seq": 184,
+    "paragraph": "5500-EXPORT-CARDS",
+    "line": 503,
+    "verb": "PERFORM",
+    "operands": [
+      "5700-CREATE-CARD-EXPORT-RECORD"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      183
+    ],
+    "cfg_successors": [
+      191
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 5700-CREATE-CARD-EXPORT-RECORD",
+    "cfg_perform_target": "5700-CREATE-CARD-EXPORT-RECORD"
+  },
+  {
+    "seq": 185,
+    "paragraph": "5500-EXPORT-CARDS",
+    "line": 504,
+    "verb": "PERFORM",
+    "operands": [
+      "5600-READ-CARD-RECORD"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      184
+    ],
+    "cfg_successors": [
+      187
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 5600-READ-CARD-RECORD",
+    "cfg_perform_target": "5600-READ-CARD-RECORD"
+  },
+  {
+    "seq": 186,
+    "paragraph": "5500-EXPORT-CARDS",
+    "line": 507,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: Cards exported: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      185
+    ],
+    "cfg_successors": [
+      187
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: Cards exported: '"
+  },
+  {
+    "seq": 187,
+    "paragraph": "5600-READ-CARD-RECORD",
+    "line": 513,
+    "verb": "READ",
+    "operands": [
+      "CARD-INPUT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      186,
+      182,
+      185
+    ],
+    "cfg_successors": [
+      188
+    ],
+    "division": "PROCEDURE",
+    "raw": "READ CARD-INPUT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 188,
+    "paragraph": "5600-READ-CARD-RECORD",
+    "line": 515,
+    "verb": "IF",
+    "operands": [
+      "WS-CARD-OK",
+      "WS-CARD-EOF"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-CARD-OK AND NOT WS-CARD-EOF",
+    "cfg_predecessors": [
+      187
+    ],
+    "cfg_successors": [
+      189
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT WS-CARD-OK AND NOT WS-CARD-EOF"
+  },
+  {
+    "seq": 189,
+    "paragraph": "5600-READ-CARD-RECORD",
+    "line": 516,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR: Reading CARD-INPUT, Status: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-CARD-OK AND NOT WS-CARD-EOF",
+    "cfg_predecessors": [
+      188
+    ],
+    "cfg_successors": [
+      190
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR: Reading CARD-INPUT, Status: '"
+  },
+  {
+    "seq": 190,
+    "paragraph": "5600-READ-CARD-RECORD",
+    "line": 518,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-CARD-OK AND NOT WS-CARD-EOF",
+    "cfg_predecessors": [
+      189
+    ],
+    "cfg_successors": [
+      223
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 191,
+    "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+    "line": 524,
+    "verb": "INITIALIZE",
+    "operands": [
+      "EXPORT-RECORD"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      190,
+      184
+    ],
+    "cfg_successors": [
+      192
+    ],
+    "division": "PROCEDURE",
+    "raw": "INITIALIZE EXPORT-RECORD"
+  },
+  {
+    "seq": 192,
+    "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+    "line": 527,
+    "verb": "MOVE",
+    "operands": [
+      "'D'",
+      "EXPORT-REC-TYPE"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      191
+    ],
+    "cfg_successors": [
+      193
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'D' TO EXPORT-REC-TYPE"
+  },
+  {
+    "seq": 193,
+    "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+    "line": 528,
+    "verb": "MOVE",
+    "operands": [
+      "WS-FORMATTED-TIMESTAMP",
+      "EXPORT-TIMESTAMP"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      192
+    ],
+    "cfg_successors": [
+      194
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-FORMATTED-TIMESTAMP TO EXPORT-TIMESTAMP"
+  },
+  {
+    "seq": 194,
+    "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+    "line": 529,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-SEQUENCE-COUNTER"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      193
+    ],
+    "cfg_successors": [
+      195
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-SEQUENCE-COUNTER"
+  },
+  {
+    "seq": 195,
+    "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+    "line": 530,
+    "verb": "MOVE",
+    "operands": [
+      "WS-SEQUENCE-COUNTER",
+      "EXPORT-SEQUENCE-NUM"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      194
+    ],
+    "cfg_successors": [
+      196
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-SEQUENCE-COUNTER TO EXPORT-SEQUENCE-NUM"
+  },
+  {
+    "seq": 196,
+    "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+    "line": 531,
+    "verb": "MOVE",
+    "operands": [
+      "'0001'",
+      "EXPORT-BRANCH-ID"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      195
+    ],
+    "cfg_successors": [
+      197
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE '0001' TO EXPORT-BRANCH-ID"
+  },
+  {
+    "seq": 197,
+    "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+    "line": 532,
+    "verb": "MOVE",
+    "operands": [
+      "'NORTH'",
+      "EXPORT-REGION-CODE"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      196
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'NORTH' TO EXPORT-REGION-CODE"
+  },
+  {
+    "seq": 198,
+    "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+    "line": 535,
+    "verb": "MOVE",
+    "operands": [
+      "CARD-NUM",
+      "EXP-CARD-NUM"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      197
+    ],
+    "cfg_successors": [
+      199
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CARD-NUM TO EXP-CARD-NUM"
+  },
+  {
+    "seq": 199,
+    "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+    "line": 536,
+    "verb": "MOVE",
+    "operands": [
+      "CARD-ACCT-ID",
+      "EXP-CARD-ACCT-ID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      198
+    ],
+    "cfg_successors": [
+      200
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CARD-ACCT-ID TO EXP-CARD-ACCT-ID"
+  },
+  {
+    "seq": 200,
+    "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+    "line": 537,
+    "verb": "MOVE",
+    "operands": [
+      "CARD-CVV-CD",
+      "EXP-CARD-CVV-CD"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      199
+    ],
+    "cfg_successors": [
+      201
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CARD-CVV-CD TO EXP-CARD-CVV-CD"
+  },
+  {
+    "seq": 201,
+    "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+    "line": 538,
+    "verb": "MOVE",
+    "operands": [
+      "CARD-EMBOSSED-NAME",
+      "EXP-CARD-EMBOSSED-NAME"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      200
+    ],
+    "cfg_successors": [
+      202
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CARD-EMBOSSED-NAME TO EXP-CARD-EMBOSSED-NAME"
+  },
+  {
+    "seq": 202,
+    "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+    "line": 539,
+    "verb": "MOVE",
+    "operands": [
+      "CARD-EXPIRAION-DATE",
+      "EXP-CARD-EXPIRAION-DATE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      201
+    ],
+    "cfg_successors": [
+      203
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CARD-EXPIRAION-DATE TO EXP-CARD-EXPIRAION-DATE"
+  },
+  {
+    "seq": 203,
+    "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+    "line": 540,
+    "verb": "MOVE",
+    "operands": [
+      "CARD-ACTIVE-STATUS",
+      "EXP-CARD-ACTIVE-STATUS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      202
+    ],
+    "cfg_successors": [
+      204
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CARD-ACTIVE-STATUS TO EXP-CARD-ACTIVE-STATUS"
+  },
+  {
+    "seq": 204,
+    "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+    "line": 542,
+    "verb": "WRITE",
+    "operands": [
+      "EXPORT-OUTPUT-RECORD",
+      "EXPORT-RECORD"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      203
+    ],
+    "cfg_successors": [
+      205
+    ],
+    "division": "PROCEDURE",
+    "raw": "WRITE EXPORT-OUTPUT-RECORD FROM EXPORT-RECORD"
+  },
+  {
+    "seq": 205,
+    "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+    "line": 544,
+    "verb": "IF",
+    "operands": [
+      "WS-EXPORT-OK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-EXPORT-OK",
+    "cfg_predecessors": [
+      204
+    ],
+    "cfg_successors": [
+      206
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT WS-EXPORT-OK"
+  },
+  {
+    "seq": 206,
+    "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+    "line": 545,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR: Writing export record, Status: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-EXPORT-OK",
+    "cfg_predecessors": [
+      205
+    ],
+    "cfg_successors": [
+      207
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR: Writing export record, Status: '"
+  },
+  {
+    "seq": 207,
+    "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+    "line": 547,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF NOT WS-EXPORT-OK",
+    "cfg_predecessors": [
+      206
+    ],
+    "cfg_successors": [
+      223
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 208,
+    "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+    "line": 550,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-CARD-RECORDS-EXPORTED"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      207
+    ],
+    "cfg_successors": [
+      209
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-CARD-RECORDS-EXPORTED"
+  },
+  {
+    "seq": 209,
+    "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+    "line": 551,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-TOTAL-RECORDS-EXPORTED"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      208
+    ],
+    "cfg_successors": [
+      210
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED."
+  },
+  {
+    "seq": 210,
+    "paragraph": "6000-FINALIZE",
+    "line": 556,
+    "verb": "CLOSE",
+    "operands": [
+      "CUSTOMER-INPUT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      209,
+      7
+    ],
+    "cfg_successors": [
+      211
+    ],
+    "division": "PROCEDURE",
+    "raw": "CLOSE CUSTOMER-INPUT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 211,
+    "paragraph": "6000-FINALIZE",
+    "line": 557,
+    "verb": "CLOSE",
+    "operands": [
+      "ACCOUNT-INPUT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      210
+    ],
+    "cfg_successors": [
+      212
+    ],
+    "division": "PROCEDURE",
+    "raw": "CLOSE ACCOUNT-INPUT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 212,
+    "paragraph": "6000-FINALIZE",
+    "line": 558,
+    "verb": "CLOSE",
+    "operands": [
+      "XREF-INPUT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      211
+    ],
+    "cfg_successors": [
+      213
+    ],
+    "division": "PROCEDURE",
+    "raw": "CLOSE XREF-INPUT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 213,
+    "paragraph": "6000-FINALIZE",
+    "line": 559,
+    "verb": "CLOSE",
+    "operands": [
+      "TRANSACTION-INPUT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      212
+    ],
+    "cfg_successors": [
+      214
+    ],
+    "division": "PROCEDURE",
+    "raw": "CLOSE TRANSACTION-INPUT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 214,
+    "paragraph": "6000-FINALIZE",
+    "line": 560,
+    "verb": "CLOSE",
+    "operands": [
+      "CARD-INPUT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      213
+    ],
+    "cfg_successors": [
+      215
+    ],
+    "division": "PROCEDURE",
+    "raw": "CLOSE CARD-INPUT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 215,
+    "paragraph": "6000-FINALIZE",
+    "line": 561,
+    "verb": "CLOSE",
+    "operands": [
+      "EXPORT-OUTPUT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      214
+    ],
+    "cfg_successors": [
+      216
+    ],
+    "division": "PROCEDURE",
+    "raw": "CLOSE EXPORT-OUTPUT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 216,
+    "paragraph": "6000-FINALIZE",
+    "line": 563,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: Export completed'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      215
+    ],
+    "cfg_successors": [
+      217
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: Export completed'"
+  },
+  {
+    "seq": 217,
+    "paragraph": "6000-FINALIZE",
+    "line": 564,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: Customers Exported: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      216
+    ],
+    "cfg_successors": [
+      218
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: Customers Exported: '"
+  },
+  {
+    "seq": 218,
+    "paragraph": "6000-FINALIZE",
+    "line": 566,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: Accounts Exported: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      217
+    ],
+    "cfg_successors": [
+      219
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: Accounts Exported: '"
+  },
+  {
+    "seq": 219,
+    "paragraph": "6000-FINALIZE",
+    "line": 568,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: XRefs Exported: '",
+      "WS-XREF-RECORDS-EXPORTED"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      218
+    ],
+    "cfg_successors": [
+      220
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: XRefs Exported: ' WS-XREF-RECORDS-EXPORTED"
+  },
+  {
+    "seq": 220,
+    "paragraph": "6000-FINALIZE",
+    "line": 569,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: Transactions Exported: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      219
+    ],
+    "cfg_successors": [
+      221
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: Transactions Exported: '"
+  },
+  {
+    "seq": 221,
+    "paragraph": "6000-FINALIZE",
+    "line": 571,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: Cards Exported: '",
+      "WS-CARD-RECORDS-EXPORTED"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      220
+    ],
+    "cfg_successors": [
+      222
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: Cards Exported: ' WS-CARD-RECORDS-EXPORTED"
+  },
+  {
+    "seq": 222,
+    "paragraph": "6000-FINALIZE",
+    "line": 572,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: Total Records Exported: '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      221
+    ],
+    "cfg_successors": [
+      223
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: Total Records Exported: '"
+  },
+  {
+    "seq": 223,
+    "paragraph": "9999-ABEND-PROGRAM",
+    "line": 578,
+    "verb": "DISPLAY",
+    "operands": [
+      "'CBEXPORT: ABENDING PROGRAM'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      222,
+      22,
+      26,
+      30,
+      34,
+      38,
+      42,
+      52,
+      81,
+      93,
+      116,
+      128,
+      142,
+      154,
+      178,
+      190,
+      207
+    ],
+    "cfg_successors": [
+      224
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'CBEXPORT: ABENDING PROGRAM'"
+  },
+  {
+    "seq": 224,
+    "paragraph": "9999-ABEND-PROGRAM",
+    "line": 579,
+    "verb": "CALL",
+    "operands": [
+      "'CEE3ABD'"
+    ],
+    "operand_types": [
+      "external-program"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      223
+    ],
+    "cfg_successors": [],
+    "division": "PROCEDURE",
+    "raw": "CALL 'CEE3ABD'."
+  }
+]

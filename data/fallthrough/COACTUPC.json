@@ -1,0 +1,861 @@
+{
+  "program": "COACTUPC",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COACTUPC.cbl",
+  "source_sha256": "e7a097a02870a13529ab846a2ddd3cf398a243263517ded399bd55a25fb9578f",
+  "cfg_path": "validation\\pass1\\COACTUPC_annotations.json",
+  "cfg_sha256": "7a9b7591624b67e2acdc56264cff2c1e01ec30d9fca03d41b64310e170501e3f",
+  "paragraphs": [
+    {
+      "paragraph": "0000-MAIN",
+      "first_line": 862,
+      "last_line": 1003,
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "last_raw": "GO TO COMMON-RETURN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "COMMON-RETURN",
+      "first_line": 1008,
+      "last_line": 1015,
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "0000-MAIN-EXIT",
+      "first_line": 1022,
+      "last_line": 1022,
+      "terminator": "implicit",
+      "falls_through_to": "1000-PROCESS-INPUTS",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1000-PROCESS-INPUTS",
+      "first_line": 1026,
+      "last_line": 1033,
+      "terminator": "implicit",
+      "falls_through_to": "1000-PROCESS-INPUTS-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE LIT-THISMAP TO CCARD-NEXT-MAP",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1000-PROCESS-INPUTS-EXIT",
+      "first_line": 1037,
+      "last_line": 1037,
+      "terminator": "implicit",
+      "falls_through_to": "1100-RECEIVE-MAP",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1100-RECEIVE-MAP",
+      "first_line": 1040,
+      "last_line": 1423,
+      "terminator": "implicit",
+      "falls_through_to": "1100-RECEIVE-MAP-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE ACSPFLGI OF CACTUPAI TO ACUP-NEW-CUST-PRI-HOLDER-IND",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1100-RECEIVE-MAP-EXIT",
+      "first_line": 1427,
+      "last_line": 1427,
+      "terminator": "implicit",
+      "falls_through_to": "1200-EDIT-MAP-INPUTS",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1200-EDIT-MAP-INPUTS",
+      "first_line": 1431,
+      "last_line": 1674,
+      "terminator": "implicit",
+      "falls_through_to": "1200-EDIT-MAP-INPUTS-EXIT",
+      "last_verb": "SET",
+      "last_raw": "SET ACUP-CHANGES-OK-NOT-CONFIRMED TO TRUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1200-EDIT-MAP-INPUTS-EXIT",
+      "first_line": 1679,
+      "last_line": 1679,
+      "terminator": "implicit",
+      "falls_through_to": "1205-COMPARE-OLD-NEW",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1205-COMPARE-OLD-NEW",
+      "first_line": 1682,
+      "last_line": 1772,
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "last_raw": "GO TO 1205-COMPARE-OLD-NEW-EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1205-COMPARE-OLD-NEW-EXIT",
+      "first_line": 1778,
+      "last_line": 1778,
+      "terminator": "implicit",
+      "falls_through_to": "1210-EDIT-ACCOUNT",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1210-EDIT-ACCOUNT",
+      "first_line": 1784,
+      "last_line": 1816,
+      "terminator": "implicit",
+      "falls_through_to": "1210-EDIT-ACCOUNT-EXIT",
+      "last_verb": "SET",
+      "last_raw": "SET FLG-ACCTFILTER-ISVALID TO TRUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1210-EDIT-ACCOUNT-EXIT",
+      "first_line": 1821,
+      "last_line": 1821,
+      "terminator": "implicit",
+      "falls_through_to": "1215-EDIT-MANDATORY",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1215-EDIT-MANDATORY",
+      "first_line": 1826,
+      "last_line": 1850,
+      "terminator": "implicit",
+      "falls_through_to": "1215-EDIT-MANDATORY-EXIT",
+      "last_verb": "SET",
+      "last_raw": "SET FLG-MANDATORY-ISVALID TO TRUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1215-EDIT-MANDATORY-EXIT",
+      "first_line": 1853,
+      "last_line": 1853,
+      "terminator": "implicit",
+      "falls_through_to": "1220-EDIT-YESNO",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1220-EDIT-YESNO",
+      "first_line": 1861,
+      "last_line": 1891,
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "last_raw": "GO TO 1220-EDIT-YESNO-EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1220-EDIT-YESNO-EXIT",
+      "first_line": 1895,
+      "last_line": 1895,
+      "terminator": "implicit",
+      "falls_through_to": "1225-EDIT-ALPHA-REQD",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1225-EDIT-ALPHA-REQD",
+      "first_line": 1900,
+      "last_line": 1949,
+      "terminator": "implicit",
+      "falls_through_to": "1225-EDIT-ALPHA-REQD-EXIT",
+      "last_verb": "SET",
+      "last_raw": "SET FLG-ALPHA-ISVALID TO TRUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1225-EDIT-ALPHA-REQD-EXIT",
+      "first_line": 1952,
+      "last_line": 1952,
+      "terminator": "implicit",
+      "falls_through_to": "1230-EDIT-ALPHANUM-REQD",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1230-EDIT-ALPHANUM-REQD",
+      "first_line": 1957,
+      "last_line": 2007,
+      "terminator": "implicit",
+      "falls_through_to": "1230-EDIT-ALPHANUM-REQD-EXIT",
+      "last_verb": "SET",
+      "last_raw": "SET FLG-ALPHNANUM-ISVALID TO TRUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1230-EDIT-ALPHANUM-REQD-EXIT",
+      "first_line": 2010,
+      "last_line": 2010,
+      "terminator": "implicit",
+      "falls_through_to": "1235-EDIT-ALPHA-OPT",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1235-EDIT-ALPHA-OPT",
+      "first_line": 2014,
+      "last_line": 2055,
+      "terminator": "implicit",
+      "falls_through_to": "1235-EDIT-ALPHA-OPT-EXIT",
+      "last_verb": "SET",
+      "last_raw": "SET FLG-ALPHA-ISVALID TO TRUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1235-EDIT-ALPHA-OPT-EXIT",
+      "first_line": 2058,
+      "last_line": 2058,
+      "terminator": "implicit",
+      "falls_through_to": "1240-EDIT-ALPHANUM-OPT",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1240-EDIT-ALPHANUM-OPT",
+      "first_line": 2063,
+      "last_line": 2103,
+      "terminator": "implicit",
+      "falls_through_to": "1240-EDIT-ALPHANUM-OPT-EXIT",
+      "last_verb": "SET",
+      "last_raw": "SET FLG-ALPHNANUM-ISVALID TO TRUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1240-EDIT-ALPHANUM-OPT-EXIT",
+      "first_line": 2106,
+      "last_line": 2106,
+      "terminator": "implicit",
+      "falls_through_to": "1245-EDIT-NUM-REQD",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1245-EDIT-NUM-REQD",
+      "first_line": 2111,
+      "last_line": 2174,
+      "terminator": "implicit",
+      "falls_through_to": "1245-EDIT-NUM-REQD-EXIT",
+      "last_verb": "SET",
+      "last_raw": "SET FLG-ALPHNANUM-ISVALID TO TRUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1245-EDIT-NUM-REQD-EXIT",
+      "first_line": 2177,
+      "last_line": 2177,
+      "terminator": "implicit",
+      "falls_through_to": "1250-EDIT-SIGNED-9V2",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1250-EDIT-SIGNED-9V2",
+      "first_line": 2181,
+      "last_line": 2218,
+      "terminator": "implicit",
+      "falls_through_to": "1250-EDIT-SIGNED-9V2-EXIT",
+      "last_verb": "SET",
+      "last_raw": "SET FLG-SIGNED-NUMBER-ISVALID TO TRUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1250-EDIT-SIGNED-9V2-EXIT",
+      "first_line": 2222,
+      "last_line": 2222,
+      "terminator": "implicit",
+      "falls_through_to": "1260-EDIT-US-PHONE-NUM",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1260-EDIT-US-PHONE-NUM",
+      "first_line": 2232,
+      "last_line": 2243,
+      "terminator": "implicit",
+      "falls_through_to": "EDIT-AREA-CODE",
+      "last_verb": "CONTINUE",
+      "last_raw": "CONTINUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "EDIT-AREA-CODE",
+      "first_line": 2247,
+      "last_line": 2314,
+      "terminator": "implicit",
+      "falls_through_to": "EDIT-US-PHONE-PREFIX",
+      "last_verb": "SET",
+      "last_raw": "SET FLG-EDIT-US-PHONEA-ISVALID TO TRUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "EDIT-US-PHONE-PREFIX",
+      "first_line": 2318,
+      "last_line": 2367,
+      "terminator": "implicit",
+      "falls_through_to": "EDIT-US-PHONE-LINENUM",
+      "last_verb": "SET",
+      "last_raw": "SET FLG-EDIT-US-PHONEB-ISVALID TO TRUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "EDIT-US-PHONE-LINENUM",
+      "first_line": 2371,
+      "last_line": 2421,
+      "terminator": "implicit",
+      "falls_through_to": "EDIT-US-PHONE-EXIT",
+      "last_verb": "SET",
+      "last_raw": "SET FLG-EDIT-US-PHONEC-ISVALID TO TRUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "EDIT-US-PHONE-EXIT",
+      "first_line": 2425,
+      "last_line": 2425,
+      "terminator": "implicit",
+      "falls_through_to": "1260-EDIT-US-PHONE-NUM-EXIT",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1260-EDIT-US-PHONE-NUM-EXIT",
+      "first_line": 2428,
+      "last_line": 2428,
+      "terminator": "implicit",
+      "falls_through_to": "1265-EDIT-US-SSN",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1265-EDIT-US-SSN",
+      "first_line": 2439,
+      "last_line": 2486,
+      "terminator": "implicit",
+      "falls_through_to": "1265-EDIT-US-SSN-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-EDIT-ALPHANUM-ONLY-FLAGS",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1265-EDIT-US-SSN-EXIT",
+      "first_line": 2490,
+      "last_line": 2490,
+      "terminator": "implicit",
+      "falls_through_to": "1270-EDIT-US-STATE-CD",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1270-EDIT-US-STATE-CD",
+      "first_line": 2494,
+      "last_line": 2508,
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "last_raw": "GO TO 1270-EDIT-US-STATE-CD-EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1270-EDIT-US-STATE-CD-EXIT",
+      "first_line": 2512,
+      "last_line": 2512,
+      "terminator": "implicit",
+      "falls_through_to": "1275-EDIT-FICO-SCORE",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1275-EDIT-FICO-SCORE",
+      "first_line": 2515,
+      "last_line": 2528,
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "last_raw": "GO TO 1275-EDIT-FICO-SCORE-EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1275-EDIT-FICO-SCORE-EXIT",
+      "first_line": 2532,
+      "last_line": 2532,
+      "terminator": "implicit",
+      "falls_through_to": "1280-EDIT-US-STATE-ZIP-CD",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1280-EDIT-US-STATE-ZIP-CD",
+      "first_line": 2537,
+      "last_line": 2555,
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "last_raw": "GO TO 1280-EDIT-US-STATE-ZIP-CD-EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1280-EDIT-US-STATE-ZIP-CD-EXIT",
+      "first_line": 2559,
+      "last_line": 2559,
+      "terminator": "implicit",
+      "falls_through_to": "2000-DECIDE-ACTION",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2000-DECIDE-ACTION",
+      "first_line": 2563,
+      "last_line": 2639,
+      "terminator": "implicit",
+      "falls_through_to": "2000-DECIDE-ACTION-EXIT",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM ABEND-ROUTINE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2000-DECIDE-ACTION-EXIT",
+      "first_line": 2644,
+      "last_line": 2644,
+      "terminator": "implicit",
+      "falls_through_to": "3000-SEND-MAP",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3000-SEND-MAP",
+      "first_line": 2650,
+      "last_line": 2660,
+      "terminator": "implicit",
+      "falls_through_to": "3000-SEND-MAP-EXIT",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM 3400-SEND-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3000-SEND-MAP-EXIT",
+      "first_line": 2665,
+      "last_line": 2665,
+      "terminator": "implicit",
+      "falls_through_to": "3100-SCREEN-INIT",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3100-SCREEN-INIT",
+      "first_line": 2669,
+      "last_line": 2690,
+      "terminator": "implicit",
+      "falls_through_to": "3100-SCREEN-INIT-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-CURTIME-HH-MM-SS TO CURTIMEO OF CACTUPAO",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3100-SCREEN-INIT-EXIT",
+      "first_line": 2695,
+      "last_line": 2695,
+      "terminator": "implicit",
+      "falls_through_to": "3200-SETUP-SCREEN-VARS",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3200-SETUP-SCREEN-VARS",
+      "first_line": 2700,
+      "last_line": 2722,
+      "terminator": "implicit",
+      "falls_through_to": "3200-SETUP-SCREEN-VARS-EXIT",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM 3202-SHOW-ORIGINAL-VALUES",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3200-SETUP-SCREEN-VARS-EXIT",
+      "first_line": 2728,
+      "last_line": 2728,
+      "terminator": "implicit",
+      "falls_through_to": "3201-SHOW-INITIAL-VALUES",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3201-SHOW-INITIAL-VALUES",
+      "first_line": 2732,
+      "last_line": 2732,
+      "terminator": "implicit",
+      "falls_through_to": "3201-SHOW-INITIAL-VALUES-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE LOW-VALUES TO ACSTTUSO OF CACTUPAO",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3201-SHOW-INITIAL-VALUES-EXIT",
+      "first_line": 2784,
+      "last_line": 2784,
+      "terminator": "implicit",
+      "falls_through_to": "3202-SHOW-ORIGINAL-VALUES",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3202-SHOW-ORIGINAL-VALUES",
+      "first_line": 2789,
+      "last_line": 2862,
+      "terminator": "implicit",
+      "falls_through_to": "3202-SHOW-ORIGINAL-VALUES-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE ACUP-OLD-CUST-PRI-HOLDER-IND",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3202-SHOW-ORIGINAL-VALUES-EXIT",
+      "first_line": 2868,
+      "last_line": 2868,
+      "terminator": "implicit",
+      "falls_through_to": "3203-SHOW-UPDATED-VALUES",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3203-SHOW-UPDATED-VALUES",
+      "first_line": 2872,
+      "last_line": 2947,
+      "terminator": "implicit",
+      "falls_through_to": "3203-SHOW-UPDATED-VALUES-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE ACUP-NEW-CUST-PRI-HOLDER-IND TO ACSPFLGO OF CACTUPAO",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3203-SHOW-UPDATED-VALUES-EXIT",
+      "first_line": 2952,
+      "last_line": 2952,
+      "terminator": "implicit",
+      "falls_through_to": "3250-SETUP-INFOMSG",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3250-SETUP-INFOMSG",
+      "first_line": 2957,
+      "last_line": 2981,
+      "terminator": "implicit",
+      "falls_through_to": "3250-SETUP-INFOMSG-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-RETURN-MSG TO ERRMSGO OF CACTUPAO",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3250-SETUP-INFOMSG-EXIT",
+      "first_line": 2984,
+      "last_line": 2984,
+      "terminator": "implicit",
+      "falls_through_to": "3300-SETUP-SCREEN-ATTRS",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3300-SETUP-SCREEN-ATTRS",
+      "first_line": 2989,
+      "last_line": 3191,
+      "terminator": "implicit",
+      "falls_through_to": "3300-SETUP-SCREEN-ATTRS-EXIT",
+      "last_verb": "CONTINUE",
+      "last_raw": "CONTINUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3300-SETUP-SCREEN-ATTRS-EXIT",
+      "first_line": 3438,
+      "last_line": 3438,
+      "terminator": "implicit",
+      "falls_through_to": "3310-PROTECT-ALL-ATTRS",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3310-PROTECT-ALL-ATTRS",
+      "first_line": 3442,
+      "last_line": 3442,
+      "terminator": "implicit",
+      "falls_through_to": "3310-PROTECT-ALL-ATTRS-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE DFHBMPRF TO ACCTSIDA OF CACTUPAI",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3310-PROTECT-ALL-ATTRS-EXIT",
+      "first_line": 3497,
+      "last_line": 3497,
+      "terminator": "implicit",
+      "falls_through_to": "3320-UNPROTECT-FEW-ATTRS",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3320-UNPROTECT-FEW-ATTRS",
+      "first_line": 3502,
+      "last_line": 3560,
+      "terminator": "implicit",
+      "falls_through_to": "3320-UNPROTECT-FEW-ATTRS-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE DFHBMPRF TO INFOMSGA OF CACTUPAI",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3320-UNPROTECT-FEW-ATTRS-EXIT",
+      "first_line": 3563,
+      "last_line": 3563,
+      "terminator": "implicit",
+      "falls_through_to": "3390-SETUP-INFOMSG-ATTRS",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3390-SETUP-INFOMSG-ATTRS",
+      "first_line": 3567,
+      "last_line": 3580,
+      "terminator": "implicit",
+      "falls_through_to": "3390-SETUP-INFOMSG-ATTRS-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE DFHBMASB TO FKEY12A OF CACTUPAI",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3390-SETUP-INFOMSG-ATTRS-EXIT",
+      "first_line": 3585,
+      "last_line": 3585,
+      "terminator": "implicit",
+      "falls_through_to": "3400-SEND-SCREEN",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3400-SEND-SCREEN",
+      "first_line": 3591,
+      "last_line": 3594,
+      "terminator": "implicit",
+      "falls_through_to": "3400-SEND-SCREEN-EXIT",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS SEND MAP(CCARD-NEXT-MAP)",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "3400-SEND-SCREEN-EXIT",
+      "first_line": 3604,
+      "last_line": 3604,
+      "terminator": "implicit",
+      "falls_through_to": "9000-READ-ACCT",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9000-READ-ACCT",
+      "first_line": 3610,
+      "last_line": 3642,
+      "terminator": "implicit",
+      "falls_through_to": "9000-READ-ACCT-EXIT",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM 9500-STORE-FETCHED-DATA",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9000-READ-ACCT-EXIT",
+      "first_line": 3648,
+      "last_line": 3648,
+      "terminator": "implicit",
+      "falls_through_to": "9200-GETCARDXREF-BYACCT",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9200-GETCARDXREF-BYACCT",
+      "first_line": 3654,
+      "last_line": 3693,
+      "terminator": "implicit",
+      "falls_through_to": "9200-GETCARDXREF-BYACCT-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-FILE-ERROR-MESSAGE TO WS-RETURN-MSG",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9200-GETCARDXREF-BYACCT-EXIT",
+      "first_line": 3699,
+      "last_line": 3699,
+      "terminator": "implicit",
+      "falls_through_to": "9300-GETACCTDATA-BYACCT",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9300-GETACCTDATA-BYACCT",
+      "first_line": 3703,
+      "last_line": 3743,
+      "terminator": "implicit",
+      "falls_through_to": "9300-GETACCTDATA-BYACCT-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-FILE-ERROR-MESSAGE TO WS-RETURN-MSG",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9300-GETACCTDATA-BYACCT-EXIT",
+      "first_line": 3749,
+      "last_line": 3749,
+      "terminator": "implicit",
+      "falls_through_to": "9400-GETCUSTDATA-BYCUST",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9400-GETCUSTDATA-BYCUST",
+      "first_line": 3753,
+      "last_line": 3792,
+      "terminator": "implicit",
+      "falls_through_to": "9400-GETCUSTDATA-BYCUST-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-FILE-ERROR-MESSAGE TO WS-RETURN-MSG",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9400-GETCUSTDATA-BYCUST-EXIT",
+      "first_line": 3798,
+      "last_line": 3798,
+      "terminator": "implicit",
+      "falls_through_to": "9500-STORE-FETCHED-DATA",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9500-STORE-FETCHED-DATA",
+      "first_line": 3805,
+      "last_line": 3883,
+      "terminator": "implicit",
+      "falls_through_to": "9500-STORE-FETCHED-DATA-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE CUST-PRI-CARD-HOLDER-IND TO ACUP-OLD-CUST-PRI-HOLDER-IND",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9500-STORE-FETCHED-DATA-EXIT",
+      "first_line": 3886,
+      "last_line": 3886,
+      "terminator": "implicit",
+      "falls_through_to": "9600-WRITE-PROCESSING",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9600-WRITE-PROCESSING",
+      "first_line": 3892,
+      "last_line": 4102,
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "last_raw": "GO TO 9600-WRITE-PROCESSING-EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9600-WRITE-PROCESSING-EXIT",
+      "first_line": 4106,
+      "last_line": 4106,
+      "terminator": "implicit",
+      "falls_through_to": "9700-CHECK-CHANGE-IN-REC",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9700-CHECK-CHANGE-IN-REC",
+      "first_line": 4115,
+      "last_line": 4190,
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "last_raw": "GO TO 9600-WRITE-PROCESSING-EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9700-CHECK-CHANGE-IN-REC-EXIT",
+      "first_line": 4194,
+      "last_line": 4194,
+      "terminator": "implicit",
+      "falls_through_to": "ABEND-ROUTINE",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "ABEND-ROUTINE",
+      "first_line": 4205,
+      "last_line": 4222,
+      "terminator": "implicit",
+      "falls_through_to": "ABEND-ROUTINE-EXIT",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS ABEND",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "ABEND-ROUTINE-EXIT",
+      "first_line": 4227,
+      "last_line": 4227,
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    }
+  ],
+  "c5_assertion": "PASS",
+  "c5_violations": []
+}

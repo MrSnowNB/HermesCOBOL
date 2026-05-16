@@ -1,0 +1,101 @@
+{
+  "program": "COUSR01C",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COUSR01C.cbl",
+  "source_sha256": "68ccce51b9907999aad3ce10b8610561ddff3388281ecc657841e0eb6920b8e5",
+  "cfg_path": "validation\\pass1\\COUSR01C_annotations.json",
+  "cfg_sha256": "0bf4c4266acc43d161efe3e168082ca6f77498db3e097c626ad6f4bdcf0fde3b",
+  "paragraphs": [
+    {
+      "paragraph": "MAIN-PARA",
+      "first_line": 73,
+      "last_line": 107,
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "PROCESS-ENTER-KEY",
+      "first_line": 117,
+      "last_line": 159,
+      "terminator": "implicit",
+      "falls_through_to": "RETURN-TO-PREV-SCREEN",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM WRITE-USER-SEC-FILE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "RETURN-TO-PREV-SCREEN",
+      "first_line": 167,
+      "last_line": 175,
+      "terminator": "cics-xctl",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS",
+      "classification_source": "source_scan"
+    },
+    {
+      "paragraph": "SEND-USRADD-SCREEN",
+      "first_line": 186,
+      "last_line": 190,
+      "terminator": "implicit",
+      "falls_through_to": "RECEIVE-USRADD-SCREEN",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS SEND",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "RECEIVE-USRADD-SCREEN",
+      "first_line": 203,
+      "last_line": 203,
+      "terminator": "implicit",
+      "falls_through_to": "POPULATE-HEADER-INFO",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RECEIVE",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "POPULATE-HEADER-INFO",
+      "first_line": 216,
+      "last_line": 233,
+      "terminator": "implicit",
+      "falls_through_to": "WRITE-USER-SEC-FILE",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-CURTIME-HH-MM-SS TO CURTIMEO OF COUSR1AO.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "WRITE-USER-SEC-FILE",
+      "first_line": 240,
+      "last_line": 273,
+      "terminator": "implicit",
+      "falls_through_to": "CLEAR-CURRENT-SCREEN",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-USRADD-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "CLEAR-CURRENT-SCREEN",
+      "first_line": 281,
+      "last_line": 282,
+      "terminator": "implicit",
+      "falls_through_to": "INITIALIZE-ALL-FIELDS",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-USRADD-SCREEN.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "INITIALIZE-ALL-FIELDS",
+      "first_line": 289,
+      "last_line": 290,
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "MOVE",
+      "last_raw": "MOVE SPACES TO USERIDI OF COUSR1AI",
+      "classification_source": "annotations"
+    }
+  ],
+  "c5_assertion": "PASS",
+  "c5_violations": []
+}

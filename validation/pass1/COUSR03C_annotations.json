@@ -1,0 +1,2806 @@
+[
+  {
+    "seq": 1,
+    "paragraph": "MAIN-PARA",
+    "line": 84,
+    "verb": "SET",
+    "operands": [
+      "ERR-FLG-OFF",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [],
+    "cfg_successors": [
+      2
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET ERR-FLG-OFF TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 2,
+    "paragraph": "MAIN-PARA",
+    "line": 85,
+    "verb": "SET",
+    "operands": [
+      "USR-MODIFIED-NO",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      1
+    ],
+    "cfg_successors": [
+      3
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET USR-MODIFIED-NO TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 3,
+    "paragraph": "MAIN-PARA",
+    "line": 87,
+    "verb": "MOVE",
+    "operands": [
+      "WS-MESSAGE"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      2
+    ],
+    "cfg_successors": [
+      4
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE SPACES TO WS-MESSAGE"
+  },
+  {
+    "seq": 4,
+    "paragraph": "MAIN-PARA",
+    "line": 90,
+    "verb": "IF",
+    "operands": [
+      "EIBCALEN",
+      "0"
+    ],
+    "operand_types": [
+      "unresolved",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      3
+    ],
+    "cfg_successors": [
+      5
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF EIBCALEN = 0",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 5,
+    "paragraph": "MAIN-PARA",
+    "line": 91,
+    "verb": "MOVE",
+    "operands": [
+      "'COSGN00C'",
+      "CDEMO-TO-PROGRAM"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      4
+    ],
+    "cfg_successors": [
+      6
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 6,
+    "paragraph": "MAIN-PARA",
+    "line": 92,
+    "verb": "PERFORM",
+    "operands": [
+      "RETURN-TO-PREV-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      5
+    ],
+    "cfg_successors": [
+      58
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM RETURN-TO-PREV-SCREEN",
+    "cfg_perform_target": "RETURN-TO-PREV-SCREEN"
+  },
+  {
+    "seq": 7,
+    "paragraph": "MAIN-PARA",
+    "line": 94,
+    "verb": "MOVE",
+    "operands": [
+      "DFHCOMMAREA",
+      "1",
+      "EIBCALEN",
+      "CARDDEMO-COMMAREA"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      6
+    ],
+    "cfg_successors": [
+      8
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DFHCOMMAREA(1:EIBCALEN) TO CARDDEMO-COMMAREA",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 8,
+    "paragraph": "MAIN-PARA",
+    "line": 95,
+    "verb": "IF",
+    "operands": [
+      "CDEMO-PGM-REENTER"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      7
+    ],
+    "cfg_successors": [
+      9
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT CDEMO-PGM-REENTER",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 9,
+    "paragraph": "MAIN-PARA",
+    "line": 96,
+    "verb": "SET",
+    "operands": [
+      "CDEMO-PGM-REENTER",
+      "TRUE"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      8
+    ],
+    "cfg_successors": [
+      10
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET CDEMO-PGM-REENTER TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 10,
+    "paragraph": "MAIN-PARA",
+    "line": 97,
+    "verb": "MOVE",
+    "operands": [
+      "COUSR3AO"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      9
+    ],
+    "cfg_successors": [
+      11
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LOW-VALUES TO COUSR3AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 11,
+    "paragraph": "MAIN-PARA",
+    "line": 98,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "USRIDINL",
+      "COUSR3AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      10
+    ],
+    "cfg_successors": [
+      12
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO USRIDINL OF COUSR3AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 12,
+    "paragraph": "MAIN-PARA",
+    "line": 99,
+    "verb": "IF",
+    "operands": [
+      "CDEMO-CU03-USR-SELECTED"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      11
+    ],
+    "cfg_successors": [
+      13
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF CDEMO-CU03-USR-SELECTED NOT ="
+  },
+  {
+    "seq": 13,
+    "paragraph": "MAIN-PARA",
+    "line": 101,
+    "verb": "MOVE",
+    "operands": [
+      "CDEMO-CU03-USR-SELECTED"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      12
+    ],
+    "cfg_successors": [
+      14
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CDEMO-CU03-USR-SELECTED TO"
+  },
+  {
+    "seq": 14,
+    "paragraph": "MAIN-PARA",
+    "line": 103,
+    "verb": "PERFORM",
+    "operands": [
+      "PROCESS-ENTER-KEY"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      13
+    ],
+    "cfg_successors": [
+      31
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM PROCESS-ENTER-KEY",
+    "cfg_perform_target": "PROCESS-ENTER-KEY"
+  },
+  {
+    "seq": 15,
+    "paragraph": "MAIN-PARA",
+    "line": 105,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-USRDEL-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      14
+    ],
+    "cfg_successors": [
+      64
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-USRDEL-SCREEN",
+    "cfg_perform_target": "SEND-USRDEL-SCREEN"
+  },
+  {
+    "seq": 16,
+    "paragraph": "MAIN-PARA",
+    "line": 107,
+    "verb": "PERFORM",
+    "operands": [
+      "RECEIVE-USRDEL-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      15
+    ],
+    "cfg_successors": [
+      67
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM RECEIVE-USRDEL-SCREEN",
+    "cfg_perform_target": "RECEIVE-USRDEL-SCREEN"
+  },
+  {
+    "seq": 17,
+    "paragraph": "MAIN-PARA",
+    "line": 108,
+    "verb": "EVALUATE",
+    "operands": [
+      "EIBAID"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE EIBAID",
+    "cfg_predecessors": [
+      16
+    ],
+    "cfg_successors": [
+      18
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE EIBAID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 18,
+    "paragraph": "MAIN-PARA",
+    "line": 110,
+    "verb": "PERFORM",
+    "operands": [
+      "PROCESS-ENTER-KEY"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE EIBAID",
+    "cfg_predecessors": [
+      17
+    ],
+    "cfg_successors": [
+      31
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM PROCESS-ENTER-KEY",
+    "cfg_perform_target": "PROCESS-ENTER-KEY"
+  },
+  {
+    "seq": 19,
+    "paragraph": "MAIN-PARA",
+    "line": 112,
+    "verb": "IF",
+    "operands": [
+      "CDEMO-FROM-PROGRAM"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE EIBAID",
+    "cfg_predecessors": [
+      18
+    ],
+    "cfg_successors": [
+      20
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF CDEMO-FROM-PROGRAM = SPACES OR LOW-VALUES",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 20,
+    "paragraph": "MAIN-PARA",
+    "line": 113,
+    "verb": "MOVE",
+    "operands": [
+      "'COADM01C'",
+      "CDEMO-TO-PROGRAM"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE EIBAID",
+    "cfg_predecessors": [
+      19
+    ],
+    "cfg_successors": [
+      21
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'COADM01C' TO CDEMO-TO-PROGRAM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 21,
+    "paragraph": "MAIN-PARA",
+    "line": 115,
+    "verb": "MOVE",
+    "operands": [
+      "CDEMO-FROM-PROGRAM"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE EIBAID",
+    "cfg_predecessors": [
+      20
+    ],
+    "cfg_successors": [
+      22
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CDEMO-FROM-PROGRAM TO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 22,
+    "paragraph": "MAIN-PARA",
+    "line": 118,
+    "verb": "PERFORM",
+    "operands": [
+      "RETURN-TO-PREV-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      21
+    ],
+    "cfg_successors": [
+      58
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM RETURN-TO-PREV-SCREEN",
+    "cfg_perform_target": "RETURN-TO-PREV-SCREEN"
+  },
+  {
+    "seq": 23,
+    "paragraph": "MAIN-PARA",
+    "line": 120,
+    "verb": "PERFORM",
+    "operands": [
+      "CLEAR-CURRENT-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      22
+    ],
+    "cfg_successors": [
+      112
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM CLEAR-CURRENT-SCREEN",
+    "cfg_perform_target": "CLEAR-CURRENT-SCREEN"
+  },
+  {
+    "seq": 24,
+    "paragraph": "MAIN-PARA",
+    "line": 122,
+    "verb": "PERFORM",
+    "operands": [
+      "DELETE-USER-INFO"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      23
+    ],
+    "cfg_successors": [
+      47
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM DELETE-USER-INFO",
+    "cfg_perform_target": "DELETE-USER-INFO"
+  },
+  {
+    "seq": 25,
+    "paragraph": "MAIN-PARA",
+    "line": 124,
+    "verb": "MOVE",
+    "operands": [
+      "'COADM01C'",
+      "CDEMO-TO-PROGRAM"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      24
+    ],
+    "cfg_successors": [
+      26
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'COADM01C' TO CDEMO-TO-PROGRAM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 26,
+    "paragraph": "MAIN-PARA",
+    "line": 125,
+    "verb": "PERFORM",
+    "operands": [
+      "RETURN-TO-PREV-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      25
+    ],
+    "cfg_successors": [
+      58
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM RETURN-TO-PREV-SCREEN",
+    "cfg_perform_target": "RETURN-TO-PREV-SCREEN"
+  },
+  {
+    "seq": 27,
+    "paragraph": "MAIN-PARA",
+    "line": 127,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      26
+    ],
+    "cfg_successors": [
+      28
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 28,
+    "paragraph": "MAIN-PARA",
+    "line": 128,
+    "verb": "MOVE",
+    "operands": [
+      "CCDA-MSG-INVALID-KEY",
+      "WS-MESSAGE"
+    ],
+    "operand_types": [
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      27
+    ],
+    "cfg_successors": [
+      29
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CCDA-MSG-INVALID-KEY TO WS-MESSAGE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 29,
+    "paragraph": "MAIN-PARA",
+    "line": 129,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-USRDEL-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      28
+    ],
+    "cfg_successors": [
+      64
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-USRDEL-SCREEN",
+    "cfg_perform_target": "SEND-USRDEL-SCREEN"
+  },
+  {
+    "seq": 30,
+    "paragraph": "MAIN-PARA",
+    "line": 134,
+    "verb": "EXEC CICS",
+    "operands": [
+      "RETURN"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EXEC CICS RETURN RETURN",
+    "cfg_predecessors": [
+      29
+    ],
+    "cfg_successors": [
+      31
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS RETURN",
+    "operand_unresolved": true,
+    "is_cics_branch": true,
+    "cics_command": "RETURN"
+  },
+  {
+    "seq": 31,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 144,
+    "verb": "EVALUATE",
+    "operands": [
+      "TRUE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      30,
+      14,
+      18
+    ],
+    "cfg_successors": [
+      32
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 32,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 146,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      31
+    ],
+    "cfg_successors": [
+      33
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 33,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 147,
+    "verb": "MOVE",
+    "operands": [
+      "'User ID can NOT be empty...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      32
+    ],
+    "cfg_successors": [
+      34
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'User ID can NOT be empty...' TO"
+  },
+  {
+    "seq": 34,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 149,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "USRIDINL",
+      "COUSR3AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      33
+    ],
+    "cfg_successors": [
+      35
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO USRIDINL OF COUSR3AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 35,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 150,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-USRDEL-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      34
+    ],
+    "cfg_successors": [
+      64
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-USRDEL-SCREEN",
+    "cfg_perform_target": "SEND-USRDEL-SCREEN"
+  },
+  {
+    "seq": 36,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 152,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "USRIDINL",
+      "COUSR3AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      35
+    ],
+    "cfg_successors": [
+      37
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO USRIDINL OF COUSR3AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 37,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 153,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      36
+    ],
+    "cfg_successors": [
+      38
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 38,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 156,
+    "verb": "IF",
+    "operands": [
+      "ERR-FLG-ON"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      37
+    ],
+    "cfg_successors": [
+      39
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT ERR-FLG-ON"
+  },
+  {
+    "seq": 39,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 157,
+    "verb": "MOVE",
+    "operands": [
+      "FNAMEI",
+      "COUSR3AI"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      38
+    ],
+    "cfg_successors": [
+      40
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE SPACES TO FNAMEI OF COUSR3AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 40,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 160,
+    "verb": "MOVE",
+    "operands": [
+      "USRIDINI",
+      "COUSR3AI",
+      "SEC-USR-ID"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      39
+    ],
+    "cfg_successors": [
+      41
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE USRIDINI OF COUSR3AI TO SEC-USR-ID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 41,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 161,
+    "verb": "PERFORM",
+    "operands": [
+      "READ-USER-SEC-FILE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      40
+    ],
+    "cfg_successors": [
+      81
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM READ-USER-SEC-FILE",
+    "cfg_perform_target": "READ-USER-SEC-FILE"
+  },
+  {
+    "seq": 42,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 164,
+    "verb": "IF",
+    "operands": [
+      "ERR-FLG-ON"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      41
+    ],
+    "cfg_successors": [
+      43
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT ERR-FLG-ON"
+  },
+  {
+    "seq": 43,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 165,
+    "verb": "MOVE",
+    "operands": [
+      "SEC-USR-FNAME",
+      "FNAMEI",
+      "COUSR3AI"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      42
+    ],
+    "cfg_successors": [
+      44
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE SEC-USR-FNAME TO FNAMEI OF COUSR3AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 44,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 166,
+    "verb": "MOVE",
+    "operands": [
+      "SEC-USR-LNAME",
+      "LNAMEI",
+      "COUSR3AI"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      43
+    ],
+    "cfg_successors": [
+      45
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE SEC-USR-LNAME TO LNAMEI OF COUSR3AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 45,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 167,
+    "verb": "MOVE",
+    "operands": [
+      "SEC-USR-TYPE",
+      "USRTYPEI",
+      "COUSR3AI"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      44
+    ],
+    "cfg_successors": [
+      46
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE SEC-USR-TYPE TO USRTYPEI OF COUSR3AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 46,
+    "paragraph": "PROCESS-ENTER-KEY",
+    "line": 168,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-USRDEL-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      45
+    ],
+    "cfg_successors": [
+      64
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-USRDEL-SCREEN",
+    "cfg_perform_target": "SEND-USRDEL-SCREEN"
+  },
+  {
+    "seq": 47,
+    "paragraph": "DELETE-USER-INFO",
+    "line": 176,
+    "verb": "EVALUATE",
+    "operands": [
+      "TRUE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      46,
+      24
+    ],
+    "cfg_successors": [
+      48
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 48,
+    "paragraph": "DELETE-USER-INFO",
+    "line": 178,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      47
+    ],
+    "cfg_successors": [
+      49
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 49,
+    "paragraph": "DELETE-USER-INFO",
+    "line": 179,
+    "verb": "MOVE",
+    "operands": [
+      "'User ID can NOT be empty...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      48
+    ],
+    "cfg_successors": [
+      50
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'User ID can NOT be empty...' TO"
+  },
+  {
+    "seq": 50,
+    "paragraph": "DELETE-USER-INFO",
+    "line": 181,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "USRIDINL",
+      "COUSR3AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      49
+    ],
+    "cfg_successors": [
+      51
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO USRIDINL OF COUSR3AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 51,
+    "paragraph": "DELETE-USER-INFO",
+    "line": 182,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-USRDEL-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      50
+    ],
+    "cfg_successors": [
+      64
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-USRDEL-SCREEN",
+    "cfg_perform_target": "SEND-USRDEL-SCREEN"
+  },
+  {
+    "seq": 52,
+    "paragraph": "DELETE-USER-INFO",
+    "line": 184,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "USRIDINL",
+      "COUSR3AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      51
+    ],
+    "cfg_successors": [
+      53
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO USRIDINL OF COUSR3AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 53,
+    "paragraph": "DELETE-USER-INFO",
+    "line": 185,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      52
+    ],
+    "cfg_successors": [
+      54
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 54,
+    "paragraph": "DELETE-USER-INFO",
+    "line": 188,
+    "verb": "IF",
+    "operands": [
+      "ERR-FLG-ON"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      53
+    ],
+    "cfg_successors": [
+      55
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF NOT ERR-FLG-ON"
+  },
+  {
+    "seq": 55,
+    "paragraph": "DELETE-USER-INFO",
+    "line": 189,
+    "verb": "MOVE",
+    "operands": [
+      "USRIDINI",
+      "COUSR3AI",
+      "SEC-USR-ID"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      54
+    ],
+    "cfg_successors": [
+      56
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE USRIDINI OF COUSR3AI TO SEC-USR-ID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 56,
+    "paragraph": "DELETE-USER-INFO",
+    "line": 190,
+    "verb": "PERFORM",
+    "operands": [
+      "READ-USER-SEC-FILE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      55
+    ],
+    "cfg_successors": [
+      81
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM READ-USER-SEC-FILE",
+    "cfg_perform_target": "READ-USER-SEC-FILE"
+  },
+  {
+    "seq": 57,
+    "paragraph": "DELETE-USER-INFO",
+    "line": 191,
+    "verb": "PERFORM",
+    "operands": [
+      "DELETE-USER-SEC-FILE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF NOT ERR-FLG-ON",
+    "cfg_predecessors": [
+      56
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM DELETE-USER-SEC-FILE",
+    "cfg_perform_target": "DELETE-USER-SEC-FILE"
+  },
+  {
+    "seq": 58,
+    "paragraph": "RETURN-TO-PREV-SCREEN",
+    "line": 199,
+    "verb": "IF",
+    "operands": [
+      "CDEMO-TO-PROGRAM"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CDEMO-TO-PROGRAM = LOW-VALUES OR SPACES",
+    "cfg_predecessors": [
+      57,
+      6,
+      22,
+      26
+    ],
+    "cfg_successors": [
+      59
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF CDEMO-TO-PROGRAM = LOW-VALUES OR SPACES",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 59,
+    "paragraph": "RETURN-TO-PREV-SCREEN",
+    "line": 200,
+    "verb": "MOVE",
+    "operands": [
+      "'COSGN00C'",
+      "CDEMO-TO-PROGRAM"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CDEMO-TO-PROGRAM = LOW-VALUES OR SPACES",
+    "cfg_predecessors": [
+      58
+    ],
+    "cfg_successors": [
+      60
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 60,
+    "paragraph": "RETURN-TO-PREV-SCREEN",
+    "line": 202,
+    "verb": "MOVE",
+    "operands": [
+      "WS-TRANID",
+      "CDEMO-FROM-TRANID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      59
+    ],
+    "cfg_successors": [
+      61
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-TRANID TO CDEMO-FROM-TRANID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 61,
+    "paragraph": "RETURN-TO-PREV-SCREEN",
+    "line": 203,
+    "verb": "MOVE",
+    "operands": [
+      "WS-PGMNAME",
+      "CDEMO-FROM-PROGRAM"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      60
+    ],
+    "cfg_successors": [
+      62
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-PGMNAME TO CDEMO-FROM-PROGRAM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 62,
+    "paragraph": "RETURN-TO-PREV-SCREEN",
+    "line": 204,
+    "verb": "MOVE",
+    "operands": [
+      "CDEMO-PGM-CONTEXT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      61
+    ],
+    "cfg_successors": [
+      63
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ZEROS TO CDEMO-PGM-CONTEXT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 63,
+    "paragraph": "RETURN-TO-PREV-SCREEN",
+    "line": 205,
+    "verb": "EXEC CICS",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      62
+    ],
+    "cfg_successors": [
+      64
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS"
+  },
+  {
+    "seq": 64,
+    "paragraph": "SEND-USRDEL-SCREEN",
+    "line": 215,
+    "verb": "PERFORM",
+    "operands": [
+      "POPULATE-HEADER-INFO"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      63,
+      15,
+      29,
+      35,
+      46,
+      51,
+      86,
+      90,
+      95,
+      102,
+      106,
+      111,
+      113
+    ],
+    "cfg_successors": [
+      68
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM POPULATE-HEADER-INFO",
+    "cfg_perform_target": "POPULATE-HEADER-INFO"
+  },
+  {
+    "seq": 65,
+    "paragraph": "SEND-USRDEL-SCREEN",
+    "line": 217,
+    "verb": "MOVE",
+    "operands": [
+      "WS-MESSAGE",
+      "ERRMSGO",
+      "COUSR3AO"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      64
+    ],
+    "cfg_successors": [
+      66
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-MESSAGE TO ERRMSGO OF COUSR3AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 66,
+    "paragraph": "SEND-USRDEL-SCREEN",
+    "line": 219,
+    "verb": "EXEC CICS",
+    "operands": [
+      "SEND"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      65
+    ],
+    "cfg_successors": [
+      67
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS SEND",
+    "operand_unresolved": true,
+    "cics_command": "SEND"
+  },
+  {
+    "seq": 67,
+    "paragraph": "RECEIVE-USRDEL-SCREEN",
+    "line": 232,
+    "verb": "EXEC CICS",
+    "operands": [
+      "RECEIVE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      66,
+      16
+    ],
+    "cfg_successors": [
+      68
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS RECEIVE",
+    "operand_unresolved": true,
+    "cics_command": "RECEIVE"
+  },
+  {
+    "seq": 68,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 245,
+    "verb": "MOVE",
+    "operands": [
+      "FUNCTION",
+      "CURRENT-DATE",
+      "WS-CURDATE-DATA"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      67,
+      64
+    ],
+    "cfg_successors": [
+      69
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE FUNCTION CURRENT-DATE TO WS-CURDATE-DATA",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 69,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 247,
+    "verb": "MOVE",
+    "operands": [
+      "CCDA-TITLE01",
+      "TITLE01O",
+      "COUSR3AO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      68
+    ],
+    "cfg_successors": [
+      70
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CCDA-TITLE01 TO TITLE01O OF COUSR3AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 70,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 248,
+    "verb": "MOVE",
+    "operands": [
+      "CCDA-TITLE02",
+      "TITLE02O",
+      "COUSR3AO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      69
+    ],
+    "cfg_successors": [
+      71
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CCDA-TITLE02 TO TITLE02O OF COUSR3AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 71,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 249,
+    "verb": "MOVE",
+    "operands": [
+      "WS-TRANID",
+      "TRNNAMEO",
+      "COUSR3AO"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      70
+    ],
+    "cfg_successors": [
+      72
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-TRANID TO TRNNAMEO OF COUSR3AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 72,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 250,
+    "verb": "MOVE",
+    "operands": [
+      "WS-PGMNAME",
+      "PGMNAMEO",
+      "COUSR3AO"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      71
+    ],
+    "cfg_successors": [
+      73
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-PGMNAME TO PGMNAMEO OF COUSR3AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 73,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 252,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-MONTH",
+      "WS-CURDATE-MM"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      72
+    ],
+    "cfg_successors": [
+      74
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-MONTH TO WS-CURDATE-MM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 74,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 253,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-DAY",
+      "WS-CURDATE-DD"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      73
+    ],
+    "cfg_successors": [
+      75
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-DAY TO WS-CURDATE-DD",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 75,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 254,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-YEAR",
+      "3",
+      "2",
+      "WS-CURDATE-YY"
+    ],
+    "operand_types": [
+      "unresolved",
+      "literal",
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      74
+    ],
+    "cfg_successors": [
+      76
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-YEAR(3:2) TO WS-CURDATE-YY",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 76,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 256,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-MM-DD-YY",
+      "CURDATEO",
+      "COUSR3AO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      75
+    ],
+    "cfg_successors": [
+      77
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-MM-DD-YY TO CURDATEO OF COUSR3AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 77,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 258,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURTIME-HOURS",
+      "WS-CURTIME-HH"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      76
+    ],
+    "cfg_successors": [
+      78
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURTIME-HOURS TO WS-CURTIME-HH",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 78,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 259,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURTIME-MINUTE",
+      "WS-CURTIME-MM"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      77
+    ],
+    "cfg_successors": [
+      79
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURTIME-MINUTE TO WS-CURTIME-MM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 79,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 260,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURTIME-SECOND",
+      "WS-CURTIME-SS"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      78
+    ],
+    "cfg_successors": [
+      80
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURTIME-SECOND TO WS-CURTIME-SS",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 80,
+    "paragraph": "POPULATE-HEADER-INFO",
+    "line": 262,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURTIME-HH-MM-SS",
+      "CURTIMEO",
+      "COUSR3AO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      79
+    ],
+    "cfg_successors": [
+      81
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURTIME-HH-MM-SS TO CURTIMEO OF COUSR3AO.",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 81,
+    "paragraph": "READ-USER-SEC-FILE",
+    "line": 269,
+    "verb": "EXEC CICS",
+    "operands": [
+      "READ"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      80,
+      41,
+      56
+    ],
+    "cfg_successors": [
+      82
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS READ",
+    "operand_unresolved": true,
+    "cics_command": "READ"
+  },
+  {
+    "seq": 82,
+    "paragraph": "READ-USER-SEC-FILE",
+    "line": 280,
+    "verb": "EVALUATE",
+    "operands": [
+      "WS-RESP-CD"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      81
+    ],
+    "cfg_successors": [
+      83
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE WS-RESP-CD"
+  },
+  {
+    "seq": 83,
+    "paragraph": "READ-USER-SEC-FILE",
+    "line": 282,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      82
+    ],
+    "cfg_successors": [
+      84
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 84,
+    "paragraph": "READ-USER-SEC-FILE",
+    "line": 283,
+    "verb": "MOVE",
+    "operands": [
+      "'Press PF5 key to delete this user ...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      83
+    ],
+    "cfg_successors": [
+      85
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Press PF5 key to delete this user ...' TO"
+  },
+  {
+    "seq": 85,
+    "paragraph": "READ-USER-SEC-FILE",
+    "line": 285,
+    "verb": "MOVE",
+    "operands": [
+      "DFHNEUTR",
+      "ERRMSGC",
+      "COUSR3AO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      84
+    ],
+    "cfg_successors": [
+      86
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DFHNEUTR TO ERRMSGC OF COUSR3AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 86,
+    "paragraph": "READ-USER-SEC-FILE",
+    "line": 286,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-USRDEL-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      85
+    ],
+    "cfg_successors": [
+      64
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-USRDEL-SCREEN",
+    "cfg_perform_target": "SEND-USRDEL-SCREEN"
+  },
+  {
+    "seq": 87,
+    "paragraph": "READ-USER-SEC-FILE",
+    "line": 288,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      86
+    ],
+    "cfg_successors": [
+      88
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 88,
+    "paragraph": "READ-USER-SEC-FILE",
+    "line": 289,
+    "verb": "MOVE",
+    "operands": [
+      "'User ID NOT found...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      87
+    ],
+    "cfg_successors": [
+      89
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'User ID NOT found...' TO"
+  },
+  {
+    "seq": 89,
+    "paragraph": "READ-USER-SEC-FILE",
+    "line": 291,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "USRIDINL",
+      "COUSR3AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      88
+    ],
+    "cfg_successors": [
+      90
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO USRIDINL OF COUSR3AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 90,
+    "paragraph": "READ-USER-SEC-FILE",
+    "line": 292,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-USRDEL-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      89
+    ],
+    "cfg_successors": [
+      64
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-USRDEL-SCREEN",
+    "cfg_perform_target": "SEND-USRDEL-SCREEN"
+  },
+  {
+    "seq": 91,
+    "paragraph": "READ-USER-SEC-FILE",
+    "line": 294,
+    "verb": "DISPLAY",
+    "operands": [
+      "'RESP:'",
+      "WS-RESP-CD",
+      "'REAS:'",
+      "WS-REAS-CD"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage",
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      90
+    ],
+    "cfg_successors": [
+      92
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD"
+  },
+  {
+    "seq": 92,
+    "paragraph": "READ-USER-SEC-FILE",
+    "line": 295,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      91
+    ],
+    "cfg_successors": [
+      93
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 93,
+    "paragraph": "READ-USER-SEC-FILE",
+    "line": 296,
+    "verb": "MOVE",
+    "operands": [
+      "'Unable to lookup User...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      92
+    ],
+    "cfg_successors": [
+      94
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Unable to lookup User...' TO"
+  },
+  {
+    "seq": 94,
+    "paragraph": "READ-USER-SEC-FILE",
+    "line": 298,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "FNAMEL",
+      "COUSR3AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      93
+    ],
+    "cfg_successors": [
+      95
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO FNAMEL OF COUSR3AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 95,
+    "paragraph": "READ-USER-SEC-FILE",
+    "line": 299,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-USRDEL-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      94
+    ],
+    "cfg_successors": [
+      64
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-USRDEL-SCREEN",
+    "cfg_perform_target": "SEND-USRDEL-SCREEN"
+  },
+  {
+    "seq": 96,
+    "paragraph": "DELETE-USER-SEC-FILE",
+    "line": 307,
+    "verb": "EXEC CICS",
+    "operands": [
+      "DELETE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      95,
+      57
+    ],
+    "cfg_successors": [
+      97
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS DELETE",
+    "operand_unresolved": true,
+    "cics_command": "DELETE"
+  },
+  {
+    "seq": 97,
+    "paragraph": "DELETE-USER-SEC-FILE",
+    "line": 313,
+    "verb": "EVALUATE",
+    "operands": [
+      "WS-RESP-CD"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      96
+    ],
+    "cfg_successors": [
+      98
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE WS-RESP-CD"
+  },
+  {
+    "seq": 98,
+    "paragraph": "DELETE-USER-SEC-FILE",
+    "line": 315,
+    "verb": "PERFORM",
+    "operands": [
+      "INITIALIZE-ALL-FIELDS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      97
+    ],
+    "cfg_successors": [
+      114
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM INITIALIZE-ALL-FIELDS",
+    "cfg_perform_target": "INITIALIZE-ALL-FIELDS"
+  },
+  {
+    "seq": 99,
+    "paragraph": "DELETE-USER-SEC-FILE",
+    "line": 316,
+    "verb": "MOVE",
+    "operands": [
+      "WS-MESSAGE"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      98
+    ],
+    "cfg_successors": [
+      100
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE SPACES TO WS-MESSAGE"
+  },
+  {
+    "seq": 100,
+    "paragraph": "DELETE-USER-SEC-FILE",
+    "line": 317,
+    "verb": "MOVE",
+    "operands": [
+      "DFHGREEN",
+      "ERRMSGC",
+      "COUSR3AO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      99
+    ],
+    "cfg_successors": [
+      101
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DFHGREEN TO ERRMSGC OF COUSR3AO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 101,
+    "paragraph": "DELETE-USER-SEC-FILE",
+    "line": 318,
+    "verb": "STRING",
+    "operands": [
+      "'User '",
+      "DELIMITED"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      100
+    ],
+    "cfg_successors": [
+      102
+    ],
+    "division": "PROCEDURE",
+    "raw": "STRING 'User ' DELIMITED BY SIZE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 102,
+    "paragraph": "DELETE-USER-SEC-FILE",
+    "line": 322,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-USRDEL-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      101
+    ],
+    "cfg_successors": [
+      64
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-USRDEL-SCREEN",
+    "cfg_perform_target": "SEND-USRDEL-SCREEN"
+  },
+  {
+    "seq": 103,
+    "paragraph": "DELETE-USER-SEC-FILE",
+    "line": 324,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      102
+    ],
+    "cfg_successors": [
+      104
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 104,
+    "paragraph": "DELETE-USER-SEC-FILE",
+    "line": 325,
+    "verb": "MOVE",
+    "operands": [
+      "'User ID NOT found...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      103
+    ],
+    "cfg_successors": [
+      105
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'User ID NOT found...' TO"
+  },
+  {
+    "seq": 105,
+    "paragraph": "DELETE-USER-SEC-FILE",
+    "line": 327,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "USRIDINL",
+      "COUSR3AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      104
+    ],
+    "cfg_successors": [
+      106
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO USRIDINL OF COUSR3AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 106,
+    "paragraph": "DELETE-USER-SEC-FILE",
+    "line": 328,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-USRDEL-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      105
+    ],
+    "cfg_successors": [
+      64
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-USRDEL-SCREEN",
+    "cfg_perform_target": "SEND-USRDEL-SCREEN"
+  },
+  {
+    "seq": 107,
+    "paragraph": "DELETE-USER-SEC-FILE",
+    "line": 330,
+    "verb": "DISPLAY",
+    "operands": [
+      "'RESP:'",
+      "WS-RESP-CD",
+      "'REAS:'",
+      "WS-REAS-CD"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage",
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      106
+    ],
+    "cfg_successors": [
+      108
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'RESP:' WS-RESP-CD 'REAS:' WS-REAS-CD"
+  },
+  {
+    "seq": 108,
+    "paragraph": "DELETE-USER-SEC-FILE",
+    "line": 331,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "WS-ERR-FLG"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      107
+    ],
+    "cfg_successors": [
+      109
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO WS-ERR-FLG"
+  },
+  {
+    "seq": 109,
+    "paragraph": "DELETE-USER-SEC-FILE",
+    "line": 332,
+    "verb": "MOVE",
+    "operands": [
+      "'Unable to Update User...'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      108
+    ],
+    "cfg_successors": [
+      110
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Unable to Update User...' TO"
+  },
+  {
+    "seq": 110,
+    "paragraph": "DELETE-USER-SEC-FILE",
+    "line": 334,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "FNAMEL",
+      "COUSR3AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      109
+    ],
+    "cfg_successors": [
+      111
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO FNAMEL OF COUSR3AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 111,
+    "paragraph": "DELETE-USER-SEC-FILE",
+    "line": 335,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-USRDEL-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      110
+    ],
+    "cfg_successors": [
+      64
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-USRDEL-SCREEN",
+    "cfg_perform_target": "SEND-USRDEL-SCREEN"
+  },
+  {
+    "seq": 112,
+    "paragraph": "CLEAR-CURRENT-SCREEN",
+    "line": 343,
+    "verb": "PERFORM",
+    "operands": [
+      "INITIALIZE-ALL-FIELDS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      111,
+      23
+    ],
+    "cfg_successors": [
+      114
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM INITIALIZE-ALL-FIELDS.",
+    "cfg_perform_target": "INITIALIZE-ALL-FIELDS"
+  },
+  {
+    "seq": 113,
+    "paragraph": "CLEAR-CURRENT-SCREEN",
+    "line": 344,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-USRDEL-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      112
+    ],
+    "cfg_successors": [
+      64
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-USRDEL-SCREEN.",
+    "cfg_perform_target": "SEND-USRDEL-SCREEN"
+  },
+  {
+    "seq": 114,
+    "paragraph": "INITIALIZE-ALL-FIELDS",
+    "line": 351,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "USRIDINL",
+      "COUSR3AI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      113,
+      98,
+      112
+    ],
+    "cfg_successors": [
+      115
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO USRIDINL OF COUSR3AI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 115,
+    "paragraph": "INITIALIZE-ALL-FIELDS",
+    "line": 352,
+    "verb": "MOVE",
+    "operands": [
+      "USRIDINI",
+      "COUSR3AI"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      114
+    ],
+    "cfg_successors": [],
+    "division": "PROCEDURE",
+    "raw": "MOVE SPACES TO USRIDINI OF COUSR3AI",
+    "operand_unresolved": true
+  }
+]

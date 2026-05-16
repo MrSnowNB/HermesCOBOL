@@ -1,0 +1,141 @@
+{
+  "program": "COCRDUPC",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COCRDUPC.cbl",
+  "source_sha256": "48314bf3485b4760c5fafbdb07c5322b76786d0ed39579894be40535829c0113",
+  "cfg_path": "validation\\pass1\\COCRDUPC_annotations.json",
+  "cfg_sha256": "9568b36ed9cb6fe8981261464c7fae26949ad1a2163d0d9d2c81bcc45245529c",
+  "paragraphs": [
+    {
+      "paragraph": "MAIN-PARA",
+      "first_line": 122,
+      "last_line": 272,
+      "terminator": "implicit",
+      "falls_through_to": "COMMON-RETURN",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM COMMON-RETURN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "COMMON-RETURN",
+      "first_line": 276,
+      "last_line": 278,
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "3000-SEND-MAP",
+      "first_line": 291,
+      "last_line": 317,
+      "terminator": "implicit",
+      "falls_through_to": "3000-SEND-MAP-EXIT",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS SEND MAP('CCRDUPA')",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "3000-SEND-MAP-EXIT",
+      "first_line": 323,
+      "last_line": 323,
+      "terminator": "implicit",
+      "falls_through_to": "3001-INIT-AND-SHOW-MAP",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3001-INIT-AND-SHOW-MAP",
+      "first_line": 332,
+      "last_line": 337,
+      "terminator": "implicit",
+      "falls_through_to": "3001-INIT-AND-SHOW-MAP-EXIT",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM COMMON-RETURN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3001-INIT-AND-SHOW-MAP-EXIT",
+      "first_line": 339,
+      "last_line": 339,
+      "terminator": "implicit",
+      "falls_through_to": "2000-PROCESS-INPUTS",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2000-PROCESS-INPUTS",
+      "first_line": 349,
+      "last_line": 361,
+      "terminator": "implicit",
+      "falls_through_to": "2000-PROCESS-INPUTS-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE 'CARD NUMBER MUST BE ENTERED'",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2000-PROCESS-INPUTS-EXIT",
+      "first_line": 365,
+      "last_line": 365,
+      "terminator": "implicit",
+      "falls_through_to": "9000-READ-DATA",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9000-READ-DATA",
+      "first_line": 372,
+      "last_line": 373,
+      "terminator": "implicit",
+      "falls_through_to": "9000-READ-DATA-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE CDEMO-CARD-NUM TO CC-CARD-NUM-N",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9000-READ-DATA-EXIT",
+      "first_line": 375,
+      "last_line": 375,
+      "terminator": "implicit",
+      "falls_through_to": "5000-UPDATE-RECORD",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "5000-UPDATE-RECORD",
+      "first_line": 382,
+      "last_line": 382,
+      "terminator": "implicit",
+      "falls_through_to": "5000-UPDATE-RECORD-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE CC-CARD-NUM-N TO CDEMO-CARD-NUM",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "5000-UPDATE-RECORD-EXIT",
+      "first_line": 384,
+      "last_line": 384,
+      "terminator": "implicit",
+      "falls_through_to": "9999-RETURN",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9999-RETURN",
+      "first_line": 391,
+      "last_line": 396,
+      "terminator": "cics-xctl",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS XCTL",
+      "classification_source": "raw"
+    }
+  ],
+  "c5_assertion": "PASS",
+  "c5_violations": []
+}

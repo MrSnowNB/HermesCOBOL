@@ -1,0 +1,5922 @@
+[
+  {
+    "seq": 1,
+    "paragraph": "0000-MAIN",
+    "line": 264,
+    "verb": "EXEC CICS",
+    "operands": [
+      "HANDLE",
+      "ABEND"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EXEC CICS HANDLE HANDLE ABEND",
+    "cfg_predecessors": [],
+    "cfg_successors": [
+      2
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS HANDLE ABEND",
+    "operand_unresolved": true,
+    "is_cics_branch": true,
+    "cics_command": "HANDLE"
+  },
+  {
+    "seq": 2,
+    "paragraph": "0000-MAIN",
+    "line": 268,
+    "verb": "INITIALIZE",
+    "operands": [
+      "CC-WORK-AREA"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      1
+    ],
+    "cfg_successors": [
+      3
+    ],
+    "division": "PROCEDURE",
+    "raw": "INITIALIZE CC-WORK-AREA",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 3,
+    "paragraph": "0000-MAIN",
+    "line": 274,
+    "verb": "MOVE",
+    "operands": [
+      "LIT-THISTRANID",
+      "WS-TRANID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      2
+    ],
+    "cfg_successors": [
+      4
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LIT-THISTRANID TO WS-TRANID"
+  },
+  {
+    "seq": 4,
+    "paragraph": "0000-MAIN",
+    "line": 278,
+    "verb": "SET",
+    "operands": [
+      "WS-RETURN-MSG-OFF",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      3
+    ],
+    "cfg_successors": [
+      5
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET WS-RETURN-MSG-OFF TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 5,
+    "paragraph": "0000-MAIN",
+    "line": 282,
+    "verb": "IF",
+    "operands": [
+      "EIBCALEN",
+      "0"
+    ],
+    "operand_types": [
+      "unresolved",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN IS EQUAL TO 0",
+    "cfg_predecessors": [
+      4
+    ],
+    "cfg_successors": [
+      6
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF EIBCALEN IS EQUAL TO 0",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 6,
+    "paragraph": "0000-MAIN",
+    "line": 285,
+    "verb": "INITIALIZE",
+    "operands": [
+      "CARDDEMO-COMMAREA"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN IS EQUAL TO 0",
+    "cfg_predecessors": [
+      5
+    ],
+    "cfg_successors": [
+      7
+    ],
+    "division": "PROCEDURE",
+    "raw": "INITIALIZE CARDDEMO-COMMAREA",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 7,
+    "paragraph": "0000-MAIN",
+    "line": 288,
+    "verb": "MOVE",
+    "operands": [
+      "DFHCOMMAREA",
+      "1",
+      "LENGTH",
+      "CARDDEMO-COMMAREA"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN IS EQUAL TO 0",
+    "cfg_predecessors": [
+      6
+    ],
+    "cfg_successors": [
+      8
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DFHCOMMAREA (1:LENGTH OF CARDDEMO-COMMAREA) TO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 8,
+    "paragraph": "0000-MAIN",
+    "line": 290,
+    "verb": "MOVE",
+    "operands": [
+      "DFHCOMMAREA",
+      "LENGTH",
+      "CARDDEMO-COMMAREA",
+      "1"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN IS EQUAL TO 0",
+    "cfg_predecessors": [
+      7
+    ],
+    "cfg_successors": [
+      9
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DFHCOMMAREA(LENGTH OF CARDDEMO-COMMAREA + 1:",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 9,
+    "paragraph": "0000-MAIN",
+    "line": 299,
+    "verb": "PERFORM",
+    "operands": [
+      "YYYY-STORE-PFKEY"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      8
+    ],
+    "cfg_successors": [
+      10
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM YYYY-STORE-PFKEY",
+    "cfg_edge_unresolved": true
+  },
+  {
+    "seq": 10,
+    "paragraph": "0000-MAIN",
+    "line": 306,
+    "verb": "SET",
+    "operands": [
+      "PFK-INVALID",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      9
+    ],
+    "cfg_successors": [
+      11
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET PFK-INVALID TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 11,
+    "paragraph": "0000-MAIN",
+    "line": 307,
+    "verb": "IF",
+    "operands": [
+      "CCARD-AID-ENTER"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CCARD-AID-ENTER OR",
+    "cfg_predecessors": [
+      10
+    ],
+    "cfg_successors": [
+      12
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF CCARD-AID-ENTER OR",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 12,
+    "paragraph": "0000-MAIN",
+    "line": 309,
+    "verb": "SET",
+    "operands": [
+      "PFK-VALID",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CCARD-AID-ENTER OR",
+    "cfg_predecessors": [
+      11
+    ],
+    "cfg_successors": [
+      13
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET PFK-VALID TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 13,
+    "paragraph": "0000-MAIN",
+    "line": 312,
+    "verb": "IF",
+    "operands": [
+      "PFK-INVALID"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF PFK-INVALID",
+    "cfg_predecessors": [
+      12
+    ],
+    "cfg_successors": [
+      14
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF PFK-INVALID"
+  },
+  {
+    "seq": 14,
+    "paragraph": "0000-MAIN",
+    "line": 313,
+    "verb": "SET",
+    "operands": [
+      "CCARD-AID-ENTER",
+      "TRUE"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF PFK-INVALID",
+    "cfg_predecessors": [
+      13
+    ],
+    "cfg_successors": [
+      15
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET CCARD-AID-ENTER TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 15,
+    "paragraph": "0000-MAIN",
+    "line": 323,
+    "verb": "EVALUATE",
+    "operands": [
+      "TRUE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      14
+    ],
+    "cfg_successors": [
+      16
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 16,
+    "paragraph": "0000-MAIN",
+    "line": 328,
+    "verb": "IF",
+    "operands": [
+      "CDEMO-FROM-TRANID"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      15
+    ],
+    "cfg_successors": [
+      17
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF CDEMO-FROM-TRANID EQUAL LOW-VALUES",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 17,
+    "paragraph": "0000-MAIN",
+    "line": 330,
+    "verb": "MOVE",
+    "operands": [
+      "LIT-MENUTRANID",
+      "CDEMO-TO-TRANID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      16
+    ],
+    "cfg_successors": [
+      18
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LIT-MENUTRANID TO CDEMO-TO-TRANID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 18,
+    "paragraph": "0000-MAIN",
+    "line": 332,
+    "verb": "MOVE",
+    "operands": [
+      "CDEMO-FROM-TRANID",
+      "CDEMO-TO-TRANID"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      17
+    ],
+    "cfg_successors": [
+      19
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CDEMO-FROM-TRANID TO CDEMO-TO-TRANID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 19,
+    "paragraph": "0000-MAIN",
+    "line": 334,
+    "verb": "IF",
+    "operands": [
+      "CDEMO-FROM-PROGRAM"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CDEMO-FROM-PROGRAM EQUAL LOW-VALUES",
+    "cfg_predecessors": [
+      18
+    ],
+    "cfg_successors": [
+      20
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF CDEMO-FROM-PROGRAM EQUAL LOW-VALUES",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 20,
+    "paragraph": "0000-MAIN",
+    "line": 336,
+    "verb": "MOVE",
+    "operands": [
+      "LIT-MENUPGM",
+      "CDEMO-TO-PROGRAM"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CDEMO-FROM-PROGRAM EQUAL LOW-VALUES",
+    "cfg_predecessors": [
+      19
+    ],
+    "cfg_successors": [
+      21
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LIT-MENUPGM TO CDEMO-TO-PROGRAM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 21,
+    "paragraph": "0000-MAIN",
+    "line": 338,
+    "verb": "MOVE",
+    "operands": [
+      "CDEMO-FROM-PROGRAM",
+      "CDEMO-TO-PROGRAM"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CDEMO-FROM-PROGRAM EQUAL LOW-VALUES",
+    "cfg_predecessors": [
+      20
+    ],
+    "cfg_successors": [
+      22
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CDEMO-FROM-PROGRAM TO CDEMO-TO-PROGRAM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 22,
+    "paragraph": "0000-MAIN",
+    "line": 341,
+    "verb": "MOVE",
+    "operands": [
+      "LIT-THISTRANID",
+      "CDEMO-FROM-TRANID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      21
+    ],
+    "cfg_successors": [
+      23
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LIT-THISTRANID TO CDEMO-FROM-TRANID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 23,
+    "paragraph": "0000-MAIN",
+    "line": 342,
+    "verb": "MOVE",
+    "operands": [
+      "LIT-THISPGM",
+      "CDEMO-FROM-PROGRAM"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      22
+    ],
+    "cfg_successors": [
+      24
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LIT-THISPGM TO CDEMO-FROM-PROGRAM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 24,
+    "paragraph": "0000-MAIN",
+    "line": 344,
+    "verb": "SET",
+    "operands": [
+      "CDEMO-USRTYP-USER",
+      "TRUE"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      23
+    ],
+    "cfg_successors": [
+      25
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET CDEMO-USRTYP-USER TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 25,
+    "paragraph": "0000-MAIN",
+    "line": 345,
+    "verb": "SET",
+    "operands": [
+      "CDEMO-PGM-ENTER",
+      "TRUE"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      24
+    ],
+    "cfg_successors": [
+      26
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET CDEMO-PGM-ENTER TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 26,
+    "paragraph": "0000-MAIN",
+    "line": 346,
+    "verb": "MOVE",
+    "operands": [
+      "LIT-THISMAPSET",
+      "CDEMO-LAST-MAPSET"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      25
+    ],
+    "cfg_successors": [
+      27
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LIT-THISMAPSET TO CDEMO-LAST-MAPSET",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 27,
+    "paragraph": "0000-MAIN",
+    "line": 347,
+    "verb": "MOVE",
+    "operands": [
+      "LIT-THISMAP",
+      "CDEMO-LAST-MAP"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      26
+    ],
+    "cfg_successors": [
+      28
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LIT-THISMAP TO CDEMO-LAST-MAP",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 28,
+    "paragraph": "0000-MAIN",
+    "line": 349,
+    "verb": "EXEC CICS",
+    "operands": [
+      "XCTL"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EXEC CICS XCTL XCTL",
+    "cfg_predecessors": [
+      27
+    ],
+    "cfg_successors": [
+      29
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS XCTL",
+    "operand_unresolved": true,
+    "is_cics_branch": true,
+    "cics_command": "XCTL"
+  },
+  {
+    "seq": 29,
+    "paragraph": "0000-MAIN",
+    "line": 358,
+    "verb": "PERFORM",
+    "operands": [
+      "1000-SEND-MAP"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      28
+    ],
+    "cfg_successors": [
+      53
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1000-SEND-MAP THRU",
+    "cfg_perform_target": "1000-SEND-MAP"
+  },
+  {
+    "seq": 30,
+    "paragraph": "0000-MAIN",
+    "line": 360,
+    "verb": "GO TO",
+    "operands": [
+      "COMMON-RETURN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      29
+    ],
+    "cfg_successors": [
+      47
+    ],
+    "division": "PROCEDURE",
+    "raw": "GO TO COMMON-RETURN",
+    "cfg_branch_unresolved": true,
+    "cfg_goto_target": "COMMON-RETURN"
+  },
+  {
+    "seq": 31,
+    "paragraph": "0000-MAIN",
+    "line": 362,
+    "verb": "PERFORM",
+    "operands": [
+      "2000-PROCESS-INPUTS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      30
+    ],
+    "cfg_successors": [
+      133
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 2000-PROCESS-INPUTS",
+    "cfg_perform_target": "2000-PROCESS-INPUTS"
+  },
+  {
+    "seq": 32,
+    "paragraph": "0000-MAIN",
+    "line": 364,
+    "verb": "IF",
+    "operands": [
+      "INPUT-ERROR"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF INPUT-ERROR",
+    "cfg_predecessors": [
+      31
+    ],
+    "cfg_successors": [
+      33
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF INPUT-ERROR"
+  },
+  {
+    "seq": 33,
+    "paragraph": "0000-MAIN",
+    "line": 365,
+    "verb": "PERFORM",
+    "operands": [
+      "1000-SEND-MAP"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF INPUT-ERROR",
+    "cfg_predecessors": [
+      32
+    ],
+    "cfg_successors": [
+      53
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1000-SEND-MAP",
+    "cfg_perform_target": "1000-SEND-MAP"
+  },
+  {
+    "seq": 34,
+    "paragraph": "0000-MAIN",
+    "line": 367,
+    "verb": "GO TO",
+    "operands": [
+      "COMMON-RETURN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF INPUT-ERROR",
+    "cfg_predecessors": [
+      33
+    ],
+    "cfg_successors": [
+      47
+    ],
+    "division": "PROCEDURE",
+    "raw": "GO TO COMMON-RETURN",
+    "cfg_goto_target": "COMMON-RETURN"
+  },
+  {
+    "seq": 35,
+    "paragraph": "0000-MAIN",
+    "line": 369,
+    "verb": "PERFORM",
+    "operands": [
+      "9000-READ-ACCT"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF INPUT-ERROR",
+    "cfg_predecessors": [
+      34
+    ],
+    "cfg_successors": [
+      169
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9000-READ-ACCT",
+    "cfg_perform_target": "9000-READ-ACCT"
+  },
+  {
+    "seq": 36,
+    "paragraph": "0000-MAIN",
+    "line": 371,
+    "verb": "PERFORM",
+    "operands": [
+      "1000-SEND-MAP"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF INPUT-ERROR",
+    "cfg_predecessors": [
+      35
+    ],
+    "cfg_successors": [
+      53
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1000-SEND-MAP",
+    "cfg_perform_target": "1000-SEND-MAP"
+  },
+  {
+    "seq": 37,
+    "paragraph": "0000-MAIN",
+    "line": 373,
+    "verb": "GO TO",
+    "operands": [
+      "COMMON-RETURN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF INPUT-ERROR",
+    "cfg_predecessors": [
+      36
+    ],
+    "cfg_successors": [
+      47
+    ],
+    "division": "PROCEDURE",
+    "raw": "GO TO COMMON-RETURN",
+    "cfg_goto_target": "COMMON-RETURN"
+  },
+  {
+    "seq": 38,
+    "paragraph": "0000-MAIN",
+    "line": 376,
+    "verb": "MOVE",
+    "operands": [
+      "LIT-THISPGM",
+      "ABEND-CULPRIT"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      37
+    ],
+    "cfg_successors": [
+      39
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LIT-THISPGM TO ABEND-CULPRIT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 39,
+    "paragraph": "0000-MAIN",
+    "line": 377,
+    "verb": "MOVE",
+    "operands": [
+      "'0001'",
+      "ABEND-CODE"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      38
+    ],
+    "cfg_successors": [
+      40
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE '0001' TO ABEND-CODE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 40,
+    "paragraph": "0000-MAIN",
+    "line": 378,
+    "verb": "MOVE",
+    "operands": [
+      "ABEND-REASON"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      39
+    ],
+    "cfg_successors": [
+      41
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE SPACES TO ABEND-REASON",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 41,
+    "paragraph": "0000-MAIN",
+    "line": 379,
+    "verb": "MOVE",
+    "operands": [
+      "'UNEXPECTED DATA SCENARIO'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      40
+    ],
+    "cfg_successors": [
+      42
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'UNEXPECTED DATA SCENARIO'"
+  },
+  {
+    "seq": 42,
+    "paragraph": "0000-MAIN",
+    "line": 381,
+    "verb": "PERFORM",
+    "operands": [
+      "SEND-PLAIN-TEXT"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      41
+    ],
+    "cfg_successors": [
+      234
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM SEND-PLAIN-TEXT",
+    "cfg_perform_target": "SEND-PLAIN-TEXT"
+  },
+  {
+    "seq": 43,
+    "paragraph": "0000-MAIN",
+    "line": 387,
+    "verb": "IF",
+    "operands": [
+      "INPUT-ERROR"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF INPUT-ERROR",
+    "cfg_predecessors": [
+      42
+    ],
+    "cfg_successors": [
+      44
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF INPUT-ERROR"
+  },
+  {
+    "seq": 44,
+    "paragraph": "0000-MAIN",
+    "line": 388,
+    "verb": "MOVE",
+    "operands": [
+      "WS-RETURN-MSG",
+      "CCARD-ERROR-MSG"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF INPUT-ERROR",
+    "cfg_predecessors": [
+      43
+    ],
+    "cfg_successors": [
+      45
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-RETURN-MSG TO CCARD-ERROR-MSG",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 45,
+    "paragraph": "0000-MAIN",
+    "line": 389,
+    "verb": "PERFORM",
+    "operands": [
+      "1000-SEND-MAP"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF INPUT-ERROR",
+    "cfg_predecessors": [
+      44
+    ],
+    "cfg_successors": [
+      53
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1000-SEND-MAP",
+    "cfg_perform_target": "1000-SEND-MAP"
+  },
+  {
+    "seq": 46,
+    "paragraph": "0000-MAIN",
+    "line": 391,
+    "verb": "GO TO",
+    "operands": [
+      "COMMON-RETURN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF INPUT-ERROR",
+    "cfg_predecessors": [
+      45
+    ],
+    "cfg_successors": [
+      47
+    ],
+    "division": "PROCEDURE",
+    "raw": "GO TO COMMON-RETURN",
+    "cfg_goto_target": "COMMON-RETURN"
+  },
+  {
+    "seq": 47,
+    "paragraph": "COMMON-RETURN",
+    "line": 395,
+    "verb": "MOVE",
+    "operands": [
+      "WS-RETURN-MSG",
+      "CCARD-ERROR-MSG"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      46,
+      30,
+      34,
+      37
+    ],
+    "cfg_successors": [
+      48
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-RETURN-MSG TO CCARD-ERROR-MSG",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 48,
+    "paragraph": "COMMON-RETURN",
+    "line": 397,
+    "verb": "MOVE",
+    "operands": [
+      "CARDDEMO-COMMAREA",
+      "WS-COMMAREA"
+    ],
+    "operand_types": [
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      47
+    ],
+    "cfg_successors": [
+      49
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CARDDEMO-COMMAREA TO WS-COMMAREA",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 49,
+    "paragraph": "COMMON-RETURN",
+    "line": 398,
+    "verb": "MOVE",
+    "operands": [
+      "WS-THIS-PROGCOMMAREA"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      48
+    ],
+    "cfg_successors": [
+      50
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-THIS-PROGCOMMAREA TO"
+  },
+  {
+    "seq": 50,
+    "paragraph": "COMMON-RETURN",
+    "line": 402,
+    "verb": "EXEC CICS",
+    "operands": [
+      "RETURN"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EXEC CICS RETURN RETURN",
+    "cfg_predecessors": [
+      49
+    ],
+    "cfg_successors": [
+      51
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS RETURN",
+    "operand_unresolved": true,
+    "is_cics_branch": true,
+    "cics_command": "RETURN"
+  },
+  {
+    "seq": 51,
+    "paragraph": "0000-MAIN-EXIT",
+    "line": 409,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      50
+    ],
+    "cfg_successors": [
+      52
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT"
+  },
+  {
+    "seq": 52,
+    "paragraph": "0000-MAIN-EXIT",
+    "line": 412,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      51
+    ],
+    "cfg_successors": [
+      53
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT"
+  },
+  {
+    "seq": 53,
+    "paragraph": "1000-SEND-MAP",
+    "line": 417,
+    "verb": "PERFORM",
+    "operands": [
+      "1100-SCREEN-INIT"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      52,
+      29,
+      33,
+      36,
+      45
+    ],
+    "cfg_successors": [
+      58
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1100-SCREEN-INIT",
+    "cfg_perform_target": "1100-SCREEN-INIT"
+  },
+  {
+    "seq": 54,
+    "paragraph": "1000-SEND-MAP",
+    "line": 419,
+    "verb": "PERFORM",
+    "operands": [
+      "1200-SETUP-SCREEN-VARS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      53
+    ],
+    "cfg_successors": [
+      74
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1200-SETUP-SCREEN-VARS",
+    "cfg_perform_target": "1200-SETUP-SCREEN-VARS"
+  },
+  {
+    "seq": 55,
+    "paragraph": "1000-SEND-MAP",
+    "line": 421,
+    "verb": "PERFORM",
+    "operands": [
+      "1300-SETUP-SCREEN-ATTRS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      54
+    ],
+    "cfg_successors": [
+      114
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1300-SETUP-SCREEN-ATTRS",
+    "cfg_perform_target": "1300-SETUP-SCREEN-ATTRS"
+  },
+  {
+    "seq": 56,
+    "paragraph": "1000-SEND-MAP",
+    "line": 423,
+    "verb": "PERFORM",
+    "operands": [
+      "1400-SEND-SCREEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      55
+    ],
+    "cfg_successors": [
+      128
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1400-SEND-SCREEN",
+    "cfg_perform_target": "1400-SEND-SCREEN"
+  },
+  {
+    "seq": 57,
+    "paragraph": "1000-SEND-MAP-EXIT",
+    "line": 428,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      56
+    ],
+    "cfg_successors": [
+      58
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT"
+  },
+  {
+    "seq": 58,
+    "paragraph": "1100-SCREEN-INIT",
+    "line": 432,
+    "verb": "MOVE",
+    "operands": [
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      57,
+      53
+    ],
+    "cfg_successors": [
+      59
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LOW-VALUES TO CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 59,
+    "paragraph": "1100-SCREEN-INIT",
+    "line": 434,
+    "verb": "MOVE",
+    "operands": [
+      "FUNCTION",
+      "CURRENT-DATE",
+      "WS-CURDATE-DATA"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      58
+    ],
+    "cfg_successors": [
+      60
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE FUNCTION CURRENT-DATE TO WS-CURDATE-DATA",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 60,
+    "paragraph": "1100-SCREEN-INIT",
+    "line": 436,
+    "verb": "MOVE",
+    "operands": [
+      "CCDA-TITLE01",
+      "TITLE01O",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      59
+    ],
+    "cfg_successors": [
+      61
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CCDA-TITLE01 TO TITLE01O OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 61,
+    "paragraph": "1100-SCREEN-INIT",
+    "line": 437,
+    "verb": "MOVE",
+    "operands": [
+      "CCDA-TITLE02",
+      "TITLE02O",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      60
+    ],
+    "cfg_successors": [
+      62
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CCDA-TITLE02 TO TITLE02O OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 62,
+    "paragraph": "1100-SCREEN-INIT",
+    "line": 438,
+    "verb": "MOVE",
+    "operands": [
+      "LIT-THISTRANID",
+      "TRNNAMEO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      61
+    ],
+    "cfg_successors": [
+      63
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LIT-THISTRANID TO TRNNAMEO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 63,
+    "paragraph": "1100-SCREEN-INIT",
+    "line": 439,
+    "verb": "MOVE",
+    "operands": [
+      "LIT-THISPGM",
+      "PGMNAMEO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      62
+    ],
+    "cfg_successors": [
+      64
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LIT-THISPGM TO PGMNAMEO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 64,
+    "paragraph": "1100-SCREEN-INIT",
+    "line": 441,
+    "verb": "MOVE",
+    "operands": [
+      "FUNCTION",
+      "CURRENT-DATE",
+      "WS-CURDATE-DATA"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      63
+    ],
+    "cfg_successors": [
+      65
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE FUNCTION CURRENT-DATE TO WS-CURDATE-DATA",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 65,
+    "paragraph": "1100-SCREEN-INIT",
+    "line": 443,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-MONTH",
+      "WS-CURDATE-MM"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      64
+    ],
+    "cfg_successors": [
+      66
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-MONTH TO WS-CURDATE-MM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 66,
+    "paragraph": "1100-SCREEN-INIT",
+    "line": 444,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-DAY",
+      "WS-CURDATE-DD"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      65
+    ],
+    "cfg_successors": [
+      67
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-DAY TO WS-CURDATE-DD",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 67,
+    "paragraph": "1100-SCREEN-INIT",
+    "line": 445,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-YEAR",
+      "3",
+      "2",
+      "WS-CURDATE-YY"
+    ],
+    "operand_types": [
+      "unresolved",
+      "literal",
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      66
+    ],
+    "cfg_successors": [
+      68
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-YEAR(3:2) TO WS-CURDATE-YY",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 68,
+    "paragraph": "1100-SCREEN-INIT",
+    "line": 447,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURDATE-MM-DD-YY",
+      "CURDATEO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      67
+    ],
+    "cfg_successors": [
+      69
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURDATE-MM-DD-YY TO CURDATEO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 69,
+    "paragraph": "1100-SCREEN-INIT",
+    "line": 449,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURTIME-HOURS",
+      "WS-CURTIME-HH"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      68
+    ],
+    "cfg_successors": [
+      70
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURTIME-HOURS TO WS-CURTIME-HH",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 70,
+    "paragraph": "1100-SCREEN-INIT",
+    "line": 450,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURTIME-MINUTE",
+      "WS-CURTIME-MM"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      69
+    ],
+    "cfg_successors": [
+      71
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURTIME-MINUTE TO WS-CURTIME-MM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 71,
+    "paragraph": "1100-SCREEN-INIT",
+    "line": 451,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURTIME-SECOND",
+      "WS-CURTIME-SS"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      70
+    ],
+    "cfg_successors": [
+      72
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURTIME-SECOND TO WS-CURTIME-SS",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 72,
+    "paragraph": "1100-SCREEN-INIT",
+    "line": 453,
+    "verb": "MOVE",
+    "operands": [
+      "WS-CURTIME-HH-MM-SS",
+      "CURTIMEO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      71
+    ],
+    "cfg_successors": [
+      73
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-CURTIME-HH-MM-SS TO CURTIMEO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 73,
+    "paragraph": "1100-SCREEN-INIT-EXIT",
+    "line": 458,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      72
+    ],
+    "cfg_successors": [
+      74
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT"
+  },
+  {
+    "seq": 74,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 462,
+    "verb": "IF",
+    "operands": [
+      "EIBCALEN",
+      "0"
+    ],
+    "operand_types": [
+      "unresolved",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      73,
+      54
+    ],
+    "cfg_successors": [
+      75
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF EIBCALEN = 0",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 75,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 463,
+    "verb": "SET",
+    "operands": [
+      "WS-PROMPT-FOR-INPUT",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      74
+    ],
+    "cfg_successors": [
+      76
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET WS-PROMPT-FOR-INPUT TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 76,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 465,
+    "verb": "IF",
+    "operands": [
+      "FLG-ACCTFILTER-BLANK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      75
+    ],
+    "cfg_successors": [
+      77
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF FLG-ACCTFILTER-BLANK"
+  },
+  {
+    "seq": 77,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 466,
+    "verb": "MOVE",
+    "operands": [
+      "ACCTSIDO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      76
+    ],
+    "cfg_successors": [
+      78
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LOW-VALUES TO ACCTSIDO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 78,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 468,
+    "verb": "MOVE",
+    "operands": [
+      "CC-ACCT-ID",
+      "ACCTSIDO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF EIBCALEN = 0",
+    "cfg_predecessors": [
+      77
+    ],
+    "cfg_successors": [
+      79
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CC-ACCT-ID TO ACCTSIDO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 79,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 471,
+    "verb": "IF",
+    "operands": [
+      "FOUND-ACCT-IN-MASTER"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-ACCT-IN-MASTER",
+    "cfg_predecessors": [
+      78
+    ],
+    "cfg_successors": [
+      80
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF FOUND-ACCT-IN-MASTER"
+  },
+  {
+    "seq": 80,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 473,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-ACTIVE-STATUS",
+      "ACSTTUSO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-ACCT-IN-MASTER",
+    "cfg_predecessors": [
+      79
+    ],
+    "cfg_successors": [
+      81
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-ACTIVE-STATUS TO ACSTTUSO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 81,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 475,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-CURR-BAL",
+      "ACURBALO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-ACCT-IN-MASTER",
+    "cfg_predecessors": [
+      80
+    ],
+    "cfg_successors": [
+      82
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-CURR-BAL TO ACURBALO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 82,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 477,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-CREDIT-LIMIT",
+      "ACRDLIMO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-ACCT-IN-MASTER",
+    "cfg_predecessors": [
+      81
+    ],
+    "cfg_successors": [
+      83
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-CREDIT-LIMIT TO ACRDLIMO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 83,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 479,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-CASH-CREDIT-LIMIT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-ACCT-IN-MASTER",
+    "cfg_predecessors": [
+      82
+    ],
+    "cfg_successors": [
+      84
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-CASH-CREDIT-LIMIT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 84,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 482,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-CURR-CYC-CREDIT"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-ACCT-IN-MASTER",
+    "cfg_predecessors": [
+      83
+    ],
+    "cfg_successors": [
+      85
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-CURR-CYC-CREDIT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 85,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 485,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-CURR-CYC-DEBIT",
+      "ACRCYDBO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-ACCT-IN-MASTER",
+    "cfg_predecessors": [
+      84
+    ],
+    "cfg_successors": [
+      86
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-CURR-CYC-DEBIT TO ACRCYDBO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 86,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 487,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-OPEN-DATE",
+      "ADTOPENO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-ACCT-IN-MASTER",
+    "cfg_predecessors": [
+      85
+    ],
+    "cfg_successors": [
+      87
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-OPEN-DATE TO ADTOPENO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 87,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 488,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-EXPIRAION-DATE",
+      "AEXPDTO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-ACCT-IN-MASTER",
+    "cfg_predecessors": [
+      86
+    ],
+    "cfg_successors": [
+      88
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-EXPIRAION-DATE TO AEXPDTO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 88,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 489,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-REISSUE-DATE",
+      "AREISDTO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-ACCT-IN-MASTER",
+    "cfg_predecessors": [
+      87
+    ],
+    "cfg_successors": [
+      89
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-REISSUE-DATE TO AREISDTO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 89,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 490,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-GROUP-ID",
+      "AADDGRPO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-ACCT-IN-MASTER",
+    "cfg_predecessors": [
+      88
+    ],
+    "cfg_successors": [
+      90
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-GROUP-ID TO AADDGRPO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 90,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 493,
+    "verb": "IF",
+    "operands": [
+      "FOUND-CUST-IN-MASTER"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-CUST-IN-MASTER",
+    "cfg_predecessors": [
+      89
+    ],
+    "cfg_successors": [
+      91
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF FOUND-CUST-IN-MASTER"
+  },
+  {
+    "seq": 91,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 494,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-ID",
+      "ACSTNUMO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-CUST-IN-MASTER",
+    "cfg_predecessors": [
+      90
+    ],
+    "cfg_successors": [
+      92
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-ID TO ACSTNUMO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 92,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 496,
+    "verb": "STRING",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-CUST-IN-MASTER",
+    "cfg_predecessors": [
+      91
+    ],
+    "cfg_successors": [
+      93
+    ],
+    "division": "PROCEDURE",
+    "raw": "STRING"
+  },
+  {
+    "seq": 93,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 505,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-FICO-CREDIT-SCORE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-CUST-IN-MASTER",
+    "cfg_predecessors": [
+      92
+    ],
+    "cfg_successors": [
+      94
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-FICO-CREDIT-SCORE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 94,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 507,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-DOB-YYYY-MM-DD",
+      "ACSTDOBO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-CUST-IN-MASTER",
+    "cfg_predecessors": [
+      93
+    ],
+    "cfg_successors": [
+      95
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-DOB-YYYY-MM-DD TO ACSTDOBO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 95,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 508,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-FIRST-NAME",
+      "ACSFNAMO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-CUST-IN-MASTER",
+    "cfg_predecessors": [
+      94
+    ],
+    "cfg_successors": [
+      96
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-FIRST-NAME TO ACSFNAMO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 96,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 509,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-MIDDLE-NAME",
+      "ACSMNAMO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-CUST-IN-MASTER",
+    "cfg_predecessors": [
+      95
+    ],
+    "cfg_successors": [
+      97
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-MIDDLE-NAME TO ACSMNAMO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 97,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 510,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-LAST-NAME",
+      "ACSLNAMO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-CUST-IN-MASTER",
+    "cfg_predecessors": [
+      96
+    ],
+    "cfg_successors": [
+      98
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-LAST-NAME TO ACSLNAMO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 98,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 511,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-ADDR-LINE-1",
+      "ACSADL1O",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-CUST-IN-MASTER",
+    "cfg_predecessors": [
+      97
+    ],
+    "cfg_successors": [
+      99
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-ADDR-LINE-1 TO ACSADL1O OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 99,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 512,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-ADDR-LINE-2",
+      "ACSADL2O",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-CUST-IN-MASTER",
+    "cfg_predecessors": [
+      98
+    ],
+    "cfg_successors": [
+      100
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-ADDR-LINE-2 TO ACSADL2O OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 100,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 513,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-ADDR-LINE-3",
+      "ACSCITYO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-CUST-IN-MASTER",
+    "cfg_predecessors": [
+      99
+    ],
+    "cfg_successors": [
+      101
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-ADDR-LINE-3 TO ACSCITYO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 101,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 514,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-ADDR-STATE-CD",
+      "ACSSTTEO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-CUST-IN-MASTER",
+    "cfg_predecessors": [
+      100
+    ],
+    "cfg_successors": [
+      102
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-ADDR-STATE-CD TO ACSSTTEO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 102,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 515,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-ADDR-ZIP",
+      "ACSZIPCO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-CUST-IN-MASTER",
+    "cfg_predecessors": [
+      101
+    ],
+    "cfg_successors": [
+      103
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-ADDR-ZIP TO ACSZIPCO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 103,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 516,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-ADDR-COUNTRY-CD",
+      "ACSCTRYO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-CUST-IN-MASTER",
+    "cfg_predecessors": [
+      102
+    ],
+    "cfg_successors": [
+      104
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-ADDR-COUNTRY-CD TO ACSCTRYO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 104,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 517,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-PHONE-NUM-1",
+      "ACSPHN1O",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-CUST-IN-MASTER",
+    "cfg_predecessors": [
+      103
+    ],
+    "cfg_successors": [
+      105
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-PHONE-NUM-1 TO ACSPHN1O OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 105,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 518,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-PHONE-NUM-2",
+      "ACSPHN2O",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-CUST-IN-MASTER",
+    "cfg_predecessors": [
+      104
+    ],
+    "cfg_successors": [
+      106
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-PHONE-NUM-2 TO ACSPHN2O OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 106,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 519,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-GOVT-ISSUED-ID",
+      "ACSGOVTO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-CUST-IN-MASTER",
+    "cfg_predecessors": [
+      105
+    ],
+    "cfg_successors": [
+      107
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-GOVT-ISSUED-ID TO ACSGOVTO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 107,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 520,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-EFT-ACCOUNT-ID",
+      "ACSEFTCO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-CUST-IN-MASTER",
+    "cfg_predecessors": [
+      106
+    ],
+    "cfg_successors": [
+      108
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-EFT-ACCOUNT-ID TO ACSEFTCO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 108,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 521,
+    "verb": "MOVE",
+    "operands": [
+      "CUST-PRI-CARD-HOLDER-IND"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FOUND-CUST-IN-MASTER",
+    "cfg_predecessors": [
+      107
+    ],
+    "cfg_successors": [
+      109
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CUST-PRI-CARD-HOLDER-IND",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 109,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 528,
+    "verb": "IF",
+    "operands": [
+      "WS-NO-INFO-MESSAGE"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF WS-NO-INFO-MESSAGE",
+    "cfg_predecessors": [
+      108
+    ],
+    "cfg_successors": [
+      110
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF WS-NO-INFO-MESSAGE"
+  },
+  {
+    "seq": 110,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 529,
+    "verb": "SET",
+    "operands": [
+      "WS-PROMPT-FOR-INPUT",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF WS-NO-INFO-MESSAGE",
+    "cfg_predecessors": [
+      109
+    ],
+    "cfg_successors": [
+      111
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET WS-PROMPT-FOR-INPUT TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 111,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 532,
+    "verb": "MOVE",
+    "operands": [
+      "WS-RETURN-MSG",
+      "ERRMSGO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      110
+    ],
+    "cfg_successors": [
+      112
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-RETURN-MSG TO ERRMSGO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 112,
+    "paragraph": "1200-SETUP-SCREEN-VARS",
+    "line": 534,
+    "verb": "MOVE",
+    "operands": [
+      "WS-INFO-MSG",
+      "INFOMSGO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      111
+    ],
+    "cfg_successors": [
+      113
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-INFO-MSG TO INFOMSGO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 113,
+    "paragraph": "1200-SETUP-SCREEN-VARS-EXIT",
+    "line": 538,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      112
+    ],
+    "cfg_successors": [
+      114
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT"
+  },
+  {
+    "seq": 114,
+    "paragraph": "1300-SETUP-SCREEN-ATTRS",
+    "line": 543,
+    "verb": "MOVE",
+    "operands": [
+      "DFHBMFSE",
+      "ACCTSIDA",
+      "CACTVWAI"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      113,
+      55
+    ],
+    "cfg_successors": [
+      115
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DFHBMFSE TO ACCTSIDA OF CACTVWAI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 115,
+    "paragraph": "1300-SETUP-SCREEN-ATTRS",
+    "line": 546,
+    "verb": "EVALUATE",
+    "operands": [
+      "TRUE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      114
+    ],
+    "cfg_successors": [
+      116
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 116,
+    "paragraph": "1300-SETUP-SCREEN-ATTRS",
+    "line": 549,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "ACCTSIDL",
+      "CACTVWAI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      115
+    ],
+    "cfg_successors": [
+      117
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO ACCTSIDL OF CACTVWAI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 117,
+    "paragraph": "1300-SETUP-SCREEN-ATTRS",
+    "line": 551,
+    "verb": "MOVE",
+    "operands": [
+      "1",
+      "ACCTSIDL",
+      "CACTVWAI"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE TRUE",
+    "cfg_predecessors": [
+      116
+    ],
+    "cfg_successors": [
+      118
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE -1 TO ACCTSIDL OF CACTVWAI",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 118,
+    "paragraph": "1300-SETUP-SCREEN-ATTRS",
+    "line": 555,
+    "verb": "MOVE",
+    "operands": [
+      "DFHDFCOL",
+      "ACCTSIDC",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      117
+    ],
+    "cfg_successors": [
+      119
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DFHDFCOL TO ACCTSIDC OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 119,
+    "paragraph": "1300-SETUP-SCREEN-ATTRS",
+    "line": 557,
+    "verb": "IF",
+    "operands": [
+      "FLG-ACCTFILTER-NOT-OK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FLG-ACCTFILTER-NOT-OK",
+    "cfg_predecessors": [
+      118
+    ],
+    "cfg_successors": [
+      120
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF FLG-ACCTFILTER-NOT-OK"
+  },
+  {
+    "seq": 120,
+    "paragraph": "1300-SETUP-SCREEN-ATTRS",
+    "line": 558,
+    "verb": "MOVE",
+    "operands": [
+      "DFHRED",
+      "ACCTSIDC",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FLG-ACCTFILTER-NOT-OK",
+    "cfg_predecessors": [
+      119
+    ],
+    "cfg_successors": [
+      121
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DFHRED TO ACCTSIDC OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 121,
+    "paragraph": "1300-SETUP-SCREEN-ATTRS",
+    "line": 561,
+    "verb": "IF",
+    "operands": [
+      "FLG-ACCTFILTER-BLANK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FLG-ACCTFILTER-BLANK",
+    "cfg_predecessors": [
+      120
+    ],
+    "cfg_successors": [
+      122
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF FLG-ACCTFILTER-BLANK"
+  },
+  {
+    "seq": 122,
+    "paragraph": "1300-SETUP-SCREEN-ATTRS",
+    "line": 563,
+    "verb": "MOVE",
+    "operands": [
+      "'*'",
+      "ACCTSIDO",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FLG-ACCTFILTER-BLANK",
+    "cfg_predecessors": [
+      121
+    ],
+    "cfg_successors": [
+      123
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE '*' TO ACCTSIDO OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 123,
+    "paragraph": "1300-SETUP-SCREEN-ATTRS",
+    "line": 564,
+    "verb": "MOVE",
+    "operands": [
+      "DFHRED",
+      "ACCTSIDC",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FLG-ACCTFILTER-BLANK",
+    "cfg_predecessors": [
+      122
+    ],
+    "cfg_successors": [
+      124
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DFHRED TO ACCTSIDC OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 124,
+    "paragraph": "1300-SETUP-SCREEN-ATTRS",
+    "line": 567,
+    "verb": "IF",
+    "operands": [
+      "WS-NO-INFO-MESSAGE"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF WS-NO-INFO-MESSAGE",
+    "cfg_predecessors": [
+      123
+    ],
+    "cfg_successors": [
+      125
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF WS-NO-INFO-MESSAGE"
+  },
+  {
+    "seq": 125,
+    "paragraph": "1300-SETUP-SCREEN-ATTRS",
+    "line": 568,
+    "verb": "MOVE",
+    "operands": [
+      "DFHBMDAR",
+      "INFOMSGC",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF WS-NO-INFO-MESSAGE",
+    "cfg_predecessors": [
+      124
+    ],
+    "cfg_successors": [
+      126
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DFHBMDAR TO INFOMSGC OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 126,
+    "paragraph": "1300-SETUP-SCREEN-ATTRS",
+    "line": 570,
+    "verb": "MOVE",
+    "operands": [
+      "DFHNEUTR",
+      "INFOMSGC",
+      "CACTVWAO"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF WS-NO-INFO-MESSAGE",
+    "cfg_predecessors": [
+      125
+    ],
+    "cfg_successors": [
+      127
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DFHNEUTR TO INFOMSGC OF CACTVWAO",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 127,
+    "paragraph": "1300-SETUP-SCREEN-ATTRS-EXIT",
+    "line": 575,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      126
+    ],
+    "cfg_successors": [
+      128
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT"
+  },
+  {
+    "seq": 128,
+    "paragraph": "1400-SEND-SCREEN",
+    "line": 579,
+    "verb": "MOVE",
+    "operands": [
+      "LIT-THISMAPSET",
+      "CCARD-NEXT-MAPSET"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      127,
+      56
+    ],
+    "cfg_successors": [
+      129
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LIT-THISMAPSET TO CCARD-NEXT-MAPSET",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 129,
+    "paragraph": "1400-SEND-SCREEN",
+    "line": 580,
+    "verb": "MOVE",
+    "operands": [
+      "LIT-THISMAP",
+      "CCARD-NEXT-MAP"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      128
+    ],
+    "cfg_successors": [
+      130
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LIT-THISMAP TO CCARD-NEXT-MAP",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 130,
+    "paragraph": "1400-SEND-SCREEN",
+    "line": 581,
+    "verb": "SET",
+    "operands": [
+      "CDEMO-PGM-REENTER",
+      "TRUE"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      129
+    ],
+    "cfg_successors": [
+      131
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET CDEMO-PGM-REENTER TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 131,
+    "paragraph": "1400-SEND-SCREEN",
+    "line": 583,
+    "verb": "EXEC CICS",
+    "operands": [
+      "SEND",
+      "MAP",
+      "CCARD-NEXT-MAP"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      130
+    ],
+    "cfg_successors": [
+      132
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS SEND MAP(CCARD-NEXT-MAP)",
+    "operand_unresolved": true,
+    "cics_command": "SEND"
+  },
+  {
+    "seq": 132,
+    "paragraph": "1400-SEND-SCREEN-EXIT",
+    "line": 593,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      131
+    ],
+    "cfg_successors": [
+      133
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT"
+  },
+  {
+    "seq": 133,
+    "paragraph": "2000-PROCESS-INPUTS",
+    "line": 597,
+    "verb": "PERFORM",
+    "operands": [
+      "2100-RECEIVE-MAP"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      132,
+      31
+    ],
+    "cfg_successors": [
+      140
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 2100-RECEIVE-MAP",
+    "cfg_perform_target": "2100-RECEIVE-MAP"
+  },
+  {
+    "seq": 134,
+    "paragraph": "2000-PROCESS-INPUTS",
+    "line": 599,
+    "verb": "PERFORM",
+    "operands": [
+      "2200-EDIT-MAP-INPUTS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      133
+    ],
+    "cfg_successors": [
+      142
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 2200-EDIT-MAP-INPUTS",
+    "cfg_perform_target": "2200-EDIT-MAP-INPUTS"
+  },
+  {
+    "seq": 135,
+    "paragraph": "2000-PROCESS-INPUTS",
+    "line": 601,
+    "verb": "MOVE",
+    "operands": [
+      "WS-RETURN-MSG",
+      "CCARD-ERROR-MSG"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      134
+    ],
+    "cfg_successors": [
+      136
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-RETURN-MSG TO CCARD-ERROR-MSG",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 136,
+    "paragraph": "2000-PROCESS-INPUTS",
+    "line": 602,
+    "verb": "MOVE",
+    "operands": [
+      "LIT-THISPGM",
+      "CCARD-NEXT-PROG"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      135
+    ],
+    "cfg_successors": [
+      137
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LIT-THISPGM TO CCARD-NEXT-PROG",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 137,
+    "paragraph": "2000-PROCESS-INPUTS",
+    "line": 603,
+    "verb": "MOVE",
+    "operands": [
+      "LIT-THISMAPSET",
+      "CCARD-NEXT-MAPSET"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      136
+    ],
+    "cfg_successors": [
+      138
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LIT-THISMAPSET TO CCARD-NEXT-MAPSET",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 138,
+    "paragraph": "2000-PROCESS-INPUTS",
+    "line": 604,
+    "verb": "MOVE",
+    "operands": [
+      "LIT-THISMAP",
+      "CCARD-NEXT-MAP"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      137
+    ],
+    "cfg_successors": [
+      139
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LIT-THISMAP TO CCARD-NEXT-MAP",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 139,
+    "paragraph": "2000-PROCESS-INPUTS-EXIT",
+    "line": 608,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      138
+    ],
+    "cfg_successors": [
+      140
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT"
+  },
+  {
+    "seq": 140,
+    "paragraph": "2100-RECEIVE-MAP",
+    "line": 611,
+    "verb": "EXEC CICS",
+    "operands": [
+      "RECEIVE",
+      "MAP",
+      "LIT-THISMAP"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      139,
+      133
+    ],
+    "cfg_successors": [
+      141
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS RECEIVE MAP(LIT-THISMAP)",
+    "operand_unresolved": true,
+    "cics_command": "RECEIVE"
+  },
+  {
+    "seq": 141,
+    "paragraph": "2100-RECEIVE-MAP-EXIT",
+    "line": 620,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      140
+    ],
+    "cfg_successors": [
+      142
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT"
+  },
+  {
+    "seq": 142,
+    "paragraph": "2200-EDIT-MAP-INPUTS",
+    "line": 624,
+    "verb": "SET",
+    "operands": [
+      "INPUT-OK",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      141,
+      134
+    ],
+    "cfg_successors": [
+      143
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET INPUT-OK TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 143,
+    "paragraph": "2200-EDIT-MAP-INPUTS",
+    "line": 625,
+    "verb": "SET",
+    "operands": [
+      "FLG-ACCTFILTER-ISVALID",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      142
+    ],
+    "cfg_successors": [
+      144
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET FLG-ACCTFILTER-ISVALID TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 144,
+    "paragraph": "2200-EDIT-MAP-INPUTS",
+    "line": 628,
+    "verb": "IF",
+    "operands": [
+      "ACCTSIDI",
+      "CACTVWAI",
+      "'*'"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF ACCTSIDI OF CACTVWAI = '*'",
+    "cfg_predecessors": [
+      143
+    ],
+    "cfg_successors": [
+      145
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF ACCTSIDI OF CACTVWAI = '*'",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 145,
+    "paragraph": "2200-EDIT-MAP-INPUTS",
+    "line": 630,
+    "verb": "MOVE",
+    "operands": [
+      "CC-ACCT-ID"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF ACCTSIDI OF CACTVWAI = '*'",
+    "cfg_predecessors": [
+      144
+    ],
+    "cfg_successors": [
+      146
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LOW-VALUES TO CC-ACCT-ID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 146,
+    "paragraph": "2200-EDIT-MAP-INPUTS",
+    "line": 632,
+    "verb": "MOVE",
+    "operands": [
+      "ACCTSIDI",
+      "CACTVWAI",
+      "CC-ACCT-ID"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF ACCTSIDI OF CACTVWAI = '*'",
+    "cfg_predecessors": [
+      145
+    ],
+    "cfg_successors": [
+      147
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCTSIDI OF CACTVWAI TO CC-ACCT-ID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 147,
+    "paragraph": "2200-EDIT-MAP-INPUTS",
+    "line": 636,
+    "verb": "PERFORM",
+    "operands": [
+      "2210-EDIT-ACCOUNT"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      146
+    ],
+    "cfg_successors": [
+      151
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 2210-EDIT-ACCOUNT",
+    "cfg_perform_target": "2210-EDIT-ACCOUNT"
+  },
+  {
+    "seq": 148,
+    "paragraph": "2200-EDIT-MAP-INPUTS",
+    "line": 640,
+    "verb": "IF",
+    "operands": [
+      "FLG-ACCTFILTER-BLANK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FLG-ACCTFILTER-BLANK",
+    "cfg_predecessors": [
+      147
+    ],
+    "cfg_successors": [
+      149
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF FLG-ACCTFILTER-BLANK"
+  },
+  {
+    "seq": 149,
+    "paragraph": "2200-EDIT-MAP-INPUTS",
+    "line": 641,
+    "verb": "SET",
+    "operands": [
+      "NO-SEARCH-CRITERIA-RECEIVED",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FLG-ACCTFILTER-BLANK",
+    "cfg_predecessors": [
+      148
+    ],
+    "cfg_successors": [
+      150
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET NO-SEARCH-CRITERIA-RECEIVED TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 150,
+    "paragraph": "2200-EDIT-MAP-INPUTS-EXIT",
+    "line": 646,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      149
+    ],
+    "cfg_successors": [
+      151
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT"
+  },
+  {
+    "seq": 151,
+    "paragraph": "2210-EDIT-ACCOUNT",
+    "line": 650,
+    "verb": "SET",
+    "operands": [
+      "FLG-ACCTFILTER-NOT-OK",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      150,
+      147
+    ],
+    "cfg_successors": [
+      152
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET FLG-ACCTFILTER-NOT-OK TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 152,
+    "paragraph": "2210-EDIT-ACCOUNT",
+    "line": 653,
+    "verb": "IF",
+    "operands": [
+      "CC-ACCT-ID"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CC-ACCT-ID EQUAL LOW-VALUES",
+    "cfg_predecessors": [
+      151
+    ],
+    "cfg_successors": [
+      153
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF CC-ACCT-ID EQUAL LOW-VALUES",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 153,
+    "paragraph": "2210-EDIT-ACCOUNT",
+    "line": 655,
+    "verb": "SET",
+    "operands": [
+      "INPUT-ERROR",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CC-ACCT-ID EQUAL LOW-VALUES",
+    "cfg_predecessors": [
+      152
+    ],
+    "cfg_successors": [
+      154
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET INPUT-ERROR TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 154,
+    "paragraph": "2210-EDIT-ACCOUNT",
+    "line": 656,
+    "verb": "SET",
+    "operands": [
+      "FLG-ACCTFILTER-BLANK",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CC-ACCT-ID EQUAL LOW-VALUES",
+    "cfg_predecessors": [
+      153
+    ],
+    "cfg_successors": [
+      155
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET FLG-ACCTFILTER-BLANK TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 155,
+    "paragraph": "2210-EDIT-ACCOUNT",
+    "line": 657,
+    "verb": "IF",
+    "operands": [
+      "WS-RETURN-MSG-OFF"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CC-ACCT-ID EQUAL LOW-VALUES",
+    "cfg_predecessors": [
+      154
+    ],
+    "cfg_successors": [
+      156
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF WS-RETURN-MSG-OFF"
+  },
+  {
+    "seq": 156,
+    "paragraph": "2210-EDIT-ACCOUNT",
+    "line": 658,
+    "verb": "SET",
+    "operands": [
+      "WS-PROMPT-FOR-ACCT",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CC-ACCT-ID EQUAL LOW-VALUES",
+    "cfg_predecessors": [
+      155
+    ],
+    "cfg_successors": [
+      157
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET WS-PROMPT-FOR-ACCT TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 157,
+    "paragraph": "2210-EDIT-ACCOUNT",
+    "line": 660,
+    "verb": "MOVE",
+    "operands": [
+      "CDEMO-ACCT-ID"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      156
+    ],
+    "cfg_successors": [
+      158
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ZEROES TO CDEMO-ACCT-ID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 158,
+    "paragraph": "2210-EDIT-ACCOUNT",
+    "line": 661,
+    "verb": "GO TO",
+    "operands": [
+      "2210-EDIT-ACCOUNT-EXIT"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      157
+    ],
+    "cfg_successors": [
+      168
+    ],
+    "division": "PROCEDURE",
+    "raw": "GO TO 2210-EDIT-ACCOUNT-EXIT",
+    "cfg_branch_unresolved": true,
+    "cfg_goto_target": "2210-EDIT-ACCOUNT-EXIT"
+  },
+  {
+    "seq": 159,
+    "paragraph": "2210-EDIT-ACCOUNT",
+    "line": 666,
+    "verb": "IF",
+    "operands": [
+      "CC-ACCT-ID",
+      "NUMERIC"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CC-ACCT-ID IS NOT NUMERIC",
+    "cfg_predecessors": [
+      158
+    ],
+    "cfg_successors": [
+      160
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF CC-ACCT-ID IS NOT NUMERIC",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 160,
+    "paragraph": "2210-EDIT-ACCOUNT",
+    "line": 668,
+    "verb": "SET",
+    "operands": [
+      "INPUT-ERROR",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CC-ACCT-ID IS NOT NUMERIC",
+    "cfg_predecessors": [
+      159
+    ],
+    "cfg_successors": [
+      161
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET INPUT-ERROR TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 161,
+    "paragraph": "2210-EDIT-ACCOUNT",
+    "line": 669,
+    "verb": "SET",
+    "operands": [
+      "FLG-ACCTFILTER-NOT-OK",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CC-ACCT-ID IS NOT NUMERIC",
+    "cfg_predecessors": [
+      160
+    ],
+    "cfg_successors": [
+      162
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET FLG-ACCTFILTER-NOT-OK TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 162,
+    "paragraph": "2210-EDIT-ACCOUNT",
+    "line": 670,
+    "verb": "IF",
+    "operands": [
+      "WS-RETURN-MSG-OFF"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CC-ACCT-ID IS NOT NUMERIC",
+    "cfg_predecessors": [
+      161
+    ],
+    "cfg_successors": [
+      163
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF WS-RETURN-MSG-OFF"
+  },
+  {
+    "seq": 163,
+    "paragraph": "2210-EDIT-ACCOUNT",
+    "line": 671,
+    "verb": "MOVE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF CC-ACCT-ID IS NOT NUMERIC",
+    "cfg_predecessors": [
+      162
+    ],
+    "cfg_successors": [
+      164
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE"
+  },
+  {
+    "seq": 164,
+    "paragraph": "2210-EDIT-ACCOUNT",
+    "line": 675,
+    "verb": "MOVE",
+    "operands": [
+      "CDEMO-ACCT-ID"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      163
+    ],
+    "cfg_successors": [
+      165
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ZERO TO CDEMO-ACCT-ID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 165,
+    "paragraph": "2210-EDIT-ACCOUNT",
+    "line": 676,
+    "verb": "GO TO",
+    "operands": [
+      "2210-EDIT-ACCOUNT-EXIT"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      164
+    ],
+    "cfg_successors": [
+      168
+    ],
+    "division": "PROCEDURE",
+    "raw": "GO TO 2210-EDIT-ACCOUNT-EXIT",
+    "cfg_branch_unresolved": true,
+    "cfg_goto_target": "2210-EDIT-ACCOUNT-EXIT"
+  },
+  {
+    "seq": 166,
+    "paragraph": "2210-EDIT-ACCOUNT",
+    "line": 678,
+    "verb": "MOVE",
+    "operands": [
+      "CC-ACCT-ID",
+      "CDEMO-ACCT-ID"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      165
+    ],
+    "cfg_successors": [
+      167
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CC-ACCT-ID TO CDEMO-ACCT-ID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 167,
+    "paragraph": "2210-EDIT-ACCOUNT",
+    "line": 679,
+    "verb": "SET",
+    "operands": [
+      "FLG-ACCTFILTER-ISVALID",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      166
+    ],
+    "cfg_successors": [
+      168
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET FLG-ACCTFILTER-ISVALID TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 168,
+    "paragraph": "2210-EDIT-ACCOUNT-EXIT",
+    "line": 684,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      167,
+      158,
+      165
+    ],
+    "cfg_successors": [
+      169
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT"
+  },
+  {
+    "seq": 169,
+    "paragraph": "9000-READ-ACCT",
+    "line": 689,
+    "verb": "SET",
+    "operands": [
+      "WS-NO-INFO-MESSAGE",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      168,
+      35
+    ],
+    "cfg_successors": [
+      170
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET WS-NO-INFO-MESSAGE TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 170,
+    "paragraph": "9000-READ-ACCT",
+    "line": 691,
+    "verb": "MOVE",
+    "operands": [
+      "CDEMO-ACCT-ID",
+      "WS-CARD-RID-ACCT-ID"
+    ],
+    "operand_types": [
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      169
+    ],
+    "cfg_successors": [
+      171
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CDEMO-ACCT-ID TO WS-CARD-RID-ACCT-ID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 171,
+    "paragraph": "9000-READ-ACCT",
+    "line": 693,
+    "verb": "PERFORM",
+    "operands": [
+      "9200-GETCARDXREF-BYACCT"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      170
+    ],
+    "cfg_successors": [
+      182
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9200-GETCARDXREF-BYACCT",
+    "cfg_perform_target": "9200-GETCARDXREF-BYACCT"
+  },
+  {
+    "seq": 172,
+    "paragraph": "9000-READ-ACCT",
+    "line": 697,
+    "verb": "IF",
+    "operands": [
+      "FLG-ACCTFILTER-NOT-OK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FLG-ACCTFILTER-NOT-OK",
+    "cfg_predecessors": [
+      171
+    ],
+    "cfg_successors": [
+      173
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF FLG-ACCTFILTER-NOT-OK"
+  },
+  {
+    "seq": 173,
+    "paragraph": "9000-READ-ACCT",
+    "line": 698,
+    "verb": "GO TO",
+    "operands": [
+      "9000-READ-ACCT-EXIT"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF FLG-ACCTFILTER-NOT-OK",
+    "cfg_predecessors": [
+      172
+    ],
+    "cfg_successors": [
+      181
+    ],
+    "division": "PROCEDURE",
+    "raw": "GO TO 9000-READ-ACCT-EXIT",
+    "cfg_goto_target": "9000-READ-ACCT-EXIT"
+  },
+  {
+    "seq": 174,
+    "paragraph": "9000-READ-ACCT",
+    "line": 701,
+    "verb": "PERFORM",
+    "operands": [
+      "9300-GETACCTDATA-BYACCT"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      173
+    ],
+    "cfg_successors": [
+      200
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9300-GETACCTDATA-BYACCT",
+    "cfg_perform_target": "9300-GETACCTDATA-BYACCT"
+  },
+  {
+    "seq": 175,
+    "paragraph": "9000-READ-ACCT",
+    "line": 704,
+    "verb": "IF",
+    "operands": [
+      "DID-NOT-FIND-ACCT-IN-ACCTDAT"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF DID-NOT-FIND-ACCT-IN-ACCTDAT",
+    "cfg_predecessors": [
+      174
+    ],
+    "cfg_successors": [
+      176
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF DID-NOT-FIND-ACCT-IN-ACCTDAT"
+  },
+  {
+    "seq": 176,
+    "paragraph": "9000-READ-ACCT",
+    "line": 705,
+    "verb": "GO TO",
+    "operands": [
+      "9000-READ-ACCT-EXIT"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF DID-NOT-FIND-ACCT-IN-ACCTDAT",
+    "cfg_predecessors": [
+      175
+    ],
+    "cfg_successors": [
+      181
+    ],
+    "division": "PROCEDURE",
+    "raw": "GO TO 9000-READ-ACCT-EXIT",
+    "cfg_goto_target": "9000-READ-ACCT-EXIT"
+  },
+  {
+    "seq": 177,
+    "paragraph": "9000-READ-ACCT",
+    "line": 708,
+    "verb": "MOVE",
+    "operands": [
+      "CDEMO-CUST-ID",
+      "WS-CARD-RID-CUST-ID"
+    ],
+    "operand_types": [
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      176
+    ],
+    "cfg_successors": [
+      178
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE CDEMO-CUST-ID TO WS-CARD-RID-CUST-ID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 178,
+    "paragraph": "9000-READ-ACCT",
+    "line": 710,
+    "verb": "PERFORM",
+    "operands": [
+      "9400-GETCUSTDATA-BYCUST"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      177
+    ],
+    "cfg_successors": [
+      217
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9400-GETCUSTDATA-BYCUST",
+    "cfg_perform_target": "9400-GETCUSTDATA-BYCUST"
+  },
+  {
+    "seq": 179,
+    "paragraph": "9000-READ-ACCT",
+    "line": 713,
+    "verb": "IF",
+    "operands": [
+      "DID-NOT-FIND-CUST-IN-CUSTDAT"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF DID-NOT-FIND-CUST-IN-CUSTDAT",
+    "cfg_predecessors": [
+      178
+    ],
+    "cfg_successors": [
+      180
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF DID-NOT-FIND-CUST-IN-CUSTDAT"
+  },
+  {
+    "seq": 180,
+    "paragraph": "9000-READ-ACCT",
+    "line": 714,
+    "verb": "GO TO",
+    "operands": [
+      "9000-READ-ACCT-EXIT"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF DID-NOT-FIND-CUST-IN-CUSTDAT",
+    "cfg_predecessors": [
+      179
+    ],
+    "cfg_successors": [
+      181
+    ],
+    "division": "PROCEDURE",
+    "raw": "GO TO 9000-READ-ACCT-EXIT",
+    "cfg_goto_target": "9000-READ-ACCT-EXIT"
+  },
+  {
+    "seq": 181,
+    "paragraph": "9000-READ-ACCT-EXIT",
+    "line": 721,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      180,
+      173,
+      176
+    ],
+    "cfg_successors": [
+      182
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT"
+  },
+  {
+    "seq": 182,
+    "paragraph": "9200-GETCARDXREF-BYACCT",
+    "line": 727,
+    "verb": "EXEC CICS",
+    "operands": [
+      "READ"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      181,
+      171
+    ],
+    "cfg_successors": [
+      183
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS READ",
+    "operand_unresolved": true,
+    "cics_command": "READ"
+  },
+  {
+    "seq": 183,
+    "paragraph": "9200-GETCARDXREF-BYACCT",
+    "line": 737,
+    "verb": "EVALUATE",
+    "operands": [
+      "WS-RESP-CD"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      182
+    ],
+    "cfg_successors": [
+      184
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE WS-RESP-CD"
+  },
+  {
+    "seq": 184,
+    "paragraph": "9200-GETCARDXREF-BYACCT",
+    "line": 739,
+    "verb": "MOVE",
+    "operands": [
+      "XREF-CUST-ID",
+      "CDEMO-CUST-ID"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      183
+    ],
+    "cfg_successors": [
+      185
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE XREF-CUST-ID TO CDEMO-CUST-ID",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 185,
+    "paragraph": "9200-GETCARDXREF-BYACCT",
+    "line": 740,
+    "verb": "MOVE",
+    "operands": [
+      "XREF-CARD-NUM",
+      "CDEMO-CARD-NUM"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      184
+    ],
+    "cfg_successors": [
+      186
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE XREF-CARD-NUM TO CDEMO-CARD-NUM",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 186,
+    "paragraph": "9200-GETCARDXREF-BYACCT",
+    "line": 742,
+    "verb": "SET",
+    "operands": [
+      "INPUT-ERROR",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      185
+    ],
+    "cfg_successors": [
+      187
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET INPUT-ERROR TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 187,
+    "paragraph": "9200-GETCARDXREF-BYACCT",
+    "line": 743,
+    "verb": "SET",
+    "operands": [
+      "FLG-ACCTFILTER-NOT-OK",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      186
+    ],
+    "cfg_successors": [
+      188
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET FLG-ACCTFILTER-NOT-OK TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 188,
+    "paragraph": "9200-GETCARDXREF-BYACCT",
+    "line": 744,
+    "verb": "IF",
+    "operands": [
+      "WS-RETURN-MSG-OFF"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      187
+    ],
+    "cfg_successors": [
+      189
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF WS-RETURN-MSG-OFF"
+  },
+  {
+    "seq": 189,
+    "paragraph": "9200-GETCARDXREF-BYACCT",
+    "line": 745,
+    "verb": "MOVE",
+    "operands": [
+      "WS-RESP-CD",
+      "ERROR-RESP"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      188
+    ],
+    "cfg_successors": [
+      190
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-RESP-CD TO ERROR-RESP"
+  },
+  {
+    "seq": 190,
+    "paragraph": "9200-GETCARDXREF-BYACCT",
+    "line": 746,
+    "verb": "MOVE",
+    "operands": [
+      "WS-REAS-CD",
+      "ERROR-RESP2"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      189
+    ],
+    "cfg_successors": [
+      191
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-REAS-CD TO ERROR-RESP2"
+  },
+  {
+    "seq": 191,
+    "paragraph": "9200-GETCARDXREF-BYACCT",
+    "line": 747,
+    "verb": "STRING",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      190
+    ],
+    "cfg_successors": [
+      192
+    ],
+    "division": "PROCEDURE",
+    "raw": "STRING"
+  },
+  {
+    "seq": 192,
+    "paragraph": "9200-GETCARDXREF-BYACCT",
+    "line": 760,
+    "verb": "SET",
+    "operands": [
+      "INPUT-ERROR",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      191
+    ],
+    "cfg_successors": [
+      193
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET INPUT-ERROR TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 193,
+    "paragraph": "9200-GETCARDXREF-BYACCT",
+    "line": 761,
+    "verb": "SET",
+    "operands": [
+      "FLG-ACCTFILTER-NOT-OK",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      192
+    ],
+    "cfg_successors": [
+      194
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET FLG-ACCTFILTER-NOT-OK TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 194,
+    "paragraph": "9200-GETCARDXREF-BYACCT",
+    "line": 762,
+    "verb": "MOVE",
+    "operands": [
+      "'READ'",
+      "ERROR-OPNAME"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      193
+    ],
+    "cfg_successors": [
+      195
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'READ' TO ERROR-OPNAME"
+  },
+  {
+    "seq": 195,
+    "paragraph": "9200-GETCARDXREF-BYACCT",
+    "line": 763,
+    "verb": "MOVE",
+    "operands": [
+      "LIT-CARDXREFNAME-ACCT-PATH",
+      "ERROR-FILE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      194
+    ],
+    "cfg_successors": [
+      196
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LIT-CARDXREFNAME-ACCT-PATH TO ERROR-FILE"
+  },
+  {
+    "seq": 196,
+    "paragraph": "9200-GETCARDXREF-BYACCT",
+    "line": 764,
+    "verb": "MOVE",
+    "operands": [
+      "WS-RESP-CD",
+      "ERROR-RESP"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      195
+    ],
+    "cfg_successors": [
+      197
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-RESP-CD TO ERROR-RESP"
+  },
+  {
+    "seq": 197,
+    "paragraph": "9200-GETCARDXREF-BYACCT",
+    "line": 765,
+    "verb": "MOVE",
+    "operands": [
+      "WS-REAS-CD",
+      "ERROR-RESP2"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      196
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-REAS-CD TO ERROR-RESP2"
+  },
+  {
+    "seq": 198,
+    "paragraph": "9200-GETCARDXREF-BYACCT",
+    "line": 766,
+    "verb": "MOVE",
+    "operands": [
+      "WS-FILE-ERROR-MESSAGE",
+      "WS-RETURN-MSG"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      197
+    ],
+    "cfg_successors": [
+      199
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-FILE-ERROR-MESSAGE TO WS-RETURN-MSG"
+  },
+  {
+    "seq": 199,
+    "paragraph": "9200-GETCARDXREF-BYACCT-EXIT",
+    "line": 772,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      198
+    ],
+    "cfg_successors": [
+      200
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT"
+  },
+  {
+    "seq": 200,
+    "paragraph": "9300-GETACCTDATA-BYACCT",
+    "line": 776,
+    "verb": "EXEC CICS",
+    "operands": [
+      "READ"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      199,
+      174
+    ],
+    "cfg_successors": [
+      201
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS READ",
+    "operand_unresolved": true,
+    "cics_command": "READ"
+  },
+  {
+    "seq": 201,
+    "paragraph": "9300-GETACCTDATA-BYACCT",
+    "line": 786,
+    "verb": "EVALUATE",
+    "operands": [
+      "WS-RESP-CD"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      200
+    ],
+    "cfg_successors": [
+      202
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE WS-RESP-CD"
+  },
+  {
+    "seq": 202,
+    "paragraph": "9300-GETACCTDATA-BYACCT",
+    "line": 788,
+    "verb": "SET",
+    "operands": [
+      "FOUND-ACCT-IN-MASTER",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      201
+    ],
+    "cfg_successors": [
+      203
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET FOUND-ACCT-IN-MASTER TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 203,
+    "paragraph": "9300-GETACCTDATA-BYACCT",
+    "line": 790,
+    "verb": "SET",
+    "operands": [
+      "INPUT-ERROR",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      202
+    ],
+    "cfg_successors": [
+      204
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET INPUT-ERROR TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 204,
+    "paragraph": "9300-GETACCTDATA-BYACCT",
+    "line": 791,
+    "verb": "SET",
+    "operands": [
+      "FLG-ACCTFILTER-NOT-OK",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      203
+    ],
+    "cfg_successors": [
+      205
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET FLG-ACCTFILTER-NOT-OK TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 205,
+    "paragraph": "9300-GETACCTDATA-BYACCT",
+    "line": 793,
+    "verb": "IF",
+    "operands": [
+      "WS-RETURN-MSG-OFF"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      204
+    ],
+    "cfg_successors": [
+      206
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF WS-RETURN-MSG-OFF"
+  },
+  {
+    "seq": 206,
+    "paragraph": "9300-GETACCTDATA-BYACCT",
+    "line": 794,
+    "verb": "MOVE",
+    "operands": [
+      "WS-RESP-CD",
+      "ERROR-RESP"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      205
+    ],
+    "cfg_successors": [
+      207
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-RESP-CD TO ERROR-RESP"
+  },
+  {
+    "seq": 207,
+    "paragraph": "9300-GETACCTDATA-BYACCT",
+    "line": 795,
+    "verb": "MOVE",
+    "operands": [
+      "WS-REAS-CD",
+      "ERROR-RESP2"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      206
+    ],
+    "cfg_successors": [
+      208
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-REAS-CD TO ERROR-RESP2"
+  },
+  {
+    "seq": 208,
+    "paragraph": "9300-GETACCTDATA-BYACCT",
+    "line": 796,
+    "verb": "STRING",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      207
+    ],
+    "cfg_successors": [
+      209
+    ],
+    "division": "PROCEDURE",
+    "raw": "STRING"
+  },
+  {
+    "seq": 209,
+    "paragraph": "9300-GETACCTDATA-BYACCT",
+    "line": 810,
+    "verb": "SET",
+    "operands": [
+      "INPUT-ERROR",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      208
+    ],
+    "cfg_successors": [
+      210
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET INPUT-ERROR TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 210,
+    "paragraph": "9300-GETACCTDATA-BYACCT",
+    "line": 811,
+    "verb": "SET",
+    "operands": [
+      "FLG-ACCTFILTER-NOT-OK",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      209
+    ],
+    "cfg_successors": [
+      211
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET FLG-ACCTFILTER-NOT-OK TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 211,
+    "paragraph": "9300-GETACCTDATA-BYACCT",
+    "line": 812,
+    "verb": "MOVE",
+    "operands": [
+      "'READ'",
+      "ERROR-OPNAME"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      210
+    ],
+    "cfg_successors": [
+      212
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'READ' TO ERROR-OPNAME"
+  },
+  {
+    "seq": 212,
+    "paragraph": "9300-GETACCTDATA-BYACCT",
+    "line": 813,
+    "verb": "MOVE",
+    "operands": [
+      "LIT-ACCTFILENAME",
+      "ERROR-FILE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      211
+    ],
+    "cfg_successors": [
+      213
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LIT-ACCTFILENAME TO ERROR-FILE"
+  },
+  {
+    "seq": 213,
+    "paragraph": "9300-GETACCTDATA-BYACCT",
+    "line": 814,
+    "verb": "MOVE",
+    "operands": [
+      "WS-RESP-CD",
+      "ERROR-RESP"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      212
+    ],
+    "cfg_successors": [
+      214
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-RESP-CD TO ERROR-RESP"
+  },
+  {
+    "seq": 214,
+    "paragraph": "9300-GETACCTDATA-BYACCT",
+    "line": 815,
+    "verb": "MOVE",
+    "operands": [
+      "WS-REAS-CD",
+      "ERROR-RESP2"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      213
+    ],
+    "cfg_successors": [
+      215
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-REAS-CD TO ERROR-RESP2"
+  },
+  {
+    "seq": 215,
+    "paragraph": "9300-GETACCTDATA-BYACCT",
+    "line": 816,
+    "verb": "MOVE",
+    "operands": [
+      "WS-FILE-ERROR-MESSAGE",
+      "WS-RETURN-MSG"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      214
+    ],
+    "cfg_successors": [
+      216
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-FILE-ERROR-MESSAGE TO WS-RETURN-MSG"
+  },
+  {
+    "seq": 216,
+    "paragraph": "9300-GETACCTDATA-BYACCT-EXIT",
+    "line": 822,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      215
+    ],
+    "cfg_successors": [
+      217
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT"
+  },
+  {
+    "seq": 217,
+    "paragraph": "9400-GETCUSTDATA-BYCUST",
+    "line": 826,
+    "verb": "EXEC CICS",
+    "operands": [
+      "READ"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      216,
+      178
+    ],
+    "cfg_successors": [
+      218
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS READ",
+    "operand_unresolved": true,
+    "cics_command": "READ"
+  },
+  {
+    "seq": 218,
+    "paragraph": "9400-GETCUSTDATA-BYCUST",
+    "line": 836,
+    "verb": "EVALUATE",
+    "operands": [
+      "WS-RESP-CD"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      217
+    ],
+    "cfg_successors": [
+      219
+    ],
+    "division": "PROCEDURE",
+    "raw": "EVALUATE WS-RESP-CD"
+  },
+  {
+    "seq": 219,
+    "paragraph": "9400-GETCUSTDATA-BYCUST",
+    "line": 838,
+    "verb": "SET",
+    "operands": [
+      "FOUND-CUST-IN-MASTER",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      218
+    ],
+    "cfg_successors": [
+      220
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET FOUND-CUST-IN-MASTER TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 220,
+    "paragraph": "9400-GETCUSTDATA-BYCUST",
+    "line": 840,
+    "verb": "SET",
+    "operands": [
+      "INPUT-ERROR",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      219
+    ],
+    "cfg_successors": [
+      221
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET INPUT-ERROR TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 221,
+    "paragraph": "9400-GETCUSTDATA-BYCUST",
+    "line": 841,
+    "verb": "SET",
+    "operands": [
+      "FLG-CUSTFILTER-NOT-OK",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      220
+    ],
+    "cfg_successors": [
+      222
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET FLG-CUSTFILTER-NOT-OK TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 222,
+    "paragraph": "9400-GETCUSTDATA-BYCUST",
+    "line": 843,
+    "verb": "MOVE",
+    "operands": [
+      "WS-RESP-CD",
+      "ERROR-RESP"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      221
+    ],
+    "cfg_successors": [
+      223
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-RESP-CD TO ERROR-RESP"
+  },
+  {
+    "seq": 223,
+    "paragraph": "9400-GETCUSTDATA-BYCUST",
+    "line": 844,
+    "verb": "MOVE",
+    "operands": [
+      "WS-REAS-CD",
+      "ERROR-RESP2"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      222
+    ],
+    "cfg_successors": [
+      224
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-REAS-CD TO ERROR-RESP2"
+  },
+  {
+    "seq": 224,
+    "paragraph": "9400-GETCUSTDATA-BYCUST",
+    "line": 845,
+    "verb": "IF",
+    "operands": [
+      "WS-RETURN-MSG-OFF"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      223
+    ],
+    "cfg_successors": [
+      225
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF WS-RETURN-MSG-OFF"
+  },
+  {
+    "seq": 225,
+    "paragraph": "9400-GETCUSTDATA-BYCUST",
+    "line": 846,
+    "verb": "STRING",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EVALUATE WS-RESP-CD",
+    "cfg_predecessors": [
+      224
+    ],
+    "cfg_successors": [
+      226
+    ],
+    "division": "PROCEDURE",
+    "raw": "STRING"
+  },
+  {
+    "seq": 226,
+    "paragraph": "9400-GETCUSTDATA-BYCUST",
+    "line": 859,
+    "verb": "SET",
+    "operands": [
+      "INPUT-ERROR",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      225
+    ],
+    "cfg_successors": [
+      227
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET INPUT-ERROR TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 227,
+    "paragraph": "9400-GETCUSTDATA-BYCUST",
+    "line": 860,
+    "verb": "SET",
+    "operands": [
+      "FLG-CUSTFILTER-NOT-OK",
+      "TRUE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      226
+    ],
+    "cfg_successors": [
+      228
+    ],
+    "division": "PROCEDURE",
+    "raw": "SET FLG-CUSTFILTER-NOT-OK TO TRUE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 228,
+    "paragraph": "9400-GETCUSTDATA-BYCUST",
+    "line": 861,
+    "verb": "MOVE",
+    "operands": [
+      "'READ'",
+      "ERROR-OPNAME"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      227
+    ],
+    "cfg_successors": [
+      229
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'READ' TO ERROR-OPNAME"
+  },
+  {
+    "seq": 229,
+    "paragraph": "9400-GETCUSTDATA-BYCUST",
+    "line": 862,
+    "verb": "MOVE",
+    "operands": [
+      "LIT-CUSTFILENAME",
+      "ERROR-FILE"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      228
+    ],
+    "cfg_successors": [
+      230
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LIT-CUSTFILENAME TO ERROR-FILE"
+  },
+  {
+    "seq": 230,
+    "paragraph": "9400-GETCUSTDATA-BYCUST",
+    "line": 863,
+    "verb": "MOVE",
+    "operands": [
+      "WS-RESP-CD",
+      "ERROR-RESP"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      229
+    ],
+    "cfg_successors": [
+      231
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-RESP-CD TO ERROR-RESP"
+  },
+  {
+    "seq": 231,
+    "paragraph": "9400-GETCUSTDATA-BYCUST",
+    "line": 864,
+    "verb": "MOVE",
+    "operands": [
+      "WS-REAS-CD",
+      "ERROR-RESP2"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      230
+    ],
+    "cfg_successors": [
+      232
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-REAS-CD TO ERROR-RESP2"
+  },
+  {
+    "seq": 232,
+    "paragraph": "9400-GETCUSTDATA-BYCUST",
+    "line": 865,
+    "verb": "MOVE",
+    "operands": [
+      "WS-FILE-ERROR-MESSAGE",
+      "WS-RETURN-MSG"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      231
+    ],
+    "cfg_successors": [
+      233
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-FILE-ERROR-MESSAGE TO WS-RETURN-MSG"
+  },
+  {
+    "seq": 233,
+    "paragraph": "9400-GETCUSTDATA-BYCUST-EXIT",
+    "line": 871,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      232
+    ],
+    "cfg_successors": [
+      234
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT"
+  },
+  {
+    "seq": 234,
+    "paragraph": "SEND-PLAIN-TEXT",
+    "line": 878,
+    "verb": "EXEC CICS",
+    "operands": [
+      "SEND",
+      "TEXT"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      233,
+      42
+    ],
+    "cfg_successors": [
+      235
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS SEND TEXT",
+    "operand_unresolved": true,
+    "cics_command": "SEND"
+  },
+  {
+    "seq": 235,
+    "paragraph": "SEND-PLAIN-TEXT",
+    "line": 885,
+    "verb": "EXEC CICS",
+    "operands": [
+      "RETURN"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EXEC CICS RETURN RETURN",
+    "cfg_predecessors": [
+      234
+    ],
+    "cfg_successors": [
+      236
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS RETURN",
+    "operand_unresolved": true,
+    "is_cics_branch": true,
+    "cics_command": "RETURN"
+  },
+  {
+    "seq": 236,
+    "paragraph": "SEND-PLAIN-TEXT-EXIT",
+    "line": 889,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      235
+    ],
+    "cfg_successors": [
+      237
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT"
+  },
+  {
+    "seq": 237,
+    "paragraph": "SEND-LONG-TEXT",
+    "line": 897,
+    "verb": "EXEC CICS",
+    "operands": [
+      "SEND",
+      "TEXT"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      236
+    ],
+    "cfg_successors": [
+      238
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS SEND TEXT",
+    "operand_unresolved": true,
+    "cics_command": "SEND"
+  },
+  {
+    "seq": 238,
+    "paragraph": "SEND-LONG-TEXT",
+    "line": 904,
+    "verb": "EXEC CICS",
+    "operands": [
+      "RETURN"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EXEC CICS RETURN RETURN",
+    "cfg_predecessors": [
+      237
+    ],
+    "cfg_successors": [
+      239
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS RETURN",
+    "operand_unresolved": true,
+    "is_cics_branch": true,
+    "cics_command": "RETURN"
+  },
+  {
+    "seq": 239,
+    "paragraph": "SEND-LONG-TEXT-EXIT",
+    "line": 908,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      238
+    ],
+    "cfg_successors": [
+      240
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT"
+  },
+  {
+    "seq": 240,
+    "paragraph": "ABEND-ROUTINE",
+    "line": 918,
+    "verb": "IF",
+    "operands": [
+      "ABEND-MSG"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF ABEND-MSG EQUAL LOW-VALUES",
+    "cfg_predecessors": [
+      239
+    ],
+    "cfg_successors": [
+      241
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF ABEND-MSG EQUAL LOW-VALUES",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 241,
+    "paragraph": "ABEND-ROUTINE",
+    "line": 919,
+    "verb": "MOVE",
+    "operands": [
+      "'UNEXPECTED ABEND OCCURRED.'",
+      "ABEND-MSG"
+    ],
+    "operand_types": [
+      "literal",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF ABEND-MSG EQUAL LOW-VALUES",
+    "cfg_predecessors": [
+      240
+    ],
+    "cfg_successors": [
+      242
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'UNEXPECTED ABEND OCCURRED.' TO ABEND-MSG",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 242,
+    "paragraph": "ABEND-ROUTINE",
+    "line": 922,
+    "verb": "MOVE",
+    "operands": [
+      "LIT-THISPGM",
+      "ABEND-CULPRIT"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      241
+    ],
+    "cfg_successors": [
+      243
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE LIT-THISPGM TO ABEND-CULPRIT",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 243,
+    "paragraph": "ABEND-ROUTINE",
+    "line": 924,
+    "verb": "EXEC CICS",
+    "operands": [
+      "SEND"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      242
+    ],
+    "cfg_successors": [
+      244
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS SEND",
+    "operand_unresolved": true,
+    "cics_command": "SEND"
+  },
+  {
+    "seq": 244,
+    "paragraph": "ABEND-ROUTINE",
+    "line": 930,
+    "verb": "EXEC CICS",
+    "operands": [
+      "HANDLE",
+      "ABEND"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EXEC CICS HANDLE HANDLE ABEND",
+    "cfg_predecessors": [
+      243
+    ],
+    "cfg_successors": [
+      245
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS HANDLE ABEND",
+    "operand_unresolved": true,
+    "is_cics_branch": true,
+    "cics_command": "HANDLE"
+  },
+  {
+    "seq": 245,
+    "paragraph": "ABEND-ROUTINE",
+    "line": 934,
+    "verb": "EXEC CICS",
+    "operands": [
+      "ABEND"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "EXEC CICS ABEND ABEND",
+    "cfg_predecessors": [
+      244
+    ],
+    "cfg_successors": [],
+    "division": "PROCEDURE",
+    "raw": "EXEC CICS ABEND",
+    "operand_unresolved": true,
+    "is_cics_branch": true,
+    "cics_command": "ABEND"
+  }
+]

@@ -1,0 +1,221 @@
+{
+  "program": "CBEXPORT",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBEXPORT.cbl",
+  "source_sha256": "2f445912d3a861f3ef66078788f6b27611ffb630d488b6d71f9953c1d651110e",
+  "cfg_path": "validation\\pass1\\CBEXPORT_annotations.json",
+  "cfg_sha256": "cbc0a6f30dacb5cab56ec9e06d27a08235d448885fd790809ed76b24152e6869",
+  "paragraphs": [
+    {
+      "paragraph": "0000-MAIN-PROCESSING",
+      "first_line": 151,
+      "last_line": 158,
+      "terminator": "goback",
+      "falls_through_to": null,
+      "last_verb": "GOBACK",
+      "last_raw": "GOBACK.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1000-INITIALIZE",
+      "first_line": 163,
+      "last_line": 169,
+      "terminator": "implicit",
+      "falls_through_to": "1050-GENERATE-TIMESTAMP",
+      "last_verb": "DISPLAY",
+      "last_raw": "DISPLAY 'CBEXPORT: Export Time: ' WS-EXPORT-TIME.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1050-GENERATE-TIMESTAMP",
+      "first_line": 175,
+      "last_line": 191,
+      "terminator": "implicit",
+      "falls_through_to": "1100-OPEN-FILES",
+      "last_verb": "STRING",
+      "last_raw": "STRING WS-EXPORT-DATE ' ' WS-EXPORT-TIME '.00'",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1100-OPEN-FILES",
+      "first_line": 200,
+      "last_line": 239,
+      "terminator": "implicit",
+      "falls_through_to": "2000-EXPORT-CUSTOMERS",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2000-EXPORT-CUSTOMERS",
+      "first_line": 245,
+      "last_line": 254,
+      "terminator": "implicit",
+      "falls_through_to": "2100-READ-CUSTOMER-RECORD",
+      "last_verb": "DISPLAY",
+      "last_raw": "DISPLAY 'CBEXPORT: Customers exported: '",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2100-READ-CUSTOMER-RECORD",
+      "first_line": 260,
+      "last_line": 265,
+      "terminator": "implicit",
+      "falls_through_to": "2200-CREATE-CUSTOMER-EXP-REC",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2200-CREATE-CUSTOMER-EXP-REC",
+      "first_line": 271,
+      "last_line": 310,
+      "terminator": "implicit",
+      "falls_through_to": "3000-EXPORT-ACCOUNTS",
+      "last_verb": "ADD",
+      "last_raw": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3000-EXPORT-ACCOUNTS",
+      "first_line": 314,
+      "last_line": 323,
+      "terminator": "implicit",
+      "falls_through_to": "3100-READ-ACCOUNT-RECORD",
+      "last_verb": "DISPLAY",
+      "last_raw": "DISPLAY 'CBEXPORT: Accounts exported: '",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3100-READ-ACCOUNT-RECORD",
+      "first_line": 329,
+      "last_line": 334,
+      "terminator": "implicit",
+      "falls_through_to": "3200-CREATE-ACCOUNT-EXP-REC",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3200-CREATE-ACCOUNT-EXP-REC",
+      "first_line": 340,
+      "last_line": 373,
+      "terminator": "implicit",
+      "falls_through_to": "4000-EXPORT-XREFS",
+      "last_verb": "ADD",
+      "last_raw": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "4000-EXPORT-XREFS",
+      "first_line": 378,
+      "last_line": 387,
+      "terminator": "implicit",
+      "falls_through_to": "4100-READ-XREF-RECORD",
+      "last_verb": "DISPLAY",
+      "last_raw": "DISPLAY 'CBEXPORT: Cross-references exported: '",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "4100-READ-XREF-RECORD",
+      "first_line": 393,
+      "last_line": 398,
+      "terminator": "implicit",
+      "falls_through_to": "4200-CREATE-XREF-EXPORT-RECORD",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "4200-CREATE-XREF-EXPORT-RECORD",
+      "first_line": 404,
+      "last_line": 428,
+      "terminator": "implicit",
+      "falls_through_to": "5000-EXPORT-TRANSACTIONS",
+      "last_verb": "ADD",
+      "last_raw": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "5000-EXPORT-TRANSACTIONS",
+      "first_line": 433,
+      "last_line": 442,
+      "terminator": "implicit",
+      "falls_through_to": "5100-READ-TRANSACTION-RECORD",
+      "last_verb": "DISPLAY",
+      "last_raw": "DISPLAY 'CBEXPORT: Transactions exported: '",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "5100-READ-TRANSACTION-RECORD",
+      "first_line": 448,
+      "last_line": 453,
+      "terminator": "implicit",
+      "falls_through_to": "5200-CREATE-TRAN-EXP-REC",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "5200-CREATE-TRAN-EXP-REC",
+      "first_line": 459,
+      "last_line": 493,
+      "terminator": "implicit",
+      "falls_through_to": "5500-EXPORT-CARDS",
+      "last_verb": "ADD",
+      "last_raw": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "5500-EXPORT-CARDS",
+      "first_line": 498,
+      "last_line": 507,
+      "terminator": "implicit",
+      "falls_through_to": "5600-READ-CARD-RECORD",
+      "last_verb": "DISPLAY",
+      "last_raw": "DISPLAY 'CBEXPORT: Cards exported: '",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "5600-READ-CARD-RECORD",
+      "first_line": 513,
+      "last_line": 518,
+      "terminator": "implicit",
+      "falls_through_to": "5700-CREATE-CARD-EXPORT-RECORD",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "5700-CREATE-CARD-EXPORT-RECORD",
+      "first_line": 524,
+      "last_line": 551,
+      "terminator": "implicit",
+      "falls_through_to": "6000-FINALIZE",
+      "last_verb": "ADD",
+      "last_raw": "ADD 1 TO WS-TOTAL-RECORDS-EXPORTED.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "6000-FINALIZE",
+      "first_line": 556,
+      "last_line": 572,
+      "terminator": "implicit",
+      "falls_through_to": "9999-ABEND-PROGRAM",
+      "last_verb": "DISPLAY",
+      "last_raw": "DISPLAY 'CBEXPORT: Total Records Exported: '",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9999-ABEND-PROGRAM",
+      "first_line": 578,
+      "last_line": 579,
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "CALL",
+      "last_raw": "CALL 'CEE3ABD'.",
+      "classification_source": "annotations"
+    }
+  ],
+  "c5_assertion": "PASS",
+  "c5_violations": []
+}

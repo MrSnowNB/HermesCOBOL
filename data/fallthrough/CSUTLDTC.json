@@ -1,0 +1,41 @@
+{
+  "program": "CSUTLDTC",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CSUTLDTC.cbl",
+  "source_sha256": "55ca5fa7d9664464351f2c0473bf0fd9caf55a7e183dc4940cf6e338e12f6dbe",
+  "cfg_path": "validation\\pass1\\CSUTLDTC_annotations.json",
+  "cfg_sha256": "0aa2a92c05934cd086ce63e37baed0b126f4a42a5fdf5bb3fef721cbb1aebe45",
+  "paragraphs": [
+    {
+      "paragraph": "CSUTLDTC-MAIN",
+      "first_line": 90,
+      "last_line": 100,
+      "terminator": "explicit-exit",
+      "falls_through_to": null,
+      "last_verb": "EXIT",
+      "last_raw": "EXIT PROGRAM",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "A000-MAIN",
+      "first_line": 105,
+      "last_line": 148,
+      "terminator": "implicit",
+      "falls_through_to": "A000-MAIN-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE 'Date is invalid' TO WS-RESULT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "A000-MAIN-EXIT",
+      "first_line": 153,
+      "last_line": 153,
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    }
+  ],
+  "c5_assertion": "PASS",
+  "c5_violations": []
+}

@@ -1,0 +1,6745 @@
+[
+  {
+    "seq": 1,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 181,
+    "verb": "DISPLAY",
+    "operands": [
+      "'START OF EXECUTION OF PROGRAM CBACT04C'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [],
+    "cfg_successors": [
+      2
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'START OF EXECUTION OF PROGRAM CBACT04C'."
+  },
+  {
+    "seq": 2,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 182,
+    "verb": "PERFORM",
+    "operands": [
+      "0000-TCATBALF-OPEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      1
+    ],
+    "cfg_successors": [
+      38
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 0000-TCATBALF-OPEN.",
+    "cfg_perform_target": "0000-TCATBALF-OPEN"
+  },
+  {
+    "seq": 3,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 183,
+    "verb": "PERFORM",
+    "operands": [
+      "0100-XREFFILE-OPEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      2
+    ],
+    "cfg_successors": [
+      50
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 0100-XREFFILE-OPEN.",
+    "cfg_perform_target": "0100-XREFFILE-OPEN"
+  },
+  {
+    "seq": 4,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 184,
+    "verb": "PERFORM",
+    "operands": [
+      "0200-DISCGRP-OPEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      3
+    ],
+    "cfg_successors": [
+      62
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 0200-DISCGRP-OPEN.",
+    "cfg_perform_target": "0200-DISCGRP-OPEN"
+  },
+  {
+    "seq": 5,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 185,
+    "verb": "PERFORM",
+    "operands": [
+      "0300-ACCTFILE-OPEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      4
+    ],
+    "cfg_successors": [
+      74
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 0300-ACCTFILE-OPEN.",
+    "cfg_perform_target": "0300-ACCTFILE-OPEN"
+  },
+  {
+    "seq": 6,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 186,
+    "verb": "PERFORM",
+    "operands": [
+      "0400-TRANFILE-OPEN"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      5
+    ],
+    "cfg_successors": [
+      86
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 0400-TRANFILE-OPEN.",
+    "cfg_perform_target": "0400-TRANFILE-OPEN"
+  },
+  {
+    "seq": 7,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 188,
+    "verb": "PERFORM",
+    "operands": [
+      "END-OF-FILE",
+      "'Y'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      6
+    ],
+    "cfg_successors": [
+      8
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM UNTIL END-OF-FILE = 'Y'"
+  },
+  {
+    "seq": 8,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 189,
+    "verb": "IF",
+    "operands": [
+      "END-OF-FILE",
+      "'N'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF END-OF-FILE = 'N'",
+    "cfg_predecessors": [
+      7
+    ],
+    "cfg_successors": [
+      9
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF END-OF-FILE = 'N'"
+  },
+  {
+    "seq": 9,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 190,
+    "verb": "PERFORM",
+    "operands": [
+      "1000-TCATBALF-GET-NEXT"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF END-OF-FILE = 'N'",
+    "cfg_predecessors": [
+      8
+    ],
+    "cfg_successors": [
+      98
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1000-TCATBALF-GET-NEXT",
+    "cfg_perform_target": "1000-TCATBALF-GET-NEXT"
+  },
+  {
+    "seq": 10,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 191,
+    "verb": "IF",
+    "operands": [
+      "END-OF-FILE",
+      "'N'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF END-OF-FILE = 'N'",
+    "cfg_predecessors": [
+      9
+    ],
+    "cfg_successors": [
+      11
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF END-OF-FILE = 'N'"
+  },
+  {
+    "seq": 11,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 192,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-RECORD-COUNT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF END-OF-FILE = 'N'",
+    "cfg_predecessors": [
+      10
+    ],
+    "cfg_successors": [
+      12
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-RECORD-COUNT"
+  },
+  {
+    "seq": 12,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 193,
+    "verb": "DISPLAY",
+    "operands": [
+      "TRAN-CAT-BAL-RECORD"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF END-OF-FILE = 'N'",
+    "cfg_predecessors": [
+      11
+    ],
+    "cfg_successors": [
+      13
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY TRAN-CAT-BAL-RECORD"
+  },
+  {
+    "seq": 13,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 194,
+    "verb": "IF",
+    "operands": [
+      "TRANCAT-ACCT-ID",
+      "WS-LAST-ACCT-NUM"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF END-OF-FILE = 'N'",
+    "cfg_predecessors": [
+      12
+    ],
+    "cfg_successors": [
+      14
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF TRANCAT-ACCT-ID NOT= WS-LAST-ACCT-NUM"
+  },
+  {
+    "seq": 14,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 195,
+    "verb": "IF",
+    "operands": [
+      "WS-FIRST-TIME",
+      "'Y'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF END-OF-FILE = 'N'",
+    "cfg_predecessors": [
+      13
+    ],
+    "cfg_successors": [
+      15
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF WS-FIRST-TIME NOT = 'Y'"
+  },
+  {
+    "seq": 15,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 196,
+    "verb": "PERFORM",
+    "operands": [
+      "1050-UPDATE-ACCOUNT"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF END-OF-FILE = 'N'",
+    "cfg_predecessors": [
+      14
+    ],
+    "cfg_successors": [
+      113
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1050-UPDATE-ACCOUNT",
+    "cfg_perform_target": "1050-UPDATE-ACCOUNT"
+  },
+  {
+    "seq": 16,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 198,
+    "verb": "MOVE",
+    "operands": [
+      "'N'",
+      "WS-FIRST-TIME"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF END-OF-FILE = 'N'",
+    "cfg_predecessors": [
+      15
+    ],
+    "cfg_successors": [
+      17
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'N' TO WS-FIRST-TIME"
+  },
+  {
+    "seq": 17,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 200,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "WS-TOTAL-INT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      16
+    ],
+    "cfg_successors": [
+      18
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO WS-TOTAL-INT"
+  },
+  {
+    "seq": 18,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 201,
+    "verb": "MOVE",
+    "operands": [
+      "TRANCAT-ACCT-ID",
+      "WS-LAST-ACCT-NUM"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      17
+    ],
+    "cfg_successors": [
+      19
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRANCAT-ACCT-ID TO WS-LAST-ACCT-NUM"
+  },
+  {
+    "seq": 19,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 202,
+    "verb": "MOVE",
+    "operands": [
+      "TRANCAT-ACCT-ID",
+      "FD-ACCT-ID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      18
+    ],
+    "cfg_successors": [
+      20
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRANCAT-ACCT-ID TO FD-ACCT-ID"
+  },
+  {
+    "seq": 20,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 203,
+    "verb": "PERFORM",
+    "operands": [
+      "1100-GET-ACCT-DATA"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      19
+    ],
+    "cfg_successors": [
+      127
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1100-GET-ACCT-DATA",
+    "cfg_perform_target": "1100-GET-ACCT-DATA"
+  },
+  {
+    "seq": 21,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 204,
+    "verb": "MOVE",
+    "operands": [
+      "TRANCAT-ACCT-ID",
+      "FD-XREF-ACCT-ID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      20
+    ],
+    "cfg_successors": [
+      22
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRANCAT-ACCT-ID TO FD-XREF-ACCT-ID"
+  },
+  {
+    "seq": 22,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 205,
+    "verb": "PERFORM",
+    "operands": [
+      "1110-GET-XREF-DATA"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      21
+    ],
+    "cfg_successors": [
+      139
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1110-GET-XREF-DATA",
+    "cfg_perform_target": "1110-GET-XREF-DATA"
+  },
+  {
+    "seq": 23,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 210,
+    "verb": "MOVE",
+    "operands": [
+      "ACCT-GROUP-ID",
+      "FD-DIS-ACCT-GROUP-ID"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      22
+    ],
+    "cfg_successors": [
+      24
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCT-GROUP-ID TO FD-DIS-ACCT-GROUP-ID"
+  },
+  {
+    "seq": 24,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 211,
+    "verb": "MOVE",
+    "operands": [
+      "TRANCAT-CD",
+      "FD-DIS-TRAN-CAT-CD"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      23
+    ],
+    "cfg_successors": [
+      25
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRANCAT-CD TO FD-DIS-TRAN-CAT-CD"
+  },
+  {
+    "seq": 25,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 212,
+    "verb": "MOVE",
+    "operands": [
+      "TRANCAT-TYPE-CD",
+      "FD-DIS-TRAN-TYPE-CD"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      24
+    ],
+    "cfg_successors": [
+      26
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRANCAT-TYPE-CD TO FD-DIS-TRAN-TYPE-CD"
+  },
+  {
+    "seq": 26,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 213,
+    "verb": "PERFORM",
+    "operands": [
+      "1200-GET-INTEREST-RATE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      25
+    ],
+    "cfg_successors": [
+      151
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1200-GET-INTEREST-RATE",
+    "cfg_perform_target": "1200-GET-INTEREST-RATE"
+  },
+  {
+    "seq": 27,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 214,
+    "verb": "IF",
+    "operands": [
+      "DIS-INT-RATE",
+      "0"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF DIS-INT-RATE NOT = 0",
+    "cfg_predecessors": [
+      26
+    ],
+    "cfg_successors": [
+      28
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF DIS-INT-RATE NOT = 0"
+  },
+  {
+    "seq": 28,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 215,
+    "verb": "PERFORM",
+    "operands": [
+      "1300-COMPUTE-INTEREST"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF DIS-INT-RATE NOT = 0",
+    "cfg_predecessors": [
+      27
+    ],
+    "cfg_successors": [
+      178
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1300-COMPUTE-INTEREST",
+    "cfg_perform_target": "1300-COMPUTE-INTEREST"
+  },
+  {
+    "seq": 29,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 216,
+    "verb": "PERFORM",
+    "operands": [
+      "1400-COMPUTE-FEES"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": "IF DIS-INT-RATE NOT = 0",
+    "cfg_predecessors": [
+      28
+    ],
+    "cfg_successors": [
+      208
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1400-COMPUTE-FEES",
+    "cfg_perform_target": "1400-COMPUTE-FEES"
+  },
+  {
+    "seq": 30,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 220,
+    "verb": "PERFORM",
+    "operands": [
+      "1050-UPDATE-ACCOUNT"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      29
+    ],
+    "cfg_successors": [
+      113
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1050-UPDATE-ACCOUNT",
+    "cfg_perform_target": "1050-UPDATE-ACCOUNT"
+  },
+  {
+    "seq": 31,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 224,
+    "verb": "PERFORM",
+    "operands": [
+      "9000-TCATBALF-CLOSE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      30
+    ],
+    "cfg_successors": [
+      209
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9000-TCATBALF-CLOSE.",
+    "cfg_perform_target": "9000-TCATBALF-CLOSE"
+  },
+  {
+    "seq": 32,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 225,
+    "verb": "PERFORM",
+    "operands": [
+      "9100-XREFFILE-CLOSE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      31
+    ],
+    "cfg_successors": [
+      221
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9100-XREFFILE-CLOSE.",
+    "cfg_perform_target": "9100-XREFFILE-CLOSE"
+  },
+  {
+    "seq": 33,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 226,
+    "verb": "PERFORM",
+    "operands": [
+      "9200-DISCGRP-CLOSE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      32
+    ],
+    "cfg_successors": [
+      233
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9200-DISCGRP-CLOSE.",
+    "cfg_perform_target": "9200-DISCGRP-CLOSE"
+  },
+  {
+    "seq": 34,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 227,
+    "verb": "PERFORM",
+    "operands": [
+      "9300-ACCTFILE-CLOSE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      33
+    ],
+    "cfg_successors": [
+      245
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9300-ACCTFILE-CLOSE.",
+    "cfg_perform_target": "9300-ACCTFILE-CLOSE"
+  },
+  {
+    "seq": 35,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 228,
+    "verb": "PERFORM",
+    "operands": [
+      "9400-TRANFILE-CLOSE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      34
+    ],
+    "cfg_successors": [
+      257
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9400-TRANFILE-CLOSE.",
+    "cfg_perform_target": "9400-TRANFILE-CLOSE"
+  },
+  {
+    "seq": 36,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 230,
+    "verb": "DISPLAY",
+    "operands": [
+      "'END OF EXECUTION OF PROGRAM CBACT04C'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      35
+    ],
+    "cfg_successors": [
+      37
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'END OF EXECUTION OF PROGRAM CBACT04C'."
+  },
+  {
+    "seq": 37,
+    "paragraph": "CBACT04C-MAIN",
+    "line": 232,
+    "verb": "GOBACK",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": false,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      36
+    ],
+    "cfg_successors": [
+      38
+    ],
+    "division": "PROCEDURE",
+    "raw": "GOBACK."
+  },
+  {
+    "seq": 38,
+    "paragraph": "0000-TCATBALF-OPEN",
+    "line": 235,
+    "verb": "MOVE",
+    "operands": [
+      "8",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      37,
+      2
+    ],
+    "cfg_successors": [
+      39
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 8 TO APPL-RESULT."
+  },
+  {
+    "seq": 39,
+    "paragraph": "0000-TCATBALF-OPEN",
+    "line": 236,
+    "verb": "OPEN",
+    "operands": [
+      "TCATBAL-FILE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      38
+    ],
+    "cfg_successors": [
+      40
+    ],
+    "division": "PROCEDURE",
+    "raw": "OPEN INPUT TCATBAL-FILE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 40,
+    "paragraph": "0000-TCATBALF-OPEN",
+    "line": 237,
+    "verb": "IF",
+    "operands": [
+      "TCATBALF-STATUS",
+      "'00'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TCATBALF-STATUS = '00'",
+    "cfg_predecessors": [
+      39
+    ],
+    "cfg_successors": [
+      41
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF TCATBALF-STATUS = '00'"
+  },
+  {
+    "seq": 41,
+    "paragraph": "0000-TCATBALF-OPEN",
+    "line": 238,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TCATBALF-STATUS = '00'",
+    "cfg_predecessors": [
+      40
+    ],
+    "cfg_successors": [
+      42
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO APPL-RESULT"
+  },
+  {
+    "seq": 42,
+    "paragraph": "0000-TCATBALF-OPEN",
+    "line": 240,
+    "verb": "MOVE",
+    "operands": [
+      "12",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TCATBALF-STATUS = '00'",
+    "cfg_predecessors": [
+      41
+    ],
+    "cfg_successors": [
+      43
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 12 TO APPL-RESULT"
+  },
+  {
+    "seq": 43,
+    "paragraph": "0000-TCATBALF-OPEN",
+    "line": 242,
+    "verb": "IF",
+    "operands": [
+      "APPL-AOK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      42
+    ],
+    "cfg_successors": [
+      44
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF APPL-AOK"
+  },
+  {
+    "seq": 44,
+    "paragraph": "0000-TCATBALF-OPEN",
+    "line": 243,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      43
+    ],
+    "cfg_successors": [
+      45
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 45,
+    "paragraph": "0000-TCATBALF-OPEN",
+    "line": 245,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR OPENING TRANSACTION CATEGORY BALANCE'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      44
+    ],
+    "cfg_successors": [
+      46
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR OPENING TRANSACTION CATEGORY BALANCE'"
+  },
+  {
+    "seq": 46,
+    "paragraph": "0000-TCATBALF-OPEN",
+    "line": 246,
+    "verb": "MOVE",
+    "operands": [
+      "TCATBALF-STATUS",
+      "IO-STATUS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      45
+    ],
+    "cfg_successors": [
+      47
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TCATBALF-STATUS TO IO-STATUS"
+  },
+  {
+    "seq": 47,
+    "paragraph": "0000-TCATBALF-OPEN",
+    "line": 247,
+    "verb": "PERFORM",
+    "operands": [
+      "9910-DISPLAY-IO-STATUS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      46
+    ],
+    "cfg_successors": [
+      285
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9910-DISPLAY-IO-STATUS",
+    "cfg_perform_target": "9910-DISPLAY-IO-STATUS"
+  },
+  {
+    "seq": 48,
+    "paragraph": "0000-TCATBALF-OPEN",
+    "line": 248,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      47
+    ],
+    "cfg_successors": [
+      281
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 49,
+    "paragraph": "0000-TCATBALF-OPEN",
+    "line": 250,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      48
+    ],
+    "cfg_successors": [
+      50
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 50,
+    "paragraph": "0100-XREFFILE-OPEN",
+    "line": 253,
+    "verb": "MOVE",
+    "operands": [
+      "8",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      49,
+      3
+    ],
+    "cfg_successors": [
+      51
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 8 TO APPL-RESULT."
+  },
+  {
+    "seq": 51,
+    "paragraph": "0100-XREFFILE-OPEN",
+    "line": 254,
+    "verb": "OPEN",
+    "operands": [
+      "XREF-FILE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      50
+    ],
+    "cfg_successors": [
+      52
+    ],
+    "division": "PROCEDURE",
+    "raw": "OPEN INPUT XREF-FILE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 52,
+    "paragraph": "0100-XREFFILE-OPEN",
+    "line": 255,
+    "verb": "IF",
+    "operands": [
+      "XREFFILE-STATUS",
+      "'00'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF XREFFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      51
+    ],
+    "cfg_successors": [
+      53
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF XREFFILE-STATUS = '00'"
+  },
+  {
+    "seq": 53,
+    "paragraph": "0100-XREFFILE-OPEN",
+    "line": 256,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF XREFFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      52
+    ],
+    "cfg_successors": [
+      54
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO APPL-RESULT"
+  },
+  {
+    "seq": 54,
+    "paragraph": "0100-XREFFILE-OPEN",
+    "line": 258,
+    "verb": "MOVE",
+    "operands": [
+      "12",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF XREFFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      53
+    ],
+    "cfg_successors": [
+      55
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 12 TO APPL-RESULT"
+  },
+  {
+    "seq": 55,
+    "paragraph": "0100-XREFFILE-OPEN",
+    "line": 260,
+    "verb": "IF",
+    "operands": [
+      "APPL-AOK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      54
+    ],
+    "cfg_successors": [
+      56
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF APPL-AOK"
+  },
+  {
+    "seq": 56,
+    "paragraph": "0100-XREFFILE-OPEN",
+    "line": 261,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      55
+    ],
+    "cfg_successors": [
+      57
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 57,
+    "paragraph": "0100-XREFFILE-OPEN",
+    "line": 263,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR OPENING CROSS REF FILE'",
+      "XREFFILE-STATUS"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      56
+    ],
+    "cfg_successors": [
+      58
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR OPENING CROSS REF FILE' XREFFILE-STATUS"
+  },
+  {
+    "seq": 58,
+    "paragraph": "0100-XREFFILE-OPEN",
+    "line": 264,
+    "verb": "MOVE",
+    "operands": [
+      "XREFFILE-STATUS",
+      "IO-STATUS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      57
+    ],
+    "cfg_successors": [
+      59
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE XREFFILE-STATUS TO IO-STATUS"
+  },
+  {
+    "seq": 59,
+    "paragraph": "0100-XREFFILE-OPEN",
+    "line": 265,
+    "verb": "PERFORM",
+    "operands": [
+      "9910-DISPLAY-IO-STATUS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      58
+    ],
+    "cfg_successors": [
+      285
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9910-DISPLAY-IO-STATUS",
+    "cfg_perform_target": "9910-DISPLAY-IO-STATUS"
+  },
+  {
+    "seq": 60,
+    "paragraph": "0100-XREFFILE-OPEN",
+    "line": 266,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      59
+    ],
+    "cfg_successors": [
+      281
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 61,
+    "paragraph": "0100-XREFFILE-OPEN",
+    "line": 268,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      60
+    ],
+    "cfg_successors": [
+      62
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 62,
+    "paragraph": "0200-DISCGRP-OPEN",
+    "line": 271,
+    "verb": "MOVE",
+    "operands": [
+      "8",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      61,
+      4
+    ],
+    "cfg_successors": [
+      63
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 8 TO APPL-RESULT."
+  },
+  {
+    "seq": 63,
+    "paragraph": "0200-DISCGRP-OPEN",
+    "line": 272,
+    "verb": "OPEN",
+    "operands": [
+      "DISCGRP-FILE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      62
+    ],
+    "cfg_successors": [
+      64
+    ],
+    "division": "PROCEDURE",
+    "raw": "OPEN INPUT DISCGRP-FILE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 64,
+    "paragraph": "0200-DISCGRP-OPEN",
+    "line": 273,
+    "verb": "IF",
+    "operands": [
+      "DISCGRP-STATUS",
+      "'00'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF DISCGRP-STATUS = '00'",
+    "cfg_predecessors": [
+      63
+    ],
+    "cfg_successors": [
+      65
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF DISCGRP-STATUS = '00'"
+  },
+  {
+    "seq": 65,
+    "paragraph": "0200-DISCGRP-OPEN",
+    "line": 274,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF DISCGRP-STATUS = '00'",
+    "cfg_predecessors": [
+      64
+    ],
+    "cfg_successors": [
+      66
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO APPL-RESULT"
+  },
+  {
+    "seq": 66,
+    "paragraph": "0200-DISCGRP-OPEN",
+    "line": 276,
+    "verb": "MOVE",
+    "operands": [
+      "12",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF DISCGRP-STATUS = '00'",
+    "cfg_predecessors": [
+      65
+    ],
+    "cfg_successors": [
+      67
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 12 TO APPL-RESULT"
+  },
+  {
+    "seq": 67,
+    "paragraph": "0200-DISCGRP-OPEN",
+    "line": 278,
+    "verb": "IF",
+    "operands": [
+      "APPL-AOK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      66
+    ],
+    "cfg_successors": [
+      68
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF APPL-AOK"
+  },
+  {
+    "seq": 68,
+    "paragraph": "0200-DISCGRP-OPEN",
+    "line": 279,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      67
+    ],
+    "cfg_successors": [
+      69
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 69,
+    "paragraph": "0200-DISCGRP-OPEN",
+    "line": 281,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR OPENING DALY REJECTS FILE'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      68
+    ],
+    "cfg_successors": [
+      70
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR OPENING DALY REJECTS FILE'"
+  },
+  {
+    "seq": 70,
+    "paragraph": "0200-DISCGRP-OPEN",
+    "line": 282,
+    "verb": "MOVE",
+    "operands": [
+      "DISCGRP-STATUS",
+      "IO-STATUS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      69
+    ],
+    "cfg_successors": [
+      71
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DISCGRP-STATUS TO IO-STATUS"
+  },
+  {
+    "seq": 71,
+    "paragraph": "0200-DISCGRP-OPEN",
+    "line": 283,
+    "verb": "PERFORM",
+    "operands": [
+      "9910-DISPLAY-IO-STATUS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      70
+    ],
+    "cfg_successors": [
+      285
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9910-DISPLAY-IO-STATUS",
+    "cfg_perform_target": "9910-DISPLAY-IO-STATUS"
+  },
+  {
+    "seq": 72,
+    "paragraph": "0200-DISCGRP-OPEN",
+    "line": 284,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      71
+    ],
+    "cfg_successors": [
+      281
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 73,
+    "paragraph": "0200-DISCGRP-OPEN",
+    "line": 286,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      72
+    ],
+    "cfg_successors": [
+      74
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 74,
+    "paragraph": "0300-ACCTFILE-OPEN",
+    "line": 290,
+    "verb": "MOVE",
+    "operands": [
+      "8",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      73,
+      5
+    ],
+    "cfg_successors": [
+      75
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 8 TO APPL-RESULT."
+  },
+  {
+    "seq": 75,
+    "paragraph": "0300-ACCTFILE-OPEN",
+    "line": 291,
+    "verb": "OPEN",
+    "operands": [
+      "ACCOUNT-FILE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      74
+    ],
+    "cfg_successors": [
+      76
+    ],
+    "division": "PROCEDURE",
+    "raw": "OPEN I-O ACCOUNT-FILE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 76,
+    "paragraph": "0300-ACCTFILE-OPEN",
+    "line": 292,
+    "verb": "IF",
+    "operands": [
+      "ACCTFILE-STATUS",
+      "'00'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF ACCTFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      75
+    ],
+    "cfg_successors": [
+      77
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF ACCTFILE-STATUS = '00'"
+  },
+  {
+    "seq": 77,
+    "paragraph": "0300-ACCTFILE-OPEN",
+    "line": 293,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF ACCTFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      76
+    ],
+    "cfg_successors": [
+      78
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO APPL-RESULT"
+  },
+  {
+    "seq": 78,
+    "paragraph": "0300-ACCTFILE-OPEN",
+    "line": 295,
+    "verb": "MOVE",
+    "operands": [
+      "12",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF ACCTFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      77
+    ],
+    "cfg_successors": [
+      79
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 12 TO APPL-RESULT"
+  },
+  {
+    "seq": 79,
+    "paragraph": "0300-ACCTFILE-OPEN",
+    "line": 297,
+    "verb": "IF",
+    "operands": [
+      "APPL-AOK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      78
+    ],
+    "cfg_successors": [
+      80
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF APPL-AOK"
+  },
+  {
+    "seq": 80,
+    "paragraph": "0300-ACCTFILE-OPEN",
+    "line": 298,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      79
+    ],
+    "cfg_successors": [
+      81
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 81,
+    "paragraph": "0300-ACCTFILE-OPEN",
+    "line": 300,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR OPENING ACCOUNT MASTER FILE'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      80
+    ],
+    "cfg_successors": [
+      82
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR OPENING ACCOUNT MASTER FILE'"
+  },
+  {
+    "seq": 82,
+    "paragraph": "0300-ACCTFILE-OPEN",
+    "line": 301,
+    "verb": "MOVE",
+    "operands": [
+      "ACCTFILE-STATUS",
+      "IO-STATUS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      81
+    ],
+    "cfg_successors": [
+      83
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCTFILE-STATUS TO IO-STATUS"
+  },
+  {
+    "seq": 83,
+    "paragraph": "0300-ACCTFILE-OPEN",
+    "line": 302,
+    "verb": "PERFORM",
+    "operands": [
+      "9910-DISPLAY-IO-STATUS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      82
+    ],
+    "cfg_successors": [
+      285
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9910-DISPLAY-IO-STATUS",
+    "cfg_perform_target": "9910-DISPLAY-IO-STATUS"
+  },
+  {
+    "seq": 84,
+    "paragraph": "0300-ACCTFILE-OPEN",
+    "line": 303,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      83
+    ],
+    "cfg_successors": [
+      281
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 85,
+    "paragraph": "0300-ACCTFILE-OPEN",
+    "line": 305,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      84
+    ],
+    "cfg_successors": [
+      86
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 86,
+    "paragraph": "0400-TRANFILE-OPEN",
+    "line": 308,
+    "verb": "MOVE",
+    "operands": [
+      "8",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      85,
+      6
+    ],
+    "cfg_successors": [
+      87
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 8 TO APPL-RESULT."
+  },
+  {
+    "seq": 87,
+    "paragraph": "0400-TRANFILE-OPEN",
+    "line": 309,
+    "verb": "OPEN",
+    "operands": [
+      "TRANSACT-FILE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      86
+    ],
+    "cfg_successors": [
+      88
+    ],
+    "division": "PROCEDURE",
+    "raw": "OPEN OUTPUT TRANSACT-FILE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 88,
+    "paragraph": "0400-TRANFILE-OPEN",
+    "line": 310,
+    "verb": "IF",
+    "operands": [
+      "TRANFILE-STATUS",
+      "'00'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TRANFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      87
+    ],
+    "cfg_successors": [
+      89
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF TRANFILE-STATUS = '00'"
+  },
+  {
+    "seq": 89,
+    "paragraph": "0400-TRANFILE-OPEN",
+    "line": 311,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TRANFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      88
+    ],
+    "cfg_successors": [
+      90
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO APPL-RESULT"
+  },
+  {
+    "seq": 90,
+    "paragraph": "0400-TRANFILE-OPEN",
+    "line": 313,
+    "verb": "MOVE",
+    "operands": [
+      "12",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TRANFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      89
+    ],
+    "cfg_successors": [
+      91
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 12 TO APPL-RESULT"
+  },
+  {
+    "seq": 91,
+    "paragraph": "0400-TRANFILE-OPEN",
+    "line": 315,
+    "verb": "IF",
+    "operands": [
+      "APPL-AOK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      90
+    ],
+    "cfg_successors": [
+      92
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF APPL-AOK"
+  },
+  {
+    "seq": 92,
+    "paragraph": "0400-TRANFILE-OPEN",
+    "line": 316,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      91
+    ],
+    "cfg_successors": [
+      93
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 93,
+    "paragraph": "0400-TRANFILE-OPEN",
+    "line": 318,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR OPENING TRANSACTION FILE'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      92
+    ],
+    "cfg_successors": [
+      94
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR OPENING TRANSACTION FILE'"
+  },
+  {
+    "seq": 94,
+    "paragraph": "0400-TRANFILE-OPEN",
+    "line": 319,
+    "verb": "MOVE",
+    "operands": [
+      "TRANFILE-STATUS",
+      "IO-STATUS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      93
+    ],
+    "cfg_successors": [
+      95
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRANFILE-STATUS TO IO-STATUS"
+  },
+  {
+    "seq": 95,
+    "paragraph": "0400-TRANFILE-OPEN",
+    "line": 320,
+    "verb": "PERFORM",
+    "operands": [
+      "9910-DISPLAY-IO-STATUS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      94
+    ],
+    "cfg_successors": [
+      285
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9910-DISPLAY-IO-STATUS",
+    "cfg_perform_target": "9910-DISPLAY-IO-STATUS"
+  },
+  {
+    "seq": 96,
+    "paragraph": "0400-TRANFILE-OPEN",
+    "line": 321,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      95
+    ],
+    "cfg_successors": [
+      281
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 97,
+    "paragraph": "0400-TRANFILE-OPEN",
+    "line": 323,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      96
+    ],
+    "cfg_successors": [
+      98
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 98,
+    "paragraph": "1000-TCATBALF-GET-NEXT",
+    "line": 326,
+    "verb": "READ",
+    "operands": [
+      "TCATBAL-FILE",
+      "TRAN-CAT-BAL-RECORD"
+    ],
+    "operand_types": [
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      97,
+      9
+    ],
+    "cfg_successors": [
+      99
+    ],
+    "division": "PROCEDURE",
+    "raw": "READ TCATBAL-FILE INTO TRAN-CAT-BAL-RECORD.",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 99,
+    "paragraph": "1000-TCATBALF-GET-NEXT",
+    "line": 327,
+    "verb": "IF",
+    "operands": [
+      "TCATBALF-STATUS",
+      "'00'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TCATBALF-STATUS = '00'",
+    "cfg_predecessors": [
+      98
+    ],
+    "cfg_successors": [
+      100
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF TCATBALF-STATUS = '00'"
+  },
+  {
+    "seq": 100,
+    "paragraph": "1000-TCATBALF-GET-NEXT",
+    "line": 328,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TCATBALF-STATUS = '00'",
+    "cfg_predecessors": [
+      99
+    ],
+    "cfg_successors": [
+      101
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO APPL-RESULT"
+  },
+  {
+    "seq": 101,
+    "paragraph": "1000-TCATBALF-GET-NEXT",
+    "line": 330,
+    "verb": "IF",
+    "operands": [
+      "TCATBALF-STATUS",
+      "'10'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TCATBALF-STATUS = '00'",
+    "cfg_predecessors": [
+      100
+    ],
+    "cfg_successors": [
+      102
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF TCATBALF-STATUS = '10'"
+  },
+  {
+    "seq": 102,
+    "paragraph": "1000-TCATBALF-GET-NEXT",
+    "line": 331,
+    "verb": "MOVE",
+    "operands": [
+      "16",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TCATBALF-STATUS = '00'",
+    "cfg_predecessors": [
+      101
+    ],
+    "cfg_successors": [
+      103
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 16 TO APPL-RESULT"
+  },
+  {
+    "seq": 103,
+    "paragraph": "1000-TCATBALF-GET-NEXT",
+    "line": 333,
+    "verb": "MOVE",
+    "operands": [
+      "12",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TCATBALF-STATUS = '00'",
+    "cfg_predecessors": [
+      102
+    ],
+    "cfg_successors": [
+      104
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 12 TO APPL-RESULT"
+  },
+  {
+    "seq": 104,
+    "paragraph": "1000-TCATBALF-GET-NEXT",
+    "line": 336,
+    "verb": "IF",
+    "operands": [
+      "APPL-AOK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      103
+    ],
+    "cfg_successors": [
+      105
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF APPL-AOK"
+  },
+  {
+    "seq": 105,
+    "paragraph": "1000-TCATBALF-GET-NEXT",
+    "line": 337,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      104
+    ],
+    "cfg_successors": [
+      106
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 106,
+    "paragraph": "1000-TCATBALF-GET-NEXT",
+    "line": 339,
+    "verb": "IF",
+    "operands": [
+      "APPL-EOF"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      105
+    ],
+    "cfg_successors": [
+      107
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF APPL-EOF"
+  },
+  {
+    "seq": 107,
+    "paragraph": "1000-TCATBALF-GET-NEXT",
+    "line": 340,
+    "verb": "MOVE",
+    "operands": [
+      "'Y'",
+      "END-OF-FILE"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      106
+    ],
+    "cfg_successors": [
+      108
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'Y' TO END-OF-FILE"
+  },
+  {
+    "seq": 108,
+    "paragraph": "1000-TCATBALF-GET-NEXT",
+    "line": 342,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR READING TRANSACTION CATEGORY FILE'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      107
+    ],
+    "cfg_successors": [
+      109
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR READING TRANSACTION CATEGORY FILE'"
+  },
+  {
+    "seq": 109,
+    "paragraph": "1000-TCATBALF-GET-NEXT",
+    "line": 343,
+    "verb": "MOVE",
+    "operands": [
+      "TCATBALF-STATUS",
+      "IO-STATUS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      108
+    ],
+    "cfg_successors": [
+      110
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TCATBALF-STATUS TO IO-STATUS"
+  },
+  {
+    "seq": 110,
+    "paragraph": "1000-TCATBALF-GET-NEXT",
+    "line": 344,
+    "verb": "PERFORM",
+    "operands": [
+      "9910-DISPLAY-IO-STATUS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      109
+    ],
+    "cfg_successors": [
+      285
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9910-DISPLAY-IO-STATUS",
+    "cfg_perform_target": "9910-DISPLAY-IO-STATUS"
+  },
+  {
+    "seq": 111,
+    "paragraph": "1000-TCATBALF-GET-NEXT",
+    "line": 345,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      110
+    ],
+    "cfg_successors": [
+      281
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 112,
+    "paragraph": "1000-TCATBALF-GET-NEXT",
+    "line": 348,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      111
+    ],
+    "cfg_successors": [
+      113
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 113,
+    "paragraph": "1050-UPDATE-ACCOUNT",
+    "line": 352,
+    "verb": "ADD",
+    "operands": [
+      "WS-TOTAL-INT",
+      "ACCT-CURR-BAL"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      112,
+      15,
+      30
+    ],
+    "cfg_successors": [
+      114
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD WS-TOTAL-INT TO ACCT-CURR-BAL"
+  },
+  {
+    "seq": 114,
+    "paragraph": "1050-UPDATE-ACCOUNT",
+    "line": 353,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "ACCT-CURR-CYC-CREDIT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      113
+    ],
+    "cfg_successors": [
+      115
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO ACCT-CURR-CYC-CREDIT"
+  },
+  {
+    "seq": 115,
+    "paragraph": "1050-UPDATE-ACCOUNT",
+    "line": 354,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "ACCT-CURR-CYC-DEBIT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      114
+    ],
+    "cfg_successors": [
+      116
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO ACCT-CURR-CYC-DEBIT"
+  },
+  {
+    "seq": 116,
+    "paragraph": "1050-UPDATE-ACCOUNT",
+    "line": 356,
+    "verb": "REWRITE",
+    "operands": [
+      "FD-ACCTFILE-REC",
+      "ACCOUNT-RECORD"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      115
+    ],
+    "cfg_successors": [
+      117
+    ],
+    "division": "PROCEDURE",
+    "raw": "REWRITE FD-ACCTFILE-REC FROM ACCOUNT-RECORD"
+  },
+  {
+    "seq": 117,
+    "paragraph": "1050-UPDATE-ACCOUNT",
+    "line": 357,
+    "verb": "IF",
+    "operands": [
+      "ACCTFILE-STATUS",
+      "'00'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF ACCTFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      116
+    ],
+    "cfg_successors": [
+      118
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF ACCTFILE-STATUS = '00'"
+  },
+  {
+    "seq": 118,
+    "paragraph": "1050-UPDATE-ACCOUNT",
+    "line": 358,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF ACCTFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      117
+    ],
+    "cfg_successors": [
+      119
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO APPL-RESULT"
+  },
+  {
+    "seq": 119,
+    "paragraph": "1050-UPDATE-ACCOUNT",
+    "line": 360,
+    "verb": "MOVE",
+    "operands": [
+      "12",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF ACCTFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      118
+    ],
+    "cfg_successors": [
+      120
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 12 TO APPL-RESULT"
+  },
+  {
+    "seq": 120,
+    "paragraph": "1050-UPDATE-ACCOUNT",
+    "line": 362,
+    "verb": "IF",
+    "operands": [
+      "APPL-AOK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      119
+    ],
+    "cfg_successors": [
+      121
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF APPL-AOK"
+  },
+  {
+    "seq": 121,
+    "paragraph": "1050-UPDATE-ACCOUNT",
+    "line": 363,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      120
+    ],
+    "cfg_successors": [
+      122
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 122,
+    "paragraph": "1050-UPDATE-ACCOUNT",
+    "line": 365,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR RE-WRITING ACCOUNT FILE'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      121
+    ],
+    "cfg_successors": [
+      123
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR RE-WRITING ACCOUNT FILE'"
+  },
+  {
+    "seq": 123,
+    "paragraph": "1050-UPDATE-ACCOUNT",
+    "line": 366,
+    "verb": "MOVE",
+    "operands": [
+      "ACCTFILE-STATUS",
+      "IO-STATUS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      122
+    ],
+    "cfg_successors": [
+      124
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCTFILE-STATUS TO IO-STATUS"
+  },
+  {
+    "seq": 124,
+    "paragraph": "1050-UPDATE-ACCOUNT",
+    "line": 367,
+    "verb": "PERFORM",
+    "operands": [
+      "9910-DISPLAY-IO-STATUS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      123
+    ],
+    "cfg_successors": [
+      285
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9910-DISPLAY-IO-STATUS",
+    "cfg_perform_target": "9910-DISPLAY-IO-STATUS"
+  },
+  {
+    "seq": 125,
+    "paragraph": "1050-UPDATE-ACCOUNT",
+    "line": 368,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      124
+    ],
+    "cfg_successors": [
+      281
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 126,
+    "paragraph": "1050-UPDATE-ACCOUNT",
+    "line": 370,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      125
+    ],
+    "cfg_successors": [
+      127
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 127,
+    "paragraph": "1100-GET-ACCT-DATA",
+    "line": 373,
+    "verb": "READ",
+    "operands": [
+      "ACCOUNT-FILE",
+      "ACCOUNT-RECORD"
+    ],
+    "operand_types": [
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      126,
+      20
+    ],
+    "cfg_successors": [
+      128
+    ],
+    "division": "PROCEDURE",
+    "raw": "READ ACCOUNT-FILE INTO ACCOUNT-RECORD",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 128,
+    "paragraph": "1100-GET-ACCT-DATA",
+    "line": 375,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ACCOUNT NOT FOUND: '",
+      "FD-ACCT-ID"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      127
+    ],
+    "cfg_successors": [
+      129
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ACCOUNT NOT FOUND: ' FD-ACCT-ID"
+  },
+  {
+    "seq": 129,
+    "paragraph": "1100-GET-ACCT-DATA",
+    "line": 378,
+    "verb": "IF",
+    "operands": [
+      "ACCTFILE-STATUS",
+      "'00'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF ACCTFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      128
+    ],
+    "cfg_successors": [
+      130
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF ACCTFILE-STATUS = '00'"
+  },
+  {
+    "seq": 130,
+    "paragraph": "1100-GET-ACCT-DATA",
+    "line": 379,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF ACCTFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      129
+    ],
+    "cfg_successors": [
+      131
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO APPL-RESULT"
+  },
+  {
+    "seq": 131,
+    "paragraph": "1100-GET-ACCT-DATA",
+    "line": 381,
+    "verb": "MOVE",
+    "operands": [
+      "12",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF ACCTFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      130
+    ],
+    "cfg_successors": [
+      132
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 12 TO APPL-RESULT"
+  },
+  {
+    "seq": 132,
+    "paragraph": "1100-GET-ACCT-DATA",
+    "line": 383,
+    "verb": "IF",
+    "operands": [
+      "APPL-AOK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      131
+    ],
+    "cfg_successors": [
+      133
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF APPL-AOK"
+  },
+  {
+    "seq": 133,
+    "paragraph": "1100-GET-ACCT-DATA",
+    "line": 384,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      132
+    ],
+    "cfg_successors": [
+      134
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 134,
+    "paragraph": "1100-GET-ACCT-DATA",
+    "line": 386,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR READING ACCOUNT FILE'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      133
+    ],
+    "cfg_successors": [
+      135
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR READING ACCOUNT FILE'"
+  },
+  {
+    "seq": 135,
+    "paragraph": "1100-GET-ACCT-DATA",
+    "line": 387,
+    "verb": "MOVE",
+    "operands": [
+      "ACCTFILE-STATUS",
+      "IO-STATUS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      134
+    ],
+    "cfg_successors": [
+      136
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCTFILE-STATUS TO IO-STATUS"
+  },
+  {
+    "seq": 136,
+    "paragraph": "1100-GET-ACCT-DATA",
+    "line": 388,
+    "verb": "PERFORM",
+    "operands": [
+      "9910-DISPLAY-IO-STATUS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      135
+    ],
+    "cfg_successors": [
+      285
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9910-DISPLAY-IO-STATUS",
+    "cfg_perform_target": "9910-DISPLAY-IO-STATUS"
+  },
+  {
+    "seq": 137,
+    "paragraph": "1100-GET-ACCT-DATA",
+    "line": 389,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      136
+    ],
+    "cfg_successors": [
+      281
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 138,
+    "paragraph": "1100-GET-ACCT-DATA",
+    "line": 391,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      137
+    ],
+    "cfg_successors": [
+      139
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 139,
+    "paragraph": "1110-GET-XREF-DATA",
+    "line": 394,
+    "verb": "READ",
+    "operands": [
+      "XREF-FILE",
+      "CARD-XREF-RECORD"
+    ],
+    "operand_types": [
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      138,
+      22
+    ],
+    "cfg_successors": [
+      140
+    ],
+    "division": "PROCEDURE",
+    "raw": "READ XREF-FILE INTO CARD-XREF-RECORD",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 140,
+    "paragraph": "1110-GET-XREF-DATA",
+    "line": 397,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ACCOUNT NOT FOUND: '",
+      "FD-XREF-ACCT-ID"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      139
+    ],
+    "cfg_successors": [
+      141
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ACCOUNT NOT FOUND: ' FD-XREF-ACCT-ID"
+  },
+  {
+    "seq": 141,
+    "paragraph": "1110-GET-XREF-DATA",
+    "line": 400,
+    "verb": "IF",
+    "operands": [
+      "XREFFILE-STATUS",
+      "'00'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF XREFFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      140
+    ],
+    "cfg_successors": [
+      142
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF XREFFILE-STATUS = '00'"
+  },
+  {
+    "seq": 142,
+    "paragraph": "1110-GET-XREF-DATA",
+    "line": 401,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF XREFFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      141
+    ],
+    "cfg_successors": [
+      143
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO APPL-RESULT"
+  },
+  {
+    "seq": 143,
+    "paragraph": "1110-GET-XREF-DATA",
+    "line": 403,
+    "verb": "MOVE",
+    "operands": [
+      "12",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF XREFFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      142
+    ],
+    "cfg_successors": [
+      144
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 12 TO APPL-RESULT"
+  },
+  {
+    "seq": 144,
+    "paragraph": "1110-GET-XREF-DATA",
+    "line": 405,
+    "verb": "IF",
+    "operands": [
+      "APPL-AOK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      143
+    ],
+    "cfg_successors": [
+      145
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF APPL-AOK"
+  },
+  {
+    "seq": 145,
+    "paragraph": "1110-GET-XREF-DATA",
+    "line": 406,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      144
+    ],
+    "cfg_successors": [
+      146
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 146,
+    "paragraph": "1110-GET-XREF-DATA",
+    "line": 408,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR READING XREF FILE'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      145
+    ],
+    "cfg_successors": [
+      147
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR READING XREF FILE'"
+  },
+  {
+    "seq": 147,
+    "paragraph": "1110-GET-XREF-DATA",
+    "line": 409,
+    "verb": "MOVE",
+    "operands": [
+      "XREFFILE-STATUS",
+      "IO-STATUS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      146
+    ],
+    "cfg_successors": [
+      148
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE XREFFILE-STATUS TO IO-STATUS"
+  },
+  {
+    "seq": 148,
+    "paragraph": "1110-GET-XREF-DATA",
+    "line": 410,
+    "verb": "PERFORM",
+    "operands": [
+      "9910-DISPLAY-IO-STATUS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      147
+    ],
+    "cfg_successors": [
+      285
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9910-DISPLAY-IO-STATUS",
+    "cfg_perform_target": "9910-DISPLAY-IO-STATUS"
+  },
+  {
+    "seq": 149,
+    "paragraph": "1110-GET-XREF-DATA",
+    "line": 411,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      148
+    ],
+    "cfg_successors": [
+      281
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 150,
+    "paragraph": "1110-GET-XREF-DATA",
+    "line": 413,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      149
+    ],
+    "cfg_successors": [
+      151
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 151,
+    "paragraph": "1200-GET-INTEREST-RATE",
+    "line": 416,
+    "verb": "READ",
+    "operands": [
+      "DISCGRP-FILE",
+      "DIS-GROUP-RECORD"
+    ],
+    "operand_types": [
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      150,
+      26
+    ],
+    "cfg_successors": [
+      152
+    ],
+    "division": "PROCEDURE",
+    "raw": "READ DISCGRP-FILE INTO DIS-GROUP-RECORD",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 152,
+    "paragraph": "1200-GET-INTEREST-RATE",
+    "line": 418,
+    "verb": "DISPLAY",
+    "operands": [
+      "'DISCLOSURE GROUP RECORD MISSING'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      151
+    ],
+    "cfg_successors": [
+      153
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'DISCLOSURE GROUP RECORD MISSING'"
+  },
+  {
+    "seq": 153,
+    "paragraph": "1200-GET-INTEREST-RATE",
+    "line": 419,
+    "verb": "DISPLAY",
+    "operands": [
+      "'TRY WITH DEFAULT GROUP CODE'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      152
+    ],
+    "cfg_successors": [
+      154
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'TRY WITH DEFAULT GROUP CODE'"
+  },
+  {
+    "seq": 154,
+    "paragraph": "1200-GET-INTEREST-RATE",
+    "line": 422,
+    "verb": "IF",
+    "operands": [
+      "DISCGRP-STATUS",
+      "'00'",
+      "'23'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF DISCGRP-STATUS = '00' OR '23'",
+    "cfg_predecessors": [
+      153
+    ],
+    "cfg_successors": [
+      155
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF DISCGRP-STATUS = '00' OR '23'"
+  },
+  {
+    "seq": 155,
+    "paragraph": "1200-GET-INTEREST-RATE",
+    "line": 423,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF DISCGRP-STATUS = '00' OR '23'",
+    "cfg_predecessors": [
+      154
+    ],
+    "cfg_successors": [
+      156
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO APPL-RESULT"
+  },
+  {
+    "seq": 156,
+    "paragraph": "1200-GET-INTEREST-RATE",
+    "line": 425,
+    "verb": "MOVE",
+    "operands": [
+      "12",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF DISCGRP-STATUS = '00' OR '23'",
+    "cfg_predecessors": [
+      155
+    ],
+    "cfg_successors": [
+      157
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 12 TO APPL-RESULT"
+  },
+  {
+    "seq": 157,
+    "paragraph": "1200-GET-INTEREST-RATE",
+    "line": 428,
+    "verb": "IF",
+    "operands": [
+      "APPL-AOK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      156
+    ],
+    "cfg_successors": [
+      158
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF APPL-AOK"
+  },
+  {
+    "seq": 158,
+    "paragraph": "1200-GET-INTEREST-RATE",
+    "line": 429,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      157
+    ],
+    "cfg_successors": [
+      159
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 159,
+    "paragraph": "1200-GET-INTEREST-RATE",
+    "line": 431,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR READING DISCLOSURE GROUP FILE'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      158
+    ],
+    "cfg_successors": [
+      160
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR READING DISCLOSURE GROUP FILE'"
+  },
+  {
+    "seq": 160,
+    "paragraph": "1200-GET-INTEREST-RATE",
+    "line": 432,
+    "verb": "MOVE",
+    "operands": [
+      "DISCGRP-STATUS",
+      "IO-STATUS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      159
+    ],
+    "cfg_successors": [
+      161
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DISCGRP-STATUS TO IO-STATUS"
+  },
+  {
+    "seq": 161,
+    "paragraph": "1200-GET-INTEREST-RATE",
+    "line": 433,
+    "verb": "PERFORM",
+    "operands": [
+      "9910-DISPLAY-IO-STATUS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      160
+    ],
+    "cfg_successors": [
+      285
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9910-DISPLAY-IO-STATUS",
+    "cfg_perform_target": "9910-DISPLAY-IO-STATUS"
+  },
+  {
+    "seq": 162,
+    "paragraph": "1200-GET-INTEREST-RATE",
+    "line": 434,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      161
+    ],
+    "cfg_successors": [
+      281
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 163,
+    "paragraph": "1200-GET-INTEREST-RATE",
+    "line": 436,
+    "verb": "IF",
+    "operands": [
+      "DISCGRP-STATUS",
+      "'23'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF DISCGRP-STATUS = '23'",
+    "cfg_predecessors": [
+      162
+    ],
+    "cfg_successors": [
+      164
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF DISCGRP-STATUS = '23'"
+  },
+  {
+    "seq": 164,
+    "paragraph": "1200-GET-INTEREST-RATE",
+    "line": 437,
+    "verb": "MOVE",
+    "operands": [
+      "'DEFAULT'",
+      "FD-DIS-ACCT-GROUP-ID"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF DISCGRP-STATUS = '23'",
+    "cfg_predecessors": [
+      163
+    ],
+    "cfg_successors": [
+      165
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'DEFAULT' TO FD-DIS-ACCT-GROUP-ID"
+  },
+  {
+    "seq": 165,
+    "paragraph": "1200-GET-INTEREST-RATE",
+    "line": 438,
+    "verb": "PERFORM",
+    "operands": [
+      "1200-A-GET-DEFAULT-INT-RATE"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF DISCGRP-STATUS = '23'",
+    "cfg_predecessors": [
+      164
+    ],
+    "cfg_successors": [
+      167
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1200-A-GET-DEFAULT-INT-RATE",
+    "cfg_perform_target": "1200-A-GET-DEFAULT-INT-RATE"
+  },
+  {
+    "seq": 166,
+    "paragraph": "1200-GET-INTEREST-RATE",
+    "line": 440,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      165
+    ],
+    "cfg_successors": [
+      167
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 167,
+    "paragraph": "1200-A-GET-DEFAULT-INT-RATE",
+    "line": 444,
+    "verb": "READ",
+    "operands": [
+      "DISCGRP-FILE",
+      "DIS-GROUP-RECORD"
+    ],
+    "operand_types": [
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      166,
+      165
+    ],
+    "cfg_successors": [
+      168
+    ],
+    "division": "PROCEDURE",
+    "raw": "READ DISCGRP-FILE INTO DIS-GROUP-RECORD",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 168,
+    "paragraph": "1200-A-GET-DEFAULT-INT-RATE",
+    "line": 446,
+    "verb": "IF",
+    "operands": [
+      "DISCGRP-STATUS",
+      "'00'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF DISCGRP-STATUS = '00'",
+    "cfg_predecessors": [
+      167
+    ],
+    "cfg_successors": [
+      169
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF DISCGRP-STATUS = '00'"
+  },
+  {
+    "seq": 169,
+    "paragraph": "1200-A-GET-DEFAULT-INT-RATE",
+    "line": 447,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF DISCGRP-STATUS = '00'",
+    "cfg_predecessors": [
+      168
+    ],
+    "cfg_successors": [
+      170
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO APPL-RESULT"
+  },
+  {
+    "seq": 170,
+    "paragraph": "1200-A-GET-DEFAULT-INT-RATE",
+    "line": 449,
+    "verb": "MOVE",
+    "operands": [
+      "12",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF DISCGRP-STATUS = '00'",
+    "cfg_predecessors": [
+      169
+    ],
+    "cfg_successors": [
+      171
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 12 TO APPL-RESULT"
+  },
+  {
+    "seq": 171,
+    "paragraph": "1200-A-GET-DEFAULT-INT-RATE",
+    "line": 452,
+    "verb": "IF",
+    "operands": [
+      "APPL-AOK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      170
+    ],
+    "cfg_successors": [
+      172
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF APPL-AOK"
+  },
+  {
+    "seq": 172,
+    "paragraph": "1200-A-GET-DEFAULT-INT-RATE",
+    "line": 453,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      171
+    ],
+    "cfg_successors": [
+      173
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 173,
+    "paragraph": "1200-A-GET-DEFAULT-INT-RATE",
+    "line": 455,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR READING DEFAULT DISCLOSURE GROUP'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      172
+    ],
+    "cfg_successors": [
+      174
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR READING DEFAULT DISCLOSURE GROUP'"
+  },
+  {
+    "seq": 174,
+    "paragraph": "1200-A-GET-DEFAULT-INT-RATE",
+    "line": 456,
+    "verb": "MOVE",
+    "operands": [
+      "DISCGRP-STATUS",
+      "IO-STATUS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      173
+    ],
+    "cfg_successors": [
+      175
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DISCGRP-STATUS TO IO-STATUS"
+  },
+  {
+    "seq": 175,
+    "paragraph": "1200-A-GET-DEFAULT-INT-RATE",
+    "line": 457,
+    "verb": "PERFORM",
+    "operands": [
+      "9910-DISPLAY-IO-STATUS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      174
+    ],
+    "cfg_successors": [
+      285
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9910-DISPLAY-IO-STATUS",
+    "cfg_perform_target": "9910-DISPLAY-IO-STATUS"
+  },
+  {
+    "seq": 176,
+    "paragraph": "1200-A-GET-DEFAULT-INT-RATE",
+    "line": 458,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      175
+    ],
+    "cfg_successors": [
+      281
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 177,
+    "paragraph": "1200-A-GET-DEFAULT-INT-RATE",
+    "line": 460,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      176
+    ],
+    "cfg_successors": [
+      178
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 178,
+    "paragraph": "1300-COMPUTE-INTEREST",
+    "line": 464,
+    "verb": "COMPUTE",
+    "operands": [
+      "WS-MONTHLY-INT"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      177,
+      28
+    ],
+    "cfg_successors": [
+      179
+    ],
+    "division": "PROCEDURE",
+    "raw": "COMPUTE WS-MONTHLY-INT"
+  },
+  {
+    "seq": 179,
+    "paragraph": "1300-COMPUTE-INTEREST",
+    "line": 467,
+    "verb": "ADD",
+    "operands": [
+      "WS-MONTHLY-INT",
+      "WS-TOTAL-INT"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      178
+    ],
+    "cfg_successors": [
+      180
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD WS-MONTHLY-INT TO WS-TOTAL-INT"
+  },
+  {
+    "seq": 180,
+    "paragraph": "1300-COMPUTE-INTEREST",
+    "line": 468,
+    "verb": "PERFORM",
+    "operands": [
+      "1300-B-WRITE-TX"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      179
+    ],
+    "cfg_successors": [
+      182
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 1300-B-WRITE-TX.",
+    "cfg_perform_target": "1300-B-WRITE-TX"
+  },
+  {
+    "seq": 181,
+    "paragraph": "1300-COMPUTE-INTEREST",
+    "line": 470,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      180
+    ],
+    "cfg_successors": [
+      182
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 182,
+    "paragraph": "1300-B-WRITE-TX",
+    "line": 474,
+    "verb": "ADD",
+    "operands": [
+      "1",
+      "WS-TRANID-SUFFIX"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      181,
+      180
+    ],
+    "cfg_successors": [
+      183
+    ],
+    "division": "PROCEDURE",
+    "raw": "ADD 1 TO WS-TRANID-SUFFIX"
+  },
+  {
+    "seq": 183,
+    "paragraph": "1300-B-WRITE-TX",
+    "line": 476,
+    "verb": "STRING",
+    "operands": [
+      "PARM-DATE"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      182
+    ],
+    "cfg_successors": [
+      184
+    ],
+    "division": "PROCEDURE",
+    "raw": "STRING PARM-DATE"
+  },
+  {
+    "seq": 184,
+    "paragraph": "END-STRING",
+    "line": 482,
+    "verb": "MOVE",
+    "operands": [
+      "'01'",
+      "TRAN-TYPE-CD"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      183
+    ],
+    "cfg_successors": [
+      185
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE '01' TO TRAN-TYPE-CD"
+  },
+  {
+    "seq": 185,
+    "paragraph": "END-STRING",
+    "line": 483,
+    "verb": "MOVE",
+    "operands": [
+      "'05'",
+      "TRAN-CAT-CD"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      184
+    ],
+    "cfg_successors": [
+      186
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE '05' TO TRAN-CAT-CD"
+  },
+  {
+    "seq": 186,
+    "paragraph": "END-STRING",
+    "line": 484,
+    "verb": "MOVE",
+    "operands": [
+      "'System'",
+      "TRAN-SOURCE"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      185
+    ],
+    "cfg_successors": [
+      187
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 'System' TO TRAN-SOURCE"
+  },
+  {
+    "seq": 187,
+    "paragraph": "END-STRING",
+    "line": 485,
+    "verb": "STRING",
+    "operands": [
+      "'Int. for a/c '"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      186
+    ],
+    "cfg_successors": [
+      188
+    ],
+    "division": "PROCEDURE",
+    "raw": "STRING 'Int. for a/c '"
+  },
+  {
+    "seq": 188,
+    "paragraph": "END-STRING",
+    "line": 490,
+    "verb": "MOVE",
+    "operands": [
+      "WS-MONTHLY-INT",
+      "TRAN-AMT"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      187
+    ],
+    "cfg_successors": [
+      189
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE WS-MONTHLY-INT TO TRAN-AMT"
+  },
+  {
+    "seq": 189,
+    "paragraph": "END-STRING",
+    "line": 491,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "TRAN-MERCHANT-ID"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      188
+    ],
+    "cfg_successors": [
+      190
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO TRAN-MERCHANT-ID"
+  },
+  {
+    "seq": 190,
+    "paragraph": "END-STRING",
+    "line": 492,
+    "verb": "MOVE",
+    "operands": [
+      "TRAN-MERCHANT-NAME"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      189
+    ],
+    "cfg_successors": [
+      191
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE SPACES TO TRAN-MERCHANT-NAME"
+  },
+  {
+    "seq": 191,
+    "paragraph": "END-STRING",
+    "line": 493,
+    "verb": "MOVE",
+    "operands": [
+      "TRAN-MERCHANT-CITY"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      190
+    ],
+    "cfg_successors": [
+      192
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE SPACES TO TRAN-MERCHANT-CITY"
+  },
+  {
+    "seq": 192,
+    "paragraph": "END-STRING",
+    "line": 494,
+    "verb": "MOVE",
+    "operands": [
+      "TRAN-MERCHANT-ZIP"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      191
+    ],
+    "cfg_successors": [
+      193
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE SPACES TO TRAN-MERCHANT-ZIP"
+  },
+  {
+    "seq": 193,
+    "paragraph": "END-STRING",
+    "line": 495,
+    "verb": "MOVE",
+    "operands": [
+      "XREF-CARD-NUM",
+      "TRAN-CARD-NUM"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      192
+    ],
+    "cfg_successors": [
+      194
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE XREF-CARD-NUM TO TRAN-CARD-NUM"
+  },
+  {
+    "seq": 194,
+    "paragraph": "END-STRING",
+    "line": 496,
+    "verb": "PERFORM",
+    "operands": [
+      "Z-GET-DB2-FORMAT-TIMESTAMP"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      193
+    ],
+    "cfg_successors": [
+      269
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM Z-GET-DB2-FORMAT-TIMESTAMP",
+    "cfg_perform_target": "Z-GET-DB2-FORMAT-TIMESTAMP"
+  },
+  {
+    "seq": 195,
+    "paragraph": "END-STRING",
+    "line": 497,
+    "verb": "MOVE",
+    "operands": [
+      "DB2-FORMAT-TS",
+      "TRAN-ORIG-TS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      194
+    ],
+    "cfg_successors": [
+      196
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DB2-FORMAT-TS TO TRAN-ORIG-TS"
+  },
+  {
+    "seq": 196,
+    "paragraph": "END-STRING",
+    "line": 498,
+    "verb": "MOVE",
+    "operands": [
+      "DB2-FORMAT-TS",
+      "TRAN-PROC-TS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      195
+    ],
+    "cfg_successors": [
+      197
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DB2-FORMAT-TS TO TRAN-PROC-TS"
+  },
+  {
+    "seq": 197,
+    "paragraph": "END-STRING",
+    "line": 500,
+    "verb": "WRITE",
+    "operands": [
+      "FD-TRANFILE-REC",
+      "TRAN-RECORD"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      196
+    ],
+    "cfg_successors": [
+      198
+    ],
+    "division": "PROCEDURE",
+    "raw": "WRITE FD-TRANFILE-REC FROM TRAN-RECORD"
+  },
+  {
+    "seq": 198,
+    "paragraph": "END-STRING",
+    "line": 501,
+    "verb": "IF",
+    "operands": [
+      "TRANFILE-STATUS",
+      "'00'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TRANFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      197
+    ],
+    "cfg_successors": [
+      199
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF TRANFILE-STATUS = '00'"
+  },
+  {
+    "seq": 199,
+    "paragraph": "END-STRING",
+    "line": 502,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TRANFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      198
+    ],
+    "cfg_successors": [
+      200
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO APPL-RESULT"
+  },
+  {
+    "seq": 200,
+    "paragraph": "END-STRING",
+    "line": 504,
+    "verb": "MOVE",
+    "operands": [
+      "12",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TRANFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      199
+    ],
+    "cfg_successors": [
+      201
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 12 TO APPL-RESULT"
+  },
+  {
+    "seq": 201,
+    "paragraph": "END-STRING",
+    "line": 507,
+    "verb": "IF",
+    "operands": [
+      "APPL-AOK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      200
+    ],
+    "cfg_successors": [
+      202
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF APPL-AOK"
+  },
+  {
+    "seq": 202,
+    "paragraph": "END-STRING",
+    "line": 508,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      201
+    ],
+    "cfg_successors": [
+      203
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 203,
+    "paragraph": "END-STRING",
+    "line": 510,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR WRITING TRANSACTION RECORD'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      202
+    ],
+    "cfg_successors": [
+      204
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR WRITING TRANSACTION RECORD'"
+  },
+  {
+    "seq": 204,
+    "paragraph": "END-STRING",
+    "line": 511,
+    "verb": "MOVE",
+    "operands": [
+      "TRANFILE-STATUS",
+      "IO-STATUS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      203
+    ],
+    "cfg_successors": [
+      205
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRANFILE-STATUS TO IO-STATUS"
+  },
+  {
+    "seq": 205,
+    "paragraph": "END-STRING",
+    "line": 512,
+    "verb": "PERFORM",
+    "operands": [
+      "9910-DISPLAY-IO-STATUS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      204
+    ],
+    "cfg_successors": [
+      206
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9910-DISPLAY-IO-STATUS",
+    "cfg_edge_unresolved": true
+  },
+  {
+    "seq": 206,
+    "paragraph": "END-STRING",
+    "line": 513,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      205
+    ],
+    "cfg_successors": [
+      207
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_edge_unresolved": true
+  },
+  {
+    "seq": 207,
+    "paragraph": "END-STRING",
+    "line": 515,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      206
+    ],
+    "cfg_successors": [
+      208
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 208,
+    "paragraph": "1400-COMPUTE-FEES",
+    "line": 520,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      207,
+      29
+    ],
+    "cfg_successors": [
+      209
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 209,
+    "paragraph": "9000-TCATBALF-CLOSE",
+    "line": 523,
+    "verb": "MOVE",
+    "operands": [
+      "8",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      208,
+      31
+    ],
+    "cfg_successors": [
+      210
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 8 TO APPL-RESULT."
+  },
+  {
+    "seq": 210,
+    "paragraph": "9000-TCATBALF-CLOSE",
+    "line": 524,
+    "verb": "CLOSE",
+    "operands": [
+      "TCATBAL-FILE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      209
+    ],
+    "cfg_successors": [
+      211
+    ],
+    "division": "PROCEDURE",
+    "raw": "CLOSE TCATBAL-FILE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 211,
+    "paragraph": "9000-TCATBALF-CLOSE",
+    "line": 525,
+    "verb": "IF",
+    "operands": [
+      "TCATBALF-STATUS",
+      "'00'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TCATBALF-STATUS = '00'",
+    "cfg_predecessors": [
+      210
+    ],
+    "cfg_successors": [
+      212
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF TCATBALF-STATUS = '00'"
+  },
+  {
+    "seq": 212,
+    "paragraph": "9000-TCATBALF-CLOSE",
+    "line": 526,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TCATBALF-STATUS = '00'",
+    "cfg_predecessors": [
+      211
+    ],
+    "cfg_successors": [
+      213
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO APPL-RESULT"
+  },
+  {
+    "seq": 213,
+    "paragraph": "9000-TCATBALF-CLOSE",
+    "line": 528,
+    "verb": "MOVE",
+    "operands": [
+      "12",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TCATBALF-STATUS = '00'",
+    "cfg_predecessors": [
+      212
+    ],
+    "cfg_successors": [
+      214
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 12 TO APPL-RESULT"
+  },
+  {
+    "seq": 214,
+    "paragraph": "9000-TCATBALF-CLOSE",
+    "line": 530,
+    "verb": "IF",
+    "operands": [
+      "APPL-AOK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      213
+    ],
+    "cfg_successors": [
+      215
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF APPL-AOK"
+  },
+  {
+    "seq": 215,
+    "paragraph": "9000-TCATBALF-CLOSE",
+    "line": 531,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      214
+    ],
+    "cfg_successors": [
+      216
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 216,
+    "paragraph": "9000-TCATBALF-CLOSE",
+    "line": 533,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR CLOSING TRANSACTION BALANCE FILE'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      215
+    ],
+    "cfg_successors": [
+      217
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR CLOSING TRANSACTION BALANCE FILE'"
+  },
+  {
+    "seq": 217,
+    "paragraph": "9000-TCATBALF-CLOSE",
+    "line": 534,
+    "verb": "MOVE",
+    "operands": [
+      "TCATBALF-STATUS",
+      "IO-STATUS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      216
+    ],
+    "cfg_successors": [
+      218
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TCATBALF-STATUS TO IO-STATUS"
+  },
+  {
+    "seq": 218,
+    "paragraph": "9000-TCATBALF-CLOSE",
+    "line": 535,
+    "verb": "PERFORM",
+    "operands": [
+      "9910-DISPLAY-IO-STATUS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      217
+    ],
+    "cfg_successors": [
+      285
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9910-DISPLAY-IO-STATUS",
+    "cfg_perform_target": "9910-DISPLAY-IO-STATUS"
+  },
+  {
+    "seq": 219,
+    "paragraph": "9000-TCATBALF-CLOSE",
+    "line": 536,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      218
+    ],
+    "cfg_successors": [
+      281
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 220,
+    "paragraph": "9000-TCATBALF-CLOSE",
+    "line": 538,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      219
+    ],
+    "cfg_successors": [
+      221
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 221,
+    "paragraph": "9100-XREFFILE-CLOSE",
+    "line": 542,
+    "verb": "MOVE",
+    "operands": [
+      "8",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      220,
+      32
+    ],
+    "cfg_successors": [
+      222
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 8 TO APPL-RESULT."
+  },
+  {
+    "seq": 222,
+    "paragraph": "9100-XREFFILE-CLOSE",
+    "line": 543,
+    "verb": "CLOSE",
+    "operands": [
+      "XREF-FILE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      221
+    ],
+    "cfg_successors": [
+      223
+    ],
+    "division": "PROCEDURE",
+    "raw": "CLOSE XREF-FILE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 223,
+    "paragraph": "9100-XREFFILE-CLOSE",
+    "line": 544,
+    "verb": "IF",
+    "operands": [
+      "XREFFILE-STATUS",
+      "'00'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF XREFFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      222
+    ],
+    "cfg_successors": [
+      224
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF XREFFILE-STATUS = '00'"
+  },
+  {
+    "seq": 224,
+    "paragraph": "9100-XREFFILE-CLOSE",
+    "line": 545,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF XREFFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      223
+    ],
+    "cfg_successors": [
+      225
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO APPL-RESULT"
+  },
+  {
+    "seq": 225,
+    "paragraph": "9100-XREFFILE-CLOSE",
+    "line": 547,
+    "verb": "MOVE",
+    "operands": [
+      "12",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF XREFFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      224
+    ],
+    "cfg_successors": [
+      226
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 12 TO APPL-RESULT"
+  },
+  {
+    "seq": 226,
+    "paragraph": "9100-XREFFILE-CLOSE",
+    "line": 549,
+    "verb": "IF",
+    "operands": [
+      "APPL-AOK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      225
+    ],
+    "cfg_successors": [
+      227
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF APPL-AOK"
+  },
+  {
+    "seq": 227,
+    "paragraph": "9100-XREFFILE-CLOSE",
+    "line": 550,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      226
+    ],
+    "cfg_successors": [
+      228
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 228,
+    "paragraph": "9100-XREFFILE-CLOSE",
+    "line": 552,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR CLOSING CROSS REF FILE'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      227
+    ],
+    "cfg_successors": [
+      229
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR CLOSING CROSS REF FILE'"
+  },
+  {
+    "seq": 229,
+    "paragraph": "9100-XREFFILE-CLOSE",
+    "line": 553,
+    "verb": "MOVE",
+    "operands": [
+      "XREFFILE-STATUS",
+      "IO-STATUS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      228
+    ],
+    "cfg_successors": [
+      230
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE XREFFILE-STATUS TO IO-STATUS"
+  },
+  {
+    "seq": 230,
+    "paragraph": "9100-XREFFILE-CLOSE",
+    "line": 554,
+    "verb": "PERFORM",
+    "operands": [
+      "9910-DISPLAY-IO-STATUS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      229
+    ],
+    "cfg_successors": [
+      285
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9910-DISPLAY-IO-STATUS",
+    "cfg_perform_target": "9910-DISPLAY-IO-STATUS"
+  },
+  {
+    "seq": 231,
+    "paragraph": "9100-XREFFILE-CLOSE",
+    "line": 555,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      230
+    ],
+    "cfg_successors": [
+      281
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 232,
+    "paragraph": "9100-XREFFILE-CLOSE",
+    "line": 557,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      231
+    ],
+    "cfg_successors": [
+      233
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 233,
+    "paragraph": "9200-DISCGRP-CLOSE",
+    "line": 560,
+    "verb": "MOVE",
+    "operands": [
+      "8",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      232,
+      33
+    ],
+    "cfg_successors": [
+      234
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 8 TO APPL-RESULT."
+  },
+  {
+    "seq": 234,
+    "paragraph": "9200-DISCGRP-CLOSE",
+    "line": 561,
+    "verb": "CLOSE",
+    "operands": [
+      "DISCGRP-FILE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      233
+    ],
+    "cfg_successors": [
+      235
+    ],
+    "division": "PROCEDURE",
+    "raw": "CLOSE DISCGRP-FILE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 235,
+    "paragraph": "9200-DISCGRP-CLOSE",
+    "line": 562,
+    "verb": "IF",
+    "operands": [
+      "DISCGRP-STATUS",
+      "'00'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF DISCGRP-STATUS = '00'",
+    "cfg_predecessors": [
+      234
+    ],
+    "cfg_successors": [
+      236
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF DISCGRP-STATUS = '00'"
+  },
+  {
+    "seq": 236,
+    "paragraph": "9200-DISCGRP-CLOSE",
+    "line": 563,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF DISCGRP-STATUS = '00'",
+    "cfg_predecessors": [
+      235
+    ],
+    "cfg_successors": [
+      237
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO APPL-RESULT"
+  },
+  {
+    "seq": 237,
+    "paragraph": "9200-DISCGRP-CLOSE",
+    "line": 565,
+    "verb": "MOVE",
+    "operands": [
+      "12",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF DISCGRP-STATUS = '00'",
+    "cfg_predecessors": [
+      236
+    ],
+    "cfg_successors": [
+      238
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 12 TO APPL-RESULT"
+  },
+  {
+    "seq": 238,
+    "paragraph": "9200-DISCGRP-CLOSE",
+    "line": 567,
+    "verb": "IF",
+    "operands": [
+      "APPL-AOK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      237
+    ],
+    "cfg_successors": [
+      239
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF APPL-AOK"
+  },
+  {
+    "seq": 239,
+    "paragraph": "9200-DISCGRP-CLOSE",
+    "line": 568,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      238
+    ],
+    "cfg_successors": [
+      240
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 240,
+    "paragraph": "9200-DISCGRP-CLOSE",
+    "line": 570,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR CLOSING DISCLOSURE GROUP FILE'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      239
+    ],
+    "cfg_successors": [
+      241
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR CLOSING DISCLOSURE GROUP FILE'"
+  },
+  {
+    "seq": 241,
+    "paragraph": "9200-DISCGRP-CLOSE",
+    "line": 571,
+    "verb": "MOVE",
+    "operands": [
+      "DISCGRP-STATUS",
+      "IO-STATUS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      240
+    ],
+    "cfg_successors": [
+      242
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE DISCGRP-STATUS TO IO-STATUS"
+  },
+  {
+    "seq": 242,
+    "paragraph": "9200-DISCGRP-CLOSE",
+    "line": 572,
+    "verb": "PERFORM",
+    "operands": [
+      "9910-DISPLAY-IO-STATUS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      241
+    ],
+    "cfg_successors": [
+      285
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9910-DISPLAY-IO-STATUS",
+    "cfg_perform_target": "9910-DISPLAY-IO-STATUS"
+  },
+  {
+    "seq": 243,
+    "paragraph": "9200-DISCGRP-CLOSE",
+    "line": 573,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      242
+    ],
+    "cfg_successors": [
+      281
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 244,
+    "paragraph": "9200-DISCGRP-CLOSE",
+    "line": 575,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      243
+    ],
+    "cfg_successors": [
+      245
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 245,
+    "paragraph": "9300-ACCTFILE-CLOSE",
+    "line": 578,
+    "verb": "MOVE",
+    "operands": [
+      "8",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      244,
+      34
+    ],
+    "cfg_successors": [
+      246
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 8 TO APPL-RESULT."
+  },
+  {
+    "seq": 246,
+    "paragraph": "9300-ACCTFILE-CLOSE",
+    "line": 579,
+    "verb": "CLOSE",
+    "operands": [
+      "ACCOUNT-FILE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      245
+    ],
+    "cfg_successors": [
+      247
+    ],
+    "division": "PROCEDURE",
+    "raw": "CLOSE ACCOUNT-FILE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 247,
+    "paragraph": "9300-ACCTFILE-CLOSE",
+    "line": 580,
+    "verb": "IF",
+    "operands": [
+      "ACCTFILE-STATUS",
+      "'00'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF ACCTFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      246
+    ],
+    "cfg_successors": [
+      248
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF ACCTFILE-STATUS = '00'"
+  },
+  {
+    "seq": 248,
+    "paragraph": "9300-ACCTFILE-CLOSE",
+    "line": 581,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF ACCTFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      247
+    ],
+    "cfg_successors": [
+      249
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO APPL-RESULT"
+  },
+  {
+    "seq": 249,
+    "paragraph": "9300-ACCTFILE-CLOSE",
+    "line": 583,
+    "verb": "MOVE",
+    "operands": [
+      "12",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF ACCTFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      248
+    ],
+    "cfg_successors": [
+      250
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 12 TO APPL-RESULT"
+  },
+  {
+    "seq": 250,
+    "paragraph": "9300-ACCTFILE-CLOSE",
+    "line": 585,
+    "verb": "IF",
+    "operands": [
+      "APPL-AOK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      249
+    ],
+    "cfg_successors": [
+      251
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF APPL-AOK"
+  },
+  {
+    "seq": 251,
+    "paragraph": "9300-ACCTFILE-CLOSE",
+    "line": 586,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      250
+    ],
+    "cfg_successors": [
+      252
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 252,
+    "paragraph": "9300-ACCTFILE-CLOSE",
+    "line": 588,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR CLOSING ACCOUNT FILE'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      251
+    ],
+    "cfg_successors": [
+      253
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR CLOSING ACCOUNT FILE'"
+  },
+  {
+    "seq": 253,
+    "paragraph": "9300-ACCTFILE-CLOSE",
+    "line": 589,
+    "verb": "MOVE",
+    "operands": [
+      "ACCTFILE-STATUS",
+      "IO-STATUS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      252
+    ],
+    "cfg_successors": [
+      254
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE ACCTFILE-STATUS TO IO-STATUS"
+  },
+  {
+    "seq": 254,
+    "paragraph": "9300-ACCTFILE-CLOSE",
+    "line": 590,
+    "verb": "PERFORM",
+    "operands": [
+      "9910-DISPLAY-IO-STATUS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      253
+    ],
+    "cfg_successors": [
+      285
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9910-DISPLAY-IO-STATUS",
+    "cfg_perform_target": "9910-DISPLAY-IO-STATUS"
+  },
+  {
+    "seq": 255,
+    "paragraph": "9300-ACCTFILE-CLOSE",
+    "line": 591,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      254
+    ],
+    "cfg_successors": [
+      281
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 256,
+    "paragraph": "9300-ACCTFILE-CLOSE",
+    "line": 593,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      255
+    ],
+    "cfg_successors": [
+      257
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 257,
+    "paragraph": "9400-TRANFILE-CLOSE",
+    "line": 596,
+    "verb": "MOVE",
+    "operands": [
+      "8",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      256,
+      35
+    ],
+    "cfg_successors": [
+      258
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 8 TO APPL-RESULT."
+  },
+  {
+    "seq": 258,
+    "paragraph": "9400-TRANFILE-CLOSE",
+    "line": 597,
+    "verb": "CLOSE",
+    "operands": [
+      "TRANSACT-FILE"
+    ],
+    "operand_types": [
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      257
+    ],
+    "cfg_successors": [
+      259
+    ],
+    "division": "PROCEDURE",
+    "raw": "CLOSE TRANSACT-FILE",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 259,
+    "paragraph": "9400-TRANFILE-CLOSE",
+    "line": 598,
+    "verb": "IF",
+    "operands": [
+      "TRANFILE-STATUS",
+      "'00'"
+    ],
+    "operand_types": [
+      "working-storage",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TRANFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      258
+    ],
+    "cfg_successors": [
+      260
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF TRANFILE-STATUS = '00'"
+  },
+  {
+    "seq": 260,
+    "paragraph": "9400-TRANFILE-CLOSE",
+    "line": 599,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TRANFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      259
+    ],
+    "cfg_successors": [
+      261
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO APPL-RESULT"
+  },
+  {
+    "seq": 261,
+    "paragraph": "9400-TRANFILE-CLOSE",
+    "line": 601,
+    "verb": "MOVE",
+    "operands": [
+      "12",
+      "APPL-RESULT"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF TRANFILE-STATUS = '00'",
+    "cfg_predecessors": [
+      260
+    ],
+    "cfg_successors": [
+      262
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 12 TO APPL-RESULT"
+  },
+  {
+    "seq": 262,
+    "paragraph": "9400-TRANFILE-CLOSE",
+    "line": 603,
+    "verb": "IF",
+    "operands": [
+      "APPL-AOK"
+    ],
+    "operand_types": [
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      261
+    ],
+    "cfg_successors": [
+      263
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF APPL-AOK"
+  },
+  {
+    "seq": 263,
+    "paragraph": "9400-TRANFILE-CLOSE",
+    "line": 604,
+    "verb": "CONTINUE",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      262
+    ],
+    "cfg_successors": [
+      264
+    ],
+    "division": "PROCEDURE",
+    "raw": "CONTINUE"
+  },
+  {
+    "seq": 264,
+    "paragraph": "9400-TRANFILE-CLOSE",
+    "line": 606,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ERROR CLOSING TRANSACTION FILE'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      263
+    ],
+    "cfg_successors": [
+      265
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ERROR CLOSING TRANSACTION FILE'"
+  },
+  {
+    "seq": 265,
+    "paragraph": "9400-TRANFILE-CLOSE",
+    "line": 607,
+    "verb": "MOVE",
+    "operands": [
+      "TRANFILE-STATUS",
+      "IO-STATUS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      264
+    ],
+    "cfg_successors": [
+      266
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TRANFILE-STATUS TO IO-STATUS"
+  },
+  {
+    "seq": 266,
+    "paragraph": "9400-TRANFILE-CLOSE",
+    "line": 608,
+    "verb": "PERFORM",
+    "operands": [
+      "9910-DISPLAY-IO-STATUS"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      265
+    ],
+    "cfg_successors": [
+      285
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9910-DISPLAY-IO-STATUS",
+    "cfg_perform_target": "9910-DISPLAY-IO-STATUS"
+  },
+  {
+    "seq": 267,
+    "paragraph": "9400-TRANFILE-CLOSE",
+    "line": 609,
+    "verb": "PERFORM",
+    "operands": [
+      "9999-ABEND-PROGRAM"
+    ],
+    "operand_types": [
+      "paragraph"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF APPL-AOK",
+    "cfg_predecessors": [
+      266
+    ],
+    "cfg_successors": [
+      281
+    ],
+    "division": "PROCEDURE",
+    "raw": "PERFORM 9999-ABEND-PROGRAM",
+    "cfg_perform_target": "9999-ABEND-PROGRAM"
+  },
+  {
+    "seq": 268,
+    "paragraph": "9400-TRANFILE-CLOSE",
+    "line": 611,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      267
+    ],
+    "cfg_successors": [
+      269
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 269,
+    "paragraph": "Z-GET-DB2-FORMAT-TIMESTAMP",
+    "line": 614,
+    "verb": "MOVE",
+    "operands": [
+      "FUNCTION",
+      "CURRENT-DATE",
+      "COBOL-TS"
+    ],
+    "operand_types": [
+      "unresolved",
+      "unresolved",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      268,
+      194
+    ],
+    "cfg_successors": [
+      270
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE FUNCTION CURRENT-DATE TO COBOL-TS",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 270,
+    "paragraph": "Z-GET-DB2-FORMAT-TIMESTAMP",
+    "line": 615,
+    "verb": "MOVE",
+    "operands": [
+      "COB-YYYY",
+      "DB2-YYYY"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      269
+    ],
+    "cfg_successors": [
+      271
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE COB-YYYY TO DB2-YYYY"
+  },
+  {
+    "seq": 271,
+    "paragraph": "Z-GET-DB2-FORMAT-TIMESTAMP",
+    "line": 616,
+    "verb": "MOVE",
+    "operands": [
+      "COB-MM",
+      "DB2-MM"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      270
+    ],
+    "cfg_successors": [
+      272
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE COB-MM TO DB2-MM"
+  },
+  {
+    "seq": 272,
+    "paragraph": "Z-GET-DB2-FORMAT-TIMESTAMP",
+    "line": 617,
+    "verb": "MOVE",
+    "operands": [
+      "COB-DD",
+      "DB2-DD"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      271
+    ],
+    "cfg_successors": [
+      273
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE COB-DD TO DB2-DD"
+  },
+  {
+    "seq": 273,
+    "paragraph": "Z-GET-DB2-FORMAT-TIMESTAMP",
+    "line": 618,
+    "verb": "MOVE",
+    "operands": [
+      "COB-HH",
+      "DB2-HH"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      272
+    ],
+    "cfg_successors": [
+      274
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE COB-HH TO DB2-HH"
+  },
+  {
+    "seq": 274,
+    "paragraph": "Z-GET-DB2-FORMAT-TIMESTAMP",
+    "line": 619,
+    "verb": "MOVE",
+    "operands": [
+      "COB-MIN",
+      "DB2-MIN"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      273
+    ],
+    "cfg_successors": [
+      275
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE COB-MIN TO DB2-MIN"
+  },
+  {
+    "seq": 275,
+    "paragraph": "Z-GET-DB2-FORMAT-TIMESTAMP",
+    "line": 620,
+    "verb": "MOVE",
+    "operands": [
+      "COB-SS",
+      "DB2-SS"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      274
+    ],
+    "cfg_successors": [
+      276
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE COB-SS TO DB2-SS"
+  },
+  {
+    "seq": 276,
+    "paragraph": "Z-GET-DB2-FORMAT-TIMESTAMP",
+    "line": 621,
+    "verb": "MOVE",
+    "operands": [
+      "COB-MIL",
+      "DB2-MIL"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      275
+    ],
+    "cfg_successors": [
+      277
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE COB-MIL TO DB2-MIL"
+  },
+  {
+    "seq": 277,
+    "paragraph": "Z-GET-DB2-FORMAT-TIMESTAMP",
+    "line": 622,
+    "verb": "MOVE",
+    "operands": [
+      "'0000'",
+      "DB2-REST"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      276
+    ],
+    "cfg_successors": [
+      278
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE '0000' TO DB2-REST"
+  },
+  {
+    "seq": 278,
+    "paragraph": "Z-GET-DB2-FORMAT-TIMESTAMP",
+    "line": 623,
+    "verb": "MOVE",
+    "operands": [
+      "'-'",
+      "DB2-STREEP-1",
+      "DB2-STREEP-2",
+      "DB2-STREEP-3"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage",
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      277
+    ],
+    "cfg_successors": [
+      279
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE '-' TO DB2-STREEP-1 DB2-STREEP-2 DB2-STREEP-3"
+  },
+  {
+    "seq": 279,
+    "paragraph": "Z-GET-DB2-FORMAT-TIMESTAMP",
+    "line": 624,
+    "verb": "MOVE",
+    "operands": [
+      "'.'",
+      "DB2-DOT-1",
+      "DB2-DOT-2",
+      "DB2-DOT-3"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage",
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      278
+    ],
+    "cfg_successors": [
+      280
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE '.' TO DB2-DOT-1 DB2-DOT-2 DB2-DOT-3"
+  },
+  {
+    "seq": 280,
+    "paragraph": "Z-GET-DB2-FORMAT-TIMESTAMP",
+    "line": 626,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      279
+    ],
+    "cfg_successors": [
+      281
+    ],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  },
+  {
+    "seq": 281,
+    "paragraph": "9999-ABEND-PROGRAM",
+    "line": 629,
+    "verb": "DISPLAY",
+    "operands": [
+      "'ABENDING PROGRAM'"
+    ],
+    "operand_types": [
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      280,
+      48,
+      60,
+      72,
+      84,
+      96,
+      111,
+      125,
+      137,
+      149,
+      162,
+      176,
+      219,
+      231,
+      243,
+      255,
+      267
+    ],
+    "cfg_successors": [
+      282
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'ABENDING PROGRAM'"
+  },
+  {
+    "seq": 282,
+    "paragraph": "9999-ABEND-PROGRAM",
+    "line": 630,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "TIMING"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      281
+    ],
+    "cfg_successors": [
+      283
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO TIMING"
+  },
+  {
+    "seq": 283,
+    "paragraph": "9999-ABEND-PROGRAM",
+    "line": 631,
+    "verb": "MOVE",
+    "operands": [
+      "999",
+      "ABCODE"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      282
+    ],
+    "cfg_successors": [
+      284
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 999 TO ABCODE"
+  },
+  {
+    "seq": 284,
+    "paragraph": "9999-ABEND-PROGRAM",
+    "line": 632,
+    "verb": "CALL",
+    "operands": [
+      "'CEE3ABD'",
+      "ABCODE",
+      "TIMING"
+    ],
+    "operand_types": [
+      "external-program",
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      283
+    ],
+    "cfg_successors": [
+      285
+    ],
+    "division": "PROCEDURE",
+    "raw": "CALL 'CEE3ABD' USING ABCODE TIMING."
+  },
+  {
+    "seq": 285,
+    "paragraph": "9910-DISPLAY-IO-STATUS",
+    "line": 636,
+    "verb": "IF",
+    "operands": [
+      "IO-STATUS",
+      "NUMERIC"
+    ],
+    "operand_types": [
+      "working-storage",
+      "unresolved"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF IO-STATUS NOT NUMERIC",
+    "cfg_predecessors": [
+      284,
+      47,
+      59,
+      71,
+      83,
+      95,
+      110,
+      124,
+      136,
+      148,
+      161,
+      175,
+      218,
+      230,
+      242,
+      254,
+      266
+    ],
+    "cfg_successors": [
+      286
+    ],
+    "division": "PROCEDURE",
+    "raw": "IF IO-STATUS NOT NUMERIC",
+    "operand_unresolved": true
+  },
+  {
+    "seq": 286,
+    "paragraph": "9910-DISPLAY-IO-STATUS",
+    "line": 638,
+    "verb": "MOVE",
+    "operands": [
+      "IO-STAT1",
+      "IO-STATUS-04",
+      "1",
+      "1"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage",
+      "literal",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF IO-STATUS NOT NUMERIC",
+    "cfg_predecessors": [
+      285
+    ],
+    "cfg_successors": [
+      287
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE IO-STAT1 TO IO-STATUS-04(1:1)"
+  },
+  {
+    "seq": 287,
+    "paragraph": "9910-DISPLAY-IO-STATUS",
+    "line": 639,
+    "verb": "MOVE",
+    "operands": [
+      "0",
+      "TWO-BYTES-BINARY"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF IO-STATUS NOT NUMERIC",
+    "cfg_predecessors": [
+      286
+    ],
+    "cfg_successors": [
+      288
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE 0 TO TWO-BYTES-BINARY"
+  },
+  {
+    "seq": 288,
+    "paragraph": "9910-DISPLAY-IO-STATUS",
+    "line": 640,
+    "verb": "MOVE",
+    "operands": [
+      "IO-STAT2",
+      "TWO-BYTES-RIGHT"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF IO-STATUS NOT NUMERIC",
+    "cfg_predecessors": [
+      287
+    ],
+    "cfg_successors": [
+      289
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE IO-STAT2 TO TWO-BYTES-RIGHT"
+  },
+  {
+    "seq": 289,
+    "paragraph": "9910-DISPLAY-IO-STATUS",
+    "line": 641,
+    "verb": "MOVE",
+    "operands": [
+      "TWO-BYTES-BINARY",
+      "IO-STATUS-0403"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF IO-STATUS NOT NUMERIC",
+    "cfg_predecessors": [
+      288
+    ],
+    "cfg_successors": [
+      290
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE TWO-BYTES-BINARY TO IO-STATUS-0403"
+  },
+  {
+    "seq": 290,
+    "paragraph": "9910-DISPLAY-IO-STATUS",
+    "line": 642,
+    "verb": "DISPLAY",
+    "operands": [
+      "'FILE STATUS IS: NNNN'",
+      "IO-STATUS-04"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF IO-STATUS NOT NUMERIC",
+    "cfg_predecessors": [
+      289
+    ],
+    "cfg_successors": [
+      291
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04"
+  },
+  {
+    "seq": 291,
+    "paragraph": "9910-DISPLAY-IO-STATUS",
+    "line": 644,
+    "verb": "MOVE",
+    "operands": [
+      "'0000'",
+      "IO-STATUS-04"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF IO-STATUS NOT NUMERIC",
+    "cfg_predecessors": [
+      290
+    ],
+    "cfg_successors": [
+      292
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE '0000' TO IO-STATUS-04"
+  },
+  {
+    "seq": 292,
+    "paragraph": "9910-DISPLAY-IO-STATUS",
+    "line": 645,
+    "verb": "MOVE",
+    "operands": [
+      "IO-STATUS",
+      "IO-STATUS-04",
+      "3",
+      "2"
+    ],
+    "operand_types": [
+      "working-storage",
+      "working-storage",
+      "literal",
+      "literal"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF IO-STATUS NOT NUMERIC",
+    "cfg_predecessors": [
+      291
+    ],
+    "cfg_successors": [
+      293
+    ],
+    "division": "PROCEDURE",
+    "raw": "MOVE IO-STATUS TO IO-STATUS-04(3:2)"
+  },
+  {
+    "seq": 293,
+    "paragraph": "9910-DISPLAY-IO-STATUS",
+    "line": 646,
+    "verb": "DISPLAY",
+    "operands": [
+      "'FILE STATUS IS: NNNN'",
+      "IO-STATUS-04"
+    ],
+    "operand_types": [
+      "literal",
+      "working-storage"
+    ],
+    "cfg_reachable": true,
+    "cfg_branch_context": "IF IO-STATUS NOT NUMERIC",
+    "cfg_predecessors": [
+      292
+    ],
+    "cfg_successors": [
+      294
+    ],
+    "division": "PROCEDURE",
+    "raw": "DISPLAY 'FILE STATUS IS: NNNN' IO-STATUS-04"
+  },
+  {
+    "seq": 294,
+    "paragraph": "9910-DISPLAY-IO-STATUS",
+    "line": 648,
+    "verb": "EXIT",
+    "operands": [],
+    "operand_types": [],
+    "cfg_reachable": true,
+    "cfg_branch_context": null,
+    "cfg_predecessors": [
+      293
+    ],
+    "cfg_successors": [],
+    "division": "PROCEDURE",
+    "raw": "EXIT."
+  }
+]

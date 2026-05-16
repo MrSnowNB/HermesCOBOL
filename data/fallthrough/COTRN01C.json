@@ -1,0 +1,101 @@
+{
+  "program": "COTRN01C",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COTRN01C.cbl",
+  "source_sha256": "766b81ac1776ec20442ce36a303462e45cda8c4c59ec1ce2e1e54d09113069ab",
+  "cfg_path": "validation\\pass1\\COTRN01C_annotations.json",
+  "cfg_sha256": "17cafd4faf87a75f2b3866b3c234a3af4759350a7fd7b395f60680277f3e351a",
+  "paragraphs": [
+    {
+      "paragraph": "MAIN-PARA",
+      "first_line": 88,
+      "last_line": 136,
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "PROCESS-ENTER-KEY",
+      "first_line": 146,
+      "last_line": 191,
+      "terminator": "implicit",
+      "falls_through_to": "RETURN-TO-PREV-SCREEN",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNVIEW-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "RETURN-TO-PREV-SCREEN",
+      "first_line": 199,
+      "last_line": 205,
+      "terminator": "cics-xctl",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS",
+      "classification_source": "source_scan"
+    },
+    {
+      "paragraph": "SEND-TRNVIEW-SCREEN",
+      "first_line": 215,
+      "last_line": 219,
+      "terminator": "implicit",
+      "falls_through_to": "RECEIVE-TRNVIEW-SCREEN",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS SEND",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "RECEIVE-TRNVIEW-SCREEN",
+      "first_line": 232,
+      "last_line": 232,
+      "terminator": "implicit",
+      "falls_through_to": "POPULATE-HEADER-INFO",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RECEIVE",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "POPULATE-HEADER-INFO",
+      "first_line": 245,
+      "last_line": 262,
+      "terminator": "implicit",
+      "falls_through_to": "READ-TRANSACT-FILE",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-CURTIME-HH-MM-SS TO CURTIMEO OF COTRN1AO.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "READ-TRANSACT-FILE",
+      "first_line": 269,
+      "last_line": 295,
+      "terminator": "implicit",
+      "falls_through_to": "CLEAR-CURRENT-SCREEN",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNVIEW-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "CLEAR-CURRENT-SCREEN",
+      "first_line": 303,
+      "last_line": 304,
+      "terminator": "implicit",
+      "falls_through_to": "INITIALIZE-ALL-FIELDS",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNVIEW-SCREEN.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "INITIALIZE-ALL-FIELDS",
+      "first_line": 311,
+      "last_line": 312,
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "MOVE",
+      "last_raw": "MOVE SPACES TO TRNIDINI OF COTRN1AI",
+      "classification_source": "annotations"
+    }
+  ],
+  "c5_assertion": "PASS",
+  "c5_violations": []
+}

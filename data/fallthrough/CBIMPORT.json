@@ -1,0 +1,171 @@
+{
+  "program": "CBIMPORT",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBIMPORT.cbl",
+  "source_sha256": "5798e340bd4b51302502e3e9906021409b7ef57a8f6dae245d745f68cdd28781",
+  "cfg_path": "validation\\pass1\\CBIMPORT_annotations.json",
+  "cfg_sha256": "44dea6bb5731a2dff2a7caeb25768369a7b25dc3f06011a84264716de0efef7e",
+  "paragraphs": [
+    {
+      "paragraph": "0000-MAIN-PROCESSING",
+      "first_line": 167,
+      "last_line": 171,
+      "terminator": "goback",
+      "falls_through_to": null,
+      "last_verb": "GOBACK",
+      "last_raw": "GOBACK.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1000-INITIALIZE",
+      "first_line": 176,
+      "last_line": 193,
+      "terminator": "implicit",
+      "falls_through_to": "1100-OPEN-FILES",
+      "last_verb": "DISPLAY",
+      "last_raw": "DISPLAY 'CBIMPORT: Import Time: ' WS-IMPORT-TIME.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1100-OPEN-FILES",
+      "first_line": 198,
+      "last_line": 244,
+      "terminator": "implicit",
+      "falls_through_to": "2000-PROCESS-EXPORT-FILE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2000-PROCESS-EXPORT-FILE",
+      "first_line": 250,
+      "last_line": 255,
+      "terminator": "implicit",
+      "falls_through_to": "2100-READ-EXPORT-RECORD",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM 2100-READ-EXPORT-RECORD",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2100-READ-EXPORT-RECORD",
+      "first_line": 261,
+      "last_line": 266,
+      "terminator": "implicit",
+      "falls_through_to": "2200-PROCESS-RECORD-BY-TYPE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM 9999-ABEND-PROGRAM",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2200-PROCESS-RECORD-BY-TYPE",
+      "first_line": 272,
+      "last_line": 284,
+      "terminator": "implicit",
+      "falls_through_to": "2300-PROCESS-CUSTOMER-RECORD",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM 2700-PROCESS-UNKNOWN-RECORD",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2300-PROCESS-CUSTOMER-RECORD",
+      "first_line": 290,
+      "last_line": 320,
+      "terminator": "implicit",
+      "falls_through_to": "2400-PROCESS-ACCOUNT-RECORD",
+      "last_verb": "ADD",
+      "last_raw": "ADD 1 TO WS-CUSTOMER-RECORDS-IMPORTED.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2400-PROCESS-ACCOUNT-RECORD",
+      "first_line": 325,
+      "last_line": 349,
+      "terminator": "implicit",
+      "falls_through_to": "2500-PROCESS-XREF-RECORD",
+      "last_verb": "ADD",
+      "last_raw": "ADD 1 TO WS-ACCOUNT-RECORDS-IMPORTED.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2500-PROCESS-XREF-RECORD",
+      "first_line": 354,
+      "last_line": 369,
+      "terminator": "implicit",
+      "falls_through_to": "2600-PROCESS-TRAN-RECORD",
+      "last_verb": "ADD",
+      "last_raw": "ADD 1 TO WS-XREF-RECORDS-IMPORTED.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2600-PROCESS-TRAN-RECORD",
+      "first_line": 374,
+      "last_line": 399,
+      "terminator": "implicit",
+      "falls_through_to": "2650-PROCESS-CARD-RECORD",
+      "last_verb": "ADD",
+      "last_raw": "ADD 1 TO WS-TRAN-RECORDS-IMPORTED.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2650-PROCESS-CARD-RECORD",
+      "first_line": 404,
+      "last_line": 422,
+      "terminator": "implicit",
+      "falls_through_to": "2700-PROCESS-UNKNOWN-RECORD",
+      "last_verb": "ADD",
+      "last_raw": "ADD 1 TO WS-CARD-RECORDS-IMPORTED.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2700-PROCESS-UNKNOWN-RECORD",
+      "first_line": 427,
+      "last_line": 434,
+      "terminator": "implicit",
+      "falls_through_to": "2750-WRITE-ERROR",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM 2750-WRITE-ERROR.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2750-WRITE-ERROR",
+      "first_line": 439,
+      "last_line": 446,
+      "terminator": "implicit",
+      "falls_through_to": "3000-VALIDATE-IMPORT",
+      "last_verb": "ADD",
+      "last_raw": "ADD 1 TO WS-ERROR-RECORDS-WRITTEN.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "3000-VALIDATE-IMPORT",
+      "first_line": 451,
+      "last_line": 452,
+      "terminator": "implicit",
+      "falls_through_to": "4000-FINALIZE",
+      "last_verb": "DISPLAY",
+      "last_raw": "DISPLAY 'CBIMPORT: No validation errors detected'.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "4000-FINALIZE",
+      "first_line": 457,
+      "last_line": 477,
+      "terminator": "implicit",
+      "falls_through_to": "9999-ABEND-PROGRAM",
+      "last_verb": "DISPLAY",
+      "last_raw": "DISPLAY 'CBIMPORT: Unknown Record Types: '",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9999-ABEND-PROGRAM",
+      "first_line": 483,
+      "last_line": 484,
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "CALL",
+      "last_raw": "CALL 'CEE3ABD'.",
+      "classification_source": "annotations"
+    }
+  ],
+  "c5_assertion": "PASS",
+  "c5_violations": []
+}

@@ -1,0 +1,171 @@
+{
+  "program": "COTRN00C",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COTRN00C.cbl",
+  "source_sha256": "22b2a16677e45dd2a32a125415d0ee143e05eb0f8017f2441eb8a47af132d7dd",
+  "cfg_path": "validation\\pass1\\COTRN00C_annotations.json",
+  "cfg_sha256": "ac48cc01526c5542b0d43adad8388cd7e63930eb5024bd1df3c5e90cd7dfb16f",
+  "paragraphs": [
+    {
+      "paragraph": "MAIN-PARA",
+      "first_line": 97,
+      "last_line": 138,
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "PROCESS-ENTER-KEY",
+      "first_line": 148,
+      "last_line": 228,
+      "terminator": "implicit",
+      "falls_through_to": "PROCESS-PF7-KEY",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE SPACE TO TRNIDINO OF COTRN0AO",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "PROCESS-PF7-KEY",
+      "first_line": 236,
+      "last_line": 251,
+      "terminator": "implicit",
+      "falls_through_to": "PROCESS-PF8-KEY",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNLST-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "PROCESS-PF8-KEY",
+      "first_line": 259,
+      "last_line": 273,
+      "terminator": "implicit",
+      "falls_through_to": "PROCESS-PAGE-FORWARD",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNLST-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "PROCESS-PAGE-FORWARD",
+      "first_line": 281,
+      "last_line": 326,
+      "terminator": "implicit",
+      "falls_through_to": "PROCESS-PAGE-BACKWARD",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNLST-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "PROCESS-PAGE-BACKWARD",
+      "first_line": 335,
+      "last_line": 374,
+      "terminator": "implicit",
+      "falls_through_to": "POPULATE-TRAN-DATA",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNLST-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "POPULATE-TRAN-DATA",
+      "first_line": 383,
+      "last_line": 444,
+      "terminator": "implicit",
+      "falls_through_to": "INITIALIZE-TRAN-DATA",
+      "last_verb": "CONTINUE",
+      "last_raw": "CONTINUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "INITIALIZE-TRAN-DATA",
+      "first_line": 452,
+      "last_line": 504,
+      "terminator": "implicit",
+      "falls_through_to": "RETURN-TO-PREV-SCREEN",
+      "last_verb": "CONTINUE",
+      "last_raw": "CONTINUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "RETURN-TO-PREV-SCREEN",
+      "first_line": 512,
+      "last_line": 518,
+      "terminator": "cics-xctl",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS",
+      "classification_source": "source_scan"
+    },
+    {
+      "paragraph": "SEND-TRNLST-SCREEN",
+      "first_line": 529,
+      "last_line": 542,
+      "terminator": "implicit",
+      "falls_through_to": "RECEIVE-TRNLST-SCREEN",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS SEND",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "RECEIVE-TRNLST-SCREEN",
+      "first_line": 556,
+      "last_line": 556,
+      "terminator": "implicit",
+      "falls_through_to": "POPULATE-HEADER-INFO",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RECEIVE",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "POPULATE-HEADER-INFO",
+      "first_line": 569,
+      "last_line": 586,
+      "terminator": "implicit",
+      "falls_through_to": "STARTBR-TRANSACT-FILE",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-CURTIME-HH-MM-SS TO CURTIMEO OF COTRN0AO.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "STARTBR-TRANSACT-FILE",
+      "first_line": 593,
+      "last_line": 618,
+      "terminator": "implicit",
+      "falls_through_to": "READNEXT-TRANSACT-FILE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNLST-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "READNEXT-TRANSACT-FILE",
+      "first_line": 626,
+      "last_line": 652,
+      "terminator": "implicit",
+      "falls_through_to": "READPREV-TRANSACT-FILE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNLST-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "READPREV-TRANSACT-FILE",
+      "first_line": 660,
+      "last_line": 686,
+      "terminator": "implicit",
+      "falls_through_to": "ENDBR-TRANSACT-FILE",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNLST-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "ENDBR-TRANSACT-FILE",
+      "first_line": 694,
+      "last_line": 694,
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS ENDBR",
+      "classification_source": "raw"
+    }
+  ],
+  "c5_assertion": "PASS",
+  "c5_violations": []
+}

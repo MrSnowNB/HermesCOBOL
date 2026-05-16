@@ -1,0 +1,111 @@
+{
+  "program": "CORPT00C",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CORPT00C.cbl",
+  "source_sha256": "fbe70de1c463de08f0efba5082160ddca1ab399525f5cde82ed94b78867d1c61",
+  "cfg_path": "validation\\pass1\\CORPT00C_annotations.json",
+  "cfg_sha256": "e172b23edad153f70fe92bcfb43737b596fff25589031e0ba71fe23c037a25f0",
+  "paragraphs": [
+    {
+      "paragraph": "MAIN-PARA",
+      "first_line": 165,
+      "last_line": 199,
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "PROCESS-ENTER-KEY",
+      "first_line": 210,
+      "last_line": 454,
+      "terminator": "implicit",
+      "falls_through_to": "SUBMIT-JOB-TO-INTRDR",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNRPT-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "SUBMIT-JOB-TO-INTRDR",
+      "first_line": 464,
+      "last_line": 507,
+      "terminator": "implicit",
+      "falls_through_to": "WIRTE-JOBSUB-TDQ",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM WIRTE-JOBSUB-TDQ",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "WIRTE-JOBSUB-TDQ",
+      "first_line": 517,
+      "last_line": 534,
+      "terminator": "implicit",
+      "falls_through_to": "RETURN-TO-PREV-SCREEN",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM SEND-TRNRPT-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "RETURN-TO-PREV-SCREEN",
+      "first_line": 542,
+      "last_line": 548,
+      "terminator": "cics-xctl",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS",
+      "classification_source": "source_scan"
+    },
+    {
+      "paragraph": "SEND-TRNRPT-SCREEN",
+      "first_line": 558,
+      "last_line": 580,
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "last_raw": "GO TO RETURN-TO-CICS.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "RETURN-TO-CICS",
+      "first_line": 587,
+      "last_line": 587,
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "RECEIVE-TRNRPT-SCREEN",
+      "first_line": 598,
+      "last_line": 598,
+      "terminator": "implicit",
+      "falls_through_to": "POPULATE-HEADER-INFO",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RECEIVE",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "POPULATE-HEADER-INFO",
+      "first_line": 611,
+      "last_line": 628,
+      "terminator": "implicit",
+      "falls_through_to": "INITIALIZE-ALL-FIELDS",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-CURTIME-HH-MM-SS TO CURTIMEO OF CORPT0AO.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "INITIALIZE-ALL-FIELDS",
+      "first_line": 635,
+      "last_line": 636,
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "INITIALIZE",
+      "last_raw": "INITIALIZE MONTHLYI OF CORPT0AI",
+      "classification_source": "annotations"
+    }
+  ],
+  "c5_assertion": "PASS",
+  "c5_violations": []
+}

@@ -1,0 +1,401 @@
+{
+  "program": "COCRDLIC",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COCRDLIC.cbl",
+  "source_sha256": "9b06819bcb3bfe923bcd2175416c4fa01c10ad0205bcccab58defbeecf9958df",
+  "cfg_path": "validation\\pass1\\COCRDLIC_annotations.json",
+  "cfg_sha256": "c21a5b4b02b876938c8112df3ed346ae0cf0f5a19e8068a362a21ce838ac7310",
+  "paragraphs": [
+    {
+      "paragraph": "0000-MAIN",
+      "first_line": 300,
+      "last_line": 611,
+      "terminator": "goto",
+      "falls_through_to": null,
+      "last_verb": "GO TO",
+      "last_raw": "GO TO COMMON-RETURN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "COMMON-RETURN",
+      "first_line": 615,
+      "last_line": 625,
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "0000-MAIN-EXIT",
+      "first_line": 632,
+      "last_line": 632,
+      "terminator": "implicit",
+      "falls_through_to": "1000-SEND-MAP",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1000-SEND-MAP",
+      "first_line": 635,
+      "last_line": 645,
+      "terminator": "implicit",
+      "falls_through_to": "1000-SEND-MAP-EXIT",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM 1500-SEND-SCREEN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1000-SEND-MAP-EXIT",
+      "first_line": 650,
+      "last_line": 650,
+      "terminator": "implicit",
+      "falls_through_to": "1100-SCREEN-INIT",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1100-SCREEN-INIT",
+      "first_line": 653,
+      "last_line": 681,
+      "terminator": "implicit",
+      "falls_through_to": "1100-SCREEN-INIT-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE DFHBMDAR TO INFOMSGC OF CCRDLIAO",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1100-SCREEN-INIT-EXIT",
+      "first_line": 685,
+      "last_line": 685,
+      "terminator": "implicit",
+      "falls_through_to": "1200-SCREEN-ARRAY-INIT",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1200-SCREEN-ARRAY-INIT",
+      "first_line": 690,
+      "last_line": 751,
+      "terminator": "implicit",
+      "falls_through_to": "1200-SCREEN-ARRAY-INIT-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-ROW-CARD-STATUS(7) TO CRDSTS7O OF CCRDLIAO",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1200-SCREEN-ARRAY-INIT-EXIT",
+      "first_line": 756,
+      "last_line": 756,
+      "terminator": "implicit",
+      "falls_through_to": "1250-SETUP-ARRAY-ATTRIBS",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1250-SETUP-ARRAY-ATTRIBS",
+      "first_line": 761,
+      "last_line": 840,
+      "terminator": "implicit",
+      "falls_through_to": "1250-SETUP-ARRAY-ATTRIBS-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE DFHBMFSE TO CRDSEL7A OF CCRDLIAI",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1250-SETUP-ARRAY-ATTRIBS-EXIT",
+      "first_line": 845,
+      "last_line": 845,
+      "terminator": "implicit",
+      "falls_through_to": "1300-SETUP-SCREEN-ATTRS",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1300-SETUP-SCREEN-ATTRS",
+      "first_line": 849,
+      "last_line": 895,
+      "terminator": "implicit",
+      "falls_through_to": "1300-SETUP-SCREEN-ATTRS-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE -1 TO ACCTSIDL OF CCRDLIAI",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1300-SETUP-SCREEN-ATTRS-EXIT",
+      "first_line": 901,
+      "last_line": 901,
+      "terminator": "implicit",
+      "falls_through_to": "1400-SETUP-MESSAGE",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1400-SETUP-MESSAGE",
+      "first_line": 907,
+      "last_line": 939,
+      "terminator": "implicit",
+      "falls_through_to": "1400-SETUP-MESSAGE-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE DFHNEUTR TO INFOMSGC OF CCRDLIAO",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1400-SETUP-MESSAGE-EXIT",
+      "first_line": 944,
+      "last_line": 944,
+      "terminator": "implicit",
+      "falls_through_to": "1500-SEND-SCREEN",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "1500-SEND-SCREEN",
+      "first_line": 949,
+      "last_line": 949,
+      "terminator": "implicit",
+      "falls_through_to": "1500-SEND-SCREEN-EXIT",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS SEND MAP(LIT-THISMAP)",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "1500-SEND-SCREEN-EXIT",
+      "first_line": 959,
+      "last_line": 959,
+      "terminator": "implicit",
+      "falls_through_to": "2000-RECEIVE-MAP",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2000-RECEIVE-MAP",
+      "first_line": 962,
+      "last_line": 965,
+      "terminator": "implicit",
+      "falls_through_to": "2000-RECEIVE-MAP-EXIT",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM 2200-EDIT-INPUTS",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2000-RECEIVE-MAP-EXIT",
+      "first_line": 970,
+      "last_line": 970,
+      "terminator": "implicit",
+      "falls_through_to": "2100-RECEIVE-SCREEN",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2100-RECEIVE-SCREEN",
+      "first_line": 973,
+      "last_line": 988,
+      "terminator": "implicit",
+      "falls_through_to": "2100-RECEIVE-SCREEN-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE CRDSEL7I OF CCRDLIAI TO WS-EDIT-SELECT(7)",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2100-RECEIVE-SCREEN-EXIT",
+      "first_line": 992,
+      "last_line": 992,
+      "terminator": "implicit",
+      "falls_through_to": "2200-EDIT-INPUTS",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2200-EDIT-INPUTS",
+      "first_line": 996,
+      "last_line": 1005,
+      "terminator": "implicit",
+      "falls_through_to": "2200-EDIT-INPUTS-EXIT",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM 2250-EDIT-ARRAY",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2200-EDIT-INPUTS-EXIT",
+      "first_line": 1010,
+      "last_line": 1010,
+      "terminator": "implicit",
+      "falls_through_to": "2210-EDIT-ACCOUNT",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2210-EDIT-ACCOUNT",
+      "first_line": 1014,
+      "last_line": 1038,
+      "terminator": "implicit",
+      "falls_through_to": "2210-EDIT-ACCOUNT-EXIT",
+      "last_verb": "SET",
+      "last_raw": "SET FLG-ACCTFILTER-ISVALID TO TRUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2210-EDIT-ACCOUNT-EXIT",
+      "first_line": 1043,
+      "last_line": 1043,
+      "terminator": "implicit",
+      "falls_through_to": "2220-EDIT-CARD",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2220-EDIT-CARD",
+      "first_line": 1049,
+      "last_line": 1075,
+      "terminator": "implicit",
+      "falls_through_to": "2220-EDIT-CARD-EXIT",
+      "last_verb": "SET",
+      "last_raw": "SET FLG-CARDFILTER-ISVALID TO TRUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2220-EDIT-CARD-EXIT",
+      "first_line": 1080,
+      "last_line": 1080,
+      "terminator": "implicit",
+      "falls_through_to": "2250-EDIT-ARRAY",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2250-EDIT-ARRAY",
+      "first_line": 1085,
+      "last_line": 1122,
+      "terminator": "implicit",
+      "falls_through_to": "2250-EDIT-ARRAY-EXIT",
+      "last_verb": "SET",
+      "last_raw": "SET WS-INVALID-ACTION-CODE TO TRUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2250-EDIT-ARRAY-EXIT",
+      "first_line": 1130,
+      "last_line": 1130,
+      "terminator": "implicit",
+      "falls_through_to": "9000-READ-FORWARD",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9000-READ-FORWARD",
+      "first_line": 1134,
+      "last_line": 1268,
+      "terminator": "implicit",
+      "falls_through_to": "9000-READ-FORWARD-EXIT",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS ENDBR FILE(LIT-CARD-FILE)",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "9000-READ-FORWARD-EXIT",
+      "first_line": 1272,
+      "last_line": 1272,
+      "terminator": "implicit",
+      "falls_through_to": "9100-READ-BACKWARDS",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9100-READ-BACKWARDS",
+      "first_line": 1276,
+      "last_line": 1379,
+      "terminator": "implicit",
+      "falls_through_to": "9100-READ-BACKWARDS-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-FILE-ERROR-MESSAGE TO WS-ERROR-MSG",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9100-READ-BACKWARDS-EXIT",
+      "first_line": 1385,
+      "last_line": 1389,
+      "terminator": "implicit",
+      "falls_through_to": "9500-FILTER-RECORDS",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9500-FILTER-RECORDS",
+      "first_line": 1393,
+      "last_line": 1414,
+      "terminator": "implicit",
+      "falls_through_to": "9500-FILTER-RECORDS-EXIT",
+      "last_verb": "CONTINUE",
+      "last_raw": "CONTINUE",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9500-FILTER-RECORDS-EXIT",
+      "first_line": 1420,
+      "last_line": 1420,
+      "terminator": "implicit",
+      "falls_through_to": "SEND-PLAIN-TEXT",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "SEND-PLAIN-TEXT",
+      "first_line": 1433,
+      "last_line": 1440,
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "SEND-PLAIN-TEXT-EXIT",
+      "first_line": 1444,
+      "last_line": 1444,
+      "terminator": "implicit",
+      "falls_through_to": "SEND-LONG-TEXT",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "SEND-LONG-TEXT",
+      "first_line": 1452,
+      "last_line": 1459,
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "SEND-LONG-TEXT-EXIT",
+      "first_line": 1463,
+      "last_line": 1463,
+      "terminator": "implicit-end-of-program",
+      "falls_through_to": null,
+      "last_verb": "EXIT",
+      "last_raw": "EXIT",
+      "classification_source": "annotations"
+    }
+  ],
+  "c5_assertion": "PASS",
+  "c5_violations": []
+}

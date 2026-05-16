@@ -1,0 +1,101 @@
+{
+  "program": "COCRDSLC",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COCRDSLC.cbl",
+  "source_sha256": "22d16d1dcd503f326525927bd5ed09045e8316465588d7006132da99d659701d",
+  "cfg_path": "validation\\pass1\\COCRDSLC_annotations.json",
+  "cfg_sha256": "6166b6806f1eee2f031b14472ddb3c5317df5f25a96bff60cf40989b965c35f8",
+  "paragraphs": [
+    {
+      "paragraph": "MAIN-PARA",
+      "first_line": 104,
+      "last_line": 216,
+      "terminator": "implicit",
+      "falls_through_to": "COMMON-RETURN",
+      "last_verb": "PERFORM",
+      "last_raw": "PERFORM COMMON-RETURN",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "COMMON-RETURN",
+      "first_line": 220,
+      "last_line": 222,
+      "terminator": "cics-return",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS RETURN",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "1000-SEND-MAP",
+      "first_line": 235,
+      "last_line": 255,
+      "terminator": "implicit",
+      "falls_through_to": "1000-SEND-MAP-EXIT",
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS SEND MAP('CCRDSLA')",
+      "classification_source": "raw"
+    },
+    {
+      "paragraph": "1000-SEND-MAP-EXIT",
+      "first_line": 261,
+      "last_line": 261,
+      "terminator": "implicit",
+      "falls_through_to": "2000-PROCESS-INPUTS",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2000-PROCESS-INPUTS",
+      "first_line": 271,
+      "last_line": 298,
+      "terminator": "implicit",
+      "falls_through_to": "2000-PROCESS-INPUTS-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE WS-MSG TO CCRDSLAO-ERRMSGO",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "2000-PROCESS-INPUTS-EXIT",
+      "first_line": 300,
+      "last_line": 300,
+      "terminator": "implicit",
+      "falls_through_to": "9000-READ-DATA",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9000-READ-DATA",
+      "first_line": 307,
+      "last_line": 308,
+      "terminator": "implicit",
+      "falls_through_to": "9000-READ-DATA-EXIT",
+      "last_verb": "MOVE",
+      "last_raw": "MOVE CDEMO-CARD-NUM TO CC-CARD-NUM-N",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9000-READ-DATA-EXIT",
+      "first_line": 310,
+      "last_line": 310,
+      "terminator": "implicit",
+      "falls_through_to": "9999-RETURN",
+      "last_verb": "EXIT",
+      "last_raw": "EXIT.",
+      "classification_source": "annotations"
+    },
+    {
+      "paragraph": "9999-RETURN",
+      "first_line": 317,
+      "last_line": 319,
+      "terminator": "cics-xctl",
+      "falls_through_to": null,
+      "last_verb": "EXEC CICS",
+      "last_raw": "EXEC CICS XCTL",
+      "classification_source": "raw"
+    }
+  ],
+  "c5_assertion": "PASS",
+  "c5_violations": []
+}
