@@ -20,6 +20,11 @@ import sys
 from pathlib import Path
 
 from config import RAW_CBL_DIR, RAW_CPY_DIR, RAW_CPY_BMS_DIR, CFG_DIR
+from cobol_parse_utils import (
+    extract_paragraphs as _extract_paragraphs_authoritative,
+    PARAGRAPH_NOISE,
+    RESERVED_WORDS,
+)
 
 
 def git_blob_sha(path: Path) -> str:
@@ -64,8 +69,17 @@ def clean_preprocessed(text: str) -> str:
     return "\n".join(lines)
 
 
-def extract_paragraphs(text: str) -> list[str]:
-    paragraphs = []
+def _extract_paragraphs_ordered(text: str) -> list[str]:
+    """
+    Return paragraph names in source encounter order.
+
+    Uses the authoritative filter (full PARAGRAPH_NOISE + RESERVED_WORDS +
+    section handling + RE_PARAGRAPH) from cobol_parse_utils for correctness,
+    while preserving the linear source order required by the CFG + reachability
+    logic in this module.
+    """
+    good_names: set[str] = _extract_paragraphs_authoritative(text)
+    paragraphs: list[str] = []
     in_proc = False
     for line in text.splitlines():
         u = line.upper()
@@ -77,9 +91,8 @@ def extract_paragraphs(text: str) -> list[str]:
         m = re.match(r"^\s{0,3}([A-Z0-9][A-Z0-9\-]*)\.\s*$", line, re.IGNORECASE)
         if m:
             name = m.group(1).upper()
-            if name not in ("EXIT", "GOBACK", "STOP"):
-                if name not in paragraphs:
-                    paragraphs.append(name)
+            if name in good_names and name not in paragraphs:
+                paragraphs.append(name)
     return paragraphs
 
 
@@ -105,7 +118,9 @@ def analyze_flow(text: str, paragraphs: list[str]) -> tuple[dict[str, list[str]]
             
         m = re.match(r"^\s{0,3}([A-Z0-9][A-Z0-9\-]*)\.\s*$", line, re.IGNORECASE)
         if m:
-            current_para = m.group(1).upper()
+            name = m.group(1).upper()
+            if name not in PARAGRAPH_NOISE and name not in RESERVED_WORDS:
+                current_para = name
             continue
             
         if not current_para:
@@ -172,7 +187,7 @@ def run_single(source_path: Path, output_path: Path = None):
     program_id = extract_program_id(raw_source, source_path.stem)
     source_sha = git_blob_sha(source_path)
     
-    paras = extract_paragraphs(expanded_source)
+    paras = _extract_paragraphs_ordered(expanded_source)
     performs, gotos = analyze_flow(expanded_source, paras)
     data_items = extract_data_items(expanded_source)
     
