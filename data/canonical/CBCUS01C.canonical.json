@@ -1,7 +1,7 @@
 {
   "program": "CBCUS01C",
   "schema_version": "1.4",
-  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBCUS01C.cbl",
+  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBCUS01C.cbl",
   "preprocess_available": true,
   "cics_present": false,
   "sql_present": false,

@@ -1,6 +1,6 @@
 {
   "program": "CSUTLDTC",
-  "canonical_path": "C:/work/HermesCOBOL/data/canonical/CSUTLDTC.canonical.json",
+  "canonical_path": "C:\\work\\HermesCOBOL\\data\\canonical\\CSUTLDTC.canonical.json",
   "gate_status": "PASS",
   "failures": [],
   "warnings": []
