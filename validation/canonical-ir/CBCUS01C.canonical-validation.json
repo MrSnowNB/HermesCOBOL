@@ -1,6 +1,6 @@
 {
   "program": "CBCUS01C",
-  "canonical_path": "C:\\work\\HermesCOBOL\\data\\canonical\\CBCUS01C.canonical.json",
+  "canonical_path": "C:/work/HermesCOBOL/data/canonical/CBCUS01C.canonical.json",
   "gate_status": "PASS",
   "failures": [],
   "warnings": []

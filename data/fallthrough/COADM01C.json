@@ -1,8 +1,8 @@
 {
   "program": "COADM01C",
-  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COADM01C.cbl",
+  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/COADM01C.cbl",
   "source_sha256": "7af0a5766117ee4c42c579dfaf4fc3f133c1c39f677835426a7cac2bc486b493",
-  "cfg_path": "validation\\pass1\\COADM01C_annotations.json",
+  "cfg_path": "validation/pass1/COADM01C_annotations.json",
   "cfg_sha256": "03fac3d98b30bfe2afaf41c1b656a2f2927e379b72d32b80f826c8c4d8590bbb",
   "paragraphs": [
     {

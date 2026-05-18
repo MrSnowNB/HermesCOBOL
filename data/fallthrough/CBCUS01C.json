@@ -1,8 +1,8 @@
 {
   "program": "CBCUS01C",
-  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBCUS01C.cbl",
+  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/CBCUS01C.cbl",
   "source_sha256": "583e7bc74c2daa61f89a4f18a0bcb4feb7a8d2ae141f761c680a3cf163460921",
-  "cfg_path": "validation\\pass1\\CBCUS01C_annotations.json",
+  "cfg_path": "validation/pass1/CBCUS01C_annotations.json",
   "cfg_sha256": "fe7307577fdd24b34c2b3c3df44cc04cd8d49c03b158e87b307fcdcc62e9c361",
   "paragraphs": [
     {

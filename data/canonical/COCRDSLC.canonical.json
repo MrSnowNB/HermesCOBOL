@@ -1,7 +1,7 @@
 {
   "program": "COCRDSLC",
   "schema_version": "1.4",
-  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COCRDSLC.cbl",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/COCRDSLC.cbl",
   "preprocess_available": false,
   "cics_present": true,
   "sql_present": false,

@@ -1,17 +1,7 @@
 {
   "program": "CBTRN02C",
-  "canonical_path": "C:\\work\\HermesCOBOL\\data\\canonical\\CBTRN02C.canonical.json",
-  "gate_status": "FAIL",
-  "failures": [
-    {
-      "rule": "falls_through_to_referential_integrity",
-      "severity": "error",
-      "message": "Paragraph '2800-UPDATE-ACCOUNT-REC' falls through to unknown target 'END-REWRITE'",
-      "details": {
-        "paragraph": "2800-UPDATE-ACCOUNT-REC",
-        "invalid_falls_through_to": "END-REWRITE"
-      }
-    }
-  ],
+  "canonical_path": "C:/work/HermesCOBOL/data/canonical/CBTRN02C.canonical.json",
+  "gate_status": "PASS",
+  "failures": [],
   "warnings": []
 }

@@ -1,141 +1,142 @@
-# SPEC: Stage 5-H Phase 2 — Referential Integrity Rules for Canonical IR Paragraphs
+# SPEC: Fix extract_fallthrough.py — END-* scope terminators leaking into falls_through_to field
 
 **Version:** 1.0  
 **Date:** 2026-05-18  
 **Status:** Draft — awaiting explicit approval  
-**Author:** Grok (following spec-writer protocol)  
-**Related:** REVIEW.md (2026-05-13), previous Stage 5-H Phase 1 migration, validate_canonical_ir.py current stubs
+**Related Work:** Stage 5-H Phase 2 referential integrity rules (validate_canonical_ir.py), previous extract_cfg_local.py unification
 
 ---
 
 ## Intent (one sentence)
 
-Implement the 3 stubbed referential integrity rules in `scripts/validate_canonical_ir.py` so that the Stage 5-H gate enforces semantic correctness of paragraph cross-references, not just field presence.
+Fix `extract_fallthrough.py` so that COBOL scope terminators (END-STRING, END-REWRITE, and all other END-* tokens) are never written into the `falls_through_to` field of fallthrough output, by filtering candidate names through the authoritative `PARAGRAPH_NOISE` and `RESERVED_WORDS` sets from `cobol_parse_utils`.
 
 ---
 
 ## Background
 
-`validate_canonical_ir.py` currently validates structural presence of the six required paragraph fields (`name`, `terminator`, `falls_through_to`, `performs`, `goto_targets`, `reachable`) plus basic completeness and CICS/preprocess consistency.
+The newly activated Stage 5-H Phase 2 referential integrity rules in `validate_canonical_ir.py` (specifically `falls_through_to_referential_integrity`) surfaced three real violations in the current corpus:
 
-Three semantic rules were intentionally left as stubs in `CONSISTENCY_RULES` / `PARAGRAPHS_RULES` after Phase 1:
+- CBACT04C: `1300-B-WRITE-TX` → `falls_through_to: END-STRING`
+- CBSTM03A: `5000-CREATE-STATEMENT` → `falls_through_to: END-STRING`
+- CBTRN02C: `2800-UPDATE-ACCOUNT-REC` → `falls_through_to: END-REWRITE`
 
-1. **performs_referential_integrity**  
-   Every name appearing in any paragraph’s `performs[]` array must resolve to a real paragraph name defined in the same program’s canonical IR.  
-   (Current data shows 0 broken references, but no enforcement exists.)
+Upstream audit (GATE 8) traced the root cause to `data/fallthrough/*.json` produced by `extract_fallthrough.py`. These `END-*` tokens are COBOL scope terminators (e.g., `END-STRING`, `END-REWRITE`, `END-PERFORM`, etc.) and are explicitly listed in `cobol_parse_utils.PARAGRAPH_NOISE`. They are never valid paragraph names.
 
-2. **terminator_enum**  
-   The `terminator` field on every paragraph must be exactly one of the eight documented legal values (see Implementation Requirements).  
-   `None` / `null` / any other string is invalid.
+A similar class of bug (weak local paragraph detection allowing noise tokens) was already fixed in `extract_cfg_local.py` by importing and using the authoritative filter sets from `cobol_parse_utils`. The same defensive pattern must now be applied to the `falls_through_to` assignment path(s) in `extract_fallthrough.py`.
 
-3. **falls_through_to_referential_integrity**  
-   When `falls_through_to` is non-null, the target name must exist as a paragraph in the same program.  
-   `null` is always legal (last paragraph or explicit terminators).
-
-These rules close the “known gaps” documented at the end of Phase 1 and make the canonical IR a trustworthy contract for downstream consumers (CobolProgramDict, walkers, semantic enrichment, etc.).
-
-CICS structural-only programs (`cics_present=True` and `preprocess_available=False`) must also pass; their canonical records are already known to be well-formed in this regard.
+The `terminator` field logic must remain untouched — only `falls_through_to` is in scope.
 
 ---
 
 ## Implementation Requirements
 
-- All three rules must be implemented **inside the existing `check_paragraphs()` / paragraph loop** in `validate_canonical_ir.py`.  
-  **Do not** create new top-level helper functions for the rules themselves.
+1. Add import to `extract_fallthrough.py` (after existing imports):
+   ```python
+   from cobol_parse_utils import PARAGRAPH_NOISE, RESERVED_WORDS
+   ```
 
-- Failure record rule names (exact):
-  - `"performs_referential_integrity"`
-  - `"terminator_enum"`
-  - `"falls_through_to_referential_integrity"`
+2. Locate every code path that assigns a value to `falls_through_to`. Before any candidate name is written into that field, apply the filter:
+   ```python
+   if candidate not in PARAGRAPH_NOISE and candidate not in RESERVED_WORDS:
+       falls_through_to = candidate
+   else:
+       falls_through_to = None
+   ```
 
-- All three failures must carry `severity: "error"`.
+3. The filter must be applied at **every** assignment site for `falls_through_to`. Do not patch only one location if the field is assigned in multiple places.
 
-- Add the three rule names to the `PARAGRAPHS_RULES` set so that the grouped console output correctly shows `paragraphs=FAIL` when any violation occurs.
+4. Do **not** alter terminator classification or any `terminator` field logic.
 
-- **No exemptions** for CICS programs. The rules apply uniformly.
-
-- The implementation must be placed so that the existing `_get_status_for_group` logic and summary reporting continue to work without modification.
-
-- Single file changed: `scripts/validate_canonical_ir.py` only.
+5. Single file changed only: `scripts/extract_fallthrough.py`.
 
 ---
 
-## Acceptance Criteria (all must be observable and pass)
+## Acceptance Criteria (all 8 gates must pass — observable and repeatable)
 
-**GATE 1 — Rule implementation check**  
-`Select-String -Path scripts\validate_canonical_ir.py -Pattern "performs_referential_integrity"`  
-Expected: at least 2 matches (one in `PARAGRAPHS_RULES`, one in a failure record).
+**GATE 1 — Import present**  
+`Select-String -Path scripts\extract_fallthrough.py -Pattern "PARAGRAPH_NOISE"`  
+Expected: at least 2 matches (import line + at least one filter usage).
 
-**GATE 2 — Terminator enum check**  
-`Select-String -Path scripts\validate_canonical_ir.py -Pattern "terminator_enum"`  
-Expected: at least 2 matches.
+**GATE 2 — Regenerate fallthrough data**  
+`python scripts/extract_fallthrough.py` (or with `--all` if supported)  
+Expected: completes successfully, exit code 0, no errors.
 
-**GATE 3 — falls_through_to check**  
-`Select-String -Path scripts\validate_canonical_ir.py -Pattern "falls_through_to_referential_integrity"`  
-Expected: at least 2 matches.
+**GATE 3 — Reassemble canonical IR**  
+`python scripts/assemble_canonical.py`  
+Expected: "31/31 complete", exit code 0.
 
-**GATE 4 — Stage 5-H gate run**  
+**GATE 4 — Stage 5-H validation gate**  
 `python scripts/validate_canonical_ir.py`  
-Expected: `31/31 programs passed Stage 5-H` (all `PASS`).  
-If any program reports `FAIL`, the full failure JSON for that program must be captured and the process halted for review.
+Expected: **31/31 PASS**.  
+The three previously failing programs (CBACT04C, CBSTM03A, CBTRN02C) must now report `paragraphs=OK`. Any new failures must be reported immediately and the process halted.
 
 **GATE 5 — Roundtrip validator (no regression)**  
 `python scripts/validate_roundtrip.py`  
-Expected: `Pass 31, Fail 0`.
+Expected: Pass 31, Fail 0.
 
 **GATE 6 — Full test suite (no regression)**  
-`python -m pytest tests/ -q --tb=short` (using the Python interpreter that contains the test environment)  
+`python -m pytest tests/ -q --tb=short` (using the Python that contains the test deps)  
 Expected: 136 passed.
 
-**GATE 7 — Terminator value audit (diagnostic, not hard gate)**  
-Run the exact one-liner audit script supplied in the request.  
-Expected output: `ALL terminators valid`.  
-If any invalid terminators are discovered, they must be reported immediately (do not treat as automatic failure of the SPEC; investigate with Mark).
+**GATE 7 — Verify END-* tokens gone from fallthrough data**  
+Run the exact audit script provided in the request.  
+Expected: `CLEAN — no noise tokens in any falls_through_to`
+
+**GATE 8 — Confirm the 3 previously failing programs are now clean**  
+Run the exact three-program verification script provided in the request.  
+Expected:
+```
+CBACT04C: CLEAN
+CBSTM03A: CLEAN
+CBTRN02C: CLEAN
+```
 
 ---
 
 ## Out of Scope
 
-- `check_cross_source_consistency()` remains a stub (not implemented or called).
-- No work on `CobolProgramDict`, walkers, or semantic enrichment layers.
-- No changes to `assemble_canonical.py`, `extract_facts.py`, `cobol_parse_utils.py`, `extract_cfg_local.py`, or any test file.
-- No modification of any artifact under `data/cfg/`, `data/facts/`, `data/canonical/`, `data/fallthrough/`, or `validation/`.
-- No CICS translator or semantic CICS enrichment.
-- No updates to `SCRIPTS_INVENTORY.md` or documentation beyond what is required by the gates.
+- No changes to `validate_canonical_ir.py`, `assemble_canonical.py`, `cobol_parse_utils.py`, `extract_cfg_local.py`, `extract_facts.py`, or any test file.
+- No work on `CobolProgramDict`, CICS semantic enrichment, or `check_cross_source_consistency()`.
+- No modification of existing `terminator` classification logic.
+- No updates to data artifacts except those produced by running the approved gates.
+- No changes to `SCRIPTS_INVENTORY.md` unless required by a later review step.
 
 ---
 
-## Plan (execute in strict order)
+## Plan (execute only after explicit "approved")
 
-1. **Draft & present this SPEC** (current step).  
-   The SPEC is written and shown to the user. No source file has been read for editing.
+1. **Present this SPEC** (current step). No source files have been read or modified for implementation.
 
 2. **Await explicit approval.**  
-   Do **not** read `scripts/validate_canonical_ir.py`, do **not** run any gate command, and do **not** make any code change until the user replies with “approved”, “go”, or “LGTM” (or supplies edits to this SPEC).
+   Do **not** read `scripts/extract_fallthrough.py` for editing, do **not** run any gate, and do **not** make any code change until the user replies with "approved", "go", or "LGTM" (or supplies edits).
 
-3. **On approval** — first read of the target file.  
-   Read `scripts/validate_canonical_ir.py` (once) to locate the exact paragraph validation loop and the `PARAGRAPHS_RULES` constant.
+3. **On approval** — first read of the target.  
+   Read `scripts/extract_fallthrough.py` once to locate all `falls_through_to` assignment sites.
 
-4. **Implement the three rules** (single file only).  
-   Add the three checks inside the existing paragraph iteration.  
-   Add the three rule names to `PARAGRAPHS_RULES`.  
-   Produce clean failure records with `severity: "error"` using the exact rule names listed above.  
-   No new top-level functions for the rules.
+4. **Implement the fix** (single file only).  
+   Add the required import.  
+   Apply the `PARAGRAPH_NOISE` + `RESERVED_WORDS` filter at every location where a value is assigned to `falls_through_to`.  
+   Leave all terminator logic untouched.
 
-5. **Run the verification gates in order** (only after the edit is complete and saved):
-   - GATE 1–3 (Select-String / grep checks)
-   - GATE 4 (`validate_canonical_ir.py`)
-   - GATE 5 (`validate_roundtrip.py`)
+5. **Execute the 8 gates in strict order**, capturing full output for each:
+   - GATE 1 (Select-String count)
+   - GATE 2 (regenerate fallthrough)
+   - GATE 3 (reassemble canonical)
+   - GATE 4 (Stage 5-H validator)
+   - GATE 5 (roundtrip)
    - GATE 6 (pytest)
-   - GATE 7 (terminator audit)
-   Capture full stdout/stderr for every command.
+   - GATE 7 (noise audit)
+   - GATE 8 (three-program verification)
 
-6. **Post-gate hygiene**  
-   If all gates pass, capture `git diff scripts/validate_canonical_ir.py`.  
-   Update the journal with a `kind: "decision"` entry.
+6. **Post-gate verification**  
+   Capture `git diff scripts/extract_fallthrough.py`.  
+   Confirm only the intended file was changed.
 
-7. **Hand-off for review (Morty Law)**  
-   Present the diff + full transcripts of all seven gates to Mark.  
+7. **Journal anchor** (`kind: "decision"` + `kind: "done"`).
+
+8. **Review hand-off (Morty Law)**  
+   Present the diff + complete transcripts of all 8 gates to Mark.  
    **Never** run `git commit`, `git add`, or `git push` locally.  
    Only after explicit review sign-off may the exact commit message below be used.
 
@@ -143,42 +144,39 @@ If any invalid terminators are discovered, they must be reported immediately (do
 
 ## Risks & Mitigations
 
-- **Risk:** The current canonical IR for one or more of the 31 programs actually contains a violation that Phase 1 did not catch (e.g., a stray `None` terminator or a `falls_through_to` pointing at a noise token that survived into the final list).  
-  **Mitigation:** GATE 4 will surface it immediately. The SPEC explicitly instructs to stop and report the full failure JSON rather than “fix” data.
+- **Risk:** Multiple assignment sites for `falls_through_to` exist; missing one leaves the bug partially fixed.  
+  **Mitigation:** The implementation requirement explicitly mandates checking **every** assignment path. The review will verify via diff + GATE 7/8.
 
-- **Risk:** CICS programs behave differently (empty `performs[]`, special terminators).  
-  **Mitigation:** The request states that CICS records are already known-good; the uniform rule application is intentional and will be proven by GATE 4.
+- **Risk:** Filtering changes `falls_through_to` values for some paragraphs, which could theoretically affect downstream consumers.  
+  **Mitigation:** The change is a correctness fix (removing invalid noise tokens). Gates 4–6 will prove no regression in the primary contracts. The three affected programs are expected to move from FAIL to PASS in GATE 4.
 
-- **Risk:** The three new rules are added to `PARAGRAPHS_RULES` but the console formatting or summary logic breaks.  
-  **Mitigation:** The rules are simple string membership checks identical to the existing ones (`missing_paragraph_fields`, etc.). The `_get_status_for_group` helper is unchanged.
+- **Risk:** The filter is applied too aggressively and incorrectly turns a legitimate (rare) paragraph name into `None`.  
+  **Mitigation:** `PARAGRAPH_NOISE` and `RESERVED_WORDS` are the authoritative, already-vetted sets used everywhere else in the pipeline (including the recent `extract_cfg_local.py` fix). No real paragraph names should ever match them.
 
-- **Risk:** Someone later expects `check_cross_source_consistency()` to be implemented at the same time.  
-  **Mitigation:** Explicitly listed in Out of Scope; the SPEC scope is deliberately narrow.
-
-- **Risk:** Violating Morty Law by committing without review.  
-  **Mitigation:** This SPEC, the Plan, and the final hand-off step all forbid local commit. The GitHub MCP `push_files` tool will also not be used until Mark approves.
+- **Risk:** Violating Morty Law by reading/editing before approval or committing without review.  
+  **Mitigation:** This SPEC hard-codes the "wait for approved" gate and the "no local commit" rule in the Plan.
 
 ---
 
 ## References
 
-- User “SPEC REQUEST: Stage 5-H Phase 2” message (this document’s source of truth).
-- [REVIEW.md](REVIEW.md) — documented the three gaps at Phase 1 close-out.
-- `scripts/validate_canonical_ir.py` (current stubbed state — read only after approval).
-- `data/canonical/*.canonical.json` (known-good artifacts produced by Phase 1).
-- Previous Phase 1 migration SPEC and commit (`refactor(extract_cfg_local)...`).
+- User SPEC REQUEST message (source of truth for all gates and constraints).
+- Previous Stage 5-H Phase 2 work that exposed the three violations.
+- `cobol_parse_utils.py` — `PARAGRAPH_NOISE` and `RESERVED_WORDS` definitions (the single source of truth).
+- `extract_fallthrough.py` current logic (to be read only after approval).
+- `data/fallthrough/*.json` (current noisy state).
 
 ---
 
 ## Approval
 
 - [ ] SPEC reviewed for completeness and correctness.
-- [ ] Explicit approval given (“approved”, “go”, or “LGTM”).
-- Once approved, the implementing agent may read the target file and begin the edit.
+- [ ] Explicit approval given ("approved", "go", or "LGTM").
+- Once approved, the implementing agent may read `extract_fallthrough.py` and begin the fix.
 
 ---
 
-*This SPEC was generated strictly from the detailed request supplied by the user. It adds the required policy scaffolding (structured sections, observable gates, explicit “do not read until approved” rule) while preserving every technical constraint and acceptance criterion verbatim.*
+*This SPEC was generated directly from the detailed request supplied by the user. It adds the required policy scaffolding (structured sections, 8 observable gates, explicit Morty Law constraints) while preserving every technical detail verbatim.*
 
 **Ready for your review.**  
-Reply with **"approved"** (or edits) when you are satisfied. I will not read `validate_canonical_ir.py` or run any command that touches source until that signal.
+Reply with **"approved"** (or edits) when you are satisfied. I will not read `extract_fallthrough.py` or run any gate until that signal arrives.

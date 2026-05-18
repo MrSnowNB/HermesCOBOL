@@ -1,17 +1,7 @@
 {
   "program": "CBACT04C",
-  "canonical_path": "C:\\work\\HermesCOBOL\\data\\canonical\\CBACT04C.canonical.json",
-  "gate_status": "FAIL",
-  "failures": [
-    {
-      "rule": "falls_through_to_referential_integrity",
-      "severity": "error",
-      "message": "Paragraph '1300-B-WRITE-TX' falls through to unknown target 'END-STRING'",
-      "details": {
-        "paragraph": "1300-B-WRITE-TX",
-        "invalid_falls_through_to": "END-STRING"
-      }
-    }
-  ],
+  "canonical_path": "C:/work/HermesCOBOL/data/canonical/CBACT04C.canonical.json",
+  "gate_status": "PASS",
+  "failures": [],
   "warnings": []
 }

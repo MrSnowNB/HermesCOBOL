@@ -1,8 +1,8 @@
 {
   "program": "CBIMPORT",
-  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBIMPORT.cbl",
+  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/CBIMPORT.cbl",
   "source_sha256": "5798e340bd4b51302502e3e9906021409b7ef57a8f6dae245d745f68cdd28781",
-  "cfg_path": "validation\\pass1\\CBIMPORT_annotations.json",
+  "cfg_path": "validation/pass1/CBIMPORT_annotations.json",
   "cfg_sha256": "44dea6bb5731a2dff2a7caeb25768369a7b25dc3f06011a84264716de0efef7e",
   "paragraphs": [
     {

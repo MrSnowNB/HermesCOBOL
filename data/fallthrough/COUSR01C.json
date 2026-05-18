@@ -1,8 +1,8 @@
 {
   "program": "COUSR01C",
-  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COUSR01C.cbl",
+  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/COUSR01C.cbl",
   "source_sha256": "68ccce51b9907999aad3ce10b8610561ddff3388281ecc657841e0eb6920b8e5",
-  "cfg_path": "validation\\pass1\\COUSR01C_annotations.json",
+  "cfg_path": "validation/pass1/COUSR01C_annotations.json",
   "cfg_sha256": "0bf4c4266acc43d161efe3e168082ca6f77498db3e097c626ad6f4bdcf0fde3b",
   "paragraphs": [
     {

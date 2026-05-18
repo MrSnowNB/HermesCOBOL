@@ -1,7 +1,7 @@
 {
   "program": "CBEXPORT",
   "schema_version": "1.4",
-  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBEXPORT.cbl",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBEXPORT.cbl",
   "preprocess_available": true,
   "cics_present": false,
   "sql_present": false,

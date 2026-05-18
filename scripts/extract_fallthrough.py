@@ -66,6 +66,7 @@ import sys
 from pathlib import Path
 
 from config import RAW_CBL_DIR, FALLTHROUGH_DIR
+from cobol_parse_utils import PARAGRAPH_NOISE, RESERVED_WORDS
 
 
 __LLM_FREE__ = True
@@ -221,7 +222,11 @@ def run(source_path: Path, cfg_path: Path, out_path: Path) -> dict:
                 falls_to = None
             else:
                 terminator = "implicit"
-                falls_to = ordered[i + 1]
+                candidate = ordered[i + 1]
+                if candidate not in PARAGRAPH_NOISE and candidate not in RESERVED_WORDS:
+                    falls_to = candidate
+                else:
+                    falls_to = None
         else:
             falls_to = None
 

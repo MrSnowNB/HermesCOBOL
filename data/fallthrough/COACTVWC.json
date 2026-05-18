@@ -1,8 +1,8 @@
 {
   "program": "COACTVWC",
-  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COACTVWC.cbl",
+  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/COACTVWC.cbl",
   "source_sha256": "da3f601516d4282efe2e084a034cfe545c117c5508a019a2cba81a72ad86bf8c",
-  "cfg_path": "validation\\pass1\\COACTVWC_annotations.json",
+  "cfg_path": "validation/pass1/COACTVWC_annotations.json",
   "cfg_sha256": "64372422ebd5890d88d8b97ed2fcc3eb986ac33342af382fd95ca97acf2181f3",
   "paragraphs": [
     {

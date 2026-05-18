@@ -1,17 +1,7 @@
 {
   "program": "CBSTM03A",
-  "canonical_path": "C:\\work\\HermesCOBOL\\data\\canonical\\CBSTM03A.canonical.json",
-  "gate_status": "FAIL",
-  "failures": [
-    {
-      "rule": "falls_through_to_referential_integrity",
-      "severity": "error",
-      "message": "Paragraph '5000-CREATE-STATEMENT' falls through to unknown target 'END-STRING'",
-      "details": {
-        "paragraph": "5000-CREATE-STATEMENT",
-        "invalid_falls_through_to": "END-STRING"
-      }
-    }
-  ],
+  "canonical_path": "C:/work/HermesCOBOL/data/canonical/CBSTM03A.canonical.json",
+  "gate_status": "PASS",
+  "failures": [],
   "warnings": []
 }

@@ -1,8 +1,8 @@
 {
   "program": "COSGN00C",
-  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COSGN00C.cbl",
+  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/COSGN00C.cbl",
   "source_sha256": "a80ec65197fdec85466da211e09603dc6303fd5a436a13cee6234296302fd185",
-  "cfg_path": "validation\\pass1\\COSGN00C_annotations.json",
+  "cfg_path": "validation/pass1/COSGN00C_annotations.json",
   "cfg_sha256": "b244516b801f81f3ae0852e8c320ade958f7bd920a27a92ada574042a8ee486b",
   "paragraphs": [
     {

@@ -1,7 +1,7 @@
 {
   "program": "CBTRN02C",
   "schema_version": "1.4",
-  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBTRN02C.cbl",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBTRN02C.cbl",
   "preprocess_available": true,
   "cics_present": false,
   "sql_present": false,
@@ -248,7 +248,7 @@
     {
       "name": "2800-UPDATE-ACCOUNT-REC",
       "terminator": "implicit",
-      "falls_through_to": "END-REWRITE",
+      "falls_through_to": null,
       "last_verb": "MOVE",
       "performs": [],
       "goto_targets": [],

@@ -1,8 +1,8 @@
 {
   "program": "CBSTM03A",
-  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBSTM03A.CBL",
+  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/CBSTM03A.CBL",
   "source_sha256": "54210164f798c7b38609400d846d4b03f46da2c67cdf69e968951cfc3e8caf3e",
-  "cfg_path": "validation\\pass1\\CBSTM03A_annotations.json",
+  "cfg_path": "validation/pass1/CBSTM03A_annotations.json",
   "cfg_sha256": "fea81d8e6a3fd2de2c19e7f6fef02b97acc27d4d8219bda993e2a81b737b9273",
   "paragraphs": [
     {
@@ -90,7 +90,7 @@
       "first_line": 459,
       "last_line": 462,
       "terminator": "implicit",
-      "falls_through_to": "END-STRING",
+      "falls_through_to": null,
       "last_verb": "STRING",
       "last_raw": "STRING CUST-FIRST-NAME DELIMITED BY ' '",
       "classification_source": "annotations"
