@@ -1,6 +1,6 @@
 {
   "program": "COCRDSLC",
-  "canonical_path": "C:/work/HermesCOBOL/data/canonical/COCRDSLC.canonical.json",
+  "canonical_path": "C:\\work\\HermesCOBOL\\data\\canonical\\COCRDSLC.canonical.json",
   "gate_status": "PASS",
   "failures": [],
   "warnings": []

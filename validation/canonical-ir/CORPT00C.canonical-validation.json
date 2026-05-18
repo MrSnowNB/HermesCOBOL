@@ -1,6 +1,6 @@
 {
   "program": "CORPT00C",
-  "canonical_path": "C:/work/HermesCOBOL/data/canonical/CORPT00C.canonical.json",
+  "canonical_path": "C:\\work\\HermesCOBOL\\data\\canonical\\CORPT00C.canonical.json",
   "gate_status": "PASS",
   "failures": [],
   "warnings": []

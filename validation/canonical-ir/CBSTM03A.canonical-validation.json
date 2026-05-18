@@ -1,6 +1,6 @@
 {
   "program": "CBSTM03A",
-  "canonical_path": "C:/work/HermesCOBOL/data/canonical/CBSTM03A.canonical.json",
+  "canonical_path": "C:\\work\\HermesCOBOL\\data\\canonical\\CBSTM03A.canonical.json",
   "gate_status": "FAIL",
   "failures": [
     {
