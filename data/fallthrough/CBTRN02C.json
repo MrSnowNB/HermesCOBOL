@@ -1,8 +1,8 @@
 {
   "program": "CBTRN02C",
-  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/CBTRN02C.cbl",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBTRN02C.cbl",
   "source_sha256": "ca73e806cbce4d07da7fa307ad32cf60d9f03aa50ff05c48dc522f6bbf8c1bb2",
-  "cfg_path": "validation/pass1/CBTRN02C_annotations.json",
+  "cfg_path": "validation\\pass1\\CBTRN02C_annotations.json",
   "cfg_sha256": "50f835796c5dab54d0009bd5302211195cd0362a08d0c140bcded3fece87c8be",
   "paragraphs": [
     {

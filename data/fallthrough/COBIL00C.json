@@ -1,8 +1,8 @@
 {
   "program": "COBIL00C",
-  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/COBIL00C.cbl",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COBIL00C.cbl",
   "source_sha256": "82325a5511bd7e409a80998ab75a3348ba91d3d4afd1a3b44a8efa7e70c4806d",
-  "cfg_path": "validation/pass1/COBIL00C_annotations.json",
+  "cfg_path": "validation\\pass1\\COBIL00C_annotations.json",
   "cfg_sha256": "ef164ac5cd3b92be6125880d567d5f12bc46a7c95e39fb4740174434a2ea87fc",
   "paragraphs": [
     {

@@ -1,8 +1,8 @@
 {
   "program": "CBSTM03B",
-  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/CBSTM03B.CBL",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBSTM03B.CBL",
   "source_sha256": "c183707f0dae0b5e9387373fc3624f0462ad95ccbbb6c8a34167591e206bcbf8",
-  "cfg_path": "validation/pass1/CBSTM03B_annotations.json",
+  "cfg_path": "validation\\pass1\\CBSTM03B_annotations.json",
   "cfg_sha256": "a7cd96ee75d17fb7c18a67913cf173fb9baf534dcf381ee0bb896a7c8534dd21",
   "paragraphs": [
     {

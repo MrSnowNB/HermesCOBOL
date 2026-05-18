@@ -1,8 +1,8 @@
 {
   "program": "COBSWAIT",
-  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/COBSWAIT.cbl",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COBSWAIT.cbl",
   "source_sha256": "38a8d28235e58509776f5c8c74c113d5848a7ac68fab753c55ab887221c3b43a",
-  "cfg_path": "validation/pass1/COBSWAIT_annotations.json",
+  "cfg_path": "validation\\pass1\\COBSWAIT_annotations.json",
   "cfg_sha256": "13e4a877dbad8ecd728497f52afef1dc571181c90167e37661659020b295f39d",
   "paragraphs": [
     {

@@ -1,8 +1,8 @@
 {
   "program": "COACTUPC",
-  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/COACTUPC.cbl",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COACTUPC.cbl",
   "source_sha256": "e7a097a02870a13529ab846a2ddd3cf398a243263517ded399bd55a25fb9578f",
-  "cfg_path": "validation/pass1/COACTUPC_annotations.json",
+  "cfg_path": "validation\\pass1\\COACTUPC_annotations.json",
   "cfg_sha256": "7a9b7591624b67e2acdc56264cff2c1e01ec30d9fca03d41b64310e170501e3f",
   "paragraphs": [
     {

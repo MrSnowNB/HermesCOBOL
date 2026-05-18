@@ -1,8 +1,8 @@
 {
   "program": "CSUTLDTC",
-  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/CSUTLDTC.cbl",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CSUTLDTC.cbl",
   "source_sha256": "55ca5fa7d9664464351f2c0473bf0fd9caf55a7e183dc4940cf6e338e12f6dbe",
-  "cfg_path": "validation/pass1/CSUTLDTC_annotations.json",
+  "cfg_path": "validation\\pass1\\CSUTLDTC_annotations.json",
   "cfg_sha256": "0aa2a92c05934cd086ce63e37baed0b126f4a42a5fdf5bb3fef721cbb1aebe45",
   "paragraphs": [
     {

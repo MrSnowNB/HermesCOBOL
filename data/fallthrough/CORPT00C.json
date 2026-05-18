@@ -1,8 +1,8 @@
 {
   "program": "CORPT00C",
-  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/CORPT00C.cbl",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CORPT00C.cbl",
   "source_sha256": "fbe70de1c463de08f0efba5082160ddca1ab399525f5cde82ed94b78867d1c61",
-  "cfg_path": "validation/pass1/CORPT00C_annotations.json",
+  "cfg_path": "validation\\pass1\\CORPT00C_annotations.json",
   "cfg_sha256": "e172b23edad153f70fe92bcfb43737b596fff25589031e0ba71fe23c037a25f0",
   "paragraphs": [
     {

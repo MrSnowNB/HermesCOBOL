@@ -1,7 +1,7 @@
 {
   "program": "CBSTM03A",
   "schema_version": "1.4",
-  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBSTM03A.cbl",
+  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBSTM03A.cbl",
   "preprocess_available": true,
   "cics_present": false,
   "sql_present": false,

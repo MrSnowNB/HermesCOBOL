@@ -1,8 +1,8 @@
 {
   "program": "COCRDSLC",
-  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/COCRDSLC.cbl",
+  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COCRDSLC.cbl",
   "source_sha256": "22d16d1dcd503f326525927bd5ed09045e8316465588d7006132da99d659701d",
-  "cfg_path": "validation/pass1/COCRDSLC_annotations.json",
+  "cfg_path": "validation\\pass1\\COCRDSLC_annotations.json",
   "cfg_sha256": "6166b6806f1eee2f031b14472ddb3c5317df5f25a96bff60cf40989b965c35f8",
   "paragraphs": [
     {

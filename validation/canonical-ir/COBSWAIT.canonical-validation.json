@@ -1,6 +1,6 @@
 {
   "program": "COBSWAIT",
-  "canonical_path": "C:/work/HermesCOBOL/data/canonical/COBSWAIT.canonical.json",
+  "canonical_path": "C:\\work\\HermesCOBOL\\data\\canonical\\COBSWAIT.canonical.json",
   "gate_status": "PASS",
   "failures": [],
   "warnings": [
