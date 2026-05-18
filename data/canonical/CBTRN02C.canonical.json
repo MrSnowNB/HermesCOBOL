@@ -1,7 +1,7 @@
 {
   "program": "CBTRN02C",
   "schema_version": "1.4",
-  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBTRN02C.cbl",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBTRN02C.cbl",
   "preprocess_available": true,
   "cics_present": false,
   "sql_present": false,
@@ -12,6 +12,22 @@
       "falls_through_to": "0100-TRANFILE-OPEN",
       "last_verb": "EXIT",
       "performs": [
+        "0000-DALYTRAN-OPEN",
+        "0100-TRANFILE-OPEN",
+        "0200-XREFFILE-OPEN",
+        "0300-DALYREJS-OPEN",
+        "0400-ACCTFILE-OPEN",
+        "0500-TCATBALF-OPEN",
+        "1000-DALYTRAN-GET-NEXT",
+        "1500-VALIDATE-TRAN",
+        "2000-POST-TRANSACTION",
+        "2500-WRITE-REJECT-REC",
+        "9000-DALYTRAN-CLOSE",
+        "9100-TRANFILE-CLOSE",
+        "9200-XREFFILE-CLOSE",
+        "9300-DALYREJS-CLOSE",
+        "9400-ACCTFILE-CLOSE",
+        "9500-TCATBALF-CLOSE",
         "9910-DISPLAY-IO-STATUS",
         "9999-ABEND-PROGRAM"
       ],
@@ -192,7 +208,7 @@
         "9999-ABEND-PROGRAM"
       ],
       "goto_targets": [],
-      "reachable": false,
+      "reachable": true,
       "last_raw": "PERFORM 9999-ABEND-PROGRAM",
       "cfg_branch_context": "IF APPL-AOK",
       "is_cics_branch": false
@@ -207,7 +223,7 @@
         "9999-ABEND-PROGRAM"
       ],
       "goto_targets": [],
-      "reachable": false,
+      "reachable": true,
       "last_raw": "PERFORM 9999-ABEND-PROGRAM",
       "cfg_branch_context": "IF APPL-AOK",
       "is_cics_branch": false
@@ -217,7 +233,12 @@
       "terminator": "implicit",
       "falls_through_to": "2700-A-CREATE-TCATBAL-REC",
       "last_verb": "EXIT",
-      "performs": [],
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM",
+        "2700-A-CREATE-TCATBAL-REC",
+        "2700-B-UPDATE-TCATBAL-REC"
+      ],
       "goto_targets": [],
       "reachable": true,
       "last_raw": "EXIT.",
@@ -428,7 +449,7 @@
   ],
   "cfg_paragraphs": [
     {
-      "name": "END-PERFORM",
+      "name": "0000-DALYTRAN-OPEN",
       "reachable": true,
       "performs": [
         "0000-DALYTRAN-OPEN",
@@ -446,15 +467,7 @@
         "9200-XREFFILE-CLOSE",
         "9300-DALYREJS-CLOSE",
         "9400-ACCTFILE-CLOSE",
-        "9500-TCATBALF-CLOSE"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "0000-DALYTRAN-OPEN",
-      "reachable": true,
-      "performs": [
+        "9500-TCATBALF-CLOSE",
         "9910-DISPLAY-IO-STATUS",
         "9999-ABEND-PROGRAM"
       ],
@@ -570,24 +583,9 @@
     {
       "name": "2700-UPDATE-TCATBAL",
       "reachable": true,
-      "performs": [],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "END-READ",
-      "reachable": false,
       "performs": [
         "9910-DISPLAY-IO-STATUS",
-        "9999-ABEND-PROGRAM"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "END-IF",
-      "reachable": false,
-      "performs": [
+        "9999-ABEND-PROGRAM",
         "2700-A-CREATE-TCATBAL-REC",
         "2700-B-UPDATE-TCATBAL-REC"
       ],
@@ -596,7 +594,7 @@
     },
     {
       "name": "2700-A-CREATE-TCATBAL-REC",
-      "reachable": false,
+      "reachable": true,
       "performs": [
         "9910-DISPLAY-IO-STATUS",
         "9999-ABEND-PROGRAM"
@@ -606,7 +604,7 @@
     },
     {
       "name": "2700-B-UPDATE-TCATBAL-REC",
-      "reachable": false,
+      "reachable": true,
       "performs": [
         "9910-DISPLAY-IO-STATUS",
         "9999-ABEND-PROGRAM"
@@ -617,13 +615,6 @@
     {
       "name": "2800-UPDATE-ACCOUNT-REC",
       "reachable": true,
-      "performs": [],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "END-REWRITE",
-      "reachable": false,
       "performs": [],
       "goto_targets": [],
       "goto_flag": false

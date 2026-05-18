@@ -1,6 +1,6 @@
 {
   "program": "CBTRN03C",
-  "canonical_path": "C:\\work\\HermesCOBOL\\data\\canonical\\CBTRN03C.canonical.json",
+  "canonical_path": "C:/work/HermesCOBOL/data/canonical/CBTRN03C.canonical.json",
   "gate_status": "PASS",
   "failures": [],
   "warnings": []

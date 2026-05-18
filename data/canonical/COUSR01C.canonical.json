@@ -1,7 +1,7 @@
 {
   "program": "COUSR01C",
   "schema_version": "1.4",
-  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COUSR01C.cbl",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/COUSR01C.cbl",
   "preprocess_available": false,
   "cics_present": true,
   "sql_present": false,

@@ -1,7 +1,7 @@
 {
   "program": "CBTRN01C",
   "schema_version": "1.4",
-  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBTRN01C.cbl",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBTRN01C.cbl",
   "preprocess_available": true,
   "cics_present": false,
   "sql_present": false,
@@ -145,7 +145,7 @@
         "Z-ABEND-PROGRAM"
       ],
       "goto_targets": [],
-      "reachable": false,
+      "reachable": true,
       "last_raw": "EXIT.",
       "cfg_branch_context": null,
       "is_cics_branch": false
@@ -160,7 +160,7 @@
         "Z-ABEND-PROGRAM"
       ],
       "goto_targets": [],
-      "reachable": false,
+      "reachable": true,
       "last_raw": "EXIT.",
       "cfg_branch_context": null,
       "is_cics_branch": false
@@ -175,7 +175,7 @@
         "Z-ABEND-PROGRAM"
       ],
       "goto_targets": [],
-      "reachable": false,
+      "reachable": true,
       "last_raw": "EXIT.",
       "cfg_branch_context": null,
       "is_cics_branch": false
@@ -190,7 +190,7 @@
         "Z-ABEND-PROGRAM"
       ],
       "goto_targets": [],
-      "reachable": false,
+      "reachable": true,
       "last_raw": "EXIT.",
       "cfg_branch_context": null,
       "is_cics_branch": false
@@ -205,7 +205,7 @@
         "Z-ABEND-PROGRAM"
       ],
       "goto_targets": [],
-      "reachable": false,
+      "reachable": true,
       "last_raw": "EXIT.",
       "cfg_branch_context": null,
       "is_cics_branch": false
@@ -220,7 +220,7 @@
         "Z-ABEND-PROGRAM"
       ],
       "goto_targets": [],
-      "reachable": false,
+      "reachable": true,
       "last_raw": "EXIT.",
       "cfg_branch_context": null,
       "is_cics_branch": false
@@ -239,7 +239,13 @@
         "0500-TRANFILE-OPEN",
         "1000-DALYTRAN-GET-NEXT",
         "2000-LOOKUP-XREF",
-        "3000-READ-ACCOUNT"
+        "3000-READ-ACCOUNT",
+        "9000-DALYTRAN-CLOSE",
+        "9100-CUSTFILE-CLOSE",
+        "9200-XREFFILE-CLOSE",
+        "9300-CARDFILE-CLOSE",
+        "9400-ACCTFILE-CLOSE",
+        "9500-TRANFILE-CLOSE"
       ],
       "goto_targets": [],
       "reachable": true,
@@ -334,15 +340,7 @@
         "0500-TRANFILE-OPEN",
         "1000-DALYTRAN-GET-NEXT",
         "2000-LOOKUP-XREF",
-        "3000-READ-ACCOUNT"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "END-PERFORM",
-      "reachable": false,
-      "performs": [
+        "3000-READ-ACCOUNT",
         "9000-DALYTRAN-CLOSE",
         "9100-CUSTFILE-CLOSE",
         "9200-XREFFILE-CLOSE",
@@ -366,13 +364,6 @@
     {
       "name": "2000-LOOKUP-XREF",
       "reachable": true,
-      "performs": [],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "END-READ",
-      "reachable": false,
       "performs": [],
       "goto_targets": [],
       "goto_flag": false
@@ -446,7 +437,7 @@
     },
     {
       "name": "9000-DALYTRAN-CLOSE",
-      "reachable": false,
+      "reachable": true,
       "performs": [
         "Z-DISPLAY-IO-STATUS",
         "Z-ABEND-PROGRAM"
@@ -456,7 +447,7 @@
     },
     {
       "name": "9100-CUSTFILE-CLOSE",
-      "reachable": false,
+      "reachable": true,
       "performs": [
         "Z-DISPLAY-IO-STATUS",
         "Z-ABEND-PROGRAM"
@@ -466,7 +457,7 @@
     },
     {
       "name": "9200-XREFFILE-CLOSE",
-      "reachable": false,
+      "reachable": true,
       "performs": [
         "Z-DISPLAY-IO-STATUS",
         "Z-ABEND-PROGRAM"
@@ -476,7 +467,7 @@
     },
     {
       "name": "9300-CARDFILE-CLOSE",
-      "reachable": false,
+      "reachable": true,
       "performs": [
         "Z-DISPLAY-IO-STATUS",
         "Z-ABEND-PROGRAM"
@@ -486,7 +477,7 @@
     },
     {
       "name": "9400-ACCTFILE-CLOSE",
-      "reachable": false,
+      "reachable": true,
       "performs": [
         "Z-DISPLAY-IO-STATUS",
         "Z-ABEND-PROGRAM"
@@ -496,7 +487,7 @@
     },
     {
       "name": "9500-TRANFILE-CLOSE",
-      "reachable": false,
+      "reachable": true,
       "performs": [
         "Z-DISPLAY-IO-STATUS",
         "Z-ABEND-PROGRAM"

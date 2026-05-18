@@ -1,7 +1,7 @@
 {
   "program": "CBTRN03C",
   "schema_version": "1.4",
-  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBTRN03C.cbl",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBTRN03C.cbl",
   "preprocess_available": true,
   "cics_present": false,
   "sql_present": false,
@@ -102,6 +102,27 @@
       "falls_through_to": "1000-TRANFILE-GET-NEXT",
       "last_verb": "PERFORM",
       "performs": [
+        "0000-TRANFILE-OPEN",
+        "0100-REPTFILE-OPEN",
+        "0200-CARDXREF-OPEN",
+        "0300-TRANTYPE-OPEN",
+        "0400-TRANCATG-OPEN",
+        "0500-DATEPARM-OPEN",
+        "0550-DATEPARM-READ",
+        "1000-TRANFILE-GET-NEXT",
+        "1120-WRITE-ACCOUNT-TOTALS",
+        "1500-A-LOOKUP-XREF",
+        "1500-B-LOOKUP-TRANTYPE",
+        "1500-C-LOOKUP-TRANCATG",
+        "1100-WRITE-TRANSACTION-REPORT",
+        "1110-WRITE-PAGE-TOTALS",
+        "1110-WRITE-GRAND-TOTALS",
+        "9000-TRANFILE-CLOSE",
+        "9100-REPTFILE-CLOSE",
+        "9200-CARDXREF-CLOSE",
+        "9300-TRANTYPE-CLOSE",
+        "9400-TRANCATG-CLOSE",
+        "9500-DATEPARM-CLOSE",
         "9910-DISPLAY-IO-STATUS",
         "9999-ABEND-PROGRAM"
       ],
@@ -437,7 +458,7 @@
   ],
   "cfg_paragraphs": [
     {
-      "name": "END-PERFORM",
+      "name": "0550-DATEPARM-READ",
       "reachable": true,
       "performs": [
         "0000-TRANFILE-OPEN",
@@ -460,15 +481,7 @@
         "9200-CARDXREF-CLOSE",
         "9300-TRANTYPE-CLOSE",
         "9400-TRANCATG-CLOSE",
-        "9500-DATEPARM-CLOSE"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "0550-DATEPARM-READ",
-      "reachable": true,
-      "performs": [
+        "9500-DATEPARM-CLOSE",
         "9910-DISPLAY-IO-STATUS",
         "9999-ABEND-PROGRAM"
       ],

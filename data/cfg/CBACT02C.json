@@ -5,20 +5,12 @@
   "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
   "paragraphs": [
     {
-      "name": "END-PERFORM",
+      "name": "1000-CARDFILE-GET-NEXT",
       "reachable": true,
       "performs": [
         "0000-CARDFILE-OPEN",
         "1000-CARDFILE-GET-NEXT",
-        "9000-CARDFILE-CLOSE"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "1000-CARDFILE-GET-NEXT",
-      "reachable": true,
-      "performs": [
+        "9000-CARDFILE-CLOSE",
         "9910-DISPLAY-IO-STATUS",
         "9999-ABEND-PROGRAM"
       ],

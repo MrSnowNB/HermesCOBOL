@@ -5,7 +5,7 @@
   "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
   "paragraphs": [
     {
-      "name": "END-PERFORM",
+      "name": "0000-DALYTRAN-OPEN",
       "reachable": true,
       "performs": [
         "0000-DALYTRAN-OPEN",
@@ -23,15 +23,7 @@
         "9200-XREFFILE-CLOSE",
         "9300-DALYREJS-CLOSE",
         "9400-ACCTFILE-CLOSE",
-        "9500-TCATBALF-CLOSE"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "0000-DALYTRAN-OPEN",
-      "reachable": true,
-      "performs": [
+        "9500-TCATBALF-CLOSE",
         "9910-DISPLAY-IO-STATUS",
         "9999-ABEND-PROGRAM"
       ],
@@ -147,24 +139,9 @@
     {
       "name": "2700-UPDATE-TCATBAL",
       "reachable": true,
-      "performs": [],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "END-READ",
-      "reachable": false,
       "performs": [
         "9910-DISPLAY-IO-STATUS",
-        "9999-ABEND-PROGRAM"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "END-IF",
-      "reachable": false,
-      "performs": [
+        "9999-ABEND-PROGRAM",
         "2700-A-CREATE-TCATBAL-REC",
         "2700-B-UPDATE-TCATBAL-REC"
       ],
@@ -173,7 +150,7 @@
     },
     {
       "name": "2700-A-CREATE-TCATBAL-REC",
-      "reachable": false,
+      "reachable": true,
       "performs": [
         "9910-DISPLAY-IO-STATUS",
         "9999-ABEND-PROGRAM"
@@ -183,7 +160,7 @@
     },
     {
       "name": "2700-B-UPDATE-TCATBAL-REC",
-      "reachable": false,
+      "reachable": true,
       "performs": [
         "9910-DISPLAY-IO-STATUS",
         "9999-ABEND-PROGRAM"
@@ -194,13 +171,6 @@
     {
       "name": "2800-UPDATE-ACCOUNT-REC",
       "reachable": true,
-      "performs": [],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "END-REWRITE",
-      "reachable": false,
       "performs": [],
       "goto_targets": [],
       "goto_flag": false
@@ -1314,13 +1284,7 @@
     "CEE3ABD"
   ],
   "cics_commands": [],
-  "dead_code_paragraphs": [
-    "END-READ",
-    "END-IF",
-    "2700-A-CREATE-TCATBAL-REC",
-    "2700-B-UPDATE-TCATBAL-REC",
-    "END-REWRITE"
-  ],
+  "dead_code_paragraphs": [],
   "dead_code_items": [],
   "irreducible_gotos": [],
   "smojol_cfg_path": null,

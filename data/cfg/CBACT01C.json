@@ -5,7 +5,7 @@
   "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
   "paragraphs": [
     {
-      "name": "END-PERFORM",
+      "name": "1000-ACCTFILE-GET-NEXT",
       "reachable": true,
       "performs": [
         "0000-ACCTFILE-OPEN",
@@ -13,15 +13,7 @@
         "3000-ARRFILE-OPEN",
         "4000-VBRFILE-OPEN",
         "1000-ACCTFILE-GET-NEXT",
-        "9000-ACCTFILE-CLOSE"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "1000-ACCTFILE-GET-NEXT",
-      "reachable": true,
-      "performs": [
+        "9000-ACCTFILE-CLOSE",
         "1100-DISPLAY-ACCT-RECORD",
         "1300-POPUL-ACCT-RECORD",
         "1350-WRITE-ACCT-RECORD",
@@ -52,13 +44,6 @@
     },
     {
       "name": "WS-REISSUE-DATE",
-      "reachable": false,
-      "performs": [],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "END-IF",
       "reachable": false,
       "performs": [],
       "goto_targets": [],
@@ -1053,7 +1038,6 @@
   "cics_commands": [],
   "dead_code_paragraphs": [
     "WS-REISSUE-DATE",
-    "END-IF",
     "VB2-ACCT-ID"
   ],
   "dead_code_items": [],

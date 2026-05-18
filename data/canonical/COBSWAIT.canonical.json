@@ -1,7 +1,7 @@
 {
   "program": "COBSWAIT",
   "schema_version": "1.4",
-  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COBSWAIT.cbl",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/COBSWAIT.cbl",
   "preprocess_available": true,
   "cics_present": false,
   "sql_present": false,

@@ -1,7 +1,7 @@
 {
   "program": "COTRN02C",
   "schema_version": "1.4",
-  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COTRN02C.cbl",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/COTRN02C.cbl",
   "preprocess_available": false,
   "cics_present": true,
   "sql_present": false,

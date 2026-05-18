@@ -1,7 +1,7 @@
 {
   "program": "CBIMPORT",
   "schema_version": "1.4",
-  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBIMPORT.cbl",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBIMPORT.cbl",
   "preprocess_available": true,
   "cics_present": false,
   "sql_present": false,
@@ -317,26 +317,12 @@
       "goto_flag": false
     },
     {
-      "name": "END-IF",
-      "reachable": false,
-      "performs": [],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
       "name": "2000-PROCESS-EXPORT-FILE",
       "reachable": true,
       "performs": [
         "2100-READ-EXPORT-RECORD",
         "2200-PROCESS-RECORD-BY-TYPE"
       ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "END-PERFORM",
-      "reachable": false,
-      "performs": [],
       "goto_targets": [],
       "goto_flag": false
     },
@@ -360,13 +346,6 @@
         "2650-PROCESS-CARD-RECORD",
         "2700-PROCESS-UNKNOWN-RECORD"
       ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "END-EVALUATE",
-      "reachable": false,
-      "performs": [],
       "goto_targets": [],
       "goto_flag": false
     },

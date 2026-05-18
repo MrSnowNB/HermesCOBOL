@@ -5,7 +5,7 @@
   "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
   "paragraphs": [
     {
-      "name": "END-PERFORM",
+      "name": "0550-DATEPARM-READ",
       "reachable": true,
       "performs": [
         "0000-TRANFILE-OPEN",
@@ -28,15 +28,7 @@
         "9200-CARDXREF-CLOSE",
         "9300-TRANTYPE-CLOSE",
         "9400-TRANCATG-CLOSE",
-        "9500-DATEPARM-CLOSE"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "0550-DATEPARM-READ",
-      "reachable": true,
-      "performs": [
+        "9500-DATEPARM-CLOSE",
         "9910-DISPLAY-IO-STATUS",
         "9999-ABEND-PROGRAM"
       ],

@@ -1,7 +1,7 @@
 {
   "program": "CBCUS01C",
   "schema_version": "1.4",
-  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBCUS01C.cbl",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBCUS01C.cbl",
   "preprocess_available": true,
   "cics_present": false,
   "sql_present": false,
@@ -27,6 +27,9 @@
       "falls_through_to": "0000-CUSTFILE-OPEN",
       "last_verb": "EXIT",
       "performs": [
+        "0000-CUSTFILE-OPEN",
+        "1000-CUSTFILE-GET-NEXT",
+        "9000-CUSTFILE-CLOSE",
         "Z-DISPLAY-IO-STATUS",
         "Z-ABEND-PROGRAM"
       ],
@@ -92,20 +95,12 @@
   ],
   "cfg_paragraphs": [
     {
-      "name": "END-PERFORM",
+      "name": "1000-CUSTFILE-GET-NEXT",
       "reachable": true,
       "performs": [
         "0000-CUSTFILE-OPEN",
         "1000-CUSTFILE-GET-NEXT",
-        "9000-CUSTFILE-CLOSE"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "1000-CUSTFILE-GET-NEXT",
-      "reachable": true,
-      "performs": [
+        "9000-CUSTFILE-CLOSE",
         "Z-DISPLAY-IO-STATUS",
         "Z-ABEND-PROGRAM"
       ],

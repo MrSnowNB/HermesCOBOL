@@ -1,7 +1,7 @@
 {
   "program": "CBSTM03B",
   "schema_version": "1.4",
-  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBSTM03B.cbl",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBSTM03B.cbl",
   "preprocess_available": true,
   "cics_present": false,
   "sql_present": false,
@@ -246,18 +246,6 @@
       "performs": [],
       "goto_targets": [
         "1900-EXIT"
-      ],
-      "goto_flag": true
-    },
-    {
-      "name": "END-IF",
-      "reachable": false,
-      "performs": [],
-      "goto_targets": [
-        "1900-EXIT",
-        "2900-EXIT",
-        "3900-EXIT",
-        "4900-EXIT"
       ],
       "goto_flag": true
     },

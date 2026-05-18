@@ -1,7 +1,7 @@
 {
   "program": "CBACT04C",
   "schema_version": "1.4",
-  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBACT04C.cbl",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBACT04C.cbl",
   "preprocess_available": true,
   "cics_present": false,
   "sql_present": false,
@@ -12,6 +12,23 @@
       "falls_through_to": "0100-XREFFILE-OPEN",
       "last_verb": "EXIT",
       "performs": [
+        "0000-TCATBALF-OPEN",
+        "0100-XREFFILE-OPEN",
+        "0200-DISCGRP-OPEN",
+        "0300-ACCTFILE-OPEN",
+        "0400-TRANFILE-OPEN",
+        "1000-TCATBALF-GET-NEXT",
+        "1050-UPDATE-ACCOUNT",
+        "1100-GET-ACCT-DATA",
+        "1110-GET-XREF-DATA",
+        "1200-GET-INTEREST-RATE",
+        "1300-COMPUTE-INTEREST",
+        "1400-COMPUTE-FEES",
+        "9000-TCATBALF-CLOSE",
+        "9100-XREFFILE-CLOSE",
+        "9200-DISCGRP-CLOSE",
+        "9300-ACCTFILE-CLOSE",
+        "9400-TRANFILE-CLOSE",
         "9910-DISPLAY-IO-STATUS",
         "9999-ABEND-PROGRAM"
       ],
@@ -151,7 +168,7 @@
         "9999-ABEND-PROGRAM"
       ],
       "goto_targets": [],
-      "reachable": false,
+      "reachable": true,
       "last_raw": "EXIT.",
       "cfg_branch_context": null,
       "is_cics_branch": false
@@ -161,7 +178,11 @@
       "terminator": "implicit",
       "falls_through_to": "1200-A-GET-DEFAULT-INT-RATE",
       "last_verb": "EXIT",
-      "performs": [],
+      "performs": [
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM",
+        "1200-A-GET-DEFAULT-INT-RATE"
+      ],
       "goto_targets": [],
       "reachable": true,
       "last_raw": "EXIT.",
@@ -173,7 +194,11 @@
       "terminator": "implicit",
       "falls_through_to": "END-STRING",
       "last_verb": "STRING",
-      "performs": [],
+      "performs": [
+        "Z-GET-DB2-FORMAT-TIMESTAMP",
+        "9910-DISPLAY-IO-STATUS",
+        "9999-ABEND-PROGRAM"
+      ],
       "goto_targets": [],
       "reachable": true,
       "last_raw": "STRING PARM-DATE",
@@ -312,7 +337,7 @@
       "last_verb": "EXIT",
       "performs": [],
       "goto_targets": [],
-      "reachable": false,
+      "reachable": true,
       "last_raw": "EXIT.",
       "cfg_branch_context": null,
       "is_cics_branch": false
@@ -362,7 +387,7 @@
   ],
   "cfg_paragraphs": [
     {
-      "name": "END-PERFORM",
+      "name": "0000-TCATBALF-OPEN",
       "reachable": true,
       "performs": [
         "0000-TCATBALF-OPEN",
@@ -381,15 +406,7 @@
         "9100-XREFFILE-CLOSE",
         "9200-DISCGRP-CLOSE",
         "9300-ACCTFILE-CLOSE",
-        "9400-TRANFILE-CLOSE"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "0000-TCATBALF-OPEN",
-      "reachable": true,
-      "performs": [
+        "9400-TRANFILE-CLOSE",
         "9910-DISPLAY-IO-STATUS",
         "9999-ABEND-PROGRAM"
       ],
@@ -479,13 +496,6 @@
     {
       "name": "1200-GET-INTEREST-RATE",
       "reachable": true,
-      "performs": [],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "END-READ",
-      "reachable": false,
       "performs": [
         "9910-DISPLAY-IO-STATUS",
         "9999-ABEND-PROGRAM",
@@ -496,7 +506,7 @@
     },
     {
       "name": "1200-A-GET-DEFAULT-INT-RATE",
-      "reachable": false,
+      "reachable": true,
       "performs": [
         "9910-DISPLAY-IO-STATUS",
         "9999-ABEND-PROGRAM"
@@ -516,13 +526,6 @@
     {
       "name": "1300-B-WRITE-TX",
       "reachable": true,
-      "performs": [],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "END-STRING",
-      "reachable": false,
       "performs": [
         "Z-GET-DB2-FORMAT-TIMESTAMP",
         "9910-DISPLAY-IO-STATUS",
@@ -590,7 +593,7 @@
     },
     {
       "name": "Z-GET-DB2-FORMAT-TIMESTAMP",
-      "reachable": false,
+      "reachable": true,
       "performs": [],
       "goto_targets": [],
       "goto_flag": false

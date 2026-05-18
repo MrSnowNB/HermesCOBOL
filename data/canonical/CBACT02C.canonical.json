@@ -1,7 +1,7 @@
 {
   "program": "CBACT02C",
   "schema_version": "1.4",
-  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBACT02C.cbl",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBACT02C.cbl",
   "preprocess_available": true,
   "cics_present": false,
   "sql_present": false,
@@ -27,6 +27,9 @@
       "falls_through_to": "0000-CARDFILE-OPEN",
       "last_verb": "EXIT",
       "performs": [
+        "0000-CARDFILE-OPEN",
+        "1000-CARDFILE-GET-NEXT",
+        "9000-CARDFILE-CLOSE",
         "9910-DISPLAY-IO-STATUS",
         "9999-ABEND-PROGRAM"
       ],
@@ -92,20 +95,12 @@
   ],
   "cfg_paragraphs": [
     {
-      "name": "END-PERFORM",
+      "name": "1000-CARDFILE-GET-NEXT",
       "reachable": true,
       "performs": [
         "0000-CARDFILE-OPEN",
         "1000-CARDFILE-GET-NEXT",
-        "9000-CARDFILE-CLOSE"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "1000-CARDFILE-GET-NEXT",
-      "reachable": true,
-      "performs": [
+        "9000-CARDFILE-CLOSE",
         "9910-DISPLAY-IO-STATUS",
         "9999-ABEND-PROGRAM"
       ],

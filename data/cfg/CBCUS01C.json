@@ -5,20 +5,12 @@
   "cfg_tool": "HermesCOBOL extract_cfg_local.py (Stage 5-B)",
   "paragraphs": [
     {
-      "name": "END-PERFORM",
+      "name": "1000-CUSTFILE-GET-NEXT",
       "reachable": true,
       "performs": [
         "0000-CUSTFILE-OPEN",
         "1000-CUSTFILE-GET-NEXT",
-        "9000-CUSTFILE-CLOSE"
-      ],
-      "goto_targets": [],
-      "goto_flag": false
-    },
-    {
-      "name": "1000-CUSTFILE-GET-NEXT",
-      "reachable": true,
-      "performs": [
+        "9000-CUSTFILE-CLOSE",
         "Z-DISPLAY-IO-STATUS",
         "Z-ABEND-PROGRAM"
       ],

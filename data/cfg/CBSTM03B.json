@@ -35,18 +35,6 @@
       "goto_flag": true
     },
     {
-      "name": "END-IF",
-      "reachable": false,
-      "performs": [],
-      "goto_targets": [
-        "1900-EXIT",
-        "2900-EXIT",
-        "3900-EXIT",
-        "4900-EXIT"
-      ],
-      "goto_flag": true
-    },
-    {
       "name": "1900-EXIT",
       "reachable": true,
       "performs": [],
@@ -412,7 +400,6 @@
   "calls_to": [],
   "cics_commands": [],
   "dead_code_paragraphs": [
-    "END-IF",
     "1999-EXIT",
     "2999-EXIT",
     "3999-EXIT",
