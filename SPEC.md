@@ -1,141 +1,170 @@
-# SPEC: Fix extract_fallthrough.py — Filter noise tokens from internal paragraph list
+# SPEC: CobolProgramDict — Unified, Validated Access Layer over the Canonical IR
 
 **Version:** 1.0  
 **Date:** 2026-05-18  
-**Status:** Draft — awaiting explicit approval  
-**Related:** Previous fallthrough noise fix (END-* in falls_through_to), Stage 5-H Phase 2 referential integrity, extract_cfg_local.py unification
+**Status:** Approved (with Data Source Priority rule) — ready for implementation  
+**Author:** Grok (following spec-writer protocol)  
+**Context:** Extraction pipeline (facts, canonical IR, fallthrough, CFG, byte layouts) is now stable after Stage 5-H Phase 1 + Phase 2 + noise cleanup.
 
 ---
 
 ## Intent (one sentence)
 
-Filter `PARAGRAPH_NOISE` and `RESERVED_WORDS` at the point where paragraph names are added to the internal tracked list in `extract_fallthrough.py`, so that `data/fallthrough/` reports exactly 518 paragraphs (matching facts and canonical IR).
+Create a Python class `CobolProgramDict` that loads the canonical IR for a single program and exposes a clean, validated, dict-like interface to paragraphs, control flow, data items, and cross-references, serving as the single source of truth for all downstream consumers (walkers, semantic analysis, Hermes agent).
 
 ---
 
 ## Background
 
-After the recent fix that prevented `END-*` scope terminators from being written into the `falls_through_to` field, `data/fallthrough/*.json` still contains 531 paragraph entries while `data/facts/` and the canonical IR correctly report 518.
+After months of deterministic extraction work:
 
-The 13 extra entries are noise tokens (from `PARAGRAPH_NOISE` and `RESERVED_WORDS`) that the Pass-1 annotations are surfacing as "paragraphs". These are being added to the internal `first` / `last` / `ordered` structures in `extract_fallthrough.py`.
+- 518 clean paragraphs (facts + canonical match raw source)
+- Full referential integrity (performs, falls_through_to, terminator enum) enforced by Stage 5-H Phase 2
+- Noise tokens (`PARAGRAPH_NOISE`, `RESERVED_WORDS`, synthetic `*-MAIN`) filtered at source in `extract_cfg_local.py` and `extract_fallthrough.py`
+- 31/31 programs pass the primary domain gates (`validate_roundtrip.py` + `validate_canonical_ir.py`)
 
-`PARAGRAPH_NOISE` and `RESERVED_WORDS` were already imported in the previous fix. The same filtering pattern successfully applied to `extract_cfg_local.py` must now be applied to the paragraph *detection / tracking* logic here (not just the `falls_through_to` assignment).
+The raw JSON artifacts (`data/canonical/`, `data/facts/`, `data/cfg/`, `data/fallthrough/`, `data/byte_layouts/`, `data/data_flow/`) are now reliable.
 
-This is the final upstream cleanup needed before `CobolProgramDict` can treat the paragraph universe as stable.
+However, every consumer (future walker, semantic rule engine, agent skill) currently has to:
+- Know the exact directory layout
+- Merge multiple JSON files
+- Handle CICS vs non-CICS gracefully
+- Re-apply the same reachability / cross-reference logic
 
----
-
-## Implementation Requirements
-
-- The import `from cobol_parse_utils import PARAGRAPH_NOISE, RESERVED_WORDS` is already present — do not duplicate it.
-- Locate every place in `extract_fallthrough.py` where a paragraph name (from annotations) is added to a tracked collection (`first`, `last`, `ordered`, or the final output list).
-- Add the guard before adding the name:
-  ```python
-  if name not in PARAGRAPH_NOISE and name not in RESERVED_WORDS:
-      # add to tracked structure
-  ```
-- The filter must be applied at the **detection / collection** stage so that the final `paragraphs` array written to `data/fallthrough/<PROG>.json` contains only valid names.
-- Do **not** change terminator classification logic.
-- Do **not** change any other file.
-- Single file changed: `scripts/extract_fallthrough.py` only.
+`CobolProgramDict` is the abstraction layer that hides all of this. It will be the foundation for `CobolWalker` and higher-level semantic work.
 
 ---
 
-## Acceptance Criteria
+## Requirements
 
-**GATE 1** — Regenerate fallthrough data  
-`python scripts/extract_fallthrough.py --all`  
-Expected: 31/31 complete, exit 0
+### Core Responsibilities
+- Load and validate the canonical IR for one program (`data/canonical/<PROG>.canonical.json`)
+- Merge / expose the most useful enriched views:
+  - Paragraphs (with `performs`, `falls_through_to`, `reachable`, `goto_targets`, terminator, etc.)
+  - Data items / byte layout (from `data/byte_layouts/`)
+  - Data flow / mutations (from `data/data_flow/`)
+  - External calls and file control
+- Provide convenient, Pythonic access:
+  - `prog.paragraphs` → dict-like or list with rich objects
+  - `prog.paragraph("NAME")` → single paragraph record
+  - `prog.reachable_paragraphs`, `prog.dead_code_paragraphs`
+  - `prog.external_calls`, `prog.copybooks`
+  - `prog.is_cics`
+- Enforce invariants at construction time (fail fast on bad data)
+- Be read-only and side-effect free
 
-**GATE 2** — Reassemble canonical IR  
-`python scripts/assemble_canonical.py`  
-Expected: 31/31 complete, exit 0
+### Data Source Priority
 
-**GATE 3** — Stage 5-H validator  
-`python scripts/validate_canonical_ir.py`  
-Expected: 31/31 PASS
+- `data/canonical/<PROG>.canonical.json` is the **only required** input file.
+- `data/byte_layouts/`, `data/data_flow/`, and `data/cfg/` are **optional enrichment** sources.
+- If any optional enrichment file is missing or unreadable, the corresponding properties must return an empty list (`[]`) or `None` — the class must **never raise** an exception due to a missing optional source.
+- The class must be fully functional (all required properties and methods work) when only the canonical IR is present.
 
-**GATE 4** — Roundtrip validator  
-`python scripts/validate_roundtrip.py`  
-Expected: Pass 31, Fail 0
-
-**GATE 5** — Test suite  
-`python -m pytest tests/ -q --tb=short` (using the Python that contains the test dependencies)  
-Expected: 136 passed
-
-**Verification** — Fallthrough paragraph count  
-Run:
+### API Shape (initial proposal — open to refinement in implementation)
 ```python
-import json, glob
-total = sum(len(json.load(open(p)).get('paragraphs',[])) 
-            for p in glob.glob('data/fallthrough/*.json'))
-print(f'Total fallthrough paragraphs: {total}')
-print('PASS' if total == 518 else f'FAIL — expected 518 got {total}')
+class CobolProgramDict:
+    def __init__(self, program: str, base_dir: Path | None = None):
+        ...
+
+    @property
+    def name(self) -> str: ...
+
+    @property
+    def is_cics(self) -> bool: ...
+
+    @property
+    def paragraphs(self) -> dict[str, dict]: ...
+    # or a richer Paragraph dataclass / namedtuple
+
+    def paragraph(self, name: str) -> dict: ...
+
+    @property
+    def entry_paragraph(self) -> str: ...
+
+    @property
+    def reachable_paragraphs(self) -> list[str]: ...
+
+    @property
+    def data_items(self) -> list[dict]: ...
+
+    # ... other high-value views
 ```
-Expected: `Total fallthrough paragraphs: 518` and `PASS`
+
+### Non-Functional
+- Pure Python, stdlib + `pathlib` / `json` only (no new dependencies)
+- Fast enough for interactive / agent use (< 100 ms per program)
+- Clear error messages when data is missing or inconsistent
+- Easy to serialize back to JSON if needed
 
 ---
 
-## Out of Scope
+## Acceptance Criteria (all must be demonstrably true)
 
-- No changes to `validate_canonical_ir.py`, `assemble_canonical.py`, `cobol_parse_utils.py`, or any test file.
-- No changes to `terminator` classification or `falls_through_to` filtering logic (already fixed).
-- No work on `CobolProgramDict`.
-- No updates to data artifacts except those produced by running the approved gates.
+- `CobolProgramDict("CBACT01C")` succeeds for all 31 programs in the corpus.
+- `len(prog.paragraphs) == 518` total across the corpus (or correct per-program count).
+- `prog.reachable_paragraphs` and `prog.dead_code_paragraphs` match the values previously computed via CFG.
+- All `falls_through_to` and `performs` targets are valid paragraph names (no dangling references).
+- CICS programs (`COACTUPC`, etc.) report `is_cics == True` and have sensible (possibly empty) paragraph flow.
+- No `END-*`, `*-MAIN` (synthetic), or other noise tokens appear in `paragraphs`.
+- Basic usage example works and is documented in the class or a small `examples/` script.
+- Existing gates (`validate_roundtrip.py`, `validate_canonical_ir.py`) still pass after the new class is added (it must be a pure consumer).
+- The class is importable as `from scripts.cobol_program_dict import CobolProgramDict`.
+
+**Data Source Resilience Gate**:
+- `CobolProgramDict("CBACT01C")` can be successfully instantiated and all core required functionality works correctly even when `data/byte_layouts/CBACT01C.json` is temporarily renamed or removed.
+- The test must temporarily hide the optional file, run the instantiation + basic usage, then restore the file.
+- The class must never raise an exception solely because an optional enrichment file is missing.
 
 ---
 
-## Plan (execute only after explicit "approved")
+## Out of Scope (for v1)
 
-1. Present this SPEC (current step). No source file has been read or modified.
+- Full control-flow walker / traversal engine (`CobolWalker`)
+- Semantic rule extraction or business rule mining
+- CICS command semantic enrichment
+- Mutation / data-flow analysis beyond what is already in the canonical IR
+- Persistence, caching, or database layer
+- CLI or web interface
+- Changes to any existing extractor or validator
 
-2. **Await explicit approval.**  
-   Do **not** read `scripts/extract_fallthrough.py`, do **not** run any gate, and do **not** make any code change until the user replies with "approved", "go", or "LGTM".
+---
 
-3. On approval — first read of the target.  
-   Read `scripts/extract_fallthrough.py` to locate all sites where paragraph names from annotations are collected.
+## Plan (high-level, to be detailed after approval)
 
-4. Implement the filter.  
-   Add the `PARAGRAPH_NOISE` + `RESERVED_WORDS` guard at every paragraph detection / addition point so the final output list contains only clean names.
-
-5. Execute the gates in order:
-   - GATE 1 (`extract_fallthrough.py --all`)
-   - GATE 2 (`assemble_canonical.py`)
-   - GATE 3 (`validate_canonical_ir.py`)
-   - GATE 4 (`validate_roundtrip.py`)
-   - GATE 5 (pytest)
-   - Final verification script
-
-6. Capture `git diff` and full gate output.
-
-7. Journal anchor (`kind: "decision"` + `kind: "done"`).
-
-8. Review hand-off (Morty Law).  
-   Present diff + complete gate transcripts.  
-   **Never** run `git commit`, `git add`, or `git push`.  
-   Use the exact commit message only after explicit review sign-off.
+1. Write this SPEC and obtain approval.
+2. Create `scripts/cobol_program_dict.py` with the core class.
+3. Implement loading + basic merging of canonical + supporting artifacts.
+4. Add rich paragraph access and reachability helpers (re-using logic already proven in Phase 1/2).
+5. Add CICS vs non-CICS handling and graceful degradation.
+6. Write a small smoke test / usage example that exercises all 31 programs.
+7. Run the full gate suite (`validate_roundtrip.py`, `validate_canonical_ir.py`, pytest) to prove no regression.
+8. Update `SCRIPTS_INVENTORY.md` and `CLAUDE.md` if needed.
+9. Present diff + usage demo for review before any commit.
 
 ---
 
 ## Risks & Mitigations
 
-- **Risk:** Filtering changes the `ordered` list and could affect C-5 source-order checks or downstream consumers of the fallthrough JSON.  
-  **Mitigation:** The C-5 check operates on line numbers, not names. The canonical IR (the authoritative consumer) will continue to use facts for its paragraph list. Gates 3–5 will surface any regression.
+- **Risk:** The "right" shape of the API is not obvious; we could design something awkward that later needs heavy refactoring.  
+  **Mitigation:** Start minimal (dict-like access + a few high-value properties). Iterate in small PRs after the initial class lands. Keep the class intentionally thin in v1.
 
-- **Risk:** Some legitimate paragraph names in this corpus might accidentally match the noise sets (unlikely but possible).  
-  **Mitigation:** The same filter sets have already been applied in `extract_cfg_local.py` and the previous fallthrough fix without removing real paragraphs. The verification gate will confirm we land at exactly 518.
+- **Risk:** Performance or memory issues when loading many programs.  
+  **Mitigation:** Load lazily where possible; the corpus is only 31 small JSON files. Measure early.
 
-- **Risk:** Violating Morty Law.  
-  **Mitigation:** This SPEC explicitly requires waiting for "approved" before any read or edit.
+- **Risk:** Future changes to the canonical schema will break the class.  
+  **Mitigation:** Version the expected schema inside the class and fail loudly on mismatch. Tie the class version to `SCHEMA_VERSION` in `config.py`.
+
+- **Risk:** Over-engineering before we know exactly what the Hermes agent needs.  
+  **Mitigation:** Explicit "Out of Scope" list above. The class is deliberately a thin, faithful view of the current IR, not a prediction of future needs.
 
 ---
 
 ## References
 
-- User request message (this SPEC's source of truth).
-- Previous fallthrough fix SPEC and implementation.
-- `extract_cfg_local.py` (reference implementation of the filter pattern).
-- `data/facts/` and `data/canonical/` (the 518-paragraph ground truth).
+- `data/canonical/*.canonical.json` (primary source)
+- `scripts/validate_canonical_ir.py` and `validate_roundtrip.py` (current ground truth for "good" data)
+- Previous Phase 1 & Phase 2 SPECs and REVIEW.md (the cleanup work that made this abstraction possible)
+- `CLAUDE.md` (project rules, especially "update SCRIPTS_INVENTORY.md when modifying extractors")
 
 ---
 
@@ -143,11 +172,8 @@ Expected: `Total fallthrough paragraphs: 518` and `PASS`
 
 - [ ] SPEC reviewed.
 - [ ] Explicit approval given ("approved", "go", or "LGTM").
-- Once approved, the agent may read `extract_fallthrough.py` and begin the fix.
+- Once approved, implementation of `CobolProgramDict` may begin.
 
 ---
 
-*This SPEC follows the exact structure and constraints requested. All Morty Law requirements are embedded in the Plan.*
-
-**Ready for your review.**  
-Reply with **"approved"** when you are satisfied. No source files will be touched until then.
+*This SPEC is intentionally focused on the minimal viable abstraction that unlocks the next layer of work (walkers, semantic rules, agent integration). It captures the hard-won stability of the extraction pipeline without over-promising on future features.*
