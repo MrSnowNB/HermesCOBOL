@@ -1,8 +1,8 @@
 {
   "program": "COMEN01C",
-  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\COMEN01C.cbl",
+  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/COMEN01C.cbl",
   "source_sha256": "bdfb0b465d9a7d3c0f121898ac848af7c89b95998b5d09203e8b43b9fb7ac7c5",
-  "cfg_path": "validation\\pass1\\COMEN01C_annotations.json",
+  "cfg_path": "validation/pass1/COMEN01C_annotations.json",
   "cfg_sha256": "30822c76a5a684e5e258c6974003cafaead3aac62dd652e8ed371d6f9e4b5f81",
   "paragraphs": [
     {

@@ -1,7 +1,7 @@
 {
   "program": "CBSTM03A",
   "schema_version": "1.4",
-  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBSTM03A.cbl",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBSTM03A.cbl",
   "preprocess_available": true,
   "cics_present": false,
   "sql_present": false,
@@ -103,7 +103,7 @@
     {
       "name": "5000-CREATE-STATEMENT",
       "terminator": "implicit",
-      "falls_through_to": null,
+      "falls_through_to": "5100-WRITE-HTML-HEADER",
       "last_verb": "STRING",
       "performs": [
         "5100-WRITE-HTML-HEADER",

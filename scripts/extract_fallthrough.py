@@ -181,6 +181,12 @@ def run(source_path: Path, cfg_path: Path, out_path: Path) -> dict:
         if e.get("division") != "PROCEDURE":
             continue
         p = e["paragraph"]
+        if p in PARAGRAPH_NOISE or p in RESERVED_WORDS:
+            continue
+        # Filter synthetic *-MAIN entry points that the authoritative paragraph
+        # extractor rejects (real ones like 0000-MAIN / A000-MAIN are kept)
+        if p.endswith("-MAIN") and p not in ("0000-MAIN", "A000-MAIN"):
+            continue
         if p not in first:
             first[p] = e
         last[p] = e

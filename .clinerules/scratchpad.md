@@ -1,133 +1,192 @@
 # ═══════════════════════════════════════════════════════
-# FULL PIPELINE STATE VERIFICATION — Pre-CobolProgramDict
-# Run ALL steps. Report PASS/FAIL for each.
+# FULL COVERAGE AUDIT — Pre-CobolProgramDict
+# Verifies extraction completeness across all 4 extractors
 # ═══════════════════════════════════════════════════════
 
-Write-Host "=== STEP 1: Full pipeline rerun from scratch ===" -ForegroundColor Cyan
-C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe `
-  scripts\extract_cfg_local.py --all 2>&1 | Select-Object -Last 2
-echo "CFG Exit: $LASTEXITCODE"
-
-C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe `
-  scripts\extract_fallthrough.py --all 2>&1 | Select-Object -Last 2
-echo "Fallthrough Exit: $LASTEXITCODE"
-
-C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe `
-  scripts\assemble_canonical.py 2>&1 | Select-Object -Last 2
-echo "Assemble Exit: $LASTEXITCODE"
-
-Write-Host "=== STEP 2: Stage 5-H gate ===" -ForegroundColor Cyan
-C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe `
-  scripts\validate_canonical_ir.py 2>&1
-echo "Gate Exit: $LASTEXITCODE"
-# Expected: 31/31 PASS
-
-Write-Host "=== STEP 3: Roundtrip validator ===" -ForegroundColor Cyan
-C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe `
-  scripts\validate_roundtrip.py 2>&1 | Select-Object -Last 4
-echo "Roundtrip Exit: $LASTEXITCODE"
-# Expected: Pass 31, Fail 0
-
-Write-Host "=== STEP 4: Full test suite ===" -ForegroundColor Cyan
-C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe `
-  -m pytest tests/ -q --tb=short 2>&1 | Select-Object -Last 5
-echo "Pytest Exit: $LASTEXITCODE"
-# Expected: 136 passed
-
-Write-Host "=== STEP 5: Canonical IR health snapshot ===" -ForegroundColor Cyan
+Write-Host "=== AUDIT 1: Facts vs Raw Source — paragraph count match ===" -ForegroundColor Cyan
 C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe -c "
-import json, glob, os
-total_progs = 0
-total_paras = 0
-cics_progs = 0
-non_cics = 0
-reachable_false = 0
-has_performs = 0
-for path in sorted(glob.glob('data/canonical/*.canonical.json')):
-    d = json.load(open(path))
-    total_progs += 1
-    paras = d.get('paragraphs', [])
-    total_paras += len(paras)
-    if d.get('cics_present'):
-        cics_progs += 1
-    else:
-        non_cics += 1
-    for p in paras:
-        if not p.get('reachable', True):
-            reachable_false += 1
-        if p.get('performs'):
-            has_performs += 1
-print(f'Programs        : {total_progs}')
-print(f'  Non-CICS      : {non_cics}')
-print(f'  CICS          : {cics_progs}')
-print(f'Total paragraphs: {total_paras}')
-print(f'  reachable=False (dead code): {reachable_false}')
-print(f'  with performs[] populated  : {has_performs}')
+import json, glob, os, re
+
+RAW_DIR = 'app/src/main/cobol'
+FACTS_DIR = 'data/facts'
+
+# Count paragraphs directly from raw source using same logic as cobol_parse_utils
+RE_PARA = re.compile(r'^\s{0,3}([A-Z0-9][A-Z0-9\-]*)\.[ \t]*$', re.IGNORECASE)
+NOISE = {'EXIT','STOP','GOBACK','END-IF','END-EXEC','END-PERFORM','END-EVALUATE',
+         'END-READ','END-WRITE','END-REWRITE','END-CALL','END-STRING','FILLER',
+         'EVALUATE','PERFORM','MOVE','IF','ELSE','CONTINUE','SECTION','DIVISION',
+         'WHEN','END-WHEN','END-SEARCH','END-COMPUTE','END-MULTIPLY','END-DIVIDE',
+         'END-ADD','END-SUBTRACT','END-UNSTRING','END-XML','END-JSON','END-ACCEPT',
+         'END-DISPLAY','END-DELETE','END-START','END-RETURN','END-RECEIVE'}
+
+mismatches = []
+for facts_path in sorted(glob.glob(f'{FACTS_DIR}/*.json')):
+    prog = os.path.basename(facts_path).replace('.json','')
+    facts = json.load(open(facts_path))
+    facts_count = len(facts.get('paragraphs', []))
+
+    # Find raw source
+    raw_path = f'{RAW_DIR}/{prog}.cbl'
+    if not os.path.exists(raw_path):
+        raw_path = f'{RAW_DIR}/{prog}.CBL'
+    if not os.path.exists(raw_path):
+        continue
+
+    text = open(raw_path, errors='replace').read()
+    in_proc = False
+    raw_paras = []
+    for line in text.splitlines():
+        if 'PROCEDURE DIVISION' in line.upper():
+            in_proc = True
+            continue
+        if not in_proc:
+            continue
+        m = RE_PARA.match(line)
+        if m:
+            name = m.group(1).upper()
+            if name not in NOISE and name not in raw_paras:
+                raw_paras.append(name)
+
+    if facts_count != len(raw_paras):
+        mismatches.append((prog, facts_count, len(raw_paras)))
+
+if mismatches:
+    print(f'MISMATCHES ({len(mismatches)} programs):')
+    for prog, fc, rc in mismatches:
+        print(f'  {prog}: facts={fc} raw_scan={rc}')
+else:
+    print('PASS — facts paragraph counts match raw source scan for all programs')
 "
 
-Write-Host "=== STEP 6: Noise cleanliness — CFG ===" -ForegroundColor Cyan
+Write-Host "=== AUDIT 2: CFG coverage — performs/goto extraction completeness ===" -ForegroundColor Cyan
 C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe -c "
-import json, glob
-noise = {'STOP','EXIT','GOBACK','END-IF','END-EXEC','FILLER','EVALUATE',
-         'PERFORM','MOVE','IF','ELSE','END-EVALUATE','WHEN',
-         'END-PERFORM','END-READ','END-WRITE','END-CALL','CONTINUE',
-         'END-STRING','END-REWRITE','SECTION','DIVISION'}
-found = []
-for path in glob.glob('data/cfg/*.json'):
+import json, glob, os
+total = 0
+with_performs = 0
+with_gotos = 0
+empty_both = 0
+for path in sorted(glob.glob('data/cfg/*.json')):
+    prog = os.path.basename(path).replace('.json','')
     d = json.load(open(path))
     for p in d.get('paragraphs', []):
-        if p['name'] in noise:
-            found.append((path, p['name']))
-print('CFG noise check:', 'CLEAN' if not found else f'{len(found)} violations')
+        total += 1
+        has_p = bool(p.get('performs'))
+        has_g = bool(p.get('goto_targets'))
+        if has_p: with_performs += 1
+        if has_g: with_gotos += 1
+        if not has_p and not has_g: empty_both += 1
+print(f'Total CFG paragraphs : {total}')
+print(f'Has performs[]       : {with_performs} ({100*with_performs//total}%)')
+print(f'Has goto_targets[]   : {with_gotos} ({100*with_gotos//total}%)')
+print(f'Empty both (leaf para): {empty_both} ({100*empty_both//total}%)')
 "
 
-Write-Host "=== STEP 7: Noise cleanliness — fallthrough ===" -ForegroundColor Cyan
+Write-Host "=== AUDIT 3: Fallthrough coverage — terminator classification ===" -ForegroundColor Cyan
 C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe -c "
 import json, glob, os
-bad = []
+from collections import Counter
+terminator_counts = Counter()
+null_terminator = []
 for path in sorted(glob.glob('data/fallthrough/*.json')):
     prog = os.path.basename(path).replace('.json','')
     d = json.load(open(path))
     for p in d.get('paragraphs', []):
-        ft = p.get('falls_through_to')
-        if ft and 'END-' in ft:
-            bad.append((prog, p['paragraph'], ft))
-print('Fallthrough END-* check:', 'CLEAN' if not bad else f'{len(bad)} violations')
-for prog,para,ft in bad:
-    print(f'  {prog}.{para} -> {ft}')
+        t = p.get('terminator')
+        terminator_counts[t] += 1
+        if t is None:
+            null_terminator.append((prog, p.get('paragraph')))
+print('Terminator distribution across corpus:')
+for t, count in sorted(terminator_counts.items(), key=lambda x: -x[1]):
+    print(f'  {str(t):<30} {count}')
+if null_terminator:
+    print(f'NULL terminators ({len(null_terminator)}):')
+    for prog, para in null_terminator:
+        print(f'  {prog}.{para}')
+else:
+    print('No null terminators — CLEAN')
 "
 
-Write-Host "=== STEP 8: Schema version check ===" -ForegroundColor Cyan
-C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe -c "
-import json, glob
-versions = set()
-for path in glob.glob('data/canonical/*.canonical.json'):
-    d = json.load(open(path))
-    versions.add(d.get('schema_version'))
-print('Schema versions in corpus:', versions)
-# Expected: {'1.4'} only
-"
-
-Write-Host "=== STEP 9: Required paragraph fields — full corpus ===" -ForegroundColor Cyan
+Write-Host "=== AUDIT 4: Pass1 annotations coverage ===" -ForegroundColor Cyan
 C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe -c "
 import json, glob, os
-REQUIRED = {'name','terminator','falls_through_to','performs','goto_targets','reachable'}
-missing_any = []
-for path in sorted(glob.glob('data/canonical/*.canonical.json')):
-    prog = os.path.basename(path).replace('.canonical.json','')
-    d = json.load(open(path))
-    for p in d.get('paragraphs', []):
-        missing = REQUIRED - set(p.keys())
-        if missing:
-            missing_any.append((prog, p.get('name','?'), missing))
-if missing_any:
-    print(f'MISSING FIELDS in {len(missing_any)} paragraphs:')
-    for prog,name,m in missing_any: print(f'  {prog}.{name}: {m}')
-else:
-    print('ALL paragraphs have all 6 required fields')
+total_stmts = 0
+unresolved = 0
+unreachable = 0
+no_verb = 0
+programs_with_annotations = 0
+programs_without = []
+for path in sorted(glob.glob('data/facts/*.json')):
+    prog = os.path.basename(path).replace('.json','')
+    ann_path = f'validation/pass1/{prog}_annotations.json'
+    if not os.path.exists(ann_path):
+        programs_without.append(prog)
+        continue
+    anns = json.load(open(ann_path))
+    if not anns:
+        programs_without.append(prog)
+        continue
+    programs_with_annotations += 1
+    for a in anns:
+        total_stmts += 1
+        if a.get('operand_unresolved'): unresolved += 1
+        if not a.get('cfg_reachable', True): unreachable += 1
+        if not a.get('verb'): no_verb += 1
+print(f'Programs with pass1 annotations : {programs_with_annotations}')
+print(f'Programs WITHOUT annotations    : {len(programs_without)}')
+if programs_without:
+    for p in programs_without: print(f'  {p}')
+print(f'Total annotated statements      : {total_stmts}')
+print(f'  operand_unresolved            : {unresolved}')
+print(f'  cfg_reachable=False           : {unreachable}')
+print(f'  missing verb                  : {no_verb}')
 "
 
-Write-Host "=== FINAL: Git status ===" -ForegroundColor Cyan
-git status --porcelain
-# Expected: empty (clean working tree) or only untracked files
-# No modified source files should appear
+Write-Host "=== AUDIT 5: External calls — cross-reference check ===" -ForegroundColor Cyan
+C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe -c "
+import json, glob, os
+all_programs = set()
+for path in glob.glob('data/facts/*.json'):
+    all_programs.add(os.path.basename(path).replace('.json',''))
+
+internal_calls = 0
+external_calls = 0
+unknown_calls = []
+for path in sorted(glob.glob('data/facts/*.json')):
+    prog = os.path.basename(path).replace('.json','')
+    d = json.load(open(path))
+    for call in d.get('external_calls', []):
+        if call in all_programs:
+            internal_calls += 1
+        else:
+            external_calls += 1
+            unknown_calls.append((prog, call))
+print(f'Calls to known programs (internal): {internal_calls}')
+print(f'Calls to unknown targets (external): {external_calls}')
+print('External call targets:')
+for prog, call in sorted(set(unknown_calls)):
+    print(f'  {prog} -> {call}')
+"
+
+Write-Host "=== AUDIT 6: Copybook cross-reference ===" -ForegroundColor Cyan
+C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe -c "
+import json, glob, os
+CPY_DIR = 'app/src/main/cobol/copy'
+available_cpys = set()
+if os.path.exists(CPY_DIR):
+    available_cpys = {f.stem.upper() for f in __import__('pathlib').Path(CPY_DIR).glob('*.cpy')}
+    available_cpys |= {f.stem.upper() for f in __import__('pathlib').Path(CPY_DIR).glob('*.CPY')}
+
+referenced = {}
+for path in sorted(glob.glob('data/facts/*.json')):
+    prog = os.path.basename(path).replace('.json','')
+    d = json.load(open(path))
+    for cpy in d.get('copybooks_referenced', []):
+        referenced.setdefault(cpy, []).append(prog)
+
+resolved = [c for c in referenced if c in available_cpys]
+unresolved = [c for c in referenced if c not in available_cpys]
+print(f'Copybooks referenced total : {len(referenced)}')
+print(f'  Resolved (file exists)   : {len(resolved)}')
+print(f'  Unresolved (missing file): {len(unresolved)}')
+if unresolved:
+    for cpy in 

@@ -1,7 +1,7 @@
 {
   "program": "CBACT04C",
   "schema_version": "1.4",
-  "source_file": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBACT04C.cbl",
+  "source_file": "C:/work/HermesCOBOL/data/raw/cbl/CBACT04C.cbl",
   "preprocess_available": true,
   "cics_present": false,
   "sql_present": false,
@@ -192,7 +192,7 @@
     {
       "name": "1300-B-WRITE-TX",
       "terminator": "implicit",
-      "falls_through_to": null,
+      "falls_through_to": "1400-COMPUTE-FEES",
       "last_verb": "STRING",
       "performs": [
         "Z-GET-DB2-FORMAT-TIMESTAMP",

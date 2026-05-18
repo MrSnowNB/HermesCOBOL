@@ -1,20 +1,10 @@
 {
   "program": "CBTRN02C",
-  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBTRN02C.cbl",
+  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/CBTRN02C.cbl",
   "source_sha256": "ca73e806cbce4d07da7fa307ad32cf60d9f03aa50ff05c48dc522f6bbf8c1bb2",
-  "cfg_path": "validation\\pass1\\CBTRN02C_annotations.json",
+  "cfg_path": "validation/pass1/CBTRN02C_annotations.json",
   "cfg_sha256": "50f835796c5dab54d0009bd5302211195cd0362a08d0c140bcded3fece87c8be",
   "paragraphs": [
-    {
-      "paragraph": "CBTRN02C-MAIN",
-      "first_line": 194,
-      "last_line": 234,
-      "terminator": "goback",
-      "falls_through_to": null,
-      "last_verb": "GOBACK",
-      "last_raw": "GOBACK.",
-      "classification_source": "annotations"
-    },
     {
       "paragraph": "0000-DALYTRAN-OPEN",
       "first_line": 237,
@@ -170,19 +160,9 @@
       "first_line": 547,
       "last_line": 557,
       "terminator": "implicit",
-      "falls_through_to": null,
+      "falls_through_to": "2900-WRITE-TRANSACTION-FILE",
       "last_verb": "MOVE",
       "last_raw": "MOVE 'ACCOUNT RECORD NOT FOUND'",
-      "classification_source": "annotations"
-    },
-    {
-      "paragraph": "END-REWRITE",
-      "first_line": 560,
-      "last_line": 560,
-      "terminator": "implicit",
-      "falls_through_to": "2900-WRITE-TRANSACTION-FILE",
-      "last_verb": "EXIT",
-      "last_raw": "EXIT.",
       "classification_source": "annotations"
     },
     {

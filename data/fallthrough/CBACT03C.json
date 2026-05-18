@@ -1,20 +1,10 @@
 {
   "program": "CBACT03C",
-  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBACT03C.cbl",
+  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/CBACT03C.cbl",
   "source_sha256": "78e7d7109d331ed078836e65003d4ace7d815d6280e9c0ccc153801611ff8fe4",
-  "cfg_path": "validation\\pass1\\CBACT03C_annotations.json",
+  "cfg_path": "validation/pass1/CBACT03C_annotations.json",
   "cfg_sha256": "7965d2ece13846ebcf03b9d56a0de20f3699537e97b472d4e066b455fc681d8e",
   "paragraphs": [
-    {
-      "paragraph": "CBACT03C-MAIN",
-      "first_line": 71,
-      "last_line": 87,
-      "terminator": "goback",
-      "falls_through_to": null,
-      "last_verb": "GOBACK",
-      "last_raw": "GOBACK.",
-      "classification_source": "annotations"
-    },
     {
       "paragraph": "1000-XREFFILE-GET-NEXT",
       "first_line": 93,

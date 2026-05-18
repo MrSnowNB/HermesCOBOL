@@ -1,20 +1,10 @@
 {
   "program": "CBSTM03A",
-  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBSTM03A.CBL",
+  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/CBSTM03A.CBL",
   "source_sha256": "54210164f798c7b38609400d846d4b03f46da2c67cdf69e968951cfc3e8caf3e",
-  "cfg_path": "validation\\pass1\\CBSTM03A_annotations.json",
+  "cfg_path": "validation/pass1/CBSTM03A_annotations.json",
   "cfg_sha256": "fea81d8e6a3fd2de2c19e7f6fef02b97acc27d4d8219bda993e2a81b737b9273",
   "paragraphs": [
-    {
-      "paragraph": "CBSTM03A-MAIN",
-      "first_line": 266,
-      "last_line": 294,
-      "terminator": "implicit",
-      "falls_through_to": "0000-START",
-      "last_verb": "INITIALIZE",
-      "last_raw": "INITIALIZE WS-TRNX-TABLE WS-TRN-TBL-CNTR.",
-      "classification_source": "annotations"
-    },
     {
       "paragraph": "0000-START",
       "first_line": 298,
@@ -90,19 +80,9 @@
       "first_line": 459,
       "last_line": 462,
       "terminator": "implicit",
-      "falls_through_to": null,
+      "falls_through_to": "5100-WRITE-HTML-HEADER",
       "last_verb": "STRING",
       "last_raw": "STRING CUST-FIRST-NAME DELIMITED BY ' '",
-      "classification_source": "annotations"
-    },
-    {
-      "paragraph": "END-STRING",
-      "first_line": 470,
-      "last_line": 723,
-      "terminator": "implicit",
-      "falls_through_to": "5100-WRITE-HTML-HEADER",
-      "last_verb": "EXIT",
-      "last_raw": "EXIT.",
       "classification_source": "annotations"
     },
     {

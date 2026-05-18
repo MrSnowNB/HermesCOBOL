@@ -1,8 +1,8 @@
 {
   "program": "CBEXPORT",
-  "source_path": "C:\\work\\HermesCOBOL\\data\\raw\\cbl\\CBEXPORT.cbl",
+  "source_path": "C:/work/HermesCOBOL/data/raw/cbl/CBEXPORT.cbl",
   "source_sha256": "2f445912d3a861f3ef66078788f6b27611ffb630d488b6d71f9953c1d651110e",
-  "cfg_path": "validation\\pass1\\CBEXPORT_annotations.json",
+  "cfg_path": "validation/pass1/CBEXPORT_annotations.json",
   "cfg_sha256": "cbc0a6f30dacb5cab56ec9e06d27a08235d448885fd790809ed76b24152e6869",
   "paragraphs": [
     {
