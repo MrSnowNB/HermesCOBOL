@@ -1,6 +1,6 @@
 {
   "program": "COMEN01C",
-  "canonical_path": "C:\\work\\HermesCOBOL\\data\\canonical\\COMEN01C.canonical.json",
+  "canonical_path": "C:/work/HermesCOBOL/data/canonical/COMEN01C.canonical.json",
   "gate_status": "PASS",
   "failures": [],
   "warnings": []

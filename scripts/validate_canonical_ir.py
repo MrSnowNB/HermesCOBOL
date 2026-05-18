@@ -39,7 +39,14 @@ VALIDATION_DIR = VALID_DIR / "canonical-ir"
 # ---------------------------------------------------------------------------
 SCHEMA_RULES = {"schema_version", "file_missing", "facts_missing"}
 CICS_RULES = {"cics_preprocess_consistency", "stray_preprocessed_file"}
-PARAGRAPHS_RULES = {"missing_paragraphs", "noise_paragraph", "missing_paragraph_fields"}
+PARAGRAPHS_RULES = {
+    "missing_paragraphs",
+    "noise_paragraph",
+    "missing_paragraph_fields",
+    "performs_referential_integrity",
+    "terminator_enum",
+    "falls_through_to_referential_integrity",
+}
 CONSISTENCY_RULES = {"cfg_edges_mismatch", "annotation_missing"}  # stubs for future
 
 
@@ -95,6 +102,23 @@ def validate_canonical(prog: str) -> dict[str, Any]:
             "message": f"Facts file not found: {facts_path}"
         })
         return result
+
+    # Build set of valid paragraph names for referential integrity checks
+    paragraph_names: set[str] = {
+        p.get("name") for p in canonical.get("paragraphs", []) if p.get("name")
+    }
+
+    # Allowed terminator values (Phase 2)
+    VALID_TERMINATORS = {
+        "implicit",
+        "implicit-end-of-program",
+        "goto",
+        "stop-run",
+        "goback",
+        "explicit-exit",
+        "cics-return",
+        "cics-xctl",
+    }
 
     # 1. Schema version
     if canonical.get("schema_version") != "1.4":
@@ -154,6 +178,38 @@ def validate_canonical(prog: str) -> dict[str, Any]:
                 "severity": "error",
                 "message": f"Paragraph '{p.get('name')}' is missing required fields",
                 "details": {"paragraph": p.get("name"), "missing_fields": list(missing_fields)}
+            })
+
+        name = p.get("name") or "<unknown>"
+
+        # Phase 2: terminator enum enforcement
+        t = p.get("terminator")
+        if t not in VALID_TERMINATORS:
+            result["failures"].append({
+                "rule": "terminator_enum",
+                "severity": "error",
+                "message": f"Paragraph '{name}' has invalid terminator value",
+                "details": {"paragraph": name, "terminator": t}
+            })
+
+        # Phase 2: performs[] referential integrity
+        for target in p.get("performs", []) or []:
+            if target not in paragraph_names:
+                result["failures"].append({
+                    "rule": "performs_referential_integrity",
+                    "severity": "error",
+                    "message": f"Paragraph '{name}' performs unknown target '{target}'",
+                    "details": {"paragraph": name, "invalid_perform_target": target}
+                })
+
+        # Phase 2: falls_through_to referential integrity
+        tgt = p.get("falls_through_to")
+        if tgt is not None and tgt not in paragraph_names:
+            result["failures"].append({
+                "rule": "falls_through_to_referential_integrity",
+                "severity": "error",
+                "message": f"Paragraph '{name}' falls through to unknown target '{tgt}'",
+                "details": {"paragraph": name, "invalid_falls_through_to": tgt}
             })
 
     # 6. No paragraphs at all (legitimate for some utility programs like COBSWAIT)

@@ -1,6 +1,6 @@
 {
   "program": "COUSR03C",
-  "canonical_path": "C:\\work\\HermesCOBOL\\data\\canonical\\COUSR03C.canonical.json",
+  "canonical_path": "C:/work/HermesCOBOL/data/canonical/COUSR03C.canonical.json",
   "gate_status": "PASS",
   "failures": [],
   "warnings": []

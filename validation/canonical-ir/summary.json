@@ -1,6 +1,8 @@
 {
   "programs_total": 31,
-  "programs_pass": 31,
-  "programs_fail": 0,
-  "failures_by_rule": {}
+  "programs_pass": 28,
+  "programs_fail": 3,
+  "failures_by_rule": {
+    "falls_through_to_referential_integrity": 3
+  }
 }

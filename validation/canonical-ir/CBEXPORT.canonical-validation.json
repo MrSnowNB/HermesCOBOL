@@ -1,6 +1,6 @@
 {
   "program": "CBEXPORT",
-  "canonical_path": "C:\\work\\HermesCOBOL\\data\\canonical\\CBEXPORT.canonical.json",
+  "canonical_path": "C:/work/HermesCOBOL/data/canonical/CBEXPORT.canonical.json",
   "gate_status": "PASS",
   "failures": [],
   "warnings": []
