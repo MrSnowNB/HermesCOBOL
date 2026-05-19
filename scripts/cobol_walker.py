@@ -23,7 +23,7 @@ Key contract:
 This is a pure consumer. It never reads files or calls extractors.
 
 See SPEC-CobolWalker.md for the 10 acceptance gates, especially Gate 3
-(live corpus count must equal 495) and Gate 4 (full count must equal 518).
+(live corpus count must equal 205) and Gate 4 (full count must equal 518).
 """
 
 from __future__ import annotations

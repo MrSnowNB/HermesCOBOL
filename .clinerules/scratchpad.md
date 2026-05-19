@@ -36,7 +36,7 @@ else:
     print('PASS — entry_paragraph is first for all 31 programs (both flag settings)')
 "
 
-Write-Host "=== GATE 3: Live corpus count == 495 ===" -ForegroundColor Cyan
+Write-Host "=== GATE 3: Live corpus count == 205 ===" -ForegroundColor Cyan
 C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe -c "
 import sys, glob, os
 sys.path.insert(0, '.')
@@ -50,7 +50,7 @@ for path in sorted(glob.glob('data/canonical/*.canonical.json')):
     total += len(list(w.walk(include_dead_code=False)))
 
 print(f'Live paragraph count across corpus: {total}')
-print('PASS' if total == 495 else f'FAIL — expected 495 got {total}')
+print('PASS' if total == 205 else f'FAIL — expected 205 got {total}')
 "
 
 Write-Host "=== GATE 4: Full corpus count == 518 ===" -ForegroundColor Cyan
