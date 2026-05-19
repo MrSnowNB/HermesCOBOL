@@ -14,9 +14,14 @@ for prog in PROGS:
     canonical_path = Path(f'data/canonical/{prog}.canonical.json')
     cbl_path       = Path(f'data/raw/cbl/{prog}.cbl')
 
-    expected = json.loads(facts_path.read_text()).get('paragraphs_defined', [])
-    actual   = list(json.loads(canonical_path.read_text()).get('paragraphs', {}).keys())
-    missing  = [p for p in expected if p not in actual]
+    facts_data = json.loads(facts_path.read_text())
+    canonical_data = json.loads(canonical_path.read_text())
+
+    # Extract names from paragraphs_defined (list of dicts with 'name', 'source_line', 'area_a')
+    expected = [p['name'] for p in facts_data.get('paragraphs_defined', [])]
+    # Extract names from paragraphs (list of dicts with 'name' field)
+    actual = [p['name'] for p in canonical_data.get('paragraphs', [])]
+    missing = [p for p in expected if p not in actual]
 
     # Find raw source lines for missing paragraphs
     hits = {}

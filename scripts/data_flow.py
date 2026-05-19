@@ -261,14 +261,17 @@ def _is_area_a_paragraph(text: str) -> bool:
     is a paragraph header.
 
     Rules (ALL must hold):
-      1. text[0] != ' '  (Area A)
+      1. Accepts Area A (cols 8-11, pos 0-3) or Area B headers (cols 12-15, pos 4-7);
+         rejects ONLY if text[0:4].strip() == '' and text[4] == ' ' (starts past col 11)
       2. NOT _LEVEL_NUM_RE
       3. NOT _SECTION_HEADER_RE
       4. Matches _PARA_HEADER_RE
       5. Candidate NOT in _NOT_PARA
       6. Candidate NOT in _NOT_HEADER_KEYWORDS
     """
-    if not text or text[0] == ' ':
+    if not text:
+        return False
+    if len(text) >= 5 and text[0:4].strip() == '' and text[4] == ' ':
         return False
     stripped = text.strip()
     if _LEVEL_NUM_RE.match(stripped):
