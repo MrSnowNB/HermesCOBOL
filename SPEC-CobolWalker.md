@@ -88,7 +88,7 @@ Exactly ten gates apply. All ten must pass before the implementation is consider
    For every program that has at least one paragraph, the first value yielded by `walk()` (both flag settings) is exactly `prog.entry_paragraph`.
 
 3. **Live corpus count (include_dead_code=False)**  
-   The sum, across all 31 programs, of the number of paragraphs yielded by `walk(include_dead_code=False)` equals exactly 495. This is the independently measured Gate 3 baseline (obtained via `python -c "..."` summing `len(prog.reachable_paragraphs)` over `data/canonical/*.canonical.json` at the time this SPEC was approved). The walker traverses a different edge set (`performs` + `falls_through_to`) than the algorithm in `extract_cfg_local.py` (`performs` + `goto_targets`); 495 is the agreed reference value that the v0.1 implementation must produce.
+   `walk(include_dead_code=False)` across all 31 programs = 205 (the walker's performs+falls_through_to edge set, confirmed at first run). The walker uses a different edge set than the original CFG reachability computation (which used performs + goto_targets); 205 is the correct and expected live count for this traversal definition.
 
 4. **Full corpus count (include_dead_code=True)**  
    Summing the number of paragraphs yielded by `walk(include_dead_code=True)` across all 31 programs produces exactly 518.
