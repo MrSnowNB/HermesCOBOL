@@ -17,8 +17,10 @@ Key contract:
   the first time it is discovered.
 - include_dead_code=False (default): only paragraphs reachable via the above
   traversal from entry.
-- include_dead_code=True: the live set above, followed by any remaining
-  paragraphs (the IR's dead_code_paragraphs) appended in canonical source order.
+- include_dead_code=True: the live set above, followed by any paragraphs
+  not visited by the traversal, appended in canonical source order from
+  prog.paragraphs (the visited set is the source of truth, not the IR's
+  dead_code_paragraphs).
 
 This is a pure consumer. It never reads files or calls extractors.
 
@@ -107,8 +109,11 @@ class CobolWalker:
                     stack.append(child)
 
         if include_dead_code:
-            # Append unreached paragraphs in canonical source order
-            for name in paragraphs:
+            # Append paragraphs that are BOTH (a) not in visited AND (b) in
+            # canonical source order from prog.paragraphs.keys() — NOT from
+            # prog.dead_code_paragraphs. The source of truth for "what was not
+            # visited" is the visited set from this walk.
+            for name in list(paragraphs.keys()):
                 if name not in visited:
                     yield name
 
