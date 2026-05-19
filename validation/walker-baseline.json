@@ -1,0 +1,490 @@
+[
+  {
+    "program": "CBACT01C",
+    "entry_paragraph": "1000-ACCTFILE-GET-NEXT",
+    "live_count": 16,
+    "full_count": 16,
+    "first_five": [
+      "1000-ACCTFILE-GET-NEXT",
+      "0000-ACCTFILE-OPEN",
+      "9910-DISPLAY-IO-STATUS",
+      "9999-ABEND-PROGRAM",
+      "2000-OUTFILE-OPEN"
+    ],
+    "last_three": [
+      "1500-POPUL-VBRC-RECORD",
+      "1550-WRITE-VB1-RECORD",
+      "1575-WRITE-VB2-RECORD"
+    ]
+  },
+  {
+    "program": "CBACT02C",
+    "entry_paragraph": "1000-CARDFILE-GET-NEXT",
+    "live_count": 5,
+    "full_count": 5,
+    "first_five": [
+      "1000-CARDFILE-GET-NEXT",
+      "0000-CARDFILE-OPEN",
+      "9910-DISPLAY-IO-STATUS",
+      "9999-ABEND-PROGRAM",
+      "9000-CARDFILE-CLOSE"
+    ],
+    "last_three": [
+      "9910-DISPLAY-IO-STATUS",
+      "9999-ABEND-PROGRAM",
+      "9000-CARDFILE-CLOSE"
+    ]
+  },
+  {
+    "program": "CBACT03C",
+    "entry_paragraph": "1000-XREFFILE-GET-NEXT",
+    "live_count": 5,
+    "full_count": 5,
+    "first_five": [
+      "1000-XREFFILE-GET-NEXT",
+      "0000-XREFFILE-OPEN",
+      "9910-DISPLAY-IO-STATUS",
+      "9999-ABEND-PROGRAM",
+      "9000-XREFFILE-CLOSE"
+    ],
+    "last_three": [
+      "9910-DISPLAY-IO-STATUS",
+      "9999-ABEND-PROGRAM",
+      "9000-XREFFILE-CLOSE"
+    ]
+  },
+  {
+    "program": "CBACT04C",
+    "entry_paragraph": "0000-TCATBALF-OPEN",
+    "live_count": 22,
+    "full_count": 22,
+    "first_five": [
+      "0000-TCATBALF-OPEN",
+      "0100-XREFFILE-OPEN",
+      "9910-DISPLAY-IO-STATUS",
+      "9999-ABEND-PROGRAM",
+      "0200-DISCGRP-OPEN"
+    ],
+    "last_three": [
+      "9200-DISCGRP-CLOSE",
+      "9300-ACCTFILE-CLOSE",
+      "9400-TRANFILE-CLOSE"
+    ]
+  },
+  {
+    "program": "CBCUS01C",
+    "entry_paragraph": "1000-CUSTFILE-GET-NEXT",
+    "live_count": 5,
+    "full_count": 5,
+    "first_five": [
+      "1000-CUSTFILE-GET-NEXT",
+      "0000-CUSTFILE-OPEN",
+      "Z-DISPLAY-IO-STATUS",
+      "Z-ABEND-PROGRAM",
+      "9000-CUSTFILE-CLOSE"
+    ],
+    "last_three": [
+      "Z-DISPLAY-IO-STATUS",
+      "Z-ABEND-PROGRAM",
+      "9000-CUSTFILE-CLOSE"
+    ]
+  },
+  {
+    "program": "CBEXPORT",
+    "entry_paragraph": "0000-MAIN-PROCESSING",
+    "live_count": 21,
+    "full_count": 21,
+    "first_five": [
+      "0000-MAIN-PROCESSING",
+      "1000-INITIALIZE",
+      "1050-GENERATE-TIMESTAMP",
+      "1100-OPEN-FILES",
+      "9999-ABEND-PROGRAM"
+    ],
+    "last_three": [
+      "5600-READ-CARD-RECORD",
+      "5700-CREATE-CARD-EXPORT-RECORD",
+      "6000-FINALIZE"
+    ]
+  },
+  {
+    "program": "CBIMPORT",
+    "entry_paragraph": "0000-MAIN-PROCESSING",
+    "live_count": 16,
+    "full_count": 16,
+    "first_five": [
+      "0000-MAIN-PROCESSING",
+      "1000-INITIALIZE",
+      "1100-OPEN-FILES",
+      "9999-ABEND-PROGRAM",
+      "2000-PROCESS-EXPORT-FILE"
+    ],
+    "last_three": [
+      "2750-WRITE-ERROR",
+      "3000-VALIDATE-IMPORT",
+      "4000-FINALIZE"
+    ]
+  },
+  {
+    "program": "CBSTM03A",
+    "entry_paragraph": "0000-START",
+    "live_count": 1,
+    "full_count": 25,
+    "first_five": [
+      "0000-START"
+    ],
+    "last_three": [
+      "9400-ACCTFILE-CLOSE",
+      "9999-ABEND-PROGRAM",
+      "9999-GOBACK"
+    ]
+  },
+  {
+    "program": "CBSTM03B",
+    "entry_paragraph": "0000-START",
+    "live_count": 5,
+    "full_count": 14,
+    "first_five": [
+      "0000-START",
+      "1000-TRNXFILE-PROC",
+      "2000-XREFFILE-PROC",
+      "3000-CUSTFILE-PROC",
+      "4000-ACCTFILE-PROC"
+    ],
+    "last_three": [
+      "4900-EXIT",
+      "4999-EXIT",
+      "9999-GOBACK"
+    ]
+  },
+  {
+    "program": "CBTRN01C",
+    "entry_paragraph": "MAIN-PARA",
+    "live_count": 18,
+    "full_count": 18,
+    "first_five": [
+      "MAIN-PARA",
+      "0000-DALYTRAN-OPEN",
+      "Z-DISPLAY-IO-STATUS",
+      "Z-ABEND-PROGRAM",
+      "0100-CUSTFILE-OPEN"
+    ],
+    "last_three": [
+      "1000-DALYTRAN-GET-NEXT",
+      "2000-LOOKUP-XREF",
+      "3000-READ-ACCOUNT"
+    ]
+  },
+  {
+    "program": "CBTRN02C",
+    "entry_paragraph": "0000-DALYTRAN-OPEN",
+    "live_count": 26,
+    "full_count": 26,
+    "first_five": [
+      "0000-DALYTRAN-OPEN",
+      "0100-TRANFILE-OPEN",
+      "9910-DISPLAY-IO-STATUS",
+      "9999-ABEND-PROGRAM",
+      "0200-XREFFILE-OPEN"
+    ],
+    "last_three": [
+      "9400-ACCTFILE-CLOSE",
+      "9500-TCATBALF-CLOSE",
+      "2500-WRITE-REJECT-REC"
+    ]
+  },
+  {
+    "program": "CBTRN03C",
+    "entry_paragraph": "0550-DATEPARM-READ",
+    "live_count": 26,
+    "full_count": 26,
+    "first_five": [
+      "0550-DATEPARM-READ",
+      "0000-TRANFILE-OPEN",
+      "9910-DISPLAY-IO-STATUS",
+      "9999-ABEND-PROGRAM",
+      "0100-REPTFILE-OPEN"
+    ],
+    "last_three": [
+      "1110-WRITE-PAGE-TOTALS",
+      "1120-WRITE-ACCOUNT-TOTALS",
+      "1110-WRITE-GRAND-TOTALS"
+    ]
+  },
+  {
+    "program": "COACTUPC",
+    "entry_paragraph": "0000-MAIN",
+    "live_count": 1,
+    "full_count": 85,
+    "first_five": [
+      "0000-MAIN"
+    ],
+    "last_three": [
+      "EDIT-US-PHONE-EXIT",
+      "EDIT-US-PHONE-LINENUM",
+      "EDIT-US-PHONE-PREFIX"
+    ]
+  },
+  {
+    "program": "COACTVWC",
+    "entry_paragraph": "0000-MAIN",
+    "live_count": 1,
+    "full_count": 34,
+    "first_five": [
+      "0000-MAIN"
+    ],
+    "last_three": [
+      "SEND-LONG-TEXT-EXIT",
+      "SEND-PLAIN-TEXT",
+      "SEND-PLAIN-TEXT-EXIT"
+    ]
+  },
+  {
+    "program": "COADM01C",
+    "entry_paragraph": "BUILD-MENU-OPTIONS",
+    "live_count": 2,
+    "full_count": 8,
+    "first_five": [
+      "BUILD-MENU-OPTIONS",
+      "PGMIDERR-ERR-PARA"
+    ],
+    "last_three": [
+      "RECEIVE-MENU-SCREEN",
+      "RETURN-TO-SIGNON-SCREEN",
+      "SEND-MENU-SCREEN"
+    ]
+  },
+  {
+    "program": "COBIL00C",
+    "entry_paragraph": "CLEAR-CURRENT-SCREEN",
+    "live_count": 2,
+    "full_count": 16,
+    "first_five": [
+      "CLEAR-CURRENT-SCREEN",
+      "INITIALIZE-ALL-FIELDS"
+    ],
+    "last_three": [
+      "STARTBR-TRANSACT-FILE",
+      "UPDATE-ACCTDAT-FILE",
+      "WRITE-TRANSACT-FILE"
+    ]
+  },
+  {
+    "program": "COBSWAIT",
+    "entry_paragraph": "",
+    "live_count": 0,
+    "full_count": 0,
+    "first_five": [],
+    "last_three": []
+  },
+  {
+    "program": "COCRDLIC",
+    "entry_paragraph": "0000-MAIN",
+    "live_count": 1,
+    "full_count": 39,
+    "first_five": [
+      "0000-MAIN"
+    ],
+    "last_three": [
+      "SEND-LONG-TEXT-EXIT",
+      "SEND-PLAIN-TEXT",
+      "SEND-PLAIN-TEXT-EXIT"
+    ]
+  },
+  {
+    "program": "COCRDSLC",
+    "entry_paragraph": "1000-SEND-MAP",
+    "live_count": 7,
+    "full_count": 9,
+    "first_five": [
+      "1000-SEND-MAP",
+      "1000-SEND-MAP-EXIT",
+      "2000-PROCESS-INPUTS",
+      "2000-PROCESS-INPUTS-EXIT",
+      "9000-READ-DATA"
+    ],
+    "last_three": [
+      "9999-RETURN",
+      "COMMON-RETURN",
+      "MAIN-PARA"
+    ]
+  },
+  {
+    "program": "COCRDUPC",
+    "entry_paragraph": "2000-PROCESS-INPUTS",
+    "live_count": 7,
+    "full_count": 13,
+    "first_five": [
+      "2000-PROCESS-INPUTS",
+      "2000-PROCESS-INPUTS-EXIT",
+      "9000-READ-DATA",
+      "9000-READ-DATA-EXIT",
+      "5000-UPDATE-RECORD"
+    ],
+    "last_three": [
+      "3001-INIT-AND-SHOW-MAP-EXIT",
+      "COMMON-RETURN",
+      "MAIN-PARA"
+    ]
+  },
+  {
+    "program": "COMEN01C",
+    "entry_paragraph": "BUILD-MENU-OPTIONS",
+    "live_count": 1,
+    "full_count": 7,
+    "first_five": [
+      "BUILD-MENU-OPTIONS"
+    ],
+    "last_three": [
+      "RECEIVE-MENU-SCREEN",
+      "RETURN-TO-SIGNON-SCREEN",
+      "SEND-MENU-SCREEN"
+    ]
+  },
+  {
+    "program": "CORPT00C",
+    "entry_paragraph": "INITIALIZE-ALL-FIELDS",
+    "live_count": 1,
+    "full_count": 10,
+    "first_five": [
+      "INITIALIZE-ALL-FIELDS"
+    ],
+    "last_three": [
+      "SEND-TRNRPT-SCREEN",
+      "SUBMIT-JOB-TO-INTRDR",
+      "WIRTE-JOBSUB-TDQ"
+    ]
+  },
+  {
+    "program": "COSGN00C",
+    "entry_paragraph": "MAIN-PARA",
+    "live_count": 1,
+    "full_count": 6,
+    "first_five": [
+      "MAIN-PARA"
+    ],
+    "last_three": [
+      "READ-USER-SEC-FILE",
+      "SEND-PLAIN-TEXT",
+      "SEND-SIGNON-SCREEN"
+    ]
+  },
+  {
+    "program": "COTRN00C",
+    "entry_paragraph": "ENDBR-TRANSACT-FILE",
+    "live_count": 1,
+    "full_count": 16,
+    "first_five": [
+      "ENDBR-TRANSACT-FILE"
+    ],
+    "last_three": [
+      "RETURN-TO-PREV-SCREEN",
+      "SEND-TRNLST-SCREEN",
+      "STARTBR-TRANSACT-FILE"
+    ]
+  },
+  {
+    "program": "COTRN01C",
+    "entry_paragraph": "CLEAR-CURRENT-SCREEN",
+    "live_count": 2,
+    "full_count": 9,
+    "first_five": [
+      "CLEAR-CURRENT-SCREEN",
+      "INITIALIZE-ALL-FIELDS"
+    ],
+    "last_three": [
+      "RECEIVE-TRNVIEW-SCREEN",
+      "RETURN-TO-PREV-SCREEN",
+      "SEND-TRNVIEW-SCREEN"
+    ]
+  },
+  {
+    "program": "COTRN02C",
+    "entry_paragraph": "ADD-TRANSACTION",
+    "live_count": 3,
+    "full_count": 18,
+    "first_five": [
+      "ADD-TRANSACTION",
+      "COPY-LAST-TRAN-DATA",
+      "RETURN-TO-PREV-SCREEN"
+    ],
+    "last_three": [
+      "VALIDATE-INPUT-DATA-FIELDS",
+      "VALIDATE-INPUT-KEY-FIELDS",
+      "WRITE-TRANSACT-FILE"
+    ]
+  },
+  {
+    "program": "COUSR00C",
+    "entry_paragraph": "ENDBR-USER-SEC-FILE",
+    "live_count": 1,
+    "full_count": 16,
+    "first_five": [
+      "ENDBR-USER-SEC-FILE"
+    ],
+    "last_three": [
+      "RETURN-TO-PREV-SCREEN",
+      "SEND-USRLST-SCREEN",
+      "STARTBR-USER-SEC-FILE"
+    ]
+  },
+  {
+    "program": "COUSR01C",
+    "entry_paragraph": "CLEAR-CURRENT-SCREEN",
+    "live_count": 2,
+    "full_count": 9,
+    "first_five": [
+      "CLEAR-CURRENT-SCREEN",
+      "INITIALIZE-ALL-FIELDS"
+    ],
+    "last_three": [
+      "RETURN-TO-PREV-SCREEN",
+      "SEND-USRADD-SCREEN",
+      "WRITE-USER-SEC-FILE"
+    ]
+  },
+  {
+    "program": "COUSR02C",
+    "entry_paragraph": "CLEAR-CURRENT-SCREEN",
+    "live_count": 2,
+    "full_count": 11,
+    "first_five": [
+      "CLEAR-CURRENT-SCREEN",
+      "INITIALIZE-ALL-FIELDS"
+    ],
+    "last_three": [
+      "SEND-USRUPD-SCREEN",
+      "UPDATE-USER-INFO",
+      "UPDATE-USER-SEC-FILE"
+    ]
+  },
+  {
+    "program": "COUSR03C",
+    "entry_paragraph": "CLEAR-CURRENT-SCREEN",
+    "live_count": 2,
+    "full_count": 11,
+    "first_five": [
+      "CLEAR-CURRENT-SCREEN",
+      "INITIALIZE-ALL-FIELDS"
+    ],
+    "last_three": [
+      "RECEIVE-USRDEL-SCREEN",
+      "RETURN-TO-PREV-SCREEN",
+      "SEND-USRDEL-SCREEN"
+    ]
+  },
+  {
+    "program": "CSUTLDTC",
+    "entry_paragraph": "A000-MAIN",
+    "live_count": 2,
+    "full_count": 2,
+    "first_five": [
+      "A000-MAIN",
+      "A000-MAIN-EXIT"
+    ],
+    "last_three": [
+      "A000-MAIN",
+      "A000-MAIN-EXIT"
+    ]
+  }
+]

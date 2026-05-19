@@ -511,6 +511,17 @@ def main() -> int:
           f"(Mode A skipped by design: {skipped_reasons})")
     print(f"Reports : {REPORTS_DIR}")
 
+    # Gate 10: CobolWalker audit regression (create on first run, verify thereafter)
+    from scripts.audit_cobol_walker import build_baseline, write_baseline, BASELINE_PATH
+    current_baseline = build_baseline()
+    if BASELINE_PATH.exists():
+        saved = json.loads(BASELINE_PATH.read_text(encoding="utf-8"))
+        if current_baseline != saved:
+            print("FAIL: walker baseline has changed (run audit_cobol_walker.py to refresh)")
+            return 1
+    else:
+        write_baseline(current_baseline)
+
     return 0 if summary["programs_fail"] == 0 else 1
 
 

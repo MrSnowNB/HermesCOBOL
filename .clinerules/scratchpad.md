@@ -71,7 +71,6 @@ for path in sorted(glob.glob('data/canonical/*.canonical.json')):
     live_set = set(live)
     all_para_names = list(prog.paragraphs.keys())
 
-    # Expected dead tail = paragraphs not visited by live walk, in source order
     expected_tail = [n for n in all_para_names if n not in live_set]
     actual_tail   = [n for n in full if n not in live_set]
 
@@ -82,7 +81,6 @@ for path in sorted(glob.glob('data/canonical/*.canonical.json')):
     if prog.is_cics and len(full) != len(prog.paragraphs):
         failures.append((prog_name, f'CICS count full={len(full)} para={len(prog.paragraphs)}'))
 
-    # Verbose: show programs that have any unvisited paragraphs
     if expected_tail:
         print(f'  {prog_name}: live={len(live)} unvisited={len(expected_tail)} tail_match={expected_tail==actual_tail}')
 
