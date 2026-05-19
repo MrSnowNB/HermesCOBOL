@@ -94,7 +94,18 @@ class CobolProgramDict:
 
     @property
     def entry_paragraph(self) -> str:
-        """First paragraph in source order (usually the entry point)."""
+        """First paragraph from the CFG root (the actual driver used for reachability computation).
+
+        Prefers the first paragraph listed in cfg_paragraphs when present.
+        Falls back to the first paragraph in canonical source order if cfg_paragraphs
+        is empty or missing.
+        """
+        cfg_paras = self._canonical.get("cfg_paragraphs", [])
+        if cfg_paras:
+            first = cfg_paras[0].get("name")
+            if first:
+                return first
+        # Fallback to source order
         paras = self._canonical.get("paragraphs", [])
         if not paras:
             return ""
