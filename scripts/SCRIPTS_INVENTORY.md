@@ -1,6 +1,6 @@
 # HermesCOBOL — Scripts Inventory (Living Document)
 
-**Last updated:** 2026-05-12 (rev 5 — Appendix A superseded, Appendix B added with current post-Batch-1 structure)
+**Last updated:** 2026-05-18 (rev 6 — Added "CobolWalker v0.1 — goto_targets blind spots" pre-implementation audit section per SPEC-CobolWalker.md)
 **Branch:** audit/3.4-local-second-opinion
 **Repo root:** C:\work\HermesCOBOL
 **Maintainer:** Update this file whenever a script is added, removed, or changes status.
@@ -429,3 +429,53 @@ C:\work\HermesCOBOL\scripts\carddemo_imported\validate_pass1.py
 C:\work\HermesCOBOL\scripts\carddemo_imported\[...inapplicable shell scripts and py files]
 C:\work\HermesCOBOL\scripts\carddemo_imported\README.md
 ```
+
+---
+
+## CobolWalker v0.1 — goto_targets blind spots (Pre-Implementation Audit)
+
+**Audit date:** 2026-05-18  
+**Status:** Documented before any CobolWalker implementation code was written (per SPEC requirement)  
+**Run by:** Grok (pre-Step 2)  
+**Reference:** SPEC-CobolWalker.md (Gate 3 / Plan pre-audit step)
+
+### Summary
+- Programs scanned: 31
+- Programs containing `goto_targets` that fall **outside** the reachable set computed from `performs` + `falls_through_to` edges starting at `entry_paragraph`: **2**
+- Total blind goto targets discovered: **12**
+
+This is an **accepted limitation** of CobolWalker v0.1. The walker is intentionally defined to traverse only `performs` + `falls_through_to` (see SPEC Requirements). `goto_targets` are visible via `CobolProgramDict` but are deliberately not followed by `walk()`.
+
+### Detailed Blind Spots
+
+#### CBSTM03A (7 blind targets)
+- Entry paragraph: `0000-START`
+- Live paragraphs via performs + fallthrough: **1**
+- Blind goto_targets:
+  - `0000-START` → `8100-FILE-OPEN`
+  - `0000-START` → `8500-READTRNX-READ`
+  - `0000-START` → `9999-GOBACK`
+  - `8100-FILE-OPEN` → `8100-TRNXFILE-OPEN`
+  - `8400-ACCTFILE-OPEN` → `1000-MAINLINE`
+  - `8500-READTRNX-READ` → `8500-READTRNX-READ` (self)
+  - `8500-READTRNX-READ` → `8599-EXIT`
+
+#### CBSTM03B (5 blind targets)
+- Entry paragraph: `0000-START`
+- Live paragraphs via performs + fallthrough: **5**
+- Blind goto_targets:
+  - `0000-START` → `9999-GOBACK`
+  - `1000-TRNXFILE-PROC` → `1900-EXIT`
+  - `2000-XREFFILE-PROC` → `2900-EXIT`
+  - `3000-CUSTFILE-PROC` → `3900-EXIT`
+  - `4000-ACCTFILE-PROC` → `4900-EXIT`
+
+### Implications for CobolWalker v0.1
+- Programs CBSTM03A and CBSTM03B contain significant control flow that is only expressed via GOTO (or equivalent).
+- When using `CobolWalker(...).walk(include_dead_code=False)`, these targets will **not** be yielded unless they happen to also be reachable via PERFORM or fallthrough.
+- Consumers (Hermes agent, semantic rules, etc.) that care about these paths must additionally consult `paragraph["goto_targets"]` from the underlying `CobolProgramDict`.
+- This blind spot is explicitly called out so that downstream users do not assume the walker produces a complete control-flow closure.
+
+**Next action (post v0.1):** Consider a v0.2 walker mode or separate `follow_gotos` flag if full coverage of these two programs becomes required.
+
+Machine-readable audit artifact (for this run): `/tmp/gotoblindspots.json` (not committed).
