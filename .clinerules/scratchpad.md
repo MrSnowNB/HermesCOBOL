@@ -1,7 +1,9 @@
 # ═══════════════════════════════════════════════════════
-# CobolWalker v0.1 — Gated Validation
-# Run ALL steps in order. Report PASS/FAIL for each.
+# CobolWalker v0.1 — Full Gated Validation
+# Run ALL gates in order. Report PASS/FAIL for each.
 # ═══════════════════════════════════════════════════════
+
+Set-Location C:\work\HermesCOBOL
 
 Write-Host "=== GATE 1: Import check ===" -ForegroundColor Cyan
 C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe -c "
@@ -21,9 +23,9 @@ failures = []
 for path in sorted(glob.glob('data/canonical/*.canonical.json')):
     prog_name = os.path.basename(path).replace('.canonical.json','')
     prog = CobolProgramDict(prog_name)
-    w = CobolWalker(prog)
     if not prog.paragraphs:
         continue
+    w = CobolWalker(prog)
     for flag in [False, True]:
         result = list(w.walk(include_dead_code=flag))
         if not result or result[0] != prog.entry_paragraph:
@@ -47,9 +49,11 @@ total = 0
 for path in sorted(glob.glob('data/canonical/*.canonical.json')):
     prog_name = os.path.basename(path).replace('.canonical.json','')
     w = CobolWalker(CobolProgramDict(prog_name))
-    total += len(list(w.walk(include_dead_code=False)))
+    count = len(list(w.walk(include_dead_code=False)))
+    total += count
+    print(f'  {prog_name}: {count}')
 
-print(f'Live paragraph count across corpus: {total}')
+print(f'TOTAL live: {total}')
 print('PASS' if total == 205 else f'FAIL — expected 205 got {total}')
 "
 
@@ -64,9 +68,10 @@ total = 0
 for path in sorted(glob.glob('data/canonical/*.canonical.json')):
     prog_name = os.path.basename(path).replace('.canonical.json','')
     w = CobolWalker(CobolProgramDict(prog_name))
-    total += len(list(w.walk(include_dead_code=True)))
+    count = len(list(w.walk(include_dead_code=True)))
+    total += count
 
-print(f'Full paragraph count (include_dead_code=True): {total}')
+print(f'TOTAL full: {total}')
 print('PASS' if total == 518 else f'FAIL — expected 518 got {total}')
 "
 
@@ -89,7 +94,7 @@ for path in sorted(glob.glob('data/canonical/*.canonical.json')):
                 violations.append((prog_name, flag, name))
 
 if violations:
-    print(f'FAIL — {len(violations)} dangling paragraph names yielded:')
+    print(f'FAIL — {len(violations)} dangling names yielded:')
     for v in violations: print(f'  {v}')
 else:
     print('PASS — all yielded names exist in CobolProgramDict.paragraphs')
@@ -115,9 +120,9 @@ for path in sorted(glob.glob('data/canonical/*.canonical.json')):
             failures.append((prog_name, flag))
 
 if failures:
-    print(f'FAIL — non-deterministic output for: {failures}')
+    print(f'FAIL — non-deterministic: {failures}')
 else:
-    print('PASS — all 31 programs produce identical output across 3 successive calls')
+    print('PASS — all 31 programs deterministic across 3 successive calls')
 "
 
 Write-Host "=== GATE 7: No duplicates in any walk sequence ===" -ForegroundColor Cyan
@@ -134,14 +139,13 @@ for path in sorted(glob.glob('data/canonical/*.canonical.json')):
     for flag in [False, True]:
         result = list(w.walk(include_dead_code=flag))
         if len(result) != len(set(result)):
-            dupes = [x for x in result if result.count(x) > 1]
+            dupes = [x for x in set(result) if result.count(x) > 1]
             failures.append((prog_name, flag, dupes))
 
 if failures:
-    print(f'FAIL — duplicates found:')
-    for f in failures: print(f'  {f}')
+    print(f'FAIL — duplicates found: {failures}')
 else:
-    print('PASS — no duplicate paragraph names in any walk sequence')
+    print('PASS — no duplicates in any walk sequence')
 "
 
 Write-Host "=== GATE 8: CICS and dead-code handling ===" -ForegroundColor Cyan
@@ -152,7 +156,7 @@ from scripts.cobol_walker import CobolWalker
 from scripts.cobol_program_dict import CobolProgramDict
 
 cics_failures = []
-dead_code_failures = []
+dead_failures = []
 
 for path in sorted(glob.glob('data/canonical/*.canonical.json')):
     prog_name = os.path.basename(path).replace('.canonical.json','')
@@ -160,33 +164,30 @@ for path in sorted(glob.glob('data/canonical/*.canonical.json')):
     w = CobolWalker(prog)
     live = list(w.walk(include_dead_code=False))
     full = list(w.walk(include_dead_code=True))
+    live_set = set(live)
 
-    # CICS: full walk must equal total paragraph count
     if prog.is_cics:
         if len(full) != len(prog.paragraphs):
             cics_failures.append((prog_name, len(full), len(prog.paragraphs)))
 
-    # Dead code: programs with dead paragraphs must suppress/include correctly
     dead = prog.dead_code_paragraphs
     if dead:
+        print(f'  Dead-code program: {prog_name} dead={dead}')
         for dp in dead:
             if dp in live:
-                dead_code_failures.append((prog_name, 'dead in live walk', dp))
+                dead_failures.append((prog_name, 'dead in live walk', dp))
             if dp not in full:
-                dead_code_failures.append((prog_name, 'dead missing from full walk', dp))
-        # Dead paragraphs must appear AFTER all live paragraphs in full walk
-        live_set = set(live)
-        full_dead_section = [x for x in full if x not in live_set]
-        if full_dead_section != dead:
-            dead_code_failures.append((prog_name, 'dead code not in source order after live', full_dead_section))
+                dead_failures.append((prog_name, 'dead missing from full walk', dp))
+        dead_tail = [x for x in full if x not in live_set]
+        if dead_tail != dead:
+            dead_failures.append((prog_name, f'source order wrong tail={dead_tail} expected={dead}'))
 
-print(f'Programs with dead code: {[os.path.basename(p).replace(\".canonical.json\",\"\") for p in glob.glob(\"data/canonical/*.canonical.json\") if CobolProgramDict(os.path.basename(p).replace(\".canonical.json\",\"\")).dead_code_paragraphs]}')
 if cics_failures:
-    print(f'FAIL CICS — {cics_failures}')
-elif dead_code_failures:
-    print(f'FAIL dead-code — {dead_code_failures}')
+    print(f'FAIL CICS: {cics_failures}')
+elif dead_failures:
+    print(f'FAIL dead-code: {dead_failures}')
 else:
-    print('PASS — CICS paragraph counts correct, dead code suppressed/surfaced correctly')
+    print('PASS — CICS counts correct, dead code handled correctly')
 "
 
 Write-Host "=== GATE 9: No regression on existing gates ===" -ForegroundColor Cyan
@@ -198,9 +199,8 @@ C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe `
   -m pytest tests/ -q --tb=short 2>&1 | Select-Object -Last 3
 # Expected: 31/31 PASS, 31 passed 0 fail, 136 passed
 
-Write-Host "=== GATE 10: Audit script exists and produces baseline ===" -ForegroundColor Cyan
+Write-Host "=== GATE 10: audit_cobol_walker.py exists and runs ===" -ForegroundColor Cyan
+Test-Path C:\work\HermesCOBOL\scripts\audit_cobol_walker.py
 C:\Users\AMD\AppData\Local\Programs\Python\Python310\python.exe `
-  scripts\audit_cobol_walker.py 2>&1 | Select-Object -Last 5
-# Expected: JSON summary written to validation/walker-baseline.json
-# Verify the file exists:
-Test-Path validation\walker-baseline.json
+  scripts\audit_cobol_walker.py 2>&1 | Select-Object -Last 8
+Test-Path C:\work\HermesCOBOL\validation\walker-baseline.json
