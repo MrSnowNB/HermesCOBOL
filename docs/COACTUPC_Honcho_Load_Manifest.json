@@ -1,0 +1,1298 @@
+{
+  "program": "COACTUPC",
+  "loaded_at": "2026-05-27T10:33:29.475909",
+  "total_units": 39,
+  "units": [
+    {
+      "key": "COACTUPC/0000-MAIN",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "0000-MAIN",
+        "source_lines": [
+          3164,
+          3325
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-LITERALS.LIT-THISTRANID",
+          "WS-LITERALS.LIT-MENUPGM",
+          "DFHCOMMAREA",
+          "CARDDEMO-COMMAREA",
+          "WS-THIS-PROGCOMMAREA",
+          "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-FROM-TRANID"
+        ],
+        "mutates": [
+          "CC-WORK-AREAS.CC-WORK-AREA",
+          "WS-MISC-STORAGE",
+          "WS-COMMAREA",
+          "WS-MISC-STORAGE.WS-CICS-PROCESSNG-VARS.WS-TRANID",
+          "CARDDEMO-COMMAREA",
+          "WS-THIS-PROGCOMMAREA",
+          "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-TO-TRANID",
+          "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-TO-PROGRAM"
+        ],
+        "performs": [
+          {
+            "target": "YYYY-STORE-PFKEY",
+            "form": "simple",
+            "external": true
+          },
+          {
+            "target": "1000-PROCESS-INPUTS",
+            "form": "simple"
+          },
+          {
+            "target": "2000-DECIDE-ACTION",
+            "form": "simple"
+          },
+          {
+            "target": "3000-SEND-MAP",
+            "form": "simple"
+          }
+        ],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/1000-PROCESS-INPUTS",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "1000-PROCESS-INPUTS",
+        "source_lines": [
+          3330,
+          3340
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-MISC-STORAGE.WS-RETURN-MSG",
+          "WS-LITERALS.LIT-THISPGM",
+          "WS-LITERALS.LIT-THISMAPSET",
+          "WS-LITERALS.LIT-THISMAP"
+        ],
+        "mutates": [
+          "CC-WORK-AREAS.CC-WORK-AREA.CCARD-ERROR-MSG",
+          "CC-WORK-AREAS.CC-WORK-AREA.CCARD-NEXT-PROG",
+          "CC-WORK-AREAS.CC-WORK-AREA.CCARD-NEXT-MAPSET",
+          "CC-WORK-AREAS.CC-WORK-AREA.CCARD-NEXT-MAP"
+        ],
+        "performs": [
+          {
+            "target": "1100-RECEIVE-MAP",
+            "form": "simple"
+          },
+          {
+            "target": "1200-EDIT-MAP-INPUTS",
+            "form": "simple"
+          }
+        ],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/1100-RECEIVE-MAP",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "1100-RECEIVE-MAP",
+        "source_lines": [
+          3344,
+          3730
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "CACTUPAI.ACCTSIDI",
+          "CACTUPAI",
+          "CACTUPAI.ACSTTUSI",
+          "CACTUPAI.ACRDLIMI",
+          "CACTUPAI.ACSHLIMI",
+          "CACTUPAI.ACURBALI"
+        ],
+        "mutates": [
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS",
+          "CC-WORK-AREAS.CC-WORK-AREA.CC-ACCT-ID",
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-ACCT-ID-X",
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-ACTIVE-STATUS",
+          "WS-MISC-STORAGE.ALPHA-VARS-FOR-DATA-EDITING.ACUP-NEW-CREDIT-LIMIT-X",
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-CREDIT-LIMIT-N",
+          "WS-MISC-STORAGE.ALPHA-VARS-FOR-DATA-EDITING.ACUP-NEW-CASH-CREDIT-LIMIT-X",
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-CASH-CREDIT-LIMIT-N"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/1200-EDIT-MAP-INPUTS",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "1200-EDIT-MAP-INPUTS",
+        "source_lines": [
+          3734,
+          3982
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-ACTIVE-STATUS",
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-YES-NO",
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-OPEN-DATE",
+          "WS-MISC-STORAGE.ALPHA-VARS-FOR-DATA-EDITING.ACUP-NEW-CREDIT-LIMIT-X",
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-FLG-SIGNED-NUMBER-EDIT",
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-EXPIRAION-DATE"
+        ],
+        "mutates": [
+          "WS-THIS-PROGCOMMAREA.ACUP-OLD-DETAILS.ACUP-OLD-ACCT-DATA",
+          "WS-MISC-STORAGE.WS-NON-KEY-FLAGS",
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-VARIABLE-NAME",
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-YES-NO",
+          "WS-MISC-STORAGE.WS-NON-KEY-FLAGS.WS-EDIT-ACCT-STATUS",
+          "WS-MISC-STORAGE.WS-NON-KEY-FLAGS.WS-EDIT-OPEN-DATE-FLGS",
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-SIGNED-NUMBER-9V2-X",
+          "WS-MISC-STORAGE.WS-NON-KEY-FLAGS.WS-EDIT-CREDIT-LIMIT"
+        ],
+        "performs": [
+          {
+            "target": "1210-EDIT-ACCOUNT",
+            "form": "simple"
+          },
+          {
+            "target": "1205-COMPARE-OLD-NEW",
+            "form": "simple"
+          },
+          {
+            "target": "1220-EDIT-YESNO",
+            "form": "simple"
+          },
+          {
+            "target": "EDIT-DATE-CCYYMMDD",
+            "form": "simple",
+            "external": true
+          },
+          {
+            "target": "1250-EDIT-SIGNED-9V2",
+            "form": "simple"
+          },
+          {
+            "target": "EDIT-DATE-CCYYMMDD",
+            "form": "simple",
+            "external": true
+          },
+          {
+            "target": "1250-EDIT-SIGNED-9V2",
+            "form": "simple"
+          },
+          {
+            "target": "EDIT-DATE-CCYYMMDD",
+            "form": "simple",
+            "external": true
+          },
+          {
+            "target": "1250-EDIT-SIGNED-9V2",
+            "form": "simple"
+          },
+          {
+            "target": "1250-EDIT-SIGNED-9V2",
+            "form": "simple"
+          },
+          {
+            "target": "1250-EDIT-SIGNED-9V2",
+            "form": "simple"
+          },
+          {
+            "target": "1265-EDIT-US-SSN",
+            "form": "simple"
+          },
+          {
+            "target": "EDIT-DATE-CCYYMMDD",
+            "form": "simple",
+            "external": true
+          },
+          {
+            "target": "EDIT-DATE-OF-BIRTH",
+            "form": "simple",
+            "external": true
+          },
+          {
+            "target": "1245-EDIT-NUM-REQD",
+            "form": "simple"
+          },
+          {
+            "target": "1275-EDIT-FICO-SCORE",
+            "form": "simple"
+          },
+          {
+            "target": "1225-EDIT-ALPHA-REQD",
+            "form": "simple"
+          },
+          {
+            "target": "1235-EDIT-ALPHA-OPT",
+            "form": "simple"
+          },
+          {
+            "target": "1225-EDIT-ALPHA-REQD",
+            "form": "simple"
+          },
+          {
+            "target": "1215-EDIT-MANDATORY",
+            "form": "simple"
+          },
+          {
+            "target": "1225-EDIT-ALPHA-REQD",
+            "form": "simple"
+          },
+          {
+            "target": "1270-EDIT-US-STATE-CD",
+            "form": "simple"
+          },
+          {
+            "target": "1245-EDIT-NUM-REQD",
+            "form": "simple"
+          },
+          {
+            "target": "1225-EDIT-ALPHA-REQD",
+            "form": "simple"
+          },
+          {
+            "target": "1225-EDIT-ALPHA-REQD",
+            "form": "simple"
+          },
+          {
+            "target": "1260-EDIT-US-PHONE-NUM",
+            "form": "simple"
+          },
+          {
+            "target": "1260-EDIT-US-PHONE-NUM",
+            "form": "simple"
+          },
+          {
+            "target": "1245-EDIT-NUM-REQD",
+            "form": "simple"
+          },
+          {
+            "target": "1220-EDIT-YESNO",
+            "form": "simple"
+          },
+          {
+            "target": "1280-EDIT-US-STATE-ZIP-CD",
+            "form": "simple"
+          }
+        ],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/1205-COMPARE-OLD-NEW",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "1205-COMPARE-OLD-NEW",
+        "source_lines": [
+          3986,
+          4081
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-ACCT-ID-X",
+          "WS-THIS-PROGCOMMAREA.ACUP-OLD-DETAILS.ACUP-OLD-ACCT-DATA.ACUP-OLD-ACCT-ID-X",
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-CURR-BAL",
+          "WS-THIS-PROGCOMMAREA.ACUP-OLD-DETAILS.ACUP-OLD-ACCT-DATA.ACUP-OLD-CURR-BAL",
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-CREDIT-LIMIT",
+          "WS-THIS-PROGCOMMAREA.ACUP-OLD-DETAILS.ACUP-OLD-ACCT-DATA.ACUP-OLD-CREDIT-LIMIT"
+        ],
+        "mutates": [],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/1210-EDIT-ACCOUNT",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "1210-EDIT-ACCOUNT",
+        "source_lines": [
+          4088,
+          4124
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "CC-WORK-AREAS.CC-WORK-AREA.CC-ACCT-ID",
+          "CC-WORK-AREAS.CC-WORK-AREA.CC-ACCT-ID-N"
+        ],
+        "mutates": [
+          "CARDDEMO-COMMAREA.CDEMO-ACCOUNT-INFO.CDEMO-ACCT-ID",
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-ACCT-ID",
+          "WS-MISC-STORAGE.WS-RETURN-MSG"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/1215-EDIT-MANDATORY",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "1215-EDIT-MANDATORY",
+        "source_lines": [
+          4129,
+          4156
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-ALPHANUM-ONLY"
+        ],
+        "mutates": [
+          "WS-MISC-STORAGE.WS-RETURN-MSG"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/1220-EDIT-YESNO",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "1220-EDIT-YESNO",
+        "source_lines": [
+          4161,
+          4198
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-YES-NO"
+        ],
+        "mutates": [
+          "WS-MISC-STORAGE.WS-RETURN-MSG"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/1225-EDIT-ALPHA-REQD",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "1225-EDIT-ALPHA-REQD",
+        "source_lines": [
+          4203,
+          4255
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-ALPHANUM-ONLY",
+          "WS-LITERALS.LIT-ALL-ALPHANUM-FROM-X.LIT-ALL-ALPHA-FROM-X"
+        ],
+        "mutates": [
+          "WS-MISC-STORAGE.WS-RETURN-MSG",
+          "LIT-ALL-ALPHA-FROM"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/1230-EDIT-ALPHANUM-REQD",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "1230-EDIT-ALPHANUM-REQD",
+        "source_lines": [
+          4260,
+          4313
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-ALPHANUM-ONLY",
+          "WS-LITERALS.LIT-ALL-ALPHANUM-FROM-X"
+        ],
+        "mutates": [
+          "WS-MISC-STORAGE.WS-RETURN-MSG",
+          "LIT-ALL-ALPHANUM-FROM"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/1235-EDIT-ALPHA-OPT",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "1235-EDIT-ALPHA-OPT",
+        "source_lines": [
+          4317,
+          4361
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-ALPHANUM-ONLY",
+          "WS-LITERALS.LIT-ALL-ALPHANUM-FROM-X.LIT-ALL-ALPHA-FROM-X"
+        ],
+        "mutates": [
+          "LIT-ALL-ALPHA-FROM",
+          "WS-MISC-STORAGE.WS-RETURN-MSG"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/1240-EDIT-ALPHANUM-OPT",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "1240-EDIT-ALPHANUM-OPT",
+        "source_lines": [
+          4366,
+          4409
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-ALPHANUM-ONLY",
+          "WS-LITERALS.LIT-ALL-ALPHANUM-FROM-X"
+        ],
+        "mutates": [
+          "LIT-ALL-ALPHANUM-FROM",
+          "WS-MISC-STORAGE.WS-RETURN-MSG"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/1245-EDIT-NUM-REQD",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "1245-EDIT-NUM-REQD",
+        "source_lines": [
+          4414,
+          4480
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-ALPHANUM-ONLY"
+        ],
+        "mutates": [
+          "WS-MISC-STORAGE.WS-RETURN-MSG"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/1250-EDIT-SIGNED-9V2",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "1250-EDIT-SIGNED-9V2",
+        "source_lines": [
+          4485,
+          4525
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-SIGNED-NUMBER-9V2-X"
+        ],
+        "mutates": [
+          "WS-MISC-STORAGE.WS-RETURN-MSG"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/1260-EDIT-US-PHONE-NUM",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "1260-EDIT-US-PHONE-NUM",
+        "source_lines": [
+          4530,
+          4731
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-US-PHONE-NUM-X.WS-EDIT-US-PHONE-NUMA",
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-US-PHONE-NUM-X.WS-EDIT-US-PHONE-NUMB",
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-US-PHONE-NUM-X.WS-EDIT-US-PHONE-NUMC"
+        ],
+        "mutates": [],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/1265-EDIT-US-SSN",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "1265-EDIT-US-SSN",
+        "source_lines": [
+          4736,
+          4793
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-CUST-DATA.ACUP-NEW-CUST-SSN-X.ACUP-NEW-CUST-SSN-1",
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-ALPHANUM-ONLY-FLAGS",
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-CUST-DATA.ACUP-NEW-CUST-SSN-X.ACUP-NEW-CUST-SSN-2",
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-CUST-DATA.ACUP-NEW-CUST-SSN-X.ACUP-NEW-CUST-SSN-3"
+        ],
+        "mutates": [
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-VARIABLE-NAME",
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-ALPHANUM-ONLY",
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-ALPHANUM-LENGTH",
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-US-SSN-FLGS.WS-EDIT-US-SSN-PART1-FLGS",
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-US-SSN.WS-EDIT-US-SSN-PART1",
+          "WS-MISC-STORAGE.WS-RETURN-MSG",
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-US-SSN-FLGS.WS-EDIT-US-SSN-PART2-FLGS",
+          "WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-US-SSN-FLGS.WS-EDIT-US-SSN-PART3-FLGS"
+        ],
+        "performs": [
+          {
+            "target": "1245-EDIT-NUM-REQD",
+            "form": "simple"
+          },
+          {
+            "target": "1245-EDIT-NUM-REQD",
+            "form": "simple"
+          },
+          {
+            "target": "1245-EDIT-NUM-REQD",
+            "form": "simple"
+          }
+        ],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/1270-EDIT-US-STATE-CD",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "1270-EDIT-US-STATE-CD",
+        "source_lines": [
+          4798,
+          4815
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-CUST-DATA.ACUP-NEW-CUST-ADDR-STATE-CD"
+        ],
+        "mutates": [
+          "US-STATE-CODE-TO-EDIT",
+          "WS-MISC-STORAGE.WS-RETURN-MSG"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/1275-EDIT-FICO-SCORE",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "1275-EDIT-FICO-SCORE",
+        "source_lines": [
+          4819,
+          4835
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [],
+        "mutates": [
+          "WS-MISC-STORAGE.WS-RETURN-MSG"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/1280-EDIT-US-STATE-ZIP-CD",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "1280-EDIT-US-STATE-ZIP-CD",
+        "source_lines": [
+          4841,
+          4862
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-CUST-DATA.ACUP-NEW-CUST-ADDR-STATE-CD",
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-CUST-DATA.ACUP-NEW-CUST-ADDR-ZIP"
+        ],
+        "mutates": [
+          "US-STATE-ZIPCODE-TO-EDIT.US-STATE-AND-FIRST-ZIP2",
+          "WS-MISC-STORAGE.WS-RETURN-MSG"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/2000-DECIDE-ACTION",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "2000-DECIDE-ACTION",
+        "source_lines": [
+          4867,
+          4947
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "CARDDEMO-COMMAREA.CDEMO-GENERAL-INFO.CDEMO-FROM-TRANID",
+          "WS-LITERALS.LIT-THISPGM"
+        ],
+        "mutates": [
+          "CARDDEMO-COMMAREA.CDEMO-ACCOUNT-INFO.CDEMO-ACCT-ID",
+          "CARDDEMO-COMMAREA.CDEMO-CARD-INFO.CDEMO-CARD-NUM",
+          "CARDDEMO-COMMAREA.CDEMO-ACCOUNT-INFO.CDEMO-ACCT-STATUS",
+          "ABEND-DATA.ABEND-CULPRIT",
+          "ABEND-DATA.ABEND-CODE",
+          "ABEND-DATA.ABEND-REASON",
+          "ABEND-DATA.ABEND-MSG"
+        ],
+        "performs": [
+          {
+            "target": "9000-READ-ACCT",
+            "form": "simple"
+          },
+          {
+            "target": "9600-WRITE-PROCESSING",
+            "form": "simple"
+          },
+          {
+            "target": "ABEND-ROUTINE",
+            "form": "simple",
+            "external": true
+          }
+        ],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/3000-SEND-MAP",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "3000-SEND-MAP",
+        "source_lines": [
+          4954,
+          4968
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [],
+        "mutates": [],
+        "performs": [
+          {
+            "target": "3100-SCREEN-INIT",
+            "form": "simple"
+          },
+          {
+            "target": "3200-SETUP-SCREEN-VARS",
+            "form": "simple"
+          },
+          {
+            "target": "3250-SETUP-INFOMSG",
+            "form": "simple"
+          },
+          {
+            "target": "3300-SETUP-SCREEN-ATTRS",
+            "form": "simple"
+          },
+          {
+            "target": "3390-SETUP-INFOMSG-ATTRS",
+            "form": "simple"
+          },
+          {
+            "target": "3400-SEND-SCREEN",
+            "form": "simple"
+          }
+        ],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/3100-SCREEN-INIT",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "3100-SCREEN-INIT",
+        "source_lines": [
+          4973,
+          4998
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "CCDA-SCREEN-TITLE.CCDA-TITLE01",
+          "CCDA-SCREEN-TITLE.CCDA-TITLE02",
+          "WS-LITERALS.LIT-THISTRANID",
+          "WS-LITERALS.LIT-THISPGM",
+          "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURDATE.WS-CURDATE-MONTH",
+          "WS-DATE-TIME.WS-CURDATE-DATA.WS-CURDATE.WS-CURDATE-DAY"
+        ],
+        "mutates": [
+          "CACTUPAO",
+          "WS-DATE-TIME.WS-CURDATE-DATA",
+          "CACTUPAO.TITLE01O",
+          "CACTUPAO.TITLE02O",
+          "CACTUPAO.TRNNAMEO",
+          "CACTUPAO.PGMNAMEO",
+          "WS-DATE-TIME.WS-CURDATE-MM-DD-YY.WS-CURDATE-MM",
+          "WS-DATE-TIME.WS-CURDATE-MM-DD-YY.WS-CURDATE-DD"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/3200-SETUP-SCREEN-VARS",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "3200-SETUP-SCREEN-VARS",
+        "source_lines": [
+          5003,
+          5031
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "CC-WORK-AREAS.CC-WORK-AREA.CC-ACCT-ID-N",
+          "CC-WORK-AREAS.CC-WORK-AREA.CC-ACCT-ID"
+        ],
+        "mutates": [
+          "CACTUPAO.ACCTSIDO",
+          "CACTUPAO"
+        ],
+        "performs": [
+          {
+            "target": "3201-SHOW-INITIAL-VALUES",
+            "form": "simple"
+          },
+          {
+            "target": "3202-SHOW-ORIGINAL-VALUES",
+            "form": "simple"
+          },
+          {
+            "target": "3203-SHOW-UPDATED-VALUES",
+            "form": "simple"
+          },
+          {
+            "target": "3202-SHOW-ORIGINAL-VALUES",
+            "form": "simple"
+          }
+        ],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/3201-SHOW-INITIAL-VALUES",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "3201-SHOW-INITIAL-VALUES",
+        "source_lines": [
+          5036,
+          5087
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [],
+        "mutates": [
+          "CACTUPAO.ACSTTUSO",
+          "CACTUPAO",
+          "CACTUPAO.ACRDLIMO",
+          "CACTUPAO.ACURBALO",
+          "CACTUPAO.ACSHLIMO",
+          "CACTUPAO.ACRCYCRO",
+          "CACTUPAO.ACRCYDBO",
+          "CACTUPAO.OPNYEARO"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/3202-SHOW-ORIGINAL-VALUES",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "3202-SHOW-ORIGINAL-VALUES",
+        "source_lines": [
+          5092,
+          5171
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-THIS-PROGCOMMAREA.ACUP-OLD-DETAILS.ACUP-OLD-ACCT-DATA.ACUP-OLD-ACTIVE-STATUS",
+          "WS-THIS-PROGCOMMAREA.ACUP-OLD-DETAILS.ACUP-OLD-ACCT-DATA.ACUP-OLD-CURR-BAL-N",
+          "WS-MISC-STORAGE.CICS-OUTPUT-EDIT-VARS.WS-EDIT-CURRENCY-9-2-F",
+          "WS-THIS-PROGCOMMAREA.ACUP-OLD-DETAILS.ACUP-OLD-ACCT-DATA.ACUP-OLD-CREDIT-LIMIT-N",
+          "WS-THIS-PROGCOMMAREA.ACUP-OLD-DETAILS.ACUP-OLD-ACCT-DATA.ACUP-OLD-CASH-CREDIT-LIMIT-N",
+          "WS-THIS-PROGCOMMAREA.ACUP-OLD-DETAILS.ACUP-OLD-ACCT-DATA.ACUP-OLD-CURR-CYC-CREDIT-N"
+        ],
+        "mutates": [
+          "WS-MISC-STORAGE.WS-NON-KEY-FLAGS",
+          "CACTUPAO.ACSTTUSO",
+          "CACTUPAO",
+          "WS-MISC-STORAGE.CICS-OUTPUT-EDIT-VARS.WS-EDIT-CURRENCY-9-2-F",
+          "CACTUPAO.ACURBALO",
+          "CACTUPAO.ACRDLIMO",
+          "CACTUPAO.ACSHLIMO",
+          "CACTUPAO.ACRCYCRO"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/3203-SHOW-UPDATED-VALUES",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "3203-SHOW-UPDATED-VALUES",
+        "source_lines": [
+          5175,
+          5255
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-ACTIVE-STATUS",
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-CREDIT-LIMIT-N",
+          "WS-MISC-STORAGE.CICS-OUTPUT-EDIT-VARS.WS-EDIT-CURRENCY-9-2-F",
+          "WS-MISC-STORAGE.ALPHA-VARS-FOR-DATA-EDITING.ACUP-NEW-CREDIT-LIMIT-X",
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-CASH-CREDIT-LIMIT-N",
+          "WS-MISC-STORAGE.ALPHA-VARS-FOR-DATA-EDITING.ACUP-NEW-CASH-CREDIT-LIMIT-X"
+        ],
+        "mutates": [
+          "CACTUPAO.ACSTTUSO",
+          "CACTUPAO",
+          "WS-MISC-STORAGE.CICS-OUTPUT-EDIT-VARS.WS-EDIT-CURRENCY-9-2-F",
+          "CACTUPAO.ACRDLIMO",
+          "CACTUPAO.ACSHLIMO",
+          "CACTUPAO.ACURBALO",
+          "CACTUPAO.ACRCYCRO",
+          "CACTUPAO.ACRCYDBO"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/3250-SETUP-INFOMSG",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "3250-SETUP-INFOMSG",
+        "source_lines": [
+          5260,
+          5287
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-MISC-STORAGE.WS-INFO-MSG",
+          "WS-MISC-STORAGE.WS-RETURN-MSG"
+        ],
+        "mutates": [
+          "CACTUPAO.INFOMSGO",
+          "CACTUPAO",
+          "CACTUPAO.ERRMSGO"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/3300-SETUP-SCREEN-ATTRS",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "3300-SETUP-SCREEN-ATTRS",
+        "source_lines": [
+          5291,
+          6469
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "CARDDEMO-COMMAREA.CDEMO-MORE-INFO.CDEMO-LAST-MAPSET",
+          "WS-LITERALS.LIT-CCLISTMAPSET"
+        ],
+        "mutates": [
+          "CACTUPAI",
+          "CACTUPAI.ACSTTUSL",
+          "CACTUPAI.ACCTSIDL",
+          "CACTUPAI.OPNYEARL",
+          "CACTUPAI.OPNMONL",
+          "CACTUPAI.OPNDAYL",
+          "CACTUPAI.ACRDLIML",
+          "CACTUPAI.EXPYEARL"
+        ],
+        "performs": [
+          {
+            "target": "3310-PROTECT-ALL-ATTRS",
+            "form": "simple"
+          },
+          {
+            "target": "3320-UNPROTECT-FEW-ATTRS",
+            "form": "simple"
+          }
+        ],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/3310-PROTECT-ALL-ATTRS",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "3310-PROTECT-ALL-ATTRS",
+        "source_lines": [
+          6474,
+          6528
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [],
+        "mutates": [
+          "CACTUPAI"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/3320-UNPROTECT-FEW-ATTRS",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "3320-UNPROTECT-FEW-ATTRS",
+        "source_lines": [
+          6533,
+          6594
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [],
+        "mutates": [
+          "CACTUPAI"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/3390-SETUP-INFOMSG-ATTRS",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "3390-SETUP-INFOMSG-ATTRS",
+        "source_lines": [
+          6599,
+          6616
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [],
+        "mutates": [
+          "CACTUPAI"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/3400-SEND-SCREEN",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "3400-SEND-SCREEN",
+        "source_lines": [
+          6622,
+          6635
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-LITERALS.LIT-THISMAPSET",
+          "WS-LITERALS.LIT-THISMAP"
+        ],
+        "mutates": [
+          "CC-WORK-AREAS.CC-WORK-AREA.CCARD-NEXT-MAPSET",
+          "CC-WORK-AREAS.CC-WORK-AREA.CCARD-NEXT-MAP"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/9000-READ-ACCT",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "9000-READ-ACCT",
+        "source_lines": [
+          6641,
+          6679
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "CC-WORK-AREAS.CC-WORK-AREA.CC-ACCT-ID",
+          "CARDDEMO-COMMAREA.CDEMO-CUSTOMER-INFO.CDEMO-CUST-ID"
+        ],
+        "mutates": [
+          "WS-THIS-PROGCOMMAREA.ACUP-OLD-DETAILS",
+          "WS-THIS-PROGCOMMAREA.ACUP-OLD-DETAILS.ACUP-OLD-ACCT-DATA.ACUP-OLD-ACCT-ID",
+          "WS-MISC-STORAGE.WS-XREF-RID.WS-CARD-RID-ACCT-ID",
+          "WS-MISC-STORAGE.WS-XREF-RID.WS-CARD-RID-CUST-ID"
+        ],
+        "performs": [
+          {
+            "target": "9200-GETCARDXREF-BYACCT",
+            "form": "simple"
+          },
+          {
+            "target": "9300-GETACCTDATA-BYACCT",
+            "form": "simple"
+          },
+          {
+            "target": "9400-GETCUSTDATA-BYCUST",
+            "form": "simple"
+          },
+          {
+            "target": "9500-STORE-FETCHED-DATA",
+            "form": "simple"
+          }
+        ],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/9200-GETCARDXREF-BYACCT",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "9200-GETCARDXREF-BYACCT",
+        "source_lines": [
+          6683,
+          6730
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-MISC-STORAGE.WS-CICS-PROCESSNG-VARS.WS-RESP-CD",
+          "CARD-XREF-RECORD.XREF-CUST-ID",
+          "CARD-XREF-RECORD.XREF-CARD-NUM",
+          "WS-MISC-STORAGE.WS-CICS-PROCESSNG-VARS.WS-REAS-CD",
+          "WS-MISC-STORAGE.WS-XREF-RID.WS-CARD-RID-ACCT-ID-X",
+          "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-RESP"
+        ],
+        "mutates": [
+          "CARDDEMO-COMMAREA.CDEMO-CUSTOMER-INFO.CDEMO-CUST-ID",
+          "CARDDEMO-COMMAREA.CDEMO-CARD-INFO.CDEMO-CARD-NUM",
+          "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-RESP",
+          "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-RESP2",
+          "WS-MISC-STORAGE.WS-RETURN-MSG",
+          "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-OPNAME",
+          "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-FILE"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/9300-GETACCTDATA-BYACCT",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "9300-GETACCTDATA-BYACCT",
+        "source_lines": [
+          6734,
+          6780
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-MISC-STORAGE.WS-CICS-PROCESSNG-VARS.WS-RESP-CD",
+          "WS-MISC-STORAGE.WS-CICS-PROCESSNG-VARS.WS-REAS-CD",
+          "WS-MISC-STORAGE.WS-XREF-RID.WS-CARD-RID-ACCT-ID-X",
+          "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-RESP",
+          "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-RESP2",
+          "WS-LITERALS.LIT-ACCTFILENAME"
+        ],
+        "mutates": [
+          "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-RESP",
+          "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-RESP2",
+          "WS-MISC-STORAGE.WS-RETURN-MSG",
+          "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-OPNAME",
+          "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-FILE"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/9400-GETCUSTDATA-BYCUST",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "9400-GETCUSTDATA-BYCUST",
+        "source_lines": [
+          6785,
+          6829
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "WS-MISC-STORAGE.WS-CICS-PROCESSNG-VARS.WS-RESP-CD",
+          "WS-MISC-STORAGE.WS-CICS-PROCESSNG-VARS.WS-REAS-CD",
+          "WS-MISC-STORAGE.WS-XREF-RID.WS-CARD-RID-CUST-ID-X",
+          "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-RESP",
+          "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-RESP2",
+          "WS-LITERALS.LIT-CUSTFILENAME"
+        ],
+        "mutates": [
+          "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-RESP",
+          "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-RESP2",
+          "WS-MISC-STORAGE.WS-RETURN-MSG",
+          "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-OPNAME",
+          "WS-MISC-STORAGE.WS-FILE-ERROR-MESSAGE.ERROR-FILE"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/9500-STORE-FETCHED-DATA",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "9500-STORE-FETCHED-DATA",
+        "source_lines": [
+          6834,
+          6917
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "ACCOUNT-RECORD.ACCT-ID",
+          "CUSTOMER-RECORD.CUST-ID",
+          "CUSTOMER-RECORD.CUST-FIRST-NAME",
+          "CUSTOMER-RECORD.CUST-MIDDLE-NAME",
+          "CUSTOMER-RECORD.CUST-LAST-NAME",
+          "ACCOUNT-RECORD.ACCT-ACTIVE-STATUS"
+        ],
+        "mutates": [
+          "CARDDEMO-COMMAREA.CDEMO-ACCOUNT-INFO.CDEMO-ACCT-ID",
+          "CARDDEMO-COMMAREA.CDEMO-CUSTOMER-INFO.CDEMO-CUST-ID",
+          "CARDDEMO-COMMAREA.CDEMO-CUSTOMER-INFO.CDEMO-CUST-FNAME",
+          "CARDDEMO-COMMAREA.CDEMO-CUSTOMER-INFO.CDEMO-CUST-MNAME",
+          "CARDDEMO-COMMAREA.CDEMO-CUSTOMER-INFO.CDEMO-CUST-LNAME",
+          "CARDDEMO-COMMAREA.CDEMO-ACCOUNT-INFO.CDEMO-ACCT-STATUS",
+          "CARDDEMO-COMMAREA.CDEMO-CARD-INFO.CDEMO-CARD-NUM",
+          "WS-THIS-PROGCOMMAREA.ACUP-OLD-DETAILS"
+        ],
+        "performs": [],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/9600-WRITE-PROCESSING",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "9600-WRITE-PROCESSING",
+        "source_lines": [
+          6921,
+          7137
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "CC-WORK-AREAS.CC-WORK-AREA.CC-ACCT-ID",
+          "WS-MISC-STORAGE.WS-CICS-PROCESSNG-VARS.WS-RESP-CD",
+          "CARDDEMO-COMMAREA.CDEMO-CUSTOMER-INFO.CDEMO-CUST-ID",
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-ACCT-ID",
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-ACTIVE-STATUS",
+          "WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-CURR-BAL-N"
+        ],
+        "mutates": [
+          "WS-MISC-STORAGE.WS-XREF-RID.WS-CARD-RID-ACCT-ID",
+          "WS-MISC-STORAGE.WS-XREF-RID.WS-CARD-RID-CUST-ID",
+          "WS-MISC-STORAGE.ACCT-UPDATE-RECORD",
+          "WS-MISC-STORAGE.ACCT-UPDATE-RECORD.ACCT-UPDATE-ID",
+          "WS-MISC-STORAGE.ACCT-UPDATE-RECORD.ACCT-UPDATE-ACTIVE-STATUS",
+          "WS-MISC-STORAGE.ACCT-UPDATE-RECORD.ACCT-UPDATE-CURR-BAL",
+          "WS-MISC-STORAGE.ACCT-UPDATE-RECORD.ACCT-UPDATE-CREDIT-LIMIT",
+          "WS-MISC-STORAGE.ACCT-UPDATE-RECORD.ACCT-UPDATE-CASH-CREDIT-LIMIT"
+        ],
+        "performs": [
+          {
+            "target": "9700-CHECK-CHANGE-IN-REC",
+            "form": "simple"
+          }
+        ],
+        "goto_targets": []
+      }
+    },
+    {
+      "key": "COACTUPC/9700-CHECK-CHANGE-IN-REC",
+      "value": {
+        "program": "COACTUPC",
+        "paragraph": "9700-CHECK-CHANGE-IN-REC",
+        "source_lines": [
+          7142,
+          7225
+        ],
+        "source_artifact": "data/preprocessed/COACTUPC.cob",
+        "next_paragraph": null,
+        "statements": [],
+        "reads": [
+          "ACCOUNT-RECORD.ACCT-ACTIVE-STATUS",
+          "WS-THIS-PROGCOMMAREA.ACUP-OLD-DETAILS.ACUP-OLD-ACCT-DATA.ACUP-OLD-ACTIVE-STATUS",
+          "ACCOUNT-RECORD.ACCT-CURR-BAL",
+          "WS-THIS-PROGCOMMAREA.ACUP-OLD-DETAILS.ACUP-OLD-ACCT-DATA.ACUP-OLD-CURR-BAL-N",
+          "ACCOUNT-RECORD.ACCT-CREDIT-LIMIT",
+          "WS-THIS-PROGCOMMAREA.ACUP-OLD-DETAILS.ACUP-OLD-ACCT-DATA.ACUP-OLD-CREDIT-LIMIT-N"
+        ],
+        "mutates": [],
+        "performs": [],
+        "goto_targets": []
+      }
+    }
+  ]
+}

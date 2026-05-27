@@ -1,0 +1,51 @@
+{
+  "program": "COACTUPC",
+  "oracle_version": "1.0",
+  "generated": "2026-05-27",
+  "display_path": {
+    "steps": 59,
+    "unique_mutates": 85,
+    "guarded_suppressed": [
+      "9600-WRITE-PROCESSING"
+    ]
+  },
+  "write_path": {
+    "steps": 60,
+    "unique_mutates": 91,
+    "guarded_executed": [
+      "9600-WRITE-PROCESSING"
+    ]
+  },
+  "write_only_fields": [
+    "WS-MISC-STORAGE.ACCT-UPDATE-RECORD.ACCT-UPDATE-ID",
+    "WS-MISC-STORAGE.ACCT-UPDATE-RECORD.ACCT-UPDATE-CURR-BAL",
+    "WS-MISC-STORAGE.ACCT-UPDATE-RECORD.ACCT-UPDATE-CASH-CREDIT-LIMIT",
+    "WS-MISC-STORAGE.ACCT-UPDATE-RECORD.ACCT-UPDATE-CREDIT-LIMIT",
+    "WS-MISC-STORAGE.ACCT-UPDATE-RECORD.ACCT-UPDATE-ACTIVE-STATUS",
+    "WS-MISC-STORAGE.ACCT-UPDATE-RECORD.ACCT-UPDATE-CASH-CREDIT-LIMIT"
+  ],
+  "write_only_fields_short": [
+    "ACCT-UPDATE-ID",
+    "ACCT-UPDATE-CURR-BAL",
+    "ACCT-UPDATE-CASH-CREDIT-LIMIT",
+    "ACCT-UPDATE-CREDIT-LIMIT",
+    "ACCT-UPDATE-ACTIVE-STATUS",
+    "ACCT-UPDATE-RECORD"
+  ],
+  "field_qualification_notes": {
+    "ACCT-UPDATE-ID": "WS-MISC-STORAGE.ACCT-UPDATE-RECORD.ACCT-UPDATE-ID",
+    "ACCT-UPDATE-CURR-BAL": "WS-MISC-STORAGE.ACCT-UPDATE-RECORD.ACCT-UPDATE-CURR-BAL",
+    "ACCT-UPDATE-CASH-CREDIT-LIMIT": "WS-MISC-STORAGE.ACCT-UPDATE-RECORD.ACCT-UPDATE-CASH-CREDIT-LIMIT",
+    "ACCT-UPDATE-CREDIT-LIMIT": "WS-MISC-STORAGE.ACCT-UPDATE-RECORD.ACCT-UPDATE-CREDIT-LIMIT",
+    "ACCT-UPDATE-ACTIVE-STATUS": "WS-MISC-STORAGE.ACCT-UPDATE-RECORD.ACCT-UPDATE-ACTIVE-STATUS",
+    "ACCT-UPDATE-RECORD": "WS-MISC-STORAGE.ACCT-UPDATE-RECORD.ACCT-UPDATE-CASH-CREDIT-LIMIT"
+  },
+  "assertion_rules": {
+    "display_test": "none of write_only_fields should be mutated",
+    "write_test": "all of write_only_fields must be mutated"
+  },
+  "known_limitations": [
+    "v1 IR fires non-guarded PERFORMs unconditionally (may over-count display mutates)",
+    "Some short field names may still be ambiguous across copybooks"
+  ]
+}

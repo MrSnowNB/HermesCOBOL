@@ -1,52 +1,30 @@
-# SCRATCHPAD: validate_section34_diagnosis.py
-# Run: python scripts/validate_section34_diagnosis.py
-# Purpose: independently confirm the missing paragraph names and their column positions
+TASK: Run validate_roundtrip.py and confirm all gates still pass after the data_flow.py Area-B paragraph fix in commit 65af9b3.
 
-import json, re
+Do NOT modify any file. Do NOT commit anything.
+
+Run the following commands in order and capture all output:
+
+STEP 1 — Run full roundtrip validation:
+  cd C:\work\HermesCOBOL
+  python scripts/validate_roundtrip.py 2>&1
+
+STEP 2 — Confirm walker baseline unchanged:
+  python scripts/audit_cobol_walker.py 2>&1
+
+STEP 3 — Spot-check the three CICS programs specifically:
+  python -c "
+import json
 from pathlib import Path
+for prog in ['COACTUPC', 'COACTVWC', 'COCRDLIC']:
+    c = json.loads(Path(f'data/canonical/{prog}.canonical.json').read_text())
+    para_count = len(c.get('paragraphs', []))
+    print(f'{prog}: paragraph_count={para_count}')
+"
 
-PROGS = ['COACTUPC', 'COACTVWC', 'COCRDLIC']
-PARA_HEADER_RE = re.compile(r'^([A-Z0-9][A-Z0-9\-]*)\.[ \t]*$', re.IGNORECASE)
+OUTPUT REQUIRED:
+  - Final PASS/FAIL line from validate_roundtrip.py
+  - Total programs: N passed, M failed
+  - Walker baseline: MATCH or DIVERGED
+  - Paragraph counts for the 3 CICS programs
 
-results = {}
-for prog in PROGS:
-    facts_path     = Path(f'data/facts/{prog}.json')
-    canonical_path = Path(f'data/canonical/{prog}.canonical.json')
-    cbl_path       = Path(f'data/raw/cbl/{prog}.cbl')
-
-    expected = json.loads(facts_path.read_text()).get('paragraphs_defined', [])
-    actual   = list(json.loads(canonical_path.read_text()).get('paragraphs', {}).keys())
-    missing  = [p for p in expected if p not in actual]
-
-    # Find raw source lines for missing paragraphs
-    hits = {}
-    raw_lines = cbl_path.read_text(encoding='utf-8', errors='replace').splitlines()
-    for i, line in enumerate(raw_lines, start=1):
-        if len(line) < 7:
-            continue
-        code_area = line[7:72] if len(line) >= 8 else ''
-        stripped  = code_area.strip()
-        m = PARA_HEADER_RE.match(stripped)
-        if m and m.group(1).upper() in missing:
-            col = len(code_area) - len(code_area.lstrip()) + 8  # 1-based col
-            hits[m.group(1).upper()] = {
-                'line': i, 'col': col,
-                'raw_prefix': repr(line[:20])
-            }
-
-    results[prog] = {
-        'expected': len(expected),
-        'actual'  : len(actual),
-        'missing' : missing,
-        'source_hits': hits
-    }
-
-for prog, r in results.items():
-    print(f'\n{prog}: expected={r["expected"]} actual={r["actual"]} delta={r["actual"]-r["expected"]}')
-    print(f'  MISSING: {r["missing"]}')
-    for name, loc in r["source_hits"].items():
-        print(f'  {name}: line {loc["line"]} col {loc["col"]}  raw={loc["raw_prefix"]}')
-
-# Write to scratchpad JSON for audit
-Path('/tmp/section34_diagnosis.json').write_text(json.dumps(results, indent=2))
-print('\nAudit artifact: /tmp/section34_diagnosis.json')
+Do NOT write any files. Do NOT commit.
