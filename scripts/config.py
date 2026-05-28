@@ -35,3 +35,9 @@ CANONICAL_DIR            = DATA_DIR / "canonical"  # Stage 5-G / 5-H Canonical I
 
 # Schema version — must match extract_facts.py
 SCHEMA_VERSION  = "1.0"
+
+# Honcho connection parameters
+HONCHO_HOST = "localhost"
+HONCHO_PORT = 18000
+HONCHO_WORKSPACE_ID = "hermes"
+HONCHO_BASE_URL = f"http://{HONCHO_HOST}:{HONCHO_PORT}"
