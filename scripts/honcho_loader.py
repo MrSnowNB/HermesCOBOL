@@ -17,8 +17,10 @@ import re
 import urllib.request
 import urllib.error
 import urllib.parse
+import time
 from datetime import datetime, timezone
 from pathlib import Path
+import requests
 
 # Try to import Honcho config from scripts.config
 try:
@@ -34,30 +36,34 @@ class HonchoClient:
         self.base_url = base_url.rstrip("/")
         self.workspace_id = workspace_id
         self.session_id = "hermes-agent" # Use existing session
+        self.headers = {"Content-Type": "application/json"}
+        self.messages_url = f"{self.base_url}/v3/workspaces/{self.workspace_id}/sessions/{self.session_id}/messages"
 
     def _request(self, method: str, path: str, data: dict = None) -> dict | list | None:
+        # Fallback for non-batch methods, using urllib or simple requests
         url = f"{self.base_url}{path}"
-        req_data = json.dumps(data).encode("utf-8") if data is not None else None
-        req = urllib.request.Request(url, data=req_data, method=method)
-        req.add_header("Content-Type", "application/json")
         try:
-            with urllib.request.urlopen(req) as resp:
-                if 200 <= resp.status < 300:
-                    content = resp.read().decode("utf-8")
-                    return json.loads(content) if content else {}
-                else:
-                    print(f"Unexpected status {resp.status}: {resp.read().decode('utf-8')}", file=sys.stderr)
-        except urllib.error.HTTPError as e:
-            body = e.read().decode('utf-8', errors='ignore')
-            print(f"HTTP Error {e.code} at {path}: {body}", file=sys.stderr)
-        except urllib.error.URLError as e:
+            if method == "POST":
+                resp = requests.post(url, json=data, headers=self.headers)
+            elif method == "DELETE":
+                resp = requests.delete(url, headers=self.headers)
+            else:
+                resp = requests.request(method, url, json=data, headers=self.headers)
+            
+            if 200 <= resp.status_code < 300:
+                if resp.text:
+                    return resp.json()
+                return {}
+            elif resp.status_code == 404:
+                return None
+            else:
+                print(f"HTTP Error {resp.status_code} at {path}: {resp.text}", file=sys.stderr)
+        except requests.exceptions.RequestException as e:
             print(f"Connection Error: {e}", file=sys.stderr)
         return None
 
-    def set(self, key: str, value: dict) -> bool:
-        """Store a JSON-serializable value under key using Messages. Idempotent (adds new entry)."""
-        # Mapping Key Schema {PROG}/para/{name} to v3 Messages
-        path = f"/v3/workspaces/{self.workspace_id}/sessions/{self.session_id}/messages"
+    def set(self, key: str, value: dict, force_overwrite: bool = True) -> bool:
+        """Write key→value. When force_overwrite=True, skip delete — just POST."""
         payload = {
             "messages": [
                 {
@@ -67,26 +73,52 @@ class HonchoClient:
                 }
             ]
         }
-        res = self._request("POST", path, payload)
-        return res is not None
+        resp = requests.post(self.messages_url, json=payload, headers=self.headers)
+        return resp.status_code in (200, 201)
 
-    def set_batch(self, units: list[tuple[str, dict]]) -> bool:
-        """Store multiple units in a single batch call using Messages."""
-        if not units:
-            return True
+    def set_batch(self, items: list[tuple[str, dict]]) -> dict:
+        """
+        Write multiple key→value pairs efficiently.
+        items: list of (key, value) tuples
+        Returns: {"loaded": int, "failed": int, "failed_keys": list, "keys_loaded": list}
+        """
+        result = {"loaded": 0, "failed": 0, "failed_keys": [], "keys_loaded": []}
+        session = requests.Session()
         
-        path = f"/v3/workspaces/{self.workspace_id}/sessions/{self.session_id}/messages"
-        messages = []
-        for key, value in units:
-            messages.append({
-                "content": json.dumps(value),
-                "peer_id": "hermes",
-                "metadata": {"key": key}
-            })
+        # We can either use Honcho's batch endpoint (if it exists) or keep-alive individual POSTs.
+        # Openapi showed POST to /messages accepts a list of messages. We will use that per-item for safety
+        # but with a keep-alive session, or batch them if the API allows multiple in one call.
+        # Let's batch them into chunks of 100 to be safe and fast.
         
-        payload = {"messages": messages}
-        res = self._request("POST", path, payload)
-        return res is not None
+        chunk_size = 100
+        for i in range(0, len(items), chunk_size):
+            chunk = items[i:i+chunk_size]
+            messages = []
+            for key, value in chunk:
+                messages.append({
+                    "content": json.dumps(value),
+                    "peer_id": "hermes",
+                    "metadata": {"key": key}
+                })
+            
+            payload = {"messages": messages}
+            try:
+                resp = session.post(self.messages_url, json=payload, headers=self.headers)
+                if resp.status_code in (200, 201):
+                    result["loaded"] += len(chunk)
+                    result["keys_loaded"].extend([k for k, v in chunk])
+                else:
+                    # If batch fails, count all as failed
+                    print(f"Batch POST failed: {resp.status_code} - {resp.text}", file=sys.stderr)
+                    result["failed"] += len(chunk)
+                    result["failed_keys"].extend([k for k, v in chunk])
+            except Exception as e:
+                print(f"Batch POST error: {e}", file=sys.stderr)
+                result["failed"] += len(chunk)
+                result["failed_keys"].extend([k for k, v in chunk])
+                
+        session.close()
+        return result
 
     def get(self, key: str) -> dict | None:
         """Retrieve value by key from Messages. Returns the most recent one."""
@@ -244,61 +276,45 @@ def load_program(
 ) -> dict:
     """
     Load all paragraph IR units for a program into Honcho.
-    
-    Returns a result dict:
-    {
-        "program": str,
-        "loaded": int,
-        "skipped_exit": int,
-        "skipped_existing": int,
-        "failed": int,
-        "keys_loaded": list[str],
-        "timestamp": str
-    }
     """
-    result = {
-        "program": program,
-        "loaded": 0,
-        "skipped_exit": 0,
-        "skipped_existing": 0,
-        "failed": 0,
-        "keys_loaded": [],
-        "timestamp": datetime.now(timezone.utc).isoformat()
-    }
+    batch = []
+    skipped_exit = 0
 
     for unit in units:
         para_name = unit.get("paragraph", "UNKNOWN")
         key = para_key(program, para_name)
 
-        # Skip EXIT paragraphs
         if not should_load(unit):
-            result["skipped_exit"] += 1
+            skipped_exit += 1
             continue
 
-        # Skip if exists and not overwriting
-        if not overwrite:
-            existing = honcho.get(key)
-            if existing is not None:
-                result["skipped_existing"] += 1
-                continue
+        batch.append((key, unit))
 
-        if dry_run:
+    if dry_run:
+        for key, _ in batch:
             print(f"  [DRY RUN] Would load: {key}")
-            result["loaded"] += 1
-            result["keys_loaded"].append(key)
-            continue
+        return {
+            "program": program,
+            "loaded": len(batch),
+            "skipped_exit": skipped_exit,
+            "skipped_existing": 0,
+            "failed": 0,
+            "keys_loaded": [k for k, _ in batch],
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
 
-        # Load to Honcho
-        success = honcho.set(key, unit)
-        if success:
-            result["loaded"] += 1
-            result["keys_loaded"].append(key)
-            print(f"  [OK] {key}")
-        else:
-            result["failed"] += 1
-            print(f"  [FAIL] {key}", file=sys.stderr)
-
-    return result
+    # Single batched write
+    batch_res = honcho.set_batch(batch)
+    
+    return {
+        "program": program,
+        "loaded": batch_res["loaded"],
+        "skipped_exit": skipped_exit,
+        "skipped_existing": 0,
+        "failed": batch_res["failed"],
+        "keys_loaded": batch_res["keys_loaded"],
+        "timestamp": datetime.now(timezone.utc).isoformat()
+    }
 
 
 def load_layout(
@@ -312,16 +328,9 @@ def load_layout(
     Load WORKING-STORAGE byte layout entries into Honcho.
     Key schema: {PROGRAM}/layout/{field_path}
     """
-    result = {
-        "program": program,
-        "loaded": 0,
-        "failed": 0,
-        "keys_loaded": [],
-        "timestamp": datetime.now(timezone.utc).isoformat()
-    }
-
+    batch = []
+    
     for entry in layout_data:
-        # Support various field path keys from different extractors
         field_path = (entry.get("field_path") or 
                       entry.get("qualified_name") or 
                       entry.get("name") or 
@@ -330,28 +339,30 @@ def load_layout(
         if not field_path:
             continue
         key = layout_key(program, field_path)
+        batch.append((key, entry))
 
-        if not overwrite:
-            existing = honcho.get(key)
-            if existing is not None:
-                continue
-
-        if dry_run:
+    if dry_run:
+        for key, _ in batch:
             print(f"  [DRY RUN] Would load layout: {key}")
-            result["loaded"] += 1
-            result["keys_loaded"].append(key)
-            continue
+        return {
+            "program": program,
+            "loaded": len(batch),
+            "failed": 0,
+            "keys_loaded": [k for k, _ in batch],
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
 
-        success = honcho.set(key, entry)
-        if success:
-            result["loaded"] += 1
-            result["keys_loaded"].append(key)
-            print(f"  [OK] {key}")
-        else:
-            result["failed"] += 1
-            print(f"  [FAIL] {key}", file=sys.stderr)
+    # Single batched write
+    batch_res = honcho.set_batch(batch)
+    
+    return {
+        "program": program,
+        "loaded": batch_res["loaded"],
+        "failed": batch_res["failed"],
+        "keys_loaded": batch_res["keys_loaded"],
+        "timestamp": datetime.now(timezone.utc).isoformat()
+    }
 
-    return result
 
 
 def verify_program(honcho: HonchoClient, program: str) -> dict:
