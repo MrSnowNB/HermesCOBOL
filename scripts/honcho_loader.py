@@ -301,6 +301,59 @@ def load_program(
     return result
 
 
+def load_layout(
+    honcho: HonchoClient,
+    program: str,
+    layout_data: list[dict],
+    overwrite: bool = True,
+    dry_run: bool = False
+) -> dict:
+    """
+    Load WORKING-STORAGE byte layout entries into Honcho.
+    Key schema: {PROGRAM}/layout/{field_path}
+    """
+    result = {
+        "program": program,
+        "loaded": 0,
+        "failed": 0,
+        "keys_loaded": [],
+        "timestamp": datetime.now(timezone.utc).isoformat()
+    }
+
+    for entry in layout_data:
+        # Support various field path keys from different extractors
+        field_path = (entry.get("field_path") or 
+                      entry.get("qualified_name") or 
+                      entry.get("name") or 
+                      entry.get("path"))
+        
+        if not field_path:
+            continue
+        key = layout_key(program, field_path)
+
+        if not overwrite:
+            existing = honcho.get(key)
+            if existing is not None:
+                continue
+
+        if dry_run:
+            print(f"  [DRY RUN] Would load layout: {key}")
+            result["loaded"] += 1
+            result["keys_loaded"].append(key)
+            continue
+
+        success = honcho.set(key, entry)
+        if success:
+            result["loaded"] += 1
+            result["keys_loaded"].append(key)
+            print(f"  [OK] {key}")
+        else:
+            result["failed"] += 1
+            print(f"  [FAIL] {key}", file=sys.stderr)
+
+    return result
+
+
 def verify_program(honcho: HonchoClient, program: str) -> dict:
     """
     Verify that a program's IR is correctly loaded in Honcho.
@@ -426,6 +479,7 @@ def main():
     parser.add_argument("--program", help="Program name (e.g. COACTUPC)")
     parser.add_argument("--manifest", help="Path to Honcho load manifest JSON")
     parser.add_argument("--ir", help="Path to Statement IR markdown file")
+    parser.add_argument("--layout", help="Path to Byte Layout JSON file")
     parser.add_argument("--verify", metavar="PROGRAM", help="Verify a program's Honcho load")
     parser.add_argument("--list", action="store_true", help="List all loaded programs")
     parser.add_argument("--overwrite", action="store_true", default=True,
@@ -464,15 +518,70 @@ def main():
         print(f"\nOverall: {overall} ({report['keys_found']} keys found)")
         sys.exit(0 if report["passed"] else 1)
 
-    # Load mode — requires --program and one of --manifest or --ir
-    if not args.program and not (args.manifest or args.ir):
+    # Load mode — requires --program and one of --manifest, --ir, or --layout
+    if not args.program and not (args.manifest or args.ir or args.layout):
         parser.print_help()
         sys.exit(0)
 
     if not args.program:
         parser.error("--program is required for load operations")
+
+    program = args.program.upper()
+
+    # --layout mode
+    if args.layout:
+        layout_path = Path(args.layout)
+        if not layout_path.exists():
+            print(f"ERROR: layout file not found: {layout_path}", file=sys.stderr)
+            sys.exit(1)
+        with open(layout_path) as f:
+            raw_data = json.load(f)
+        
+        # Flatten the byte_layout.py / extract_byte_layout.py format
+        layout_data = []
+        if isinstance(raw_data, dict):
+            # Format A: {"records": [{"name": "R1", "fields": [...]}, ...]}
+            if "records" in raw_data:
+                for rec in raw_data["records"]:
+                    # Add the record itself
+                    rec_entry = rec.copy()
+                    if "fields" in rec_entry:
+                        del rec_entry["fields"]
+                    layout_data.append(rec_entry)
+                    # Add all fields
+                    layout_data.extend(rec.get("fields", []))
+            # Format B: {"sections": {"working_storage": [...], ...}}
+            elif "sections" in raw_data:
+                def _flatten(items):
+                    for item in items:
+                        item_copy = item.copy()
+                        children = item_copy.pop("children", [])
+                        layout_data.append(item_copy)
+                        _flatten(children)
+                for sect in raw_data["sections"].values():
+                    _flatten(sect)
+            else:
+                layout_data = list(raw_data.values())
+        else:
+            layout_data = raw_data
+
+        print(f"Loaded layout: {len(layout_data)} field entries for {program}")
+        result = load_layout(honcho, program, layout_data,
+                             overwrite=args.overwrite, dry_run=args.dry_run)
+        print(f"\nLayout loaded: {result['loaded']} fields, {result['failed']} failed")
+        
+        if args.output_manifest and not args.dry_run:
+            out_path = Path(args.output_manifest)
+            out_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(out_path, "w") as f:
+                json.dump(result, f, indent=2)
+            print(f"Manifest saved: {out_path}")
+        
+        sys.exit(0 if result["failed"] == 0 else 1)
+
+    # Load IR mode
     if not args.manifest and not args.ir:
-        parser.error("one of --manifest or --ir is required")
+        parser.error("one of --manifest, --ir or --layout is required")
 
     # Parse input
     if args.manifest:
