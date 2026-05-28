@@ -64,15 +64,21 @@ class HonchoClient:
 
     def set(self, key: str, value: dict, force_overwrite: bool = True) -> bool:
         """Write key→value. When force_overwrite=True, skip delete — just POST."""
-        payload = {
-            "messages": [
-                {
-                    "content": json.dumps(value),
-                    "peer_id": "hermes",
-                    "metadata": {"key": key}
-                }
-            ]
-        }
+        content_str = json.dumps(value)
+        if len(content_str) > 24000:
+            msg_payload = {
+                "content": f"Large object stored in metadata: {key}",
+                "peer_id": "hermes",
+                "metadata": {"key": key, "data": value}
+            }
+        else:
+            msg_payload = {
+                "content": content_str,
+                "peer_id": "hermes",
+                "metadata": {"key": key}
+            }
+            
+        payload = {"messages": [msg_payload]}
         resp = requests.post(self.messages_url, json=payload, headers=self.headers)
         return resp.status_code in (200, 201)
 
@@ -85,21 +91,24 @@ class HonchoClient:
         result = {"loaded": 0, "failed": 0, "failed_keys": [], "keys_loaded": []}
         session = requests.Session()
         
-        # We can either use Honcho's batch endpoint (if it exists) or keep-alive individual POSTs.
-        # Openapi showed POST to /messages accepts a list of messages. We will use that per-item for safety
-        # but with a keep-alive session, or batch them if the API allows multiple in one call.
-        # Let's batch them into chunks of 100 to be safe and fast.
-        
         chunk_size = 100
         for i in range(0, len(items), chunk_size):
             chunk = items[i:i+chunk_size]
             messages = []
             for key, value in chunk:
-                messages.append({
-                    "content": json.dumps(value),
-                    "peer_id": "hermes",
-                    "metadata": {"key": key}
-                })
+                content_str = json.dumps(value)
+                if len(content_str) > 24000:
+                    messages.append({
+                        "content": f"Large object stored in metadata: {key}",
+                        "peer_id": "hermes",
+                        "metadata": {"key": key, "data": value}
+                    })
+                else:
+                    messages.append({
+                        "content": content_str,
+                        "peer_id": "hermes",
+                        "metadata": {"key": key}
+                    })
             
             payload = {"messages": messages}
             try:
@@ -129,6 +138,9 @@ class HonchoClient:
         res = self._request("POST", path, payload)
         if res and isinstance(res, dict) and res.get("items"):
             msg = res["items"][0]
+            meta = msg.get("metadata", {})
+            if "data" in meta:
+                return meta["data"]
             try:
                 return json.loads(msg["content"])
             except (json.JSONDecodeError, TypeError):
@@ -365,6 +377,52 @@ def load_layout(
 
 
 
+def load_cfg(
+    honcho: HonchoClient,
+    program: str,
+    cfg_data: dict,
+    dry_run: bool = False
+) -> dict:
+    """Load CFG summary under {PROGRAM}/cfg/summary key."""
+    key = cfg_key(program)
+    if dry_run:
+        print(f"  [DRY RUN] Would load CFG: {key}")
+        return {"program": program, "loaded": 1, "failed": 0}
+    success = honcho.set(key, cfg_data)
+    status = "OK" if success else "FAIL"
+    print(f"  [{status}] {key}")
+    return {
+        "program": program,
+        "loaded": 1 if success else 0,
+        "failed": 0 if success else 1,
+        "timestamp": datetime.now(timezone.utc).isoformat()
+    }
+
+
+def load_oracle(
+    honcho: HonchoClient,
+    program: str,
+    oracle_data: dict,
+    version: int = 1,
+    dry_run: bool = False
+) -> dict:
+    """Load simulation oracle under {PROGRAM}/oracle/v{n} key."""
+    key = oracle_key(program, version)
+    if dry_run:
+        print(f"  [DRY RUN] Would load oracle: {key}")
+        return {"program": program, "loaded": 1, "failed": 0}
+    success = honcho.set(key, oracle_data)
+    status = "OK" if success else "FAIL"
+    print(f"  [{status}] {key}")
+    return {
+        "program": program,
+        "key": key,
+        "loaded": 1 if success else 0,
+        "failed": 0 if success else 1,
+        "timestamp": datetime.now(timezone.utc).isoformat()
+    }
+
+
 def verify_program(honcho: HonchoClient, program: str) -> dict:
     """
     Verify that a program's IR is correctly loaded in Honcho.
@@ -491,6 +549,9 @@ def main():
     parser.add_argument("--manifest", help="Path to Honcho load manifest JSON")
     parser.add_argument("--ir", help="Path to Statement IR markdown file")
     parser.add_argument("--layout", help="Path to Byte Layout JSON file")
+    parser.add_argument("--cfg", help="Path to CFG JSON file")
+    parser.add_argument("--oracle", help="Path to Oracle JSON file")
+    parser.add_argument("--oracle-version", type=int, default=1, help="Oracle version (default: 1)")
     parser.add_argument("--verify", metavar="PROGRAM", help="Verify a program's Honcho load")
     parser.add_argument("--list", action="store_true", help="List all loaded programs")
     parser.add_argument("--overwrite", action="store_true", default=True,
@@ -529,8 +590,8 @@ def main():
         print(f"\nOverall: {overall} ({report['keys_found']} keys found)")
         sys.exit(0 if report["passed"] else 1)
 
-    # Load mode — requires --program and one of --manifest, --ir, or --layout
-    if not args.program and not (args.manifest or args.ir or args.layout):
+    # Load mode — requires --program and one of --manifest, --ir, --layout, --cfg, or --oracle
+    if not args.program and not (args.manifest or args.ir or args.layout or args.cfg or args.oracle):
         parser.print_help()
         sys.exit(0)
 
@@ -538,6 +599,35 @@ def main():
         parser.error("--program is required for load operations")
 
     program = args.program.upper()
+
+    # --oracle mode
+    if args.oracle:
+        oracle_path = Path(args.oracle)
+        if not oracle_path.exists():
+            print(f"ERROR: oracle file not found: {oracle_path}", file=sys.stderr)
+            sys.exit(1)
+        with open(oracle_path) as f:
+            oracle_data = json.load(f)
+        
+        print(f"Loaded oracle data for {program}")
+        result = load_oracle(honcho, program, oracle_data, 
+                             version=args.oracle_version, dry_run=args.dry_run)
+        
+        sys.exit(0 if result["failed"] == 0 else 1)
+
+    # --cfg mode
+    if args.cfg:
+        cfg_path = Path(args.cfg)
+        if not cfg_path.exists():
+            print(f"ERROR: CFG file not found: {cfg_path}", file=sys.stderr)
+            sys.exit(1)
+        with open(cfg_path) as f:
+            cfg_data = json.load(f)
+        
+        print(f"Loaded CFG data for {program}")
+        result = load_cfg(honcho, program, cfg_data, dry_run=args.dry_run)
+        
+        sys.exit(0 if result["failed"] == 0 else 1)
 
     # --layout mode
     if args.layout:
