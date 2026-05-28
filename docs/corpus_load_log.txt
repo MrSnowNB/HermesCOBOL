@@ -1,0 +1,259 @@
+
+Loading 31 programs into Honcho...
+
+
+========================================
+Program: CBACT01C
+  [LAYOUT] CBACT01C: 95 fields
+  [OK] CBACT01C/cfg/summary
+  [CFG]    CBACT01C: generated + loaded
+  [IR]     CBACT01C: 16 paragraphs loaded
+  [META]   CBACT01C: written
+
+========================================
+Program: CBACT02C
+  [LAYOUT] CBACT02C: 22 fields
+  [OK] CBACT02C/cfg/summary
+  [CFG]    CBACT02C: generated + loaded
+  [IR]     CBACT02C: 5 paragraphs loaded
+  [META]   CBACT02C: written
+
+========================================
+Program: CBACT03C
+  [LAYOUT] CBACT03C: 19 fields
+  [OK] CBACT03C/cfg/summary
+  [CFG]    CBACT03C: generated + loaded
+  [IR]     CBACT03C: 5 paragraphs loaded
+  [META]   CBACT03C: written
+
+========================================
+Program: CBACT04C
+  [LAYOUT] CBACT04C: 113 fields
+  [OK] CBACT04C/cfg/summary
+  [CFG]    CBACT04C: generated + loaded
+  [IR]     CBACT04C: 22 paragraphs loaded
+  [META]   CBACT04C: written
+
+========================================
+Program: CBCUS01C
+  [LAYOUT] CBCUS01C: 34 fields
+  [OK] CBCUS01C/cfg/summary
+  [CFG]    CBCUS01C: generated + loaded
+  [IR]     CBCUS01C: 5 paragraphs loaded
+  [META]   CBCUS01C: written
+
+========================================
+Program: CBEXPORT
+  [LAYOUT] CBEXPORT: 154 fields
+  [OK] CBEXPORT/cfg/summary
+  [CFG]    CBEXPORT: generated + loaded
+  [IR]     CBEXPORT: 21 paragraphs loaded
+  [META]   CBEXPORT: written
+
+========================================
+Program: CBIMPORT
+  [LAYOUT] CBIMPORT: 155 fields
+  [OK] CBIMPORT/cfg/summary
+  [CFG]    CBIMPORT: generated + loaded
+  [IR]     CBIMPORT: 16 paragraphs loaded
+  [META]   CBIMPORT: written
+
+========================================
+Program: CBSTM03A
+  [LAYOUT] CBSTM03A: 164 fields
+  [OK] CBSTM03A/cfg/summary
+  [CFG]    CBSTM03A: generated + loaded
+  [IR]     CBSTM03A: 25 paragraphs loaded
+  [META]   CBSTM03A: written
+
+========================================
+Program: CBSTM03B
+  [LAYOUT] CBSTM03B: 24 fields
+  [OK] CBSTM03B/cfg/summary
+  [CFG]    CBSTM03B: generated + loaded
+  [IR]     CBSTM03B: 14 paragraphs loaded
+  [META]   CBSTM03B: written
+
+========================================
+Program: CBTRN01C
+  [LAYOUT] CBTRN01C: 108 fields
+  [OK] CBTRN01C/cfg/summary
+  [CFG]    CBTRN01C: generated + loaded
+  [IR]     CBTRN01C: 18 paragraphs loaded
+  [META]   CBTRN01C: written
+
+========================================
+Program: CBTRN02C
+  [LAYOUT] CBTRN02C: 120 fields
+  [OK] CBTRN02C/cfg/summary
+  [CFG]    CBTRN02C: generated + loaded
+  [IR]     CBTRN02C: 26 paragraphs loaded
+  [META]   CBTRN02C: written
+
+========================================
+Program: CBTRN03C
+  [LAYOUT] CBTRN03C: 112 fields
+  [OK] CBTRN03C/cfg/summary
+  [CFG]    CBTRN03C: generated + loaded
+  [IR]     CBTRN03C: 26 paragraphs loaded
+  [META]   CBTRN03C: written
+
+========================================
+Program: COACTUPC
+  [LAYOUT] COACTUPC: 1139 fields
+  [OK] COACTUPC/cfg/summary
+  [CFG]    COACTUPC: loaded
+  [OK] COACTUPC/oracle/v1
+  [ORACLE] COACTUPC: loaded
+  [IR]     COACTUPC: 85 paragraphs loaded
+  [META]   COACTUPC: written
+
+========================================
+Program: COACTVWC
+  [LAYOUT] COACTVWC: 194 fields
+  [OK] COACTVWC/cfg/summary
+  [CFG]    COACTVWC: loaded
+  [IR]     COACTVWC: 34 paragraphs loaded
+  [META]   COACTVWC: written
+
+========================================
+Program: COADM01C
+  [LAYOUT] COADM01C: 107 fields
+  [OK] COADM01C/cfg/summary
+  [CFG]    COADM01C: generated + loaded
+  [IR]     COADM01C: 8 paragraphs loaded
+  [META]   COADM01C: written
+
+========================================
+Program: COBIL00C
+  [LAYOUT] COBIL00C: 121 fields
+  [OK] COBIL00C/cfg/summary
+  [CFG]    COBIL00C: generated + loaded
+  [IR]     COBIL00C: 16 paragraphs loaded
+  [META]   COBIL00C: written
+
+========================================
+Program: COBSWAIT
+  [LAYOUT] COBSWAIT: 2 fields
+  [OK] COBSWAIT/cfg/summary
+  [CFG]    COBSWAIT: generated + loaded
+  [IR]     COBSWAIT: 0 paragraphs loaded
+  [META]   COBSWAIT: written
+
+========================================
+Program: COCRDLIC
+  [LAYOUT] COCRDLIC: 177 fields
+  [OK] COCRDLIC/cfg/summary
+  [CFG]    COCRDLIC: generated + loaded
+  [IR]     COCRDLIC: 39 paragraphs loaded
+  [META]   COCRDLIC: written
+
+========================================
+Program: COCRDSLC
+  [LAYOUT] COCRDSLC: 89 fields
+  [OK] COCRDSLC/cfg/summary
+  [CFG]    COCRDSLC: generated + loaded
+  [IR]     COCRDSLC: 9 paragraphs loaded
+  [META]   COCRDSLC: written
+
+========================================
+Program: COCRDUPC
+  [LAYOUT] COCRDUPC: 123 fields
+  [OK] COCRDUPC/cfg/summary
+  [CFG]    COCRDUPC: generated + loaded
+  [IR]     COCRDUPC: 13 paragraphs loaded
+  [META]   COCRDUPC: written
+
+========================================
+Program: COMEN01C
+  [LAYOUT] COMEN01C: 168 fields
+  [OK] COMEN01C/cfg/summary
+  [CFG]    COMEN01C: generated + loaded
+  [IR]     COMEN01C: 7 paragraphs loaded
+  [META]   COMEN01C: written
+
+========================================
+Program: CORPT00C
+  [LAYOUT] CORPT00C: 147 fields
+  [OK] CORPT00C/cfg/summary
+  [CFG]    CORPT00C: generated + loaded
+  [IR]     CORPT00C: 10 paragraphs loaded
+  [META]   CORPT00C: written
+
+========================================
+Program: COSGN00C
+  [LAYOUT] COSGN00C: 80 fields
+  [OK] COSGN00C/cfg/summary
+  [CFG]    COSGN00C: generated + loaded
+  [IR]     COSGN00C: 6 paragraphs loaded
+  [META]   COSGN00C: written
+
+========================================
+Program: COTRN00C
+  [LAYOUT] COTRN00C: 100 fields
+  [OK] COTRN00C/cfg/summary
+  [CFG]    COTRN00C: generated + loaded
+  [IR]     COTRN00C: 16 paragraphs loaded
+  [META]   COTRN00C: written
+
+========================================
+Program: COTRN01C
+  [LAYOUT] COTRN01C: 96 fields
+  [OK] COTRN01C/cfg/summary
+  [CFG]    COTRN01C: generated + loaded
+  [IR]     COTRN01C: 9 paragraphs loaded
+  [META]   COTRN01C: written
+
+========================================
+Program: COTRN02C
+  [LAYOUT] COTRN02C: 129 fields
+  [OK] COTRN02C/cfg/summary
+  [CFG]    COTRN02C: generated + loaded
+  [IR]     COTRN02C: 18 paragraphs loaded
+  [META]   COTRN02C: written
+
+========================================
+Program: COUSR00C
+  [LAYOUT] COUSR00C: 98 fields
+  [OK] COUSR00C/cfg/summary
+  [CFG]    COUSR00C: generated + loaded
+  [IR]     COUSR00C: 16 paragraphs loaded
+  [META]   COUSR00C: written
+
+========================================
+Program: COUSR01C
+  [LAYOUT] COUSR01C: 78 fields
+  [OK] COUSR01C/cfg/summary
+  [CFG]    COUSR01C: generated + loaded
+  [IR]     COUSR01C: 9 paragraphs loaded
+  [META]   COUSR01C: written
+
+========================================
+Program: COUSR02C
+  [LAYOUT] COUSR02C: 86 fields
+  [OK] COUSR02C/cfg/summary
+  [CFG]    COUSR02C: generated + loaded
+  [IR]     COUSR02C: 11 paragraphs loaded
+  [META]   COUSR02C: written
+
+========================================
+Program: COUSR03C
+  [LAYOUT] COUSR03C: 86 fields
+  [OK] COUSR03C/cfg/summary
+  [CFG]    COUSR03C: generated + loaded
+  [IR]     COUSR03C: 11 paragraphs loaded
+  [META]   COUSR03C: written
+
+========================================
+Program: CSUTLDTC
+  [LAYOUT] CSUTLDTC: 35 fields
+  [OK] CSUTLDTC/cfg/summary
+  [CFG]    CSUTLDTC: generated + loaded
+  [IR]     CSUTLDTC: 2 paragraphs loaded
+  [META]   CSUTLDTC: written
+
+========================================
+Corpus load complete.
+Programs processed: 31
+Total time: 1260.1s
+Manifest: docs\corpus_load_manifest.json

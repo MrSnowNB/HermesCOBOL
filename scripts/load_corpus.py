@@ -127,7 +127,9 @@ def load_program_full(honcho: HonchoClient, prog: dict,
         # Generate CFG on the fly
         out_path = f"docs/{name}_cfg_summary.json"
         cmd = [sys.executable, "scripts/extract_cfg_summary.py",
-               "--source", prog["source"], "--output", out_path]
+               "--source", prog["source"], 
+               "--report-dir", "validation/reports",
+               "--output", out_path]
         proc = subprocess.run(cmd, capture_output=True, text=True)
         if proc.returncode == 0 and Path(out_path).exists():
             with open(out_path) as f:
