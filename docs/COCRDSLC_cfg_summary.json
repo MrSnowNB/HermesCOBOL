@@ -1,0 +1,26 @@
+{
+  "program_id": "COCRDSLC",
+  "source_file": "data\\preprocessed\\COCRDSLC.cob",
+  "source_sha": "909312ef8fca02481a925e9fd46c832b9fd8e00d",
+  "cfg_tool": "Cobol-REKT smojol-cli v0.1.0-RC8 + extract_cfg_summary.py",
+  "paragraphs": [],
+  "data_items": [],
+  "redefines_clauses": [],
+  "copybooks_used": [
+    "COCOM01Y",
+    "COCRDSLI",
+    "COTTL01Y",
+    "CSDAT01Y",
+    "CSMSG01Y",
+    "CSUSR01Y",
+    "DFHAID",
+    "DFHBMSCA"
+  ],
+  "calls_to": [],
+  "cics_commands": [],
+  "dead_code_paragraphs": [],
+  "dead_code_items": [],
+  "irreducible_gotos": [],
+  "smojol_cfg_path": null,
+  "smojol_node_count": 0
+}

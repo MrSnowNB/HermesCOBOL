@@ -1,0 +1,22 @@
+{
+  "program_id": "COUSR01C",
+  "source_file": "data\\preprocessed\\COUSR01C.cob",
+  "source_sha": "6c8065aa5aaf2dba57daf2e7eba77fbddb525843",
+  "cfg_tool": "Cobol-REKT smojol-cli v0.1.0-RC8 + extract_cfg_summary.py",
+  "paragraphs": [],
+  "data_items": [],
+  "redefines_clauses": [],
+  "copybooks_used": [
+    "CSUSR01Y",
+    "DFHAID",
+    "DFHATTR",
+    "DFHBMSCA"
+  ],
+  "calls_to": [],
+  "cics_commands": [],
+  "dead_code_paragraphs": [],
+  "dead_code_items": [],
+  "irreducible_gotos": [],
+  "smojol_cfg_path": null,
+  "smojol_node_count": 0
+}

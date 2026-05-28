@@ -1,0 +1,17 @@
+{
+  "program_id": "CBACT01C",
+  "source_file": "data\\preprocessed\\CBACT01C.cob",
+  "source_sha": "f12fb32d79b9e8f001141bd3d7a81e428e6bfbff",
+  "cfg_tool": "Cobol-REKT smojol-cli v0.1.0-RC8 + extract_cfg_summary.py",
+  "paragraphs": [],
+  "data_items": [],
+  "redefines_clauses": [],
+  "copybooks_used": [],
+  "calls_to": [],
+  "cics_commands": [],
+  "dead_code_paragraphs": [],
+  "dead_code_items": [],
+  "irreducible_gotos": [],
+  "smojol_cfg_path": null,
+  "smojol_node_count": 0
+}
