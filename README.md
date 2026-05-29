@@ -12,6 +12,66 @@ raw COBOL  ->  cobc -E  ->  COBOL-REKT  ->  Python extraction  ->  data/facts/
 The pipeline stops at data artifacts. No LLM integration, no server, no agent runtime.
 Hermes/harness/agent integration happens later in a separate layer.
 
+## Honcho-as-RAM Architecture
+
+HermesCOBOL uses [Honcho](https://github.com/plastic-labs/honcho) as a
+persistent memory store for the full CardDemo COBOL corpus. This replaces
+re-parsing source files on every AI query with instant structured reads.
+
+### Quick Start — AI Harness Integration
+
+If you are building a local AI harness (Hermes, Claude, Ollama, etc.)
+that needs to query the CardDemo corpus, connect to Honcho like this:
+
+**Python (requests)**
+```python
+import requests
+
+HONCHO_BASE = "http://localhost:18000"
+WORKSPACE   = "hermes"
+SESSION     = "hermes-agent"
+MESSAGES_URL = f"{HONCHO_BASE}/v3/workspaces/{WORKSPACE}/sessions/{SESSION}/messages"
+
+def honcho_get(key: str) -> dict | None:
+    """Retrieve the latest value for a canonical key."""
+    resp = requests.get(MESSAGES_URL, params={
+        "metadata_filter": f'{{"honcho_key": "{key}"}}',
+        "reverse": "true",
+        "size": 1
+    })
+    if resp.status_code == 200:
+        items = resp.json().get("items", [])
+        if items:
+            import json
+            return json.loads(items["content"])
+    return None
+
+# Examples
+para   = honcho_get("COACTUPC/para/0000-MAIN")
+layout = honcho_get("COACTUPC/layout/WS-MISC-STORAGE.ACCT-UPDATE-RECORD")
+cfg    = honcho_get("COACTUPC/cfg/summary")
+oracle = honcho_get("COACTUPC/oracle/v1")
+meta   = honcho_get("COACTUPC/meta")
+```
+
+**Key Schema Reference**
+{PROGRAM}/para/{PARAGRAPH_NAME} — IR unit with performs, mutates
+{PROGRAM}/layout/{QUALIFIED.FIELD.PATH} — byte offset, length, PIC clause
+{PROGRAM}/cfg/summary — nodes, edges, entry point
+{PROGRAM}/oracle/v{N} — regression oracle
+{PROGRAM}/meta — program metadata
+
+**Corpus Coverage**
+- 31 programs, 518 paragraphs, ~3,900 layout fields, 31 CFGs
+- Oracle: COACTUPC only (v1)
+- Honcho must be running: `honcho run` or `docker-compose up`
+
+### Reloading the Corpus (if Honcho is reset)
+```bash
+python scripts/load_corpus.py --run
+# Expected: ~21 minutes, 31 programs, zero failures
+```
+
 ---
 
 ## Raw-data-only policy
