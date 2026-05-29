@@ -175,20 +175,6 @@ class HonchoClient:
             
         return list(all_keys)
 
-    def delete(self, key: str) -> bool:
-        """Delete all messages matching this key."""
-        path = f"/v3/workspaces/{self.workspace_id}/sessions/{self.session_id}/messages/list"
-        payload = {"filters": {"metadata": {"key": key}}}
-        res = self._request("POST", path, payload)
-        success = True
-        if res and isinstance(res, dict) and res.get("items"):
-            for item in res["items"]:
-                mid = item["id"]
-                del_path = f"/v3/workspaces/{self.workspace_id}/sessions/{self.session_id}/messages/{mid}"
-                if self._request("DELETE", del_path) is None:
-                    success = False
-        return success
-
 
 def para_key(program: str, paragraph: str) -> str:
     """COACTUPC/para/0000-MAIN"""
@@ -293,7 +279,11 @@ def load_program(
     skipped_exit = 0
 
     for unit in units:
-        para_name = unit.get("paragraph", "UNKNOWN")
+        para_name = (unit.get("name") or 
+                     unit.get("paragraph") or 
+                     unit.get("para_name") or 
+                     unit.get("paragraph_name") or 
+                     "UNKNOWN")
         key = para_key(program, para_name)
 
         if not should_load(unit):

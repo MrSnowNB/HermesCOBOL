@@ -155,7 +155,7 @@ def load_program_full(honcho: HonchoClient, prog: dict,
     if prog.get("has_ir"):
         with open(prog["ir_path"]) as f:
             ir_data = json.load(f)
-        
+
         # Determine format (manifest vs pure canonical)
         units = []
         if isinstance(ir_data, dict) and "units" in ir_data:
@@ -165,12 +165,11 @@ def load_program_full(honcho: HonchoClient, prog: dict,
             units = ir_data["paragraphs"]
         elif isinstance(ir_data, list):
             units = ir_data
-            
+
         from honcho_loader import load_program
         r = load_program(honcho, name, units)
         result["steps"]["ir"] = r
         print(f"  [IR]     {name}: {r.get('loaded', 0)} paragraphs loaded")
-
     # 5. Write meta entry
     meta = {
         "program": name,
