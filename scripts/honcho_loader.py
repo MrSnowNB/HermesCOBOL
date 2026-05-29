@@ -505,6 +505,10 @@ def list_loaded_programs(honcho: HonchoClient) -> list[dict]:
         if len(parts) < 2:
             continue
         prog = parts[0]
+        
+        if prog.startswith("_"):
+            continue
+            
         namespace = parts[1] if len(parts) > 1 else ""
         
         if prog not in programs:
@@ -530,6 +534,18 @@ def list_loaded_programs(honcho: HonchoClient) -> list[dict]:
     
     return sorted(programs.values(), key=lambda x: x["program"])
 
+def audit_unknown_keys(honcho: HonchoClient):
+    """Scan all keys and report those ending in /UNKNOWN."""
+    keys = honcho.keys("")
+    unknown_keys = [k for k in keys if k.endswith("/UNKNOWN")]
+    
+    print(f"\nAudit: Unknown Keys in Honcho")
+    print("-" * 50)
+    for k in sorted(unknown_keys):
+        print(f"Stale Key: {k}")
+    
+    print(f"\nTotal stale keys: {len(unknown_keys)}")
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -544,6 +560,7 @@ def main():
     parser.add_argument("--oracle-version", type=int, default=1, help="Oracle version (default: 1)")
     parser.add_argument("--verify", metavar="PROGRAM", help="Verify a program's Honcho load")
     parser.add_argument("--list", action="store_true", help="List all loaded programs")
+    parser.add_argument("--audit-unknown", action="store_true", help="Scan for and report keys ending in /UNKNOWN")
     parser.add_argument("--overwrite", action="store_true", default=True,
                         help="Overwrite existing keys (default: True)")
     parser.add_argument("--no-overwrite", dest="overwrite", action="store_false",
@@ -556,6 +573,10 @@ def main():
 
     honcho = HonchoClient()
 
+    if args.audit_unknown:
+        audit_unknown_keys(honcho)
+        return
+        
     # --list mode
     if args.list:
         programs = list_loaded_programs(honcho)

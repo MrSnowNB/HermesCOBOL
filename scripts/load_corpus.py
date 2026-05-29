@@ -86,7 +86,10 @@ def discover_programs() -> list[dict]:
                 programs[name]["has_ir"] = True
                 programs[name]["ir_path"] = str(f)
 
-    return sorted(programs.values(), key=lambda x: x["program"])
+    return sorted(
+        [p for p in programs.values() if not p["program"].startswith("_") and p.get("source")],
+        key=lambda x: x["program"]
+    )
 
 
 def load_program_full(honcho: HonchoClient, prog: dict,
