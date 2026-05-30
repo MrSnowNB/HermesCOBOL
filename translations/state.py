@@ -117,6 +117,25 @@ class CarddemoState:
     flg_fico_score_is_valid: bool = False
     input_error: bool = False
 
+    # 0000-MAIN new fields (duplicates removed)
+    eibcalen: int = 0
+    ws_return_msg_off: bool = False
+    cdemo_pgm_enter: bool = False
+    pfk_invalid: bool = False
+    pfk_valid: bool = False
+    ccard_aid_enter: bool = False
+    ccard_aid_pfk03: bool = False
+    cdemo_from_tranid: str = ""
+    cdemo_to_tranid: str = ""
+    ws_literals_lit_menutranid: str = ""
+    cdemo_from_program: str = ""
+    cdemo_to_program: str = ""
+    cdemo_last_map: str = ""
+    cdemo_last_mapset: str = ""
+    cdemo_pgm_reenter: bool = False
+    cdemo_usrtyp_user: str = ""
+    common_return: Any = None
+
     # 1200-EDIT-MAP-INPUTS additional control flags (bool)
     input_ok: bool = False
     acup_details_not_fetched: bool = False
