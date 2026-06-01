@@ -378,3 +378,102 @@ def coactupc_1200_edit_map_inputs(state: CarddemoState) -> None:
     # seq=113: MOVE WS-EDIT-ALPHA-ONLY-FLAGS TO WS-EDIT-CITY-FLGS
     # TODO: ws_edit_city_flgs not in state.py
     pass
+
+    # seq=114: MOVE 'Country' TO WS-EDIT-VARIABLE-NAME
+    state.ws_misc_storage_ws_generic_edits_ws_edit_variable_name = "Country"
+
+    # seq=115: MOVE ACUP-NEW-CUST-ADDR-COUNTRY-CD TO WS-EDIT-ALPHANUM-ONLY
+    # TODO: ws_edit_alphanum_only not in state.py
+    pass
+
+    # seq=116: MOVE 3 TO WS-EDIT-ALPHANUM-LENGTH
+    # TODO: ws_edit_alphanum_length not in state.py
+    pass
+
+    # seq=117: PERFORM 1225-EDIT-ALPHA-REQD THRU 1225-EDIT-ALPHA-REQD-EXIT
+    coactupc_1225_edit_alpha_reqd(state)
+
+    # seq=118: MOVE WS-EDIT-ALPHA-ONLY-FLAGS TO WS-EDIT-COUNTRY-FLGS
+    # TODO: ws_edit_country_flgs not in state.py
+    pass
+
+    # seq=119: MOVE 'Phone Number 1' TO WS-EDIT-VARIABLE-NAME
+    state.ws_misc_storage_ws_generic_edits_ws_edit_variable_name = "Phone Number 1"
+
+    # seq=120: MOVE ACUP-NEW-CUST-PHONE-NUM-1 TO WS-EDIT-US-PHONE-NUM
+    # TODO: ws_edit_us_phone_num not in state.py
+    pass
+
+    # seq=121: PERFORM 1260-EDIT-US-PHONE-NUM THRU 1260-EDIT-US-PHONE-NUM-EXIT
+    coactupc_1260_edit_us_phone_num(state)
+
+    # seq=122: MOVE WS-EDIT-US-PHONE-NUM-FLGS TO WS-EDIT-PHONE-NUM-1-FLGS
+    # TODO: ws_edit_phone_num_1_flgs not in state.py
+    pass
+
+    # seq=123: MOVE 'Phone Number 2' TO WS-EDIT-VARIABLE-NAME
+    state.ws_misc_storage_ws_generic_edits_ws_edit_variable_name = "Phone Number 2"
+
+    # seq=124: MOVE ACUP-NEW-CUST-PHONE-NUM-2 TO WS-EDIT-US-PHONE-NUM
+    # TODO: ws_edit_us_phone_num not in state.py
+    pass
+
+    # seq=125: PERFORM 1260-EDIT-US-PHONE-NUM THRU 1260-EDIT-US-PHONE-NUM-EXIT
+    coactupc_1260_edit_us_phone_num(state)
+
+    # seq=126: MOVE WS-EDIT-US-PHONE-NUM-FLGS TO WS-EDIT-PHONE-NUM-2-FLGS
+    # TODO: ws_edit_phone_num_2_flgs not in state.py
+    pass
+
+    # seq=127: MOVE 'EFT Account Id' TO WS-EDIT-VARIABLE-NAME
+    state.ws_misc_storage_ws_generic_edits_ws_edit_variable_name = "EFT Account Id"
+
+    # seq=128: MOVE ACUP-NEW-CUST-EFT-ACCOUNT-ID TO WS-EDIT-ALPHANUM-ONLY
+    # TODO: ws_edit_alphanum_only not in state.py
+    pass
+
+    # seq=129: MOVE 10 TO WS-EDIT-ALPHANUM-LENGTH
+    # TODO: ws_edit_alphanum_length not in state.py
+    pass
+
+    # seq=130: PERFORM 1245-EDIT-NUM-REQD THRU 1245-EDIT-NUM-REQD-EXIT
+    coactupc_1245_edit_num_reqd(state)
+
+    # seq=131: MOVE WS-EDIT-ALPHANUM-ONLY-FLAGS TO WS-EFT-ACCOUNT-ID-FLGS
+    # TODO: ws_eft_account_id_flgs not in state.py
+    pass
+
+    # seq=132: MOVE 'Primary Card Holder' TO WS-EDIT-VARIABLE-NAME
+    state.ws_misc_storage_ws_generic_edits_ws_edit_variable_name = "Primary Card Holder"
+
+    # seq=133: MOVE ACUP-NEW-CUST-PRI-HOLDER-IND TO WS-EDIT-YES-NO
+    # TODO: ws_edit_yes_no not in state.py
+    pass
+
+    # seq=134: PERFORM 1220-EDIT-YESNO THRU 1220-EDIT-YESNO-EXIT
+    coactupc_1220_edit_yesno(state)
+
+    # seq=135: MOVE WS-EDIT-YES-NO TO WS-EDIT-PRI-CARDHOLDER
+    # TODO: ws_edit_pri_cardholder not in state.py
+    pass
+
+    # seq=136: IF FLG-STATE-ISVALID AND FLG-ZIPCODE-ISVALID
+    # TODO: flg_state_isvalid / flg_zipcode_isvalid not in state.py
+    if state.input_ok:
+        # seq=137: PERFORM 1280-EDIT-US-STATE-ZIP-CD THRU 1280-EDIT-US-STATE-ZIP-CD-EXIT
+        coactupc_1280_edit_us_state_zip_cd(state)
+    # seq=138: END-IF
+
+    # seq=139: IF INPUT-ERROR
+    # TODO: input_error not in state.py
+    if state.input_ok:
+        # seq=140: CONTINUE
+        pass
+    else:
+        # seq=141: SET ACUP-CHANGES-OK-NOT-CONFIRMED TO TRUE
+        # TODO: acup_changes_ok_not_confirmed not in state.py
+        pass
+    # seq=142: END-IF
+
+    # seq=143: 1200-EDIT-MAP-INPUTS-EXIT (implicit return)
+    return
