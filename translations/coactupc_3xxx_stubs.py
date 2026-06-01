@@ -13,9 +13,9 @@ def screen_init():
 
 
 def setup_screen_vars():
-    """3200-SETUP-SCREEN-VARS stub"""
-    # TODO: 3200-SETUP-SCREEN-VARS — implement when 3200 paragraph is translated
-    pass
+    """3200-SETUP-SCREEN-VARS"""
+    from coactupc_3200_setup_screen_vars import setup_screen_vars as _setup_screen_vars
+    _setup_screen_vars()
 
 
 def setup_infomsg():
