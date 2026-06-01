@@ -317,3 +317,12 @@ abend_culprit: str = ""
 abend_code: str = ""
 abend_reason: str = ""
 abend_msg: str = ""
+
+
+# --- 3200/3203 Validation Flags ---
+flg_cred_limit_isvalid: bool = False
+flg_cash_credit_limit_isvalid: bool = False
+flg_curr_bal_isvalid: bool = False
+flg_curr_cyc_credit_isvalid: bool = False
+flg_curr_cyc_debit_isvalid: bool = False
+acup_changes_made: bool = False

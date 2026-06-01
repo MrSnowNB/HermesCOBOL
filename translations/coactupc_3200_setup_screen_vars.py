@@ -14,9 +14,8 @@ def _format_currency(value) -> str:
         return ""
 
 
-def _show_initial_values():
+def _show_initial_values(state):
     """3201-SHOW-INITIAL-VALUES"""
-    # Clear account/customer fields
     for field in [
         "ACSTTUSO", "ACRDLIMO", "ACURBALO", "ACSHLIMO",
         "ACRCYCRO", "ACRCYDBO",
@@ -31,7 +30,7 @@ def _show_initial_values():
         state.cactupao[field] = ""
 
 
-def _show_original_values():
+def _show_original_values(state):
     """3202-SHOW-ORIGINAL-VALUES"""
     if state.found_acct_in_master or state.found_cust_in_master:
         state.cactupao["ACSTTUSO"] = state.acup_old_active_status or ""
@@ -76,36 +75,31 @@ def _show_original_values():
         state.cactupao["ACSMNAMO"] = state.acup_old_cust_middle_name or ""
 
 
-def _show_updated_values():
+def _show_updated_values(state):
     """3203-SHOW-UPDATED-VALUES"""
     state.cactupao["ACSTTUSO"] = state.acup_new_active_status or ""
 
-    # Credit limit
-    if getattr(state, "flg_cred_limit_isvalid", False):
+    if state.flg_cred_limit_isvalid:
         state.cactupao["ACRDLIMO"] = _format_currency(state.acup_new_credit_limit_n)
     else:
         state.cactupao["ACRDLIMO"] = state.acup_new_credit_limit_x or ""
 
-    # Cash credit limit
-    if getattr(state, "flg_cash_credit_limit_isvalid", False):
+    if state.flg_cash_credit_limit_isvalid:
         state.cactupao["ACSHLIMO"] = _format_currency(state.acup_new_cash_credit_limit_n)
     else:
         state.cactupao["ACSHLIMO"] = state.acup_new_cash_credit_limit_x or ""
 
-    # Current balance
-    if getattr(state, "flg_curr_bal_isvalid", False):
+    if state.flg_curr_bal_isvalid:
         state.cactupao["ACURBALO"] = _format_currency(state.acup_new_curr_bal_n)
     else:
         state.cactupao["ACURBALO"] = state.acup_new_curr_bal_x or ""
 
-    # Current cycle credit
-    if getattr(state, "flg_curr_cyc_credit_isvalid", False):
+    if state.flg_curr_cyc_credit_isvalid:
         state.cactupao["ACRCYCRO"] = _format_currency(state.acup_new_curr_cyc_credit_n)
     else:
         state.cactupao["ACRCYCRO"] = state.acup_new_curr_cyc_credit_x or ""
 
-    # Current cycle debit
-    if getattr(state, "flg_curr_cyc_debit_isvalid", False):
+    if state.flg_curr_cyc_debit_isvalid:
         state.cactupao["ACRCYDBO"] = _format_currency(state.acup_new_curr_cyc_debit_n)
     else:
         state.cactupao["ACRCYDBO"] = state.acup_new_curr_cyc_debit_x or ""
@@ -119,23 +113,21 @@ def _show_updated_values():
     state.cactupao["EXPDAYO"] = state.acup_new_exp_day or ""
 
 
-def setup_screen_vars():
+def setup_screen_vars(state):
     """3200-SETUP-SCREEN-VARS (public dispatcher)"""
     if state.cdemo_pgm_enter:
         return
 
-    # Account ID
     if state.cc_acct_id_n == 0 and state.flg_acctfilter_isvalid:
         state.cactupao["ACCTSIDO"] = ""
     else:
         state.cactupao["ACCTSIDO"] = state.cc_acct_id or ""
 
-    # Dispatch based on state
     if state.acup_details_not_fetched or state.cc_acct_id_n == 0:
-        _show_initial_values()
+        _show_initial_values(state)
     elif state.acup_show_details:
-        _show_original_values()
+        _show_original_values(state)
     elif state.acup_changes_made:
-        _show_updated_values()
+        _show_updated_values(state)
     else:
-        _show_original_values()
+        _show_original_values(state)

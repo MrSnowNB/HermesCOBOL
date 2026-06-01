@@ -15,7 +15,7 @@ def screen_init():
 def setup_screen_vars():
     """3200-SETUP-SCREEN-VARS"""
     from coactupc_3200_setup_screen_vars import setup_screen_vars as _setup_screen_vars
-    _setup_screen_vars()
+    _setup_screen_vars(state)
 
 
 def setup_infomsg():
