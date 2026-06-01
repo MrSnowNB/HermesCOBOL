@@ -326,3 +326,5 @@ flg_curr_bal_isvalid: bool = False
 flg_curr_cyc_credit_isvalid: bool = False
 flg_curr_cyc_debit_isvalid: bool = False
 acup_changes_made: bool = False
+
+ws_info_msg: str = ""

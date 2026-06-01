@@ -19,9 +19,9 @@ def setup_screen_vars():
 
 
 def setup_infomsg():
-    """3250-SETUP-INFOMSG stub"""
-    # TODO: 3250-SETUP-INFOMSG — implement when 3250 paragraph is translated
-    pass
+    """3250-SETUP-INFOMSG"""
+    from coactupc_3250_setup_infomsg import setup_infomsg as _setup_infomsg
+    _setup_infomsg(state)
 
 
 def setup_screen_attrs():
