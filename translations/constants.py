@@ -24,3 +24,8 @@ INFO_INFORM_FAILURE   = "Changes unsuccessful. Please try again"
 # BMS attribute constants (Python model)
 DFHBMPRF = "PROTECTED"
 DFHBMFSE = "UNPROTECTED"
+
+
+# 3390 BMS attribute constants
+DFHBMDAR = "DARK"
+DFHBMASB = "BRIGHT"

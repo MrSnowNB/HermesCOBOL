@@ -31,9 +31,9 @@ def setup_screen_attrs():
 
 
 def setup_infomsg_attrs():
-    """3390-SETUP-INFOMSG-ATTRS stub"""
-    # TODO: 3390-SETUP-INFOMSG-ATTRS — implement when 3390 paragraph is translated
-    pass
+    """3390-SETUP-INFOMSG-ATTRS"""
+    from coactupc_3390_setup_infomsg_attrs import setup_infomsg_attrs as _setup_infomsg_attrs
+    _setup_infomsg_attrs(state)
 
 
 def send_screen():
