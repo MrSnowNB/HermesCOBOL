@@ -294,3 +294,8 @@ flg_state_not_ok: bool = False
 
 # --- 1275 FICO Score Edit Working Storage ---
 flg_fico_score_not_ok: bool = False
+
+
+# --- 1280 State + ZIP Combo Edit Working Storage ---
+us_state_and_first_zip2: str = ""
+flg_zipcode_not_ok: bool = False
