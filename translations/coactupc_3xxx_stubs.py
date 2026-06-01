@@ -7,9 +7,9 @@ paragraphs are translated.
 
 
 def screen_init():
-    """3100-SCREEN-INIT stub"""
-    # TODO: 3100-SCREEN-INIT — implement when 3100 paragraph is translated
-    pass
+    """3100-SCREEN-INIT"""
+    from coactupc_3100_screen_init import screen_init as _screen_init
+    _screen_init()
 
 
 def setup_screen_vars():
