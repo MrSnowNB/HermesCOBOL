@@ -241,3 +241,18 @@ class CarddemoState:
     # Control flags
     change_has_occurred: bool = False
     no_changes_detected: bool = False
+
+# 1210-EDIT-ACCOUNT fields
+    flg_acctfilter_not_ok: bool = False
+    cc_acct_id: str = ""
+    ws_prompt_for_acct: bool = False
+    cdemo_acct_id: int = 0
+    acup_new_acct_id: str = ""
+    cc_acct_id_n: int = 0
+    ws_return_msg: str = ""
+# 1215-EDIT-MANDATORY fields
+    flg_mandatory_not_ok: bool = False
+    ws_edit_alphanum_only: str = ""
+    flg_mandatory_blank: bool = False
+    flg_mandatory_isvalid: bool = False
+
