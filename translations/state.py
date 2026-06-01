@@ -299,3 +299,21 @@ flg_fico_score_not_ok: bool = False
 # --- 1280 State + ZIP Combo Edit Working Storage ---
 us_state_and_first_zip2: str = ""
 flg_zipcode_not_ok: bool = False
+
+
+# --- 2000 DECIDE-ACTION Working Storage ---
+acup_show_details: bool = False
+acup_changes_okayed_and_done: bool = False
+acup_changes_okayed_lock_error: bool = False
+acup_changes_okayed_but_failed: bool = False
+ccard_aid_pfk12: bool = False
+ccard_aid_pfk05: bool = False
+could_not_lock_acct_for_update: bool = False
+locked_but_update_failed: bool = False
+data_was_changed_before_update: bool = False
+cdemo_card_num: int = 0
+cdemo_acct_status: str = ""
+abend_culprit: str = ""
+abend_code: str = ""
+abend_reason: str = ""
+abend_msg: str = ""
