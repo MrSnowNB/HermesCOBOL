@@ -1,0 +1,107 @@
+import pytest
+from translations.state import CarddemoState
+from translations import (
+    coactupc_0000_main,
+    coactupc_1000_process_inputs,
+    coactupc_1100_receive_map,
+    coactupc_1200_edit_map_inputs,
+)
+
+
+# ============================================================================
+# 1200-EDIT-MAP-INPUTS tests
+# ============================================================================
+
+def test_1200_sets_input_ok_true():
+    """seq=1: SET INPUT-OK TO TRUE"""
+    state = CarddemoState()
+    coactupc_1200_edit_map_inputs.coactupc_1200_edit_map_inputs(state)
+    assert state.input_ok is True
+
+
+def test_1200_details_not_fetched_returns_early():
+    """Early return at seq=8 when ACUP-DETAILS-NOT-FETCHED"""
+    state = CarddemoState()
+    state.acup_details_not_fetched = True
+    coactupc_1200_edit_map_inputs.coactupc_1200_edit_map_inputs(state)
+    assert state.found_account_data is False
+
+
+def test_1200_no_changes_found_returns_early():
+    """Early return at seq=19 when NO-CHANGES-FOUND"""
+    state = CarddemoState()
+    state.acup_details_not_fetched = False
+    state.no_changes_found = True
+    coactupc_1200_edit_map_inputs.coactupc_1200_edit_map_inputs(state)
+    assert state.acup_changes_not_ok is False
+
+
+def test_1200_happy_path_sets_flags():
+    """seq=11-21: happy path sets account + customer flags"""
+    state = CarddemoState()
+    state.acup_details_not_fetched = False
+    state.no_changes_found = False
+    coactupc_1200_edit_map_inputs.coactupc_1200_edit_map_inputs(state)
+    assert state.found_account_data is True
+    assert state.found_acct_in_master is True
+    assert state.flg_acctfilter_isvalid is True
+    assert state.found_cust_in_master is True
+    assert state.flg_custfilter_isvalid is True
+    assert state.acup_changes_not_ok is True
+
+
+def test_1200_active_status_copied_to_edit_yes_no():
+    """seq=23: MOVE ACUP-NEW-ACTIVE-STATUS TO WS-EDIT-YES-NO"""
+    state = CarddemoState()
+    state.acup_details_not_fetched = False
+    state.no_changes_found = False
+    state.ws_this_progcommarea_acup_new_details_acup_new_acct_data_acup_new_active_status = "Y"
+    coactupc_1200_edit_map_inputs.coactupc_1200_edit_map_inputs(state)
+    assert state.ws_misc_storage_ws_generic_edits_ws_edit_yes_no == "Y"
+
+
+# ============================================================================
+# 0000-MAIN smoke tests
+# ============================================================================
+
+def test_0000_main_smoke():
+    state = CarddemoState()
+    coactupc_0000_main.coactupc_0000_main(state)
+
+
+def test_0000_main_with_tranid():
+    state = CarddemoState()
+    state.ws_literals_lit_thistranid = "ACUP"
+    coactupc_0000_main.coactupc_0000_main(state)
+    assert state is not None
+
+
+# ============================================================================
+# 1000-PROCESS-INPUTS smoke tests
+# ============================================================================
+
+def test_1000_process_inputs_smoke():
+    state = CarddemoState()
+    coactupc_1000_process_inputs.coactupc_1000_process_inputs(state)
+
+
+def test_1000_process_inputs_sets_return_msg():
+    state = CarddemoState()
+    coactupc_1000_process_inputs.coactupc_1000_process_inputs(state)
+    assert state is not None
+
+
+# ============================================================================
+# 1100-RECEIVE-MAP smoke tests
+# ============================================================================
+
+def test_1100_receive_map_smoke():
+    state = CarddemoState()
+    coactupc_1100_receive_map.coactupc_1100_receive_map(state)
+
+
+def test_1100_receive_map_with_mapname():
+    state = CarddemoState()
+    state.ws_literals_lit_thismap = "ACUPMAP"
+    coactupc_1100_receive_map.coactupc_1100_receive_map(state)
+    assert state is not None
