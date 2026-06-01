@@ -5,6 +5,7 @@ from translations import (
     coactupc_1000_process_inputs,
     coactupc_1100_receive_map,
     coactupc_1200_edit_map_inputs,
+    coactupc_1205_compare_old_new,
 )
 
 
