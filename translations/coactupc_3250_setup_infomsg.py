@@ -3,7 +3,6 @@ coactupc_3250_setup_infomsg.py
 Implements 3250-SETUP-INFOMSG paragraph.
 """
 
-from state import state
 from constants import (
     INFO_FOUND_ACCOUNT,
     INFO_PROMPT_SEARCH,
