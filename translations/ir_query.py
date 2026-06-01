@@ -48,6 +48,5 @@ if __name__ == "__main__":
         para = getattr(doc, 'paragraph_name', 'Unknown')
         content = getattr(doc, 'content', '')
         score = getattr(doc, 'score', 'N/A')
-        print(f"
-{i+1}. [Score: {score}] Para: {para}")
+        print(f"\n{i+1}. [Score: {score}] Para: {para}")
         print(f"   {content[:200].replace(chr(10), ' ')}...")
