@@ -273,3 +273,15 @@ flg_edit_us_phoneb_isvalid: bool = False
 flg_edit_us_phonec_blank: bool = False
 flg_edit_us_phonec_not_ok: bool = False
 flg_edit_us_phonec_isvalid: bool = False
+
+
+# --- 1265 SSN Edit Working Storage ---
+ws_edit_us_ssn_part1: str = ""
+ws_edit_us_ssn_part2: str = ""
+ws_edit_us_ssn_part3: str = ""
+ws_edit_us_ssn_part1_flgs: str = ""
+ws_edit_us_ssn_part2_flgs: str = ""
+ws_edit_us_ssn_part3_flgs: str = ""
+flg_edit_us_ssn_part1_not_ok: bool = False
+flg_edit_us_ssn_part2_not_ok: bool = False
+flg_edit_us_ssn_part3_not_ok: bool = False
