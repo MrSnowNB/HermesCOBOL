@@ -256,3 +256,20 @@ class CarddemoState:
     flg_mandatory_blank: bool = False
     flg_mandatory_isvalid: bool = False
 
+
+
+# --- 1260 Phone Edit Working Storage ---
+ws_edit_us_phone_numa: str = ""      # area code (3 digits)
+ws_edit_us_phone_numb: str = ""      # prefix (3 digits)
+ws_edit_us_phone_numc: str = ""      # line number (4 digits)
+ws_edit_us_phone_is_valid: bool = False
+ws_edit_us_phone_is_invalid: bool = False
+flg_edit_us_phonea_blank: bool = False
+flg_edit_us_phonea_not_ok: bool = False
+flg_edit_us_phonea_isvalid: bool = False
+flg_edit_us_phoneb_blank: bool = False
+flg_edit_us_phoneb_not_ok: bool = False
+flg_edit_us_phoneb_isvalid: bool = False
+flg_edit_us_phonec_blank: bool = False
+flg_edit_us_phonec_not_ok: bool = False
+flg_edit_us_phonec_isvalid: bool = False
