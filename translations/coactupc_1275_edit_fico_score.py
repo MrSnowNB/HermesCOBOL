@@ -3,7 +3,6 @@ coactupc_1275_edit_fico_score.py
 Implements 1275-EDIT-FICO-SCORE paragraph.
 """
 
-from state import state
 
 
 def edit_fico_score():

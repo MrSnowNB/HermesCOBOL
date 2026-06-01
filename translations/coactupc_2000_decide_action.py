@@ -3,7 +3,6 @@ coactupc_2000_decide_action.py
 Implements 2000-DECIDE-ACTION paragraph.
 """
 
-from state import state
 
 
 def decide_action():

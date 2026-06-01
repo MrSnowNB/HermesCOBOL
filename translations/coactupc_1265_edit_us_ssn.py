@@ -3,7 +3,6 @@ coactupc_1265_edit_us_ssn.py
 Implements 1265-EDIT-US-SSN paragraph.
 """
 
-from state import state
 
 
 def is_invalid_ssn_part1(value: str) -> bool:

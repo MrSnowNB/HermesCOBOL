@@ -3,7 +3,6 @@ coactupc_1270_edit_us_state_cd.py
 Implements 1270-EDIT-US-STATE-CD paragraph.
 """
 
-from state import state
 
 VALID_US_STATE_CODES = frozenset({
     "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA",

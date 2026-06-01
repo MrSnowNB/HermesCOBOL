@@ -5,7 +5,6 @@ Implements 3100-SCREEN-INIT paragraph.
 
 from datetime import datetime
 from constants import CCDA_TITLE01, CCDA_TITLE02, LIT_THISTRANID
-from state import state
 
 
 def screen_init():

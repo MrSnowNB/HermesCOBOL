@@ -3,7 +3,6 @@ coactupc_1260_edit_us_phone_num.py
 Implements 1260-EDIT-US-PHONE-NUM paragraph.
 """
 
-from state import state
 
 # Common valid NANP area codes (partial list)
 # TODO: replace with full NANP area code validation table or phonenumbers library

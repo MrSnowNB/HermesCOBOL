@@ -3,7 +3,6 @@ coactupc_1280_edit_us_state_zip_cd.py
 Implements 1280-EDIT-US-STATE-ZIP-CD paragraph.
 """
 
-from state import state
 
 # COBOL: VALID-US-STATE-ZIP-CD2-COMBO condition
 # Source: USPS ZIP Code prefix assignments by state
