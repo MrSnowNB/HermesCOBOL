@@ -285,3 +285,8 @@ ws_edit_us_ssn_part3_flgs: str = ""
 flg_edit_us_ssn_part1_not_ok: bool = False
 flg_edit_us_ssn_part2_not_ok: bool = False
 flg_edit_us_ssn_part3_not_ok: bool = False
+
+
+# --- 1270 State Code Edit Working Storage ---
+us_state_code_to_edit: str = ""
+flg_state_not_ok: bool = False
