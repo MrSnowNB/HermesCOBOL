@@ -3,7 +3,6 @@ coactupc_3300_setup_screen_attrs.py
 Implements 3300-SETUP-SCREEN-ATTRS paragraph.
 """
 
-from state import state
 from constants import DFHBMPRF, DFHBMFSE
 
 
