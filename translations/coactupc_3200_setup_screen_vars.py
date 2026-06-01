@@ -3,7 +3,6 @@ coactupc_3200_setup_screen_vars.py
 Implements 3200-SETUP-SCREEN-VARS and helpers (3201/3202/3203).
 """
 
-from state import state
 
 
 def _format_currency(value) -> str:
