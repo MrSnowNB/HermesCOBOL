@@ -1,4 +1,4 @@
-from state import CarddemoState
+from translations.state import CarddemoState
 
 def coactupc_1100_receive_map(state: CarddemoState) -> None:
     """1100-RECEIVE-MAP - 148 statements translated from COBOL IR."""
@@ -76,3 +76,4 @@ def coactupc_1100_receive_map(state: CarddemoState) -> None:
     if state.cactupai_acspflgi == "*":
         state.ws_this_progcommarea_acup_new_details_acup_new_cust_pri_holder_ind = ""
         state.ws_this_progcommarea_acup_new_details_acup_new_cust_pri_holder_ind = state.cactupai_acspflgi
+

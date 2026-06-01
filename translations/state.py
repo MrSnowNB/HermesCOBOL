@@ -148,3 +148,21 @@ class CarddemoState:
     flg_custfilter_isvalid: bool = False
     no_changes_found: bool = False
     acup_changes_not_ok: bool = False
+
+# 1100-RECEIVE-MAP BMS input fields (CACTUPAI copybook)
+    cactupai_acslnami: str = ""
+    cactupai_acsadl1i: str = ""
+    cactupai_acsadl2i: str = ""
+    cactupai_acscityi: str = ""
+    cactupai_acssttei: str = ""
+    cactupai_acszipci: str = ""
+    cactupai_acsctryi: str = ""
+    cactupai_acsph1ai: str = ""
+    cactupai_acsph1bi: str = ""
+    cactupai_acsph1ci: str = ""
+    cactupai_acsph2ai: str = ""
+    cactupai_acsph2bi: str = ""
+    cactupai_acsph2ci: str = ""
+    cactupai_acseftci: str = ""
+    cactupai_acsgovti: str = ""
+    cactupai_acspflgi: str = ""

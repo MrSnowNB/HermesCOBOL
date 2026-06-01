@@ -1,4 +1,4 @@
-from state import CarddemoState
+from translations.state import CarddemoState
 
 # Stub functions for all PERFORM targets (per rule 10)
 def coactupc_1210_edit_account(state: CarddemoState) -> None: pass
@@ -477,3 +477,4 @@ def coactupc_1200_edit_map_inputs(state: CarddemoState) -> None:
 
     # seq=143: 1200-EDIT-MAP-INPUTS-EXIT (implicit return)
     return
+

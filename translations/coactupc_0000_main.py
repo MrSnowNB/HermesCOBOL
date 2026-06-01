@@ -1,4 +1,4 @@
-﻿from state import CarddemoState
+from translations.state import CarddemoState
 
 
 def coactupc_yyyy_store_pfkey(state: CarddemoState) -> None:

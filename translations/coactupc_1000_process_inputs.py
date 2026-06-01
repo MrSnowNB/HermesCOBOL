@@ -1,4 +1,6 @@
-from state import CarddemoState
+from translations.state import CarddemoState
+from translations.coactupc_1100_receive_map import coactupc_1100_receive_map
+from translations.coactupc_1200_edit_map_inputs import coactupc_1200_edit_map_inputs
 
 def coactupc_1000_process_inputs(state: CarddemoState) -> None:
     """1000-PROCESS-INPUTS - 6 statements translated from COBOL IR."""
@@ -20,3 +22,4 @@ def coactupc_1000_process_inputs(state: CarddemoState) -> None:
 
     # seq=58: MOVE LIT-THISMAP TO CCARD-NEXT-MAP
     state.cc_work_areas_cc_work_area_ccard_next_map = state.ws_literals_lit_thismap
+
