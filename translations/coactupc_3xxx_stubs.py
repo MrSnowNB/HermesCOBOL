@@ -25,9 +25,9 @@ def setup_infomsg():
 
 
 def setup_screen_attrs():
-    """3300-SETUP-SCREEN-ATTRS stub"""
-    # TODO: 3300-SETUP-SCREEN-ATTRS — implement when 3300 paragraph is translated
-    pass
+    """3300-SETUP-SCREEN-ATTRS"""
+    from coactupc_3300_setup_screen_attrs import setup_screen_attrs as _setup_screen_attrs
+    _setup_screen_attrs(state)
 
 
 def setup_infomsg_attrs():

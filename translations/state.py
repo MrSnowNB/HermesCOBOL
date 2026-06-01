@@ -328,3 +328,24 @@ flg_curr_cyc_debit_isvalid: bool = False
 acup_changes_made: bool = False
 
 ws_info_msg: str = ""
+
+
+# --- 3300 Screen Attribute Flags ---
+flg_middle_name_not_ok: bool = False
+flg_first_name_blank: bool = False
+flg_middle_name_blank: bool = False
+flg_last_name_blank: bool = False
+flg_address_line_1_blank: bool = False
+flg_city_blank: bool = False
+flg_country_blank: bool = False
+flg_phone_num_1a_blank: bool = False
+flg_phone_num_1b_blank: bool = False
+flg_phone_num_1c_blank: bool = False
+flg_phone_num_2a_blank: bool = False
+flg_phone_num_2b_blank: bool = False
+flg_phone_num_2c_blank: bool = False
+flg_eft_account_id_blank: bool = False
+flg_pri_cardholder_blank: bool = False
+flg_dt_of_birth_year_blank: bool = False
+flg_dt_of_birth_month_blank: bool = False
+flg_dt_of_birth_day_blank: bool = False

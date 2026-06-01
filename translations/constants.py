@@ -19,3 +19,8 @@ INFO_PROMPT_CHANGES   = "Update account details presented above."
 INFO_PROMPT_CONFIRM   = "Changes validated.Press F5 to save"
 INFO_CONFIRM_SUCCESS  = "Changes committed to database"
 INFO_INFORM_FAILURE   = "Changes unsuccessful. Please try again"
+
+
+# BMS attribute constants (Python model)
+DFHBMPRF = "PROTECTED"
+DFHBMFSE = "UNPROTECTED"
