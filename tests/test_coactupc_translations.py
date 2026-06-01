@@ -105,3 +105,30 @@ def test_1100_receive_map_with_mapname():
     state.ws_literals_lit_thismap = "ACUPMAP"
     coactupc_1100_receive_map.coactupc_1100_receive_map(state)
     assert state is not None
+
+# 1205-COMPARE-OLD-NEW tests
+def test_1205_no_changes_sets_no_changes_found():
+    state = CarddemoState()
+    coactupc_1205_compare_old_new.coactupc_1205_compare_old_new(state)
+    assert state.no_changes_found is True
+    assert state.change_has_occurred is False
+
+def test_1205_acct_field_diff_triggers_change():
+    state = CarddemoState()
+    state.acup_new_acct_id_x = "NEW"
+    state.acup_old_acct_id_x = "OLD"
+    coactupc_1205_compare_old_new.coactupc_1205_compare_old_new(state)
+    assert state.change_has_occurred is True
+
+def test_1205_cust_field_diff_triggers_change():
+    state = CarddemoState()
+    state.acup_new_acct_id_x = state.acup_old_acct_id_x = "SAME"
+    state.acup_new_cust_first_name = "JOHN"
+    state.acup_old_cust_first_name = "JANE"
+    coactupc_1205_compare_old_new.coactupc_1205_compare_old_new(state)
+    assert state.change_has_occurred is True
+
+def test_1205_no_changes_detected_on_full_match():
+    state = CarddemoState()
+    coactupc_1205_compare_old_new.coactupc_1205_compare_old_new(state)
+    assert state.no_changes_detected is True

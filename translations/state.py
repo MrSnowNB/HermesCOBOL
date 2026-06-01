@@ -166,3 +166,78 @@ class CarddemoState:
     cactupai_acseftci: str = ""
     cactupai_acsgovti: str = ""
     cactupai_acspflgi: str = ""
+
+# 1205-COMPARE-OLD-NEW fields (short canonical names)
+    # Account data
+    acup_new_acct_id_x: str = ""
+    acup_old_acct_id_x: str = ""
+    acup_new_active_status: str = ""
+    acup_old_active_status: str = ""
+    acup_new_curr_bal: float = 0.0
+    acup_old_curr_bal: float = 0.0
+    acup_new_credit_limit: float = 0.0
+    acup_old_credit_limit: float = 0.0
+    acup_new_cash_credit_limit: float = 0.0
+    acup_old_cash_credit_limit: float = 0.0
+    acup_new_open_date: str = ""
+    acup_old_open_date: str = ""
+    acup_new_expiraion_date: str = ""
+    acup_old_expiraion_date: str = ""
+    acup_new_reissue_date: str = ""
+    acup_old_reissue_date: str = ""
+    acup_new_curr_cyc_credit: float = 0.0
+    acup_old_curr_cyc_credit: float = 0.0
+    acup_new_curr_cyc_debit: float = 0.0
+    acup_old_curr_cyc_debit: float = 0.0
+    acup_new_group_id: str = ""
+    acup_old_group_id: str = ""
+
+    # Customer data
+    acup_new_cust_id_x: str = ""
+    acup_old_cust_id_x: str = ""
+    acup_new_cust_first_name: str = ""
+    acup_old_cust_first_name: str = ""
+    acup_new_cust_middle_name: str = ""
+    acup_old_cust_middle_name: str = ""
+    acup_new_cust_last_name: str = ""
+    acup_old_cust_last_name: str = ""
+    acup_new_cust_addr_line_1: str = ""
+    acup_old_cust_addr_line_1: str = ""
+    acup_new_cust_addr_line_2: str = ""
+    acup_old_cust_addr_line_2: str = ""
+    acup_new_cust_addr_line_3: str = ""
+    acup_old_cust_addr_line_3: str = ""
+    acup_new_cust_addr_state_cd: str = ""
+    acup_old_cust_addr_state_cd: str = ""
+    acup_new_cust_addr_country_cd: str = ""
+    acup_old_cust_addr_country_cd: str = ""
+    acup_new_cust_addr_zip: str = ""
+    acup_old_cust_addr_zip: str = ""
+    acup_new_cust_phone_num_1a: str = ""
+    acup_old_cust_phone_num_1a: str = ""
+    acup_new_cust_phone_num_1b: str = ""
+    acup_old_cust_phone_num_1b: str = ""
+    acup_new_cust_phone_num_1c: str = ""
+    acup_old_cust_phone_num_1c: str = ""
+    acup_new_cust_phone_num_2a: str = ""
+    acup_old_cust_phone_num_2a: str = ""
+    acup_new_cust_phone_num_2b: str = ""
+    acup_old_cust_phone_num_2b: str = ""
+    acup_new_cust_phone_num_2c: str = ""
+    acup_old_cust_phone_num_2c: str = ""
+    acup_new_cust_ssn_x: str = ""
+    acup_old_cust_ssn_x: str = ""
+    acup_new_cust_govt_issued_id: str = ""
+    acup_old_cust_govt_issued_id: str = ""
+    acup_new_cust_dob_yyyy_mm_dd: str = ""
+    acup_old_cust_dob_yyyy_mm_dd: str = ""
+    acup_new_cust_eft_account_id: str = ""
+    acup_old_cust_eft_account_id: str = ""
+    acup_new_cust_pri_holder_ind: str = ""
+    acup_old_cust_pri_holder_ind: str = ""
+    acup_new_cust_fico_score_x: str = ""
+    acup_old_cust_fico_score_x: str = ""
+
+    # Control flags
+    change_has_occurred: bool = False
+    no_changes_detected: bool = False
