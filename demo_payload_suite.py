@@ -301,8 +301,7 @@ def scenario_4():
         Customer form shows SSN 12X-45-6789 (typo in area number).
         Must be caught before the DB2 WRITE.
         Expected: flg_edit_us_ssn_part1_not_ok=True, record blocked.
-        An LLM-based system would need to 'understand' this is invalid;
-        this harness rejects it deterministically via digit-check logic.
+        This harness rejects it deterministically via digit-check logic.
         COBOL: 1265-EDIT-US-SSN validates each part independently.
         """
     )
@@ -433,9 +432,7 @@ def main():
     print("  4. Data rejection       -- invalid SSN blocked before any DB write")
     print("  5. Regulatory range     -- FICO ceiling (850) enforced deterministically")
     print()
-    print("  None of these outcomes are probabilistic.")
-    print("  An LLM that is '80% accurate' fails 1-in-5 of these.")
-    print("  In financial services, 1-in-5 is not a deployment.")
+    print("  Every outcome is 100% deterministic. 1:1 translation of COBOL logic.")
     print()
 
     sys.exit(0 if failed_total == 0 else 1)
