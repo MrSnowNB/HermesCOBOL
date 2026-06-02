@@ -5,7 +5,7 @@ Implements 2000-DECIDE-ACTION paragraph.
 
 
 
-def decide_action():
+def decide_action(state):
     """2000-DECIDE-ACTION"""
 
     # WHEN ACUP-DETAILS-NOT-FETCHED
@@ -16,8 +16,8 @@ def decide_action():
     elif state.ccard_aid_pfk12:
         if state.flg_acctfilter_isvalid:
             state.ws_return_msg_off = True
-            # TODO: 9000-READ-ACCT — implement when 9000 paragraph is translated
-            pass
+            from coactupc_9000_read_acct import read_acct
+            read_acct(state)
             if state.found_cust_in_master:
                 state.acup_show_details = True
 
