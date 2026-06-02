@@ -232,6 +232,8 @@ def test_getacctdata_byacct_other():
     state.ws_card_rid_acct_id = "0000000000000001"
     state.lit_acctfilename = "ACCTDAT"
     state.ws_return_msg_off = True
+
+
 def test_read_acct_exits_after_9300_on_acctfilter_not_ok():
     from translations.state import CarddemoState
     from translations.coactupc_9000_read_acct import read_acct
@@ -245,7 +247,6 @@ def test_read_acct_exits_after_9300_on_acctfilter_not_ok():
     read_acct(state)
     assert state.flg_acctfilter_not_ok == True
     assert state.ws_card_rid_cust_id == ""
-
 
 
 def test_getcustdata_bycust_normal():
@@ -312,7 +313,6 @@ def test_read_acct_exits_after_9400_on_custfilter_not_ok():
     assert state.flg_custfilter_not_ok == True
     # store_fetched_data must NOT have run
     assert state.acup_old_details == {}
-
 
 
 def test_store_fetched_data_full_path():
@@ -401,17 +401,63 @@ def test_store_fetched_data_minimal():
     assert state.acup_old_acct_id == "ACCT001"
 
 
+# ============================================================================
+# 9600-WRITE-PROCESSING tests
+# ============================================================================
+
+# Module-level db constants — full field records matching acup_old_* snapshots
+# so check_change_in_rec sees no concurrent modification in normal write tests.
+_WRITE_ACCT_DB = {
+    "ACCT001": {
+        "acct_id": "ACCT001",
+        "acct_active_status": "Y",
+        "acct_curr_bal": "1000.00",
+        "acct_credit_limit": "5000.00",
+        "acct_cash_credit_limit": "2000.00",
+        "acct_curr_cyc_credit": "100.00",
+        "acct_curr_cyc_debit": "50.00",
+        "acct_open_date": "2020-01-15",
+        "acct_expiration_date": "2025-12-31",
+        "acct_reissue_date": "2022-06-01",
+        "acct_group_id": "GRP01",
+    }
+}
+_WRITE_CUST_DB = {
+    "CUST001": {
+        "cust_id": "CUST001",
+        "cust_first_name": "John",
+        "cust_middle_name": "M",
+        "cust_last_name": "Doe",
+        "cust_addr_line_1": "123 Main St",
+        "cust_addr_line_2": "",
+        "cust_addr_line_3": "",
+        "cust_addr_state_cd": "NY",
+        "cust_addr_country_cd": "US",
+        "cust_addr_zip": "10001",
+        "cust_phone_num_1": "(555)123-4567",
+        "cust_phone_num_2": "(555)987-6543",
+        "cust_ssn": "123456789",
+        "cust_govt_issued_id": "GOV123",
+        "cust_dob_yyyy_mm_dd": "1980-05-20",
+        "cust_eft_account_id": "EFT001",
+        "cust_pri_card_holder_ind": "Y",
+        "cust_fico_credit_score": "750",
+    }
+}
+
 
 def _make_write_state():
     from translations.state import CarddemoState
+    import copy
     s = CarddemoState()
     s.cc_acct_id = "ACCT001"
     s.cdemo_cust_id = "CUST001"
-    s.acct_db = {"ACCT001": {"acct_id": "ACCT001"}}
-    s.cust_db = {"CUST001": {"cust_id": "CUST001"}}
+    # Deep copy so tests that mutate dbs don't affect each other
+    s.acct_db = copy.deepcopy(_WRITE_ACCT_DB)
+    s.cust_db = copy.deepcopy(_WRITE_CUST_DB)
     s.ws_return_msg_off = True
     s.data_was_changed_before_update = False
-    # Populate required ACUP-NEW-* fields minimally
+    # ACUP-NEW-* fields
     s.acup_new_acct_id = "ACCT001"
     s.acup_new_active_status = "Y"
     s.acup_new_curr_bal = "1000.00"
@@ -453,6 +499,40 @@ def _make_write_state():
     s.acup_new_cust_eft_account_id = "EFT001"
     s.acup_new_cust_pri_holder_ind = "Y"
     s.acup_new_cust_fico_score = "750"
+    # ACUP-OLD-* snapshot matching db exactly so check_change_in_rec passes
+    s.acup_old_active_status = "Y"
+    s.acup_old_curr_bal_n = "1000.00"
+    s.acup_old_credit_limit_n = "5000.00"
+    s.acup_old_cash_credit_limit_n = "2000.00"
+    s.acup_old_curr_cyc_credit_n = "100.00"
+    s.acup_old_curr_cyc_debit_n = "50.00"
+    s.acup_old_open_year = "2020"
+    s.acup_old_open_mon = "01"
+    s.acup_old_open_day = "15"
+    s.acup_old_exp_year = "2025"
+    s.acup_old_exp_mon = "12"
+    s.acup_old_exp_day = "31"
+    s.acup_old_reissue_year = "2022"
+    s.acup_old_reissue_mon = "06"
+    s.acup_old_reissue_day = "01"
+    s.acup_old_group_id = "GRP01"
+    s.acup_old_cust_first_name = "John"
+    s.acup_old_cust_middle_name = "M"
+    s.acup_old_cust_last_name = "Doe"
+    s.acup_old_cust_addr_line_1 = "123 Main St"
+    s.acup_old_cust_addr_line_2 = ""
+    s.acup_old_cust_addr_line_3 = ""
+    s.acup_old_cust_addr_state_cd = "NY"
+    s.acup_old_cust_addr_country_cd = "US"
+    s.acup_old_cust_addr_zip = "10001"
+    s.acup_old_cust_phone_num_1 = "(555)123-4567"
+    s.acup_old_cust_phone_num_2 = "(555)987-6543"
+    s.acup_old_cust_ssn = "123456789"
+    s.acup_old_cust_govt_issued_id = "GOV123"
+    s.acup_old_cust_dob_yyyy_mm_dd = "19800520"
+    s.acup_old_cust_eft_account_id = "EFT001"
+    s.acup_old_cust_pri_holder_ind = "Y"
+    s.acup_old_cust_fico_score = "750"
     return s
 
 
@@ -473,7 +553,7 @@ def test_write_processing_normal():
 def test_write_processing_acct_lock_fail():
     from translations.coactupc_9600_write_processing import write_processing
     s = _make_write_state()
-    s.acct_db = {}  # key missing → lock fail
+    s.acct_db = {}  # key missing -> lock fail
     write_processing(s)
     assert s.input_error == True
     assert s.could_not_lock_acct_for_update == True
@@ -482,7 +562,7 @@ def test_write_processing_acct_lock_fail():
 def test_write_processing_cust_lock_fail():
     from translations.coactupc_9600_write_processing import write_processing
     s = _make_write_state()
-    s.cust_db = {}  # key missing → lock fail
+    s.cust_db = {}  # key missing -> lock fail
     write_processing(s)
     assert s.input_error == True
     assert s.could_not_lock_cust_for_update == True
@@ -495,32 +575,33 @@ def test_write_processing_data_changed():
     write_processing(s)
     assert s.locked_but_update_failed == False
     # acct_db and cust_db must be untouched
-    assert s.acct_db["ACCT001"] == {"acct_id": "ACCT001"}
-    assert s.cust_db["CUST001"] == {"cust_id": "CUST001"}
+    assert s.acct_db["ACCT001"]["acct_id"] == "ACCT001"
+    assert s.cust_db["CUST001"]["cust_id"] == "CUST001"
 
 
 def test_write_processing_acct_rewrite_fail():
     from translations.coactupc_9600_write_processing import write_processing
+    import copy
     s = _make_write_state()
     class FailOnWrite(dict):
         def __setitem__(self, k, v):
             raise RuntimeError("write fail")
-    s.acct_db = FailOnWrite({"ACCT001": {}})
+    s.acct_db = FailOnWrite(copy.deepcopy(_WRITE_ACCT_DB))
     write_processing(s)
     assert s.locked_but_update_failed == True
 
 
 def test_write_processing_cust_rewrite_fail_rollback():
     from translations.coactupc_9600_write_processing import write_processing
-    original = {"acct_id": "ACCT001", "original": True}
+    import copy
+    original = copy.deepcopy(_WRITE_ACCT_DB["ACCT001"])
     s = _make_write_state()
-    s.acct_db = {"ACCT001": original.copy()}
     class FailOnWrite(dict):
         def __setitem__(self, k, v):
             if k == "CUST001":
                 raise RuntimeError("cust write fail")
             super().__setitem__(k, v)
-    s.cust_db = FailOnWrite({"CUST001": {}})
+    s.cust_db = FailOnWrite(copy.deepcopy(_WRITE_CUST_DB))
     write_processing(s)
     assert s.locked_but_update_failed == True
     assert s.acct_db["ACCT001"] == original
@@ -612,11 +693,13 @@ def _make_check_state():
     s.acup_old_cust_fico_score = "750"
     return s
 
+
 def test_check_change_no_change():
     from translations.coactupc_9xxx_stubs import check_change_in_rec
     s = _make_check_state()
     check_change_in_rec(s)
     assert s.data_was_changed_before_update == False
+
 
 def test_check_change_acct_status():
     from translations.coactupc_9xxx_stubs import check_change_in_rec
@@ -625,12 +708,14 @@ def test_check_change_acct_status():
     check_change_in_rec(s)
     assert s.data_was_changed_before_update == True
 
+
 def test_check_change_acct_balance():
     from translations.coactupc_9xxx_stubs import check_change_in_rec
     s = _make_check_state()
     s.acct_db["ACCT001"]["acct_curr_bal"] = 9999.0
     check_change_in_rec(s)
     assert s.data_was_changed_before_update == True
+
 
 def test_check_change_acct_open_date():
     from translations.coactupc_9xxx_stubs import check_change_in_rec
@@ -639,12 +724,14 @@ def test_check_change_acct_open_date():
     check_change_in_rec(s)
     assert s.data_was_changed_before_update == True
 
+
 def test_check_change_group_id_case():
     from translations.coactupc_9xxx_stubs import check_change_in_rec
     s = _make_check_state()
     s.acct_db["ACCT001"]["acct_group_id"] = "grp01"
     check_change_in_rec(s)
     assert s.data_was_changed_before_update == False
+
 
 def test_check_change_cust_name():
     from translations.coactupc_9xxx_stubs import check_change_in_rec
@@ -653,6 +740,7 @@ def test_check_change_cust_name():
     check_change_in_rec(s)
     assert s.data_was_changed_before_update == True
 
+
 def test_check_change_cust_name_case():
     from translations.coactupc_9xxx_stubs import check_change_in_rec
     s = _make_check_state()
@@ -660,11 +748,13 @@ def test_check_change_cust_name_case():
     check_change_in_rec(s)
     assert s.data_was_changed_before_update == False
 
+
 def test_check_change_dob_no_change():
     from translations.coactupc_9xxx_stubs import check_change_in_rec
     s = _make_check_state()
     check_change_in_rec(s)
     assert s.data_was_changed_before_update == False
+
 
 def test_check_change_dob_month_changed():
     from translations.coactupc_9xxx_stubs import check_change_in_rec
