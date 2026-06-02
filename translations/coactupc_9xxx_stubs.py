@@ -175,86 +175,71 @@ def check_change_in_rec(state):
     acct = state.acct_db.get(state.ws_card_rid_acct_id, {})
     cust = state.cust_db.get(state.ws_card_rid_cust_id, {})
 
-    # Account comparisons
     if acct.get("acct_active_status", "") != state.acup_old_active_status:
-        state.data_was_changed_before_update = True
-        return
+        state.data_was_changed_before_update = True; return
     if acct.get("acct_curr_bal") != state.acup_old_curr_bal_n:
-        state.data_was_changed_before_update = True
-        return
+        state.data_was_changed_before_update = True; return
     if acct.get("acct_credit_limit") != state.acup_old_credit_limit_n:
-        state.data_was_changed_before_update = True
-        return
+        state.data_was_changed_before_update = True; return
     if acct.get("acct_cash_credit_limit") != state.acup_old_cash_credit_limit_n:
-        state.data_was_changed_before_update = True
-        return
+        state.data_was_changed_before_update = True; return
     if acct.get("acct_curr_cyc_credit") != state.acup_old_curr_cyc_credit_n:
-        state.data_was_changed_before_update = True
-        return
+        state.data_was_changed_before_update = True; return
     if acct.get("acct_curr_cyc_debit") != state.acup_old_curr_cyc_debit_n:
-        state.data_was_changed_before_update = True
-        return
+        state.data_was_changed_before_update = True; return
 
-    # Date fields: live "YYYY-MM-DD", old split into year/mon/day parts
-    open_date = acct.get("acct_open_date", "")
+    open_date = acct.get("acct_open_date", "----------")
     if (open_date[0:4] != state.acup_old_open_year or
             open_date[5:7] != state.acup_old_open_mon or
             open_date[8:10] != state.acup_old_open_day):
-        state.data_was_changed_before_update = True
-        return
+        state.data_was_changed_before_update = True; return
 
-    exp_date = acct.get("acct_expiration_date", "")
+    exp_date = acct.get("acct_expiration_date", "----------")
     if (exp_date[0:4] != state.acup_old_exp_year or
             exp_date[5:7] != state.acup_old_exp_mon or
             exp_date[8:10] != state.acup_old_exp_day):
-        state.data_was_changed_before_update = True
-        return
+        state.data_was_changed_before_update = True; return
 
-    reissue_date = acct.get("acct_reissue_date", "")
+    reissue_date = acct.get("acct_reissue_date", "----------")
     if (reissue_date[0:4] != state.acup_old_reissue_year or
             reissue_date[5:7] != state.acup_old_reissue_mon or
             reissue_date[8:10] != state.acup_old_reissue_day):
-        state.data_was_changed_before_update = True
-        return
+        state.data_was_changed_before_update = True; return
 
-    # group_id: case-insensitive
     if acct.get("acct_group_id", "").upper() != state.acup_old_group_id.upper():
-        state.data_was_changed_before_update = True
-        return
+        state.data_was_changed_before_update = True; return
 
-    # Customer string fields: case-insensitive
     str_fields = [
-        ("cust_first_name",         "acup_old_cust_first_name"),
-        ("cust_middle_name",        "acup_old_cust_middle_name"),
-        ("cust_last_name",          "acup_old_cust_last_name"),
-        ("cust_addr_line_1",        "acup_old_cust_addr_line_1"),
-        ("cust_addr_line_2",        "acup_old_cust_addr_line_2"),
-        ("cust_addr_line_3",        "acup_old_cust_addr_line_3"),
-        ("cust_addr_state_cd",      "acup_old_cust_addr_state_cd"),
-        ("cust_addr_country_cd",    "acup_old_cust_addr_country_cd"),
-        ("cust_addr_zip",           "acup_old_cust_addr_zip"),
-        ("cust_phone_num_1",        "acup_old_cust_phone_num_1"),
-        ("cust_phone_num_2",        "acup_old_cust_phone_num_2"),
-        ("cust_ssn",                "acup_old_cust_ssn"),
-        ("cust_govt_issued_id",     "acup_old_cust_govt_issued_id"),
-        ("cust_eft_account_id",     "acup_old_cust_eft_account_id"),
-        ("cust_pri_card_holder_ind","acup_old_cust_pri_holder_ind"),
-        ("cust_fico_credit_score",  "acup_old_cust_fico_score"),
+        ("cust_first_name",          "acup_old_cust_first_name"),
+        ("cust_middle_name",         "acup_old_cust_middle_name"),
+        ("cust_last_name",           "acup_old_cust_last_name"),
+        ("cust_addr_line_1",         "acup_old_cust_addr_line_1"),
+        ("cust_addr_line_2",         "acup_old_cust_addr_line_2"),
+        ("cust_addr_line_3",         "acup_old_cust_addr_line_3"),
+        ("cust_addr_state_cd",       "acup_old_cust_addr_state_cd"),
+        ("cust_addr_country_cd",     "acup_old_cust_addr_country_cd"),
+        ("cust_addr_zip",            "acup_old_cust_addr_zip"),
+        ("cust_phone_num_1",         "acup_old_cust_phone_num_1"),
+        ("cust_phone_num_2",         "acup_old_cust_phone_num_2"),
+        ("cust_ssn",                 "acup_old_cust_ssn"),
+        ("cust_govt_issued_id",      "acup_old_cust_govt_issued_id"),
+        ("cust_eft_account_id",      "acup_old_cust_eft_account_id"),
+        ("cust_pri_card_holder_ind", "acup_old_cust_pri_holder_ind"),
+        ("cust_fico_credit_score",   "acup_old_cust_fico_score"),
     ]
     for db_key, old_attr in str_fields:
         live = cust.get(db_key, "").upper()
         old = getattr(state, old_attr, "").upper()
         if live != old:
-            state.data_was_changed_before_update = True
-            return
+            state.data_was_changed_before_update = True; return
 
     # DOB anomaly:
-    # live: "YYYY-MM-DD" → [0:4], [5:7], [8:10]
-    # old:  "YYYYMMDD"   → [0:4], [4:6], [6:8]
+    # live cust_dob_yyyy_mm_dd = "YYYY-MM-DD": year[0:4] mon[5:7] day[8:10]
+    # old  acup_old_cust_dob_yyyy_mm_dd = "YYYYMMDD": year[0:4] mon[4:6] day[6:8]
     live_dob = cust.get("cust_dob_yyyy_mm_dd", "")
-    old_dob = state.acup_old_cust_dob_yyyy_mm_dd
+    old_dob = getattr(state, "acup_old_cust_dob_yyyy_mm_dd", "")
     if (live_dob[0:4] != old_dob[0:4] or
             live_dob[5:7] != old_dob[4:6] or
             live_dob[8:10] != old_dob[6:8]):
-        state.data_was_changed_before_update = True
-        return
+        state.data_was_changed_before_update = True; return
+
