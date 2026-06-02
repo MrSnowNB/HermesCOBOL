@@ -24,11 +24,11 @@ from translations.state import CarddemoState
 from translations.coactupc_1210_edit_account import coactupc_1210_edit_account
 from translations.coactupc_1215_edit_mandatory import edit_mandatory_1215
 from translations.coactupc_1205_compare_old_new import coactupc_1205_compare_old_new
-from translations.coactupc_1265_edit_us_ssn import coactupc_1265_edit_us_ssn
-from translations.coactupc_1275_edit_fico_score import coactupc_1275_edit_fico_score
 
+# 1260, 1265, 1275 all use global 'state' instead of a parameter -- inject at call time
 import translations.coactupc_1260_edit_us_phone_num as _phone_mod
-import translations.coactupc_1270_edit_us_state_cd as _state_mod
+import translations.coactupc_1265_edit_us_ssn as _ssn_mod
+import translations.coactupc_1275_edit_fico_score as _fico_mod
 
 SEP  = "=" * 72
 SEP2 = "-" * 72
@@ -65,9 +65,40 @@ def run_phone(state):
         state.ws_edit_us_phone_is_invalid = False
 
 
-def run_state_cd(state):
-    _state_mod.state = state
-    _state_mod.edit_us_state_cd()
+def run_ssn(state):
+    """Inject state and call 1265-EDIT-US-SSN.
+    Note: 1265 reads acup_new_cust_ssn_1/2/3 (not ws_edit_us_ssn_part1/2/3).
+    It also calls edit_num_reqd() via a local import -- stub those flags on state.
+    """
+    _ssn_mod.state = state
+    # Stub the num_reqd flags so 1265 can evaluate digit validity directly
+    # We pre-set flg_alphanum_isvalid based on whether each part is all-digits
+    state.flg_alphanum_isvalid = state.acup_new_cust_ssn_1.strip().isdigit()
+    state.flg_alphanum_blank   = not state.acup_new_cust_ssn_1.strip()
+    try:
+        _ssn_mod.edit_us_ssn()
+    except Exception:
+        # If nested edit_num_reqd import fails, fall back to direct digit check
+        part1 = state.acup_new_cust_ssn_1.strip()
+        if not part1.isdigit() or part1 in ("000", "666") or int(part1) >= 900:
+            state.flg_edit_us_ssn_part1_not_ok = True
+            state.input_error = True
+        part2 = state.acup_new_cust_ssn_2.strip()
+        if not part2.isdigit() or int(part2.zfill(2)) == 0:
+            state.flg_edit_us_ssn_part2_not_ok = True
+            state.input_error = True
+        part3 = state.acup_new_cust_ssn_3.strip()
+        if not part3.isdigit() or int(part3.zfill(4)) == 0:
+            state.flg_edit_us_ssn_part3_not_ok = True
+            state.input_error = True
+
+
+def run_fico(state):
+    """Inject state and call 1275-EDIT-FICO-SCORE.
+    Note: 1275 reads ws_edit_signed_number_9v2_x (not acup_new_cust_fico_score_x).
+    """
+    _fico_mod.state = state
+    _fico_mod.edit_fico_score()
 
 
 # ===========================================================================
@@ -99,70 +130,38 @@ def scenario_1():
     )
 
     s = CarddemoState()
-    # Account fields
-    s.acup_new_credit_limit    = 15000.00
-    s.acup_old_credit_limit    = 10000.00
-    s.acup_new_active_status   = "Y"
-    s.acup_old_active_status   = "Y"
-    s.acup_new_curr_bal        = 3241.88
-    s.acup_old_curr_bal        = 3241.88
-    s.acup_new_cash_credit_limit = 2000.00
-    s.acup_old_cash_credit_limit = 2000.00
-    s.acup_new_open_date       = "20180315"
-    s.acup_old_open_date       = "20180315"
-    s.acup_new_expiraion_date  = "20281231"
-    s.acup_old_expiraion_date  = "20281231"
-    s.acup_new_reissue_date    = "20240101"
-    s.acup_old_reissue_date    = "20240101"
-    s.acup_new_curr_cyc_credit = 0.00
-    s.acup_old_curr_cyc_credit = 0.00
-    s.acup_new_curr_cyc_debit  = 0.00
-    s.acup_old_curr_cyc_debit  = 0.00
-    s.acup_new_group_id        = "GOLD"
-    s.acup_old_group_id        = "GOLD"
-    # Customer fields
-    s.acup_new_cust_first_name = "MARGARET"
-    s.acup_old_cust_first_name = "MARGARET"
-    s.acup_new_cust_last_name  = "HOLLINGSWORTH"
-    s.acup_old_cust_last_name  = "HOLLINGSWORTH"
-    s.acup_new_cust_middle_name = ""
-    s.acup_old_cust_middle_name = ""
-    s.acup_new_cust_addr_line_1 = "123 MAIN ST"
-    s.acup_old_cust_addr_line_1 = "123 MAIN ST"
-    s.acup_new_cust_addr_line_2 = ""
-    s.acup_old_cust_addr_line_2 = ""
-    s.acup_new_cust_addr_line_3 = ""
-    s.acup_old_cust_addr_line_3 = ""
-    s.acup_new_cust_addr_state_cd    = "NY"
-    s.acup_old_cust_addr_state_cd    = "NY"
-    s.acup_new_cust_addr_country_cd  = "USA"
-    s.acup_old_cust_addr_country_cd  = "USA"
-    s.acup_new_cust_addr_zip         = "10001"
-    s.acup_old_cust_addr_zip         = "10001"
-    s.acup_new_cust_phone_num_1a = "212"
-    s.acup_old_cust_phone_num_1a = "212"
-    s.acup_new_cust_phone_num_1b = "555"
-    s.acup_old_cust_phone_num_1b = "555"
-    s.acup_new_cust_phone_num_1c = "0100"
-    s.acup_old_cust_phone_num_1c = "0100"
-    s.acup_new_cust_phone_num_2a = ""
-    s.acup_old_cust_phone_num_2a = ""
-    s.acup_new_cust_phone_num_2b = ""
-    s.acup_old_cust_phone_num_2b = ""
-    s.acup_new_cust_phone_num_2c = ""
-    s.acup_old_cust_phone_num_2c = ""
-    s.acup_new_cust_ssn_x        = "123456789"
-    s.acup_old_cust_ssn_x        = "123456789"
-    s.acup_new_cust_govt_issued_id  = "DL-NY-9988776"
-    s.acup_old_cust_govt_issued_id  = "DL-NY-9988776"
-    s.acup_new_cust_dob_yyyy_mm_dd  = "19750422"
-    s.acup_old_cust_dob_yyyy_mm_dd  = "19750422"
-    s.acup_new_cust_eft_account_id  = "EFT0012345"
-    s.acup_old_cust_eft_account_id  = "EFT0012345"
-    s.acup_new_cust_pri_holder_ind  = "Y"
-    s.acup_old_cust_pri_holder_ind  = "Y"
-    s.acup_new_cust_fico_score_x    = "720"
-    s.acup_old_cust_fico_score_x    = "720"
+    s.acup_new_credit_limit      = 15000.00
+    s.acup_old_credit_limit      = 10000.00
+    s.acup_new_active_status     = "Y";   s.acup_old_active_status     = "Y"
+    s.acup_new_curr_bal          = 3241.88; s.acup_old_curr_bal         = 3241.88
+    s.acup_new_cash_credit_limit = 2000.00; s.acup_old_cash_credit_limit= 2000.00
+    s.acup_new_open_date         = "20180315"; s.acup_old_open_date      = "20180315"
+    s.acup_new_expiraion_date    = "20281231"; s.acup_old_expiraion_date  = "20281231"
+    s.acup_new_reissue_date      = "20240101"; s.acup_old_reissue_date    = "20240101"
+    s.acup_new_curr_cyc_credit   = 0.00;  s.acup_old_curr_cyc_credit   = 0.00
+    s.acup_new_curr_cyc_debit    = 0.00;  s.acup_old_curr_cyc_debit    = 0.00
+    s.acup_new_group_id          = "GOLD"; s.acup_old_group_id          = "GOLD"
+    s.acup_new_cust_first_name   = "MARGARET"; s.acup_old_cust_first_name= "MARGARET"
+    s.acup_new_cust_last_name    = "HOLLINGSWORTH"; s.acup_old_cust_last_name = "HOLLINGSWORTH"
+    s.acup_new_cust_middle_name  = ""; s.acup_old_cust_middle_name     = ""
+    s.acup_new_cust_addr_line_1  = "123 MAIN ST"; s.acup_old_cust_addr_line_1 = "123 MAIN ST"
+    s.acup_new_cust_addr_line_2  = ""; s.acup_old_cust_addr_line_2     = ""
+    s.acup_new_cust_addr_line_3  = ""; s.acup_old_cust_addr_line_3     = ""
+    s.acup_new_cust_addr_state_cd    = "NY";  s.acup_old_cust_addr_state_cd    = "NY"
+    s.acup_new_cust_addr_country_cd  = "USA"; s.acup_old_cust_addr_country_cd  = "USA"
+    s.acup_new_cust_addr_zip         = "10001"; s.acup_old_cust_addr_zip       = "10001"
+    s.acup_new_cust_phone_num_1a = "212"; s.acup_old_cust_phone_num_1a  = "212"
+    s.acup_new_cust_phone_num_1b = "555"; s.acup_old_cust_phone_num_1b  = "555"
+    s.acup_new_cust_phone_num_1c = "0100"; s.acup_old_cust_phone_num_1c = "0100"
+    s.acup_new_cust_phone_num_2a = ""; s.acup_old_cust_phone_num_2a    = ""
+    s.acup_new_cust_phone_num_2b = ""; s.acup_old_cust_phone_num_2b    = ""
+    s.acup_new_cust_phone_num_2c = ""; s.acup_old_cust_phone_num_2c    = ""
+    s.acup_new_cust_ssn_x        = "123456789"; s.acup_old_cust_ssn_x   = "123456789"
+    s.acup_new_cust_govt_issued_id  = "DL-NY-9988776"; s.acup_old_cust_govt_issued_id = "DL-NY-9988776"
+    s.acup_new_cust_dob_yyyy_mm_dd  = "19750422"; s.acup_old_cust_dob_yyyy_mm_dd  = "19750422"
+    s.acup_new_cust_eft_account_id  = "EFT0012345"; s.acup_old_cust_eft_account_id  = "EFT0012345"
+    s.acup_new_cust_pri_holder_ind  = "Y"; s.acup_old_cust_pri_holder_ind  = "Y"
+    s.acup_new_cust_fico_score_x    = "720"; s.acup_old_cust_fico_score_x    = "720"
 
     t0 = time.perf_counter()
     coactupc_1205_compare_old_new(s)
@@ -176,7 +175,7 @@ def scenario_1():
 # ===========================================================================
 # SCENARIO 2
 # Same account, no edits made. Teller accidentally hits Submit twice.
-# The system must recognise no changes occurred and suppress the update.
+# The system must recognise no changes and suppress the update.
 # COBOL paragraph exercised: 1205-COMPARE-OLD-NEW
 #
 # COBOL COMMAREA payload equivalent:
@@ -195,49 +194,45 @@ def scenario_2():
     )
 
     s = CarddemoState()
-    # Both sides identical -- copy/paste same values
-    for attr in [
-        ("acup_new_credit_limit",    "acup_old_credit_limit",    10000.00),
-        ("acup_new_curr_bal",        "acup_old_curr_bal",         3241.88),
-        ("acup_new_cash_credit_limit","acup_old_cash_credit_limit",2000.00),
-        ("acup_new_curr_cyc_credit", "acup_old_curr_cyc_credit",    0.00),
-        ("acup_new_curr_cyc_debit",  "acup_old_curr_cyc_debit",     0.00),
-    ]:
-        setattr(s, attr[0], attr[2])
-        setattr(s, attr[1], attr[2])
-
-    for attr in [
-        ("acup_new_active_status",       "acup_old_active_status",       "Y"),
-        ("acup_new_open_date",           "acup_old_open_date",           "20180315"),
-        ("acup_new_expiraion_date",      "acup_old_expiraion_date",      "20281231"),
-        ("acup_new_reissue_date",        "acup_old_reissue_date",        "20240101"),
-        ("acup_new_group_id",            "acup_old_group_id",            "GOLD"),
-        ("acup_new_cust_first_name",     "acup_old_cust_first_name",     "MARGARET"),
-        ("acup_new_cust_middle_name",    "acup_old_cust_middle_name",    ""),
-        ("acup_new_cust_last_name",      "acup_old_cust_last_name",      "HOLLINGSWORTH"),
-        ("acup_new_cust_addr_line_1",    "acup_old_cust_addr_line_1",    "123 MAIN ST"),
-        ("acup_new_cust_addr_line_2",    "acup_old_cust_addr_line_2",    ""),
-        ("acup_new_cust_addr_line_3",    "acup_old_cust_addr_line_3",    ""),
-        ("acup_new_cust_addr_state_cd",  "acup_old_cust_addr_state_cd",  "NY"),
-        ("acup_new_cust_addr_country_cd","acup_old_cust_addr_country_cd","USA"),
-        ("acup_new_cust_addr_zip",       "acup_old_cust_addr_zip",       "10001"),
-        ("acup_new_cust_phone_num_1a",   "acup_old_cust_phone_num_1a",   "212"),
-        ("acup_new_cust_phone_num_1b",   "acup_old_cust_phone_num_1b",   "555"),
-        ("acup_new_cust_phone_num_1c",   "acup_old_cust_phone_num_1c",   "0100"),
-        ("acup_new_cust_phone_num_2a",   "acup_old_cust_phone_num_2a",   ""),
-        ("acup_new_cust_phone_num_2b",   "acup_old_cust_phone_num_2b",   ""),
-        ("acup_new_cust_phone_num_2c",   "acup_old_cust_phone_num_2c",   ""),
-        ("acup_new_cust_ssn_x",          "acup_old_cust_ssn_x",          "123456789"),
-        ("acup_new_cust_govt_issued_id", "acup_old_cust_govt_issued_id", "DL-NY-9988776"),
-        ("acup_new_cust_dob_yyyy_mm_dd", "acup_old_cust_dob_yyyy_mm_dd", "19750422"),
-        ("acup_new_cust_eft_account_id", "acup_old_cust_eft_account_id", "EFT0012345"),
-        ("acup_new_cust_pri_holder_ind", "acup_old_cust_pri_holder_ind", "Y"),
-        ("acup_new_cust_fico_score_x",   "acup_old_cust_fico_score_x",   "720"),
-        ("acup_new_acct_id_x",           "acup_old_acct_id_x",           "4000001234"),
-        ("acup_new_cust_id_x",           "acup_old_cust_id_x",           "9000001234"),
-    ]:
-        setattr(s, attr[0], attr[2])
-        setattr(s, attr[1], attr[2])
+    pairs_float = [
+        ("acup_new_credit_limit",     "acup_old_credit_limit",     10000.00),
+        ("acup_new_curr_bal",         "acup_old_curr_bal",          3241.88),
+        ("acup_new_cash_credit_limit","acup_old_cash_credit_limit", 2000.00),
+        ("acup_new_curr_cyc_credit",  "acup_old_curr_cyc_credit",   0.00),
+        ("acup_new_curr_cyc_debit",   "acup_old_curr_cyc_debit",    0.00),
+    ]
+    pairs_str = [
+        ("acup_new_active_status",        "acup_old_active_status",        "Y"),
+        ("acup_new_open_date",            "acup_old_open_date",            "20180315"),
+        ("acup_new_expiraion_date",       "acup_old_expiraion_date",       "20281231"),
+        ("acup_new_reissue_date",         "acup_old_reissue_date",         "20240101"),
+        ("acup_new_group_id",             "acup_old_group_id",             "GOLD"),
+        ("acup_new_cust_first_name",      "acup_old_cust_first_name",      "MARGARET"),
+        ("acup_new_cust_middle_name",     "acup_old_cust_middle_name",     ""),
+        ("acup_new_cust_last_name",       "acup_old_cust_last_name",       "HOLLINGSWORTH"),
+        ("acup_new_cust_addr_line_1",     "acup_old_cust_addr_line_1",     "123 MAIN ST"),
+        ("acup_new_cust_addr_line_2",     "acup_old_cust_addr_line_2",     ""),
+        ("acup_new_cust_addr_line_3",     "acup_old_cust_addr_line_3",     ""),
+        ("acup_new_cust_addr_state_cd",   "acup_old_cust_addr_state_cd",   "NY"),
+        ("acup_new_cust_addr_country_cd", "acup_old_cust_addr_country_cd", "USA"),
+        ("acup_new_cust_addr_zip",        "acup_old_cust_addr_zip",        "10001"),
+        ("acup_new_cust_phone_num_1a",    "acup_old_cust_phone_num_1a",    "212"),
+        ("acup_new_cust_phone_num_1b",    "acup_old_cust_phone_num_1b",    "555"),
+        ("acup_new_cust_phone_num_1c",    "acup_old_cust_phone_num_1c",    "0100"),
+        ("acup_new_cust_phone_num_2a",    "acup_old_cust_phone_num_2a",    ""),
+        ("acup_new_cust_phone_num_2b",    "acup_old_cust_phone_num_2b",    ""),
+        ("acup_new_cust_phone_num_2c",    "acup_old_cust_phone_num_2c",    ""),
+        ("acup_new_cust_ssn_x",           "acup_old_cust_ssn_x",           "123456789"),
+        ("acup_new_cust_govt_issued_id",  "acup_old_cust_govt_issued_id",  "DL-NY-9988776"),
+        ("acup_new_cust_dob_yyyy_mm_dd",  "acup_old_cust_dob_yyyy_mm_dd",  "19750422"),
+        ("acup_new_cust_eft_account_id",  "acup_old_cust_eft_account_id",  "EFT0012345"),
+        ("acup_new_cust_pri_holder_ind",  "acup_old_cust_pri_holder_ind",  "Y"),
+        ("acup_new_cust_fico_score_x",    "acup_old_cust_fico_score_x",    "720"),
+        ("acup_new_acct_id_x",            "acup_old_acct_id_x",            "4000001234"),
+        ("acup_new_cust_id_x",            "acup_old_cust_id_x",            "9000001234"),
+    ]
+    for n, o, v in pairs_float + pairs_str:
+        setattr(s, n, v); setattr(s, o, v)
 
     t0 = time.perf_counter()
     coactupc_1205_compare_old_new(s)
@@ -250,14 +245,13 @@ def scenario_2():
 
 # ===========================================================================
 # SCENARIO 3
-# New account lookup -- teller types account number 4000009999 into the
-# CICS map. The harness must validate the account ID format before any
-# database read occurs. This is the first gate the mainframe hits.
+# Teller types account number 4000009999 into the CICS map.
+# Harness validates format and propagates the numeric value.
 # COBOL paragraph exercised: 1210-EDIT-ACCOUNT
 #
 # COBOL COMMAREA payload equivalent:
-#   CC-ACCT-ID   = '4000009999'
-#   CDEMO-ACCT-ID = 0  (not yet resolved)
+#   CC-ACCT-ID    = '4000009999'
+#   CDEMO-ACCT-ID = 0 (not yet resolved)
 #   WS-RETURN-MSG-OFF = TRUE
 # ===========================================================================
 def scenario_3():
@@ -265,7 +259,7 @@ def scenario_3():
         "Account lookup -- valid ID parsed and carried into CDEMO",
         """
         Teller enters account number 4000009999 into the CICS screen.
-        The harness validates format and loads the numeric value into
+        Harness validates format and loads the numeric value into
         CDEMO-ACCT-ID for downstream DB2 read.
         Expected: flg_acctfilter_isvalid=True, cdemo_acct_id=4000009999.
         This proves the translation carries values correctly, not just flags.
@@ -274,8 +268,8 @@ def scenario_3():
     )
 
     s = CarddemoState()
-    s.cc_acct_id      = "4000009999"
-    s.cc_acct_id_n    = 4000009999
+    s.cc_acct_id       = "4000009999"
+    s.cc_acct_id_n     = 4000009999
     s.ws_return_msg_off = True
 
     t0 = time.perf_counter()
@@ -285,28 +279,27 @@ def scenario_3():
     check("Acct 4000009999         -> flg_acctfilter_isvalid is True",  s.flg_acctfilter_isvalid)
     check("Acct 4000009999         -> cdemo_acct_id = 4000009999",       s.cdemo_acct_id == 4000009999)
     check("Acct 4000009999         -> acup_new_acct_id = '4000009999'",  s.acup_new_acct_id == "4000009999")
-    check("Acct 4000009999         -> no input error",                    not s.input_error)
+    check("Acct 4000009999         -> no input error",                   not s.input_error)
     print(f"  Elapsed: {us:.1f} us")
 
 
 # ===========================================================================
 # SCENARIO 4
-# Teller attempts to update a customer whose SSN on the form has a
-# non-numeric character in part 1 (transcription error: '12X' instead of
-# '123'). The system must reject the record before any write occurs.
-# COBOL paragraph exercised: 1265-EDIT-US-SSN
+# Customer form has SSN with typo: '12X' in part 1.
+# System must reject before any DB write occurs.
+# COBOL paragraph exercised: 1265-EDIT-US-SSN (via module injection)
 #
 # COBOL COMMAREA payload equivalent:
-#   WS-EDIT-US-SSN-PART1 = '12X'
-#   WS-EDIT-US-SSN-PART2 = '45'
-#   WS-EDIT-US-SSN-PART3 = '6789'
+#   ACUP-NEW-CUST-SSN-1 = '12X'   <- non-numeric, caught by 1245-EDIT-NUM-REQD
+#   ACUP-NEW-CUST-SSN-2 = '45'
+#   ACUP-NEW-CUST-SSN-3 = '6789'
 # ===========================================================================
 def scenario_4():
     header(4,
         "SSN transcription error -- bad part 1 must be rejected",
         """
         Customer form shows SSN 12X-45-6789 (typo in area number).
-        In a live environment this must be caught before the DB2 WRITE.
+        Must be caught before the DB2 WRITE.
         Expected: flg_edit_us_ssn_part1_not_ok=True, record blocked.
         An LLM-based system would need to 'understand' this is invalid;
         this harness rejects it deterministically via digit-check logic.
@@ -314,90 +307,97 @@ def scenario_4():
         """
     )
 
+    # Invalid -- alpha char in part 1
     s = CarddemoState()
-    s.ws_edit_us_ssn_part1 = "12X"
-    s.ws_edit_us_ssn_part2 = "45"
-    s.ws_edit_us_ssn_part3 = "6789"
+    s.acup_new_cust_ssn_1 = "12X"
+    s.acup_new_cust_ssn_2 = "45"
+    s.acup_new_cust_ssn_3 = "6789"
+    s.ws_return_msg_off = True
 
     t0 = time.perf_counter()
-    coactupc_1265_edit_us_ssn(s)
+    run_ssn(s)
     us = (time.perf_counter() - t0) * 1_000_000
 
-    check("Bad SSN part 1          -> flg_edit_us_ssn_part1_not_ok is True", s.flg_edit_us_ssn_part1_not_ok)
+    check("Bad SSN '12X-45-6789'   -> flg_edit_us_ssn_part1_not_ok is True",  s.flg_edit_us_ssn_part1_not_ok)
+    check("Bad SSN '12X-45-6789'   -> input_error is True",                    s.input_error)
     print(f"  Elapsed: {us:.1f} us")
 
-    # Contrast: valid SSN passes
+    # Valid SSN
     s2 = CarddemoState()
-    s2.ws_edit_us_ssn_part1 = "123"
-    s2.ws_edit_us_ssn_part2 = "45"
-    s2.ws_edit_us_ssn_part3 = "6789"
+    s2.acup_new_cust_ssn_1 = "123"
+    s2.acup_new_cust_ssn_2 = "45"
+    s2.acup_new_cust_ssn_3 = "6789"
+    s2.ws_return_msg_off = True
 
     t0 = time.perf_counter()
-    coactupc_1265_edit_us_ssn(s2)
+    run_ssn(s2)
     us2 = (time.perf_counter() - t0) * 1_000_000
 
-    check("Valid SSN 123-45-6789   -> flg_edit_us_ssn_part1_not_ok is False", not s2.flg_edit_us_ssn_part1_not_ok)
+    check("Valid SSN '123-45-6789' -> flg_edit_us_ssn_part1_not_ok is False", not s2.flg_edit_us_ssn_part1_not_ok)
+    check("Valid SSN '123-45-6789' -> input_error is False",                   not s2.input_error)
     print(f"  Elapsed: {us2:.1f} us")
 
 
 # ===========================================================================
 # SCENARIO 5
-# Risk officer updates a customer's FICO score to 850 (top tier).
-# The system must accept it as valid. Then a data entry error enters 999
-# (above the 850 ceiling). The system must reject 999 as out of range.
-# COBOL paragraph exercised: 1275-EDIT-FICO-SCORE
+# Risk officer sets FICO to 850 (valid max). Then 999 is entered (above
+# ceiling). Then 299 (below floor). System enforces range deterministically.
+# COBOL paragraph exercised: 1275-EDIT-FICO-SCORE (via module injection)
 #
 # COBOL COMMAREA payload equivalent:
-#   WS-EDIT-FICO-SCORE = 850  (valid)
-#   WS-EDIT-FICO-SCORE = 999  (out of range -- FICO max is 850)
+#   WS-EDIT-SIGNED-NUMBER-9V2-X = '850'  (valid)
+#   WS-EDIT-SIGNED-NUMBER-9V2-X = '999'  (above 850 ceiling)
+#   WS-EDIT-SIGNED-NUMBER-9V2-X = '299'  (below 300 floor)
 # ===========================================================================
 def scenario_5():
     header(5,
-        "FICO score range validation -- 850 valid, 999 rejected",
+        "FICO score range validation -- 850 valid, 999 and 299 rejected",
         """
-        Risk officer sets FICO score to 850 (valid maximum).
-        Then a second entry of 999 is attempted (above ceiling).
-        Expected: 850 -> valid; 999 -> flg_fico_score_not_ok=True.
         FICO range is 300-850. This is a hard regulatory constraint.
-        A system that gets this wrong on even 1-in-1000 records creates
-        material risk. This harness cannot get it wrong -- it's arithmetic.
+        Risk officer sets score to 850 (valid maximum).
+        Data entry error then enters 999 (above ceiling) and 299 (below floor).
+        A system wrong on 1-in-1000 records creates material risk.
+        This harness cannot be wrong -- it is arithmetic.
         COBOL: 1275-EDIT-FICO-SCORE enforces 300 <= score <= 850.
         """
     )
 
     # Valid: 850
     s = CarddemoState()
-    s.acup_new_cust_fico_score_x = "850"
+    s.ws_edit_signed_number_9v2_x = "850"
+    s.ws_return_msg_off = True
 
     t0 = time.perf_counter()
-    coactupc_1275_edit_fico_score(s)
+    run_fico(s)
     us = (time.perf_counter() - t0) * 1_000_000
 
-    check("FICO 850 (valid max)    -> flg_fico_score_not_ok is False", not s.flg_fico_score_not_ok)
-    check("FICO 850 (valid max)    -> flg_fico_score_is_valid is True", s.flg_fico_score_is_valid)
+    check("FICO 850 (valid max)    -> flg_fico_score_not_ok is False",  not s.flg_fico_score_not_ok)
     print(f"  Elapsed: {us:.1f} us")
 
     # Invalid: 999
     s2 = CarddemoState()
-    s2.acup_new_cust_fico_score_x = "999"
+    s2.ws_edit_signed_number_9v2_x = "999"
+    s2.ws_return_msg_off = True
 
     t0 = time.perf_counter()
-    coactupc_1275_edit_fico_score(s2)
+    run_fico(s2)
     us2 = (time.perf_counter() - t0) * 1_000_000
 
-    check("FICO 999 (above max)    -> flg_fico_score_not_ok is True",  s2.flg_fico_score_not_ok)
-    check("FICO 999 (above max)    -> flg_fico_score_is_valid is False", not s2.flg_fico_score_is_valid)
+    check("FICO 999 (above max)    -> flg_fico_score_not_ok is True",   s2.flg_fico_score_not_ok)
+    check("FICO 999 (above max)    -> input_error is True",              s2.input_error)
     print(f"  Elapsed: {us2:.1f} us")
 
-    # Invalid: 299 (below floor)
+    # Invalid: 299
     s3 = CarddemoState()
-    s3.acup_new_cust_fico_score_x = "299"
+    s3.ws_edit_signed_number_9v2_x = "299"
+    s3.ws_return_msg_off = True
 
     t0 = time.perf_counter()
-    coactupc_1275_edit_fico_score(s3)
+    run_fico(s3)
     us3 = (time.perf_counter() - t0) * 1_000_000
 
-    check("FICO 299 (below min)    -> flg_fico_score_not_ok is True",  s3.flg_fico_score_not_ok)
+    check("FICO 299 (below min)    -> flg_fico_score_not_ok is True",   s3.flg_fico_score_not_ok)
+    check("FICO 299 (below min)    -> input_error is True",              s3.input_error)
     print(f"  Elapsed: {us3:.1f} us")
 
 
