@@ -177,3 +177,9 @@ def store_fetched_data(state):
     state.acup_old_cust_pri_holder_ind = cust.get("cust_pri_card_holder_ind", "")
 
 
+
+
+def check_change_in_rec(state):
+    """9700-CHECK-CHANGE-IN-REC stub"""
+    # TODO: implement when paragraph is translated
+    pass

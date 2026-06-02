@@ -401,3 +401,136 @@ def test_store_fetched_data_minimal():
     assert state.acup_old_acct_id == "ACCT001"
 
 
+
+def _make_write_state():
+    from translations.state import CarddemoState
+    s = CarddemoState()
+    s.cc_acct_id = "ACCT001"
+    s.cdemo_cust_id = "CUST001"
+    s.acct_db = {"ACCT001": {"acct_id": "ACCT001"}}
+    s.cust_db = {"CUST001": {"cust_id": "CUST001"}}
+    s.ws_return_msg_off = True
+    s.data_was_changed_before_update = False
+    # Populate required ACUP-NEW-* fields minimally
+    s.acup_new_acct_id = "ACCT001"
+    s.acup_new_active_status = "Y"
+    s.acup_new_curr_bal = "1000.00"
+    s.acup_new_credit_limit = "5000.00"
+    s.acup_new_cash_credit_limit = "2000.00"
+    s.acup_new_curr_cyc_credit = "100.00"
+    s.acup_new_curr_cyc_debit = "50.00"
+    s.acup_new_open_year = "2020"
+    s.acup_new_open_mon = "01"
+    s.acup_new_open_day = "15"
+    s.acup_new_exp_year = "2025"
+    s.acup_new_exp_mon = "12"
+    s.acup_new_exp_day = "31"
+    s.acup_new_reissue_year = "2022"
+    s.acup_new_reissue_mon = "06"
+    s.acup_new_reissue_day = "01"
+    s.acup_new_group_id = "GRP01"
+    s.acup_new_cust_id = "CUST001"
+    s.acup_new_cust_first_name = "John"
+    s.acup_new_cust_middle_name = "M"
+    s.acup_new_cust_last_name = "Doe"
+    s.acup_new_cust_addr_line_1 = "123 Main St"
+    s.acup_new_cust_addr_line_2 = ""
+    s.acup_new_cust_addr_line_3 = ""
+    s.acup_new_cust_addr_state_cd = "NY"
+    s.acup_new_cust_addr_country_cd = "US"
+    s.acup_new_cust_addr_zip = "10001"
+    s.acup_new_cust_phone_num_1a = "555"
+    s.acup_new_cust_phone_num_1b = "123"
+    s.acup_new_cust_phone_num_1c = "4567"
+    s.acup_new_cust_phone_num_2a = "555"
+    s.acup_new_cust_phone_num_2b = "987"
+    s.acup_new_cust_phone_num_2c = "6543"
+    s.acup_new_cust_ssn = "123456789"
+    s.acup_new_cust_govt_issued_id = "GOV123"
+    s.acup_new_cust_dob_year = "1980"
+    s.acup_new_cust_dob_mon = "05"
+    s.acup_new_cust_dob_day = "20"
+    s.acup_new_cust_eft_account_id = "EFT001"
+    s.acup_new_cust_pri_holder_ind = "Y"
+    s.acup_new_cust_fico_score = "750"
+    return s
+
+
+def test_write_processing_normal():
+    from translations.coactupc_9600_write_processing import write_processing
+    s = _make_write_state()
+    write_processing(s)
+    assert s.locked_but_update_failed == False
+    assert s.acct_update_id == "ACCT001"
+    assert s.cust_update_first_name == "John"
+    assert s.acct_update_open_date == "2020-01-15"
+    assert s.cust_update_phone_num_1 == "(555)123-4567"
+    assert s.cust_update_dob_yyyy_mm_dd == "1980-05-20"
+    assert s.acct_db["ACCT001"] == s.acct_update_record
+    assert s.cust_db["CUST001"] == s.cust_update_record
+
+
+def test_write_processing_acct_lock_fail():
+    from translations.coactupc_9600_write_processing import write_processing
+    s = _make_write_state()
+    s.acct_db = {}  # key missing → lock fail
+    write_processing(s)
+    assert s.input_error == True
+    assert s.could_not_lock_acct_for_update == True
+
+
+def test_write_processing_cust_lock_fail():
+    from translations.coactupc_9600_write_processing import write_processing
+    s = _make_write_state()
+    s.cust_db = {}  # key missing → lock fail
+    write_processing(s)
+    assert s.input_error == True
+    assert s.could_not_lock_cust_for_update == True
+
+
+def test_write_processing_data_changed():
+    from translations.coactupc_9600_write_processing import write_processing
+    s = _make_write_state()
+    s.data_was_changed_before_update = True
+    write_processing(s)
+    assert s.locked_but_update_failed == False
+    # acct_db and cust_db must be untouched
+    assert s.acct_db["ACCT001"] == {"acct_id": "ACCT001"}
+    assert s.cust_db["CUST001"] == {"cust_id": "CUST001"}
+
+
+def test_write_processing_acct_rewrite_fail():
+    from translations.coactupc_9600_write_processing import write_processing
+    s = _make_write_state()
+    class FailOnWrite(dict):
+        def __setitem__(self, k, v):
+            raise RuntimeError("write fail")
+    s.acct_db = FailOnWrite({"ACCT001": {}})
+    write_processing(s)
+    assert s.locked_but_update_failed == True
+
+
+def test_write_processing_cust_rewrite_fail_rollback():
+    from translations.coactupc_9600_write_processing import write_processing
+    original = {"acct_id": "ACCT001", "original": True}
+    s = _make_write_state()
+    s.acct_db = {"ACCT001": original.copy()}
+    class FailOnWrite(dict):
+        def __setitem__(self, k, v):
+            if k == "CUST001":
+                raise RuntimeError("cust write fail")
+            super().__setitem__(k, v)
+    s.cust_db = FailOnWrite({"CUST001": {}})
+    write_processing(s)
+    assert s.locked_but_update_failed == True
+    assert s.acct_db["ACCT001"] == original
+
+
+def test_write_processing_date_assembly():
+    from translations.coactupc_9600_write_processing import write_processing
+    s = _make_write_state()
+    write_processing(s)
+    assert s.acct_update_open_date == "2020-01-15"
+    assert s.acct_update_expiraion_date == "2025-12-31"
+    assert s.acct_update_reissue_date == "2022-06-01"
+    assert s.cust_update_dob_yyyy_mm_dd == "1980-05-20"
