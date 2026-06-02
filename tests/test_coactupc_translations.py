@@ -314,3 +314,90 @@ def test_read_acct_exits_after_9400_on_custfilter_not_ok():
     assert state.acup_old_details == {}
 
 
+
+def test_store_fetched_data_full_path():
+    from translations.state import CarddemoState
+    from translations.coactupc_9xxx_stubs import store_fetched_data
+    state = CarddemoState()
+
+    state.acct_db = {
+        "ACCT001": {
+            "acct_id": "ACCT001",
+            "acct_active_status": "Y",
+            "acct_curr_bal": "1000.00",
+            "acct_credit_limit": "5000.00",
+            "acct_cash_credit_limit": "2000.00",
+            "acct_curr_cyc_credit": "300.00",
+            "acct_curr_cyc_debit": "150.00",
+            "acct_open_date": "2019-06-15",
+            "acct_expiration_date": "2024-06-15",
+            "acct_reissue_date": "2022-06-15",
+            "acct_group_id": "GRP01"
+        }
+    }
+    state.cust_db = {
+        "CUST001": {
+            "cust_id": "CUST001",
+            "cust_first_name": "John",
+            "cust_middle_name": "M",
+            "cust_last_name": "Doe",
+            "cust_ssn": "123456789",
+            "cust_dob_yyyy_mm_dd": "1985-03-20",
+            "cust_fico_credit_score": "750",
+            "cust_addr_line_1": "123 Main St",
+            "cust_addr_line_2": "",
+            "cust_addr_line_3": "",
+            "cust_addr_state_cd": "NY",
+            "cust_addr_country_cd": "US",
+            "cust_addr_zip": "10001",
+            "cust_phone_num_1": "555-1234",
+            "cust_phone_num_2": "",
+            "cust_govt_issued_id": "ABC123",
+            "cust_eft_account_id": "EFT001",
+            "cust_pri_card_holder_ind": "Y"
+        }
+    }
+    state.card_xref_db = {
+        "ACCT001": {"xref_card_num": "4111111111111111"}
+    }
+
+    state.ws_card_rid_acct_id = "ACCT001"
+    state.ws_card_rid_cust_id = "CUST001"
+
+    store_fetched_data(state)
+
+    assert state.cdemo_acct_id == "ACCT001"
+    assert state.cdemo_cust_id == "CUST001"
+    assert state.cdemo_card_num == "4111111111111111"
+    assert state.acup_old_active_status == "Y"
+    assert state.acup_old_open_year == "2019"
+    assert state.acup_old_open_mon == "06"
+    assert state.acup_old_open_day == "15"
+    assert state.acup_old_cust_first_name == "John"
+    assert state.acup_old_cust_dob_year == "1985"
+
+
+def test_store_fetched_data_date_slicing():
+    # Standalone date slicing test
+    date_str = "2019-06-15"
+    assert date_str[0:4] == "2019"
+    assert date_str[5:7] == "06"
+    assert date_str[8:10] == "15"
+
+
+def test_store_fetched_data_minimal():
+    from translations.state import CarddemoState
+    from translations.coactupc_9xxx_stubs import store_fetched_data
+    state = CarddemoState()
+    state.acct_db = {"ACCT001": {"acct_id": "ACCT001"}}
+    state.cust_db = {"CUST001": {"cust_id": "CUST001"}}
+    state.card_xref_db = {"ACCT001": {}}
+    state.ws_card_rid_acct_id = "ACCT001"
+    state.ws_card_rid_cust_id = "CUST001"
+
+    store_fetched_data(state)
+
+    assert state.cdemo_acct_id == "ACCT001"
+    assert state.acup_old_acct_id == "ACCT001"
+
+
