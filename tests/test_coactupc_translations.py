@@ -187,3 +187,63 @@ def test_getcardxref_byacct_other():
     assert state.error_opname == "READ"
     assert state.error_file == "CARDXREF"
     assert state.ws_return_msg == "FILE ERROR"
+
+
+# ============================================================================
+# 9300-GETACCTDATA-BYACCT tests
+# ============================================================================
+
+def test_getacctdata_byacct_normal():
+    from translations.state import CarddemoState
+    from translations.coactupc_9xxx_stubs import getacctdata_byacct
+    state = CarddemoState()
+    state.acct_db = {"0000000000000001": {"acct_id": "0000000000000001"}}
+    state.ws_card_rid_acct_id = "0000000000000001"
+    state.ws_return_msg_off = True
+
+    getacctdata_byacct(state)
+
+    assert state.found_acct_in_master is True
+    assert state.input_error is False
+    assert state.flg_acctfilter_not_ok is False
+
+
+def test_getacctdata_byacct_notfnd():
+    from translations.state import CarddemoState
+    from translations.coactupc_9xxx_stubs import getacctdata_byacct
+    state = CarddemoState()
+    state.acct_db = {}
+    state.ws_card_rid_acct_id = "0000000000000001"
+    state.ws_return_msg_off = True
+
+    getacctdata_byacct(state)
+
+    assert state.found_acct_in_master is False
+    assert state.input_error is True
+    assert state.flg_acctfilter_not_ok is True
+    assert "not found in Acct Master file" in state.ws_return_msg
+
+
+def test_getacctdata_byacct_other():
+    from translations.state import CarddemoState
+    from translations.coactupc_9xxx_stubs import getacctdata_byacct
+    state = CarddemoState()
+    state.acct_db = None  # force exception
+    state.ws_card_rid_acct_id = "0000000000000001"
+    state.lit_acctfilename = "ACCTDAT"
+    state.ws_return_msg_off = True
+def test_read_acct_exits_after_9300_on_acctfilter_not_ok():
+    from translations.state import CarddemoState
+    from translations.coactupc_9000_read_acct import read_acct
+    state = CarddemoState()
+    state.cc_acct_id = "ACCT001"
+    state.card_xref_db = {
+        "ACCT001": {"xref_cust_id": "C1", "xref_card_num": "4111"}
+    }
+    state.acct_db = {}  # triggers NOTFND in 9300
+    state.ws_return_msg_off = False
+    read_acct(state)
+    assert state.flg_acctfilter_not_ok == True
+    assert state.ws_card_rid_cust_id == ""
+
+

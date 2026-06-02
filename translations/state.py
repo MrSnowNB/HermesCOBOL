@@ -350,7 +350,9 @@ class CarddemoState:
     flg_dt_of_birth_month_blank: bool = False
     flg_dt_of_birth_day_blank: bool = False
     card_xref_db: Any = None
+    acct_db: Any = None
     ws_card_rid_acct_id: str = ""
+    ws_card_rid_cust_id: str = ""
     ws_resp_cd: int = 0
     ws_reas_cd: int = 0
     cdemo_cust_id: str = ""
@@ -360,10 +362,13 @@ class CarddemoState:
     error_resp: int = 0
     error_resp2: int = 0
     lit_cardxrefname_acct_path: str = ""
+    lit_acctfilename: str = ""
     ws_file_error_message: str = ""
 
     card_xref_db: Any = None
+    acct_db: Any = None
     ws_card_rid_acct_id: str = ""
+    ws_card_rid_cust_id: str = ""
     ws_resp_cd: int = 0
     ws_reas_cd: int = 0
     cdemo_cust_id: str = ""
@@ -373,4 +378,5 @@ class CarddemoState:
     error_resp: int = 0
     error_resp2: int = 0
     lit_cardxrefname_acct_path: str = ""
+    lit_acctfilename: str = ""
     ws_file_error_message: str = ""

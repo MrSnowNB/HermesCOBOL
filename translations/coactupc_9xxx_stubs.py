@@ -39,8 +39,39 @@ def getcardxref_byacct(state):
 
 def getacctdata_byacct(state):
     """9300-GETACCTDATA-BYACCT"""
-    # TODO: 9300-GETACCTDATA-BYACCT — implement when paragraph is translated
-    pass
+
+    DFHRESP_NORMAL = 0
+    DFHRESP_NOTFND = 13
+
+    try:
+        if state.ws_card_rid_acct_id in state.acct_db:
+            state.ws_resp_cd = DFHRESP_NORMAL
+            state.found_acct_in_master = True
+        else:
+            state.ws_resp_cd = DFHRESP_NOTFND
+            state.input_error = True
+            state.flg_acctfilter_not_ok = True
+            if state.ws_return_msg_off:
+                state.error_resp = state.ws_resp_cd
+                state.error_resp2 = state.ws_reas_cd
+                state.ws_return_msg = (
+                    f"Account:{state.ws_card_rid_acct_id}"
+                    " not found in Acct Master file."
+                    f"Resp:{state.error_resp}"
+                    f" Reas:{state.error_resp2}"
+                )
+    except Exception:
+        # OTHER path
+        state.ws_resp_cd = -1
+        state.input_error = True
+        state.flg_acctfilter_not_ok = True
+        state.error_opname = "READ"
+        state.error_file = state.lit_acctfilename
+        state.error_resp = state.ws_resp_cd
+        state.error_resp2 = state.ws_reas_cd
+        state.ws_return_msg = state.ws_file_error_message
+
+
 
 
 def getcustdata_bycust(state):
