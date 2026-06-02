@@ -133,3 +133,57 @@ def test_1205_no_changes_detected_on_full_match():
     state = CarddemoState()
     coactupc_1205_compare_old_new.coactupc_1205_compare_old_new(state)
     assert state.no_changes_detected is True
+
+
+# ============================================================================
+# 9200-GETCARDXREF-BYACCT tests
+# ============================================================================
+
+def test_getcardxref_byacct_normal():
+    from translations.state import CarddemoState
+    from translations.coactupc_9xxx_stubs import getcardxref_byacct, DFHRESP_NORMAL
+    state = CarddemoState()
+    state.ws_card_rid_acct_id = "ACCT001"
+    state.card_xref_db = {
+        "ACCT001": {"xref_cust_id": "CUST99", "xref_card_num": "4111111111111111"}
+    }
+    getcardxref_byacct(state)
+    assert state.ws_resp_cd == DFHRESP_NORMAL
+    assert state.cdemo_cust_id == "CUST99"
+    assert state.cdemo_card_num == "4111111111111111"
+    assert state.input_error == False
+    assert state.flg_acctfilter_not_ok == False
+
+
+def test_getcardxref_byacct_notfnd():
+    from translations.state import CarddemoState
+    from translations.coactupc_9xxx_stubs import getcardxref_byacct, DFHRESP_NOTFND
+    state = CarddemoState()
+    state.ws_card_rid_acct_id = "MISSING"
+    state.card_xref_db = {}
+    state.ws_return_msg_off = True
+    state.ws_reas_cd = 0
+    getcardxref_byacct(state)
+    assert state.ws_resp_cd == DFHRESP_NOTFND
+    assert state.input_error == True
+    assert state.flg_acctfilter_not_ok == True
+    assert "MISSING" in state.ws_return_msg
+    assert "not found" in state.ws_return_msg
+
+
+def test_getcardxref_byacct_other():
+    from translations.state import CarddemoState
+    from translations.coactupc_9xxx_stubs import getcardxref_byacct
+    state = CarddemoState()
+    state.ws_card_rid_acct_id = "ACCT001"
+    state.card_xref_db = None  # will trigger TypeError on 'in' check
+    state.lit_cardxrefname_acct_path = "CARDXREF"
+    state.ws_file_error_message = "FILE ERROR"
+    state.ws_reas_cd = 0
+    getcardxref_byacct(state)
+    assert state.ws_resp_cd == -1
+    assert state.input_error == True
+    assert state.flg_acctfilter_not_ok == True
+    assert state.error_opname == "READ"
+    assert state.error_file == "CARDXREF"
+    assert state.ws_return_msg == "FILE ERROR"

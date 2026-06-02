@@ -259,93 +259,118 @@ class CarddemoState:
 
 
 # --- 1260 Phone Edit Working Storage ---
-ws_edit_us_phone_numa: str = ""      # area code (3 digits)
-ws_edit_us_phone_numb: str = ""      # prefix (3 digits)
-ws_edit_us_phone_numc: str = ""      # line number (4 digits)
-ws_edit_us_phone_is_valid: bool = False
-ws_edit_us_phone_is_invalid: bool = False
-flg_edit_us_phonea_blank: bool = False
-flg_edit_us_phonea_not_ok: bool = False
-flg_edit_us_phonea_isvalid: bool = False
-flg_edit_us_phoneb_blank: bool = False
-flg_edit_us_phoneb_not_ok: bool = False
-flg_edit_us_phoneb_isvalid: bool = False
-flg_edit_us_phonec_blank: bool = False
-flg_edit_us_phonec_not_ok: bool = False
-flg_edit_us_phonec_isvalid: bool = False
+    ws_edit_us_phone_numa: str = ""      # area code (3 digits)
+    ws_edit_us_phone_numb: str = ""      # prefix (3 digits)
+    ws_edit_us_phone_numc: str = ""      # line number (4 digits)
+    ws_edit_us_phone_is_valid: bool = False
+    ws_edit_us_phone_is_invalid: bool = False
+    flg_edit_us_phonea_blank: bool = False
+    flg_edit_us_phonea_not_ok: bool = False
+    flg_edit_us_phonea_isvalid: bool = False
+    flg_edit_us_phoneb_blank: bool = False
+    flg_edit_us_phoneb_not_ok: bool = False
+    flg_edit_us_phoneb_isvalid: bool = False
+    flg_edit_us_phonec_blank: bool = False
+    flg_edit_us_phonec_not_ok: bool = False
+    flg_edit_us_phonec_isvalid: bool = False
 
 
 # --- 1265 SSN Edit Working Storage ---
-ws_edit_us_ssn_part1: str = ""
-ws_edit_us_ssn_part2: str = ""
-ws_edit_us_ssn_part3: str = ""
-ws_edit_us_ssn_part1_flgs: str = ""
-ws_edit_us_ssn_part2_flgs: str = ""
-ws_edit_us_ssn_part3_flgs: str = ""
-flg_edit_us_ssn_part1_not_ok: bool = False
-flg_edit_us_ssn_part2_not_ok: bool = False
-flg_edit_us_ssn_part3_not_ok: bool = False
+    ws_edit_us_ssn_part1: str = ""
+    ws_edit_us_ssn_part2: str = ""
+    ws_edit_us_ssn_part3: str = ""
+    ws_edit_us_ssn_part1_flgs: str = ""
+    ws_edit_us_ssn_part2_flgs: str = ""
+    ws_edit_us_ssn_part3_flgs: str = ""
+    flg_edit_us_ssn_part1_not_ok: bool = False
+    flg_edit_us_ssn_part2_not_ok: bool = False
+    flg_edit_us_ssn_part3_not_ok: bool = False
 
 
 # --- 1270 State Code Edit Working Storage ---
-us_state_code_to_edit: str = ""
-flg_state_not_ok: bool = False
+    us_state_code_to_edit: str = ""
+    flg_state_not_ok: bool = False
 
 
 # --- 1275 FICO Score Edit Working Storage ---
-flg_fico_score_not_ok: bool = False
+    flg_fico_score_not_ok: bool = False
 
 
 # --- 1280 State + ZIP Combo Edit Working Storage ---
-us_state_and_first_zip2: str = ""
-flg_zipcode_not_ok: bool = False
+    us_state_and_first_zip2: str = ""
+    flg_zipcode_not_ok: bool = False
 
 
 # --- 2000 DECIDE-ACTION Working Storage ---
-acup_show_details: bool = False
-acup_changes_okayed_and_done: bool = False
-acup_changes_okayed_lock_error: bool = False
-acup_changes_okayed_but_failed: bool = False
-ccard_aid_pfk12: bool = False
-ccard_aid_pfk05: bool = False
-could_not_lock_acct_for_update: bool = False
-locked_but_update_failed: bool = False
-data_was_changed_before_update: bool = False
-cdemo_card_num: int = 0
-cdemo_acct_status: str = ""
-abend_culprit: str = ""
-abend_code: str = ""
-abend_reason: str = ""
-abend_msg: str = ""
+    acup_show_details: bool = False
+    acup_changes_okayed_and_done: bool = False
+    acup_changes_okayed_lock_error: bool = False
+    acup_changes_okayed_but_failed: bool = False
+    ccard_aid_pfk12: bool = False
+    ccard_aid_pfk05: bool = False
+    could_not_lock_acct_for_update: bool = False
+    locked_but_update_failed: bool = False
+    data_was_changed_before_update: bool = False
+    cdemo_card_num: int = 0
+    cdemo_acct_status: str = ""
+    abend_culprit: str = ""
+    abend_code: str = ""
+    abend_reason: str = ""
+    abend_msg: str = ""
 
 
 # --- 3200/3203 Validation Flags ---
-flg_cred_limit_isvalid: bool = False
-flg_cash_credit_limit_isvalid: bool = False
-flg_curr_bal_isvalid: bool = False
-flg_curr_cyc_credit_isvalid: bool = False
-flg_curr_cyc_debit_isvalid: bool = False
-acup_changes_made: bool = False
+    flg_cred_limit_isvalid: bool = False
+    flg_cash_credit_limit_isvalid: bool = False
+    flg_curr_bal_isvalid: bool = False
+    flg_curr_cyc_credit_isvalid: bool = False
+    flg_curr_cyc_debit_isvalid: bool = False
+    acup_changes_made: bool = False
 
-ws_info_msg: str = ""
+    ws_info_msg: str = ""
 
 
 # --- 3300 Screen Attribute Flags ---
-flg_middle_name_not_ok: bool = False
-flg_first_name_blank: bool = False
-flg_middle_name_blank: bool = False
-flg_last_name_blank: bool = False
-flg_address_line_1_blank: bool = False
-flg_city_blank: bool = False
-flg_country_blank: bool = False
-flg_phone_num_1a_blank: bool = False
-flg_phone_num_1b_blank: bool = False
-flg_phone_num_1c_blank: bool = False
-flg_phone_num_2a_blank: bool = False
-flg_phone_num_2b_blank: bool = False
-flg_phone_num_2c_blank: bool = False
-flg_eft_account_id_blank: bool = False
-flg_pri_cardholder_blank: bool = False
-flg_dt_of_birth_year_blank: bool = False
-flg_dt_of_birth_month_blank: bool = False
-flg_dt_of_birth_day_blank: bool = False
+    flg_middle_name_not_ok: bool = False
+    flg_first_name_blank: bool = False
+    flg_middle_name_blank: bool = False
+    flg_last_name_blank: bool = False
+    flg_address_line_1_blank: bool = False
+    flg_city_blank: bool = False
+    flg_country_blank: bool = False
+    flg_phone_num_1a_blank: bool = False
+    flg_phone_num_1b_blank: bool = False
+    flg_phone_num_1c_blank: bool = False
+    flg_phone_num_2a_blank: bool = False
+    flg_phone_num_2b_blank: bool = False
+    flg_phone_num_2c_blank: bool = False
+    flg_eft_account_id_blank: bool = False
+    flg_pri_cardholder_blank: bool = False
+    flg_dt_of_birth_year_blank: bool = False
+    flg_dt_of_birth_month_blank: bool = False
+    flg_dt_of_birth_day_blank: bool = False
+    card_xref_db: Any = None
+    ws_card_rid_acct_id: str = ""
+    ws_resp_cd: int = 0
+    ws_reas_cd: int = 0
+    cdemo_cust_id: str = ""
+    cdemo_card_num: str = ""
+    error_opname: str = ""
+    error_file: str = ""
+    error_resp: int = 0
+    error_resp2: int = 0
+    lit_cardxrefname_acct_path: str = ""
+    ws_file_error_message: str = ""
+
+    card_xref_db: Any = None
+    ws_card_rid_acct_id: str = ""
+    ws_resp_cd: int = 0
+    ws_reas_cd: int = 0
+    cdemo_cust_id: str = ""
+    cdemo_card_num: str = ""
+    error_opname: str = ""
+    error_file: str = ""
+    error_resp: int = 0
+    error_resp2: int = 0
+    lit_cardxrefname_acct_path: str = ""
+    ws_file_error_message: str = ""
