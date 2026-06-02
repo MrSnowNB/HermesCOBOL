@@ -244,6 +244,7 @@ class CarddemoState:
 
 # 1210-EDIT-ACCOUNT fields
     flg_acctfilter_not_ok: bool = False
+    flg_custfilter_not_ok: bool = False
     cc_acct_id: str = ""
     ws_prompt_for_acct: bool = False
     cdemo_acct_id: int = 0
@@ -350,6 +351,7 @@ class CarddemoState:
     flg_dt_of_birth_month_blank: bool = False
     flg_dt_of_birth_day_blank: bool = False
     card_xref_db: Any = None
+    cust_db: Any = None
     acct_db: Any = None
     ws_card_rid_acct_id: str = ""
     ws_card_rid_cust_id: str = ""
@@ -363,9 +365,11 @@ class CarddemoState:
     error_resp2: int = 0
     lit_cardxrefname_acct_path: str = ""
     lit_acctfilename: str = ""
+    lit_custfilename: str = ""
     ws_file_error_message: str = ""
 
     card_xref_db: Any = None
+    cust_db: Any = None
     acct_db: Any = None
     ws_card_rid_acct_id: str = ""
     ws_card_rid_cust_id: str = ""
@@ -379,4 +383,5 @@ class CarddemoState:
     error_resp2: int = 0
     lit_cardxrefname_acct_path: str = ""
     lit_acctfilename: str = ""
+    lit_custfilename: str = ""
     ws_file_error_message: str = ""

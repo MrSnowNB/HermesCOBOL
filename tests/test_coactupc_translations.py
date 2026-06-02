@@ -247,3 +247,70 @@ def test_read_acct_exits_after_9300_on_acctfilter_not_ok():
     assert state.ws_card_rid_cust_id == ""
 
 
+
+def test_getcustdata_bycust_normal():
+    from translations.state import CarddemoState
+    from translations.coactupc_9xxx_stubs import getcustdata_bycust
+    state = CarddemoState()
+    state.cust_db = {"CUST001": {"cust_id": "CUST001"}}
+    state.ws_card_rid_cust_id = "CUST001"
+    state.ws_return_msg_off = True
+
+    getcustdata_bycust(state)
+
+    assert state.found_cust_in_master is True
+    assert state.input_error is False
+    assert state.flg_custfilter_not_ok is False
+
+
+def test_getcustdata_bycust_notfnd():
+    from translations.state import CarddemoState
+    from translations.coactupc_9xxx_stubs import getcustdata_bycust
+    state = CarddemoState()
+    state.cust_db = {}
+    state.ws_card_rid_cust_id = "CUST001"
+    state.ws_return_msg_off = True
+
+    getcustdata_bycust(state)
+
+    assert state.found_cust_in_master is False
+    assert state.input_error is True
+    assert state.flg_custfilter_not_ok is True
+    assert "not found in customer master" in state.ws_return_msg
+
+
+def test_getcustdata_bycust_other():
+    from translations.state import CarddemoState
+    from translations.coactupc_9xxx_stubs import getcustdata_bycust
+    state = CarddemoState()
+    state.cust_db = None  # force exception
+    state.ws_card_rid_cust_id = "CUST001"
+    state.lit_custfilename = "CUSTDAT"
+    state.ws_return_msg_off = True
+
+    getcustdata_bycust(state)
+
+    assert state.ws_resp_cd == -1
+    assert state.input_error is True
+    assert state.flg_custfilter_not_ok is True
+    assert state.error_opname == "READ"
+    assert state.error_file == "CUSTDAT"
+
+
+def test_read_acct_exits_after_9400_on_custfilter_not_ok():
+    from translations.state import CarddemoState
+    from translations.coactupc_9000_read_acct import read_acct
+    state = CarddemoState()
+    state.cc_acct_id = "ACCT001"
+    state.card_xref_db = {
+        "ACCT001": {"xref_cust_id": "C1", "xref_card_num": "4111"}
+    }
+    state.acct_db = {"ACCT001": {}}
+    state.cust_db = {}  # triggers NOTFND in 9400
+    state.ws_return_msg_off = False
+    read_acct(state)
+    assert state.flg_custfilter_not_ok == True
+    # store_fetched_data must NOT have run
+    assert state.acup_old_details == {}
+
+
