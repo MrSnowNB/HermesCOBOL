@@ -3,6 +3,7 @@ coactupc_1265_edit_us_ssn.py
 Implements 1265-EDIT-US-SSN paragraph.
 """
 
+from translations.coactupc_1245_edit_num_reqd import edit_num_reqd_1245
 
 
 def is_invalid_ssn_part1(value: str) -> bool:
@@ -20,8 +21,7 @@ def edit_us_ssn():
     state.ws_edit_alphanum_length = 3
 
     # PERFORM 1245-EDIT-NUM-REQD
-    from coactupc_1245_edit_num_reqd import edit_num_reqd
-    edit_num_reqd()
+    edit_num_reqd_1245(state)
 
     # MOVE WS-EDIT-ALPHANUM-ONLY-FLAGS TO WS-EDIT-US-SSN-PART1-FLGS
     if state.flg_alphanum_isvalid:
@@ -41,13 +41,18 @@ def edit_us_ssn():
                     f"{state.ws_edit_variable_name.strip()}: "
                     "should not be 000, 666, or between 900 and 999"
                 )
+    else:
+        # Part 1 failed numeric check -- flag it
+        state.flg_edit_us_ssn_part1_not_ok = True
+        state.input_error = True
 
     # ===================== Part 2 (2 digits) =====================
     state.ws_edit_variable_name = "SSN 4th & 5th chars"
     state.ws_edit_alphanum_only = state.acup_new_cust_ssn_2
     state.ws_edit_alphanum_length = 2
+    state.flg_alphanum_isvalid = False
 
-    edit_num_reqd()
+    edit_num_reqd_1245(state)
 
     if state.flg_alphanum_isvalid:
         state.ws_edit_us_ssn_part2_flgs = "ISVALID"
@@ -66,8 +71,9 @@ def edit_us_ssn():
     state.ws_edit_variable_name = "SSN Last 4 chars"
     state.ws_edit_alphanum_only = state.acup_new_cust_ssn_3
     state.ws_edit_alphanum_length = 4
+    state.flg_alphanum_isvalid = False
 
-    edit_num_reqd()
+    edit_num_reqd_1245(state)
 
     if state.flg_alphanum_isvalid:
         state.ws_edit_us_ssn_part3_flgs = "ISVALID"
