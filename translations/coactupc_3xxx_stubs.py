@@ -36,7 +36,7 @@ def setup_infomsg_attrs():
     _setup_infomsg_attrs(state)
 
 
-def send_screen():
-    """3400-SEND-SCREEN stub"""
-    # TODO: 3400-SEND-SCREEN — implement when 3400 paragraph is translated
-    pass
+def send_screen(state):
+    """3400-SEND-SCREEN"""
+    from coactupc_3400_send_screen import send_screen as _send_screen
+    _send_screen(state)
