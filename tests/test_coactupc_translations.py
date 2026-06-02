@@ -534,3 +534,141 @@ def test_write_processing_date_assembly():
     assert s.acct_update_expiraion_date == "2025-12-31"
     assert s.acct_update_reissue_date == "2022-06-01"
     assert s.cust_update_dob_yyyy_mm_dd == "1980-05-20"
+
+
+def _make_check_state():
+    from translations.state import CarddemoState
+    s = CarddemoState()
+    s.ws_card_rid_acct_id = "ACCT001"
+    s.ws_card_rid_cust_id = "CUST001"
+    s.data_was_changed_before_update = False
+
+    s.acct_db = {"ACCT001": {
+        "acct_active_status": "Y",
+        "acct_curr_bal": 1000.0,
+        "acct_credit_limit": 5000.0,
+        "acct_cash_credit_limit": 2000.0,
+        "acct_curr_cyc_credit": 100.0,
+        "acct_curr_cyc_debit": 50.0,
+        "acct_open_date": "2020-01-15",
+        "acct_expiration_date": "2025-12-31",
+        "acct_reissue_date": "2022-06-01",
+        "acct_group_id": "GRP01",
+    }}
+
+    s.cust_db = {"CUST001": {
+        "cust_first_name": "John",
+        "cust_middle_name": "M",
+        "cust_last_name": "Doe",
+        "cust_addr_line_1": "123 Main St",
+        "cust_addr_line_2": "",
+        "cust_addr_line_3": "",
+        "cust_addr_state_cd": "NY",
+        "cust_addr_country_cd": "US",
+        "cust_addr_zip": "10001",
+        "cust_phone_num_1": "(555)123-4567",
+        "cust_phone_num_2": "(555)987-6543",
+        "cust_ssn": "123456789",
+        "cust_govt_issued_id": "GOV123",
+        "cust_dob_yyyy_mm_dd": "1980-05-20",
+        "cust_eft_account_id": "EFT001",
+        "cust_pri_card_holder_ind": "Y",
+        "cust_fico_credit_score": "750",
+    }}
+
+    s.acup_old_active_status = "Y"
+    s.acup_old_curr_bal_n = 1000.0
+    s.acup_old_credit_limit_n = 5000.0
+    s.acup_old_cash_credit_limit_n = 2000.0
+    s.acup_old_curr_cyc_credit_n = 100.0
+    s.acup_old_curr_cyc_debit_n = 50.0
+    s.acup_old_open_year = "2020"
+    s.acup_old_open_mon = "01"
+    s.acup_old_open_day = "15"
+    s.acup_old_exp_year = "2025"
+    s.acup_old_exp_mon = "12"
+    s.acup_old_exp_day = "31"
+    s.acup_old_reissue_year = "2022"
+    s.acup_old_reissue_mon = "06"
+    s.acup_old_reissue_day = "01"
+    s.acup_old_group_id = "GRP01"
+
+    s.acup_old_cust_first_name = "John"
+    s.acup_old_cust_middle_name = "M"
+    s.acup_old_cust_last_name = "Doe"
+    s.acup_old_cust_addr_line_1 = "123 Main St"
+    s.acup_old_cust_addr_line_2 = ""
+    s.acup_old_cust_addr_line_3 = ""
+    s.acup_old_cust_addr_state_cd = "NY"
+    s.acup_old_cust_addr_country_cd = "US"
+    s.acup_old_cust_addr_zip = "10001"
+    s.acup_old_cust_phone_num_1 = "(555)123-4567"
+    s.acup_old_cust_phone_num_2 = "(555)987-6543"
+    s.acup_old_cust_ssn = "123456789"
+    s.acup_old_cust_govt_issued_id = "GOV123"
+    s.acup_old_cust_dob_yyyy_mm_dd = "19800520"
+    s.acup_old_cust_eft_account_id = "EFT001"
+    s.acup_old_cust_pri_holder_ind = "Y"
+    s.acup_old_cust_fico_score = "750"
+    return s
+
+def test_check_change_no_change():
+    from translations.coactupc_9xxx_stubs import check_change_in_rec
+    s = _make_check_state()
+    check_change_in_rec(s)
+    assert s.data_was_changed_before_update == False
+
+def test_check_change_acct_status():
+    from translations.coactupc_9xxx_stubs import check_change_in_rec
+    s = _make_check_state()
+    s.acct_db["ACCT001"]["acct_active_status"] = "N"
+    check_change_in_rec(s)
+    assert s.data_was_changed_before_update == True
+
+def test_check_change_acct_balance():
+    from translations.coactupc_9xxx_stubs import check_change_in_rec
+    s = _make_check_state()
+    s.acct_db["ACCT001"]["acct_curr_bal"] = 9999.0
+    check_change_in_rec(s)
+    assert s.data_was_changed_before_update == True
+
+def test_check_change_acct_open_date():
+    from translations.coactupc_9xxx_stubs import check_change_in_rec
+    s = _make_check_state()
+    s.acct_db["ACCT001"]["acct_open_date"] = "2021-03-10"
+    check_change_in_rec(s)
+    assert s.data_was_changed_before_update == True
+
+def test_check_change_group_id_case():
+    from translations.coactupc_9xxx_stubs import check_change_in_rec
+    s = _make_check_state()
+    s.acct_db["ACCT001"]["acct_group_id"] = "grp01"
+    check_change_in_rec(s)
+    assert s.data_was_changed_before_update == False
+
+def test_check_change_cust_name():
+    from translations.coactupc_9xxx_stubs import check_change_in_rec
+    s = _make_check_state()
+    s.cust_db["CUST001"]["cust_last_name"] = "Smith"
+    check_change_in_rec(s)
+    assert s.data_was_changed_before_update == True
+
+def test_check_change_cust_name_case():
+    from translations.coactupc_9xxx_stubs import check_change_in_rec
+    s = _make_check_state()
+    s.cust_db["CUST001"]["cust_first_name"] = "JOHN"
+    check_change_in_rec(s)
+    assert s.data_was_changed_before_update == False
+
+def test_check_change_dob_no_change():
+    from translations.coactupc_9xxx_stubs import check_change_in_rec
+    s = _make_check_state()
+    check_change_in_rec(s)
+    assert s.data_was_changed_before_update == False
+
+def test_check_change_dob_month_changed():
+    from translations.coactupc_9xxx_stubs import check_change_in_rec
+    s = _make_check_state()
+    s.cust_db["CUST001"]["cust_dob_yyyy_mm_dd"] = "1980-07-20"
+    check_change_in_rec(s)
+    assert s.data_was_changed_before_update == True
