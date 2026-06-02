@@ -221,7 +221,7 @@ def _normalise_source(raw: str) -> list:
         if len(line) < 7:
             continue
         indicator = line[6]
-        if indicator in ('*', '/', '$'):
+        if indicator in ('*', '/', '$', '-'):
             continue
         code = line[7:72].rstrip()
         if code.strip():
