@@ -22,6 +22,13 @@ def chunk_text(text, chunk_size=500, overlap=100):
     return chunks
 
 def ingest():
+    # Preflight check: Bootstrap Honcho workspaces and peers if needed
+    try:
+        import setup_honcho
+        setup_honcho.bootstrap()
+    except Exception as e:
+        print(f"Preflight warning: Failed to run setup_honcho bootstrap: {e}")
+
     if not MANIFEST_PATH.exists():
         print(f"Error: Manifest not found at {MANIFEST_PATH}")
         return
