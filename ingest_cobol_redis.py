@@ -15,8 +15,8 @@ REDIS_PORT = 6380
 REDIS_PASSWORD = "cobol123"
 INDEX_NAME = "cobol_ir"
 VECTOR_DIM = 768
-CHUNK_SIZE = 1500
-CHUNK_OVERLAP = 200
+CHUNK_SIZE = 900
+CHUNK_OVERLAP = 150
 
 def get_embeddings_batch(texts):
     if not texts:
@@ -31,7 +31,7 @@ def get_embeddings_batch(texts):
         data = response.json()
         if "data" in data:
             return [item["embedding"] for item in data["data"]]
-        print(f"Unexpected response structure: {data.keys()}")
+        print(f"Unexpected response structure: {data}")
         return []
     except Exception as e:
         print(f"Embedding batch error: {e}")

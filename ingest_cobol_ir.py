@@ -7,7 +7,7 @@ MANIFEST_PATH = Path("docs/COACTUPC_Honcho_Load_Manifest_v2.json")
 BASE_URL = "http://localhost:18000/v3/workspaces/cobol-ir/conclusions"
 TOKEN = "your-token-here"
 
-def chunk_text(text, chunk_size=1500, overlap=200):
+def chunk_text(text, chunk_size=500, overlap=100):
     chunks = []
     if not text:
         return chunks
