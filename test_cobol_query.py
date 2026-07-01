@@ -6,7 +6,7 @@ TOKEN = "your-token-here"
 
 def test_query():
     payload = {
-        "query": "EDIT MAP input validation",
+        "query": "search_query: EDIT MAP input validation",
         "top_k": 5,
         "filters": {
             "observer_id": "hermes",

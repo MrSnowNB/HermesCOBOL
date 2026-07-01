@@ -78,7 +78,7 @@ def setup_redis():
     
     r.ft(INDEX_NAME).create_index(
         fields=schema,
-        definition=IndexDefinition(prefix=["para:"], index_type=IndexType.HASH)
+        definition=IndexDefinition(prefix=["cobol:para:"], index_type=IndexType.HASH)
     )
     print(f"Created index {INDEX_NAME}")
     return r
@@ -107,7 +107,8 @@ def main():
         print(f"Processing {para_name}: {len(chunks)} chunks")
         
         # Batch embedding for all chunks in this paragraph
-        embeddings = get_embeddings_batch(chunks)
+        prefixed_chunks = [f"search_document: {c}" for c in chunks]
+        embeddings = get_embeddings_batch(prefixed_chunks)
         
         for i, (chunk, embedding) in enumerate(zip(chunks, embeddings)):
             # Redis expects bytes for the vector field
@@ -120,7 +121,7 @@ def main():
                 "embedding": embedding_bytes
             }
             
-            r.hset(f"para:{para_name}:{i}", mapping=mapping)
+            r.hset(f"cobol:para:{para_name}:{i}", mapping=mapping)
             total_chunks += 1
                 
         print(f"Indexed {para_name}")

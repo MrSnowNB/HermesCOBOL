@@ -61,7 +61,7 @@ def ingest():
                 payload = {
                     "conclusions": [
                         {
-                            "content": f"ID: {key}/chunk_{chunk_idx}\nSOURCE: {key}\nDATA: {chunk_data}",
+                            "content": f"search_document: ID: {key}/chunk_{chunk_idx}\nSOURCE: {key}\nDATA: {chunk_data}",
                             "observer_id": "hermes",
                             "observed_id": "hermes"
                         }

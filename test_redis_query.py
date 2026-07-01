@@ -29,7 +29,7 @@ def main():
     query_text = "EDIT MAP input validation"
     print(f"Query: {query_text}")
     
-    embedding = get_embedding(query_text)
+    embedding = get_embedding("search_query: " + query_text)
     if not embedding:
         sys.exit(1)
         
