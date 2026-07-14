@@ -1,0 +1,73 @@
+{
+  "paragraph": "1200-EDIT-MAP-INPUTS",
+  "program": "COACTUPC",
+  "rules": [
+    {
+      "id": "BR-1",
+      "text": "The system SHALL exit immediately if no search criteria are received [seq 214].",
+      "seq": 214
+    },
+    {
+      "id": "BR-2",
+      "text": "The system SHALL clear non-key flags and exit if no changes are found between old and new data [seq 224].",
+      "seq": 224
+    },
+    {
+      "id": "BR-3",
+      "text": "The system SHALL validate Account Status as a Yes/No value [seq 229].",
+      "seq": 229
+    },
+    {
+      "id": "BR-4",
+      "text": "The system SHALL validate Open Date, Expiry Date, and Reissue Date formats [seq 233, 241, 249].",
+      "seq": null
+    },
+    {
+      "id": "BR-5",
+      "text": "The system SHALL validate Credit Limit, Cash Credit Limit, Current Balance, and Cycle Limits as signed numbers [seq 237, 245, 253, 257, 261].",
+      "seq": null
+    },
+    {
+      "id": "BR-6",
+      "text": "The system SHALL validate the SSN format [seq 264].",
+      "seq": 264
+    },
+    {
+      "id": "BR-7",
+      "text": "The system SHALL validate the Date of Birth format and apply specific business rules if valid [seq 269-270].",
+      "seq": {
+        "from": 269,
+        "to": 270
+      }
+    },
+    {
+      "id": "BR-8",
+      "text": "The system SHALL validate the FICO score as a 3-digit numeric value and apply specific business rules if valid [seq 274-278].",
+      "seq": {
+        "from": 274,
+        "to": 278
+      }
+    },
+    {
+      "id": "BR-9",
+      "text": "The system SHALL validate the First Name as a required 25-character alphanumeric field [seq 281-282].",
+      "seq": {
+        "from": 281,
+        "to": 282
+      }
+    },
+    {
+      "id": "BR-10",
+      "text": "The system SHALL validate the Middle Name as an optional 25-character alphanumeric field [seq 286-287].",
+      "seq": {
+        "from": 286,
+        "to": 287
+      }
+    }
+  ],
+  "source_key": "COACTUPC:para:1200-EDIT-MAP-INPUTS",
+  "ir_schema_version": "1.4",
+  "generator_id": "phase2_english_worker/v1",
+  "generated_at": "2026-07-14T18:14:38.011681+00:00",
+  "model_id": "Qwen3.6-35B-A3B-MTP-GGUF"
+}

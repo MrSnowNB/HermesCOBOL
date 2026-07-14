@@ -1,0 +1,105 @@
+{
+  "paragraph": "1200-EDIT-MAP-INPUTS",
+  "program": "COACTUPC",
+  "document": "PARAGRAPH: 1200-EDIT-MAP-INPUTS\nPROGRAM: COACTUPC\nSOURCE LINES: [3734, 3982]\n\nPURPOSE (2-3 sentences):\nThis paragraph orchestrates the validation of new account and customer data provided during an edit transaction. It ensures that all mandatory fields meet format and business constraints before allowing the update to proceed. The logic isolates invalid data by setting specific error flags for downstream processing.\n\nPRECONDITIONS:\nThe system must have access to the new account details and customer information via the program communication area. The `ACUP-DETAILS-NOT-FETCHED` flag determines if initial account retrieval logic is required.\n\nBUSINESS LOGIC (numbered steps):\n1. Initialize the input status to valid and check if account details need fetching; if so, perform account retrieval and reset old data [seq 209-212].\n2. If no search criteria were provided, mark the process as having no criteria and exit immediately [seq 213-215].\n3. Confirm that the account and customer are found in the master file and set their validity flags to true [seq 217-221].\n4. Compare old and new data; if no changes are detected, clear non-key flags and exit [seq 222-225].\n5. Validate the new account status as a Yes/No value and store the result [seq 226-230].\n6. Validate the new open date format and store the validation flags [seq 231-234].\n7. Validate the new credit limit as a signed number and store the validation flags [seq 235-238].\n8. Validate the new expiry date format and store the validation flags [seq 239-242].\n9. Validate the new cash credit limit as a signed number and store the validation flags [seq 243-246].\n10. Validate the new reissue date format and store the validation flags [seq 247-250].\n11. Validate the new current balance as a signed number and store the validation flags [seq 251-254].\n12. Validate the new current cycle credit limit as a signed number and store the validation flags [seq 255-258].\n13. Validate the new current cycle debit limit as a signed number and store the validation flags [seq 259-262].\n14. Validate the Social Security Number format [seq 263-264].\n15. Validate the customer date of birth format; if valid, perform specific date-of-birth business rules and update flags [seq 265-271].\n16. Validate the FICO score as a required 3-digit numeric value; if valid, perform specific FICO score business rules [seq 272-278].\n17. Validate the customer first name as a required 25-character alphanumeric string [seq 279-283].\n18. Validate the customer middle name as an optional 25-character alphanumeric string [seq 284-288].\n\nBUSINESS RULES (bullet list):\n- BR-1: The system SHALL exit immediately if no search criteria are received [seq 214].\n- BR-2: The system SHALL clear non-key flags and exit if no changes are found between old and new data [seq 224].\n- BR-3: The system SHALL validate Account Status as a Yes/No value [seq 229].\n- BR-4: The system SHALL validate Open Date, Expiry Date, and Reissue Date formats [seq 233, 241, 249].\n- BR-5: The system SHALL validate Credit Limit, Cash Credit Limit, Current Balance, and Cycle Limits as signed numbers [seq 237, 245, 253, 257, 261].\n- BR-6: The system SHALL validate the SSN format [seq 264].\n- BR-7: The system SHALL validate the Date of Birth format and apply specific business rules if valid [seq 269-270].\n- BR-8: The system SHALL validate the FICO score as a 3-digit numeric value and apply specific business rules if valid [seq 274-278].\n- BR-9: The system SHALL validate the First Name as a required 25-character alphanumeric field [seq 281-282].\n- BR-10: The system SHALL validate the Middle Name as an optional 25-character alphanumeric field [seq 286-287].\n\nDATA FLOW:\nREADS: WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-ACTIVE-STATUS, WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-YES-NO, WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-OPEN-DATE, WS-MISC-STORAGE.ALPHA-VARS-FOR-DATA-EDITING.ACUP-NEW-CREDIT-LIMIT-X, WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-FLG-SIGNED-NUMBER-EDIT, WS-THIS-PROGCOMMAREA.ACUP-NEW-DETAILS.ACUP-NEW-ACCT-DATA.ACUP-NEW-EXPIRAION-DATE\nWRITES: WS-THIS-PROGCOMMAREA.ACUP-OLD-DETAILS.ACUP-OLD-ACCT-DATA, WS-MISC-STORAGE.WS-NON-KEY-FLAGS, WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-VARIABLE-NAME, WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-YES-NO, WS-MISC-STORAGE.WS-NON-KEY-FLAGS.WS-EDIT-ACCT-STATUS, WS-MISC-STORAGE.WS-NON-KEY-FLAGS.WS-EDIT-OPEN-DATE-FLGS, WS-MISC-STORAGE.WS-GENERIC-EDITS.WS-EDIT-SIGNED-NUMBER-9V2-X, WS-MISC-STORAGE.WS-NON-KEY-FLAGS.WS-EDIT-CREDIT-LIMIT\nCALLS: 1210-EDIT-ACCOUNT, 1205-COMPARE-OLD-NEW, 1220-EDIT-YESNO, EDIT-DATE-CCYYMMDD, 1250-EDIT-SIGNED-9V2, 1265-EDIT-US-SSN, EDIT-DATE-OF-BIRTH, 1275-EDIT-FICO-SCORE, 1225-EDIT-ALPHA-REQD, 1235-EDIT-ALPHA-OPT, 1245-EDIT-NUM-REQD\n\nEDGE CASES AND RISKS:\nDevelopers must note the short-circuit logic at seq 215 and 225 which bypasses all validation if criteria are missing or no changes exist. The logic assumes `ACUP-DETAILS-NOT-F",
+  "source_key": "COACTUPC:para:1200-EDIT-MAP-INPUTS",
+  "ir_schema_version": "1.4",
+  "generator_id": "phase2_english_worker/v1",
+  "generated_at": "2026-07-14T18:14:38.011681+00:00",
+  "model_id": "Qwen3.6-35B-A3B-MTP-GGUF",
+  "seq_cites": [
+    {
+      "from": 209,
+      "to": 212
+    },
+    {
+      "from": 213,
+      "to": 215
+    },
+    {
+      "from": 217,
+      "to": 221
+    },
+    {
+      "from": 222,
+      "to": 225
+    },
+    {
+      "from": 226,
+      "to": 230
+    },
+    {
+      "from": 231,
+      "to": 234
+    },
+    {
+      "from": 235,
+      "to": 238
+    },
+    {
+      "from": 239,
+      "to": 242
+    },
+    {
+      "from": 243,
+      "to": 246
+    },
+    {
+      "from": 247,
+      "to": 250
+    },
+    {
+      "from": 251,
+      "to": 254
+    },
+    {
+      "from": 255,
+      "to": 258
+    },
+    {
+      "from": 259,
+      "to": 262
+    },
+    {
+      "from": 263,
+      "to": 264
+    },
+    {
+      "from": 265,
+      "to": 271
+    },
+    {
+      "from": 272,
+      "to": 278
+    },
+    {
+      "from": 279,
+      "to": 283
+    },
+    {
+      "from": 284,
+      "to": 288
+    },
+    214,
+    224,
+    229,
+    264,
+    {
+      "from": 269,
+      "to": 270
+    },
+    {
+      "from": 274,
+      "to": 278
+    },
+    {
+      "from": 281,
+      "to": 282
+    },
+    {
+      "from": 286,
+      "to": 287
+    }
+  ],
+  "word_count": 868
+}
