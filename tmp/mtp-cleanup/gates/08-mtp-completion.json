@@ -1,0 +1,43 @@
+{
+  "http": 200,
+  "error": null,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "length",
+        "index": 0,
+        "message": {
+          "content": "",
+          "reasoning_content": "Here's a thinking process:\n\n1.  **Analyze User Input:**\n   - User says: \"Do not think long. Reply with the single token: MTP_OK\"\n   - Key constraints: \"Do not think long\", \"Reply with the single token: MTP_OK\"\n\n2.",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1784045434,
+    "id": "chatcmpl-KDl1u5rH9RFe7pZ750oKFSl8megdmIaP",
+    "model": "Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf",
+    "object": "chat.completion",
+    "system_fingerprint": "b9253-29f148222",
+    "timings": {
+      "cache_n": 0,
+      "draft_n": 46,
+      "draft_n_accepted": 44,
+      "predicted_ms": 1055.284,
+      "predicted_n": 64,
+      "predicted_per_second": 60.647181232729764,
+      "predicted_per_token_ms": 16.4888125,
+      "prompt_ms": 187.573,
+      "prompt_n": 24,
+      "prompt_per_second": 127.9501847280792,
+      "prompt_per_token_ms": 7.815541666666667
+    },
+    "usage": {
+      "completion_tokens": 64,
+      "prompt_tokens": 24,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 88
+    }
+  }
+}

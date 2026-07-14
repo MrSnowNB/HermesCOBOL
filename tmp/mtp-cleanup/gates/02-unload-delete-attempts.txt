@@ -1,0 +1,5 @@
+﻿/api/v0/unload -> FAIL {"error":"Model not loaded: Qwen3.6-35B-A3B-GGUF"}
+/api/v1/delete -> 200 {"message":"Deleted model: Qwen3.6-35B-A3B-GGUF","status":"success"}
+/api/v0/delete -> 200 {"message":"Deleted model: Qwen3.6-35B-A3B-GGUF","status":"success"}
+user./api/v0/unload -> FAIL {"error":"Model not loaded: user.Qwen3.6-35B-A3B-GGUF"}
+user./api/v1/delete -> FAIL {"error":"Model not found: user.Qwen3.6-35B-A3B-GGUF"}

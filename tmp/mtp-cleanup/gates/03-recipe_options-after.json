@@ -1,0 +1,30 @@
+﻿{
+    "builtin.Qwen3-Coder-Next-GGUF":  {
+                                          "ctx_size":  256000,
+                                          "llamacpp_backend":  "vulkan"
+                                      },
+    "builtin.Qwen3.5-35B-A3B-GGUF":  {
+                                         "ctx_size":  64000
+                                     },
+    "builtin.Qwen3.5-4B-GGUF":  {
+                                    "ctx_size":  32000
+                                },
+    "builtin.Qwen3.6-35B-A3B-MTP-GGUF":  {
+                                             "ctx_size":  262144,
+                                             "merge_args":  true
+                                         },
+    "user.Hermes-3-Llama-3.1-8B-GGUF":  {
+
+                                        },
+    "user.Qwen3.6-27B-GGUF":  {
+                                  "ctx_size":  256000,
+                                  "llamacpp_backend":  "rocm"
+                              },
+    "user.gemma-4-31B-it-GGUF":  {
+                                     "ctx_size":  256000
+                                 },
+    "user.gemma-4-it-GGUF":  {
+                                 "ctx_size":  256000,
+                                 "llamacpp_backend":  "vulkan"
+                             }
+}

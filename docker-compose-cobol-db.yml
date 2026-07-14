@@ -1,18 +1,28 @@
-version: '3.8'
+# Canonical COBOL IR dictionary — plain Redis (no vector stack).
+# Inference boundary: exact key GET only. No HNSW, no embeddings.
+#
+# Usage:
+#   docker compose -f docker-compose-cobol-db.yml up -d
+#   python ingest_redis_canonical.py
+#
+# Legacy vector experiment archived at: archive/vector_experiment/
 
 services:
-  cobol-vector-db:
-    image: redis/redis-stack:latest
-    container_name: cobol-vector-db
+  cobol-ir-db:
+    image: redis:7-alpine
+    container_name: cobol-ir-db
+    command: redis-server --requirepass cobol123 --save 60 1 --loglevel warning
     ports:
       - "6380:6379"
-      - "8002:8001" # Redis Insight
-    environment:
-      - REDIS_ARGS=--requirepass cobol123
     volumes:
-      - cobol_redis_data:/data
-    restart: always
+      - cobol_ir_data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "cobol123", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
-  cobol_redis_data:
+  cobol_ir_data:
     driver: local

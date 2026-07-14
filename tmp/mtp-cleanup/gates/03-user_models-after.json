@@ -1,0 +1,55 @@
+{
+  "Hermes-3-Llama-3.1-8B-GGUF": {
+    "checkpoint": "NousResearch/Hermes-3-Llama-3.1-8B-GGUF:Q4_K_M",
+    "labels": [
+      "custom"
+    ],
+    "recipe": "llamacpp",
+    "size": 4.58,
+    "suggested": true
+  },
+  "Qwen3.6-27B-GGUF": {
+    "checkpoint": "unsloth/Qwen3.6-27B-GGUF:Q4_K_M",
+    "labels": [
+      "custom",
+      "vision"
+    ],
+    "mmproj": "mmproj-BF16.gguf",
+    "recipe": "llamacpp",
+    "suggested": true
+  },
+  "Qwen3.6-27B-Uncensored-HauhauCS-Aggressive": {
+    "checkpoint": "HauhauCS/Qwen3.6-27B-Uncensored-HauhauCS-Aggressive:Q6_K",
+    "labels": [
+      "custom"
+    ],
+    "recipe": "llamacpp",
+    "suggested": true
+  },
+  "Qwen3.6-27B-Uncensored-HauhauCS-Balanced": {
+    "checkpoint": "HauhauCS/Qwen3.6-27B-Uncensored-HauhauCS-Balanced:Q6_K",
+    "labels": [
+      "custom"
+    ],
+    "recipe": "llamacpp",
+    "suggested": true
+  },
+  "gemma-4-31B-it-GGUF": {
+    "checkpoint": "unsloth/gemma-4-31B-it-GGUF:Q4_K_M",
+    "labels": [
+      "custom",
+      "vision"
+    ],
+    "mmproj": "mmproj-BF16.gguf",
+    "recipe": "llamacpp",
+    "suggested": true
+  },
+  "gemma-4-it-GGUF": {
+    "checkpoint": "ddh0/gemma-4-it-GGUF:BF16",
+    "labels": [
+      "custom"
+    ],
+    "recipe": "llamacpp",
+    "suggested": true
+  }
+}

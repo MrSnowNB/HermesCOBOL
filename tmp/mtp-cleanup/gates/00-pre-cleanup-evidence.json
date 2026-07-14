@@ -1,0 +1,12 @@
+﻿{
+    "pre_cleanup_loaded":  [
+                               "nomic-embed-text-v2-moe-GGUF",
+                               "Qwen3.6-35B-A3B-MTP-GGUF",
+                               "Hermes-3-Llama-3.1-8B-GGUF",
+                               "Qwen3.6-35B-A3B-GGUF"
+                           ],
+    "hermes_aux_log_evidence":  "Auxiliary title_generation/compression used user.Qwen3.6-35B-A3B-GGUF",
+    "non_mtp_backend":  "http://127.0.0.1:8004/v1",
+    "note":  "Pre-cleanup dual load documented in investigation (before this run)",
+    "non_mtp_checkpoint":  "unsloth/Qwen3.6-35B-A3B-GGUF:Q4_K_M"
+}

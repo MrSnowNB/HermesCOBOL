@@ -1,0 +1,128 @@
+{
+  "run_at": "2026-07-14T16:10:54.444410+00:00",
+  "all_pass": true,
+  "passed": 9,
+  "failed": 0,
+  "gates": [
+    {
+      "gate": "G0_backups",
+      "pass": true,
+      "detail": {
+        "count": 5,
+        "files": [
+          "hermes-config.yaml.bak",
+          "HermesCOBOL.env.bak",
+          "lemonade-config.json.bak",
+          "recipe_options.json.bak",
+          "user_models.json.bak"
+        ]
+      },
+      "ts": "2026-07-14T16:10:33.045390+00:00"
+    },
+    {
+      "gate": "G2_no_nonmtp_loaded",
+      "pass": true,
+      "detail": {
+        "http": 200,
+        "error": null,
+        "model_loaded": "Qwen3.6-35B-A3B-MTP-GGUF",
+        "all_loaded": [
+          "nomic-embed-text-v2-moe-GGUF",
+          "Qwen3.6-35B-A3B-MTP-GGUF",
+          "Hermes-3-Llama-3.1-8B-GGUF"
+        ],
+        "non_mtp_loaded": []
+      },
+      "ts": "2026-07-14T16:10:33.066702+00:00"
+    },
+    {
+      "gate": "G7_loaded_llms_allowlist",
+      "pass": true,
+      "detail": {
+        "llm_loaded": [
+          "Qwen3.6-35B-A3B-MTP-GGUF",
+          "Hermes-3-Llama-3.1-8B-GGUF"
+        ],
+        "bad_llms": [],
+        "require_mtp_present": true
+      },
+      "ts": "2026-07-14T16:10:33.066702+00:00"
+    },
+    {
+      "gate": "G6_catalog_no_nonmtp",
+      "pass": true,
+      "detail": {
+        "http": 200,
+        "error": null,
+        "non_mtp_ids": [],
+        "mtp_present": true,
+        "qwen35_related": [
+          "Qwen3.5-35B-A3B-GGUF",
+          "Qwen3.6-35B-A3B-MTP-GGUF"
+        ]
+      },
+      "ts": "2026-07-14T16:10:33.091797+00:00"
+    },
+    {
+      "gate": "G3_registry_scrubbed",
+      "pass": true,
+      "detail": {
+        "user_models_has_nonmtp_key": false,
+        "recipe_options_has_nonmtp_key": false,
+        "user_models_path": "C:\\Users\\AMD\\.cache\\lemonade\\user_models.json",
+        "recipe_options_path": "C:\\Users\\AMD\\.cache\\lemonade\\recipe_options.json"
+      },
+      "ts": "2026-07-14T16:10:33.092319+00:00"
+    },
+    {
+      "gate": "G4_hermes_config_pinned",
+      "pass": true,
+      "detail": {
+        "path": "C:\\Users\\AMD\\.hermes\\config.yaml",
+        "has_mtp": true,
+        "has_non_mtp_default": false,
+        "has_custom_provider": true,
+        "has_aux_pins": true
+      },
+      "ts": "2026-07-14T16:10:33.092846+00:00"
+    },
+    {
+      "gate": "G5_hermescolbol_env",
+      "pass": true,
+      "detail": {
+        "chat_model_lines": [
+          "OPENAI_MODEL=user.Qwen3.6-35B-A3B-MTP-GGUF",
+          "LEMONADE_CHAT_MODEL=user.Qwen3.6-35B-A3B-MTP-GGUF"
+        ],
+        "env_bad": false
+      },
+      "ts": "2026-07-14T16:10:33.092846+00:00"
+    },
+    {
+      "gate": "G8_mtp_completion",
+      "pass": true,
+      "detail": {
+        "http": 200,
+        "error": null,
+        "content_preview": "",
+        "reasoning_preview": "Here's a thinking process:\n\n1.  **Analyze User Input:**\n   - User says: \"Do not think long. Reply with the single token: MTP_OK\"\n   - Key constraints: \"Do not think long\", \"Reply with the single token",
+        "response_model": "Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf",
+        "model_requested": "Qwen3.6-35B-A3B-MTP-GGUF"
+      },
+      "ts": "2026-07-14T16:10:34.414106+00:00"
+    },
+    {
+      "gate": "G9_nonmtp_negative",
+      "pass": true,
+      "detail": {
+        "bare_http": null,
+        "user_http": 404,
+        "bare_error": "timed out",
+        "user_error": "HTTP Error 404: Not Found",
+        "bare_error_snippet": "{}",
+        "user_error_snippet": "{'error': {'code': 'model_not_found', 'message': \"Model 'user.Qwen3.6-35B-A3B-GGUF' was not found. Available models include: 'AMD-OLMo-1B-SFT-DPO-Hybrid', 'Bonsai-1.7B-gguf', 'Bonsai-4B-gguf', and 177 more. Use 'lemonade list' or GET /api/v1/models?show_all=true to see all available models.\", 'param"
+      },
+      "ts": "2026-07-14T16:10:54.444410+00:00"
+    }
+  ]
+}

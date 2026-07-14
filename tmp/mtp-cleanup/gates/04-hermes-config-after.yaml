@@ -1,0 +1,48 @@
+# ~/.hermes/config.yaml
+# User configuration for Hermes Agent.
+# Updated 2026-07-14: pin Lemonade Qwen3.6-35B-A3B-MTP as sole 35B chat model.
+# Non-MTP Qwen3.6-35B-A3B-GGUF must NOT be referenced (see tmp/mtp-cleanup).
+
+# Display / UI customizations
+display:
+  # Custom skin loaded from ~/.hermes/skins/acid-burn.yaml
+  skin: "acid-burn"
+
+# ---------------------------------------------------------------------------
+# Primary model — authoritative (Hermes ignores OPENAI_MODEL env for this)
+# ---------------------------------------------------------------------------
+model:
+  # Lemonade catalog id for MTP variant (not user.Qwen3.6-35B-A3B-GGUF)
+  default: "Qwen3.6-35B-A3B-MTP-GGUF"
+  provider: "custom"
+  base_url: "http://127.0.0.1:8000/api/v1"
+  # Match Lemonade MTP context when auto-detect is wrong
+  context_length: 262144
+
+# Auxiliary tasks inherit custom provider; pin MTP so title/compression/vision
+# never re-request the deleted non-MTP weight.
+auxiliary:
+  vision:
+    provider: "custom"
+    model: "Qwen3.6-35B-A3B-MTP-GGUF"
+  web_extract:
+    provider: "custom"
+    model: "Qwen3.6-35B-A3B-MTP-GGUF"
+  session_search:
+    provider: "custom"
+    model: "Qwen3.6-35B-A3B-MTP-GGUF"
+  # compression / title_generation fall back to main model when unset;
+  # explicit pins below if supported by this Hermes build:
+  compression:
+    provider: "custom"
+    model: "Qwen3.6-35B-A3B-MTP-GGUF"
+  title_generation:
+    provider: "custom"
+    model: "Qwen3.6-35B-A3B-MTP-GGUF"
+
+# TTS configuration using xAI (Grok)
+tts:
+  provider: "xai"
+  xai:
+    voice_id: "leo" # Expressive voices: "leo" (strong/deep), "sal" (smooth/balanced), "ara" (warm), "eve" (upbeat)
+    auto_speech_tags: true

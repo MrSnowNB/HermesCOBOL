@@ -1,0 +1,61 @@
+{
+  "all_models_loaded": [
+    {
+      "backend_url": "http://127.0.0.1:8001/v1",
+      "checkpoint": "nomic-ai/nomic-embed-text-v2-moe-GGUF:Q8_0",
+      "device": "gpu",
+      "last_use": 120906406,
+      "model_name": "nomic-embed-text-v2-moe-GGUF",
+      "pid": 30204,
+      "recipe": "llamacpp",
+      "recipe_options": {
+        "ctx_size": 4096,
+        "llamacpp_args": "-np 1 --keep 16 --ubatch-size 1024",
+        "llamacpp_device": "Vulkan0"
+      },
+      "type": "embedding"
+    },
+    {
+      "backend_url": "http://127.0.0.1:8002/v1",
+      "checkpoint": "unsloth/Qwen3.6-35B-A3B-MTP-GGUF:Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf",
+      "device": "gpu",
+      "last_use": 1214553030,
+      "model_name": "Qwen3.6-35B-A3B-MTP-GGUF",
+      "pid": 36620,
+      "recipe": "llamacpp",
+      "recipe_options": {
+        "ctx_size": 262144,
+        "llamacpp_args": "-np 1 --keep 16 --ubatch-size 1024",
+        "llamacpp_device": "Vulkan0"
+      },
+      "type": "llm"
+    },
+    {
+      "backend_url": "http://127.0.0.1:8003/v1",
+      "checkpoint": "NousResearch/Hermes-3-Llama-3.1-8B-GGUF:Q4_K_M",
+      "device": "gpu",
+      "last_use": 120863909,
+      "model_name": "Hermes-3-Llama-3.1-8B-GGUF",
+      "pid": 42272,
+      "recipe": "llamacpp",
+      "recipe_options": {
+        "ctx_size": 4096,
+        "llamacpp_args": "-np 1 --keep 16 --ubatch-size 1024",
+        "llamacpp_device": "Vulkan0"
+      },
+      "type": "llm"
+    }
+  ],
+  "max_models": {
+    "embedding": 5,
+    "image": 5,
+    "llm": 5,
+    "reranking": 5,
+    "transcription": 5,
+    "tts": 5
+  },
+  "model_loaded": "Qwen3.6-35B-A3B-MTP-GGUF",
+  "status": "ok",
+  "version": "10.6.0",
+  "websocket_port": 9000
+}

@@ -1,0 +1,20 @@
+{
+  "bare": {
+    "http": null,
+    "error": "timed out",
+    "response": {}
+  },
+  "user_prefix": {
+    "http": 404,
+    "error": "HTTP Error 404: Not Found",
+    "response": {
+      "error": {
+        "code": "model_not_found",
+        "message": "Model 'user.Qwen3.6-35B-A3B-GGUF' was not found. Available models include: 'AMD-OLMo-1B-SFT-DPO-Hybrid', 'Bonsai-1.7B-gguf', 'Bonsai-4B-gguf', and 177 more. Use 'lemonade list' or GET /api/v1/models?show_all=true to see all available models.",
+        "param": "model",
+        "requested_model": "user.Qwen3.6-35B-A3B-GGUF",
+        "type": "model_not_found"
+      }
+    }
+  }
+}
