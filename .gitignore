@@ -29,6 +29,9 @@ scratch/
 *.tmp
 *.bak
 
+# Experiment run artifacts (local auditable logs — large; keep on disk, not git)
+experiment/results/
+
 # OS
 .DS_Store
 Thumbs.db

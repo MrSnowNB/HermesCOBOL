@@ -24,3 +24,22 @@ Comparison experiment for the COBOL → English business-logic engine.
 1. Phase 2 L1 coverage ≥ 95% (`python experiment_runner.py --list`)
 2. Smoke passes: `python experiment_runner.py --smoke --harness c`
 3. Explicit user confirmation to execute A/B/C experiment
+
+## Auditable artifacts (local)
+
+Full runs write under `results/run_<UTC>/` (gitignored):
+
+| Path | Contents |
+|------|----------|
+| `RUN.log` | Timestamped master audit log |
+| `MANIFEST.json` | Config, model, L1 gate, questions |
+| `INDEX.md` | Human index of all 30 cells |
+| `results.jsonl` | One JSON record per cell (full text) |
+| `summary.json` | OK/FAIL counts and timings |
+| `cells/<h>/<Qid>/` | `prompt.txt`, `stdout.txt`, `stderr.txt`, `meta.json`, `combined.md` |
+
+```powershell
+python experiment_runner.py --harness a,b,c --timeout 600 --verbose
+Get-Content experiment\results\LATEST
+# open experiment\results\run_<id>\INDEX.md
+```
