@@ -1,0 +1,52 @@
+# Harness B — L0 IR only (inference at query time)
+# ============================================================
+# Hermes may GET structured Redis L0 keys ({PROG}:para:{NAME}, :meta,
+# :index, :cfg:) and must re-interpret IR into business meaning live.
+# L1 keys (:english: / :rules:) are OUT OF BOUNDS for this harness.
+#
+# Purpose: isolate the value of structured IR vs raw LLM (A) and vs
+# frozen English docs (C).
+#
+# Usage:
+#   docker compose -f docker-compose-harness-b.yml up -d
+#   # shares the same cobol-ir-db volume as the main stack when already up
+#
+# Run experiment:
+#   python experiment_runner.py --harness b
+
+name: hermes-cobol-harness-b
+
+services:
+  cobol-ir-db:
+    image: redis:7-alpine
+    container_name: cobol-ir-db
+    command: redis-server --requirepass cobol123 --save 60 1 --loglevel warning
+    ports:
+      - "6380:6379"
+    volumes:
+      - cobol_ir_data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "cobol123", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  cobol_ir_data:
+    driver: local
+    # Reuse existing named volume when present:
+    #   docker volume ls | findstr cobol
+    # Main stack (docker-compose-cobol-db.yml) uses cobol_ir_data too.
+    # If both compose projects declare the same external name, set:
+    #   external: true
+    # after the first successful L0/L1 load.
+
+# Environment contract:
+#   HARNESS_ID=b
+#   HARNESS_PROFILE=experiment/profiles/b
+#   REDIS_COBOL_ENABLED=1
+#   REDIS_COBOL_HOST=localhost
+#   REDIS_COBOL_PORT=6380
+#   REDIS_COBOL_PASSWORD=cobol123
+#   REDIS_COBOL_LAYER=l0          # para/meta/index only — no --english/--rules

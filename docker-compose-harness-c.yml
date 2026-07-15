@@ -1,0 +1,49 @@
+# Harness C — Product path: L1 English dictionary (inference at ingestion)
+# ============================================================
+# Hermes answers by GET of frozen L1 documents only:
+#   {PROG}:english:{NAME}
+#   {PROG}:rules:{NAME}
+# On L1 miss: refuse with "L1 key not found — run phase2_english_worker.py".
+# Do NOT fall back to re-interpreting :para: at query time.
+#
+# Purpose: measure the product claim — retrieve frozen business meaning;
+# do not re-run stacked models over raw IR on every partner question.
+#
+# Prerequisites:
+#   - Phase 1 L0 loaded (ingest_redis_canonical.py)
+#   - Phase 2 L1 coverage ≥95% (phase2_english_worker.py)
+#
+# Usage:
+#   docker compose -f docker-compose-harness-c.yml up -d
+#   python experiment_runner.py --harness c
+
+name: hermes-cobol-harness-c
+
+services:
+  cobol-ir-db:
+    image: redis:7-alpine
+    container_name: cobol-ir-db
+    command: redis-server --requirepass cobol123 --save 60 1 --loglevel warning
+    ports:
+      - "6380:6379"
+    volumes:
+      - cobol_ir_data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "cobol123", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  cobol_ir_data:
+    driver: local
+
+# Environment contract:
+#   HARNESS_ID=c
+#   HARNESS_PROFILE=experiment/profiles/c
+#   REDIS_COBOL_ENABLED=1
+#   REDIS_COBOL_HOST=localhost
+#   REDIS_COBOL_PORT=6380
+#   REDIS_COBOL_PASSWORD=cobol123
+#   REDIS_COBOL_LAYER=l1          # --english / --rules only

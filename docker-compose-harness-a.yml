@@ -1,0 +1,34 @@
+# Harness A — Baseline / partner-style control
+# ============================================================
+# LLM answers COBOL business questions WITHOUT the Redis IR/English
+# dictionary. Models re-interpret mainframe logic at query time
+# (no frozen L1 documents; no L0 GET requirement).
+#
+# Purpose: measure hallucination risk and latency of "stack models
+# on every request" — the approach this product is designed to beat.
+#
+# Does NOT start cobol-ir-db. Honcho is optional session memory only.
+#
+# Prerequisites (host):
+#   - Lemonade or other OpenAI-compatible LLM at OPENAI_BASE_URL
+#   - hermes CLI on PATH
+#
+# Run experiment (do not start until Phase 2 L1 ≥95% and smoke-tested):
+#   python experiment_runner.py --harness a
+#
+# Manual smoke:
+#   hermes chat -Q -q "What does COACTUPC paragraph 1200-EDIT-MAP-INPUTS do?"
+
+name: hermes-cobol-harness-a
+
+services: {}
+  # No COBOL data services. Baseline is host Hermes + LLM only.
+  # Optional: attach to an existing Honcho stack for session memory
+  # (never used as the COBOL IR source of truth in this experiment).
+
+# Environment contract (set by experiment_runner.py / partner shell):
+#   HARNESS_ID=a
+#   HARNESS_PROFILE=experiment/profiles/a
+#   HERMES_COBOL_ROOT=C:\work\HermesCOBOL
+#   REDIS_COBOL_ENABLED=0
+#   OPENAI_BASE_URL=http://127.0.0.1:8000/api/v1   # or partner endpoint

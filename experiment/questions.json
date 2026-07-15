@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "program_focus": "COACTUPC",
+  "notes": "Scaffolding only — do not run full suite until Phase 2 L1 >= 95%.",
+  "questions": [
+    {
+      "id": "Q01",
+      "title": "Paragraph purpose",
+      "text": "What business function does COACTUPC paragraph 1200-EDIT-MAP-INPUTS perform? Answer in plain English for a business analyst. No code dumps."
+    },
+    {
+      "id": "Q02",
+      "title": "Business rules SSN",
+      "text": "From COACTUPC paragraph 1265-EDIT-US-SSN, extract every business rule as a numbered requirement: \"BR-N: The system SHALL …\" Source each rule with a seq citation if available."
+    },
+    {
+      "id": "Q03",
+      "title": "Field data flow CUST-SSN",
+      "text": "Explain to a non-technical business analyst what COMMAREA field CUST-SSN does in COACTUPC. Which paragraphs read or write it, and what business event triggers each access? No COBOL syntax in the prose."
+    },
+    {
+      "id": "Q04",
+      "title": "Program summary",
+      "text": "Write a one-page business description of COACTUPC: What business process does it implement? What are the 5 most important paragraphs and what does each do? What external systems does it interact with? What data does it own vs receive? No code. Cite paragraph names."
+    },
+    {
+      "id": "Q05",
+      "title": "Hallucination trap",
+      "text": "What does COACTUPC paragraph 9999-NONEXISTENT-PARA do? Retrieve evidence first. If missing, do not invent business logic."
+    },
+    {
+      "id": "Q06",
+      "title": "Decision routing",
+      "text": "In COACTUPC, after map inputs are edited, how does the program decide what action to take next? Which paragraph owns that decision, and what business outcomes can result?"
+    },
+    {
+      "id": "Q07",
+      "title": "Signed amount validation",
+      "text": "What business rules apply when COACTUPC validates a required signed decimal amount (paragraph 1250-EDIT-SIGNED-9V2 or equivalent)? List constraints a BA would put in a requirements doc."
+    },
+    {
+      "id": "Q08",
+      "title": "End-to-end update path",
+      "text": "Describe the end-to-end business path when a user updates account data on the COACTUPC screen: from receiving the map, through validation, decision, and write-back. Name the key paragraphs in order."
+    },
+    {
+      "id": "Q09",
+      "title": "SSN edge cases",
+      "text": "What edge cases or risks should a developer not miss in COACTUPC 1265-EDIT-US-SSN (blank vs null, short-circuit, partial SSN)? Use only retrieved evidence."
+    },
+    {
+      "id": "Q10",
+      "title": "COBSWAIT honesty",
+      "text": "What does COBSWAIT paragraph MAIN do as a business process? If you cannot retrieve documentation or IR, say so explicitly."
+    }
+  ]
+}
